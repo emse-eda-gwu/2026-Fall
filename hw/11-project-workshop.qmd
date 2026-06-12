@@ -1,0 +1,8 @@
+---
+title: "Final Project Workshop"
+params:
+  number: 11
+  purpose: 'The purpose of this assignment is to....'
+---
+
+Coming soon!
