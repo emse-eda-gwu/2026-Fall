@@ -1,0 +1,12 @@
+---
+title: "Agentic Workflows & GitHub Desktop"
+params:
+  class: "2-agentic-workflows"
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r child = here::here("fragments", "placeholder.qmd")}
+```
