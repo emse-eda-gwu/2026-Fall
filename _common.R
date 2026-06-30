@@ -159,8 +159,8 @@ get_schedule <- function() {
         mutate(date_md = format(date, format = "%b %d")) %>% 
         left_join(class, by = "week") %>% 
         left_join(quiz, by = "week") %>%
-        left_join(assignments, by = "week") %>% 
-        left_join(mini, by = "week") %>% 
+        left_join(assignments, by = "week") %>%
+        left_join(mini, by = "week") %>%
         left_join(project, by = "week") %>%
         ungroup()
     

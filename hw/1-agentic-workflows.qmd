@@ -1,0 +1,8 @@
+---
+title: "Agentic Workflows"
+params:
+  number: 1
+  purpose: 'The purpose of this assignment is to prepare for working with agentic AI tools and version control by reading about how to use GitHub Desktop and Claude Code in Positron to manage and analyze data.'
+---
+
+Coming soon!

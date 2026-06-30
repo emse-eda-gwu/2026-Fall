@@ -21,12 +21,12 @@ names(schedule) <- str_to_title(names(schedule))
 done <- schedule %>%
   rename(
       `Mini Projects` = Mini,
-      `Final Projects` = Project,
-      `Weekly HW` = Assign
+      `Final Project` = Project,
+      `Reading Reflection` = Assign
   ) %>%
   select(
-      Week, Date = Date_md, Quiz, Class, `Weekly HW`, `Mini Projects`,
-      `Final Projects`
+      Week, Date = Date_md, Quiz, Class, `Reading Reflection`,
+      `Mini Projects`, `Final Project`
   ) %>%
   kable(format = 'html', escape = FALSE,
         align = c('c', 'c', 'c', 'l', 'l', 'l', 'l')) %>%

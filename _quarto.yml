@@ -7,6 +7,11 @@ project:
   render:
     - "*.qmd"
     - "!fragments/"
+    # Orphaned pages from the pre-agentic course (kept as raw material, not rendered)
+    - "!class/2-tidy-data.qmd"
+    - "!hw/1-tidy-data.qmd"
+    - "!hw/11-project-workshop.qmd"
+    - "!hw/12-story-telling.qmd"
     - "!1-getting-started/"
     - "!2-tidy-data/"
     - "!3-cleaning-data/"
@@ -66,11 +71,11 @@ website:
       - section: Mini Projects
         icon: pencil-square
         contents:
-          - text: "1: Data Cleaning"
+          - text: "MP1: Clean & Verify"
             href: mini/1-data-cleaning.qmd
-          - text: "2: Exploring Data"
+          - text: "MP2: Explore & Interrogate"
             href: mini/2-exploring-data.qmd
-          - text: "3: Re-design" 
+          - text: "MP3: Re-design"
             href: mini/3-redesign.qmd
       - section: Final Project
         icon: pencil-square
