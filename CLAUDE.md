@@ -44,8 +44,22 @@ website (Fall 2026), built with [Quarto](https://quarto.org/).
 - ⏳ **New slide decks not built.** W2 (`class/2-agentic-workflows/`) is the
   first genuinely new deck. Most `class/*.qmd` landing pages show "Coming soon!".
 - ⏳ Reading-reflection content (`hw/*.qmd`) not yet updated for the new toolchain.
+- ⏳ **RStudio → Positron cleanup, sitewide.** The course used to teach in
+  RStudio; it now teaches in Positron. Many pages still tell students to open
+  a `.Rproj` file or reference "RStudio" — these are stale. As of July 2026
+  this is fixed in `mini/1-data-cleaning.qmd` (done manually by John); still
+  outstanding elsewhere, e.g. `mini/2-exploring-data.qmd`,
+  `mini/3-redesign.qmd`, `project/*.qmd`, `hw/*-temp.qmd`, `software.qmd`,
+  `syllabus.qmd`, `course-primer.qmd`, `faq.qmd`, `references.qmd`,
+  `fragments/pep-talk.qmd`, and the assignment template zips/`.Rproj` files
+  themselves. Fix incrementally as each file gets revised rather than as one
+  sweep, since many of these pages are being rewritten anyway.
 
 ## Conventions
+
+- **IDE is Positron, not RStudio.** Don't write or leave instructions telling
+  students to open a `.Rproj` file or open/use "RStudio" — direct them to open
+  the project folder in Positron instead. See the pending cleanup item above.
 
 - **Data-driven schedule:** edit `schedule.csv`; `_common.R` (`get_schedule()`)
   builds the HTML columns and `schedule.lua` is a Pandoc table filter. Don't
