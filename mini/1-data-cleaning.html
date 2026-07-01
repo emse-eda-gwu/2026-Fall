@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Mini Project 1: Data Cleaning – EMSE 4572 / 6572</title>
+<title>Mini Project 1: Clean &amp; Verify – EMSE 4572 / 6572</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -118,14 +118,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="Mini Project 1: Data Cleaning – EMSE 4572 / 6572">
+<meta property="og:title" content="Mini Project 1: Clean &amp; Verify – EMSE 4572 / 6572">
 <meta property="og:description" content="Course website for Fall 2026 semester of the EMSE course “Exploratory Data Analysis” at GWU">
 <meta property="og:image" content="https://eda.seas.gwu.edu/2026-Fall/mini/images/oica-data-url.png">
 <meta property="og:site_name" content="EMSE 4572 / 6572">
 <meta property="og:locale" content="es_ES">
-<meta property="og:image:height" content="449">
-<meta property="og:image:width" content="437">
-<meta name="twitter:title" content="Mini Project 1: Data Cleaning – EMSE 4572 / 6572">
+<meta property="og:image:height" content="749">
+<meta property="og:image:width" content="1250">
+<meta name="twitter:title" content="Mini Project 1: Clean &amp; Verify – EMSE 4572 / 6572">
 <meta name="twitter:description" content="Course website for Fall 2026 semester of the EMSE course “Exploratory Data Analysis” at GWU">
 <meta name="twitter:image" content="https://eda.seas.gwu.edu/2026-Fall/mini/images/logo-square.png">
 <meta name="twitter:creator" content="@johnhelveston">
@@ -370,13 +370,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#preview-the-data" id="toc-preview-the-data" class="nav-link" data-scroll-target="#preview-the-data">3. Preview the data</a></li>
   <li><a href="#load-the-data" id="toc-load-the-data" class="nav-link" data-scroll-target="#load-the-data">4. Load the data</a></li>
   <li><a href="#develop-your-strategy" id="toc-develop-your-strategy" class="nav-link" data-scroll-target="#develop-your-strategy">5. Develop Your Strategy</a></li>
-  <li><a href="#implement-your-strategy" id="toc-implement-your-strategy" class="nav-link" data-scroll-target="#implement-your-strategy">6. Implement Your Strategy</a></li>
-  <li><a href="#validate-and-document" id="toc-validate-and-document" class="nav-link" data-scroll-target="#validate-and-document">7. Validate and Document</a></li>
-  <li><a href="#render-and-submit" id="toc-render-and-submit" class="nav-link" data-scroll-target="#render-and-submit">8. Render and submit</a></li>
+  <li><a href="#direct-the-agent" id="toc-direct-the-agent" class="nav-link" data-scroll-target="#direct-the-agent">6. Direct the Agent</a></li>
+  <li><a href="#verify" id="toc-verify" class="nav-link" data-scroll-target="#verify">7. Verify</a></li>
+  <li><a href="#document-your-process" id="toc-document-your-process" class="nav-link" data-scroll-target="#document-your-process">8. Document Your Process</a></li>
+  <li><a href="#render-and-submit" id="toc-render-and-submit" class="nav-link" data-scroll-target="#render-and-submit">9. Render and submit</a></li>
   <li><a href="#bonus-make-a-summary-visualization-5" id="toc-bonus-make-a-summary-visualization-5" class="nav-link" data-scroll-target="#bonus-make-a-summary-visualization-5">BONUS: Make a summary visualization (+5%)</a></li>
   <li><a href="#grading-rubric" id="toc-grading-rubric" class="nav-link" data-scroll-target="#grading-rubric">Grading Rubric</a>
   <ul class="collapse">
-  <li><a href="#total-points" id="toc-total-points" class="nav-link" data-scroll-target="#total-points">35 Total Points</a></li>
+  <li><a href="#total-points" id="toc-total-points" class="nav-link" data-scroll-target="#total-points">40 Total Points</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/emse-eda-gwu/2026-Fall/edit/main/mini/1-data-cleaning.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/emse-eda-gwu/2026-Fall/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -386,7 +387,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../mini/1-data-cleaning.html">Mini Projects</a></li><li class="breadcrumb-item"><a href="../mini/1-data-cleaning.html">MP1: Clean &amp; Verify</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Mini Project 1: Data Cleaning</h1>
+<h1 class="title">Mini Project 1: Clean &amp; Verify</h1>
 </div>
 
 
@@ -405,8 +406,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <blockquote class="blockquote">
 <p><strong>Due</strong>: Oct 05 by 11:59pm</p>
-<p><strong>Weight</strong>: This assignment is worth 10% of your final grade.</p>
-<p><strong>Purpose</strong>: When you start looking for data to address your project for this course, you will inevitably come across some rather messy data. Fear not! After completing this assignment, you will be well-prepared to tackle the messiness of real-world data! This assignment will put your data wrangling and cleaning skills to the test and will challenge you to become a master data janitor!</p>
+<p><strong>Weight</strong>: This assignment is worth 9% of your final grade.</p>
+<p><strong>Purpose</strong>: When you start looking for data to address your project for this course, you will inevitably come across some rather messy data. In this assignment, you will direct Claude Code to do the actual cleaning work – but the agent cannot decide what counts as a “country” versus a region in this data, and it cannot be trusted to catch its own mistakes. Your job is the part the agent cannot do: plan the strategy, supervise the implementation, and verify that the result is actually correct.</p>
 <p><strong>Assessment</strong>: Your submission will be assessed using the <a href="#grading-rubric">rubric</a> at the bottom of this page.</p>
 </blockquote>
 <p>Your mission, should you choose to accept it, is to clean up a relatively messy data file that contains sales of passenger cars by country between 2019 and 2024. The data are from the <a href="https://www.oica.net/">International Organization of Motor Vehicle Manufacturers (OICA)</a>. Your final product should be a tidy (long format) data frame with three columns: <code>country</code>, <code>year</code>, and <code>sales</code>. It should look like this:</p>
@@ -439,15 +440,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>With this in mind, your job is to develop and execute a strategy to go from the raw excel file to this cleaned version of the data.</p>
 <section id="get-organized" class="level2">
 <h2 class="anchored" data-anchor-id="get-organized">1. Get organized</h2>
-<p>Download and <strong>unzip</strong> <a href="../templates/mini1.zip">this template</a> for your project, then open the <code>report.Rproj</code> file.</p>
-<p>Once RStudio opens, click on the <code>report.qmd</code> file. That is the primary file you will edit to conduct your analysis.</p>
+<p>Download and <strong>unzip</strong> <a href="../templates/mini1.zip">this template</a> for your project, then open Positron to the unzipped template folder.</p>
+<p>Once Positron opens, click on the <code>report.qmd</code> file. That is the primary file you will edit to conduct your analysis.</p>
 </section>
 <section id="document-the-data" class="level2">
 <h2 class="anchored" data-anchor-id="document-the-data">2. Document the data</h2>
 <p>Inside the <code>data</code> folder, there is a <code>README.md</code> file with some missing information. Click on that file and edit it to fill in the missing information. Here is some info that will help:</p>
-<p>The main data file we’ll be working with is the <code>pc_sales_2024.xlsx</code> file in the <code>data</code> folder. You can find this file online at <a href="https://www.oica.net/category/sales-statistics/">https://www.oica.net/category/sales-statistics/</a>. We’re using the “Passengers Cars” data (the “pc” in <code>pc_sales_2024</code>). The link to the original data file can be found by right-clicking on the Excel icon on the right side of the page, like this:</p>
+<p>The main data file we’ll be working with is the <code>pc_sales_2024.xlsx</code> file in the <code>data</code> folder. You can find this file online at <a href="https://oica.net/sales-statistics/">https://oica.net/sales-statistics/</a>. We’re using the “Passengers Cars” data (the “pc” in <code>pc_sales_2024</code>). The link to the original data file can be found by first clicking on the little Excel icon, then right-clicking on the “Download” pop-up, like this:</p>
 <center>
-<img src="images/oica-data-url.png" width="50%">
+<img src="images/oica-data-url.png" width="80%">
 </center>
 </section>
 <section id="preview-the-data" class="level2">
@@ -456,56 +457,85 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="load-the-data" class="level2">
 <h2 class="anchored" data-anchor-id="load-the-data">4. Load the data</h2>
-<p>Use <code>read_excel()</code> from the <code>readxl</code> package to read in the <code>pc_sales_2024.xlsx</code> data file. Do you need to skip any rows while reading it in?</p>
+<p>Have Claude Code read in the <code>pc_sales_2024.xlsx</code> data file using <code>read_excel()</code> from the <code>readxl</code> package. Look at what comes back – does it need to skip any rows while reading it in?</p>
+<p>Just get to a point where the data is being read into R, then pause and think about your cleaning strategy.</p>
 </section>
 <section id="develop-your-strategy" class="level2">
 <h2 class="anchored" data-anchor-id="develop-your-strategy">5. Develop Your Strategy</h2>
-<p>Before writing any cleaning code, you need a plan.</p>
-<p><strong>Examine your imported data</strong> using functions like <code>head()</code> and <code>glimpse()</code> to understand the structure of the data in R.</p>
-<p><strong>Write out your strategy</strong>: Create a numbered list of the major steps you’ll need to take to transform this messy data into the target format shown above. Consider:</p>
+<p>Before you prompt the agent to write any cleaning code, <strong>you</strong> need a plan. This is the step an agent cannot do for you: it doesn’t know what counts as a “country” versus a region or subtotal in this particular file, and it has no reason to check its own assumptions unless you tell it what to check.</p>
+<p><strong>Examine the raw data yourself</strong> using functions like <code>head()</code> and <code>glimpse()</code>, and look at the copy you opened in Excel, to understand the structure of the data.</p>
+<p><strong>Write out your strategy</strong>: Create a numbered list of the major steps needed to transform this messy data into the target format shown above. Consider:</p>
 <ul>
 <li>What needs to happen to the column names?</li>
 <li>Do you need to reshape the data (wide vs long format)?</li>
+<li>Which rows are actual countries, and which are regions, subtotals, or residual “other” categories that need to be excluded? How will you tell them apart?</li>
 <li>What cleaning is needed in each column?</li>
-<li>Are there rows that shouldn’t be included?</li>
 <li>How will you get the data into the final column structure?</li>
 </ul>
-<p><strong>Deliverable:</strong> A written strategy with numbered steps describing your planned approach. Be specific about what each step will accomplish.</p>
+<p><strong>Deliverable:</strong> In your <code>report.qmd</code> file, write down your strategy with numbered steps describing your planned approach <em>before</em> writing any cleaning code. Be specific – this is what you’ll hand to the agent, and it’s also what you’ll check the agent’s output against later.</p>
 </section>
-<section id="implement-your-strategy" class="level2">
-<h2 class="anchored" data-anchor-id="implement-your-strategy">6. Implement Your Strategy</h2>
-<p>Now execute your plan! Work through each step of your strategy and write the code to implement it.</p>
-<p><strong>Important:</strong> Your code should transform the messy Excel data into the exact target format shown at the top of this assignment. The final dataset should contain:</p>
+<section id="direct-the-agent" class="level2">
+<h2 class="anchored" data-anchor-id="direct-the-agent">6. Direct the Agent</h2>
+<p>Now prompt Claude Code to implement your strategy, step by step. Review what it produces as it goes – read the code, read the diffs, and check the output at each stage rather than accepting the final result all at once.</p>
+<p><strong>Important:</strong> The final dataset should contain:</p>
 <ul>
-<li>Only observations of countries (not regions or totals)</li>
+<li>Only observations of countries (not regions, subtotals, or totals)</li>
 <li>Years as numbers (e.g., 2019, 2020, 2021, 2022, 2023, 2024)</li>
 <li>Sales values as numbers</li>
 <li>Country names in title case (e.g., “France” not “FRANCE”)</li>
 <li>Rows arranged by year, then country</li>
 </ul>
-<p><strong>Deliverable:</strong> Clean, well-commented code that successfully produces the target dataset.</p>
+<p>If the agent’s first attempt gets something wrong (e.g., misses a row that should have been excluded, skips the wrong number of header rows, silently drops data during a type conversion) that’s expected, not a failure on your part. Catching it is the point of the next step.</p>
+<p><strong>Deliverable:</strong> Clean, well-organized code (in one or more code chunks) in your report that produces the target dataset.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Note</strong>: Claude code should directly edit your <code>report.qmd</code> file.</p>
+</div>
+</div>
 </section>
-<section id="validate-and-document" class="level2">
-<h2 class="anchored" data-anchor-id="validate-and-document">7. Validate and Document</h2>
+<section id="verify" class="level2">
+<h2 class="anchored" data-anchor-id="verify">7. Verify</h2>
+<p>Getting output that <em>looks</em> clean is not the same as verifying it <em>is</em> clean. This is the step that’s actually graded most heavily in this assignment, and it’s the one an agent cannot do reliably on its own. If you simply ask Claude Code “is this correct?”, it will generally tell you yes, whether or not it actually checked anything. You need to design and interpret the checks yourself, even if the agent helps write the code that runs them.</p>
+<p>Run and document at least these checks:</p>
+<ul>
+<li><strong>Shape check</strong>: does the number of rows equal the number of countries times the number of years, with no gaps?</li>
+<li><strong>Duplicate check</strong>: are there any repeated country-year combinations (a sign that a name inconsistency split one country into two rows)?</li>
+<li><strong>Missing-value audit</strong>: are there any <code>NA</code>s in the sales column? A number that failed to convert (e.g.&nbsp;because of a comma or stray character) can silently turn into <code>NA</code> without an error.</li>
+<li><strong>An independent reconciliation</strong>: the raw file itself contains region and subtotal rows. Do the numbers you kept add up sensibly against numbers <em>already reported in the source file</em>, without relying on any answer key? (Careful: not every row labeled “total” measures the same thing – check what a total actually represents before trusting it.)</li>
+<li><strong>Manual spot-checks</strong>: pick 3-5 specific country/year values and look them up by hand in the raw Excel file to confirm they match your cleaned data exactly.</li>
+</ul>
+<p><strong>Deliverable:</strong> A verification section in your report showing the checks you ran, their output, and what you concluded – including anywhere you found and corrected a mistake in the agent’s first attempt. If nothing was wrong, say what you checked to be confident of that, specifically.</p>
+</section>
+<section id="document-your-process" class="level2">
+<h2 class="anchored" data-anchor-id="document-your-process">8. Document Your Process</h2>
 <p><strong>Save your cleaned data</strong> as <code>my_clean_data.csv</code> in the <code>data</code> folder.</p>
-<p><strong>Create a brief summary</strong> addressing:</p>
+<p><strong>Write a brief reflection</strong> addressing:</p>
 <ul>
 <li>What were the 2-3 biggest challenges in cleaning this data?</li>
-<li>How did you decide what counted as a “country” vs.&nbsp;a “region”?</li>
-<li>How confident are you that your cleaning preserved the data integrity?</li>
+<li>Where, if anywhere, did Claude Code’s output need to be corrected, and how did you catch it?</li>
+<li>What specifically did you check to be confident your cleaned data is correct (beyond “it looked right”)?</li>
 <li>What would you do differently if you encountered similar data again?</li>
 </ul>
-<p><strong>Deliverable:</strong> Saved CSV file and written reflection (4-6 sentences).</p>
+<p><strong>Deliverable:</strong> Saved <code>my_clean_data.csv</code> file in the <code>data</code> folder, and written reflection (~4-6 sentences).</p>
 </section>
 <section id="render-and-submit" class="level2">
-<h2 class="anchored" data-anchor-id="render-and-submit">8. Render and submit</h2>
-<p>Click the “Render” button to compile your <code>.qmd</code> file into a html web page. Then open the <code>report.html</code> file in a web browser and proofread your report.</p>
+<h2 class="anchored" data-anchor-id="render-and-submit">9. Render and submit</h2>
+<p>Click the “Render” button to compile your <code>.qmd</code> file into an html web page. Then open the <code>report.html</code> file in a web browser and proofread your report.</p>
 <p>Does all of the formatting look correct? <strong>Make sure there are no errors in the rendered file before submitting it.</strong></p>
-<p>Once you’ve proofread your report, create a zip file of all the files in your R project folder for this assignment and submit it on the corresponding assignment submission on Blackboard.</p>
+<p><strong>Export your Claude Code conversation.</strong> Before you wrap up, run <code>/export</code> in Claude Code and save the result as <code>transcript.md</code> in your project folder. This is a required part of your submission as it’s how your verification is checked: your report should show real checks with real output, and the transcript should back up that you did the reasoning and interpreting yourself rather than just asking the agent to “verify this is correct” for you.</p>
+<p>Once you’ve proofread your report, create a zip file of all the files in your R project folder (including <code>transcript.md</code>) and submit it on the corresponding assignment submission on Blackboard.</p>
 </section>
 <section id="bonus-make-a-summary-visualization-5" class="level2">
 <h2 class="anchored" data-anchor-id="bonus-make-a-summary-visualization-5">BONUS: Make a summary visualization (+5%)</h2>
-<p>For a 5% bonus, add a code chunk at the bottom of your report to generate the plot below. If your cleaned data is not properly formatted, you can read in the <code>pc_sales_clean.csv</code> file and use it to make the plot.</p>
+<p>For a 5% bonus, add a code chunk at the bottom of your report to generate the plot below, using your own cleaned data from Step 6.</p>
 <p>Some hints to perfectly replicate the figure:</p>
 <ul>
 <li>Consider using <code>ifelse()</code> to make a new variable for the bar color based on the <code>country</code> variable.</li>
@@ -520,7 +550,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="grading-rubric" class="level2">
 <h2 class="anchored" data-anchor-id="grading-rubric">Grading Rubric</h2>
 <section id="total-points" class="level3">
-<h3 class="anchored" data-anchor-id="total-points">35 Total Points</h3>
+<h3 class="anchored" data-anchor-id="total-points">40 Total Points</h3>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <table class="table table-striped caption-top table-sm small">
@@ -534,40 +564,58 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Organization &amp; Formatting</td>
-<td style="text-align: left;"><strong>5</strong><br>
+<td style="text-align: left; width: 16%;">Organization &amp; Formatting</td>
+<td style="text-align: left; width: 34%;"><strong>5</strong><br>
 All formatting guidelines are followed; YAML is correctly filled out.</td>
-<td style="text-align: left;"><strong>4</strong><br>
+<td style="text-align: left; width: 25%;"><strong>4</strong><br>
 Most formatting guidelines are followed; YAML is correctly filled out.</td>
-<td style="text-align: left;"><strong>3</strong><br>
-Several or all formatting guidelines not followed; YAML contains elements that aren't updated from the template; template file wasn’t used.</td>
+<td style="text-align: left; width: 25%;"><strong>3</strong><br>
+Several or all formatting guidelines not followed; YAML contains elements that aren't updated from the template; template file wasn't used.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Data Documentation</td>
-<td style="text-align: left;"><strong>5</strong><br>
+<td style="text-align: left; width: 16%;">Data Documentation</td>
+<td style="text-align: left; width: 34%;"><strong>5</strong><br>
 The README file included in the template was updated with thoughtful and accurate information about the data.</td>
-<td style="text-align: left;"><strong>4</strong><br>
+<td style="text-align: left; width: 25%;"><strong>4</strong><br>
 The README file included in the template was updated, but some of the information was missing or inaccurate.</td>
-<td style="text-align: left;"><strong>3</strong><br>
+<td style="text-align: left; width: 25%;"><strong>3</strong><br>
 The README file included in the template was not updated, missing, or most of the information in it was inaccurate.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Data Cleaning</td>
-<td style="text-align: left;"><strong>18 - 20</strong><br>
-All cleaning steps are completed and the resulting "clean" data frame is exactly (or very close to) the desired final state.</td>
-<td style="text-align: left;"><strong>15 - 17</strong><br>
-All cleaning steps are completed, though there are one or two significant errors that prevents the resulting "clean" data frame from being in the desired final state.</td>
-<td style="text-align: left;"><strong>10 - 14</strong><br>
-More than one of the cleaning steps are missing; multiple errors prevent the resulting "clean" data frame from being in the desired final state.</td>
+<td style="text-align: left; width: 16%;">Strategy</td>
+<td style="text-align: left; width: 34%;"><strong>5</strong><br>
+A specific, numbered strategy is written before implementation; it correctly identifies the key judgment calls in the data (e.g. distinguishing countries from regions/subtotals) and describes how the data will be reshaped and cleaned.</td>
+<td style="text-align: left; width: 25%;"><strong>4</strong><br>
+A strategy is present and numbered, but is vague in places or misses one of the key judgment calls.</td>
+<td style="text-align: left; width: 25%;"><strong>3</strong><br>
+Strategy is missing, generic/copied from the assignment prompt, or clearly written after the cleaning code rather than guiding it.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Technical things</td>
-<td style="text-align: left;"><strong>5</strong><br>
-All code runs without errors; the html file can be compiled from the Rmd; all files included in the submitted .zip file.</td>
-<td style="text-align: left;"><strong>4</strong><br>
-Code has only one or two error, otherwise runs; all files included in the submitted .zip file.</td>
-<td style="text-align: left;"><strong>3</strong><br>
-Code has multiple errors; html file cannot be rendered without significant changes to the Rmd file; submitted .zip file is missing components necessary to reproduce analysis.</td>
+<td style="text-align: left; width: 16%;">Data Cleaning</td>
+<td style="text-align: left; width: 34%;"><strong>9 - 10</strong><br>
+The resulting "clean" data frame is exactly (or very close to) the desired final state.</td>
+<td style="text-align: left; width: 25%;"><strong>7 - 8</strong><br>
+The resulting "clean" data frame has one or two significant errors that prevent it from being in the desired final state.</td>
+<td style="text-align: left; width: 25%;"><strong>4 - 6</strong><br>
+Multiple errors prevent the resulting "clean" data frame from being in the desired final state.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; width: 16%;">Verification</td>
+<td style="text-align: left; width: 34%;"><strong>9 - 10</strong><br>
+Runs and reports on multiple concrete, specific checks (e.g. row/shape counts, a duplicate check, an NA audit, an independent reconciliation against totals reported in the source file, manual spot-checks) with real output shown; clearly documents at least one place where Claude's first attempt was wrong and how it was caught and corrected. The exported transcript corroborates that the student -- not just the agent -- did the verifying and reasoning.</td>
+<td style="text-align: left; width: 25%;"><strong>6 - 8</strong><br>
+Runs some real checks, but they are generic (e.g. only `head()`/`glimpse()`) or the write-up asserts correctness without independent evidence. The transcript suggests verification was mostly outsourced to the agent (e.g. "please verify this is correct") rather than the student directly checking.</td>
+<td style="text-align: left; width: 25%;"><strong>0 - 5</strong><br>
+No real verification beyond visually inspecting the output. Claims the data was "double checked" or "verified" with no supporting checks in the report or evidence in the transcript.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; width: 16%;">Technical &amp; Process</td>
+<td style="text-align: left; width: 34%;"><strong>5</strong><br>
+All code runs without errors; the html file renders from the qmd; the exported Claude Code transcript is included; all files are included in the submitted .zip file.</td>
+<td style="text-align: left; width: 25%;"><strong>4</strong><br>
+Code has only one or two errors, otherwise runs; transcript included but incomplete, or a minor file is missing from the submitted .zip.</td>
+<td style="text-align: left; width: 25%;"><strong>3</strong><br>
+Code has multiple errors; html file cannot be rendered without significant changes; transcript is missing; submitted .zip is missing components necessary to reproduce the analysis.</td>
 </tr>
 </tbody>
 </table>
