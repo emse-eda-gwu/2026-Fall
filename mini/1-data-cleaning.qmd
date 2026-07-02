@@ -8,6 +8,7 @@ execute:
 params:
   number: 1
   weight: '9%'
+  data_file: 'my_clean_data.csv'
   purpose: 'When you start looking for data to address your project for this course, you will inevitably come across some rather messy data. In this assignment, you will direct Claude Code to do the actual cleaning work -- but the agent cannot decide what counts as a "country" versus a region in this data, and it cannot be trusted to catch its own mistakes. Your job is the part the agent cannot do: plan the strategy, supervise the implementation, and verify that the result is actually correct.'
 ---
 
@@ -129,7 +130,7 @@ Run and document at least these checks:
 
 ## 8. Document Your Process
 
-**Save your cleaned data** as `my_clean_data.csv` in the `data` folder.
+**Save your cleaned data** as `my_clean_data.csv` in the project root folder.
 
 **Write a brief reflection** addressing:
 
@@ -142,13 +143,8 @@ Run and document at least these checks:
 
 ## 9. Render and submit
 
-Click the "Render" button to compile your `.qmd` file into an html web page. Then open the `report.html` file in a web browser and proofread your report.
-
-Does all of the formatting look correct? **Make sure there are no errors in the rendered file before submitting it.**
-
-**Export your Claude Code conversation.** Before you wrap up, run `/export` in Claude Code and save the result as `transcript.md` in your project folder. This is a required part of your submission as it's how your verification is checked: your report should show real checks with real output, and the transcript should back up that you did the reasoning and interpreting yourself rather than just asking the agent to "verify this is correct" for you.
-
-Once you've proofread your report, create a zip file of all the files in your R project folder (including `transcript.md`) and submit it on the corresponding assignment submission on Blackboard.
+```{r child = here::here("fragments", "mini-submit.qmd")}
+```
 
 ## BONUS: Make a summary visualization (+5%)
 

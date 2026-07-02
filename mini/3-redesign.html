@@ -333,13 +333,14 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#load-the-data" id="toc-load-the-data" class="nav-link" data-scroll-target="#load-the-data">2. Load the data</a></li>
   <li><a href="#preview-the-data" id="toc-preview-the-data" class="nav-link" data-scroll-target="#preview-the-data">3. Preview the data</a></li>
   <li><a href="#clean-the-data" id="toc-clean-the-data" class="nav-link" data-scroll-target="#clean-the-data">4. Clean the data</a></li>
-  <li><a href="#summarize-the-data" id="toc-summarize-the-data" class="nav-link" data-scroll-target="#summarize-the-data">5. Summarize the data</a></li>
-  <li><a href="#visualize-the-data" id="toc-visualize-the-data" class="nav-link" data-scroll-target="#visualize-the-data">6. Visualize the data</a></li>
-  <li><a href="#summarize-your-analysis" id="toc-summarize-your-analysis" class="nav-link" data-scroll-target="#summarize-your-analysis">7. Summarize your analysis</a></li>
-  <li><a href="#render-and-submit" id="toc-render-and-submit" class="nav-link" data-scroll-target="#render-and-submit">8. Render and submit</a></li>
+  <li><a href="#plan-your-approach" id="toc-plan-your-approach" class="nav-link" data-scroll-target="#plan-your-approach">5. Plan Your Approach</a></li>
+  <li><a href="#direct-the-agent-to-visualize" id="toc-direct-the-agent-to-visualize" class="nav-link" data-scroll-target="#direct-the-agent-to-visualize">6. Direct the Agent to Visualize</a></li>
+  <li><a href="#critique-your-redesign" id="toc-critique-your-redesign" class="nav-link" data-scroll-target="#critique-your-redesign">7. Critique Your Redesign</a></li>
+  <li><a href="#summarize-your-analysis" id="toc-summarize-your-analysis" class="nav-link" data-scroll-target="#summarize-your-analysis">8. Summarize Your Analysis</a></li>
+  <li><a href="#render-and-submit" id="toc-render-and-submit" class="nav-link" data-scroll-target="#render-and-submit">9. Render and submit</a></li>
   <li><a href="#grading-rubric" id="toc-grading-rubric" class="nav-link" data-scroll-target="#grading-rubric">Grading Rubric</a>
   <ul class="collapse">
-  <li><a href="#total-points" id="toc-total-points" class="nav-link" data-scroll-target="#total-points">45 Total Points</a></li>
+  <li><a href="#total-points" id="toc-total-points" class="nav-link" data-scroll-target="#total-points">40 Total Points</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/emse-eda-gwu/2026-Fall/edit/main/mini/3-redesign.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/emse-eda-gwu/2026-Fall/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -369,7 +370,7 @@ ul.task-list li input[type="checkbox"] {
 <blockquote class="blockquote">
 <p><strong>Due</strong>: Nov 16 by 11:59pm</p>
 <p><strong>Weight</strong>: This assignment is worth 9% of your final grade.</p>
-<p><strong>Purpose</strong>: At some point in your career, you will likely be involved in creating or revising a summary chart of some data. When that happens, you will also likely be the most knowledge person in the room about what to do to design the chart(s) to effectively communicate the information in the data. This assignment is a practice run for that day.</p>
+<p><strong>Purpose</strong>: At some point in your career, you will likely be involved in creating or revising a summary chart of some data. When that happens, you will also likely be the most knowledgeable person in the room about what to do to design the chart(s) to effectively communicate the information in the data. Claude Code can write the ggplot code once you know what you want – but deciding what “leadership” means in this data, choosing the right chart type for each message, and honestly critiquing whether your redesign actually improved things are judgment calls no agent can make for you. This assignment is a practice run for that day.</p>
 <p><strong>Assessment</strong>: Your submission will be assessed using the <a href="#grading-rubric">rubric</a> at the bottom of this page.</p>
 </blockquote>
 <section id="background" class="level1">
@@ -389,8 +390,8 @@ ul.task-list li input[type="checkbox"] {
 <section id="get-organized" class="level1">
 <h1>1. Get organized</h1>
 <ol type="1">
-<li>Download and unzip <a href="../templates/mini3.zip">this template</a> for your project, then open the <code>report.Rproj</code> file.</li>
-<li>Once RStudio opens, click on the <code>report.qmd</code> file. That is the primary file you will edit to conduct your analysis.</li>
+<li>Download and unzip <a href="../templates/mini3.zip">this template</a> for your project, then open Positron to the unzipped template folder.</li>
+<li>Once Positron opens, click on the <code>report.qmd</code> file. That is the primary file you will edit to conduct your analysis.</li>
 <li>Update the YAML with your name, a title, the date, etc.</li>
 <li>Delete any of the existing text / code in the template before submitting - the template text is just there as a helpful guide.</li>
 </ol>
@@ -400,7 +401,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="load-the-data" class="level1">
 <h1>2. Load the data</h1>
-<p>Use <a href="https://github.com/emse-eda-gwu/2023-Fall/raw/main/mini/US_State_Wind_Energy_Facts_2018.xlsx">this link</a> to download the <code>US_State_Wind_Energy_Facts_2018.xlsx</code> file and put it in your <code>data_raw</code> folder. Here is some information on the data:</p>
+<p>The <code>US_State_Wind_Energy_Facts_2018.xlsx</code> file is already in your <code>data</code> folder. Have Claude Code read it in. Here is some information on the data:</p>
 <p><strong>Description</strong>: Data on which US states produce the most wind energy.</p>
 <p><strong>Source of downloaded file</strong>: The formatted Excel spreadsheet was downloaded from data.world: https://data.world/makeovermonday/2019w8</p>
 <p><strong>Original source</strong>: The primary source is the American Wind Energy Association (https://www.awea.org/), but the source for this particular data was found on <a href="https://github.com/emse-eda-gwu/2023-Fall/blob/main/mini/This%20Chart%20Shows%20Which%20States%20Produce%20the%20Most%20Wind%20Energy%2008.24.30.pdf?raw=TRUE">this article</a>, which cites the AWEA.</p>
@@ -448,49 +449,77 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="preview-the-data" class="level1">
 <h1>3. Preview the data</h1>
-<p>In the setup chunk in your <code>report.qmd</code> file, write code to read in the excel sheet, then write code to preview the data, e.g.&nbsp;using <code>head()</code>, <code>glimpse()</code>, <code>View()</code>, and / or make some quick plots (<strong>Hint</strong>: look at the top and bottom!). Take note of what variables are available, their types, what they measure, and if there are any missing values. (<strong>Hint</strong>: Read the data dictionary!) Are all the variables encoded the way you would expect (e.g.&nbsp;are numbers encoded as numbers?)</p>
+<p>Preview the data yourself (e.g.&nbsp;using <code>head()</code>, <code>glimpse()</code>, <code>View()</code>, and / or make some quick plots – <strong>Hint</strong>: look at the top and bottom!). Take note of what variables are available, their types, what they measure, and if there are any missing values. (<strong>Hint</strong>: Read the data dictionary!) Are all the variables encoded the way you would expect (e.g.&nbsp;are numbers encoded as numbers)? Noticing this yourself matters – it’s what you’ll tell the agent to fix in the next step.</p>
 </section>
 <section id="clean-the-data" class="level1">
 <h1>4. Clean the data</h1>
-<ol type="1">
-<li>Write code to modify variable types and names to get your data frame cleaned up for analysis. As you do so, I recommend that you modify some of the column names (especially those with spaces in them) to make your analysis easier. (<strong>Hint</strong>: The <code>clean_names()</code> function from the <code>janitor</code> package is a life saver!)</li>
-<li>Write a few sentences describing any modifications you made to the original data and why you did it.</li>
-</ol>
+<p>Have Claude Code modify variable types and names to get the data frame cleaned up for analysis. As it does, column names with spaces in them (e.g.&nbsp;<code>Installed Capacity (MW)</code>) should get renamed to make later code easier to write (<strong>Hint</strong>: the <code>clean_names()</code> function from the <code>janitor</code> package is a life saver!). Write a few sentences describing what modifications were made and why.</p>
 </section>
-<section id="summarize-the-data" class="level1">
-<h1>5. Summarize the data</h1>
+<section id="plan-your-approach" class="level1">
+<h1>5. Plan Your Approach</h1>
+<p>Before you prompt the agent to make any charts, decide what “leadership” means for each of the two visualizations you’ll build.</p>
 <ol type="1">
-<li>Examine measures of centrality and variability in the important variables relevant to our research question. Remember that we’re interested in the states that are <strong>“leaders”</strong> in wind energy. While installed capacity is an obvious choice to look at, you should also look at summaries of other values, such as the amount of money invested, and <strong>at least two</strong> other computed measures, such as the capacity per dollar invested (<strong>Note</strong>: you’ll need to create new variables to do this!).</li>
-<li>Write a few sentences explaining your summary measures and what you learned from them.</li>
+<li>Examine measures of centrality and variability in the variables relevant to leadership in wind energy. Installed capacity is an obvious choice, but also look at other values, such as the amount of money invested, and <strong>at least two</strong> other computed measures, such as capacity per dollar invested (<strong>Note</strong>: you’ll need to create new variables to do this!).</li>
+<li>For each of your two planned charts (see Step 6), write down: which metric it will highlight, why that metric represents a meaningful kind of “leadership,” and what chart type you plan to use and why it fits that metric and message. Do this <strong>before</strong> prompting the agent to generate the chart – it’s much easier to tell if a chart the agent produced is a good match for your goal if you already know what you were going for.</li>
 </ol>
+<p><strong>Deliverable:</strong> Your summary measures with a short explanation of what you learned from them, plus your plan for both charts (metric + chart type + rationale) written <em>before</em> the charts themselves.</p>
 </section>
-<section id="visualize-the-data" class="level1">
-<h1>6. Visualize the data</h1>
+<section id="direct-the-agent-to-visualize" class="level1">
+<h1>6. Direct the Agent to Visualize</h1>
+<p>Now prompt Claude Code to build your two charts, reviewing what it produces and iterating rather than accepting the first attempt automatically.</p>
 <ol type="1">
-<li>Create an appropriate visualization that highlights leadership in <em>installed capacity</em>. This chart should be a substantial improvement over the original visualization, and it should follow the design principles we have covered in class.</li>
-<li>Create a second visualization that highlights “leadership” in another metric of your choice. This could be one of the existing variables or a variable you computed. Your chart and design choices should highlight the metric you chose and should have a clear message to convey. Again, this chart should follow the design principles we have covered in class. <strong>This chart should be a different style from your first chart</strong>, so don’t just copy-paste over the same thing and apply it to a new metric. Be creative and try something different for your second chart!</li>
+<li>An appropriate visualization that highlights leadership in <em>installed capacity</em>. This chart should be a substantial improvement over the original visualization, and it should follow the design principles we have covered in class.</li>
+<li>A second visualization that highlights “leadership” in another metric of your choice, following your plan from Step 5. <strong>This chart should be a different style from your first chart</strong> – don’t just copy-paste the same chart type over a new variable.</li>
 </ol>
 <p><strong>Your charts should be polished</strong>. Points will be taken off for poor design principles, illegibility, etc.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Note</strong>: Claude Code should directly edit your <code>report.qmd</code> file.</p>
+</div>
+</div>
+</section>
+<section id="critique-your-redesign" class="level1">
+<h1>7. Critique Your Redesign</h1>
+<p>Producing a chart that looks better than the original is not the same as verifying it actually is better. Before you write your summary, critically re-examine your own two charts – this is the step most heavily graded in this assignment.</p>
+<ul>
+<li><strong>Check for new distortions.</strong> Does either chart truncate an axis, use a misleading sort order, or use color in a way that exaggerates or obscures the pattern? Redesigns can introduce new problems even while fixing old ones.</li>
+<li><strong>Check under an alternative cut.</strong> Pick one chart and recompute it with a different normalization or metric (e.g.&nbsp;per capita, per project, or a different time slice if applicable). Does the “leadership” story hold up, or does it depend heavily on which metric you picked?</li>
+<li><strong>Name a real limitation.</strong> A genuine critique finds at least one honest weakness in your own redesign – not just a list of what you improved.</li>
+</ul>
+<p><strong>Deliverable:</strong> A short critique section documenting what you checked and what you found, including anything you changed as a result.</p>
 </section>
 <section id="summarize-your-analysis" class="level1">
-<h1>7. Summarize your analysis</h1>
+<h1>8. Summarize Your Analysis</h1>
 <p>Write a summary of your analysis process. I’m specifically looking for a discussion of the following:</p>
 <ul>
 <li>What was wrong with the original chart? Discuss specific design principles we have covered in class.</li>
 <li>Discuss the improvements your first revised chart makes compared to the original chart.</li>
 <li>Discuss what message your second chart conveys and what design choices you made to highlight that message.</li>
+<li>Reference what you found in Step 7 – what, if anything, would you still change or caveat about your redesign?</li>
 </ul>
 </section>
 <section id="render-and-submit" class="level1">
-<h1>8. Render and submit</h1>
-<p>Click the “Render” button to compile your <code>.qmd</code> file into a html web page. Then open the <code>report.html</code> file in a web browser and proofread your report.</p>
-<p>Does all of the formatting look correct? <strong>Make sure there are no errors in the rendered file before submitting it.</strong></p>
-<p>Once you’ve proofread your report, create a zip file of all the files in your R project folder for this assignment and submit it on the corresponding assignment submission on Blackboard.</p>
+<h1>9. Render and submit</h1>
+<div class="cell" data-layout-align="center">
+<ol type="1">
+<li>Click “Render” to compile your <code>.qmd</code> file into an <code>.html</code> file. Open <code>report.html</code> in a browser and proofread it – make sure there are no errors and the formatting looks correct.</li>
+<li>Run <code>/export</code> in Claude Code and save the result as <code>transcript.md</code> in your project folder. This is a required part of your submission – it’s how your verification is checked.</li>
+<li>Make a <a href="../faq.html#how-do-i-make-a-zip-file-for-my-homework">zip file</a> containing exactly three files – <code>report.qmd</code>, <code>report.html</code>, and <code>transcript.md</code> – and submit that single zip file on the corresponding assignment submission on Blackboard.</li>
+</ol>
+</div>
 </section>
 <section id="grading-rubric" class="level1">
 <h1>Grading Rubric</h1>
 <section id="total-points" class="level3">
-<h3 class="anchored" data-anchor-id="total-points">45 Total Points</h3>
+<h3 class="anchored" data-anchor-id="total-points">40 Total Points</h3>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <table class="table table-striped caption-top table-sm small">
@@ -504,58 +533,58 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Organization &amp; Formatting</td>
-<td style="text-align: left;"><strong>5</strong><br>
+<td style="text-align: left; width: 16%;">Organization &amp; Formatting</td>
+<td style="text-align: left; width: 28%;"><strong>5</strong><br>
 Data placed in correct folder, read in, and variables have been renamed for ease of use in analysis.</td>
-<td style="text-align: left;"><strong>4</strong><br>
+<td style="text-align: left; width: 28%;"><strong>4</strong><br>
 Data not placed in correct folder OR variables were not renamed.</td>
-<td style="text-align: left;"><strong>3</strong><br>
+<td style="text-align: left; width: 28%;"><strong>3</strong><br>
 Data not placed in correct folder AND variables were not renamed, or not properly read into R.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Data Summary</td>
-<td style="text-align: left;"><strong>10 / 9</strong><br>
-Measures of centrality and variability in appropriate variables are computed; at leaset two new useful measures are computed.</td>
-<td style="text-align: left;"><strong>8 / 7 / 6</strong><br>
-Measures of centrality and variability in appropriate variables are computed; only one new useful measure computed.</td>
-<td style="text-align: left;"><strong>5 / 4 / 3</strong><br>
+<td style="text-align: left; width: 16%;">Data Summary</td>
+<td style="text-align: left; width: 28%;"><strong>5</strong><br>
+Measures of centrality and variability in appropriate variables are computed; at least two new useful "leadership" measures are computed, each with a brief written rationale for why it matters.</td>
+<td style="text-align: left; width: 28%;"><strong>4</strong><br>
+Measures of centrality and variability are computed, but only one new useful measure is computed, or the rationale for the chosen measures is thin or missing.</td>
+<td style="text-align: left; width: 28%;"><strong>3</strong><br>
 Measures of centrality and variability missing; failed to compute new measures.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Data Visualization 1</td>
-<td style="text-align: left;"><strong>10 / 9</strong><br>
-Charts expertly demonstrates best practices of visual design and highlights leadership in installed capacity.</td>
-<td style="text-align: left;"><strong>8 / 7 / 6</strong><br>
-Charts generally demonstrates best practices of visual design and highlights leadership in installed capacity; some elements might be confusing.</td>
-<td style="text-align: left;"><strong>5 / 4 / 3</strong><br>
+<td style="text-align: left; width: 16%;">Data Visualization 1</td>
+<td style="text-align: left; width: 28%;"><strong>7 - 8</strong><br>
+Chart expertly demonstrates best practices of visual design and highlights leadership in installed capacity.</td>
+<td style="text-align: left; width: 28%;"><strong>5 - 6</strong><br>
+Chart generally demonstrates best practices of visual design and highlights leadership in installed capacity; some elements might be confusing.</td>
+<td style="text-align: left; width: 28%;"><strong>0 - 4</strong><br>
 Chart generally lacks best practices of visual design; elements are confusing, does not highlight leadership in capacity.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Data Visualization 2</td>
-<td style="text-align: left;"><strong>10 / 9</strong><br>
-Charts expertly demonstrates best practices of visual design and conveys a clear message.</td>
-<td style="text-align: left;"><strong>8 / 7 / 6</strong><br>
-Charts generally demonstrates best practices of visual design and conveys a reasonably clear message; some elements might be confusing.</td>
-<td style="text-align: left;"><strong>5 / 4 / 3</strong><br>
-Chart generally lacks best practices of visual design; elements are confusing, does not highlight a clear message.</td>
+<td style="text-align: left; width: 16%;">Data Visualization 2</td>
+<td style="text-align: left; width: 28%;"><strong>7 - 8</strong><br>
+Chart expertly demonstrates best practices of visual design, uses a genuinely different chart style from Visualization 1, and conveys a clear message.</td>
+<td style="text-align: left; width: 28%;"><strong>5 - 6</strong><br>
+Chart generally demonstrates best practices of visual design and conveys a reasonably clear message; some elements might be confusing or too similar in style to Visualization 1.</td>
+<td style="text-align: left; width: 28%;"><strong>0 - 4</strong><br>
+Chart generally lacks best practices of visual design; elements are confusing, does not highlight a clear message, or is just a copy of Visualization 1 applied to a new variable.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Analysis Description</td>
-<td style="text-align: left;"><strong>5</strong><br>
-Informative description of flaws in the original chart &amp; their improvements; clear description of revised chart key message.</td>
-<td style="text-align: left;"><strong>4</strong><br>
-Description of one or two of design flaws in original chart &amp; improvements made; accurate but incomplete description of key message in revised charts.</td>
-<td style="text-align: left;"><strong>3</strong><br>
-Poor description of design flaws in the original chart &amp; improvements made; poor or missing description of key message of revised charts</td>
+<td style="text-align: left; width: 16%;">Critique &amp; Verify</td>
+<td style="text-align: left; width: 28%;"><strong>8 - 9</strong><br>
+Clearly explains specific design flaws in the original chart (naming principles from class) and why each redesign choice was made; then critically re-examines the redesign itself -- checking whether it introduces any new distortions (e.g. truncated axes, misleading sorting or color choices) and whether the "leadership" claim still holds under at least one alternative cut of the data. The self-critique finds and names at least one real limitation, rather than only praising the new chart.</td>
+<td style="text-align: left; width: 28%;"><strong>5 - 7</strong><br>
+Describes flaws in the original chart and redesign choices adequately, but the self-critique of the redesign is thin, generic, or only checks the chart superficially (e.g. "it looks better") without checking for new distortions or an alternative cut of the data.</td>
+<td style="text-align: left; width: 28%;"><strong>0 - 4</strong><br>
+Poor or missing description of design flaws and improvements; no genuine self-critique of the redesign is attempted.</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Technical things</td>
-<td style="text-align: left;"><strong>5</strong><br>
-All code runs without errors; all files included in the submitted .zip file.</td>
-<td style="text-align: left;"><strong>4</strong><br>
-Code has only one or two error, otherwise runs; all files included in the submitted .zip file.</td>
-<td style="text-align: left;"><strong>3</strong><br>
-Code has multiple errors; submitted .zip file is missing components necessary to reproduce analysis.</td>
+<td style="text-align: left; width: 16%;">Technical &amp; Process</td>
+<td style="text-align: left; width: 28%;"><strong>5</strong><br>
+All code runs without errors; the submitted .zip contains exactly report.qmd, report.html, and transcript.md.</td>
+<td style="text-align: left; width: 28%;"><strong>4</strong><br>
+Code has only one or two errors, otherwise runs; the submitted .zip is missing one of the three required files or includes extra clutter.</td>
+<td style="text-align: left; width: 28%;"><strong>3</strong><br>
+Code has multiple errors; html file cannot be rendered without significant changes; the submitted .zip is missing report.qmd, report.html, or transcript.md.</td>
 </tr>
 </tbody>
 </table>

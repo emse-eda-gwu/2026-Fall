@@ -516,7 +516,7 @@ Note
 </section>
 <section id="document-your-process" class="level2">
 <h2 class="anchored" data-anchor-id="document-your-process">8. Document Your Process</h2>
-<p><strong>Save your cleaned data</strong> as <code>my_clean_data.csv</code> in the <code>data</code> folder.</p>
+<p><strong>Save your cleaned data</strong> as <code>my_clean_data.csv</code> in the project root folder.</p>
 <p><strong>Write a brief reflection</strong> addressing:</p>
 <ul>
 <li>What were the 2-3 biggest challenges in cleaning this data?</li>
@@ -528,10 +528,13 @@ Note
 </section>
 <section id="render-and-submit" class="level2">
 <h2 class="anchored" data-anchor-id="render-and-submit">9. Render and submit</h2>
-<p>Click the “Render” button to compile your <code>.qmd</code> file into an html web page. Then open the <code>report.html</code> file in a web browser and proofread your report.</p>
-<p>Does all of the formatting look correct? <strong>Make sure there are no errors in the rendered file before submitting it.</strong></p>
-<p><strong>Export your Claude Code conversation.</strong> Before you wrap up, run <code>/export</code> in Claude Code and save the result as <code>transcript.md</code> in your project folder. This is a required part of your submission as it’s how your verification is checked: your report should show real checks with real output, and the transcript should back up that you did the reasoning and interpreting yourself rather than just asking the agent to “verify this is correct” for you.</p>
-<p>Once you’ve proofread your report, create a zip file of all the files in your R project folder (including <code>transcript.md</code>) and submit it on the corresponding assignment submission on Blackboard.</p>
+<div class="cell" data-layout-align="center">
+<ol type="1">
+<li>Click “Render” to compile your <code>.qmd</code> file into an <code>.html</code> file. Open <code>report.html</code> in a browser and proofread it – make sure there are no errors and the formatting looks correct.</li>
+<li>Run <code>/export</code> in Claude Code and save the result as <code>transcript.md</code> in your project folder. This is a required part of your submission – it’s how your verification is checked.</li>
+<li>Make a <a href="../faq.html#how-do-i-make-a-zip-file-for-my-homework">zip file</a> containing exactly four files – <code>report.qmd</code>, <code>report.html</code>, <code>transcript.md</code>, and <code>my_clean_data.csv</code> – and submit that single zip file on the corresponding assignment submission on Blackboard.</li>
+</ol>
+</div>
 </section>
 <section id="bonus-make-a-summary-visualization-5" class="level2">
 <h2 class="anchored" data-anchor-id="bonus-make-a-summary-visualization-5">BONUS: Make a summary visualization (+5%)</h2>
@@ -611,11 +614,11 @@ No real verification beyond visually inspecting the output. Claims the data was 
 <tr class="even">
 <td style="text-align: left; width: 16%;">Technical &amp; Process</td>
 <td style="text-align: left; width: 34%;"><strong>5</strong><br>
-All code runs without errors; the html file renders from the qmd; the exported Claude Code transcript is included; all files are included in the submitted .zip file.</td>
+All code runs without errors; the submitted .zip contains exactly report.qmd, report.html, transcript.md, and my_clean_data.csv.</td>
 <td style="text-align: left; width: 25%;"><strong>4</strong><br>
-Code has only one or two errors, otherwise runs; transcript included but incomplete, or a minor file is missing from the submitted .zip.</td>
+Code has only one or two errors, otherwise runs; the submitted .zip is missing one of the four required files or includes extra clutter.</td>
 <td style="text-align: left; width: 25%;"><strong>3</strong><br>
-Code has multiple errors; html file cannot be rendered without significant changes; transcript is missing; submitted .zip is missing components necessary to reproduce the analysis.</td>
+Code has multiple errors; html file cannot be rendered without significant changes; the submitted .zip is missing report.qmd, report.html, transcript.md, or my_clean_data.csv.</td>
 </tr>
 </tbody>
 </table>

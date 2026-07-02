@@ -1,19 +1,19 @@
 order,category,label,rating,maxPoints,points,description
-1,organization,Organization & Formatting,Excellent,5,5,"Data placed in correct folder, read in, and variables have been renamed for ease of use in analysis. "
+1,organization,Organization & Formatting,Excellent,5,5,"Data placed in correct folder, read in, and variables have been renamed for ease of use in analysis."
 1,organization,Organization & Formatting,Good,5,4,Data not placed in correct folder OR variables were not renamed.
 1,organization,Organization & Formatting,Needs work,5,3,"Data not placed in correct folder AND variables were not renamed, or not properly read into R."
-2,dataSummary,Data Summary,Excellent,10,10 / 9,Measures of centrality and variability in appropriate variables are computed; at leaset two new useful measures are computed.
-2,dataSummary,Data Summary,Good,10,8 / 7 / 6,Measures of centrality and variability in appropriate variables are computed; only one new useful measure computed.
-2,dataSummary,Data Summary,Needs work,10,5 / 4 / 3,Measures of centrality and variability missing; failed to compute new measures.
-3,viz1,Data Visualization 1,Excellent,10,10 / 9,Charts expertly demonstrates best practices of visual design and highlights leadership in installed capacity.
-3,viz1,Data Visualization 1,Good,10,8 / 7 / 6,Charts generally demonstrates best practices of visual design and highlights leadership in installed capacity; some elements might be confusing.
-3,viz1,Data Visualization 1,Needs work,10,5 / 4 / 3,"Chart generally lacks best practices of visual design; elements are confusing, does not highlight leadership in capacity. "
-4,viz2,Data Visualization 2,Excellent,10,10 / 9,Charts expertly demonstrates best practices of visual design and conveys a clear message.
-4,viz2,Data Visualization 2,Good,10,8 / 7 / 6,Charts generally demonstrates best practices of visual design and conveys a reasonably clear message; some elements might be confusing.
-4,viz2,Data Visualization 2,Needs work,10,5 / 4 / 3,"Chart generally lacks best practices of visual design; elements are confusing, does not highlight a clear message."
-5,description,Analysis Description,Excellent,5,5,Informative description of flaws in the original chart & their improvements; clear description of revised chart key message.
-5,description,Analysis Description,Good,5,4,Description of one or two of design flaws in original chart & improvements made; accurate but incomplete description of key message in revised charts.
-5,description,Analysis Description,Needs work,5,3,Poor description of design flaws in the original chart & improvements made; poor or missing description of key message of revised charts
-6,technical,Technical things,Excellent,5,5,All code runs without errors; all files included in the submitted .zip file.
-6,technical,Technical things,Good,5,4,"Code has only one or two error, otherwise runs; all files included in the submitted .zip file."
-6,technical,Technical things,Needs work,5,3,Code has multiple errors; submitted .zip file is missing components necessary to reproduce analysis.
+2,dataSummary,Data Summary,Excellent,5,5,"Measures of centrality and variability in appropriate variables are computed; at least two new useful ""leadership"" measures are computed, each with a brief written rationale for why it matters."
+2,dataSummary,Data Summary,Good,5,4,"Measures of centrality and variability are computed, but only one new useful measure is computed, or the rationale for the chosen measures is thin or missing."
+2,dataSummary,Data Summary,Needs work,5,3,Measures of centrality and variability missing; failed to compute new measures.
+3,viz1,Data Visualization 1,Excellent,8,7 - 8,Chart expertly demonstrates best practices of visual design and highlights leadership in installed capacity.
+3,viz1,Data Visualization 1,Good,8,5 - 6,Chart generally demonstrates best practices of visual design and highlights leadership in installed capacity; some elements might be confusing.
+3,viz1,Data Visualization 1,Needs work,8,0 - 4,"Chart generally lacks best practices of visual design; elements are confusing, does not highlight leadership in capacity."
+4,viz2,Data Visualization 2,Excellent,8,7 - 8,"Chart expertly demonstrates best practices of visual design, uses a genuinely different chart style from Visualization 1, and conveys a clear message."
+4,viz2,Data Visualization 2,Good,8,5 - 6,Chart generally demonstrates best practices of visual design and conveys a reasonably clear message; some elements might be confusing or too similar in style to Visualization 1.
+4,viz2,Data Visualization 2,Needs work,8,0 - 4,"Chart generally lacks best practices of visual design; elements are confusing, does not highlight a clear message, or is just a copy of Visualization 1 applied to a new variable."
+5,critique,Critique & Verify,Excellent,9,8 - 9,"Clearly explains specific design flaws in the original chart (naming principles from class) and why each redesign choice was made; then critically re-examines the redesign itself -- checking whether it introduces any new distortions (e.g. truncated axes, misleading sorting or color choices) and whether the ""leadership"" claim still holds under at least one alternative cut of the data. The self-critique finds and names at least one real limitation, rather than only praising the new chart."
+5,critique,Critique & Verify,Good,9,5 - 7,"Describes flaws in the original chart and redesign choices adequately, but the self-critique of the redesign is thin, generic, or only checks the chart superficially (e.g. ""it looks better"") without checking for new distortions or an alternative cut of the data."
+5,critique,Critique & Verify,Needs work,9,0 - 4,"Poor or missing description of design flaws and improvements; no genuine self-critique of the redesign is attempted."
+6,technical,Technical & Process,Excellent,5,5,"All code runs without errors; the submitted .zip contains exactly report.qmd, report.html, and transcript.md."
+6,technical,Technical & Process,Good,5,4,"Code has only one or two errors, otherwise runs; the submitted .zip is missing one of the three required files or includes extra clutter."
+6,technical,Technical & Process,Needs work,5,3,"Code has multiple errors; html file cannot be rendered without significant changes; the submitted .zip is missing report.qmd, report.html, or transcript.md."
