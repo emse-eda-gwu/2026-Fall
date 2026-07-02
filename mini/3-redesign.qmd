@@ -9,7 +9,7 @@ execute:
 params:
   number: 3
   weight: '9%'
-  purpose: 'At some point in your career, you will likely be involved in creating or revising a summary chart of some data. When that happens, you will also likely be the most knowledge person in the room about what to do to design the chart(s) to effectively communicate the information in the data. This assignment is a practice run for that day.'
+  purpose: 'At some point in your career, you will likely be involved in creating or revising a summary chart of some data. When that happens, you will also likely be the most knowledgeable person in the room about what to do to design the chart(s) to effectively communicate the information in the data. Claude Code can write the ggplot code once you know what you want -- but deciding what "leadership" means in this data, choosing the right chart type for each message, and honestly critiquing whether your redesign actually improved things are judgment calls no agent can make for you. This assignment is a practice run for that day.'
 ---
 
 ```{r}
@@ -59,8 +59,8 @@ With that in mind, here's what you need to do for this analysis:
 
 # 1. Get organized
 
-1. Download and unzip [this template](../templates/mini3.zip) for your project, then open the `report.Rproj` file.
-2. Once RStudio opens, click on the `report.qmd` file. That is the primary file you will edit to conduct your analysis.
+1. Download and unzip [this template](../templates/mini3.zip) for your project, then open Positron to the unzipped template folder.
+2. Once Positron opens, click on the `report.qmd` file. That is the primary file you will edit to conduct your analysis.
 3. Update the YAML with your name, a title, the date, etc.
 4. Delete any of the existing text / code in the template before submitting - the template text is just there as a helpful guide.
 
@@ -68,7 +68,7 @@ With that in mind, here's what you need to do for this analysis:
 
 # 2. Load the data
 
-Use [this link](https://github.com/emse-eda-gwu/2023-Fall/raw/main/mini/US_State_Wind_Energy_Facts_2018.xlsx) to download the `US_State_Wind_Energy_Facts_2018.xlsx` file and put it in your `data_raw` folder. Here is some information on the data:
+The `US_State_Wind_Energy_Facts_2018.xlsx` file is already in your `data` folder. Have Claude Code read it in. Here is some information on the data:
 
 **Description**: Data on which US states produce the most wind energy.
 
@@ -94,40 +94,59 @@ Variable                        | Description
 
 # 3. Preview the data
 
-In the setup chunk in your `report.qmd` file, write code to read in the excel sheet, then write code to preview the data, e.g. using `head()`, `glimpse()`, `View()`, and / or make some quick plots (**Hint**: look at the top and bottom!). Take note of what variables are available, their types, what they measure, and if there are any missing values. (**Hint**: Read the data dictionary!) Are all the variables encoded the way you would expect (e.g. are numbers encoded as numbers?)
+Preview the data yourself (e.g. using `head()`, `glimpse()`, `View()`, and / or make some quick plots -- **Hint**: look at the top and bottom!). Take note of what variables are available, their types, what they measure, and if there are any missing values. (**Hint**: Read the data dictionary!) Are all the variables encoded the way you would expect (e.g. are numbers encoded as numbers)? Noticing this yourself matters -- it's what you'll tell the agent to fix in the next step.
 
 # 4. Clean the data
 
-1. Write code to modify variable types and names to get your data frame cleaned up for analysis. As you do so, I recommend that you modify some of the column names (especially those with spaces in them) to make your analysis easier. (**Hint**: The `clean_names()` function from the `janitor` package is a life saver!)
-2. Write a few sentences describing any modifications you made to the original data and why you did it.
+Have Claude Code modify variable types and names to get the data frame cleaned up for analysis. As it does, column names with spaces in them (e.g. `Installed Capacity (MW)`) should get renamed to make later code easier to write (**Hint**: the `clean_names()` function from the `janitor` package is a life saver!). Write a few sentences describing what modifications were made and why.
 
-# 5. Summarize the data
+# 5. Plan Your Approach
 
-1. Examine measures of centrality and variability in the important variables relevant to our research question. Remember that we're interested in the states that are **"leaders"** in wind energy. While installed capacity is an obvious choice to look at, you should also look at summaries of other values, such as the amount of money invested, and **at least two** other computed measures, such as the capacity per dollar invested (**Note**: you'll need to create new variables to do this!).
-2. Write a few sentences explaining your summary measures and what you learned from them.
+Before you prompt the agent to make any charts, decide what "leadership" means for each of the two visualizations you'll build.
 
-# 6. Visualize the data
+1. Examine measures of centrality and variability in the variables relevant to leadership in wind energy. Installed capacity is an obvious choice, but also look at other values, such as the amount of money invested, and **at least two** other computed measures, such as capacity per dollar invested (**Note**: you'll need to create new variables to do this!).
+2. For each of your two planned charts (see Step 6), write down: which metric it will highlight, why that metric represents a meaningful kind of "leadership," and what chart type you plan to use and why it fits that metric and message. Do this **before** prompting the agent to generate the chart -- it's much easier to tell if a chart the agent produced is a good match for your goal if you already know what you were going for.
 
-1. Create an appropriate visualization that highlights leadership in _installed capacity_. This chart should be a substantial improvement over the original visualization, and it should follow the design principles we have covered in class.
-2. Create a second visualization that highlights "leadership" in another metric of your choice. This could be one of the existing variables or a variable you computed. Your chart and design choices should highlight the metric you chose and should have a clear message to convey. Again, this chart should follow the design principles we have covered in class. **This chart should be a different style from your first chart**, so don't just copy-paste over the same thing and apply it to a new metric. Be creative and try something different for your second chart!
+**Deliverable:** Your summary measures with a short explanation of what you learned from them, plus your plan for both charts (metric + chart type + rationale) written *before* the charts themselves.
+
+# 6. Direct the Agent to Visualize
+
+Now prompt Claude Code to build your two charts, reviewing what it produces and iterating rather than accepting the first attempt automatically.
+
+1. An appropriate visualization that highlights leadership in _installed capacity_. This chart should be a substantial improvement over the original visualization, and it should follow the design principles we have covered in class.
+2. A second visualization that highlights "leadership" in another metric of your choice, following your plan from Step 5. **This chart should be a different style from your first chart** -- don't just copy-paste the same chart type over a new variable.
 
 **Your charts should be polished**. Points will be taken off for poor design principles, illegibility, etc.
 
-# 7. Summarize your analysis
+::: {.callout-note}
+
+**Note**: Claude Code should directly edit your `report.qmd` file.
+
+:::
+
+# 7. Critique Your Redesign
+
+Producing a chart that looks better than the original is not the same as verifying it actually is better. Before you write your summary, critically re-examine your own two charts -- this is the step most heavily graded in this assignment.
+
+- **Check for new distortions.** Does either chart truncate an axis, use a misleading sort order, or use color in a way that exaggerates or obscures the pattern? Redesigns can introduce new problems even while fixing old ones.
+- **Check under an alternative cut.** Pick one chart and recompute it with a different normalization or metric (e.g. per capita, per project, or a different time slice if applicable). Does the "leadership" story hold up, or does it depend heavily on which metric you picked?
+- **Name a real limitation.** A genuine critique finds at least one honest weakness in your own redesign -- not just a list of what you improved.
+
+**Deliverable:** A short critique section documenting what you checked and what you found, including anything you changed as a result.
+
+# 8. Summarize Your Analysis
 
 Write a summary of your analysis process. I'm specifically looking for a discussion of the following:
 
 - What was wrong with the original chart? Discuss specific design principles we have covered in class.
 - Discuss the improvements your first revised chart makes compared to the original chart.
 - Discuss what message your second chart conveys and what design choices you made to highlight that message.
+- Reference what you found in Step 7 -- what, if anything, would you still change or caveat about your redesign?
 
-# 8. Render and submit
+# 9. Render and submit
 
-Click the "Render" button to compile your `.qmd` file into a html web page. Then open the `report.html` file in a web browser and proofread your report.
-
-Does all of the formatting look correct? **Make sure there are no errors in the rendered file before submitting it.**
-
-Once you've proofread your report, create a zip file of all the files in your R project folder for this assignment and submit it on the corresponding assignment submission on Blackboard.
+```{r child = here::here("fragments", "mini-submit.qmd")}
+```
 
 # Grading Rubric
 
@@ -144,5 +163,7 @@ rubric %>%
   select(-order) %>%
   select(-maxPoints) %>%
   kable(format = 'html', escape = FALSE) %>%
-  kable_styling(bootstrap_options = "striped")
+  kable_styling(bootstrap_options = "striped") %>%
+  column_spec(1, width = "16%") %>%
+  column_spec(2:4, width = "28%")
 ```

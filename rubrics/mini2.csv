@@ -1,19 +1,19 @@
 order,category,label,rating,maxPoints,points,description
-1,formatting,Formatting,Excellent,5,5,Followed all formatting guidelines.
-1,formatting,Formatting,Good,5,4,Followed most formatting guidelines.
-1,formatting,Formatting,Needs work,5,3,Missing multiple formatting guidelines.
-2,documentation,Documentation,Excellent,5,5,Original and downloaded data sources clearly described.
-2,documentation,Documentation,Good,5,4,Poor description of original and / or downloaded data sources.
-2,documentation,Documentation,Needs work,5,3,Poor / unclear / missing description of either original or downloaded data source
-3,researchQuestions,Research questions,Excellent,10,10 / 9,At least 3 RQs & associated data variables listed.
-3,researchQuestions,Research questions,Good,10,8 / 7 / 6,<3 RQs listed or variables are missing.
-3,researchQuestions,Research questions,Needs work,10,5 / 4 / 3,<3 RQs listed and variables are missing.
-4,exploration,Exploration,Excellent,10,10 / 9,Summary measures and charts appropriately used to address all RQs; excellent summary description.
-4,exploration,Exploration,Good,10,8 / 7 / 6,Measures and charts used to address RQs could be improved; adequate summary description.
-4,exploration,Exploration,Needs work,10,5 / 4 / 3,Missing summary measures and / or charts to address RQs; poor summary description.
-5,visualizations,Visualizations,Excellent,10,10 / 9,Visualizations appropriately chosen according to data types and / or relationships.
-5,visualizations,Visualizations,Good,10,8 / 7 / 6,Visualizations are appropriate but could be improved. 
-5,visualizations,Visualizations,Needs work,10,5 / 4 / 3,"Poor match between visualization and data types / relationships, and / or missing."
-6,technical,Technical things,Excellent,5,5,All code runs without errors; all files included in the submitted .zip file.
-6,technical,Technical things,Good,5,4,"Code has only one or two error, otherwise runs; all files included in the submitted .zip file."
-6,technical,Technical things,Needs work,5,3,Code has multiple errors; submitted .zip file is missing components necessary to reproduce analysis.
+1,organization,Organization & Formatting,Excellent,5,5,All formatting guidelines are followed; YAML is correctly filled out.
+1,organization,Organization & Formatting,Good,5,4,Most formatting guidelines are followed; YAML is correctly filled out.
+1,organization,Organization & Formatting,Needs work,5,3,Several or all formatting guidelines not followed; YAML contains elements that aren't updated from the template; template file wasn't used.
+2,documentation,Data Documentation,Excellent,5,5,"Both data sources (Olympics results and population data) are clearly and accurately described, including where each was downloaded from."
+2,documentation,Data Documentation,Good,5,4,Both data sources are described but one description is incomplete or slightly inaccurate.
+2,documentation,Data Documentation,Needs work,5,3,"One or both data sources are missing, undocumented, or inaccurately described."
+3,strategy,Strategy,Excellent,5,5,"A specific, numbered strategy is written before implementation; it correctly identifies how medals should be counted (not simply counting rows), how the two data sources will be joined, and how mismatched or ambiguous country names will be handled."
+3,strategy,Strategy,Good,5,4,"A strategy is present and numbered, but is vague in places or misses one of the key judgment calls (medal counting, join approach, or name mismatches)."
+3,strategy,Strategy,Needs work,5,3,"Strategy is missing, generic/copied from the assignment prompt, or clearly written after the code rather than guiding it."
+4,explore,Explore,Excellent,10,9 - 10,"At least 2 clearly stated research questions are addressed, each using a genuinely different chart type (e.g. not two ranking charts); each is supported by an appropriately chosen chart and a written interpretation."
+4,explore,Explore,Good,10,6 - 8,"Research questions are addressed, but two or more use the same chart type, or a chart/interpretation is weak or missing for one question."
+4,explore,Explore,Needs work,10,0 - 5,"Fewer than 2 research questions are addressed, chart types are not meaningfully different, or charts/interpretations are missing."
+5,interrogate,Interrogate,Excellent,10,9 - 10,"Medal counts are verified against the real, official Rio 2016 medal table for multiple countries; the join is checked for silently dropped or unmatched countries; the raw vs. per-capita medal ranking comparison is completed and clearly interpreted, including how and why the story changes."
+5,interrogate,Interrogate,Good,10,6 - 8,"Some verification is present (e.g. medal counts or join check) but incomplete, or the raw vs. per-capita comparison is present but the interpretation is thin or doesn't explain why the rankings differ."
+5,interrogate,Interrogate,Needs work,10,0 - 5,"No real verification beyond visual inspection; medal counts are not checked against an external source; the raw vs. per-capita comparison is missing or superficial."
+6,technical,Technical & Process,Excellent,5,5,"All code runs without errors; the submitted .zip contains exactly report.qmd, report.html, transcript.md, and my_clean_data.csv."
+6,technical,Technical & Process,Good,5,4,"Code has only one or two errors, otherwise runs; the submitted .zip is missing one of the four required files or includes extra clutter."
+6,technical,Technical & Process,Needs work,5,3,"Code has multiple errors; html file cannot be rendered without significant changes; the submitted .zip is missing report.qmd, report.html, transcript.md, or my_clean_data.csv."

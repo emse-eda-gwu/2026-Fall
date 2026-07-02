@@ -1,0 +1,20 @@
+```{r}
+#| echo: false
+#| results: asis
+
+if (!is.null(params$data_file)) {
+  zip_line <- sprintf(
+    "3. Make a [zip file](../faq.html#how-do-i-make-a-zip-file-for-my-homework) containing exactly four files -- `report.qmd`, `report.html`, `transcript.md`, and `%s` -- and submit that single zip file on the corresponding assignment submission on Blackboard.",
+    params$data_file
+  )
+} else {
+  zip_line <- "3. Make a [zip file](../faq.html#how-do-i-make-a-zip-file-for-my-homework) containing exactly three files -- `report.qmd`, `report.html`, and `transcript.md` -- and submit that single zip file on the corresponding assignment submission on Blackboard."
+}
+
+cat(
+  '1. Click "Render" to compile your `.qmd` file into an `.html` file. Open `report.html` in a browser and proofread it -- make sure there are no errors and the formatting looks correct.',
+  "2. Run `/export` in Claude Code and save the result as `transcript.md` in your project folder. This is a required part of your submission -- it's how your verification is checked.",
+  zip_line,
+  sep = "\n"
+)
+```
