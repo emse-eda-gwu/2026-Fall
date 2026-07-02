@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Mini Project 3: Data Viz Re-Design – EMSE 4572 / 6572</title>
+<title>Mini Project 1: Clean &amp; Verify – EMSE 4572 / 6572</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -22,6 +22,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -78,15 +113,19 @@ ul.task-list li input[type="checkbox"] {
 <script src="https://kit.fontawesome.com/1392a7030f.js" crossorigin="anonymous"></script>
 
 
+<script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="Mini Project 3: Data Viz Re-Design – EMSE 4572 / 6572">
+<meta property="og:title" content="Mini Project 1: Clean &amp; Verify – EMSE 4572 / 6572">
 <meta property="og:description" content="Course website for Fall 2026 semester of the EMSE course “Exploratory Data Analysis” at GWU">
-<meta property="og:image" content="https://eda.seas.gwu.edu/2026-Fall/mini/images/logo.png">
+<meta property="og:image" content="https://eda.seas.gwu.edu/2026-Fall/mini/images/oica-data-url.png">
 <meta property="og:site_name" content="EMSE 4572 / 6572">
 <meta property="og:locale" content="es_ES">
-<meta name="twitter:title" content="Mini Project 3: Data Viz Re-Design – EMSE 4572 / 6572">
+<meta property="og:image:height" content="749">
+<meta property="og:image:width" content="1250">
+<meta name="twitter:title" content="Mini Project 1: Clean &amp; Verify – EMSE 4572 / 6572">
 <meta name="twitter:description" content="Course website for Fall 2026 semester of the EMSE course “Exploratory Data Analysis” at GWU">
 <meta name="twitter:image" content="https://eda.seas.gwu.edu/2026-Fall/mini/images/logo-square.png">
 <meta name="twitter:creator" content="@johnhelveston">
@@ -103,7 +142,9 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../mini/1-data-cleaning.html">Mini Projects</a></li><li class="breadcrumb-item"><a href="../mini/3-redesign.html">MP3: Re-design</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      EMSE 4572 / 6572
+      </li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -151,14 +192,14 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true"><i class="bi bi-pencil-square" role="img">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false"><i class="bi bi-pencil-square" role="img">
 </i> 
  <span class="menu-text">Mini Projects</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../mini/1-data-cleaning.html" class="sidebar-item-text sidebar-link">
@@ -173,7 +214,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../mini/3-redesign.html" class="sidebar-item-text sidebar-link active">
+  <a href="../mini/3-redesign.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">MP3: Re-design</span></a>
   </div>
 </li>
@@ -321,15 +362,34 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#get-organized" id="toc-get-organized" class="nav-link active" data-scroll-target="#get-organized">1. Get organized</a></li>
+  <li><a href="#document-the-data" id="toc-document-the-data" class="nav-link" data-scroll-target="#document-the-data">2. Document the data</a></li>
+  <li><a href="#preview-the-data" id="toc-preview-the-data" class="nav-link" data-scroll-target="#preview-the-data">3. Preview the data</a></li>
+  <li><a href="#load-the-data" id="toc-load-the-data" class="nav-link" data-scroll-target="#load-the-data">4. Load the data</a></li>
+  <li><a href="#develop-your-strategy" id="toc-develop-your-strategy" class="nav-link" data-scroll-target="#develop-your-strategy">5. Develop Your Strategy</a></li>
+  <li><a href="#direct-the-agent" id="toc-direct-the-agent" class="nav-link" data-scroll-target="#direct-the-agent">6. Direct the Agent</a></li>
+  <li><a href="#verify" id="toc-verify" class="nav-link" data-scroll-target="#verify">7. Verify</a></li>
+  <li><a href="#document-your-process" id="toc-document-your-process" class="nav-link" data-scroll-target="#document-your-process">8. Document Your Process</a></li>
+  <li><a href="#render-and-submit" id="toc-render-and-submit" class="nav-link" data-scroll-target="#render-and-submit">9. Render and submit</a></li>
+  <li><a href="#bonus-make-a-summary-visualization-5" id="toc-bonus-make-a-summary-visualization-5" class="nav-link" data-scroll-target="#bonus-make-a-summary-visualization-5">BONUS: Make a summary visualization (+5%)</a></li>
+  <li><a href="#grading-rubric" id="toc-grading-rubric" class="nav-link" data-scroll-target="#grading-rubric">Grading Rubric</a>
+  <ul class="collapse">
+  <li><a href="#total-points" id="toc-total-points" class="nav-link" data-scroll-target="#total-points">40 Total Points</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/emse-eda-gwu/2026-Fall/edit/main/mini/1-data-cleaning-temp.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/emse-eda-gwu/2026-Fall/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../mini/1-data-cleaning.html">Mini Projects</a></li><li class="breadcrumb-item"><a href="../mini/3-redesign.html">MP3: Re-design</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Mini Project 3: Data Viz Re-Design</h1>
+<h1 class="title">Mini Project 1: Clean &amp; Verify</h1>
 </div>
 
 
@@ -346,9 +406,230 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Coming soon!</p>
+<blockquote class="blockquote">
+<p><strong>Due</strong>: Oct 05 by 11:59pm</p>
+<p><strong>Weight</strong>: This assignment is worth 9% of your final grade.</p>
+<p><strong>Purpose</strong>: When you start looking for data to address your project for this course, you will inevitably come across some rather messy data. In this assignment, you will direct Claude Code to do the actual cleaning work – but the agent cannot decide what counts as a “country” versus a region in this data, and it cannot be trusted to catch its own mistakes. Your job is the part the agent cannot do: plan the strategy, supervise the implementation, and verify that the result is actually correct.</p>
+<p><strong>Assessment</strong>: Your submission will be assessed using the <a href="#grading-rubric">rubric</a> at the bottom of this page.</p>
+</blockquote>
+<p>Your mission, should you choose to accept it, is to clean up a relatively messy data file that contains sales of passenger cars by country between 2019 and 2024. The data are from the <a href="https://www.oica.net/">International Organization of Motor Vehicle Manufacturers (OICA)</a>. Your final product should be a tidy (long format) data frame with three columns: <code>country</code>, <code>year</code>, and <code>sales</code>. It should look like this:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; # A tibble: 6 × 3
+#&gt;   country    year   sales
+#&gt;   &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+#&gt; 1 Argentina  2019  333183
+#&gt; 2 Australia  2019  799263
+#&gt; 3 Austria    2019  320381
+#&gt; 4 Belgium    2019  550008
+#&gt; 5 Brazil     2019 2262073
+#&gt; 6 Bulgaria   2019   35371</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; # A tibble: 6 × 3
+#&gt;   country                   year   sales
+#&gt;   &lt;chr&gt;                    &lt;dbl&gt;   &lt;dbl&gt;
+#&gt; 1 Ukraine                   2024   69599
+#&gt; 2 United Arab Emirates      2024  268876
+#&gt; 3 United Kingdom            2024 1952778
+#&gt; 4 United States Of America  2024 2984039
+#&gt; 5 Uzbekistan                2024  166058
+#&gt; 6 Vietnam                   2024  291797</code></pre>
+</div>
+</div>
+<p>With this in mind, your job is to develop and execute a strategy to go from the raw excel file to this cleaned version of the data.</p>
+<section id="get-organized" class="level2">
+<h2 class="anchored" data-anchor-id="get-organized">1. Get organized</h2>
+<p>Download and <strong>unzip</strong> <a href="../templates/mini1.zip">this template</a> for your project, then open Positron to the unzipped template folder.</p>
+<p>Once Positron opens, click on the <code>report.qmd</code> file. That is the primary file you will edit to conduct your analysis.</p>
+</section>
+<section id="document-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="document-the-data">2. Document the data</h2>
+<p>Inside the <code>data</code> folder, there is a <code>README.md</code> file with some missing information. Click on that file and edit it to fill in the missing information. Here is some info that will help:</p>
+<p>The main data file we’ll be working with is the <code>pc_sales_2024.xlsx</code> file in the <code>data</code> folder. You can find this file online at <a href="https://oica.net/sales-statistics/">https://oica.net/sales-statistics/</a>. We’re using the “Passengers Cars” data (the “pc” in <code>pc_sales_2024</code>). The link to the original data file can be found by first clicking on the little Excel icon, then right-clicking on the “Download” pop-up, like this:</p>
+<center>
+<img src="images/oica-data-url.png" width="80%">
+</center>
+</section>
+<section id="preview-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="preview-the-data">3. Preview the data</h2>
+<p>With messy Excel files, it is often helpful to first open and view them so you can learn about what might be needed to clean them up in R, such as how many lines you may need to skip at the top when reading in the data. To make sure Excel doesn’t corrupt your data, <strong>make a copy</strong> of the Excel file and open that copy with Microsoft Excel. You can keep that copy open throughout your data cleaning journey and can be confident that you haven’t corrupted the original file!</p>
+</section>
+<section id="load-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="load-the-data">4. Load the data</h2>
+<p>Have Claude Code read in the <code>pc_sales_2024.xlsx</code> data file using <code>read_excel()</code> from the <code>readxl</code> package. Look at what comes back – does it need to skip any rows while reading it in?</p>
+<p>Just get to a point where the data is being read into R, then pause and think about your cleaning strategy.</p>
+</section>
+<section id="develop-your-strategy" class="level2">
+<h2 class="anchored" data-anchor-id="develop-your-strategy">5. Develop Your Strategy</h2>
+<p>Before you prompt the agent to write any cleaning code, <strong>you</strong> need a plan. This is the step an agent cannot do for you: it doesn’t know what counts as a “country” versus a region or subtotal in this particular file, and it has no reason to check its own assumptions unless you tell it what to check.</p>
+<p><strong>Examine the raw data yourself</strong> using functions like <code>head()</code> and <code>glimpse()</code>, and look at the copy you opened in Excel, to understand the structure of the data.</p>
+<p><strong>Write out your strategy</strong>: Create a numbered list of the major steps needed to transform this messy data into the target format shown above. Consider:</p>
+<ul>
+<li>What needs to happen to the column names?</li>
+<li>Do you need to reshape the data (wide vs long format)?</li>
+<li>Which rows are actual countries, and which are regions, subtotals, or residual “other” categories that need to be excluded? How will you tell them apart?</li>
+<li>What cleaning is needed in each column?</li>
+<li>How will you get the data into the final column structure?</li>
+</ul>
+<p><strong>Deliverable:</strong> In your <code>report.qmd</code> file, write down your strategy with numbered steps describing your planned approach <em>before</em> writing any cleaning code. Be specific – this is what you’ll hand to the agent, and it’s also what you’ll check the agent’s output against later.</p>
+</section>
+<section id="direct-the-agent" class="level2">
+<h2 class="anchored" data-anchor-id="direct-the-agent">6. Direct the Agent</h2>
+<p>Now prompt Claude Code to implement your strategy, step by step. Review what it produces as it goes – read the code, read the diffs, and check the output at each stage rather than accepting the final result all at once.</p>
+<p><strong>Important:</strong> The final dataset should contain:</p>
+<ul>
+<li>Only observations of countries (not regions, subtotals, or totals)</li>
+<li>Years as numbers (e.g., 2019, 2020, 2021, 2022, 2023, 2024)</li>
+<li>Sales values as numbers</li>
+<li>Country names in title case (e.g., “France” not “FRANCE”)</li>
+<li>Rows arranged by year, then country</li>
+</ul>
+<p>If the agent’s first attempt gets something wrong (e.g., misses a row that should have been excluded, skips the wrong number of header rows, silently drops data during a type conversion) that’s expected, not a failure on your part. Catching it is the point of the next step.</p>
+<p><strong>Deliverable:</strong> Clean, well-organized code (in one or more code chunks) in your report that produces the target dataset.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Note</strong>: Claude code should directly edit your <code>report.qmd</code> file.</p>
+</div>
+</div>
+</section>
+<section id="verify" class="level2">
+<h2 class="anchored" data-anchor-id="verify">7. Verify</h2>
+<p>Getting output that <em>looks</em> clean is not the same as verifying it <em>is</em> clean. This is the step that’s actually graded most heavily in this assignment, and it’s the one an agent cannot do reliably on its own. If you simply ask Claude Code “is this correct?”, it will generally tell you yes, whether or not it actually checked anything. You need to design and interpret the checks yourself, even if the agent helps write the code that runs them.</p>
+<p>Run and document at least these checks:</p>
+<ul>
+<li><strong>Shape check</strong>: does the number of rows equal the number of countries times the number of years, with no gaps?</li>
+<li><strong>Duplicate check</strong>: are there any repeated country-year combinations (a sign that a name inconsistency split one country into two rows)?</li>
+<li><strong>Missing-value audit</strong>: are there any <code>NA</code>s in the sales column? A number that failed to convert (e.g.&nbsp;because of a comma or stray character) can silently turn into <code>NA</code> without an error.</li>
+<li><strong>An independent reconciliation</strong>: the raw file itself contains region and subtotal rows. Do the numbers you kept add up sensibly against numbers <em>already reported in the source file</em>, without relying on any answer key? (Careful: not every row labeled “total” measures the same thing – check what a total actually represents before trusting it.)</li>
+<li><strong>Manual spot-checks</strong>: pick 3-5 specific country/year values and look them up by hand in the raw Excel file to confirm they match your cleaned data exactly.</li>
+</ul>
+<p><strong>Deliverable:</strong> A verification section in your report showing the checks you ran, their output, and what you concluded – including anywhere you found and corrected a mistake in the agent’s first attempt. If nothing was wrong, say what you checked to be confident of that, specifically.</p>
+</section>
+<section id="document-your-process" class="level2">
+<h2 class="anchored" data-anchor-id="document-your-process">8. Document Your Process</h2>
+<p><strong>Save your cleaned data</strong> as <code>my_clean_data.csv</code> in the project root folder.</p>
+<p><strong>Write a brief reflection</strong> addressing:</p>
+<ul>
+<li>What were the 2-3 biggest challenges in cleaning this data?</li>
+<li>Where, if anywhere, did Claude Code’s output need to be corrected, and how did you catch it?</li>
+<li>What specifically did you check to be confident your cleaned data is correct (beyond “it looked right”)?</li>
+<li>What would you do differently if you encountered similar data again?</li>
+</ul>
+<p><strong>Deliverable:</strong> Saved <code>my_clean_data.csv</code> file in the <code>data</code> folder, and written reflection (~4-6 sentences).</p>
+</section>
+<section id="render-and-submit" class="level2">
+<h2 class="anchored" data-anchor-id="render-and-submit">9. Render and submit</h2>
+<div class="cell" data-layout-align="center">
+<ol type="1">
+<li>Click “Render” to compile your <code>.qmd</code> file into an <code>.html</code> file. Open <code>report.html</code> in a browser and proofread it – make sure there are no errors and the formatting looks correct.</li>
+<li>Run <code>/export</code> in Claude Code and save the result as <code>transcript.md</code> in your project folder. This is a required part of your submission – it’s how your verification is checked.</li>
+<li>Make a <a href="../faq.html#how-do-i-make-a-zip-file-for-my-homework">zip file</a> containing exactly four files – <code>report.qmd</code>, <code>report.html</code>, <code>transcript.md</code>, and <code>my_clean_data.csv</code> – and submit that single zip file on the corresponding assignment submission on Blackboard.</li>
+</ol>
+</div>
+</section>
+<section id="bonus-make-a-summary-visualization-5" class="level2">
+<h2 class="anchored" data-anchor-id="bonus-make-a-summary-visualization-5">BONUS: Make a summary visualization (+5%)</h2>
+<p>For a 5% bonus, add a code chunk at the bottom of your report to generate the plot below, using your own cleaned data from Step 6.</p>
+<p>Some hints to perfectly replicate the figure:</p>
+<ul>
+<li>Consider using <code>ifelse()</code> to make a new variable for the bar color based on the <code>country</code> variable.</li>
+<li>You can use <code>fct_relevel()</code> to re-order the country factors (the order of how they are stacked).</li>
+<li>The fill colors are <code>'grey'</code>, <code>'red'</code>, and <code>'blue'</code>.</li>
+<li>The theme is <code>theme_minimal()</code>.</li>
+</ul>
+<center>
+<img src="images/barplot.png" width="80%">
+</center>
+</section>
+<section id="grading-rubric" class="level2">
+<h2 class="anchored" data-anchor-id="grading-rubric">Grading Rubric</h2>
+<section id="total-points" class="level3">
+<h3 class="anchored" data-anchor-id="total-points">40 Total Points</h3>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table class="table table-striped caption-top table-sm small">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Category</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Excellent</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Good</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Needs work</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left; width: 16%;">Organization &amp; Formatting</td>
+<td style="text-align: left; width: 34%;"><strong>5</strong><br>
+All formatting guidelines are followed; YAML is correctly filled out.</td>
+<td style="text-align: left; width: 25%;"><strong>4</strong><br>
+Most formatting guidelines are followed; YAML is correctly filled out.</td>
+<td style="text-align: left; width: 25%;"><strong>3</strong><br>
+Several or all formatting guidelines not followed; YAML contains elements that aren't updated from the template; template file wasn't used.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; width: 16%;">Data Documentation</td>
+<td style="text-align: left; width: 34%;"><strong>5</strong><br>
+The README file included in the template was updated with thoughtful and accurate information about the data.</td>
+<td style="text-align: left; width: 25%;"><strong>4</strong><br>
+The README file included in the template was updated, but some of the information was missing or inaccurate.</td>
+<td style="text-align: left; width: 25%;"><strong>3</strong><br>
+The README file included in the template was not updated, missing, or most of the information in it was inaccurate.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; width: 16%;">Strategy</td>
+<td style="text-align: left; width: 34%;"><strong>5</strong><br>
+A specific, numbered strategy is written before implementation; it correctly identifies the key judgment calls in the data (e.g. distinguishing countries from regions/subtotals) and describes how the data will be reshaped and cleaned.</td>
+<td style="text-align: left; width: 25%;"><strong>4</strong><br>
+A strategy is present and numbered, but is vague in places or misses one of the key judgment calls.</td>
+<td style="text-align: left; width: 25%;"><strong>3</strong><br>
+Strategy is missing, generic/copied from the assignment prompt, or clearly written after the cleaning code rather than guiding it.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; width: 16%;">Data Cleaning</td>
+<td style="text-align: left; width: 34%;"><strong>9 - 10</strong><br>
+The resulting "clean" data frame is exactly (or very close to) the desired final state.</td>
+<td style="text-align: left; width: 25%;"><strong>7 - 8</strong><br>
+The resulting "clean" data frame has one or two significant errors that prevent it from being in the desired final state.</td>
+<td style="text-align: left; width: 25%;"><strong>4 - 6</strong><br>
+Multiple errors prevent the resulting "clean" data frame from being in the desired final state.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; width: 16%;">Verification</td>
+<td style="text-align: left; width: 34%;"><strong>9 - 10</strong><br>
+Runs and reports on multiple concrete, specific checks (e.g. row/shape counts, a duplicate check, an NA audit, an independent reconciliation against totals reported in the source file, manual spot-checks) with real output shown; clearly documents at least one place where Claude's first attempt was wrong and how it was caught and corrected. The exported transcript corroborates that the student -- not just the agent -- did the verifying and reasoning.</td>
+<td style="text-align: left; width: 25%;"><strong>6 - 8</strong><br>
+Runs some real checks, but they are generic (e.g. only `head()`/`glimpse()`) or the write-up asserts correctness without independent evidence. The transcript suggests verification was mostly outsourced to the agent (e.g. "please verify this is correct") rather than the student directly checking.</td>
+<td style="text-align: left; width: 25%;"><strong>0 - 5</strong><br>
+No real verification beyond visually inspecting the output. Claims the data was "double checked" or "verified" with no supporting checks in the report or evidence in the transcript.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; width: 16%;">Technical &amp; Process</td>
+<td style="text-align: left; width: 34%;"><strong>5</strong><br>
+All code runs without errors; the submitted .zip contains exactly report.qmd, report.html, transcript.md, and my_clean_data.csv.</td>
+<td style="text-align: left; width: 25%;"><strong>4</strong><br>
+Code has only one or two errors, otherwise runs; the submitted .zip is missing one of the four required files or includes extra clutter.</td>
+<td style="text-align: left; width: 25%;"><strong>3</strong><br>
+Code has multiple errors; html file cannot be rendered without significant changes; the submitted .zip is missing report.qmd, report.html, transcript.md, or my_clean_data.csv.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -768,7 +1049,7 @@ ul.task-list li input[type="checkbox"] {
  © 2026 John Paul Helveston  <a href="LICENSE.html"><i class="fab fa-creative-commons"></i><i class="fab fa-creative-commons-by"></i><i class="fab fa-creative-commons-sa"></i></a><br><i class="far fa-calendar-alt"></i> Wednesdays | <i class="far fa-clock"></i> 12:45PM - 3:15PM EST | <a href="https://it.gwu.edu/classroom-search/tompkins-hall-402"><i class="fa fa-map-marker-alt"></i> Tompkins 402</a><br><a href="https://www.jhelvy.com"><i class="fas fa-user"></i> Dr. John Paul Helveston</a> | <a href="mailto:jph@gwu.edu"><i class="fas fa-envelope"></i> jph@gwu.edu</a> | <a href="https://github.com/emse-eda-gwu/2026-Fall"><i class="fab fa-github"></i></a>
   </li>  
 </ul>
-    <div class="toc-actions"><ul><li><a href="https://github.com/emse-eda-gwu/2026-Fall/edit/main/mini/3-redesign.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/emse-eda-gwu/2026-Fall/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/emse-eda-gwu/2026-Fall/edit/main/mini/1-data-cleaning-temp.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/emse-eda-gwu/2026-Fall/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
