@@ -44,7 +44,7 @@
     "href": "syllabus.html#software",
     "title": "Syllabus",
     "section": "Software",
-    "text": "Software\nGo to the Course Software page for detailed instructions on how to install the software we’ll be using. Here’s a quick list:\n\nR (version 4.1.0 or later), which can be downloaded from The Comprehensive R Archive Network (CRAN)\nRStudio (Desktop Version), a free IDE for R, which can be downloaded from RStudio\nWe’ll be using Slack for most communication.",
+    "text": "Software\nGo to the Course Software page for detailed instructions on how to install the software we’ll be using. Here’s a quick list:\n\nR (version 4.1.0 or later), which can be downloaded from The Comprehensive R Archive Network (CRAN)\nPositron (Desktop version), a free IDE for R and Python. We will not be using RStudio this semester.\nClaude Code, the AI coding agent we’ll direct all semester to do our analysis work. This requires at least a Claude Pro subscription (not free – check Slack for whether the class has an institutional arrangement before paying for your own). You’re welcome to use a different agentic coding tool instead if you already have one set up (e.g. Gemini CLI, or OpenAI’s Codex CLI) – the underlying skills transfer – but all in-class instruction and course materials assume Claude Code, so you’re on your own for translating anything tool-specific.\nWe’ll be using Slack for most communication.",
     "crumbs": [
       "Syllabus"
     ]
@@ -577,28 +577,56 @@
     "href": "hw/9-maps-temp.html",
     "title": "Maps",
     "section": "",
-    "text": "Due: Nov 02 by 11:59pm\nWeight: This assignment is worth 1% of your final grade.\nPurpose: The purpose of this assignment is to learn some techniques for creating a special type of chart: maps. We will look at different types of maps and how to work with different types of geospatial data.\nAssessment: This assignment is graded using a check system:\n\n✔+ (110%): Responses shows phenomenal thought and engagement with the course content. I will not assign these often.\n✔ (100%): Responses are thoughtful, well-written, and show engagement with the course content. This is the expected level of performance.\n✔− (50%): Responses are hastily composed, too short, and/or only cursorily engages with the course content. This grade signals that you need to improve next time. I will hopefully not assign these often.\n\nNotice that this is essentially a pass/fail system. I’m not grading your writing ability and I’m not counting the number of words you write - I’m looking for thoughtful engagement. One or two sentences is not enough. Write at least a paragraph and show me that you did the readings assigned.\n\n\n1. Get Organized\nFollow these instructions:\n\nDownload and edit this template.\nUnzip the template folder. Make sure you actually unzip it! (in Windows, right-click it and use “extract all”)\nOpen the .Rproj file to open RStudio.\nInside RStudio, open the hw9.qmd file, take notes, and write some example code as you go through the readings / exercises below.\n\n\n\n2. Video\nWatch this video on map projections:\n\n\n\n\n3. Readings\nThis week we’ll learn about maps and geospatial data. Maps are a unique type of data viz, and often times they are inappropriately or inaccurately used. These readings will help you learn best practices when visualizing geospatial data:\n\nWilke: 15 - Visualizing geospatial data\nXKCD: Map projections\nHealy: 7 - Draw maps\nDrawing beautiful maps: Parts one, two, & three\n\n\n\n4. Reflect\n\nThis week, include in your reflection an image or link to a recent map you’ve seen (or one you thought was super interesting)\n\nReflect on what you’ve learned while going through these readings and exercises. Is there anything that jumped out at you? Anything you found particularly interesting or confusing?\nWrite at least a paragraph in your hw9.qmd file, and include at least one question. The teaching team will review the questions we get and will try to answer them either in Slack or in class.\nSome thoughts you may want to try in your reflection:\n\nWrite about an interesting data visualization about trends you’ve seen.\n“I used to think ______, now I think ______ 🤔”\nDiscuss some of the key insights or things you found interesting in the readings or recent class periods.\nConnect the course content to your own work or project you’re working on.\n\n\n\n5. Submit\nTo submit your assignment, follow these instructions:\n\nRender your .qmd file by either clicking the “Render” button in RStudio or running the command quarto::quarto_render(\"hw9.qmd\") command.\nOpen the rendered html file and make sure it looks good! Is all the formatting as you expected?\nCreate a zip file of all the files in your R project folder for this assignment and submit it on the corresponding assignment submission on Blackboard."
+    "text": "Due: Nov 02 by 11:59pm\nWeight: This assignment is worth 1% of your final grade.\nPurpose: The purpose of this assignment is to learn some techniques for creating a special type of chart: maps. We will look at different types of maps and how to work with different types of geospatial data.\nAssessment: This assignment is graded using a check system:\n\n✔+ (110%): Responses shows phenomenal thought and engagement with the course content. I will not assign these often.\n✔ (100%): Responses are thoughtful, well-written, and show engagement with the course content. This is the expected level of performance.\n✔− (50%): Responses are hastily composed, too short, and/or only cursorily engages with the course content. This grade signals that you need to improve next time. I will hopefully not assign these often.\n\nNotice that this is essentially a pass/fail system. I’m not grading your writing ability and I’m not counting the number of words you write - I’m looking for thoughtful engagement. One or two sentences is not enough. Write at least a paragraph and show me that you did the readings assigned."
+  },
+  {
+    "objectID": "hw/9-maps-temp.html#before-you-start-review",
+    "href": "hw/9-maps-temp.html#before-you-start-review",
+    "title": "Maps",
+    "section": "Before You Start: Review",
+    "text": "Before You Start: Review\nTake a few minutes to review last class, Polishing Charts: Colors; annotations; scales; themes; multi-panel figures\nWhat’s one thing from that class you’d want to revisit, or a question you didn’t get to ask?"
   },
   {
     "objectID": "hw/8-polishing-charts-temp.html",
     "href": "hw/8-polishing-charts-temp.html",
     "title": "Polishing Charts",
     "section": "",
-    "text": "Due: Oct 26 by 11:59pm\nWeight: This assignment is worth 1% of your final grade.\nPurpose: The purpose of this assignment is to learn some techniques for adding “polish” to your charts. We will start choosing colors and fonts more carefully, and we will also annotate our charts with informative text.\nAssessment: This assignment is graded using a check system:\n\n✔+ (110%): Responses shows phenomenal thought and engagement with the course content. I will not assign these often.\n✔ (100%): Responses are thoughtful, well-written, and show engagement with the course content. This is the expected level of performance.\n✔− (50%): Responses are hastily composed, too short, and/or only cursorily engages with the course content. This grade signals that you need to improve next time. I will hopefully not assign these often.\n\nNotice that this is essentially a pass/fail system. I’m not grading your writing ability and I’m not counting the number of words you write - I’m looking for thoughtful engagement. One or two sentences is not enough. Write at least a paragraph and show me that you did the readings assigned.\n\n\n1. Get Organized\nFollow these instructions:\n\nDownload and edit this template.\nUnzip the template folder. Make sure you actually unzip it! (in Windows, right-click it and use “extract all”)\nOpen the .Rproj file to open RStudio.\nInside RStudio, open the hw8.qmd file, take notes, and write some example code as you go through the readings / exercises below.\n\n\n\n2. Readings\nThis week we’ll get into the weeds with techniques for polishing up your charts. This is a critically important step for making your charts easy for others to understand and effective as a central tool for communicating important results. It’s also where you can be highly creative!\n\nHow to polish ggplot charts: R4DS Chapter 28 - Graphics for communication\nWilke: 4 - Color scales\nRost: Which color scale to use when visualizing data\n\n\n\nOptional\n\nWilke: 21 - Multi-panel figures\nCheck out the patchwork package for merging multiple charts together\nHow to make a multi-panel figure with a shared legend.\nCheck out this tool for simulating color blindness.\nCheck out these tools for customizing your Rmd file: PIMP my Rmd\n\n\n\n3. Practice polishing\nGo back to a previous figure you’ve made somewhere - in class, in a previous homework, etc. Using some of the principles in the readings you just read, try to make a more polished version of your figure. Can you customize the fonts? colors? Annotate it? Try to make a chart that is publication-ready.\n\n\n4. Reflect\n\nThis week, include in your reflection an image or link to a chart you’ve seen that you felt was really well-polished\n\nReflect on what you’ve learned while going through these readings and exercises. Is there anything that jumped out at you? Anything you found particularly interesting or confusing?\nWrite at least a paragraph in your hw8.qmd file, and include at least one question. The teaching team will review the questions we get and will try to answer them either in Slack or in class.\nSome thoughts you may want to try in your reflection:\n\nWrite about an interesting data visualization about trends you’ve seen.\n“I used to think ______, now I think ______ 🤔”\nDiscuss some of the key insights or things you found interesting in the readings or recent class periods.\nConnect the course content to your own work or project you’re working on.\n\n\n\n5. Submit\nTo submit your assignment, follow these instructions:\n\nRender your .qmd file by either clicking the “Render” button in RStudio or running the command quarto::quarto_render(\"hw8.qmd\") command.\nOpen the rendered html file and make sure it looks good! Is all the formatting as you expected?\nCreate a zip file of all the files in your R project folder for this assignment and submit it on the corresponding assignment submission on Blackboard."
+    "text": "Due: Oct 26 by 11:59pm\nWeight: This assignment is worth 1% of your final grade.\nPurpose: The purpose of this assignment is to learn some techniques for adding “polish” to your charts. We will start choosing colors and fonts more carefully, and we will also annotate our charts with informative text.\nAssessment: This assignment is graded using a check system:\n\n✔+ (110%): Responses shows phenomenal thought and engagement with the course content. I will not assign these often.\n✔ (100%): Responses are thoughtful, well-written, and show engagement with the course content. This is the expected level of performance.\n✔− (50%): Responses are hastily composed, too short, and/or only cursorily engages with the course content. This grade signals that you need to improve next time. I will hopefully not assign these often.\n\nNotice that this is essentially a pass/fail system. I’m not grading your writing ability and I’m not counting the number of words you write - I’m looking for thoughtful engagement. One or two sentences is not enough. Write at least a paragraph and show me that you did the readings assigned."
+  },
+  {
+    "objectID": "hw/8-polishing-charts-temp.html#before-you-start-review",
+    "href": "hw/8-polishing-charts-temp.html#before-you-start-review",
+    "title": "Polishing Charts",
+    "section": "Before You Start: Review",
+    "text": "Before You Start: Review\nTake a few minutes to review last class, Trends: Line charts; heat maps; animation\nWhat’s one thing from that class you’d want to revisit, or a question you didn’t get to ask?"
   },
   {
     "objectID": "hw/7-trends-temp.html",
     "href": "hw/7-trends-temp.html",
     "title": "Trends",
     "section": "",
-    "text": "Due: Oct 19 by 11:59pm\nWeight: This assignment is worth 1% of your final grade.\nPurpose: The purpose of this assignment is to learn some of the technical details of how to create charts that highlight trends, which inherently involve changes in values over time.\nAssessment: This assignment is graded using a check system:\n\n✔+ (110%): Responses shows phenomenal thought and engagement with the course content. I will not assign these often.\n✔ (100%): Responses are thoughtful, well-written, and show engagement with the course content. This is the expected level of performance.\n✔− (50%): Responses are hastily composed, too short, and/or only cursorily engages with the course content. This grade signals that you need to improve next time. I will hopefully not assign these often.\n\nNotice that this is essentially a pass/fail system. I’m not grading your writing ability and I’m not counting the number of words you write - I’m looking for thoughtful engagement. One or two sentences is not enough. Write at least a paragraph and show me that you did the readings assigned.\n\n\n1. Get Organized\nFollow these instructions:\n\nDownload and edit this template.\nUnzip the template folder. Make sure you actually unzip it! (in Windows, right-click it and use “extract all”)\nOpen the .Rproj file to open RStudio.\nInside RStudio, open the hw7.qmd file, take notes, and write some example code as you go through the readings / exercises below.\n\n\n\n2. Readings\nMost of the readings this week have code in them that illustrate how to create each chart type, and I encourage you to try and reproduce the examples provided in R yourself.\n\nWilke: 13 - Visualizing time series\nWilke: 14 - Visualizing trends\n\nSome examples of visualizations we’ll explore in class:\n\nThe “bar chart race”: Changes in how couples meet over time\nThe heatmap: How common is your birthday?\nTime-Series Heatmaps\n\nOptional:\n\nThe Sankey diagrams (a.k.a. flow chart)\nVideo: The fallen of WWII\n\n\n\n3. Video\nThis video by Hans Rosling is a great summary of his larger TED talk on the “gapminder” project he started showing life expectancy and GDP over time. This is an excellent example of using an animated chart to tell a much richer story than a static chart.\n\n\n\n\n4. Reflect\nReflect on what you’ve learned while going through these readings and exercises. Is there anything that jumped out at you? Anything you found particularly interesting or confusing?\nWrite at least a paragraph in your hw7.qmd file, and include at least one question. The teaching team will review the questions we get and will try to answer them either in Slack or in class.\nSome thoughts you may want to try in your reflection:\n\nWrite about an interesting data visualization about trends you’ve seen.\n“I used to think ______, now I think ______ 🤔”\nDiscuss some of the key insights or things you found interesting in the readings or recent class periods.\nConnect the course content to your own work or project you’re working on.\n\n\n\n5. Submit\nTo submit your assignment, follow these instructions:\n\nRender your .qmd file by either clicking the “Render” button in RStudio or running the command quarto::quarto_render(\"hw7.qmd\") command.\nOpen the rendered html file and make sure it looks good! Is all the formatting as you expected?\nCreate a zip file of all the files in your R project folder for this assignment and submit it on the corresponding assignment submission on Blackboard."
+    "text": "Due: Oct 19 by 11:59pm\nWeight: This assignment is worth 1% of your final grade.\nPurpose: The purpose of this assignment is to learn some of the technical details of how to create charts that highlight trends, which inherently involve changes in values over time.\nAssessment: This assignment is graded using a check system:\n\n✔+ (110%): Responses shows phenomenal thought and engagement with the course content. I will not assign these often.\n✔ (100%): Responses are thoughtful, well-written, and show engagement with the course content. This is the expected level of performance.\n✔− (50%): Responses are hastily composed, too short, and/or only cursorily engages with the course content. This grade signals that you need to improve next time. I will hopefully not assign these often.\n\nNotice that this is essentially a pass/fail system. I’m not grading your writing ability and I’m not counting the number of words you write - I’m looking for thoughtful engagement. One or two sentences is not enough. Write at least a paragraph and show me that you did the readings assigned."
+  },
+  {
+    "objectID": "hw/7-trends-temp.html#before-you-start-review",
+    "href": "hw/7-trends-temp.html#before-you-start-review",
+    "title": "Trends",
+    "section": "Before You Start: Review",
+    "text": "Before You Start: Review\nTake a few minutes to review last class, Comparisons: Facets; reference lines; dumbbells; slopes; distributions\nWhat’s one thing from that class you’d want to revisit, or a question you didn’t get to ask?"
   },
   {
     "objectID": "hw/6-comparisons-temp.html",
     "href": "hw/6-comparisons-temp.html",
     "title": "Comparisons",
     "section": "",
-    "text": "Due: Oct 12 by 11:59pm\nWeight: This assignment is worth 1% of your final grade.\nPurpose: The purpose of this assignment is to learn some of the technical details of how to create charts for comparing values to one another and / or to a benchmark.\nAssessment: This assignment is graded using a check system:\n\n✔+ (110%): Responses shows phenomenal thought and engagement with the course content. I will not assign these often.\n✔ (100%): Responses are thoughtful, well-written, and show engagement with the course content. This is the expected level of performance.\n✔− (50%): Responses are hastily composed, too short, and/or only cursorily engages with the course content. This grade signals that you need to improve next time. I will hopefully not assign these often.\n\nNotice that this is essentially a pass/fail system. I’m not grading your writing ability and I’m not counting the number of words you write - I’m looking for thoughtful engagement. One or two sentences is not enough. Write at least a paragraph and show me that you did the readings assigned.\n\n\n1. Get Organized\nFollow these instructions:\n\nDownload and edit this template.\nUnzip the template folder. Make sure you actually unzip it! (in Windows, right-click it and use “extract all”)\nOpen the .Rproj file to open RStudio.\nInside RStudio, open the hw6.qmd file, take notes, and write some example code as you go through the readings / exercises below.\n\n\n\n2. Readings\n\n“At the heart of quantitative reasoning is a single question: Compared to what?”\n– Edward Tufte\n\nMost of the readings this week have code in them that illustrate how to create each chart type, and I encourage you to try and reproduce a few of the examples provided in R yourself. You may also want to take a look at the top 50 ggplots, which contains examples with ggplot code to create 50 common visualizations.\n\nSlope charts\nBullet charts\nDumbell charts\nWilke: 7 - Visualizing distributions\nWilke: 9 - Visualizing many distributions at once\nDual-Scaled Axes in Graphs - Are They Ever the Best Solution?\n\n\n\n3. Make a Chart…or 3\nOnce you’ve read through everything, add a code chunk in your hw6.qmd file that creates one of the charts you saw in one of the readings. Cite the source of the chart. The goal is to try and reproduce the chart as closely as possible to how it looks in the reading. While it is okay to copy-paste code directly into your reflection, try to write the code yourself. Practicing the coding yourself is key to mastering these skills. You may need to modify the figure dimensions in the chunk settings.\nThen make more charts. Like other assignments, you’ll get as much out of this as you put in. There’s no hard requirement I’m looking for, but I do think you should practice making more than one chart. Think through carefully and be thoughtful about the design choices you’re making. Are you far enough along in your project to include a chart that you are thinking about for your project? Maybe try making that!\n\n\n4. Reflect\nReflect on what you’ve learned while going through these readings and exercises. Is there anything that jumped out at you? Anything you found particularly interesting or confusing?\nWrite at least a paragraph in your hw6.qmd file, and include at least one question. The teaching team will review the questions we get and will try to answer them either in Slack or in class.\nSome thoughts you may want to try in your reflection:\n\nWrite about one of the best (or worst) data visualizations you’ve seen.\n“I used to think ______, now I think ______ 🤔”\nDiscuss some of the key insights or things you found interesting in the readings or recent class periods.\nConnect the course content to your own work or project you’re working on.\n\n\n\n5. Submit\nTo submit your assignment, follow these instructions:\n\nRender your .qmd file by either clicking the “Render” button in RStudio or running the command quarto::quarto_render(\"hw6.qmd\") command.\nOpen the rendered html file and make sure it looks good! Is all the formatting as you expected?\nCreate a zip file of all the files in your R project folder for this assignment and submit it on the corresponding assignment submission on Blackboard."
+    "text": "Due: Oct 12 by 11:59pm\nWeight: This assignment is worth 1% of your final grade.\nPurpose: The purpose of this assignment is to learn some of the technical details of how to create charts for comparing values to one another and / or to a benchmark.\nAssessment: This assignment is graded using a check system:\n\n✔+ (110%): Responses shows phenomenal thought and engagement with the course content. I will not assign these often.\n✔ (100%): Responses are thoughtful, well-written, and show engagement with the course content. This is the expected level of performance.\n✔− (50%): Responses are hastily composed, too short, and/or only cursorily engages with the course content. This grade signals that you need to improve next time. I will hopefully not assign these often.\n\nNotice that this is essentially a pass/fail system. I’m not grading your writing ability and I’m not counting the number of words you write - I’m looking for thoughtful engagement. One or two sentences is not enough. Write at least a paragraph and show me that you did the readings assigned."
+  },
+  {
+    "objectID": "hw/6-comparisons-temp.html#before-you-start-review",
+    "href": "hw/6-comparisons-temp.html#before-you-start-review",
+    "title": "Comparisons",
+    "section": "Before You Start: Review",
+    "text": "Before You Start: Review\nTake a few minutes to review last class, Factors, Amounts, & Proportions: Manipulating factors; plotting amounts with bars, dots, and lollipops; parts of whole\nWhat’s one thing from that class you’d want to revisit, or a question you didn’t get to ask?"
   },
   {
     "objectID": "hw/5-factors-amounts-proportions-temp.html",
@@ -606,6 +634,13 @@
     "title": "Factors, Amounts, & Proportions",
     "section": "",
     "text": "Due: Oct 05 by 11:59pm\nWeight: This assignment is worth 1% of your final grade.\nPurpose: learn some of the technical details of how to write code to create “good” information visualizations that follow the design principles we discussed last week. We will focus on graphing amounts and proportions.\nAssessment: This assignment is graded using a check system:\n\n✔+ (110%): Responses shows phenomenal thought and engagement with the course content. I will not assign these often.\n✔ (100%): Responses are thoughtful, well-written, and show engagement with the course content. This is the expected level of performance.\n✔− (50%): Responses are hastily composed, too short, and/or only cursorily engages with the course content. This grade signals that you need to improve next time. I will hopefully not assign these often.\n\nNotice that this is essentially a pass/fail system. I’m not grading your writing ability and I’m not counting the number of words you write - I’m looking for thoughtful engagement. One or two sentences is not enough. Write at least a paragraph and show me that you did the readings assigned."
+  },
+  {
+    "objectID": "hw/5-factors-amounts-proportions-temp.html#before-you-start-review",
+    "href": "hw/5-factors-amounts-proportions-temp.html#before-you-start-review",
+    "title": "Factors, Amounts, & Proportions",
+    "section": "Before You Start: Review",
+    "text": "Before You Start: Review\nTake a few minutes to review last class, Visualizing Information: Psychology of graphical perception; preattentive attributes; ugly, bad, & wrong charts; chart design best practices\nWhat’s one thing from that class you’d want to revisit, or a question you didn’t get to ask?"
   },
   {
     "objectID": "hw/5-factors-amounts-proportions-temp.html#design-principles",
@@ -626,21 +661,42 @@
     "href": "hw/4-visualizing-information-temp.html",
     "title": "Visualizing Information",
     "section": "",
-    "text": "Due: Sep 28 by 11:59pm\nWeight: This assignment is worth 1% of your final grade.\nPurpose: The purpose of this assignment is to learn what makes a “good” information visualization, which is not entirely a subjective judgment. There are a wide variety of design principles available to help guide the creation of clear, effective information visualizations, many of which are rooted in research on human psychology.\nAssessment: This assignment is graded using a check system:\n\n✔+ (110%): Responses shows phenomenal thought and engagement with the course content. I will not assign these often.\n✔ (100%): Responses are thoughtful, well-written, and show engagement with the course content. This is the expected level of performance.\n✔− (50%): Responses are hastily composed, too short, and/or only cursorily engages with the course content. This grade signals that you need to improve next time. I will hopefully not assign these often.\n\nNotice that this is essentially a pass/fail system. I’m not grading your writing ability and I’m not counting the number of words you write - I’m looking for thoughtful engagement. One or two sentences is not enough. Write at least a paragraph and show me that you did the readings assigned.\n\n\n1. Get Organized\nFollow these instructions:\n\nDownload and edit this template.\nUnzip the template folder. Make sure you actually unzip it! (in Windows, right-click it and use “extract all”)\nOpen the .Rproj file to open RStudio.\nInside RStudio, open the hw4.qmd file, take notes, and write some example code as you go through the readings / exercises below.\n\n\n\n2. Read & Practice\n\n“Data visualization is part art and part science. The challenge is to get the art right without getting the science wrong and vice versa.”\n– Claus O. Wilke in Fundamentals of Data Visualization\n\n\nReadings on visualizing information\nThese two chapters cover a lot of excellent examples of what makes a chart “good” and “bad”—the focus of what we’ll talk about in class next week:\n\nHealy 1: Look at Data: What makes figures good and bad\nWilke 1: Introduction: Definitions of “ugly”, “bad”, and “wrong” figures\n\n\n\nVideo on the psychology of data viz\nWatch this 40-minute video titled “How humans see data”, by John Rauser. He discusses how we can exploit our understanding of human psychology to design effective charts (I’ll cover much of the same information in the video in class next week).\n\n\n\n\n\n\n\n3. Make a chart (or a bunch of charts)\nGo to the Data to Viz website and find a visualization that you find interesting. Then click on “R Graph Gallery” to view an example of how to make that types of chart in R using ggplot. In a code chunk, replicate that code and see if you can get it to run on your machine.\nThen make as many charts as you want. I recommend spending a little time trying to create more than one kind of chart using ggplot. For example, you could go back to the first day of class slides and try to create the bonus charts. Or you could review the homework on data visualization from my spring course and try to make a chart with one of the datasets from that assignment. Or go find something else, perhaps a dataset from your project! The more time you spend trying out things with ggplot, the more comfortable you will be with it. We’ll be using a LOT of ggplot in the coming month, so getting comfortable with ggplot is a good idea.\n\n\n4. Reflect\nReflect on what you’ve learned while going through these readings and exercises. Is there anything that jumped out at you? Anything you found particularly interesting or confusing?\nWrite at least a paragraph in your hw4.qmd file, and include at least one question. The teaching team will review the questions we get and will try to answer them either in Slack or in class.\nSome thoughts you may want to try in your reflection:\n\nWrite about one of the best (or worst) data visualizations you’ve seen.\n“I used to think ______, now I think ______ 🤔”\nDiscuss some of the key insights or things you found interesting in the readings or recent class periods.\nConnect the course content to your own work or project you’re working on.\n\n\n\n5. Submit\nTo submit your assignment, follow these instructions:\n\nRender your .qmd file by either clicking the “Render” button in RStudio or running the command quarto::quarto_render(\"hw4.qmd\") command.\nOpen the rendered html file and make sure it looks good! Is all the formatting as you expected?\nCreate a zip file of all the files in your R project folder for this assignment and submit it on the corresponding assignment submission on Blackboard."
+    "text": "Due: Sep 28 by 11:59pm\nWeight: This assignment is worth 1% of your final grade.\nPurpose: The purpose of this assignment is to learn what makes a “good” information visualization, which is not entirely a subjective judgment. There are a wide variety of design principles available to help guide the creation of clear, effective information visualizations, many of which are rooted in research on human psychology.\nAssessment: This assignment is graded using a check system:\n\n✔+ (110%): Responses shows phenomenal thought and engagement with the course content. I will not assign these often.\n✔ (100%): Responses are thoughtful, well-written, and show engagement with the course content. This is the expected level of performance.\n✔− (50%): Responses are hastily composed, too short, and/or only cursorily engages with the course content. This grade signals that you need to improve next time. I will hopefully not assign these often.\n\nNotice that this is essentially a pass/fail system. I’m not grading your writing ability and I’m not counting the number of words you write - I’m looking for thoughtful engagement. One or two sentences is not enough. Write at least a paragraph and show me that you did the readings assigned."
+  },
+  {
+    "objectID": "hw/4-visualizing-information-temp.html#before-you-start-review",
+    "href": "hw/4-visualizing-information-temp.html#before-you-start-review",
+    "title": "Visualizing Information",
+    "section": "Before You Start: Review",
+    "text": "Before You Start: Review\nTake a few minutes to review last class, Exploring Data: Data types & scales; centrality & variability; distributions; correlation\nWhat’s one thing from that class you’d want to revisit, or a question you didn’t get to ask?"
   },
   {
     "objectID": "hw/3-exploring-data-temp.html",
     "href": "hw/3-exploring-data-temp.html",
     "title": "Exploring Data",
     "section": "",
-    "text": "Due: Sep 21 by 11:59pm\nWeight: This assignment is worth 1% of your final grade.\nPurpose: The purpose of this assignment is to develop some basic strategies for exploring data sets to gain a greater understanding of the variable types as well as key relationships such as centrality, variability, and correlation\nAssessment: This assignment is graded using a check system:\n\n✔+ (110%): Responses shows phenomenal thought and engagement with the course content. I will not assign these often.\n✔ (100%): Responses are thoughtful, well-written, and show engagement with the course content. This is the expected level of performance.\n✔− (50%): Responses are hastily composed, too short, and/or only cursorily engages with the course content. This grade signals that you need to improve next time. I will hopefully not assign these often.\n\nNotice that this is essentially a pass/fail system. I’m not grading your writing ability and I’m not counting the number of words you write - I’m looking for thoughtful engagement. One or two sentences is not enough. Write at least a paragraph and show me that you did the readings assigned.\n\n\n1. Get Organized\nFollow these instructions:\n\nDownload and edit this template.\nUnzip the template folder. Make sure you actually unzip it! (in Windows, right-click it and use “extract all”)\nOpen the .Rproj file to open RStudio.\nInside RStudio, open the hw3.qmd file, take notes, and write some example code as you go through the readings / exercises below.\n\n\n\n2. Read & Practice\n\nR4DS - 7: Exploratory data analysis: Provides some more “hands on” strategies for exploring data using R and the ggplot2 library.\nWilke - 12: Visualizing associations: An overview of ways to visualize associations between two or more variables.\n“Beware Spurious Correlations”, Harvard Business Review (if you don’t have a subscription to see it, a backed up version can be found here).\nWatch this 20 minute video to learn about some basic data types and descriptive statistics.\nWatch this 15 minute video to learn about the basics of correlation measures.\n\n\nChoosing the right chart\nYou will want to choose different chart types depending on the relationship or message you want to convey. Fortunately, there are lots of great guides to help you make those choices.\n\nView a quick overview of many common plot types in Wilke - 5: Directory of visualizations.\nView the course site help page on choosing the right chart.\n\n\n\nOptional readings\nThe history of statistical correlation is rather ugly and routed in racism and eugenics. These readings discuss this topics in more detail:\n\nFrancis Galton pioneered scientific advances in many fields – but also founded the racist pseudoscience of eugenics\nColumn: The false, racist theory of eugenics once ruled science. Let’s never let that happen again\nListen to this Radiolab episode on eugenics.\n\n\n\n\n3. Reflect\nReflect on what you’ve learned while going through these readings and exercises. Is there anything that jumped out at you? Anything you found particularly interesting or confusing? Write at least a paragraph in your hw3.qmd file, and include at least one question. The teaching team will review the questions we get and will try to answer them either in Slack or in class.\nSome thoughts you may want to try in your reflection:\n\n“I used to think ______, now I think ______ 🤔”\nDiscuss some of the key insights or things you found interesting in the readings or recent class periods.\nConnect the course content to your own work or project you’re working on.\n\n\n\n4. Submit\nTo submit your assignment, follow these instructions:\n\nRender your .qmd file by either clicking the “Render” button in RStudio or running the command quarto::quarto_render(\"hw3.qmd\") command.\nOpen the rendered html file and make sure it looks good! Is all the formatting as you expected?\nCreate a zip file of all the files in your R project folder for this assignment and submit it on the corresponding assignment submission on Blackboard."
+    "text": "Due: Sep 21 by 11:59pm\nWeight: This assignment is worth 1% of your final grade.\nPurpose: The purpose of this assignment is to develop some basic strategies for exploring data sets to gain a greater understanding of the variable types as well as key relationships such as centrality, variability, and correlation\nAssessment: This assignment is graded using a check system:\n\n✔+ (110%): Responses shows phenomenal thought and engagement with the course content. I will not assign these often.\n✔ (100%): Responses are thoughtful, well-written, and show engagement with the course content. This is the expected level of performance.\n✔− (50%): Responses are hastily composed, too short, and/or only cursorily engages with the course content. This grade signals that you need to improve next time. I will hopefully not assign these often.\n\nNotice that this is essentially a pass/fail system. I’m not grading your writing ability and I’m not counting the number of words you write - I’m looking for thoughtful engagement. One or two sentences is not enough. Write at least a paragraph and show me that you did the readings assigned."
+  },
+  {
+    "objectID": "hw/3-exploring-data-temp.html#before-you-start-review",
+    "href": "hw/3-exploring-data-temp.html#before-you-start-review",
+    "title": "Exploring Data",
+    "section": "Before You Start: Review",
+    "text": "Before You Start: Review\nTake a few minutes to review last class, Cleaning, Reshaping & Joining: Tidy data; long vs. wide format; joins; changing data types; messy Excel files — all driven through Claude Code\nWhat’s one thing from that class you’d want to revisit, or a question you didn’t get to ask?"
   },
   {
     "objectID": "hw/2-cleaning-data-temp.html",
     "href": "hw/2-cleaning-data-temp.html",
     "title": "Cleaning Data",
     "section": "",
-    "text": "Due: Sep 07 by 11:59pm\nWeight: This assignment is worth 1% of your final grade.\nPurpose: The purpose of this assignment is learn some techniques for dealing with messy data. Most of the time, the raw data you get is in the wrong format and variables are not properly coded, so you will need to “clean” the data before starting any analysis. Other times the data will be split into two or more data sets, and you will need to “join” them together into a single data frame.\nAssessment: This assignment is graded using a check system:\n\n✔+ (110%): Responses shows phenomenal thought and engagement with the course content. I will not assign these often.\n✔ (100%): Responses are thoughtful, well-written, and show engagement with the course content. This is the expected level of performance.\n✔− (50%): Responses are hastily composed, too short, and/or only cursorily engages with the course content. This grade signals that you need to improve next time. I will hopefully not assign these often.\n\nNotice that this is essentially a pass/fail system. I’m not grading your writing ability and I’m not counting the number of words you write - I’m looking for thoughtful engagement. One or two sentences is not enough. Write at least a paragraph and show me that you did the readings assigned.\n\n\n1. Get Organized\nFollow these instructions:\n\nDownload and edit this template.\nUnzip the template folder. Make sure you actually unzip it! (in Windows, right-click it and use “extract all”)\nOpen the .Rproj file to open RStudio.\nInside RStudio, open the hw2.qmd file, take notes, and write some example code as you go through the readings / exercises below.\n\n\n\n2. Read & Practice\n\nStat 545 chapter 15 on joining two tables\nTips for Cleaning Messy Data in R\nAlison Hill had an excellent free course on DataCamp called Working with Data in the Tidyverse, but it was unfortunately archived. The content she covered though was made available as a single webpage version that is archived here. The whole course is quite useful for learning some data cleaning skills. In particular, I suggest going through parts 2 (“Tame your data”) and 4 (“Transform your data”) to be best-prepared for dealing with messy real-world data.\nUse AI to Practice Joining Data: Open ChatGPT, Claude, or whatever AI tools you prefer and start a chat to practice the concept of joins. Ask the AI questions about what it gives you to make sure you understand the concept. Are you certain the AI is giving you good code? Play around with it and see if chatting with the AI is helpful. Include the link to your chat in your submission if you have one. Here is an example prompt (feel free to experiment with other prompts):\n\n\nI'm practicing the concept of joining data frames in R. Provide me an example of two datasets that have a common column and then show me R code for how to join them using the tidyverse. Afterwards, show several more slightly more complicated examples where the column names don't align, etc. In each case, explain your reasoning first, then show me the code.\n\n\n\n3. Reflect\nReflect on what you’ve learned while going through these readings and exercises. Is there anything that jumped out at you? Anything you found particularly interesting or confusing? Write at least a paragraph in your hw2.qmd file, and include at least one question. The teaching team will review the questions we get and will try to answer them either in Slack or in class.\nSome thoughts you may want to try in your reflection:\n\n“I used to think ______, now I think ______ 🤔”\nDiscuss some of the key insights or things you found interesting in the readings or recent class periods.\nWrite about the messiest data you’ve seen.\nConnect the course content to your own work or project you’re working on.\n\n\n\n4. Submit\nTo submit your assignment, follow these instructions:\n\nRender your .qmd file by either clicking the “Render” button in RStudio or running the command quarto::quarto_render(\"hw2.qmd\") command.\nOpen the rendered html file and make sure it looks good! Is all the formatting as you expected?\nCreate a zip file of all the files in your R project folder for this assignment and submit it on the corresponding assignment submission on Blackboard."
+    "text": "Due: Sep 07 by 11:59pm\nWeight: This assignment is worth 1% of your final grade.\nPurpose: The purpose of this assignment is learn some techniques for dealing with messy data. Most of the time, the raw data you get is in the wrong format and variables are not properly coded, so you will need to “clean” the data before starting any analysis. Other times the data will be split into two or more data sets, and you will need to “join” them together into a single data frame.\nAssessment: This assignment is graded using a check system:\n\n✔+ (110%): Responses shows phenomenal thought and engagement with the course content. I will not assign these often.\n✔ (100%): Responses are thoughtful, well-written, and show engagement with the course content. This is the expected level of performance.\n✔− (50%): Responses are hastily composed, too short, and/or only cursorily engages with the course content. This grade signals that you need to improve next time. I will hopefully not assign these often.\n\nNotice that this is essentially a pass/fail system. I’m not grading your writing ability and I’m not counting the number of words you write - I’m looking for thoughtful engagement. One or two sentences is not enough. Write at least a paragraph and show me that you did the readings assigned."
+  },
+  {
+    "objectID": "hw/2-cleaning-data-temp.html#before-you-start-review",
+    "href": "hw/2-cleaning-data-temp.html#before-you-start-review",
+    "title": "Cleaning Data",
+    "section": "Before You Start: Review",
+    "text": "Before You Start: Review\nTake a few minutes to review last class, Agentic Workflows & GitHub Desktop: Version control with GitHub Desktop (no command line); setting up Claude Code in Positron; your first AI-assisted data import\nWhat’s one thing from that class you’d want to revisit, or a question you didn’t get to ask?"
   },
   {
     "objectID": "hw/11-story-telling.html",
@@ -661,165 +717,28 @@
     "href": "hw/1-tidy-data-temp.html",
     "title": "Tidy Data",
     "section": "",
-    "text": "Due: Aug 31 by 11:59pm\nWeight: This assignment is worth 1% of your final grade.\nPurpose: The purpose of this assignment is to introduce yourself to the “tidy data” concept and to practice modifying data frames between long and wide formats in R.\nAssessment: This assignment is graded using a check system:\n\n✔+ (110%): Responses shows phenomenal thought and engagement with the course content. I will not assign these often.\n✔ (100%): Responses are thoughtful, well-written, and show engagement with the course content. This is the expected level of performance.\n✔− (50%): Responses are hastily composed, too short, and/or only cursorily engages with the course content. This grade signals that you need to improve next time. I will hopefully not assign these often.\n\nNotice that this is essentially a pass/fail system. I’m not grading your writing ability and I’m not counting the number of words you write - I’m looking for thoughtful engagement. One or two sentences is not enough. Write at least a paragraph and show me that you did the readings assigned.\n\n\n1. Software\nIf you haven’t yet, go to the Course Software page and install all the software we’ll need for this course. You’ll need these tools for this assignment.\n\n\n2. Get Organized\nFollow these instructions:\n\nDownload and edit this template.\nUnzip the template folder. Make sure you actually unzip it! (in Windows, right-click it and use “extract all”)\nOpen the .Rproj file to open RStudio.\nInside RStudio, open the hw1.qmd file, take notes, and write some example code as you go through the readings / exercises below.\n\n\n\n3. Readings & Exercises\n\nGetting Familiar with the Course: Follow Snoop’s advice and read the entire Course Syllabus (actually read the whole thing). Then review the schedule and make sure to note important upcoming deadlines.\nGetting Familiar with Tidy Data: Read this tidyverse article explaining the concept of tidy data. In your hw1.qmd, copy some of the examples into a code chunk and run them to see the results of converting data between long and wide formats.\nUse AI to Practice Reshaping Messy Data: Open ChatGPT, Claude, or whatever AI tools you prefer and start a chat to practice the concept of reshaping data into long and wide formats. Ask the AI questions about what it gives you to make sure you understand the concept. Are you certain the AI is giving you good code? Play around with it and see if chatting with the AI is helpful. Include the link to your chat in your submission if you have one. Here is an example prompt (feel free to experiment with other prompts):\n\n\nI'm practicing the concept of tidy data in R. Provide me an example dataset in wide format and then show me R code for how to convert it to long format. Afterwards, do the opposite - show me an example of a dataset in long format and show me R code for how to convert it to wide format.  In each case, explain your reasoning first, then show me the code.\n\n\nOptional\n\nChapter 6 in Hadley Wickham’s R4DS book covers more detail on the concept of tidy data with even more examples. It’s worth reading through for a more comprehensive understanding.\nChapter 3 in the YARDBook also covers tidy data.\nChapter 29 in Hadley Wickham’s R4DS book is a great introduction to Quarto. I highly recommend taking a look through it to get a better understanding of Quarto (we’ll be using it the whole semester!).\n\n\n\n\n4. Reflect\nReflect on what you’ve learned while going through these readings and exercises. Is there anything that jumped out at you? Anything you found particularly interesting or confusing? Write at least a paragraph in your hw1.qmd file, and include at least one question. The teaching team will review the questions we get and will try to answer them either in Slack or in class.\nIf you’re unsure where to start with a reflection, try filling out this template:\n\n“I used to think ______, now I think ______ 🤔”\n\n\n\n5. Submit\nTo submit your assignment, follow these instructions:\n\nRender your .qmd file by either clicking the “Render” button in RStudio or running the command quarto::quarto_render(\"hw1.qmd\") command.\nOpen the rendered html file and make sure it looks good! Is all the formatting as you expected?\nCreate a zip file of all the files in your R project folder for this assignment and submit it on the corresponding assignment submission on Blackboard."
+    "text": "Due: Aug 31 by 11:59pm\nWeight: This assignment is worth 1% of your final grade.\nPurpose: The purpose of this assignment is to introduce yourself to the “tidy data” concept and to practice modifying data frames between long and wide formats in R.\nAssessment: This assignment is graded using a check system:\n\n✔+ (110%): Responses shows phenomenal thought and engagement with the course content. I will not assign these often.\n✔ (100%): Responses are thoughtful, well-written, and show engagement with the course content. This is the expected level of performance.\n✔− (50%): Responses are hastily composed, too short, and/or only cursorily engages with the course content. This grade signals that you need to improve next time. I will hopefully not assign these often.\n\nNotice that this is essentially a pass/fail system. I’m not grading your writing ability and I’m not counting the number of words you write - I’m looking for thoughtful engagement. One or two sentences is not enough. Write at least a paragraph and show me that you did the readings assigned."
   },
   {
-    "objectID": "finding-data.html",
-    "href": "finding-data.html",
-    "title": "Finding Data",
-    "section": "",
-    "text": "The world is full of data, but sometimes finding it can be difficult. As a starting point, GW libraries has an excellent set of Research Guides that can be helpful. Depending on your research question, searching Google can also lead to good sources.\nHere are some other resources:\n\nLarge, search-able sites\nBasically like running a Google search but only for data sets:\n\nGoogle Dataset Search\nQuandl: Over 2 million financial, economic, and social datasets.\nWharton Research Data Services: Single-point access to over 200 terabytes of data across multiple disciplines, including Finance, Marketing, and Economics.\n\n\n\nWebsites\nA collection of various websites that have lots of interesting datasets:\n\n“Tidy Tuesday” challenges: Wide variety of datasets for data visualization practice. See many of the visualizations others have created here.\n“Makeover Monday” challenges: Wide variety of datasets for data visualization practice.\nTableau Community Forums: Sometimes you’ll find some interesting datasets in here.\n“Data is Beautiful” subreddit: Feed of user-generated data visualizations, though quality varies substantially.\nKaggle: Hosts machine learning competitions, and as a result has lots of really interesting data sets open to the public.\n\n\n\nPackages\nMany packages contain interesting datasets. If you can find a package with data, it will usually be nicely-formatted 😄\nHere is a table of lots of packages that contain multiple dataset. Some of my favorites are:\n\ndslabs\nDAAG\nMASS\n\nIn addition, some packages exclusively just contain datasets, such as:\n\nfivethirtyeight: Datasets and code published by the data journalism website ‘FiveThirtyEight’, available at https://github.com/fivethirtyeight/data\ngapminder\nbabynames\nnycflights13\nfueleconomy\nnasaweather\nusdanutrients\n\n\n\nGovernment-ish sources:\n“Government-ish” because while some of these sites host government data, the sites themselves may or may not be affiliated with a government agency:\n\nUS Open Gov Data: links to federal and non-federal sources in US and abroad\nUS City Open Data Census: Open data from more than 100 U.S. cities.\nOpen Africa\nEU Open Data Portal\nChina data: Various datasets on China posted by Gang He.\n\n\n\nEnergy data\nSince I happen to work with energy data a lot, here’s some common go-to sources:\n\nChina Energy Portal Statistics: Loads of energy statistics from China.\nU.S. Energy Information Administration: from Wikipedia: the “principal agency of the U.S. Federal Statistical System responsible for collecting, analyzing, and disseminating energy information to promote sound policymaking, efficient markets, and public understanding of energy and its interaction with the economy and the environment. EIA programs cover data on coal, petroleum, natural gas, electric, renewable and nuclear energy. EIA is part of the U.S. Department of Energy.”\nEnvironmental Performance Index, Yale University: Ranks 163 countries on 25 performance indicators tracked across ten policy categories covering both environmental public health and ecosystem vitality. These indicators provide a gauge at a national government scale of how close countries are to established environmental policy goals.\n\n\n\nSpatial data\n\nhttp://freegisdata.rtwilson.com/\nhttps://data.nasa.gov/\nhttps://planet.parts/\nhttps://www.efi.int/knowledge/maps/forest\nhttps://land.copernicus.eu/\nhttps://maps.elie.ucl.ac.be/CCI/viewer/\nhttps://www.ecad.eu//dailydata/predefinedseries.php\nhttp://www.worldclim.org/version2\nhttps://www.geoportal.org/\nhttps://scihub.copernicus.eu/\nhttps://sedac.ciesin.columbia.edu/\nhttps://earthexplorer.usgs.gov/",
-    "crumbs": [
-      "Finding Data"
-    ]
+    "objectID": "hw/1-tidy-data-temp.html#before-you-start-review",
+    "href": "hw/1-tidy-data-temp.html#before-you-start-review",
+    "title": "Tidy Data",
+    "section": "Before You Start: Review",
+    "text": "Before You Start: Review\nTake a few minutes to review last class, Getting Started & Refresher: What EDA is and why it matters; an abbreviated tidyverse & ggplot refresher (read the code, don’t write it); a preview of the agentic workflow\nWhat’s one thing from that class you’d want to revisit, or a question you didn’t get to ask?"
   },
   {
-    "objectID": "course-primer.html",
-    "href": "course-primer.html",
-    "title": "Course Primer",
+    "objectID": "hw/1-agentic-workflows-temp.html",
+    "href": "hw/1-agentic-workflows-temp.html",
+    "title": "Agentic Workflows",
     "section": "",
-    "text": "Students should have taken EMSE 4571 / 6571: Intro to Programming for Analytics prior to taking this course.\nFor those who did not, I strongly suggest you go through all the lessons in this primer course:\n\nR for Analytics Primer\n\nAfter completing these lessons, you should be able to:\n\nUse RStudio to write basic R commands.\nKnow the distinctions between different R operators and data types, including numeric, string, and logical data.\nUse tidyverse functions to wrangle and manipulate data in R.\nUse the ggplot2 library to create plots in R.\n\nAlso, it can be very helpful to see these skills applied in practice. Take a look at this example of using Tidyverse tools to explore and visualize data on survivors aboard the Titantic. It’s a good example of conducting an Exploratory Data Analysis to gain insights about a data set."
+    "text": "Due: Aug 31 by 11:59pm\nWeight: This assignment is worth 1% of your final grade.\nPurpose: This course is built around a fundamental shift in how we do data analysis. We used to live in a paradigm where we hand-wrote every line of code. No more. Instead, we now direct an AI coding agent (Claude Code) to do the majority of the coding while our job changes to supervising, verifying, and taking responsibility for the resulting analysis produced by the code. This assignment is designed to make sure you have all your tools installed and properly configured and to ensure you can have productive conversations with an AI agent. Going forward, we will focus class time on working with agents them rather than troubleshooting installations and configurations.\nAssessment: This assignment is graded using a check system:\n\n✔+ (110%): Responses shows phenomenal thought and engagement with the course content. I will not assign these often.\n✔ (100%): Responses are thoughtful, well-written, and show engagement with the course content. This is the expected level of performance.\n✔− (50%): Responses are hastily composed, too short, and/or only cursorily engages with the course content. This grade signals that you need to improve next time. I will hopefully not assign these often.\n\nNotice that this is essentially a pass/fail system. I’m not grading your writing ability and I’m not counting the number of words you write - I’m looking for thoughtful engagement. One or two sentences is not enough. Write at least a paragraph and show me that you did the readings assigned."
   },
   {
-    "objectID": "course-primer.html#this-assignment-is-optional",
-    "href": "course-primer.html#this-assignment-is-optional",
-    "title": "Course Primer",
-    "section": "",
-    "text": "Students should have taken EMSE 4571 / 6571: Intro to Programming for Analytics prior to taking this course.\nFor those who did not, I strongly suggest you go through all the lessons in this primer course:\n\nR for Analytics Primer\n\nAfter completing these lessons, you should be able to:\n\nUse RStudio to write basic R commands.\nKnow the distinctions between different R operators and data types, including numeric, string, and logical data.\nUse tidyverse functions to wrangle and manipulate data in R.\nUse the ggplot2 library to create plots in R.\n\nAlso, it can be very helpful to see these skills applied in practice. Take a look at this example of using Tidyverse tools to explore and visualize data on survivors aboard the Titantic. It’s a good example of conducting an Exploratory Data Analysis to gain insights about a data set."
-  },
-  {
-    "objectID": "class/9-trends.html",
-    "href": "class/9-trends.html",
-    "title": "Trends",
-    "section": "",
-    "text": "Coming soon!"
-  },
-  {
-    "objectID": "class/7-factors-amounts-proportions.html",
-    "href": "class/7-factors-amounts-proportions.html",
-    "title": "Factors, Amounts, & Proportions",
-    "section": "",
-    "text": "Coming soon!"
-  },
-  {
-    "objectID": "class/5-exploring-data.html",
-    "href": "class/5-exploring-data.html",
-    "title": "Exploring Data",
-    "section": "",
-    "text": "Coming soon!"
-  },
-  {
-    "objectID": "class/3-cleaning-data.html",
-    "href": "class/3-cleaning-data.html",
-    "title": "Cleaning Data",
-    "section": "",
-    "text": "Coming soon!"
-  },
-  {
-    "objectID": "class/15-final-presentations.html",
-    "href": "class/15-final-presentations.html",
-    "title": "Final Presentations",
-    "section": "",
-    "text": "Coming soon!"
-  },
-  {
-    "objectID": "class/13-workshop-final-analysis.html",
-    "href": "class/13-workshop-final-analysis.html",
-    "title": "Final Analysis Workshop",
-    "section": "",
-    "text": "No class this week - sign up HERE for your final workshop meeting with Professor Helveston"
-  },
-  {
-    "objectID": "class/11-maps.html",
-    "href": "class/11-maps.html",
-    "title": "Maps",
-    "section": "",
-    "text": "Coming soon!"
-  },
-  {
-    "objectID": "class/1-getting-started.html",
-    "href": "class/1-getting-started.html",
-    "title": "Getting Started",
-    "section": "",
-    "text": "Coming soon!"
-  },
-  {
-    "objectID": "LICENSE.html",
-    "href": "LICENSE.html",
-    "title": "Licensing and copyright information",
-    "section": "",
-    "text": "The course material is licensed under the Creative Commons ShareAlike 4.0 International License. In addition to my own developed material, I have also modified material from the courses, workshops, and textbooks listed below:\n\nCourses / workshops\n\n\n\nName\nAuthor(s)\nLinks\n\n\n\n\nSTAT 545\nU. of British Columbia\ncourse; GitHub\n\n\nPatrick Meyer’s Youtube lectures\nProf. Patrick Meyer\nplaylists\n\n\nAndrew Heiss’s data viz courses\nAndrew Heiss\nMPA 635, more here\n\n\nIntro. to Data Visualization, Fall 2018\nPeter Aldhous\ncourse site\n\n\n\n\n\nBooks\n\n\n\nName\nAuthor(s)\nLinks\n\n\n\n\nR for Data Science\nGarrett Grolemund & Hadley Wickham\nonline book; GitHub; purchase\n\n\nData Visualization: A practical introduction\nKieran Healy\nonline book; GitHub; purchase\n\n\nFundamentals of Data Visualization\nClaus O. Wilke\nonline book; purchase",
-    "crumbs": [
-      "Other",
-      "License"
-    ]
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "This course provides students with a foundation in exploring data using the R programming language. Students will learn how to source, manage, transform, and explore a wide variety of data types. Students will also master the fundamental concepts for visualizing and communicating information contained in raw data, including the human psychology of visual information processing. All analyses will be conducted to support reproducibility from raw data to results using Quarto (which is built on the ideas of RMarkdown). Teaching will involve interactive lectures with plenty of class time spent working on examples and coding. Students will be assessed through in-class quizzes, reading reflections, and exploratory projects. Throughout the semester, students will work on a research project of their own design to demonstrate mastery of the course’s topics. At the end of the semester, students will submit a final, reproducible report of their project along with a 10-minute video presentation of their findings.\nThis course was inspired by many other courses / resources that cover similar material. In addition to my own developed material, I have also modified material from other courses and workshops - a full list of sources can be found in the LICENSE page.\nThis course was originally created by Dr. John Paul Helveston at the George Washington University for the Spring 2020 semester.",
-    "crumbs": [
-      "Other",
-      "About"
-    ]
-  },
-  {
-    "objectID": "class/10-polishing-charts.html",
-    "href": "class/10-polishing-charts.html",
-    "title": "Polishing Charts",
-    "section": "",
-    "text": "Coming soon!"
-  },
-  {
-    "objectID": "class/12-interactivity.html",
-    "href": "class/12-interactivity.html",
-    "title": "Interactivity",
-    "section": "",
-    "text": "Coming soon!"
-  },
-  {
-    "objectID": "class/14-story-telling.html",
-    "href": "class/14-story-telling.html",
-    "title": "Story Telling",
-    "section": "",
-    "text": "Coming soon!"
-  },
-  {
-    "objectID": "class/2-agentic-workflows.html",
-    "href": "class/2-agentic-workflows.html",
-    "title": "Agentic Workflows & GitHub Desktop",
-    "section": "",
-    "text": "Coming soon!"
-  },
-  {
-    "objectID": "class/4-workshop-proposals.html",
-    "href": "class/4-workshop-proposals.html",
-    "title": "Project Proposal Workshop",
-    "section": "",
-    "text": "No class this week - sign up HERE for your team proposal meeting with Professor Helveston"
-  },
-  {
-    "objectID": "class/6-visualizing-information.html",
-    "href": "class/6-visualizing-information.html",
-    "title": "Visualizing Information",
-    "section": "",
-    "text": "Coming soon!"
-  },
-  {
-    "objectID": "class/8-comparisons.html",
-    "href": "class/8-comparisons.html",
-    "title": "Comparisons",
-    "section": "",
-    "text": "Coming soon!"
-  },
-  {
-    "objectID": "class/interviews.html",
-    "href": "class/interviews.html",
-    "title": "Final Interviews",
-    "section": "",
-    "text": "Due: Students will sign up for individual meetings during finals week (Dec 07 - 08).\nWeight: This assignment is worth 10% of your final grade.\nAssessment: Your submission will be assessed using the rubric at the bottom of this page.\n\nThe instructor will hold a 10-minute one-on-one interview with each student. The interview will consist of questions about your final project as well as questions about core concepts covered during the course.\nSome suggestions:\n\nBring water to drink - it will calm you when you are nervous and your mouth dries up. You can also pause and think while you drink.\nDon’t answer right away - think a bit.\nAnswer the question asked. Don’t try to impress or I will ask more questions.\nDon’t say “I don’t know.” Try and I will help you.\n\n\nGrading Rubric\n\n100 Total Points\nYou will be asked 10 questions; for each question, you will be assigned points based on this scale:\n\n\n\nPoints\nDescription\n\n\n\n\n10\nAnswers immediately and correctly without hesitation\n\n\n9\nAnswers correctly after some initial struggles\n\n\n8\nAnswers mostly correct after some time\n\n\n7\nAnswers mostly correct after some time and some help\n\n\n6\nAnswers mostly correctly after considerable help\n\n\n5\nPoor or partial answer, even after considerable help\n\n\n0\nCannot answer even with considerable help"
+    "objectID": "hw/1-agentic-workflows-temp.html#before-you-start-review",
+    "href": "hw/1-agentic-workflows-temp.html#before-you-start-review",
+    "title": "Agentic Workflows",
+    "section": "Before You Start: Review",
+    "text": "Before You Start: Review\nTake a few minutes to review last class, Getting Started & Refresher: What EDA is and why it matters; an abbreviated tidyverse & ggplot refresher (read the code, don’t write it); a preview of the agentic workflow\nWhat’s one thing from that class you’d want to revisit, or a question you didn’t get to ask?"
   },
   {
     "objectID": "faq.html",
@@ -952,6 +871,164 @@
     ]
   },
   {
+    "objectID": "class/interviews.html",
+    "href": "class/interviews.html",
+    "title": "Final Interviews",
+    "section": "",
+    "text": "Due: Students will sign up for individual meetings during finals week (Dec 07 - 08).\nWeight: This assignment is worth 10% of your final grade.\nAssessment: Your submission will be assessed using the rubric at the bottom of this page.\n\nThe instructor will hold a 10-minute one-on-one interview with each student. The interview will consist of questions about your final project as well as questions about core concepts covered during the course.\nSome suggestions:\n\nBring water to drink - it will calm you when you are nervous and your mouth dries up. You can also pause and think while you drink.\nDon’t answer right away - think a bit.\nAnswer the question asked. Don’t try to impress or I will ask more questions.\nDon’t say “I don’t know.” Try and I will help you.\n\n\nGrading Rubric\n\n100 Total Points\nYou will be asked 10 questions; for each question, you will be assigned points based on this scale:\n\n\n\nPoints\nDescription\n\n\n\n\n10\nAnswers immediately and correctly without hesitation\n\n\n9\nAnswers correctly after some initial struggles\n\n\n8\nAnswers mostly correct after some time\n\n\n7\nAnswers mostly correct after some time and some help\n\n\n6\nAnswers mostly correctly after considerable help\n\n\n5\nPoor or partial answer, even after considerable help\n\n\n0\nCannot answer even with considerable help"
+  },
+  {
+    "objectID": "class/8-comparisons.html",
+    "href": "class/8-comparisons.html",
+    "title": "Comparisons",
+    "section": "",
+    "text": "Coming soon!"
+  },
+  {
+    "objectID": "class/6-visualizing-information.html",
+    "href": "class/6-visualizing-information.html",
+    "title": "Visualizing Information",
+    "section": "",
+    "text": "Coming soon!"
+  },
+  {
+    "objectID": "class/4-workshop-proposals.html",
+    "href": "class/4-workshop-proposals.html",
+    "title": "Project Proposal Workshop",
+    "section": "",
+    "text": "No class this week - sign up HERE for your team proposal meeting with Professor Helveston"
+  },
+  {
+    "objectID": "class/2-agentic-workflows.html",
+    "href": "class/2-agentic-workflows.html",
+    "title": "Agentic Workflows & GitHub Desktop",
+    "section": "",
+    "text": "Coming soon!"
+  },
+  {
+    "objectID": "class/14-story-telling.html",
+    "href": "class/14-story-telling.html",
+    "title": "Story Telling",
+    "section": "",
+    "text": "Coming soon!"
+  },
+  {
+    "objectID": "class/12-interactivity.html",
+    "href": "class/12-interactivity.html",
+    "title": "Interactivity",
+    "section": "",
+    "text": "Coming soon!"
+  },
+  {
+    "objectID": "class/10-polishing-charts.html",
+    "href": "class/10-polishing-charts.html",
+    "title": "Polishing Charts",
+    "section": "",
+    "text": "Coming soon!"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "This course provides students with a foundation in exploring data using the R programming language. Students will learn how to source, manage, transform, and explore a wide variety of data types. Students will also master the fundamental concepts for visualizing and communicating information contained in raw data, including the human psychology of visual information processing. All analyses will be conducted to support reproducibility from raw data to results using Quarto (which is built on the ideas of RMarkdown). Teaching will involve interactive lectures with plenty of class time spent working on examples and coding. Students will be assessed through in-class quizzes, reading reflections, and exploratory projects. Throughout the semester, students will work on a research project of their own design to demonstrate mastery of the course’s topics. At the end of the semester, students will submit a final, reproducible report of their project along with a 10-minute video presentation of their findings.\nThis course was inspired by many other courses / resources that cover similar material. In addition to my own developed material, I have also modified material from other courses and workshops - a full list of sources can be found in the LICENSE page.\nThis course was originally created by Dr. John Paul Helveston at the George Washington University for the Spring 2020 semester.",
+    "crumbs": [
+      "Other",
+      "About"
+    ]
+  },
+  {
+    "objectID": "LICENSE.html",
+    "href": "LICENSE.html",
+    "title": "Licensing and copyright information",
+    "section": "",
+    "text": "The course material is licensed under the Creative Commons ShareAlike 4.0 International License. In addition to my own developed material, I have also modified material from the courses, workshops, and textbooks listed below:\n\nCourses / workshops\n\n\n\nName\nAuthor(s)\nLinks\n\n\n\n\nSTAT 545\nU. of British Columbia\ncourse; GitHub\n\n\nPatrick Meyer’s Youtube lectures\nProf. Patrick Meyer\nplaylists\n\n\nAndrew Heiss’s data viz courses\nAndrew Heiss\nMPA 635, more here\n\n\nIntro. to Data Visualization, Fall 2018\nPeter Aldhous\ncourse site\n\n\n\n\n\nBooks\n\n\n\nName\nAuthor(s)\nLinks\n\n\n\n\nR for Data Science\nGarrett Grolemund & Hadley Wickham\nonline book; GitHub; purchase\n\n\nData Visualization: A practical introduction\nKieran Healy\nonline book; GitHub; purchase\n\n\nFundamentals of Data Visualization\nClaus O. Wilke\nonline book; purchase",
+    "crumbs": [
+      "Other",
+      "License"
+    ]
+  },
+  {
+    "objectID": "class/1-getting-started.html",
+    "href": "class/1-getting-started.html",
+    "title": "Getting Started",
+    "section": "",
+    "text": "Coming soon!"
+  },
+  {
+    "objectID": "class/11-maps.html",
+    "href": "class/11-maps.html",
+    "title": "Maps",
+    "section": "",
+    "text": "Coming soon!"
+  },
+  {
+    "objectID": "class/13-workshop-final-analysis.html",
+    "href": "class/13-workshop-final-analysis.html",
+    "title": "Final Analysis Workshop",
+    "section": "",
+    "text": "No class this week - sign up HERE for your final workshop meeting with Professor Helveston"
+  },
+  {
+    "objectID": "class/15-final-presentations.html",
+    "href": "class/15-final-presentations.html",
+    "title": "Final Presentations",
+    "section": "",
+    "text": "Coming soon!"
+  },
+  {
+    "objectID": "class/3-cleaning-data.html",
+    "href": "class/3-cleaning-data.html",
+    "title": "Cleaning Data",
+    "section": "",
+    "text": "Coming soon!"
+  },
+  {
+    "objectID": "class/5-exploring-data.html",
+    "href": "class/5-exploring-data.html",
+    "title": "Exploring Data",
+    "section": "",
+    "text": "Coming soon!"
+  },
+  {
+    "objectID": "class/7-factors-amounts-proportions.html",
+    "href": "class/7-factors-amounts-proportions.html",
+    "title": "Factors, Amounts, & Proportions",
+    "section": "",
+    "text": "Coming soon!"
+  },
+  {
+    "objectID": "class/9-trends.html",
+    "href": "class/9-trends.html",
+    "title": "Trends",
+    "section": "",
+    "text": "Coming soon!"
+  },
+  {
+    "objectID": "course-primer.html",
+    "href": "course-primer.html",
+    "title": "Course Primer",
+    "section": "",
+    "text": "Students should have taken EMSE 4571 / 6571: Intro to Programming for Analytics prior to taking this course.\nFor those who did not, I strongly suggest you go through all the lessons in this primer course:\n\nR for Analytics Primer\n\nAfter completing these lessons, you should be able to:\n\nUse RStudio to write basic R commands.\nKnow the distinctions between different R operators and data types, including numeric, string, and logical data.\nUse tidyverse functions to wrangle and manipulate data in R.\nUse the ggplot2 library to create plots in R.\n\nAlso, it can be very helpful to see these skills applied in practice. Take a look at this example of using Tidyverse tools to explore and visualize data on survivors aboard the Titantic. It’s a good example of conducting an Exploratory Data Analysis to gain insights about a data set."
+  },
+  {
+    "objectID": "course-primer.html#this-assignment-is-optional",
+    "href": "course-primer.html#this-assignment-is-optional",
+    "title": "Course Primer",
+    "section": "",
+    "text": "Students should have taken EMSE 4571 / 6571: Intro to Programming for Analytics prior to taking this course.\nFor those who did not, I strongly suggest you go through all the lessons in this primer course:\n\nR for Analytics Primer\n\nAfter completing these lessons, you should be able to:\n\nUse RStudio to write basic R commands.\nKnow the distinctions between different R operators and data types, including numeric, string, and logical data.\nUse tidyverse functions to wrangle and manipulate data in R.\nUse the ggplot2 library to create plots in R.\n\nAlso, it can be very helpful to see these skills applied in practice. Take a look at this example of using Tidyverse tools to explore and visualize data on survivors aboard the Titantic. It’s a good example of conducting an Exploratory Data Analysis to gain insights about a data set."
+  },
+  {
+    "objectID": "finding-data.html",
+    "href": "finding-data.html",
+    "title": "Finding Data",
+    "section": "",
+    "text": "The world is full of data, but sometimes finding it can be difficult. As a starting point, GW libraries has an excellent set of Research Guides that can be helpful. Depending on your research question, searching Google can also lead to good sources.\nHere are some other resources:\n\nLarge, search-able sites\nBasically like running a Google search but only for data sets:\n\nGoogle Dataset Search\nQuandl: Over 2 million financial, economic, and social datasets.\nWharton Research Data Services: Single-point access to over 200 terabytes of data across multiple disciplines, including Finance, Marketing, and Economics.\n\n\n\nWebsites\nA collection of various websites that have lots of interesting datasets:\n\n“Tidy Tuesday” challenges: Wide variety of datasets for data visualization practice. See many of the visualizations others have created here.\n“Makeover Monday” challenges: Wide variety of datasets for data visualization practice.\nTableau Community Forums: Sometimes you’ll find some interesting datasets in here.\n“Data is Beautiful” subreddit: Feed of user-generated data visualizations, though quality varies substantially.\nKaggle: Hosts machine learning competitions, and as a result has lots of really interesting data sets open to the public.\n\n\n\nPackages\nMany packages contain interesting datasets. If you can find a package with data, it will usually be nicely-formatted 😄\nHere is a table of lots of packages that contain multiple dataset. Some of my favorites are:\n\ndslabs\nDAAG\nMASS\n\nIn addition, some packages exclusively just contain datasets, such as:\n\nfivethirtyeight: Datasets and code published by the data journalism website ‘FiveThirtyEight’, available at https://github.com/fivethirtyeight/data\ngapminder\nbabynames\nnycflights13\nfueleconomy\nnasaweather\nusdanutrients\n\n\n\nGovernment-ish sources:\n“Government-ish” because while some of these sites host government data, the sites themselves may or may not be affiliated with a government agency:\n\nUS Open Gov Data: links to federal and non-federal sources in US and abroad\nUS City Open Data Census: Open data from more than 100 U.S. cities.\nOpen Africa\nEU Open Data Portal\nChina data: Various datasets on China posted by Gang He.\n\n\n\nEnergy data\nSince I happen to work with energy data a lot, here’s some common go-to sources:\n\nChina Energy Portal Statistics: Loads of energy statistics from China.\nU.S. Energy Information Administration: from Wikipedia: the “principal agency of the U.S. Federal Statistical System responsible for collecting, analyzing, and disseminating energy information to promote sound policymaking, efficient markets, and public understanding of energy and its interaction with the economy and the environment. EIA programs cover data on coal, petroleum, natural gas, electric, renewable and nuclear energy. EIA is part of the U.S. Department of Energy.”\nEnvironmental Performance Index, Yale University: Ranks 163 countries on 25 performance indicators tracked across ten policy categories covering both environmental public health and ecosystem vitality. These indicators provide a gauge at a national government scale of how close countries are to established environmental policy goals.\n\n\n\nSpatial data\n\nhttp://freegisdata.rtwilson.com/\nhttps://data.nasa.gov/\nhttps://planet.parts/\nhttps://www.efi.int/knowledge/maps/forest\nhttps://land.copernicus.eu/\nhttps://maps.elie.ucl.ac.be/CCI/viewer/\nhttps://www.ecad.eu//dailydata/predefinedseries.php\nhttp://www.worldclim.org/version2\nhttps://www.geoportal.org/\nhttps://scihub.copernicus.eu/\nhttps://sedac.ciesin.columbia.edu/\nhttps://earthexplorer.usgs.gov/",
+    "crumbs": [
+      "Finding Data"
+    ]
+  },
+  {
     "objectID": "hw/1-agentic-workflows.html",
     "href": "hw/1-agentic-workflows.html",
     "title": "Agentic Workflows",
@@ -963,21 +1040,42 @@
     "href": "hw/10-interactivity-temp.html",
     "title": "Interactivity",
     "section": "",
-    "text": "Due: Nov 09 by 11:59pm\nWeight: This assignment is worth 1% of your final grade.\nPurpose: The purpose of this assignment is to introduce you to the concept of allowing the reader to directly interact with your data. Interactive charts are an entirely different class of data visualizations made possible by advances in computing and other languages like html and javascript.\nAssessment: This assignment is graded using a check system:\n\n✔+ (110%): Responses shows phenomenal thought and engagement with the course content. I will not assign these often.\n✔ (100%): Responses are thoughtful, well-written, and show engagement with the course content. This is the expected level of performance.\n✔− (50%): Responses are hastily composed, too short, and/or only cursorily engages with the course content. This grade signals that you need to improve next time. I will hopefully not assign these often.\n\nNotice that this is essentially a pass/fail system. I’m not grading your writing ability and I’m not counting the number of words you write - I’m looking for thoughtful engagement. One or two sentences is not enough. Write at least a paragraph and show me that you did the readings assigned.\n\n\n1. Get Organized\nFollow these instructions:\n\nDownload and edit this template.\nUnzip the template folder. Make sure you actually unzip it! (in Windows, right-click it and use “extract all”)\nOpen the .Rproj file to open RStudio.\nInside RStudio, open the hw10.qmd file, take notes, and write some example code as you go through the readings / exercises below.\n\n\n\n2. Readings\nThis week, I want you to experience some good interactive charts so you can get a sense for how different the user experience is between static and interactive charts.\nTo get started, find an article online that has some interactive charts. I recommend going to The Pudding - almost all of their articles blend text, data, and interactive charts (e.g. check out the article Are Pop Lyrics Getting More Repetitive?). Choose an article you find interesting, and feel free to use an article on a different site if you wish.\nOnce you’ve found an article, read through it carefully. As you scroll though it, take note in your reflection this week of some of the key points you remember from the article. Answer these questions:\n\nWhat was one main conclusion or point the author made?\nWere any of the visualizations particularly effective in grabbing your attention and supporting that point?\nWas there anything you could critique about the article or charts you saw?\n\n\n\n3. Turn any ggplot into an interactive chart with ggplotly()\nNow that you’ve seen some interactive charts, make a simple, static chart in the chunk provided in your reflection. It can be any ggplot chart - feel free to copy-paste something we’ve made in class (don’t forget to also copy-paste any data files you may need to create the chart).\nOnce you’ve made your static chart, make it interactive using the ggplotly() function from the plotly package. Simply write code to create your plot, then use ggplotly(plot) to make it interactive. Try it out!\n\nlibrary(plotly)\n\nggplotly(plot)\n\n\n\n4. Reflect\nReflect on what you’ve learned while going through these readings and exercises. Is there anything that jumped out at you? Anything you found particularly interesting or confusing?\nWrite at least a paragraph in your hw10.qmd file, and include at least one question. The teaching team will review the questions we get and will try to answer them either in Slack or in class.\nSome thoughts you may want to try in your reflection:\n\nWrite about an interesting data visualization about trends you’ve seen.\n“I used to think ______, now I think ______ 🤔”\nDiscuss some of the key insights or things you found interesting in the readings or recent class periods.\nConnect the course content to your own work or project you’re working on.\n\n\n\n5. Submit\nTo submit your assignment, follow these instructions:\n\nRender your .qmd file by either clicking the “Render” button in RStudio or running the command quarto::quarto_render(\"hw10.qmd\") command.\nOpen the rendered html file and make sure it looks good! Is all the formatting as you expected?\nCreate a zip file of all the files in your R project folder for this assignment and submit it on the corresponding assignment submission on Blackboard."
+    "text": "Due: Nov 09 by 11:59pm\nWeight: This assignment is worth 1% of your final grade.\nPurpose: The purpose of this assignment is to introduce you to the concept of allowing the reader to directly interact with your data. Interactive charts are an entirely different class of data visualizations made possible by advances in computing and other languages like html and javascript.\nAssessment: This assignment is graded using a check system:\n\n✔+ (110%): Responses shows phenomenal thought and engagement with the course content. I will not assign these often.\n✔ (100%): Responses are thoughtful, well-written, and show engagement with the course content. This is the expected level of performance.\n✔− (50%): Responses are hastily composed, too short, and/or only cursorily engages with the course content. This grade signals that you need to improve next time. I will hopefully not assign these often.\n\nNotice that this is essentially a pass/fail system. I’m not grading your writing ability and I’m not counting the number of words you write - I’m looking for thoughtful engagement. One or two sentences is not enough. Write at least a paragraph and show me that you did the readings assigned."
+  },
+  {
+    "objectID": "hw/10-interactivity-temp.html#before-you-start-review",
+    "href": "hw/10-interactivity-temp.html#before-you-start-review",
+    "title": "Interactivity",
+    "section": "Before You Start: Review",
+    "text": "Before You Start: Review\nTake a few minutes to review last class, Maps: Maps in ggplot; mapping data to maps; projections\nWhat’s one thing from that class you’d want to revisit, or a question you didn’t get to ask?"
   },
   {
     "objectID": "hw/11-project-workshop-temp.html",
     "href": "hw/11-project-workshop-temp.html",
     "title": "Final Project Workshop",
     "section": "",
-    "text": "Due: Nov 30 by 11:59pm\nWeight: This assignment is worth 1% of your final grade.\nPurpose: The purpose of this assignment is to….\nAssessment: This assignment is graded using a check system:\n\n✔+ (110%): Responses shows phenomenal thought and engagement with the course content. I will not assign these often.\n✔ (100%): Responses are thoughtful, well-written, and show engagement with the course content. This is the expected level of performance.\n✔− (50%): Responses are hastily composed, too short, and/or only cursorily engages with the course content. This grade signals that you need to improve next time. I will hopefully not assign these often.\n\nNotice that this is essentially a pass/fail system. I’m not grading your writing ability and I’m not counting the number of words you write - I’m looking for thoughtful engagement. One or two sentences is not enough. Write at least a paragraph and show me that you did the readings assigned.\n\nThis week’s HW is to just get together with your teammates and make an agenda for what you want to discuss with Professor Helveston in your next Team Workshop Meeting. This will be your last opportunity to meet with Professor Helveston before the Thanksgiving break, so please come prepared with a list of questions and / or ideas that you want feedback on.\nAlthough this is a team task, please each person submit a copy of your proposed meeting agenda, along with any other individual reflections or ideas that you would also like to leave."
+    "text": "Due: Nov 30 by 11:59pm\nWeight: This assignment is worth 1% of your final grade.\nPurpose: The purpose of this assignment is to….\nAssessment: This assignment is graded using a check system:\n\n✔+ (110%): Responses shows phenomenal thought and engagement with the course content. I will not assign these often.\n✔ (100%): Responses are thoughtful, well-written, and show engagement with the course content. This is the expected level of performance.\n✔− (50%): Responses are hastily composed, too short, and/or only cursorily engages with the course content. This grade signals that you need to improve next time. I will hopefully not assign these often.\n\nNotice that this is essentially a pass/fail system. I’m not grading your writing ability and I’m not counting the number of words you write - I’m looking for thoughtful engagement. One or two sentences is not enough. Write at least a paragraph and show me that you did the readings assigned."
+  },
+  {
+    "objectID": "hw/11-project-workshop-temp.html#before-you-start-review",
+    "href": "hw/11-project-workshop-temp.html#before-you-start-review",
+    "title": "Final Project Workshop",
+    "section": "Before You Start: Review",
+    "text": "Before You Start: Review\nTake a few minutes to review last class, Interactivity & Interactive Products: Plotly & interactive tables; D3 inside React (with a brief intro to Shiny); building & deploying interactive products\nWhat’s one thing from that class you’d want to revisit, or a question you didn’t get to ask?\nThis week’s HW is to just get together with your teammates and make an agenda for what you want to discuss with Professor Helveston in your next Team Workshop Meeting. This will be your last opportunity to meet with Professor Helveston before the Thanksgiving break, so please come prepared with a list of questions and / or ideas that you want feedback on.\nAlthough this is a team task, please each person submit a copy of your proposed meeting agenda, along with any other individual reflections or ideas that you would also like to leave."
   },
   {
     "objectID": "hw/12-story-telling-temp.html",
     "href": "hw/12-story-telling-temp.html",
     "title": "Story Telling",
     "section": "",
-    "text": "Due: by 11:59pm\nWeight: This assignment is worth 1% of your final grade.\nPurpose: The purpose of this assignment is to learn some tips for effectively communicating the results of your analyses to others. We will look at strategies for giving effective presentations / speeches as well as best practices for designing slides.\nAssessment: This assignment is graded using a check system:\n\n✔+ (110%): Responses shows phenomenal thought and engagement with the course content. I will not assign these often.\n✔ (100%): Responses are thoughtful, well-written, and show engagement with the course content. This is the expected level of performance.\n✔− (50%): Responses are hastily composed, too short, and/or only cursorily engages with the course content. This grade signals that you need to improve next time. I will hopefully not assign these often.\n\nNotice that this is essentially a pass/fail system. I’m not grading your writing ability and I’m not counting the number of words you write - I’m looking for thoughtful engagement. One or two sentences is not enough. Write at least a paragraph and show me that you did the readings assigned.\n\n\n1. Get Organized\nFollow these instructions:\n\nDownload and edit this template.\nUnzip the template folder. Make sure you actually unzip it! (in Windows, right-click it and use “extract all”)\nOpen the .Rproj file to open RStudio.\nInside RStudio, open the hw12.qmd file, take notes, and write some example code as you go through the readings / exercises below.\n\n\n\n2. Video\nWatch this video on how to start a speech:\n\n\n\n\n3. Readings\nWe’ll be discussing good techniques for telling a story this week. These readings will be a good primer:\n\nWilke Chapter 29 - Telling a story and making a point.\nStephanie Evergreen’s blog post “So What?”\n\n\n\n4. Reflect\nFor your final reflection, in addition to any thoughts that emerged when going through the above content, write about a talk or presentation you saw that you found particularly impactful. Was there anything memorable about it that made the presenter’s message stick? Do you remember how the speaker began or ended their talk?\n\n\n5. Submit\nTo submit your assignment, follow these instructions:\n\nRender your .qmd file by either clicking the “Render” button in RStudio or running the command quarto::quarto_render(\"hw12.qmd\") command.\nOpen the rendered html file and make sure it looks good! Is all the formatting as you expected?\nCreate a zip file of all the files in your R project folder for this assignment and submit it on the corresponding assignment submission on Blackboard."
+    "text": "Due: by 11:59pm\nWeight: This assignment is worth 1% of your final grade.\nPurpose: The purpose of this assignment is to learn some tips for effectively communicating the results of your analyses to others. We will look at strategies for giving effective presentations / speeches as well as best practices for designing slides.\nAssessment: This assignment is graded using a check system:\n\n✔+ (110%): Responses shows phenomenal thought and engagement with the course content. I will not assign these often.\n✔ (100%): Responses are thoughtful, well-written, and show engagement with the course content. This is the expected level of performance.\n✔− (50%): Responses are hastily composed, too short, and/or only cursorily engages with the course content. This grade signals that you need to improve next time. I will hopefully not assign these often.\n\nNotice that this is essentially a pass/fail system. I’m not grading your writing ability and I’m not counting the number of words you write - I’m looking for thoughtful engagement. One or two sentences is not enough. Write at least a paragraph and show me that you did the readings assigned."
+  },
+  {
+    "objectID": "hw/12-story-telling-temp.html#before-you-start-review",
+    "href": "hw/12-story-telling-temp.html#before-you-start-review",
+    "title": "Story Telling",
+    "section": "Before You Start: Review",
+    "text": "Before You Start: Review\nTake a few minutes to review last class, ****:\nWhat’s one thing from that class you’d want to revisit, or a question you didn’t get to ask?"
   },
   {
     "objectID": "hw/2-cleaning-data.html",
@@ -1466,17 +1564,7 @@
     "href": "software.html",
     "title": "Software",
     "section": "",
-    "text": "You should install and set everything here before the first day of class.\n\n\nSign up for Slack. You should have been sent a link to join in the course intro email. If not, email Professor Helveston for an invite link. I recommend using your @gwu.edu email to sign up, but if you use another email for another Slack then use that.\nInstall the Slack app on your phone and Turn notifications on!. I’ll send all course communication via Slack, so please make sure your notifications are on so you don’t miss anything.\nInstall the latest version of R and RStudio:\n\n\nDownload and install R (version 4.0.2 or higher)\nDownload and install RStudio (Desktop version)\n\n\nOptional: Posit has a new IDE called Positron, which is similar to RStudio but has some new features. I encourage you to try it out if you want, but it’s not required for this course. You can download it here.\n\n\nIf you have a Mac, install XQuartz. This is needed for making some figures and is only for Mac (if you’re on Windows or Linux, skip this step).\nDownload and install Quarto\nSign up for Posit Cloud1 (the free version). It’s basically the same thing as RStudio, but accessible via a web browser. If things aren’t working on your computer, this is a great backup to quickly get back to working in RStudio.\nYou’ll need to install some R packages in RStudio that we will use throughout the semester. To do so, open RStudio then copy-paste this code into the console and press Return. This will install all the packages listed in the file.\n\nThat’s it - you’re all set for class!",
-    "crumbs": [
-      "Software"
-    ]
-  },
-  {
-    "objectID": "software.html#footnotes",
-    "href": "software.html#footnotes",
-    "title": "Software",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\n“Posit” is the company that makes “RStudio”, the software we’ll use to work with R.↩︎",
+    "text": "Software\n\nYou should install and set everything here before the first day of class.\n\n\nSign up for Slack. You should have been sent a link to join in the course intro email. If not, email Professor Helveston for an invite link. I recommend using your @gwu.edu email to sign up, but if you use another email for another Slack then use that.\nInstall the Slack app on your phone and Turn notifications on!. I’ll send all course communication via Slack, so please make sure your notifications are on so you don’t miss anything.\nDownload and install R (version 4.0.2 or higher). We’ll still be doing all our analysis in R – this course just changes who’s typing the code, not the language.\nInstall Positron, the IDE we’ll use all semester: download it here and follow the install instructions for your OS. Positron is Posit’s newer IDE (built by the same company behind RStudio) and is what we’ll use to work with R, Quarto, and Claude Code together in one place. We will not be using RStudio this semester.\nIf you have a Mac, install XQuartz. This is needed for making some figures and is only for Mac (if you’re on Windows or Linux, skip this step).\nDownload and install Quarto\nSign up for a Claude subscription. You’ll need at least a Claude Pro subscription to use Claude Code, the AI coding agent we’ll be directing all semester (a free account isn’t sufficient). Check Slack for whether the class has an institutional arrangement before you pay for your own.\nInstall Claude Code, following the official Quickstart guide. Once installed, verify it works: open Positron, open its integrated terminal, and run claude – it should start a conversation and prompt you to log in.\nYou’ll need to install some R packages that we will use throughout the semester. To do so, open Positron, open its R console, then copy-paste this code into the console and press Return. This will install all the packages listed in the file.\n\nThat’s it - you’re all set for class!\n\n\n\n\n\n\nNote\n\n\n\nUsing a different AI coding agent? This course teaches and demonstrates everything with Claude Code specifically. If you already have another agentic coding tool set up that you’d rather use instead – e.g. Gemini CLI or OpenAI’s Codex CLI – that’s fine, the underlying skills (directing an agent, verifying its output) transfer. Just know that in-class instruction, troubleshooting help, and these materials will all assume Claude Code, so you’re on your own for translating anything tool-specific.",
     "crumbs": [
       "Software"
     ]

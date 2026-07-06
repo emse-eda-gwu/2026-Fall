@@ -1,0 +1,429 @@
+---
+title: "Agentic Workflows & Version Control"
+subtitle: "EMSE 4572/6572: Exploratory Data Analysis"
+author: "John Paul Helveston"
+institute: "The George Washington University | EMSE"
+date: "September 2, 2026"
+format:
+  revealjs:
+    theme: lexis.scss
+    slide-number: c/t
+    incremental: false
+    code-line-numbers: false
+    highlight-style: github
+    width: 1600
+    height: 900
+    fig-width: 7
+    fig-height: 4
+execute:
+  echo: true
+  warning: false
+  message: false
+  freeze: false
+---
+
+```{r setup}
+#| include: false
+library(tidyverse)
+library(countdown)
+```
+
+# {.inverse background-color="#121212"}
+
+::: {style="text-align:center; margin-top:1em;"}
+[Today]{.fancy .font200 .white}
+:::
+
+::: {.font120}
+Last week you got the whole stack **installed**.<br>
+Today you **use** it — for real, end to end.
+:::
+
+---
+
+## The one loop for the whole semester {background-color="#121212" .inverse}
+
+::: {.font140 style="text-align:center; margin-top:0.6em; line-height:1.6;"}
+**prompt** [→]{.gray} **read the diff** [→]{.gray} **verify** [→]{.gray} **commit / push**
+:::
+
+. . .
+
+<br>
+
+::: {.font110}
+The agent is **fast**, **confident**, and **sometimes wrong**.
+:::
+
+. . .
+
+::: {.font110 .darkgreen}
+Your job moves from *typing code* to **directing and checking it.**
+:::
+
+---
+
+## Why version control + agents belong together
+
+::: {.columns}
+::: {.column width="50%"}
+### Version control
+
+- A **save point** you can return to
+- A **cloud backup** of your work
+- A record of *what changed and when*
+:::
+
+::: {.column width="50%"}
+### Agentic workflow
+
+- You **direct**, the agent **edits your files**
+- Fast — and occasionally **wrong**
+- You need a **safety net**
+:::
+:::
+
+. . .
+
+<br>
+
+::: {.font120 style="text-align:center;"}
+You **commit often** *precisely so* it's safe to let an agent<br>loose on your files. [The two are one workflow.]{.darkgreen}
+:::
+
+---
+
+## What you'll actually do today
+
+1. Make a repo and **push** to GitHub — with a button, no command line
+2. Point **Claude Code** at some data and read what it does
+3. Run the **whole loop**: ask → verify → commit → push
+4. Watch the agent be **confidently wrong** — and *catch it*
+
+. . .
+
+::: {.font110 .darkgreen style="margin-top:0.8em;"}
+Mostly **hands-on**. I talk a little; you practice a lot.
+:::
+
+# Part 1 — GitHub Desktop {background-color="#121212" .inverse}
+
+## Three words, that's the whole model
+
+::: {.columns}
+::: {.column width="33%"}
+### repo
+A project folder that **tracks its own history**
+:::
+
+::: {.column width="33%"}
+### commit
+A **labeled save point** — "this is a state worth remembering"
+:::
+
+::: {.column width="33%"}
+### push
+Send your commits **up to GitHub** (the cloud copy)
+:::
+:::
+
+. . .
+
+<br>
+
+::: {.font110}
+No `git` in a terminal. Everything today is a **button in GitHub Desktop.**
+:::
+
+---
+
+## {.inverse background-color="#121212"}
+
+::: {.font200 .fancy style="text-align:center;"}
+Practice 1
+:::
+
+::: {.font120}
+**Make a repo and push to it.**
+
+1. GitHub Desktop → **File › New Repository** → name it `eda-w2-practice`
+2. **Publish** it to GitHub (make it private)
+3. Add a line to `README.md`, then **Commit** (write a message!)
+4. **Push** — then open it on github.com and confirm it's there
+5. Change the README again → **Commit** → **Push** → look at **History**
+:::
+
+```{r}
+#| echo: false
+countdown(minutes = 15, warn_when = 60, top = 0, right = 0, font_size = "2em")
+```
+
+---
+
+## What just happened
+
+::: {.font110}
+- Your work now exists in **two places** (your laptop + GitHub)
+- Every commit is a point you can **come back to**
+- That History tab is your **undo button** for the whole project
+:::
+
+. . .
+
+<br>
+
+::: {.font120 .darkgreen style="text-align:center;"}
+Now let's give ourselves something worth undoing.
+:::
+
+# Part 2 — Meet Claude Code {background-color="#121212" .inverse}
+
+## Claude Code, in Positron
+
+::: {.font110}
+- Open your **project folder** in Positron (not a stray file — the folder)
+- Start **Claude Code** in the terminal pane
+- You **describe** what you want; it **reads your files** and **proposes edits**
+- You **read the diff** and decide: accept, or push back
+:::
+
+. . .
+
+<br>
+
+::: {.font110 .darkgreen}
+Watch me do one first — then you'll do your own.
+:::
+
+::: {.footnote}
+Prefer Python? You may use it. My demos are in R — but *you* still own the verification either way.
+:::
+
+---
+
+## {.inverse background-color="#121212"}
+
+::: {.font200 .fancy style="text-align:center;"}
+Practice 2
+:::
+
+::: {.font120}
+**Let Claude import some data — and read what it did.**
+
+1. Drop `flights.csv` into your repo's `data/` folder
+2. Ask Claude: *"Import `data/flights.csv` and give me a quick summary of what's in it."*
+3. **Read the code it wrote.** Not just the summary — the actual code.
+4. Tell a neighbor: *what did it do, and how do you know it's right?*
+:::
+
+```{r}
+#| echo: false
+countdown(minutes = 12, warn_when = 60, top = 0, right = 0, font_size = "2em")
+```
+
+---
+
+## The habit to build now
+
+::: {.font120}
+The summary Claude prints is a **claim.**
+:::
+
+. . .
+
+::: {.font120}
+The code it wrote is the **evidence.**
+:::
+
+. . .
+
+<br>
+
+::: {.font130 .darkgreen style="text-align:center;"}
+Always read the evidence, not just the claim.
+:::
+
+# Part 3 — The whole loop {background-color="#121212" .inverse}
+
+## Ask → verify → commit → push
+
+::: {.font110}
+Now we string it together into one motion:
+:::
+
+::: {.font110}
+1. **Ask** Claude to make a chart from the data
+2. **Verify** it — do the numbers behind the chart match reality?
+3. **Commit** the chart + code with a clear message
+4. **Push** it to GitHub
+:::
+
+. . .
+
+<br>
+
+::: {.font110 .darkgreen}
+This is the exact loop you'll run all semester. Everything else is details.
+:::
+
+---
+
+## {.inverse background-color="#121212"}
+
+::: {.font200 .fancy style="text-align:center;"}
+Practice 3
+:::
+
+::: {.font120}
+**Run the full loop yourself.**
+
+1. Ask Claude to make a chart answering a question about `flights.csv`
+2. **Verify**: pick one bar/point and check it against the data by hand
+3. Does the chart *actually say what you asked?* If not, tell Claude what's wrong
+4. **Commit** (chart + code) → **Push** to GitHub
+:::
+
+```{r}
+#| echo: false
+countdown(minutes = 20, warn_when = 120, top = 0, right = 0, font_size = "2em")
+```
+
+---
+
+## You just did the whole thing
+
+::: {.font120}
+Directed an agent · read its work · **verified** it · versioned it · backed it up.
+:::
+
+. . .
+
+<br>
+
+::: {.font110}
+That's the job. But we skipped the most important word.
+:::
+
+::: {.font160 .red style="text-align:center; margin-top:0.4em;"}
+Verify.
+:::
+
+# Part 4 — Where it goes wrong {background-color="#121212" .inverse}
+
+## The agent will be wrong *with confidence*
+
+::: {.font110}
+It won't say *"I'm not sure."* It will hand you a clean, plausible,<br>
+**wrong** answer and move on. Common failure modes:
+:::
+
+::: {.columns}
+::: {.column width="50%"}
+- **Hallucinated** column names
+- **Silently dropped** rows (`NA`s, bad joins)
+- Wrong **join direction**
+:::
+
+::: {.column width="50%"}
+- A chart that **misleads** (bad axis, wrong aggregation)
+- A **made-up** number that "looks right"
+- Code that isn't **reproducible**
+:::
+:::
+
+. . .
+
+::: {.font120 .red style="text-align:center; margin-top:0.5em;"}
+Let me show you one live.
+:::
+
+---
+
+## Your verification checklist {background-color="#EAE9EA"}
+
+::: {.font110}
+Run these every time — they're the skill this whole course is really about:
+
+- Did **row / column counts** change the way I expected?
+- Did I **read the code**, not just the prose summary?
+- Did I **spot-check** a few values against the source file?
+- Were rows **silently dropped** (NA handling, inner vs. left join)?
+- Do **totals / aggregates** sanity-check?
+- Is it **reproducible** — or did it hard-code an answer?
+:::
+
+::: {.footnote}
+We'll come back to this list all semester. Screenshot it.
+:::
+
+---
+
+## {.inverse background-color="#121212"}
+
+::: {.font200 .fancy style="text-align:center;"}
+Practice 4
+:::
+
+::: {.font120}
+**Catch the bug.**
+
+I've given Claude a task where its *first answer is wrong.* Your job is to
+**find it** using the checklist.
+
+1. Ask Claude to join `flights.csv` with `airlines.csv` and count flights per airline
+2. **Something is off.** Verify before you believe it.
+3. When you catch it, tell Claude *specifically* what's wrong and have it fix it
+4. **Commit** the fix with a message that says what was broken
+:::
+
+```{r}
+#| echo: false
+countdown(minutes = 18, warn_when = 120, top = 0, right = 0, font_size = "2em")
+```
+
+---
+
+## The catch is the whole job
+
+::: {.font120}
+An agent can write the code. [It cannot know if the answer is *true*.]{.red}
+:::
+
+. . .
+
+::: {.font120 .darkgreen}
+**That part is yours.** It's what you're actually being graded on.
+:::
+
+# Wrap-up {background-color="#121212" .inverse}
+
+## Today, in one slide
+
+::: {.font120 style="text-align:center; margin:0.4em 0; line-height:1.6;"}
+**prompt** [→]{.gray} **read the diff** [→]{.gray} **verify** [→]{.gray} **commit / push**
+:::
+
+::: {.font110}
+- You can **make a repo and push** with a button
+- You can **direct Claude** to import, analyze, and chart
+- You know the agent **lies with confidence** — and you have a checklist
+- **R or Python** — your choice; the verification is the same job
+:::
+
+---
+
+## Before next week
+
+::: {.font110}
+- Finish pushing today's work to your `eda-w2-practice` repo
+- **Reading reflection:** read forward on tidy data + joins, try the light practice, reflect
+- Next week: **Cleaning, Reshaping & Joining** — same loop, messier data
+:::
+
+. . .
+
+<br>
+
+::: {.font130 .fancy .darkgreen style="text-align:center;"}
+Direct boldly. Verify relentlessly.
+:::
