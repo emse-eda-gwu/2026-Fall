@@ -1,0 +1,4 @@
+1. Download and edit [this template](`r url_template`).
+2. Unzip the template folder. **Make sure you actually unzip it**! (in Windows, right-click it and use "extract all")
+3. Open Positron to the unzipped template folder.
+4. Inside Positron, open the ``r hw_file`` file, take notes, and write some example code as you go through the readings / exercises below.

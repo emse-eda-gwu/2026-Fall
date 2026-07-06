@@ -13,6 +13,8 @@ project:
     - "!hw/11-project-workshop.qmd"
     - "!hw/12-story-telling.qmd"
     - "!1-getting-started/"
+    # Native Quarto reveal.js decks: rendered separately, html placed in situ
+    - "!class/2-agentic-workflows/"
     - "!2-tidy-data/"
     - "!3-cleaning-data/"
     - "!4-workshop-proposals/"

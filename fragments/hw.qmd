@@ -13,6 +13,14 @@ url_template <- paste0(
   params$number, '.zip')
 
 hw_file <- paste0('hw', params$number, '.qmd')
+
+review_topic <- get_schedule() %>%
+  filter(n_assign == params$number) %>%
+  pull(name_class)
+
+review_desc <- get_schedule() %>%
+  filter(n_assign == params$number) %>%
+  pull(description_class)
 ```
 
 > **Due**: `r due`
@@ -28,3 +36,9 @@ hw_file <- paste0('hw', params$number, '.qmd')
 > - ✔− (50%): Responses are hastily composed, too short, and/or only cursorily engages with the course content. This grade signals that you need to improve next time. I will _hopefully_ not assign these often.
 >
 > Notice that this is essentially a pass/fail system. I'm not grading your writing ability and I'm not counting the number of words you write - I'm looking for thoughtful engagement. One or two sentences is **not enough**. Write at least a paragraph and show me that you did the readings assigned.
+
+## Before You Start: Review
+
+Take a few minutes to review last class, **`r review_topic`**: `r review_desc`
+
+What's one thing from that class you'd want to revisit, or a question you didn't get to ask?

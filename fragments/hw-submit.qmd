@@ -1,0 +1,3 @@
+1. Render your .qmd file by clicking the "Render" button in Positron.
+2. Open the rendered html file and make sure it looks good! Is all the formatting as you expected?
+3. Create a zip file of all the files in your project folder for this assignment and submit it on the corresponding assignment submission on Blackboard.

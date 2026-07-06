@@ -46,14 +46,15 @@ Instructor | Course
 
 # Required Texts & Materials
 
-All texts and software for this course is freely available on the web. This includes:
+All texts for this course are freely available on the web. Software is mostly free, with one exception noted below.
 
 ## Software
 
 Go to the Course [Software page](software.qmd) for detailed instructions on how to install the software we'll be using. Here's a quick list:
 
 - R (version 4.1.0 or later), which can be downloaded from [The Comprehensive R Archive Network (CRAN)](https://cloud.r-project.org)
-- RStudio (Desktop Version), a free IDE for R, which can be downloaded from [RStudio](https://rstudio.com/products/rstudio/download/)
+- [Positron](https://positron.posit.co/download.html) (Desktop version), a free IDE for R and Python. We will not be using RStudio this semester.
+- [Claude Code](https://code.claude.com/docs/en/quickstart), the AI coding agent we'll direct all semester to do our analysis work. This requires **at least a Claude Pro subscription** (not free -- check Slack for whether the class has an institutional arrangement before paying for your own). You're welcome to use a different agentic coding tool instead if you already have one set up (e.g. Gemini CLI, or OpenAI's Codex CLI) -- the underlying skills transfer -- but all in-class instruction and course materials assume Claude Code, so you're on your own for translating anything tool-specific.
 - We'll be using [Slack]({{< var slack >}}){target="_blank"} for most communication.
 
 ## Texts

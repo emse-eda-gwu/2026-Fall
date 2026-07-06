@@ -1,0 +1,50 @@
+---
+title: "Agentic Workflows"
+params:
+  number: 1
+  purpose: "This course is built around a fundamental shift in how we do data analysis. We used to live in a paradigm where we hand-wrote every line of code. No more. Instead, we now direct an AI coding agent (Claude Code) to do the majority of the coding while our job changes to supervising, verifying, and taking responsibility for the resulting analysis produced by the code. This assignment is designed to make sure you have all your tools installed and properly configured and to ensure you can have productive conversations with an AI agent. Going forward, we will focus class time on working with agents them rather than troubleshooting installations and configurations."
+---
+
+```{r child = here::here("fragments", "hw.qmd")}
+```
+
+# 1. Get Organized
+
+```{r child = here::here("fragments", "hw-get-organized.qmd")}
+```
+
+# 2. Install Your Tools
+
+If you haven't yet, go to the [software page](../software.qmd) and make sure you have everything installed on your computer.
+
+Then, **verify everything works**: open Positron, open the project folder for this assignment (the template you downloaded), open the terminal window in Positron, and run `claude`. If it starts a conversation and asks for your login, it's working.
+
+If you get stuck on installation, post in Slack -- don't wait until class to mention it.
+
+# 3. Read & Practice
+
+- [How Claude Code is used in practice](https://www.anthropic.com/research/claude-code-expertise) (Anthropic): read this one carefully. Its central finding is directly relevant to this whole course: *domain expertise (not coding proficiency) is what makes people effective with a coding agent.* That's the whole premise of how this class is taught this semester -- you don't need to be a stronger programmer than the agent to get good at analyzing data; rather, you need to become a better judge of whether its output is accurate.
+
+### Light practice: your first conversation with an agent
+
+In the terminal inside Positron, from this project folder, run `claude` and try asking it something low-stakes, for example:
+
+- "What files are in this folder, and what is each one for?"
+- "What does a `.qmd` file do, and how is it different from a plain `.R` script?"
+- Ask it to explain one line of the setup code chunk at the top of this `.qmd` file.
+
+You don't need a data file or a real analysis task for this -- the point is just to see the agent read, reason about, and explain something concrete, and to get a feel for the back-and-forth.
+
+# 4. Reflect
+
+Write at least a paragraph in this file reflecting on the experience. Some prompts you could use:
+
+- What surprised you about installing or using Claude Code for the first time?
+- Where do you already have questions or doubts about directing an AI agent to write code, versus writing it yourself?
+- The Anthropic reading argues that domain expertise matters more than coding skill for using an agent well. Do you buy that? Why or why not?
+- "I used to think ______, now I think ______ 🤔"
+
+# 5. Submit
+
+```{r child = here::here("fragments", "hw-submit.qmd")}
+```
