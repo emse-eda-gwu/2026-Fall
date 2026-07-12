@@ -22,6 +22,7 @@ project:
     - "!class/13-interactivity/"
     - "!class/14-story-telling/"
     - "!class/15-final-presentations/"
+    - "!class/setup.qmd"
   resources:
     - "class/"
     - "rubrics/"
