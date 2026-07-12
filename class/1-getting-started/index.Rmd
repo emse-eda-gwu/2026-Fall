@@ -27,7 +27,7 @@ output:
 library(here)
 library(ggrepel)
 
-lotr <- read_csv(here('data', 'lotr_words.csv')) 
+lotr <- read_csv(here('data', 'lotr_words.csv'))
 ```
 
 ---
@@ -100,50 +100,72 @@ Average student engagement scores
 
 ```{r student-engagement-final, echo=FALSE, fig.width=6, fig.height=5}
 engagement <- data.frame(
-    City   = c(643, 735, 590, 863),
-    County = c(793, 928, 724, 662),
-    School = c('Special Ed., Charter', 'Special Ed., Public',
-               'General Ed., Charter', 'General Ed., Public'),
-    Highlight = c(0, 0, 0, 1)) %>%
-    gather(Location, Engagement, City:County) %>%
-    mutate(
-      Location = fct_relevel(Location, c('City', 'County')),
-      Highlight = as.factor(Highlight),
-      x = ifelse(Location == 'County', 1, 0))
+  City = c(643, 735, 590, 863),
+  County = c(793, 928, 724, 662),
+  School = c(
+    'Special Ed., Charter',
+    'Special Ed., Public',
+    'General Ed., Charter',
+    'General Ed., Public'
+  ),
+  Highlight = c(0, 0, 0, 1)
+) %>%
+  gather(Location, Engagement, City:County) %>%
+  mutate(
+    Location = fct_relevel(Location, c('City', 'County')),
+    Highlight = as.factor(Highlight),
+    x = ifelse(Location == 'County', 1, 0)
+  )
 engagement_plot <- engagement %>%
-    ggplot(aes(x = x, y = Engagement, group = School, color = Highlight)) +
-    geom_point() +
-    geom_line() +
-    scale_color_manual(values = c('#757575', '#ed573e')) +
-    labs(x = 'Sex', y = 'Engagement',
-         title = paste0('Students in public, general education classes\n',
-                        'in county schools have surprisingly low engagement')) +
-    scale_x_continuous(limits = c(-1.2, 1.2), labels = c('City', 'County'),
-                       breaks = c(0, 1)) +
-    geom_text_repel(aes(label = Engagement, color = as.factor(Highlight)),
-                    data          = subset(engagement, Location == 'County'),
-                    size          = 5,
-                    nudge_x       = 0.1,
-                    segment.color = NA) +
-    geom_text_repel(aes(label = Engagement, color = as.factor(Highlight)),
-                    data          = subset(engagement, Location == 'City'),
-                    size          = 5,
-                    nudge_x       = -0.1,
-                    segment.color = NA) +
-    geom_text_repel(aes(label = School, color = as.factor(Highlight)),
-                    data          = subset(engagement, Location == 'City'),
-                    size          = 5,
-                    nudge_x       = -0.25,
-                    hjust         = 1,
-                    segment.color = NA) +
-    theme_cowplot() +
-    background_grid(major = 'x') +
-    theme(axis.line = element_blank(),
-          axis.title.x = element_blank(),
-          axis.title.y = element_blank(),
-          axis.text.y = element_blank(),
-          axis.ticks = element_blank(),
-          legend.position = 'none')
+  ggplot(aes(x = x, y = Engagement, group = School, color = Highlight)) +
+  geom_point() +
+  geom_line() +
+  scale_color_manual(values = c('#757575', '#ed573e')) +
+  labs(
+    x = 'Sex',
+    y = 'Engagement',
+    title = paste0(
+      'Students in public, general education classes\n',
+      'in county schools have surprisingly low engagement'
+    )
+  ) +
+  scale_x_continuous(
+    limits = c(-1.2, 1.2),
+    labels = c('City', 'County'),
+    breaks = c(0, 1)
+  ) +
+  geom_text_repel(
+    aes(label = Engagement, color = as.factor(Highlight)),
+    data = subset(engagement, Location == 'County'),
+    size = 5,
+    nudge_x = 0.1,
+    segment.color = NA
+  ) +
+  geom_text_repel(
+    aes(label = Engagement, color = as.factor(Highlight)),
+    data = subset(engagement, Location == 'City'),
+    size = 5,
+    nudge_x = -0.1,
+    segment.color = NA
+  ) +
+  geom_text_repel(
+    aes(label = School, color = as.factor(Highlight)),
+    data = subset(engagement, Location == 'City'),
+    size = 5,
+    nudge_x = -0.25,
+    hjust = 1,
+    segment.color = NA
+  ) +
+  theme_cowplot() +
+  background_grid(major = 'x') +
+  theme(
+    axis.line = element_blank(),
+    axis.title.x = element_blank(),
+    axis.title.y = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks = element_blank(),
+    legend.position = 'none'
+  )
 engagement_plot
 ```
 
@@ -163,10 +185,15 @@ Encode data:
 
 ```{r}
 engagement_data <- data.frame(
-    City   = c(643, 735, 590, 863),
-    County = c(793, 928, 724, 662),
-    School = c('Special Ed., Charter', 'Special Ed., Public',
-               'General Ed., Charter', 'General Ed., Public'))
+  City = c(643, 735, 590, 863),
+  County = c(793, 928, 724, 662),
+  School = c(
+    'Special Ed., Charter',
+    'Special Ed., Public',
+    'General Ed., Charter',
+    'General Ed., Public'
+  )
+)
 engagement_data
 ```
 
@@ -182,9 +209,13 @@ Re-format data for plotting:
 
 ```{r}
 engagement_data <- engagement_data %>%
-    gather(Location, Engagement, City:County) %>%
-    mutate(Location = fct_relevel(
-      Location, c('City', 'County')))
+  gather(Location, Engagement, City:County) %>%
+  mutate(
+    Location = fct_relevel(
+      Location,
+      c('City', 'County')
+    )
+  )
 engagement_data
 ```
 
@@ -202,10 +233,8 @@ Initial exploratory plotting:
 
 ```{r student-engagement-bars1, fig.width=6, fig.height=3}
 engagement_data %>%
-    ggplot() +
-    geom_col(aes(x = Engagement, y = School,
-                 fill = Location),
-             position = 'dodge')
+  ggplot() +
+  geom_col(aes(x = Engagement, y = School, fill = Location), position = 'dodge')
 ```
 
 ]]
@@ -218,11 +247,11 @@ More exploratory plotting:<br>highlight difference
 
 ```{r student-engagement-bars2, echo=FALSE, fig.width=6, fig.height=5}
 engagement %>%
-    mutate(Highlight = as.factor(Highlight)) %>%
-    ggplot(aes(x=x, y=Engagement, group=School, color=School)) +
-    geom_point() +
-    geom_line() +
-    labs(x='Sex', y='Engagement')
+  mutate(Highlight = as.factor(Highlight)) %>%
+  ggplot(aes(x = x, y = Engagement, group = School, color = School)) +
+  geom_point() +
+  geom_line() +
+  labs(x = 'Sex', y = 'Engagement')
 ```
 
 ]
@@ -237,21 +266,26 @@ Directly label figure:
 
 ```{r student-engagement-bars3, echo=FALSE, fig.width=6, fig.height=5}
 engagement %>%
-    mutate(Highlight = as.factor(Highlight)) %>%
-    ggplot(aes(x=x, y=Engagement, group=School, color=School)) +
-    geom_point() +
-    geom_line() +
-    labs(x='Location', y='Engagement') +
-    theme_cowplot() +
-    scale_x_continuous(limits = c(-0.2, 2), labels = c('City', 'County'),
-                       breaks = c(0, 1)) +
-    theme(legend.position = 'none') +
-    geom_text_repel(aes(label = School, color = as.factor(School)),
-                    data          = subset(engagement, Location == 'County'),
-                    size          = 5,
-                    nudge_x       = 0.2,
-                    hjust         = 0,
-                    segment.color = NA)
+  mutate(Highlight = as.factor(Highlight)) %>%
+  ggplot(aes(x = x, y = Engagement, group = School, color = School)) +
+  geom_point() +
+  geom_line() +
+  labs(x = 'Location', y = 'Engagement') +
+  theme_cowplot() +
+  scale_x_continuous(
+    limits = c(-0.2, 2),
+    labels = c('City', 'County'),
+    breaks = c(0, 1)
+  ) +
+  theme(legend.position = 'none') +
+  geom_text_repel(
+    aes(label = School, color = as.factor(School)),
+    data = subset(engagement, Location == 'County'),
+    size = 5,
+    nudge_x = 0.2,
+    hjust = 0,
+    segment.color = NA
+  )
 ```
 
 ]
@@ -279,16 +313,22 @@ Remove unnecessary axes, change colors, fix labels:
 
 ```{r, eval=FALSE}
 data <- data.frame(
-    City   = c(643, 735, 590, 863),
-    County = c(793, 928, 724, 662),
-    School = c('Special Ed., Charter', 'Special Ed., Public',
-               'General Ed., Charter', 'General Ed., Public'),
-    Highlight = c(0, 0, 0, 1)) %>%
-    gather(Location, Engagement, City:County) %>%
-    mutate(
-      Location = fct_relevel(Location, c('City', 'County')),
-      Highlight = as.factor(Highlight),
-      x = ifelse(Location == 'County', 1, 0))
+  City = c(643, 735, 590, 863),
+  County = c(793, 928, 724, 662),
+  School = c(
+    'Special Ed., Charter',
+    'Special Ed., Public',
+    'General Ed., Charter',
+    'General Ed., Public'
+  ),
+  Highlight = c(0, 0, 0, 1)
+) %>%
+  gather(Location, Engagement, City:County) %>%
+  mutate(
+    Location = fct_relevel(Location, c('City', 'County')),
+    Highlight = as.factor(Highlight),
+    x = ifelse(Location == 'County', 1, 0)
+  )
 ```
 
 ]
@@ -296,39 +336,58 @@ data <- data.frame(
 .rightcol[
 
 ```{r, eval=FALSE}
-plot <- ggplot(data, aes(x = x, y = Engagement, group = School, color = Highlight)) +
-    geom_point() +
-    geom_line() +
-    scale_color_manual(values = c('#757575', '#ed573e')) +
-    labs(x = 'Sex', y = 'Engagement',
-         title = paste0('Students in public, general education classes\n',
-                        'in county schools have surprisingly low engagement')) +
-    scale_x_continuous(limits = c(-1.2, 1.2), labels = c('City', 'County'),
-                       breaks = c(0, 1)) +
-    geom_text_repel(aes(label = Engagement, color = as.factor(Highlight)),
-                    data          = subset(engagement, Location == 'County'),
-                    size          = 5,
-                    nudge_x       = 0.1,
-                    segment.color = NA) +
-    geom_text_repel(aes(label = Engagement, color = as.factor(Highlight)),
-                    data          = subset(engagement, Location == 'City'),
-                    size          = 5,
-                    nudge_x       = -0.1,
-                    segment.color = NA) +
-    geom_text_repel(aes(label = School, color = as.factor(Highlight)),
-                    data          = subset(engagement, Location == 'City'),
-                    size          = 5,
-                    nudge_x       = -0.25,
-                    hjust         = 1,
-                    segment.color = NA) +
-    theme_cowplot() +
-    background_grid(major = 'x') +
-    theme(axis.line = element_blank(),
-          axis.title.x = element_blank(),
-          axis.title.y = element_blank(),
-          axis.text.y = element_blank(),
-          axis.ticks = element_blank(),
-          legend.position = 'none')
+plot <- ggplot(
+  data,
+  aes(x = x, y = Engagement, group = School, color = Highlight)
+) +
+  geom_point() +
+  geom_line() +
+  scale_color_manual(values = c('#757575', '#ed573e')) +
+  labs(
+    x = 'Sex',
+    y = 'Engagement',
+    title = paste0(
+      'Students in public, general education classes\n',
+      'in county schools have surprisingly low engagement'
+    )
+  ) +
+  scale_x_continuous(
+    limits = c(-1.2, 1.2),
+    labels = c('City', 'County'),
+    breaks = c(0, 1)
+  ) +
+  geom_text_repel(
+    aes(label = Engagement, color = as.factor(Highlight)),
+    data = subset(engagement, Location == 'County'),
+    size = 5,
+    nudge_x = 0.1,
+    segment.color = NA
+  ) +
+  geom_text_repel(
+    aes(label = Engagement, color = as.factor(Highlight)),
+    data = subset(engagement, Location == 'City'),
+    size = 5,
+    nudge_x = -0.1,
+    segment.color = NA
+  ) +
+  geom_text_repel(
+    aes(label = School, color = as.factor(Highlight)),
+    data = subset(engagement, Location == 'City'),
+    size = 5,
+    nudge_x = -0.25,
+    hjust = 1,
+    segment.color = NA
+  ) +
+  theme_cowplot() +
+  background_grid(major = 'x') +
+  theme(
+    axis.line = element_blank(),
+    axis.title.x = element_blank(),
+    axis.title.y = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks = element_blank(),
+    legend.position = 'none'
+  )
 ```
 
 ]]]
@@ -725,12 +784,15 @@ class: inverse
 
 ```{r, echo=FALSE}
 countdown(
-    minutes = 5,
-    warn_when = 30,
-    update_every = 1,
-    left = 0, right = 0, top = 1, bottom = 0,
-    margin = "5%",
-    font_size = "8em"
+  minutes = 5,
+  warn_when = 30,
+  update_every = 1,
+  left = 0,
+  right = 0,
+  top = 1,
+  bottom = 0,
+  margin = "5%",
+  font_size = "8em"
 )
 ```
 
@@ -955,9 +1017,12 @@ class: top
 Bullet list:
 
 ```{r, eval=FALSE}
-- first item
-- second item
-- third item
+-first
+item
+-second
+item
+-third
+item
 ```
 
 - first item
@@ -971,9 +1036,15 @@ Bullet list:
 Numbered list:
 
 ```{r, eval=FALSE}
-1. first item
-2. second item
-3. third item
+1.
+first
+item
+2.
+second
+item
+3.
+third
+item
 ```
 
 1. first item
@@ -1066,7 +1137,14 @@ insert more code here
 ```{r}
 #| eval: false
 
-The sum of 3 and 4 is `r 3 + 4`
+The
+sum
+of
+3
+and
+4
+is
+`r 3 + 4`
 ```
 
 --
@@ -1417,7 +1495,7 @@ Can also use brackets:
 
 ```{r}
 lotr$race
-lotr[,2]
+lotr[, 2]
 ```
 
 ---
@@ -1427,7 +1505,7 @@ lotr[,2]
 Information about the first row:
 
 ```{r}
-lotr[1,]
+lotr[1, ]
 ```
 
 --
@@ -1435,7 +1513,7 @@ lotr[1,]
 Information about rows 1 & 2:
 
 ```{r}
-lotr[1:2,]
+lotr[1:2, ]
 ```
 
 ---
@@ -1495,8 +1573,8 @@ class: center
 ## Think of the words "...and then..."
 
 ```{r, eval=FALSE}
-data %>% 
-  do_something() %>% 
+data %>%
+  do_something() %>%
   do_something_else()
 ```
 
@@ -1518,7 +1596,7 @@ class: center, middle, inverse
 Select the columns `film` & `race`
 
 ```{r}
-lotr %>% 
+lotr %>%
   select(film, race)
 ```
 
@@ -1529,7 +1607,7 @@ lotr %>%
 Use the `-` sign to drop columns
 
 ```{r}
-lotr %>% 
+lotr %>%
   select(-film)
 ```
 
@@ -1551,8 +1629,8 @@ class: center, middle, inverse
 Keep only the rows with Elf characters
 
 ```{r}
-lotr %>% 
-    filter(race == "Elf")
+lotr %>%
+  filter(race == "Elf")
 ```
 
 ---
@@ -1562,8 +1640,8 @@ lotr %>%
 Keep only the rows with Elf or Hobbit characters
 
 ```{r}
-lotr %>% 
-    filter((race == "Elf") | (race  == "Hobbit"))
+lotr %>%
+  filter((race == "Elf") | (race == "Hobbit"))
 ```
 
 ---
@@ -1573,8 +1651,8 @@ lotr %>%
 Keep only the rows with Elf or Hobbit characters
 
 ```{r}
-lotr %>% 
-    filter(race %in% c("Elf", "Hobbit"))
+lotr %>%
+  filter(race %in% c("Elf", "Hobbit"))
 ```
 
 ---
@@ -1600,8 +1678,8 @@ Values in the set c(1, 4) | `value %in% c(1, 4)`
 Keep only the rows with Elf characters that spoke more than 1000 words, then select everything but the race column
 
 ```{r}
-lotr %>% 
-  filter((race == "Elf") & (word_count > 1000)) %>% 
+lotr %>%
+  filter((race == "Elf") & (word_count > 1000)) %>%
   select(-race)
 ```
 
@@ -1624,7 +1702,7 @@ Create a new variable, `word1000` which is `TRUE` if the character spoke 1,000 o
 
 ```{r}
 lotr %>%
-    mutate(word1000 = word_count >= 1000)
+  mutate(word1000 = word_count >= 1000)
 ```
 
 ---
@@ -1637,7 +1715,7 @@ lotr %>%
 
 ```{r}
 lotr %>%
-    mutate(word1000 = ifelse(word_count >= 1000, TRUE, FALSE))
+  mutate(word1000 = ifelse(word_count >= 1000, TRUE, FALSE))
 ```
 
 ---
@@ -1648,7 +1726,7 @@ Sort the `lotr` data frame by `word_count`
 
 ```{r}
 lotr %>%
-    arrange(word_count)
+  arrange(word_count)
 ```
 
 ---
@@ -1659,7 +1737,7 @@ Use the `desc()` function to sort in descending order
 
 ```{r}
 lotr %>%
-    arrange(desc(word_count))
+  arrange(desc(word_count))
 ```
 
 ---
@@ -1670,12 +1748,12 @@ class: inverse
 #| echo: false
 
 countdown(
-    minutes = 10,
-    warn_when = 30,
-    update_every = 1,
-    top = 0,
-    right = 0,
-    font_size = '2em'
+  minutes = 10,
+  warn_when = 30,
+  update_every = 1,
+  top = 0,
+  right = 0,
+  font_size = '2em'
 )
 ```
 
@@ -1755,7 +1833,7 @@ The `ggplot()` function initializes the plot with whatever data you're using
 .leftcol[
 
 ```{r ggblank, fig.show='hide'}
-mpg %>% 
+mpg %>%
   ggplot()
 ```
 
@@ -1777,7 +1855,7 @@ The `aes()` function determines which variables will be _mapped_ to the geometri
 .leftcol[
 
 ```{r ggaes, fig.show='hide'}
-mpg %>% 
+mpg %>%
   ggplot(aes(x = displ, y = hwy)) #<<
 ```
 
@@ -1799,7 +1877,7 @@ Use `+` to add geometries, e.g. `geom_points()` for points
 .leftcol[
 
 ```{r ggpoint, fig.show='hide'}
-mpg %>% 
+mpg %>%
   ggplot(aes(x = displ, y = hwy)) +
   geom_point() #<<
 ```
@@ -1822,12 +1900,13 @@ Use `labs()` to modify most labels
 .leftcol[
 
 ```{r gglabs, fig.show='hide'}
-mpg %>% 
+mpg %>%
   ggplot(aes(x = displ, y = hwy)) +
   geom_point() +
-  labs( #<<
-    x = "Engine displacement (liters)",  #<<
-    y = "Highway fuel economy (mpg)",  #<<
+  labs(
+    #<<
+    x = "Engine displacement (liters)", #<<
+    y = "Highway fuel economy (mpg)", #<<
     title = "Most larger engine vehicles are less fuel efficient" #<<
   ) #<<
 ```
@@ -1848,14 +1927,14 @@ mpg %>%
 .leftcol[
 
 ```{r ggtheme_bw, fig.show='hide'}
-mpg %>% 
+mpg %>%
   ggplot(aes(x = displ, y = hwy)) +
   geom_point() +
   labs(
-    x = "Engine displacement (liters)",  
-    y = "Highway fuel economy (mpg)", 
+    x = "Engine displacement (liters)",
+    y = "Highway fuel economy (mpg)",
     title = "Most larger engine vehicles are less fuel efficient"
-  ) + 
+  ) +
   theme_bw() #<<
 ```
 
@@ -1877,7 +1956,7 @@ mpg %>%
 `theme_bw()`
 
 ```{r, fig.height=4, fig.width=6}
-mpg %>% 
+mpg %>%
   ggplot(aes(x = displ, y = hwy)) +
   geom_point() +
   theme_bw() #<<
@@ -1890,7 +1969,7 @@ mpg %>%
 `theme_minimal()`
 
 ```{r, fig.height=4, fig.width=6}
-mpg %>% 
+mpg %>%
   ggplot(aes(x = displ, y = hwy)) +
   geom_point() +
   theme_minimal() #<<
@@ -1907,7 +1986,7 @@ mpg %>%
 `theme_classic()`
 
 ```{r, fig.height=4, fig.width=6}
-mpg %>% 
+mpg %>%
   ggplot(aes(x = displ, y = hwy)) +
   geom_point() +
   theme_classic() #<<
@@ -1920,7 +1999,7 @@ mpg %>%
 `theme_void()`
 
 ```{r, fig.height=4, fig.width=6}
-mpg %>% 
+mpg %>%
   ggplot(aes(x = displ, y = hwy)) +
   geom_point() +
   theme_void() #<<
@@ -1935,14 +2014,14 @@ class: middle, inverse
 .leftcol[
 
 ```{r, echo=FALSE}
-mpg %>% 
+mpg %>%
   ggplot() +
   geom_smooth(aes(x = displ, y = hwy, color = drv))
 ```
 
 ```{r, echo=FALSE}
-mpg %>% 
-  count(class, drv) %>% 
+mpg %>%
+  count(class, drv) %>%
   ggplot() +
   geom_col(aes(x = drv, y = n, fill = class), width = 0.7)
 ```
@@ -1955,12 +2034,12 @@ mpg %>%
 #| echo: false
 
 countdown(
-    minutes = 15,
-    warn_when = 15,
-    update_every = 1,
-    top = 0,
-    right = 0,
-    font_size = '2em'
+  minutes = 15,
+  warn_when = 15,
+  update_every = 1,
+  top = 0,
+  right = 0,
+  font_size = '2em'
 )
 ```
 
@@ -1973,9 +2052,9 @@ Use the `mpg` data frame and ggplot to create these charts
 ```{r}
 #| echo: false
 
-mpg %>% 
+mpg %>%
   ggplot(aes(x = displ, y = hwy)) +
-  geom_point(aes(color = class)) + 
+  geom_point(aes(color = class)) +
   geom_smooth(se = FALSE)
 ```
 
@@ -1994,9 +2073,9 @@ lotr %>%
   ggplot() +
   geom_col(aes(x = word_count, y = film, fill = gender)) +
   labs(
-    x     = "Number of words spoken by characters",
-    y     = 'Film',
-    fill  = "Gender of character",
+    x = "Number of words spoken by characters",
+    y = 'Film',
+    fill = "Gender of character",
     title = "Male characters had far more speakings roles in the LOTR series films"
   ) +
   theme_bw()
@@ -2008,19 +2087,20 @@ lotr %>%
 
 ```{r, fig.height=4, fig.width=6, echo=FALSE}
 mpg %>%
-    mutate(manufacturer = str_to_title(manufacturer)) %>%
-    group_by(manufacturer) %>%
-    summarise(mean_hwy = mean(hwy)) %>%
-    ggplot() +
-    geom_col(
-      aes(x = mean_hwy, y = reorder(manufacturer, mean_hwy)), 
-      width = 0.9) +
-    labs(
-      x = 'Highway fuel economy (mpg)',
-      y = 'Vehicle manufacturer', 
-      title = 'Mean fuel economy by automaker'
-    ) + 
-    theme_minimal()
+  mutate(manufacturer = str_to_title(manufacturer)) %>%
+  group_by(manufacturer) %>%
+  summarise(mean_hwy = mean(hwy)) %>%
+  ggplot() +
+  geom_col(
+    aes(x = mean_hwy, y = reorder(manufacturer, mean_hwy)),
+    width = 0.9
+  ) +
+  labs(
+    x = 'Highway fuel economy (mpg)',
+    y = 'Vehicle manufacturer',
+    title = 'Mean fuel economy by automaker'
+  ) +
+  theme_minimal()
 ```
 
 ]
