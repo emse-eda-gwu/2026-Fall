@@ -2,7 +2,7 @@
 title: "Story Telling"
 params:
   number: 12
-  purpose: 'The purpose of this assignment is to learn some tips for effectively communicating the results of your analyses to others. We will look at strategies for giving effective presentations / speeches as well as best practices for designing slides.'
+  purpose: 'The purpose of this assignment is to prepare for telling effective stories with data, designing slides, and publishing a report as a Quarto site on GitHub Pages.'
 ---
 
 Coming soon!

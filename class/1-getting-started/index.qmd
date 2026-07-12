@@ -542,7 +542,7 @@ You should be able to:
 # Assignments
 
 ::: {.fragment}
-## 1) `r fa("book")` Weekly Reflections: [HW1](https://eda.seas.gwu.edu/2026-Fall/hw/1-tidy-data.html)
+## 1) `r fa("book")` Weekly Reflections: [HW1](https://eda.seas.gwu.edu/2026-Fall/hw/1-agentic-workflows.html)
 :::
 
 ::: {.fragment}

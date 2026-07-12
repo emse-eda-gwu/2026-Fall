@@ -1,8 +1,0 @@
----
-title: "Story Telling"
-params:
-  number: 11
-  purpose: 'The purpose of this assignment is to prepare for telling effective stories with data, designing slides, and publishing a report as a Quarto site on GitHub Pages.'
----
-
-Coming soon!

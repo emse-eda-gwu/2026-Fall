@@ -41,9 +41,9 @@ scripted.
 - [ ] Create the new Slack workspace (links already point to
       `emse-eda-f26.slack.com` in `_variables.yml`, `_quarto.yml`, and the
       class 1 slides)
-- [ ] Create new Google Calendar booking pages and update the signup links in:
-  - [ ] `class/4-workshop-proposals.qmd`
-  - [ ] `class/13-workshop-final-analysis.qmd`
+- [ ] Create a new Google Calendar booking page and update the signup link in
+      `class/4-workshop-proposals.qmd` (the only remaining team-meeting week —
+      the end-of-semester `workshop-final-analysis` week was dropped in F26)
 - [ ] Update HW template zip files in `templates/` if needed
 - [ ] Verify class dates against the official GW academic calendar
       (first class, Thanksgiving break, last class)

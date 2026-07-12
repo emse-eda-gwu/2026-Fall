@@ -1,17 +1,17 @@
 week,date,quiz,quiz_content,theme,n_class,stub_class,name_class,description_class,n_assign,name_assign,stub_assign,due_assign,n_mini,stub_mini,name_mini,due_mini,n_project,stub_project,name_project,due_project
 1,2026/08/26,,,Foundations,1,getting-started,Getting Started & Refresher,"What EDA is and why it matters; an abbreviated tidyverse & ggplot refresher (read the code, don't write it); a preview of the agentic workflow",1,,agentic-workflows,2026/08/31,,,,,,,,
-2,2026/09/02,,,Workflow,2,agentic-workflows,Agentic Workflows & GitHub Desktop,"Version control with GitHub Desktop (no command line); setting up Claude Code in Positron; your first AI-assisted data import",2,,cleaning-data,2026/09/07,,,,,,,,
-3,2026/09/09,,,Workflow,3,cleaning-data,"Cleaning, Reshaping & Joining","Tidy data; long vs. wide format; joins; changing data types; messy Excel files — all driven through Claude Code",3,,exploring-data,2026/09/21,1,data-cleaning,MP1: Clean & Verify,2026/10/05,1,proposal,Proposal,2026/09/20
+2,2026/09/02,,,Workflow,2,agentic-workflows,Agentic Workflows & GitHub Desktop,"Version control with GitHub Desktop (no command line); setting up Claude Code in Positron; your first AI-assisted data import",2,,tidy-data,2026/09/07,,,,,,,,
+3,2026/09/09,,,Workflow,3,tidy-data,Tidy Data & Reshaping,"Tidy data; long vs. wide format; data provenance; framing a research question — driven through Claude Code",3,,cleaning-data,2026/09/21,,,,,1,proposal,Proposal,2026/09/20
 4,2026/09/16,,,,4,workshop-proposals,Proposal Reflection - no class,One-on-one meetings to scope research questions and projects,,,,,,,,,,,,
-5,2026/09/23,1,Weeks 1 - 3,Exploring,5,exploring-data,Exploring Data,"Data types & scales; centrality & variability; distributions; correlation",4,,visualizing-information,2026/09/28,,,,,,,,
-6,2026/09/30,,,Visualizing,6,visualizing-information,Visualizing Information,"Psychology of graphical perception; preattentive attributes; ugly, bad, & wrong charts; chart design best practices",5,,factors-amounts-proportions,2026/10/05,2,exploring-data,MP2: Explore & Interrogate,2026/10/26,,,,
-7,2026/10/07,2,Weeks 5 - 6,Visualizing,7,factors-amounts-proportions,"Factors, Amounts, & Proportions","Manipulating factors; plotting amounts with bars, dots, and lollipops; parts of whole",6,,comparisons,2026/10/12,,,,,,,,
-8,2026/10/14,,,Visualizing,8,comparisons,Comparisons,"Facets; reference lines; dumbbells; slopes; distributions",7,,trends,2026/10/19,,,,,2,progress-report,Progress Report,2026/10/25
-9,2026/10/21,3,Weeks 7 - 8,Visualizing,9,trends,Trends,"Line charts; heat maps; animation",8,,polishing-charts,2026/10/26,,,,,,,,
-10,2026/10/28,,,Visualizing,10,polishing-charts,Polishing Charts,"Colors; annotations; scales; themes; multi-panel figures",9,,maps,2026/11/02,3,redesign,MP3: Re-design,2026/11/16,,,,
-11,2026/11/04,4,Weeks 9 - 10,Visualizing,11,maps,Maps,"Maps in ggplot; mapping data to maps; projections",10,,interactivity,2026/11/09,,,,,,,,
-12,2026/11/11,5,Weeks 6 - 12,Interactivity,12,interactivity,Interactivity & Interactive Products,"Plotly & interactive tables; D3 inside React (with a brief intro to Shiny); building & deploying interactive products",11,,story-telling,2026/11/30,,,,,,,,
-13,2026/11/18,,,,13,workshop-final-analysis,Project Workshops - no class,Team meetings to discuss progress towards final analyses,,,,,,,,,3,final-report,Final Report,2026/12/06
+5,2026/09/23,,,Workflow,5,cleaning-data,Cleaning & Joining,"Joins; changing data types; dealing with messy Excel files — driven through Claude Code",4,,exploring-data,2026/09/28,1,data-cleaning,MP1: Clean & Verify,2026/10/12,,,,
+6,2026/09/30,1,Weeks 1 - 5,Exploring,6,exploring-data,Exploring Data,"Data types & scales; centrality & variability; distributions; correlation",5,,visualizing-information,2026/10/05,,,,,,,,
+7,2026/10/07,,,Visualizing,7,visualizing-information,Visualizing Information,"Psychology of graphical perception; preattentive attributes; ugly, bad, & wrong charts; chart design best practices",6,,factors-amounts-proportions,2026/10/12,2,exploring-data,MP2: Explore & Interrogate,2026/11/02,,,,
+8,2026/10/14,2,Weeks 6 - 7,Visualizing,8,factors-amounts-proportions,"Factors, Amounts, & Proportions","Manipulating factors; plotting amounts with bars, dots, and lollipops; parts of whole",7,,comparisons,2026/10/19,,,,,,,,
+9,2026/10/21,,,Visualizing,9,comparisons,Comparisons,"Facets; reference lines; dumbbells; slopes; distributions",8,,trends,2026/10/26,,,,,2,progress-report,Progress Report,2026/11/01
+10,2026/10/28,3,Weeks 8 - 9,Visualizing,10,trends,Trends,"Line charts; heat maps; animation",9,,polishing-charts,2026/11/02,,,,,,,,
+11,2026/11/04,,,Visualizing,11,polishing-charts,Polishing Charts,"Colors; annotations; scales; themes; multi-panel figures",10,,maps,2026/11/09,3,redesign,MP3: Re-design,2026/11/22,,,,
+12,2026/11/11,4,Weeks 10 - 11,Visualizing,12,maps,Maps,"Maps in ggplot; mapping data to maps; projections",11,,interactivity,2026/11/16,,,,,,,,
+13,2026/11/18,5,Weeks 7 - 13,Interactivity,13,interactivity,Interactivity & Interactive Products,"Plotly & interactive tables; D3 inside React (with a brief intro to Shiny); building & deploying interactive products",12,,story-telling,2026/11/30,,,,,3,final-report,Final Report,2026/12/06
 14,2026/11/25,,,,,,Thanksgiving - no class,,,,,,,,,,,,,
 15,2026/12/02,,,Communicating,14,story-telling,Story Telling & Publishing,"Telling stories; slide design; publishing your report as a Quarto site on GitHub Pages",,,,,,,,,4,presentation,Presentation,2026/12/08
 16,2026/12/09,,,Communicating,15,final-presentations,Final Presentations,In-class presentation showcase w/Q&A,,,,,,,,,,,,

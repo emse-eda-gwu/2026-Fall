@@ -74,14 +74,13 @@ website (Fall 2026), built with [Quarto](https://quarto.org/).
 - **`ROLLOVER.md`** = the separate checklist for rolling the site to a new
   semester.
 
-## Orphaned files (render-excluded, kept as raw material — don't delete)
+## Raw material (render-excluded — don't delete)
 
-Left in place but excluded from render in `_quarto.yml` because the agentic
-revision superseded them:
-- `class/2-tidy-data.qmd` (tidy folded into the W3 cleaning class)
-- `hw/1-tidy-data.qmd`, `hw/11-project-workshop.qmd`, `hw/12-story-telling.qmd`
-- Two stale drafts still rendering harmlessly: `hw/11-project-workshop-temp.qmd`,
-  `hw/12-story-telling-temp.qmd` (don't reference removed columns).
+The prior slide decks live in `class/N-stub/`, excluded from render in
+`_quarto.yml` until each week's deck is rebuilt — keep them as raw material.
+The pre-agentic orphan files (the old tidy / project-workshop / story-telling
+`.qmd` + `-temp` drafts) were reconciled in the July 2026 schedule restructure —
+renumbered into the active sequence or deleted.
 
 ## Building
 
