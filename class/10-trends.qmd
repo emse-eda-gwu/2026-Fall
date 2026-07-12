@@ -1,0 +1,12 @@
+---
+title: "Trends"
+params:
+  class: "10-trends"
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r child = here::here("fragments", "placeholder.qmd")}
+```

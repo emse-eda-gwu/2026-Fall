@@ -1,5 +1,5 @@
 ---
-title: "Agentic Workflows & Version Control"
+title: "Agentic Workflows & GitHub"
 subtitle: "EMSE 4572/6572: Exploratory Data Analysis"
 author: "John Paul Helveston"
 institute: "The George Washington University | EMSE"

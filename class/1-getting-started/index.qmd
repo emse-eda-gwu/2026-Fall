@@ -3,11 +3,14 @@ title: "Getting Started"
 subtitle: "EMSE 4572/6572: Exploratory Data Analysis"
 author: "John Paul Helveston"
 institute: "The George Washington University | EMSE"
-date: "August 26, 2026"
-format: lexis-revealjs
+displaydate: August 26, 2026
+format:
+  lexis-revealjs:
+    scroll-view:
+      layout: compact
+      snap: proximity
+      activate-on-load: false
 progress: false
-footer: "<https://eda.seas.gwu.edu/2026-Fall/>"
-footer-align: center
 execute:
   echo: true
   warning: false
@@ -15,138 +18,116 @@ execute:
   freeze: false
 ---
 
+{{< include ../setup.qmd >}}
+
 ```{r}
-#| label: setup
 #| include: false
 
-library(tidyverse)
+agenda_items <- c(
+  "Course Goal",
+  "Course Introduction",
+  "Break: Install Stuff",
+  "Quarto",
+  "Workflow & Reading In Data",
+  "Wrangling Data",
+  "Visualizing Data"
+)
+
 library(here)
 library(ggrepel)
-library(cowplot)
-library(fontawesome)
-library(countdown)
-library(readxl)
-library(palmerpenguins)
 
-# Data used throughout the deck
-lotr <- read_csv(file.path("data", "lotr_words.csv"))
+lotr <- read_csv(here('data', 'lotr_words.csv'))
 
-# The "student engagement" running example. Defined once here so the polished
-# version can be reused on several slides without repeating the code.
 engagement <- data.frame(
   City = c(643, 735, 590, 863),
   County = c(793, 928, 724, 662),
   School = c(
-    "Special Ed., Charter",
-    "Special Ed., Public",
-    "General Ed., Charter",
-    "General Ed., Public"
+    'Special Ed., Charter',
+    'Special Ed., Public',
+    'General Ed., Charter',
+    'General Ed., Public'
   ),
   Highlight = c(0, 0, 0, 1)
 ) %>%
-  gather(Location, Engagement, City:County) %>%
+  pivot_longer(
+    cols = c(City, County),
+    names_to = "Location",
+    values_to = "Engagement"
+  ) %>%
   mutate(
-    Location = fct_relevel(Location, c("City", "County")),
+    Location = fct_relevel(Location, c('City', 'County')),
     Highlight = as.factor(Highlight),
-    x = ifelse(Location == "County", 1, 0)
+    x = ifelse(Location == 'County', 1, 0)
   )
-
 engagement_plot <- engagement %>%
   ggplot(aes(x = x, y = Engagement, group = School, color = Highlight)) +
   geom_point() +
   geom_line() +
-  scale_color_manual(values = c("#757575", "#ed573e")) +
+  scale_color_manual(values = c('#757575', '#ed573e')) +
   labs(
-    x = "Sex",
-    y = "Engagement",
+    x = 'Sex',
+    y = 'Engagement',
     title = paste0(
-      "Students in public, general education classes\n",
-      "in county schools have surprisingly low engagement"
+      'Students in public, general education classes\n',
+      'in county schools have surprisingly low engagement'
     )
   ) +
   scale_x_continuous(
     limits = c(-1.2, 1.2),
-    labels = c("City", "County"),
+    labels = c('City', 'County'),
     breaks = c(0, 1)
   ) +
   geom_text_repel(
-    aes(label = Engagement),
-    data = subset(engagement, Location == "County"),
+    aes(label = Engagement, color = as.factor(Highlight)),
+    data = subset(engagement, Location == 'County'),
     size = 5,
     nudge_x = 0.1,
     segment.color = NA
   ) +
   geom_text_repel(
-    aes(label = Engagement),
-    data = subset(engagement, Location == "City"),
+    aes(label = Engagement, color = as.factor(Highlight)),
+    data = subset(engagement, Location == 'City'),
     size = 5,
     nudge_x = -0.1,
     segment.color = NA
   ) +
   geom_text_repel(
-    aes(label = School),
-    data = subset(engagement, Location == "City"),
+    aes(label = School, color = as.factor(Highlight)),
+    data = subset(engagement, Location == 'City'),
     size = 5,
     nudge_x = -0.25,
     hjust = 1,
     segment.color = NA
   ) +
   theme_cowplot() +
-  background_grid(major = "x") +
+  background_grid(major = 'x') +
   theme(
     axis.line = element_blank(),
     axis.title.x = element_blank(),
     axis.title.y = element_blank(),
     axis.text.y = element_blank(),
     axis.ticks = element_blank(),
-    legend.position = "none"
+    legend.position = 'none'
   )
 ```
 
-<!-- Title slide -->
+---
 
-{{< inverse >}}
-{{< center >}}
-{{< middle >}}
-{{< no-slide-number >}}
+```{r}
+#| echo: false
+#| results: asis
 
-# {{< meta title >}}
-
-### [{{< meta subtitle >}}]{.font80}
-
-[{{< meta author >}}]{.large}
-
-{{< meta date >}}
+agenda(0)
+```
 
 ---
 
-{{< inverse >}}
-{{< middle >}}
+```{r}
+#| echo: false
+#| results: asis
 
-# Week 1: [Getting Started]{.fancy}
-
-### 1. Course Goal
-### 2. Course Introduction
-### 3. Break: Install Stuff
-### 4. Quarto
-### 5. Workflow & Reading In Data
-### 6. Wrangling Data
-### 7. Visualizing Data
-
----
-
-{{< inverse >}}
-{{< middle >}}
-
-# Week 1: [Getting Started]{.fancy}
-
-### 1. [Course Goal]{.orange}
-### 2. Course Introduction
-### 3. Break: Install Stuff
-### 4. Quarto
-### 5. Workflow & Reading In Data
-### 6. Wrangling Data
-### 7. Visualizing Data
+agenda(1)
+```
 
 ---
 
@@ -157,7 +138,7 @@ engagement_plot <- engagement %>%
 - Programming: Conditionals (if/else), loops, functions, testing, data types.
 - Analytics: Data structures, import / export, basic data manipulation & visualization.
 
-<br><br>
+`r sp(2)`
 
 ::: {.fragment}
 
@@ -183,14 +164,19 @@ engagement_plot <- engagement %>%
 
 ---
 
-{{< center >}}
+# [**Class goal**: translate _data_ into _information_]{.center}
 
-# **Class goal**: translate _data_ into _information_
+`r sp(2)`
 
 ::: {.col}
+
+::: {.center}
+
 **Data**
 
 Average student engagement scores
+
+:::
 
  Class       | Type    | City | County
  ------------|---------|------|-------
@@ -198,9 +184,13 @@ Average student engagement scores
  Special Ed. | Public  | 735  | 928
  General Ed. | Charter | 590  | 724
  General Ed. | Public  | 863  | 662
+
 :::
 
 ::: {.col .fragment}
+
+::: {.center}
+
 **Information**
 
 ```{r}
@@ -210,6 +200,9 @@ Average student engagement scores
 
 engagement_plot
 ```
+
+:::
+
 :::
 
 ---
@@ -219,6 +212,8 @@ engagement_plot
 ::: {.col}
 
 Encode data:
+
+::: {.code90}
 
 ```{r}
 engagement_data <- data.frame(
@@ -231,21 +226,31 @@ engagement_data <- data.frame(
     "General Ed., Public"
   )
 )
+
 engagement_data
 ```
-
+:::
 :::
 
 ::: {.col .fragment}
 Re-format data for plotting:
 
-::: {.code60}
+::: {.code80}
+
 ```{r}
 engagement_data <- engagement_data %>%
-  gather(Location, Engagement, City:County) %>%
-  mutate(Location = fct_relevel(Location, c("City", "County")))
+  pivot_longer(
+    cols = c(City, County),
+    names_to = "Location",
+    values_to = "Engagement"
+  ) %>%
+  mutate(
+    Location = fct_relevel(Location, c("City", "County"))
+  )
+
 engagement_data
 ```
+
 :::
 :::
 
@@ -256,10 +261,10 @@ engagement_data
 ::: {.col}
 Initial exploratory plotting:
 
-::: {.code60}
+::: {.code80}
 ```{r}
-#| fig-width: 6
-#| fig-height: 3
+#| fig-width: 8
+#| fig-height: 5
 
 engagement_data %>%
   ggplot() +
@@ -276,8 +281,8 @@ More exploratory plotting:<br>highlight difference
 
 ```{r}
 #| echo: false
-#| fig-width: 6
-#| fig-height: 5
+#| fig-width: 7
+#| fig-height: 6
 
 engagement %>%
   ggplot(aes(x = x, y = Engagement, group = School, color = School)) +
@@ -296,8 +301,8 @@ Directly label figure:
 
 ```{r}
 #| echo: false
-#| fig-width: 6
-#| fig-height: 5
+#| fig-width: 7
+#| fig-height: 6
 
 engagement %>%
   ggplot(aes(x = x, y = Engagement, group = School, color = School)) +
@@ -327,8 +332,8 @@ Remove unnecessary axes, change colors, fix labels:
 
 ```{r}
 #| echo: false
-#| fig-width: 6
-#| fig-height: 5
+#| fig-width: 7
+#| fig-height: 6
 
 engagement_plot
 ```
@@ -343,7 +348,7 @@ engagement_plot
 ### Code
 
 ::: {.col}
-::: {.code40}
+::: {.code80}
 ```r
 data <- data.frame(
   City = c(643, 735, 590, 863),
@@ -354,7 +359,11 @@ data <- data.frame(
   ),
   Highlight = c(0, 0, 0, 1)
 ) %>%
-  gather(Location, Engagement, City:County) %>%
+  pivot_longer(
+    cols = c(City, County), 
+    names_to = "Location", 
+    values_to = "Engagement"
+  ) %>%
   mutate(
     Location = fct_relevel(Location, c("City", "County")),
     Highlight = as.factor(Highlight),
@@ -365,7 +374,8 @@ data <- data.frame(
 :::
 
 ::: {.col}
-::: {.code40}
+
+::: {.code80}
 ```r
 plot <- ggplot(data, aes(
   x = x, y = Engagement, group = School, color = Highlight
@@ -386,6 +396,7 @@ plot <- ggplot(data, aes(
   background_grid(major = "x") +
   theme(legend.position = "none")
 ```
+
 :::
 :::
 
@@ -393,8 +404,8 @@ plot <- ggplot(data, aes(
 
 ```{r}
 #| echo: false
-#| fig-width: 6
-#| fig-height: 5
+#| fig-width: 8
+#| fig-height: 7
 
 engagement_plot
 ```
@@ -412,18 +423,12 @@ engagement_plot
 
 ---
 
-{{< inverse >}}
-{{< middle >}}
+```{r}
+#| echo: false
+#| results: asis
 
-# Week 1: [Getting Started]{.fancy}
-
-### 1. Course Goal
-### 2. [Course Introduction]{.orange}
-### 3. Break: Install Stuff
-### 4. Quarto
-### 5. Workflow & Reading In Data
-### 6. Wrangling Data
-### 7. Visualizing Data
+agenda(2)
+```
 
 ---
 
@@ -537,7 +542,7 @@ You should be able to:
 # Assignments
 
 ::: {.fragment}
-## 1) `r fa("book")` Weekly Reflections: [HW1](https://eda.seas.gwu.edu/2026-Fall/hw/1-tidy-data.html)
+## 1) `r fa("book")` Weekly Reflections: [HW1](https://eda.seas.gwu.edu/2026-Fall/hw/1-agentic-workflows.html)
 :::
 
 ::: {.fragment}
@@ -764,18 +769,12 @@ countdown(
 
 ---
 
-{{< inverse >}}
-{{< middle >}}
+```{r}
+#| echo: false
+#| results: asis
 
-# Week 1: [Getting Started]{.fancy}
-
-### 1. Course Goal
-### 2. Course Introduction
-### 3. Break: Install Stuff
-### 4. [Quarto]{.orange}
-### 5. Workflow & Reading In Data
-### 6. Wrangling Data
-### 7. Visualizing Data
+agenda(4)
+```
 
 ---
 
@@ -1194,18 +1193,12 @@ knitr::opts_chunk$set(
 
 ---
 
-{{< inverse >}}
-{{< middle >}}
+```{r}
+#| echo: false
+#| results: asis
 
-# Week 1: [Getting Started]{.fancy}
-
-### 1. Course Goal
-### 2. Course Introduction
-### 3. Break: Install Stuff
-### 4. Quarto
-### 5. [Workflow & Reading In Data]{.orange}
-### 6. Wrangling Data
-### 7. Visualizing Data
+agenda(5)
+```
 
 ---
 
@@ -1349,18 +1342,12 @@ Write code to import the following data files from the "data" folder:
 
 ---
 
-{{< inverse >}}
-{{< middle >}}
+```{r}
+#| echo: false
+#| results: asis
 
-# Week 1: [Getting Started]{.fancy}
-
-### 1. Course Goal
-### 2. Course Introduction
-### 3. Break: Install Stuff
-### 4. Quarto
-### 5. Workflow & Reading In Data
-### 6. [Wrangling Data]{.orange}
-### 7. Visualizing Data
+agenda(6)
+```
 
 ---
 
@@ -1673,18 +1660,12 @@ data <- read_csv(here("data", "data.csv"))
 
 ---
 
-{{< inverse >}}
-{{< middle >}}
+```{r}
+#| echo: false
+#| results: asis
 
-# Week 1: [Getting Started]{.fancy}
-
-### 1. Course Goal
-### 2. Course Introduction
-### 3. Break: Install Stuff
-### 4. Quarto
-### 5. Workflow & Reading In Data
-### 6. Wrangling Data
-### 7. [Visualizing Data]{.orange}
+agenda(7)
+```
 
 ---
 
