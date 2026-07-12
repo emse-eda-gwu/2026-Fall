@@ -1,5 +1,5 @@
 ---
-title: "Agentic Workflows & GitHub Desktop"
+title: "Agentic Workflows & GitHub"
 params:
   class: "2-agentic-workflows"
 execute:

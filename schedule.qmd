@@ -10,28 +10,36 @@ execute:
 All assignments are due by 11:59pm on the due date.
 
 ```{r}
-# NOTE: The schedule.lua file is inserted as a filter in _quarto.yml to 
-# avoid the insertion of a <colgroup> in the html around this table: 
+# NOTE: The schedule.lua file is inserted as a filter in _quarto.yml to
+# avoid the insertion of a <colgroup> in the html around this table:
 # https://github.com/jgm/pandoc/issues/8139
 
 source("_common.R")
 
-schedule <- get_schedule() 
+schedule <- get_schedule()
 names(schedule) <- str_to_title(names(schedule))
 done <- schedule %>%
   rename(
-      `Mini Projects` = Mini,
-      `Final Project` = Project,
-      `Reading Reflection` = Assign
+    `Mini Projects` = Mini,
+    `Final Project` = Project,
+    `Reading Reflection` = Assign
   ) %>%
   select(
-      Week, Date = Date_md, Quiz, Class, `Reading Reflection`,
-      `Mini Projects`, `Final Project`
+    Week,
+    Date = Date_md,
+    Quiz,
+    Class,
+    `Reading Reflection`,
+    `Mini Projects`,
+    `Final Project`
   ) %>%
-  kable(format = 'html', escape = FALSE,
-        align = c('c', 'c', 'c', 'l', 'l', 'l', 'l')) %>%
+  kable(
+    format = 'html',
+    escape = FALSE,
+    align = c('c', 'c', 'c', 'l', 'l', 'l', 'l')
+  ) %>%
   kable_styling(full_width = F, bootstrap_options = c("striped", "hover")) %>%
-  column_spec(column = 4, width = '19em') 
+  column_spec(column = 4, width = '19em')
 
 # Add highlighting based on current week if we're still in the semester
 # highlight <- which(Sys.Date() > (schedule$Date))
