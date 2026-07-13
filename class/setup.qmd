@@ -38,8 +38,8 @@ sp <- function(gap = 2, unit = "em") {
 
 agenda <- function(
   highlight = NULL,
-  week = "Week 1",
-  title = "Getting Started"
+  week = paste("Week", rmarkdown::metadata$week),
+  title = rmarkdown::metadata$title
 ) {
   lines <- c(
     "{{< inverse >}}",

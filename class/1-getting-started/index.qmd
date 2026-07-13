@@ -3,6 +3,7 @@ title: "Getting Started"
 subtitle: "EMSE 4572/6572: Exploratory Data Analysis"
 author: "John Paul Helveston"
 institute: "The George Washington University | EMSE"
+week: 1
 displaydate: August 26, 2026
 format: lexis-revealjs
 # Navigate slides with the mouse wheel / trackpad (reveal's native mouseWheel).
@@ -756,7 +757,7 @@ countdown(
 #| echo: false
 #| results: asis
 
-agenda(4)
+agenda(3)
 ```
 
 ---
@@ -1180,7 +1181,7 @@ knitr::opts_chunk$set(
 #| echo: false
 #| results: asis
 
-agenda(5)
+agenda(4)
 ```
 
 ---
@@ -1329,7 +1330,7 @@ Write code to import the following data files from the "data" folder:
 #| echo: false
 #| results: asis
 
-agenda(6)
+agenda(5)
 ```
 
 ---
@@ -1647,7 +1648,7 @@ data <- read_csv(here("data", "data.csv"))
 #| echo: false
 #| results: asis
 
-agenda(7)
+agenda(6)
 ```
 
 ---
