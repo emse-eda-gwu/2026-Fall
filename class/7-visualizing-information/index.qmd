@@ -1,0 +1,2322 @@
+---
+title: "Visualizing Information"
+subtitle: "EMSE 4572/6572: Exploratory Data Analysis"
+author: "John Paul Helveston"
+institute: "The George Washington University | EMSE"
+week: 7
+displaydate: October 07, 2026
+format: lexis-revealjs
+# Navigate slides with the mouse wheel / trackpad (reveal's native mouseWheel).
+mouse-wheel: true
+progress: false
+execute:
+  echo: true
+  warning: false
+  message: false
+  freeze: false
+---
+
+{{< include ../setup.qmd >}}
+
+```{r}
+#| include: false
+
+agenda_items <- c(
+  "The Human Visual-Memory System",
+  "The Psychology of Data Viz",
+  "10 Data Viz Best Practices",
+  "Making a (good) ggplot"
+)
+
+bp_items <- c(
+  "Remove chart chunk",
+  "Don't make 3D plots*",
+  "Don't lie",
+  "Don't use pie charts for proportions*",
+  "Don't stack bars*",
+  "Rotate and sort categorical axes*",
+  "Eliminate legends & directly label geoms*",
+  "Don't use pattern fills",
+  "Don't use red & green together",
+  "Consider tables for small data sets"
+)
+
+bp <- function(highlight = NULL) {
+  lines <- c(
+    "{{< inverse >}}",
+    "# [10 Data Viz Best Practices]{.center}",
+    "::: {.font120}"
+  )
+  for (i in seq_along(bp_items)) {
+    item <- bp_items[i]
+    if (!is.null(highlight) && i == highlight) {
+      item <- sprintf("[%s]{.orange}", item)
+    }
+    lines <- c(lines, sprintf("%d. %s", i, item))
+  }
+  lines <- c(lines, "[*most of the time]{.right}", ":::")
+  cat(lines, sep = "\n\n")
+}
+
+library(here)
+
+# Read in data sets for class
+wildlife_impacts <- read_csv(here('data', 'wildlife_impacts.csv'))
+gapminder <- read_csv(here('data', 'gapminder.csv'))
+```
+
+---
+
+{{< middle >}}
+
+::: {.col width="20%"}
+:::
+
+::: {.col width="80%"}
+# References:
+
+# - [Data Viz "Cheat Sheet"](https://github.com/emse-eda-gwu/2026-Fall/raw/main/content/cheatsheet-dataviz.pdf)
+
+# - [Data Viz Reference Page](https://eda.seas.gwu.edu/2026-Fall/references.html#visualizing-data)
+:::
+
+---
+
+{{< middle >}}
+
+::: {.border}
+![](figs/graphQuality.png){width="900"}
+:::
+
+---
+
+{{< middle >}}
+
+![](images/chart-quality.jpg){width="900"}
+
+[From [here](https://psyteachr.github.io/msc-data-skills/ggplot.html)]{.left}
+
+---
+
+{{< inverse >}}
+{{< middle >}}
+
+::: {.col width="20%"}
+:::
+
+::: {.col width="80%"}
+# "_Having word processing software<br>doesn't make us great writers._"
+## — Stephen Few
+:::
+
+---
+
+{{< center >}}
+
+::: {.col}
+# We don't write paragraphs like this
+
+![](images/bad_text.png)
+
+[Image from Few (2012, pg. 227)]{.left .font80}
+:::
+
+::: {.col .fragment}
+# So don't make<br>graphs like this
+
+![](images/bad_3d_bars.png){width="400"}
+
+[Image from excelcharts.com]{.font80}
+:::
+
+---
+
+```{r}
+#| echo: false
+#| results: asis
+
+agenda(0)
+```
+
+---
+
+```{r}
+#| echo: false
+#| results: asis
+
+agenda(1)
+```
+
+---
+
+{{< inverse >}}
+{{< middle >}}
+{{< center >}}
+
+# Good visualizations optimize for<br>the human visual-memory system
+
+---
+
+{{< center >}}
+
+## A (very) simplified model of the visual-memory system
+
+![](images/effective-charts-1.png){width="1000"}
+
+---
+
+{{< center >}}
+
+## A (very) simplified model of the visual-memory system
+
+![](images/effective-charts-2.png){width="1000"}
+
+---
+
+{{< center >}}
+
+## A (very) simplified model of the visual-memory system
+
+![](images/effective-charts-3.png){width="1000"}
+
+---
+
+{{< center >}}
+
+## A (very) simplified model of the visual-memory system
+
+![](images/effective-charts-4.png){width="1000"}
+
+---
+
+{{< inverse >}}
+{{< middle >}}
+
+# Two objectives of effective charts:
+
+## 1. Grab & direct attention (iconic memory)
+## 2. Reduce processing demands (working memory)
+
+---
+
+{{< center >}}
+
+# The power of pre-attentive processing
+
+## Count all the "5"'s
+
+. . .
+
+![](images/fives-1.png){width="500"}
+
+---
+
+{{< center >}}
+
+# The power of pre-attentive processing
+
+## Count all the "5"'s
+
+. . .
+
+![](images/fives-2.png){width="500"}
+
+---
+
+{{< center >}}
+
+::: {.col}
+![](images/preattentive-attributes-1.png)
+:::
+
+::: {.col .fragment}
+## Pre-attentive attributes
+
+<br>
+
+![](figs/mtCarsScatterColor.png){width="500"}
+:::
+
+---
+
+{{< center >}}
+
+::: {.col}
+![](images/preattentive-attributes-2.png)
+:::
+
+::: {.col}
+## Pre-attentive attributes
+
+### [Numerical (ratio) data]{.red}
+
+![](figs/mtCarsScatterColor.png){width="500"}
+:::
+
+---
+
+{{< center >}}
+
+::: {.col}
+![](images/preattentive-attributes-3.png)
+:::
+
+::: {.col}
+## Pre-attentive attributes
+
+### [Numerical (ratio) data]{.red}<br>[Categorical (ordinal) data]{.blue}
+
+![](figs/mtCarsScatterColor.png){width="500"}
+:::
+
+---
+
+{{< inverse >}}
+{{< middle >}}
+{{< center >}}
+
+# Not all pre-attentive attributes are equal
+
+---
+
+{{< center >}}
+
+# Where is the red dot?
+
+. . .
+
+::: {.col}
+![](figs/preattentive1.png){width="500"}
+:::
+
+::: {.col .fragment}
+![](figs/preattentive2.png){width="500"}
+:::
+
+::: {.col .fragment}
+![](figs/preattentive3.png){width="500"}
+:::
+
+---
+
+# [For categorical data:]{.center}
+
+### 1. Hue (color) > shape
+### 2. Less is more (stay in working memory!)
+
+::: {.col}
+![](figs/preattentive1.png){width="500"}
+:::
+
+::: {.col}
+![](figs/preattentive2.png){width="500"}
+:::
+
+::: {.col}
+![](figs/preattentive3.png){width="500"}
+:::
+
+---
+
+{{< middle >}}
+
+::: {.col .center}
+![](images/check-bad.png){width="100"}<br>
+![](figs/preattentive-bad.png){width="600"}
+:::
+
+::: {.col .center .fragment}
+![](images/check-good.png){width="100"}
+![](figs/preattentive-good.png){width="650"}
+:::
+
+---
+
+{{< middle >}}
+
+![](images/trump_covid.jpg){width="1000"}
+
+---
+
+```{r}
+#| echo: false
+#| results: asis
+
+agenda(2)
+```
+
+---
+
+{{< inverse >}}
+{{< center >}}
+{{< middle >}}
+
+# Much of the content in this section is from<br>John Rauser's [talk](https://www.youtube.com/watch?v=fSgEeI2Xpdc) on YouTube
+
+(Always cite your sources)
+
+---
+
+{{< middle >}}
+
+::: {.col width="60%"}
+![](images/cleveland-pub.png)
+:::
+
+::: {.col width="40%" .fragment}
+Cleveland, W. S., & McGill, R. (1985). Graphical perception and graphical methods for analyzing scientific data. Science, New Series, 229(4716), 828-833.
+:::
+
+---
+
+{{< inverse >}}
+
+# Cleveland's operations of pattern perception:
+
+::: {.col}
+# 1. Estimation
+# 2. Assembly
+# 3. Detection
+:::
+
+::: {.col}
+:::
+
+---
+
+{{< inverse >}}
+
+# Cleveland's operations of pattern perception:
+
+::: {.col}
+# 1. [Estimation]{.red} -------->
+# 2. Assembly
+# 3. Detection
+:::
+
+::: {.col}
+- ### **Discrimination** (X equal to Y?)
+- ### **Ranking** (X greater than Y?)
+- ### **Ratioing** (X double Y?)
+:::
+
+---
+
+{{< center >}}
+{{< middle >}}
+
+# [Estimation]{.red}: Hierarchy for _numerical_ data
+
+![](images/cleveland-hierarchy.png){width="1000"}
+
+::: {.col}
+## [More Accurate]{.left}
+:::
+
+::: {.col}
+## [Less Accurate]{.right}
+:::
+
+---
+
+{{< center >}}
+
+# Example: Life expectancy in countries in Asia
+
+::: {.col}
+```{r}
+#| echo: false
+
+gapminder %>%
+    filter(continent == "Asia") %>%
+    filter(year == max(year)) %>%
+    # Removing a "middle" country so that it's just 32 countries
+    filter(country != "Sri Lanka") %>%
+    mutate(country = ifelse(country == "Korea, Rep.", "Korea", country)) %>%
+    arrange(lifeExp) %>%
+    dplyr::select(country, lifeExp) %>%
+    as.data.frame() %>%
+    head(20)
+```
+:::
+
+::: {.col}
+:::
+
+---
+
+{{< middle >}}
+
+::: {.col width="30%"}
+1. Position on a common scale
+2. Position on<br>non-aligned scales
+3. Length
+4. Angle
+5. Area
+6. Color saturation
+7. **[Color hue]{.red}**
+:::
+
+::: {.col width="70%" .fragment}
+![](images/hue.png){width="750"}
+:::
+
+---
+
+{{< middle >}}
+
+::: {.col width="30%"}
+1. Position on a common scale
+2. Position on<br>non-aligned scales
+3. Length
+4. Angle
+5. Area
+6. Color saturation
+7. **[Color hue]{.red}**
+
+<br>
+
+- `r fa("square-check", fill = "green")` / `r fa("xmark", fill = "red")` **Discriminate**
+- `r fa("square-check", fill = "green")` / `r fa("xmark", fill = "red")` **Rank**
+- `r fa("xmark", fill = "red")` **Ratio**
+:::
+
+::: {.col width="70%"}
+![](figs/jr_hue.png){width="750"}
+:::
+
+---
+
+{{< middle >}}
+
+::: {.col width="30%"}
+1. Position on a common scale
+2. Position on<br>non-aligned scales
+3. Length
+4. Angle
+5. Area
+6. Color saturation
+7. **[Color hue]{.red}**
+
+Sorting helps a bit...
+
+- `r fa("square-check", fill = "green")` / `r fa("xmark", fill = "red")` **Discriminate**
+- `r fa("square-check", fill = "green")` / `r fa("xmark", fill = "red")` **Rank**
+- `r fa("xmark", fill = "red")` **Ratio**
+:::
+
+::: {.col width="70%"}
+![](figs/jr_hue_ordered.png){width="750"}
+:::
+
+---
+
+{{< middle >}}
+
+::: {.col width="30%"}
+1. Position on a common scale
+2. Position on<br>non-aligned scales
+3. Length
+4. Angle
+5. Area
+6. **[Color saturation]{.red}**
+7. Color hue
+
+<br>
+
+- `r fa("square-check", fill = "green")` / `r fa("xmark", fill = "red")` **Discriminate**
+- `r fa("square-check", fill = "green")` / `r fa("xmark", fill = "red")` **Rank**
+- `r fa("xmark", fill = "red")` **Ratio**
+:::
+
+::: {.col width="70%"}
+![](figs/jr_saturation_ordered.png){width="750"}
+:::
+
+---
+
+{{< middle >}}
+
+::: {.col width="30%"}
+1. Position on a common scale
+2. Position on<br>non-aligned scales
+3. Length
+4. Angle
+5. Area
+6. **[Color saturation]{.red}**
+7. Color hue
+
+Align to 0 scale:
+
+- `r fa("square-check", fill = "green")` / `r fa("xmark", fill = "red")` **Discriminate**
+- `r fa("square-check", fill = "green")` / `r fa("xmark", fill = "red")` **Rank**
+- `r fa("square-check", fill = "green")` / `r fa("xmark", fill = "red")` **Ratio**
+:::
+
+::: {.col width="70%"}
+![](figs/jr_saturation_ordered_zero.png){width="750"}
+:::
+
+---
+
+{{< middle >}}
+
+::: {.col width="30%"}
+1. Position on a common scale
+2. Position on<br>non-aligned scales
+3. Length
+4. Angle
+5. **[Area]{.red}**
+6. Color saturation
+7. Color hue
+
+<br>
+
+- `r fa("square-check", fill = "green")` / `r fa("xmark", fill = "red")` **Discriminate**
+- `r fa("square-check", fill = "green")` / `r fa("xmark", fill = "red")` **Rank**
+- `r fa("square-check", fill = "green")` / `r fa("xmark", fill = "red")` **Ratio**
+:::
+
+::: {.col width="70%"}
+![](figs/jr_area.png){width="750"}
+:::
+
+---
+
+{{< middle >}}
+
+::: {.col width="30%"}
+1. Position on a common scale
+2. Position on<br>non-aligned scales
+3. Length
+4. Angle
+5. **[Area]{.red}**
+6. Color saturation
+7. Color hue
+:::
+
+::: {.col width="70%"}
+### [Area works okay for "bubble" charts]{.center}
+
+![](images/gapminder_bubbles.jpg){width="750"}
+:::
+
+---
+
+{{< middle >}}
+
+::: {.col width="30%"}
+1. Position on a common scale
+2. Position on<br>non-aligned scales
+3. Length
+4. **[Angle]{.red}**
+5. Area
+6. Color saturation
+7. Color hue
+
+<br>
+
+- `r fa("square-check", fill = "green")` / `r fa("xmark", fill = "red")` **Discriminate**
+- `r fa("square-check", fill = "green")` **Rank**
+- `r fa("square-check", fill = "green")` / `r fa("xmark", fill = "red")` **Ratio**
+:::
+
+::: {.col width="70%"}
+![](figs/jr_angle.png){width="750"}
+:::
+
+---
+
+{{< middle >}}
+{{< bg-color "#ffffff" >}}
+
+::: {.col width="30%"}
+1. Position on a common scale
+2. Position on<br>non-aligned scales
+3. Length
+4. **[Angle]{.red}**
+5. Area
+6. Color saturation
+7. Color hue
+:::
+
+::: {.col width="70%"}
+![](figs/statesPie.png){width="750"}
+:::
+
+---
+
+{{< middle >}}
+
+::: {.col width="30%"}
+1. Position on a common scale
+2. Position on<br>non-aligned scales
+3. **[Length]{.red}**
+4. Angle
+5. Area
+6. Color saturation
+7. Color hue
+
+<br>
+
+- `r fa("square-check", fill = "green")` / `r fa("xmark", fill = "red")` **Discriminate**
+- `r fa("square-check", fill = "green")` / `r fa("xmark", fill = "red")` **Rank**
+- `r fa("square-check", fill = "green")` **Ratio**
+:::
+
+::: {.col width="70%"}
+![](figs/jr_length.png){width="750"}
+:::
+
+---
+
+{{< middle >}}
+
+::: {.col width="30%"}
+1. Position on a common scale
+2. **[Position on<br>non-aligned scales]{.red}**
+3. Length
+4. Angle
+5. Area
+6. Color saturation
+7. Color hue
+
+<br>
+
+- `r fa("square-check", fill = "green")` / `r fa("xmark", fill = "red")` **Discriminate**
+- `r fa("square-check", fill = "green")` / `r fa("xmark", fill = "red")` **Rank**
+- `r fa("square-check", fill = "green")` **Ratio**
+:::
+
+::: {.col width="70%"}
+![](figs/jr_position_non_aligned.png){width="750"}
+:::
+
+---
+
+{{< middle >}}
+
+::: {.col width="30%"}
+1. **[Position on a common scale]{.red}**
+2. Position on<br>non-aligned scales
+3. Length
+4. Angle
+5. Area
+6. Color saturation
+7. Color hue
+
+<br>
+
+- `r fa("square-check", fill = "green")` **Discriminate**
+- `r fa("square-check", fill = "green")` **Rank**
+- `r fa("square-check", fill = "green")` **Ratio**
+:::
+
+::: {.col width="70%"}
+![](figs/jr_position_aligned_ordered.png){width="750"}
+:::
+
+---
+
+{{< middle >}}
+
+::: {.col width="30%"}
+1. **[Position on a common scale]{.red}**
+2. Position on<br>non-aligned scales
+3. Length
+4. Angle
+5. Area
+6. Color saturation
+7. Color hue
+
+::: {.red}
+**No need to scale to 0:**
+
+- Lowers resolution
+- Isn't needed for accurate ratioing
+:::
+:::
+
+::: {.col width="70%"}
+![](figs/jr_position_aligned_ordered_zero.png){width="750"}
+:::
+
+---
+
+{{< middle >}}
+
+::: {.col width="30%"}
+1. **[Position on a common scale]{.red}**
+2. Position on<br>non-aligned scales
+3. Length
+4. Angle
+5. Area
+6. Color saturation
+7. Color hue
+
+**[Sorting still matters!]{.red}**
+:::
+
+::: {.col width="70%"}
+![](figs/jr_position_aligned.png){width="750"}
+:::
+
+---
+
+{{< inverse >}}
+
+# Cleveland's operations of pattern perception:
+
+::: {.col}
+# 1. Estimation
+# 2. Assembly
+# 3. Detection
+:::
+
+::: {.col}
+:::
+
+---
+
+{{< inverse >}}
+
+# Cleveland's operations of pattern perception:
+
+::: {.col width="45%"}
+# 1. Estimation
+# 2. [Assembly]{.red} -------->
+# 3. Detection
+:::
+
+::: {.col width="55%"}
+<br><br><br>
+
+#### The grouping of graphical elements
+:::
+
+---
+
+{{< inverse >}}
+{{< middle >}}
+{{< center >}}
+
+# [[Assembly]{.red}: Gestalt Psychology]{.font130}
+
+<br>
+
+### The whole has a reality that is entirely separate from the parts
+
+---
+
+{{< middle >}}
+{{< bg-color "#ffffff" >}}
+{{< center >}}
+
+![](images/gestalt-panda.png){width="400"}
+
+---
+
+{{< center >}}
+{{< bg-color "#ffffff" >}}
+
+# Reification
+
+<br>
+
+![](images/gestalt-f1-logo.jpg){width="700"}
+
+---
+
+{{< center >}}
+{{< bg-color "#ffffff" >}}
+
+::: {.col width="30%"}
+# Emergence
+:::
+
+::: {.col width="70%"}
+![](images/gestalt-dog.jpg){width="600"}
+:::
+
+---
+
+{{< bg-color "#ffffff" >}}
+
+::: {.col width="20%"}
+# Law of Closure
+
+Our minds fill in the missing information
+:::
+
+::: {.col width="80%"}
+![](figs/jr_circle.png){width="600"}
+:::
+
+---
+
+{{< inverse >}}
+{{< center >}}
+
+# [Prägnanz]{.font120}
+
+<br>
+
+### We strongly prefer to interpret stimuli as regular, simple, and orderly
+
+::: {.col .fragment}
+![](images/unsatisfying-pie.gif){width="500"}
+:::
+
+::: {.col .fragment}
+![](images/unsatisfying-paper.gif){width="500"}
+:::
+
+::: {.col .fragment}
+![](images/unsatisfying-lines.gif){width="500"}
+:::
+
+---
+
+{{< middle >}}
+
+::: {.col width="30%"}
+# [Prägnanz]{.font120}
+
+[This should cause you cognitive pain]{.font120}
+
+It's the graphical equivalent of this:
+
+![](images/unsatisfying-pie.gif)
+:::
+
+::: {.col width="70%"}
+![](figs/jr_position_aligned.png){width="750"}
+:::
+
+---
+
+{{< middle >}}
+
+::: {.col width="30%"}
+# [Prägnanz]{.font120}
+
+[This makes our brains happy]{.font120}
+:::
+
+::: {.col width="70%"}
+![](figs/jr_position_aligned_ordered.png){width="750"}
+:::
+
+---
+
+{{< middle >}}
+
+::: {.col width="30%"}
+# Law of Continuity
+
+[We will group together objects that follow an established direction]{.font120}
+:::
+
+::: {.col width="70%"}
+![](figs/mtCarsScatter.png){width="750"}
+:::
+
+---
+
+{{< middle >}}
+
+::: {.col width="30%"}
+# Law of Continuity
+
+[We will group together objects that follow an established direction]{.font120}
+:::
+
+::: {.col width="70%"}
+![](figs/mtCarsScatterSmooth.png){width="750"}
+:::
+
+---
+
+{{< middle >}}
+
+::: {.col width="30%"}
+# Law of Similarity
+
+[We see elements that are _physically similar_ as part of the same object]{.font120}
+:::
+
+::: {.col width="70%"}
+![](figs/mtCarsScatterColor.png){width="750"}
+:::
+
+---
+
+{{< middle >}}
+
+::: {.col width="30%"}
+# Law of Similarity
+
+[We see elements that are _physically similar_ as part of the same object]{.font120}
+:::
+
+::: {.col width="70%"}
+![](figs/mtCarsScatterShape1.png){width="750"}
+:::
+
+---
+
+{{< middle >}}
+
+::: {.col width="30%"}
+# Law of Similarity
+
+[We see elements that are _physically similar_ as part of the same object]{.font120}
+:::
+
+::: {.col width="70%"}
+![](figs/mtCarsScatterShape2.png){width="750"}
+:::
+
+---
+
+{{< middle >}}
+
+::: {.col width="30%"}
+# Law of Similarity
+
+[We see elements that are _physically similar_ as part of the same object]{.font120}
+:::
+
+::: {.col width="70%"}
+![](figs/mtCarsScatterShape3.png){width="750"}
+:::
+
+---
+
+{{< middle >}}
+
+::: {.col width="30%"}
+# Law of Proximity
+
+[We tend to see elements that are _physically near_ each other as part of the same object]{.font120}
+:::
+
+::: {.col width="70%"}
+![](figs/jr_diamonds_bars_dodged.png){width="750"}
+:::
+
+---
+
+{{< middle >}}
+
+::: {.col width="30%"}
+# Law of Proximity
+
+[We tend to see elements that are _physically near_ each other as part of the same object]{.font120}
+:::
+
+::: {.col width="70%"}
+![](figs/jr_diamonds_line_total.png){width="750"}
+:::
+
+---
+
+{{< middle >}}
+
+::: {.col width="30%"}
+# Law of Proximity
+
+[We tend to see elements that are _physically near_ each other as part of the same object]{.font120}
+:::
+
+::: {.col width="70%"}
+![](figs/jr_diamonds_line_cut.png){width="750"}
+:::
+
+---
+
+{{< inverse >}}
+
+# Cleveland's operations of pattern perception:
+
+::: {.col}
+# 1. Estimation
+# 2. Assembly
+# 3. Detection
+:::
+
+::: {.col}
+:::
+
+---
+
+{{< center >}}
+{{< middle >}}
+
+# [Estimation]{.red}: Hierarchy for _numerical_ data
+
+![](images/cleveland-hierarchy.png){width="1000"}
+
+::: {.col}
+## [More Accurate]{.left}
+:::
+
+::: {.col}
+## [Less Accurate]{.right}
+:::
+
+---
+
+{{< center >}}
+
+# [Assembly]{.red}: Gestalt Psychology
+
+| Law of Closure | Prägnanz | Law of Continuity | Law of Similarity | Law of Proximity |
+|-|-|-|-|-|
+| Fill in the missing information | We like regular, simple, and orderly | Group together objects with established direction | Physically _similar_ = same object | Physically _near_ = same object |
+| <center><img src="figs/jr_circle.png" width=200></center> | <center><img src="figs/jr_position_aligned.png" width=200></center> | <center><img src="figs/mtCarsScatter.png" width=200></center> | <center><img src="figs/mtCarsScatterColor.png" width=200></center> | <center><img src="figs/jr_diamonds_bars_dodged.png" width=200></center> |
+|  | <center><img src="images/unsatisfying-pie.gif" width=200></center> | <center><img src="figs/mtCarsScatterSmooth.png" width=200></center> | <center><img src="figs/mtCarsScatterShape1.png" width=200></center> | <center><img src="figs/jr_diamonds_line_cut.png" width=200></center> |
+
+---
+
+{{< inverse >}}
+
+# Cleveland's operations of pattern perception:
+
+::: {.col width="45%"}
+# 1. Estimation
+# 2. Assembly
+# 3. [Detection]{.red} -------->
+:::
+
+::: {.col width="55%"}
+<br><br><br><br><br>
+
+#### Recognizing that a geometric object encodes a physical value
+:::
+
+---
+
+{{< middle >}}
+{{< center >}}
+
+![](images/norman_door.gif){width="900"}
+
+---
+
+::: {.col}
+# Norman door (n.):
+
+1. A door where the design tells you to do the opposite of what you're actually supposed to do.
+
+2. A door that gives the wrong signal and needs a sign to correct it.
+:::
+
+::: {.col}
+![](images/design_of_everyday_things.jpg){width="400"}
+:::
+
+---
+
+{{< center >}}
+
+::: {.col}
+# Norman door
+
+![](images/check-bad.png){width="80"}
+![](images/norman_door.jpg){width="250"}
+:::
+
+::: {.col .fragment}
+# Non-Norman door
+
+![](images/check-good.png){width="100"}
+![](images/non-norman-door.jpg){width="480"}
+:::
+
+---
+
+{{< middle >}}
+{{< center >}}
+
+::: {.border}
+![](figs/mtCarsScatter.png){width="800"}
+:::
+
+---
+
+{{< middle >}}
+{{< center >}}
+
+::: {.border}
+![](figs/mtCarsScatterGray.png){width="800"}
+:::
+
+---
+
+{{< middle >}}
+{{< center >}}
+
+::: {.border}
+![](figs/mtCarsScatterSmall.png){width="800"}
+:::
+
+---
+
+{{< middle >}}
+{{< center >}}
+
+::: {.border}
+![](figs/mtCarsScatterGrid1.png){width="800"}
+:::
+
+---
+
+{{< middle >}}
+{{< center >}}
+
+::: {.border}
+![](figs/mtCarsScatterGrid2.png){width="800"}
+:::
+
+---
+
+{{< middle >}}
+{{< center >}}
+
+::: {.border}
+![](figs/mtCarsScatterGrid3.png){width="800"}
+:::
+
+---
+
+{{< middle >}}
+{{< center >}}
+
+The white circles you see at the intersections is called the **"Hermann Grid illusion"**
+
+::: {.border}
+![](figs/mtCarsScatterGrid4.png){width="700"}
+:::
+
+---
+
+{{< middle >}}
+{{< center >}}
+
+::: {.border}
+![](figs/mtCarsScatterGrid5.png){width="800"}
+:::
+
+---
+
+{{< inverse >}}
+{{< center >}}
+
+```{r}
+#| echo: false
+
+countdown(
+  minutes = 5,
+  warn_when = 30,
+  update_every = 1,
+  left = 0,
+  right = 0,
+  top = 1,
+  bottom = 0,
+  margin = "5%",
+  font_size = "8em"
+)
+```
+
+# Break!
+
+## Stand up, Move around, Stretch!
+
+---
+
+```{r}
+#| echo: false
+#| results: asis
+
+agenda(3)
+```
+
+---
+
+```{r}
+#| echo: false
+#| results: asis
+
+bp(0)
+```
+
+---
+
+```{r}
+#| echo: false
+#| results: asis
+
+bp(1)
+```
+
+---
+
+{{< inverse >}}
+{{< middle >}}
+
+::: {.col width="20%"}
+:::
+
+::: {.col width="80%"}
+# "_Erase non-data ink._"
+## — Ed Tufte
+:::
+
+---
+
+{{< center >}}
+{{< middle >}}
+
+::: {.col}
+![](images/check-bad.png){width="80"}
+![](images/monsterBars.png){width="500"}
+
+Figure 1.6: `Monstrous Costs’ by Nigel Holmes, in Healy, 2018
+:::
+
+::: {.col .fragment}
+![](images/check-good.png){width="100"}
+![](figs/monsterBars.png){width="480"}
+:::
+
+---
+
+{{< middle >}}
+{{< center >}}
+
+![](images/less-is-more-darkhorse-analytics.gif){width="800"}
+
+[Figure 24.1: From Data Looks Better Naked by Darkhorse Analytics]{.left}
+
+---
+
+{{< center >}}
+{{< middle >}}
+
+::: {.col}
+![](images/check-bad.png){width="80"}
+![](images/less-is-more-darkhorse-analytics-before.png){width="500"}
+:::
+
+::: {.col .fragment}
+![](images/check-good.png){width="100"}
+![](images/less-is-more-darkhorse-analytics-after.png){width="480"}
+:::
+
+---
+
+```{r}
+#| echo: false
+#| results: asis
+
+bp(2)
+```
+
+---
+
+{{< center >}}
+{{< middle >}}
+
+::: {.col}
+## Humans aren't good at distinguishing 3D space
+
+![](images/penrose-stairs.png){width="400"}
+
+[Penrose Stairs](https://en.wikipedia.org/wiki/Penrose_stairs), made famous by<br>M.C. Escher (1898-1972)
+:::
+
+::: {.col .fragment}
+## Ink proportions !=<br>true proportions
+
+![](images/3dpies.png){width="500"}
+:::
+
+---
+
+{{< center >}}
+{{< middle >}}
+
+# Occlusion: geoms are obscured
+
+![](images/3d-occlusion.png){width="400"}
+
+---
+
+{{< center >}}
+{{< middle >}}
+
+::: {.col width="60%"}
+![](images/3dbad.jpeg){width="100%"}
+:::
+
+::: {.col width="40%"}
+# Multiple interpretations
+:::
+
+---
+
+{{< center >}}
+{{< middle >}}
+
+::: {.col width="40%"}
+![](images/check-bad.png){width="80"}
+![](images/3d-occlusion.png){width="400"}
+:::
+
+::: {.col width="60%" .fragment}
+![](images/check-good.png){width="100"}
+
+::: {.border}
+![](figs/facetedBars.png){width="600"}
+:::
+:::
+
+---
+
+{{< center >}}
+{{< middle >}}
+
+# The third dimension distracts from the data
+
+## (this is what Tufte calls "chart junk")
+
+![](images/3d-chart-junk.png){width="700"}
+
+---
+
+{{< center >}}
+{{< middle >}}
+
+::: {.col width="60%"}
+![](images/check-bad.png){width="80"}
+![](images/3d-chart-junk.png)
+:::
+
+::: {.col width="40%" .fragment}
+![](images/check-good.png){width="100"}
+
+::: {.border}
+![](figs/simpleBars.png)
+:::
+:::
+
+---
+
+```{r}
+#| echo: false
+#| results: asis
+
+bp(3)
+```
+
+---
+
+{{< center >}}
+{{< middle >}}
+
+::: {.col width="60%" .border}
+![](images/tufte-fuel-economy-bad.png)
+
+[Edward Tufte (2001) "The Visual Display of Quantitative Information", 2nd Edition, pg. 57-58.]{.left .font80}
+:::
+
+::: {.col width="40%" .border .fragment}
+![](images/tufte-fuel-economy-good.png){width="370"}
+:::
+
+---
+
+{{< center >}}
+{{< middle >}}
+
+# Bar charts should always start at 0
+
+::: {.col width="60%" .fragment}
+![](images/check-bad.png){width="80"}
+![](images/fox-news-bars.png)
+
+[Image from http://livingqlikview.com/the-9-worst-data-visualizations-ever-created/]{.left .font70}
+:::
+
+::: {.col width="40%" .fragment}
+![](images/check-good.png){width="100"}
+
+::: {.border}
+![](figs/barchart_zero.png){width="330"}
+:::
+:::
+
+---
+
+{{< center >}}
+{{< middle >}}
+
+# Don't cherry-pick your data
+
+::: {.col width="60%" .fragment}
+![](images/check-bad.png){width="80"}
+![](images/fox-news-immigration-bars-bad.jpg)
+
+[Image from https://www.mediamatters.org/fox-news/fox-news-newest-dishonest-chart-immigration-enforcement]{.left .font70}
+:::
+
+::: {.col width="40%" .fragment}
+![](images/check-good.png){width="100"}
+
+::: {.border}
+![](images/fox-news-immigration-bars-good.jpg)
+:::
+:::
+
+---
+
+{{< center >}}
+{{< middle >}}
+
+# Make sure your chart makes sense
+
+![](images/fox-news-piechart.png){width="600"}
+
+[Image from Image from http://livingqlikview.com/the-9-worst-data-visualizations-ever-created/]{.left .font70}
+
+---
+
+```{r}
+#| echo: false
+#| results: asis
+
+bp(4)
+```
+
+---
+
+{{< middle >}}
+{{< center >}}
+{{< bg-color "#ffffff" >}}
+
+::: {.col width="45%"}
+![](images/check-bad.png){width="80"}
+![](figs/statesPie.png){width="750"}
+:::
+
+::: {.col width="55%" .fragment}
+![](images/check-good.png){width="100"}
+![](figs/statesBar.png){width="750"}
+:::
+
+---
+
+{{< middle >}}
+{{< bg-color "#ffffff" >}}
+
+::: {.col width="45%"}
+# Exceptions:
+
+## - Small data
+## - Simple fractions
+## - If sum of parts matters
+:::
+
+::: {.col width="55%" .fragment}
+![](images/bundestag-pie-1.png)
+:::
+
+---
+
+{{< middle >}}
+{{< center >}}
+{{< bg-color "#ffffff" >}}
+
+# Best pie chart of all time
+
+![](images/pie-pyramid.png){width="900"}
+
+---
+
+```{r}
+#| echo: false
+#| results: asis
+
+bp(5)
+```
+
+---
+
+{{< middle >}}
+{{< center >}}
+
+# Stacked bars are rarely a good idea
+
+::: {.border}
+![](figs/jr_diamonds_bars_stacked.png){width="700"}
+:::
+
+---
+
+{{< middle >}}
+{{< center >}}
+
+## "Parallel coordinates" plot usually works better
+
+::: {.col .border}
+![](figs/jr_diamonds_line_cut.png)
+:::
+
+::: {.col .border}
+![](figs/jr_diamonds_line_total.png)
+:::
+
+---
+
+{{< middle >}}
+{{< center >}}
+
+## Exception:<br>When you care about the _total_ more than the categories
+
+::: {.col width="60%" .border}
+![](figs/jr_phones_area.png)
+:::
+
+::: {.col width="40%" .border .fragment}
+![](figs/backgroundChecks.png){width="400"}
+:::
+
+---
+
+```{r}
+#| echo: false
+#| results: asis
+
+bp(6)
+```
+
+---
+
+{{< middle >}}
+{{< center >}}
+
+## Rotate axes if you can't read them
+
+::: {.col width="45%"}
+![](images/check-bad.png){width="80"}
+
+::: {.border}
+![](figs/mpg_bars_bad.png){width="400"}
+:::
+:::
+
+::: {.col width="55%" .fragment}
+![](images/check-good.png){width="100"}
+
+::: {.border}
+![](figs/mpg_bars_flipped.png){width="750"}
+:::
+:::
+
+---
+
+{{< middle >}}
+{{< center >}}
+
+## Default order is almost always wrong
+
+::: {.col}
+![](images/check-bad.png){width="80"}
+
+Ordered by alphabet (default)
+
+::: {.border}
+![](figs/mpg_bars_flipped.png)
+:::
+:::
+
+::: {.col .fragment}
+![](images/check-good.png){width="100"}
+
+Ordered by count
+
+::: {.border}
+![](figs/mpg_bars_flipped_sorted.png)
+:::
+:::
+
+---
+
+{{< center >}}
+
+## Exception: Ordinal variables
+
+::: {.border}
+![](images/wildlife-months-bar-1.png){width="900"}
+:::
+
+---
+
+```{r}
+#| echo: false
+#| results: asis
+
+bp(7)
+```
+
+---
+
+{{< middle >}}
+{{< center >}}
+
+## Directly label geoms
+
+::: {.col}
+![](images/check-bad.png){width="75"}
+
+::: {.border}
+![](figs/milk_region.png)
+:::
+:::
+
+::: {.col .fragment}
+![](images/check-good.png){width="100"}
+
+::: {.border}
+![](figs/milk_region_label.png)
+:::
+:::
+
+---
+
+{{< center >}}
+
+## Exception: When you have repeated categories
+
+::: {.border}
+![](images/pattern_fills2.png){width="600"}
+:::
+
+---
+
+```{r}
+#| echo: false
+#| results: asis
+
+bp(8)
+```
+
+---
+
+{{< middle >}}
+{{< center >}}
+{{< bg-color "#f8f8f8" >}}
+
+![](images/pattern_fills3.png){width="600"}
+
+---
+
+{{< middle >}}
+{{< center >}}
+
+::: {.col}
+![](images/check-bad.png){width="75"}
+
+::: {.border}
+![](images/pattern_fills1.png)
+:::
+:::
+
+::: {.col .fragment}
+![](images/check-good.png){width="100"}
+
+::: {.border}
+![](images/pattern_fills2.png)
+:::
+:::
+
+---
+
+```{r}
+#| echo: false
+#| results: asis
+
+bp(9)
+```
+
+---
+
+{{< center >}}
+
+# 10% of males and 1% of females are color blind
+
+::: {.col .fragment .border}
+![](figs/colorBlindBad1.png)
+:::
+
+::: {.col .fragment .border}
+![](figs/colorBlindBad2.png)
+:::
+
+---
+
+{{< middle >}}
+{{< center >}}
+
+## Facets can be used to avoid color altogether
+
+::: {.col}
+![](images/check-bad.png){width="75"}
+
+::: {.border}
+![](figs/colorBlindBad1.png)
+:::
+:::
+
+::: {.col .fragment}
+![](images/check-good.png){width="100"}
+
+::: {.border}
+![](figs/colorBlindBad3.png)
+:::
+:::
+
+---
+
+```{r}
+#| echo: false
+#| results: asis
+
+bp(10)
+```
+
+---
+
+{{< middle >}}
+{{< bg-color "#ffffff" >}}
+{{< center >}}
+
+![](images/pole-pie1.png){width="900"}
+
+---
+
+{{< middle >}}
+{{< bg-color "#ffffff" >}}
+{{< center >}}
+
+![](images/pole-pie2.png){width="900"}
+
+---
+
+{{< center >}}
+{{< middle >}}
+
+## Who do you think did a better job in tonight’s debate?
+
+| | Clinton | Trump |
+|-|-|-|
+| Among Democrats | 99% | 1% |
+| Among Republicans | 53% | 47% |
+
+---
+
+{{< middle >}}
+
+::: {.col width="20%"}
+:::
+
+::: {.col width="80%"}
+# References:
+
+# - [Data Viz "Cheat Sheet"](https://github.com/emse-eda-gwu/2026-Fall/raw/main/content/cheatsheet-dataviz.pdf)
+
+# - [Data Viz Reference Page](https://eda.seas.gwu.edu/2026-Fall/references.html#visualizing-data)
+:::
+
+---
+
+{{< inverse >}}
+
+# Your turn - go [here](https://docs.google.com/presentation/d/1D3WMwY86lRe5W4VyCVejeSdf8esfcUQ4PnczzcmQ2eA/edit?usp=sharing)
+
+For your "bad" visualization:
+
+1) Identify where the graphic falls on Cleveland's pattern recognition hierarchy
+
+![](images/cleveland-hierarchy.png){width="1000"}
+
+2) Any design rules that are broken
+
+3) Suggest at least two improvements
+
+```{r}
+#| echo: false
+
+countdown(
+  minutes = 10,
+  warn_when = 30,
+  update_every = 1,
+  top = 0,
+  right = 0,
+  font_size = "2em"
+)
+```
+
+---
+
+{{< middle >}}
+{{< center >}}
+
+![](images/bad-viz/army_budget.jpg){width="900"}
+
+---
+
+{{< middle >}}
+
+::: {.col width="40%"}
+![](images/bad-viz/prisoners.png){width="500"}
+:::
+
+::: {.col width="60%" .fragment}
+![](figs/prisoner_bars.png){width="900"}
+:::
+
+---
+
+{{< middle >}}
+
+::: {.col width="40%"}
+![](images/bad-viz/junk-life-expectancy-bad.png){width="500"}
+:::
+
+::: {.col width="60%" .fragment}
+![](images/bad-viz/junk-life-expectancy-good1.png){width="400"}
+![](images/bad-viz/junk-life-expectancy-good2.png){width="400"}
+:::
+
+---
+
+{{< middle >}}
+
+::: {.col width="45%"}
+![](images/bad-viz/bears-bad.png){width="500"}
+:::
+
+::: {.col width="55%" .fragment}
+![](images/bad-viz/bears-good.jpeg){width="600"}
+:::
+
+---
+
+{{< middle >}}
+
+::: {.col}
+![](images/bad-viz/clinton-tweet-venn-1.png)
+:::
+
+::: {.col .fragment}
+![](images/bad-viz/clinton-tweet-venn-2.jpg)
+:::
+
+::: {.col .fragment}
+![](figs/backgroundChecks.png)
+:::
+
+---
+
+```{r}
+#| echo: false
+#| results: asis
+
+agenda(4)
+```
+
+---
+
+{{< center >}}
+
+## Making a (good) ggplot
+
+::: {.col width="40%"}
+Before:
+
+![](figs/birds_before.png)
+:::
+
+::: {.col width="60%"}
+After:
+
+![](figs/birds_after.png)
+:::
+
+---
+
+{{< inverse >}}
+
+# [Making a (good) ggplot]{.center}
+
+::: {.font120}
+1. Format data frame
+2. Add geoms
+3. Flip coordinates?
+4. Reorder factors?
+5. Adjust scales
+6. Adjust theme
+7. Annotate
+:::
+
+---
+
+# 1) Format data frame
+
+```{r}
+#| code-line-numbers: "3"
+
+# Format the data frame
+wildlife_impacts %>%
+  count(operator)
+```
+
+---
+
+# 2) Add geoms
+
+::: {.col}
+```{r}
+#| eval: false
+#| code-line-numbers: "8"
+
+# Format the data frame
+wildlife_impacts %>%
+  count(operator) %>%
+
+# Add geoms
+  ggplot() +
+  geom_col(
+      aes(x = operator, y = n),
+      width = 0.7, alpha = 0.8)
+```
+:::
+
+::: {.col}
+![](figs/birds_before.png)
+:::
+
+---
+
+## 3) Flip coordinates - can you read the labels?
+
+::: {.col}
+::: {.font70}
+```{r}
+#| eval: false
+#| code-line-numbers: "12"
+
+# Format the data frame
+wildlife_impacts %>%
+  count(operator) %>%
+
+# Add geoms
+  ggplot() +
+  geom_col(
+      aes(x = operator, y = n),
+      width = 0.7, alpha = 0.8) +
+
+# Flip coordinates
+  coord_flip()
+```
+:::
+:::
+
+::: {.col}
+![](figs/birds_coord_flip.png){width="500"}
+:::
+
+---
+
+## 3) Flip coordinates - can you read the labels?
+
+::: {.col}
+::: {.font70}
+```{r}
+#| eval: false
+#| code-line-numbers: "8"
+
+# Format the data frame
+wildlife_impacts %>%
+  count(operator) %>%
+
+# Add geoms
+  ggplot() +
+  geom_col(
+      aes(x = n, y = operator),
+      width = 0.7, alpha = 0.8)
+```
+:::
+:::
+
+::: {.col}
+![](figs/birds_coord_flip.png){width="500"}
+:::
+
+---
+
+## 4) Reorder factors with `reorder()`
+
+::: {.col width="55%"}
+::: {.font70}
+```{r}
+#| eval: false
+#| code-line-numbers: "8"
+
+# Format the data frame
+wildlife_impacts %>%
+  count(operator) %>%
+
+# Add geoms
+  ggplot() +
+  geom_col(
+      aes(x = n, y = reorder(operator, n)),
+      width = 0.7, alpha = 0.8)
+```
+:::
+:::
+
+::: {.col width="45%"}
+![](figs/birds_fct_reorder.png)
+:::
+
+---
+
+## 5) Adjust scales
+
+::: {.col width="55%"}
+::: {.font70}
+```{r}
+#| eval: false
+#| code-line-numbers: "12,13"
+
+# Format the data frame
+wildlife_impacts %>%
+  count(operator) %>%
+
+# Add geoms
+  ggplot() +
+  geom_col(
+      aes(x = n, y = reorder(operator, n)),
+      width = 0.7, alpha = 0.8) +
+
+# Adjust x axis scale
+  scale_x_continuous(
+    expand = expansion(mult = c(0, 0.05)))
+```
+:::
+:::
+
+::: {.col width="45%"}
+![](figs/birds_scales1.png)
+:::
+
+---
+
+## 5) Adjust scales - customize break points (if you want)
+
+::: {.col width="55%"}
+::: {.font70}
+```{r}
+#| eval: false
+#| code-line-numbers: "14,15"
+
+# Format the data frame
+wildlife_impacts %>%
+  count(operator) %>%
+
+# Add geoms
+  ggplot() +
+  geom_col(
+      aes(x = n, y = reorder(operator, n)),
+      width = 0.7, alpha = 0.8) +
+
+# Adjust x axis scale
+  scale_x_continuous(
+    expand = expansion(mult = c(0, 0.05)),
+    breaks = c(0, 10000, 20000),
+    limits = c(0, 20000))
+```
+:::
+:::
+
+::: {.col width="45%"}
+![](figs/birds_scales2.png)
+:::
+
+---
+
+## 6) Adjust theme
+
+### Four `cowplot` themes you should know
+
+![](figs/cowplot_themes.png){width="1200"}
+
+---
+
+## 6) Adjust theme
+
+::: {.col}
+For horizontal bars, add only vertical grid
+
+::: {.font70}
+```{r}
+#| eval: false
+#| code-line-numbers: "16"
+
+# Format the data frame
+wildlife_impacts %>%
+  count(operator) %>%
+
+# Add geoms
+  ggplot() +
+  geom_col(
+      aes(x = n, y = reorder(operator, n)),
+      width = 0.7, alpha = 0.8) +
+
+# Adjust x axis scale
+  scale_x_continuous(
+    expand = expansion(mult = c(0, 0.05))) +
+
+# Adjust theme
+  theme_minimal_vgrid()
+```
+:::
+:::
+
+::: {.col}
+![](figs/birds_theme.png){width="500"}
+:::
+
+---
+
+## 7) Annotate
+
+::: {.col}
+::: {.font70}
+```{r}
+#| eval: false
+#| code-line-numbers: "4,20,21,22"
+
+# Format the data frame
+wildlife_impacts %>%
+  count(operator) %>%
+  mutate(operator = str_to_title(operator)) %>%
+
+# Add geoms
+  ggplot() +
+  geom_col(
+      aes(x = n, y = reorder(operator, n)),
+      width = 0.7, alpha = 0.8) +
+
+# Adjust x axis scale
+  scale_x_continuous(
+    expand = expansion(mult = c(0, 0.05))) +
+
+# Adjust theme
+  theme_minimal_vgrid() +
+
+# Annotate
+  labs(
+    x = 'Count',
+    y = NULL)
+```
+:::
+:::
+
+::: {.col}
+![](figs/birds_after.png)
+:::
+
+---
+
+## Finished product
+
+::: {.col width="55%"}
+::: {.font70}
+```{r}
+#| eval: false
+
+wildlife_impacts %>%
+  count(operator) %>%
+  mutate(operator = str_to_title(operator)) %>%
+  ggplot() +
+  geom_col(
+      aes(x = n, y = reorder(operator, n)),
+      width = 0.7, alpha = 0.8) +
+  scale_x_continuous(
+    expand = expansion(mult = c(0, 0.05))) +
+  theme_minimal_vgrid() +
+  labs(
+    x = 'Count',
+    y = NULL)
+```
+:::
+:::
+
+::: {.col width="45%"}
+![](figs/birds_after.png)
+:::
+
+---
+
+{{< inverse >}}
+
+```{r}
+#| echo: false
+
+countdown(
+  minutes = 15,
+  warn_when = 30,
+  update_every = 1,
+  top = 0,
+  right = 0,
+  font_size = "2em"
+)
+```
+
+## Your turn
+
+::: {.col width="35%"}
+Use the `gapminder.csv` data to create the following plot, following these steps:
+
+1. Format data frame
+2. Add geoms
+3. Flip coordinates?
+4. Reorder factors?
+5. Adjust scales
+6. Adjust theme
+7. Annotate
+:::
+
+::: {.col width="65%"}
+```{r}
+#| echo: false
+#| fig-width: 8
+#| fig-height: 7
+
+gapminder %>%
+  filter(year == 2007, continent == "Americas") %>%
+  ggplot() +
+  geom_col(aes(x = lifeExp, y = reorder(country, lifeExp)),
+           width = 0.7, alpha = 0.8) +
+  scale_x_continuous(expand = expansion(mult = c(0, 0.05))) +
+  theme_minimal_vgrid(font_size = 18) +
+  labs(
+    title = 'Life expectancy in 2007 for\nCountries in the Americas',
+    x = 'Life expectancy (years)',
+    y = 'Country')
+```
+:::
