@@ -1,8 +1,12 @@
 lesson <- strsplit(here::here(), "/")[[1]]
 lesson <- lesson[length(lesson)]
 
+# Refresh this class's copy of the shared Quarto extensions (lexis + fontawesome). The source of truth is class/_extensions/ — edit there, never the per-class copy. Each class needs its own copy because the class folders are render-excluded in _quarto.yml, so Quarto only looks for _extensions inside the folder itself.
+unlink("_extensions", recursive = TRUE)
+file.copy("../_extensions", ".", recursive = TRUE)
+
 # Build the slides
-renderthis::to_html("index.Rmd", "index.html")
+renderthis::to_html("index.qmd", "index.html")
 renderthis::to_pdf("index.html", paste0(lesson, ".pdf"))
 
 # Compress the PDF to reduce size
