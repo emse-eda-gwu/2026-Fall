@@ -4,12 +4,9 @@ subtitle: "EMSE 4572/6572: Exploratory Data Analysis"
 author: "John Paul Helveston"
 institute: "The George Washington University | EMSE"
 displaydate: August 26, 2026
-format:
-  lexis-revealjs:
-    scroll-view:
-      layout: compact
-      snap: proximity
-      activate-on-load: false
+format: lexis-revealjs
+# Navigate slides with the mouse wheel / trackpad (reveal's native mouseWheel).
+mouse-wheel: true
 progress: false
 execute:
   echo: true
@@ -26,7 +23,6 @@ execute:
 agenda_items <- c(
   "Course Goal",
   "Course Introduction",
-  "Break: Install Stuff",
   "Quarto",
   "Workflow & Reading In Data",
   "Wrangling Data",
@@ -213,7 +209,7 @@ engagement_plot
 
 Encode data:
 
-::: {.code90}
+::: {.font75}
 
 ```{r}
 engagement_data <- data.frame(
@@ -235,7 +231,7 @@ engagement_data
 ::: {.col .fragment}
 Re-format data for plotting:
 
-::: {.code80}
+::: {.font75}
 
 ```{r}
 engagement_data <- engagement_data %>%
@@ -245,7 +241,10 @@ engagement_data <- engagement_data %>%
     values_to = "Engagement"
   ) %>%
   mutate(
-    Location = fct_relevel(Location, c("City", "County"))
+    Location = fct_relevel(
+      Location,
+      c("City", "County")
+    )
   )
 
 engagement_data
@@ -261,7 +260,7 @@ engagement_data
 ::: {.col}
 Initial exploratory plotting:
 
-::: {.code80}
+::: {.font65}
 ```{r}
 #| fig-width: 8
 #| fig-height: 5
@@ -348,7 +347,7 @@ engagement_plot
 ### Code
 
 ::: {.col}
-::: {.code80}
+::: {.font60}
 ```r
 data <- data.frame(
   City = c(643, 735, 590, 863),
@@ -375,7 +374,7 @@ data <- data.frame(
 
 ::: {.col}
 
-::: {.code80}
+::: {.font60}
 ```r
 plot <- ggplot(data, aes(
   x = x, y = Engagement, group = School, color = Highlight
@@ -404,8 +403,8 @@ plot <- ggplot(data, aes(
 
 ```{r}
 #| echo: false
-#| fig-width: 8
-#| fig-height: 7
+#| fig-width: 7
+#| fig-height: 6
 
 engagement_plot
 ```
@@ -419,7 +418,7 @@ engagement_plot
 
 # Data exploration: an iterative process
 
-![](images/eda.png){width="600"}
+![](images/eda.png){width="800"}
 
 ---
 
@@ -432,44 +431,30 @@ agenda(2)
 
 ---
 
+{{< middle >}}
+
 # Meet your instructor!
 
-::: {.col width="30%"}
-::: {.circle}
-![](https://www.jhelvy.com/images/lab/john_helveston_square.png){width="300"}
-:::
+<br>
+
+::: {.col width="30%" .circle}
+
+![](https://www.jhelvy.com/images/lab/john_helveston_square.png){width="400"}
+
 :::
 
-::: {.col width="70%"}
+::: {.col width="70%" .font80}
+
 ### John Helveston, Ph.D.
 
-::: {.font80}
-- 2025 - Present: Associate Professor, EMSE
+- 2025 - Present: Associate Professor, EMSE (w/tenure)
 - 2018 - 2025: Assistant Professor, EMSE
 - 2016-2018: Postdoc at [Institute for Sustainable Energy](https://www.bu.edu/ise/), Boston University
 - 2016: PhD in Engineering & Public Policy at Carnegie Mellon University
 - 2015: MS in Engineering & Public Policy at Carnegie Mellon University
 - 2010: BS in Engineering Science & Mechanics at Virginia Tech
 - Website: [www.jhelvy.com](http://www.jhelvy.com/)
-:::
-:::
 
----
-
-# Meet your tutors!
-
-::: {.col width="30%"}
-::: {.circle}
-![](images/hu.jpg){width="300"}
-:::
-:::
-
-::: {.col width="70%"}
-### **Pingfan Hu**
-
-- Graduate Teaching Assistant (GTA)
-- PhD student in EMSE
-- Website: [www.pingfanhu.com](https://www.pingfanhu.com/)
 :::
 
 ---
@@ -503,18 +488,16 @@ You should be able to:
 - Use **tidyverse** functions to wrangle and manipulate data in R.
 - Use the **ggplot2** library to create plots in R.
 
-. . .
-
-> [`r fa("building-columns")` Check out R for Analytics Primer](http://jhelvy.github.io/r4aPrimer/)
+> [{{< fa building-columns >}} Check out R for Analytics Primer](http://jhelvy.github.io/r4aPrimer/)
 
 ---
 
 # Course website
 
-## `r fa("globe")` Everything you need will be on the course website:<br>https://eda.seas.gwu.edu/2026-Fall/
+## {{< fa globe >}} Everything you need will be on the course website:<br>https://eda.seas.gwu.edu/2026-Fall/
 
 ::: {.fragment}
-## `r fa("calendar")` The [schedule](https://emse-eda-gwu.github.io/2026-Fall/schedule.html) is the best starting point
+## {{< fa calendar-alt >}} The [schedule](https://emse-eda-gwu.github.io/2026-Fall/schedule.html) is the best starting point
 :::
 
 ---
@@ -635,11 +618,11 @@ Final Interview                | 10 %   | Individual interview
 - Actually read what the AI generates, and **don't submit something you don't understand**. (Ask the LLM how it works)
 - There are dozens of ways to do things - **you should use the approach I teach**.
 - Ask yourself **"what would I ask Prof. Helveston?"**
-:::
+::: 
 
-. . .
-
+::: {.fragment}
 ### **Use AI as an assistant, not a solutions manual**
+:::
 
 ---
 
@@ -1284,7 +1267,7 @@ xlsxPath <- here("data", "pv_cell_production.xlsx")
 pv_cells <- read_excel(xlsxPath, sheet = "Cell Prod by Country", skip = 2)
 ```
 
-::: {.code70}
+::: {.font60}
 ```{r}
 glimpse(pv_cells)
 ```
@@ -1307,7 +1290,7 @@ pv_cells <- read_excel(xlsxPath, sheet = "Cell Prod by Country", skip = 2) %>%
   filter(!is.na(Year)) # Drop NA rows in Year
 ```
 
-::: {.code60}
+::: {.font50}
 ```{r}
 glimpse(pv_cells)
 ```
