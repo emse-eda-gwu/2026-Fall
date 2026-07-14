@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="index_files/libs/clipboard/clipboard.min.js"></script>
+<script src="index_files/libs/quarto-html/tabby.min.js"></script>
+<script src="index_files/libs/quarto-html/popper.min.js"></script>
+<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.38">
+
+  <meta name="author" content="John Paul Helveston">
+  <meta name="dcterms.date" content="2026-09-02">
+  <title>Agentic Workflows &amp; GitHub</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-06b2970f93ff6c2bfe65a658f3b67b41.css">
+  <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <link href="index_files/libs/countdown-0.6.0/countdown.css" rel="stylesheet">
+  <script src="index_files/libs/countdown-0.6.0/countdown.js"></script>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<!--
+Intentionally empty. Quarto's reveal template calls this partial
+unconditionally whenever `title:` is set in the YAML — there's no metadata
+switch to skip it. Lexis decks author their own title slide as plain content
+(see the top of demo.qmd), so this override exists only to suppress Quarto's
+built-in one.
+-->
+<section class="slide level0">
+
+<h1></h1>
+<div style="text-align:center; margin-top:1em;">
+<p><span class="fancy font200 white">Today</span></p>
+</div>
+<div class="font120">
+<p>Last week you got the whole stack <strong>installed</strong>.<br> Today you <strong>use</strong> it — for real, end to end.</p>
+</div>
+</section>
+<section class="slide level0">
+
+<h2>The one loop for the whole semester</h2>
+<div class="font140" style="text-align:center; margin-top:0.6em; line-height:1.6;">
+<p><strong>prompt</strong> <span class="gray">→</span> <strong>read the diff</strong> <span class="gray">→</span> <strong>verify</strong> <span class="gray">→</span> <strong>commit / push</strong></p>
+</div>
+<p>. . .</p>
+<p><br></p>
+<div class="font110">
+<p>The agent is <strong>fast</strong>, <strong>confident</strong>, and <strong>sometimes wrong</strong>.</p>
+</div>
+<p>. . .</p>
+<div class="font110 darkgreen">
+<p>Your job moves from <em>typing code</em> to <strong>directing and checking it.</strong></p>
+</div>
+</section>
+<section class="slide level0">
+
+<h2>Why version control + agents belong together</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div id="version-control" class="h3">
+Version control
+</div>
+<ul>
+<li>A <strong>save point</strong> you can return to</li>
+<li>A <strong>cloud backup</strong> of your work</li>
+<li>A record of <em>what changed and when</em></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div id="agentic-workflow" class="h3">
+Agentic workflow
+</div>
+<ul>
+<li>You <strong>direct</strong>, the agent <strong>edits your files</strong></li>
+<li>Fast — and occasionally <strong>wrong</strong></li>
+<li>You need a <strong>safety net</strong></li>
+</ul>
+</div></div>
+<p>. . .</p>
+<p><br></p>
+<div class="font120" style="text-align:center;">
+<p>You <strong>commit often</strong> <em>precisely so</em> it’s safe to let an agent<br>loose on your files. <span class="darkgreen">The two are one workflow.</span></p>
+</div>
+</section>
+<section class="slide level0">
+
+<h2>What you’ll actually do today</h2>
+<ol type="1">
+<li>Make a repo and <strong>push</strong> to GitHub — with a button, no command line</li>
+<li>Point <strong>Claude Code</strong> at some data and read what it does</li>
+<li>Run the <strong>whole loop</strong>: ask → verify → commit → push</li>
+<li>Watch the agent be <strong>confidently wrong</strong> — and <em>catch it</em></li>
+</ol>
+<p>. . .</p>
+<div class="font110 darkgreen" style="margin-top:0.8em;">
+<p>Mostly <strong>hands-on</strong>. I talk a little; you practice a lot.</p>
+</div>
+<h1 class="inverse" data-background-color="#121212" id="part-1-github-desktop">Part 1 — GitHub Desktop</h1>
+<h2 id="three-words-thats-the-whole-model">Three words, that’s the whole model</h2>
+<div class="columns">
+<div class="column" style="width:33%;">
+<div id="repo" class="h3">
+repo
+</div>
+<p>A project folder that <strong>tracks its own history</strong></p>
+</div><div class="column" style="width:33%;">
+<div id="commit" class="h3">
+commit
+</div>
+<p>A <strong>labeled save point</strong> — “this is a state worth remembering”</p>
+</div><div class="column" style="width:33%;">
+<div id="push" class="h3">
+push
+</div>
+<p>Send your commits <strong>up to GitHub</strong> (the cloud copy)</p>
+</div></div>
+<p>. . .</p>
+<p><br></p>
+<div class="font110">
+<p>No <code>git</code> in a terminal. Everything today is a <strong>button in GitHub Desktop.</strong></p>
+</div>
+</section>
+<section class="slide level0">
+
+<h2></h2>
+<div class="font200 fancy" style="text-align:center;">
+<p>Practice 1</p>
+</div>
+<div class="font120">
+<p><strong>Make a repo and push to it.</strong></p>
+<ol type="1">
+<li>GitHub Desktop → <strong>File › New Repository</strong> → name it <code>eda-w2-practice</code></li>
+<li><strong>Publish</strong> it to GitHub (make it private)</li>
+<li>Add a line to <code>README.md</code>, then <strong>Commit</strong> (write a message!)</li>
+<li><strong>Push</strong> — then open it on github.com and confirm it’s there</li>
+<li>Change the README again → <strong>Commit</strong> → <strong>Push</strong> → look at <strong>History</strong></li>
+</ol>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<countdown-timer class="countdown" id="timer_cc0dcd50" minutes="15" seconds="0" warn-when="60" update-every="1" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
+</div>
+</div>
+</section>
+<section class="slide level0">
+
+<h2>What just happened</h2>
+<div class="font110">
+<ul>
+<li>Your work now exists in <strong>two places</strong> (your laptop + GitHub)</li>
+<li>Every commit is a point you can <strong>come back to</strong></li>
+<li>That History tab is your <strong>undo button</strong> for the whole project</li>
+</ul>
+</div>
+<p>. . .</p>
+<p><br></p>
+<div class="font120 darkgreen" style="text-align:center;">
+<p>Now let’s give ourselves something worth undoing.</p>
+</div>
+<h1 class="inverse" data-background-color="#121212" id="part-2-meet-claude-code">Part 2 — Meet Claude Code</h1>
+<h2 id="claude-code-in-positron">Claude Code, in Positron</h2>
+<div class="font110">
+<ul>
+<li>Open your <strong>project folder</strong> in Positron (not a stray file — the folder)</li>
+<li>Start <strong>Claude Code</strong> in the terminal pane</li>
+<li>You <strong>describe</strong> what you want; it <strong>reads your files</strong> and <strong>proposes edits</strong></li>
+<li>You <strong>read the diff</strong> and decide: accept, or push back</li>
+</ul>
+</div>
+<p>. . .</p>
+<p><br></p>
+<div class="font110 darkgreen">
+<p>Watch me do one first — then you’ll do your own.</p>
+</div>
+<div class="footnote">
+<p>Prefer Python? You may use it. My demos are in R — but <em>you</em> still own the verification either way.</p>
+</div>
+</section>
+<section class="slide level0">
+
+<h2></h2>
+<div class="font200 fancy" style="text-align:center;">
+<p>Practice 2</p>
+</div>
+<div class="font120">
+<p><strong>Let Claude import some data — and read what it did.</strong></p>
+<ol type="1">
+<li>Drop <code>flights.csv</code> into your repo’s <code>data/</code> folder</li>
+<li>Ask Claude: <em>“Import <code>data/flights.csv</code> and give me a quick summary of what’s in it.”</em></li>
+<li><strong>Read the code it wrote.</strong> Not just the summary — the actual code.</li>
+<li>Tell a neighbor: <em>what did it do, and how do you know it’s right?</em></li>
+</ol>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<countdown-timer class="countdown" id="timer_138f1ef0" minutes="12" seconds="0" warn-when="60" update-every="1" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
+</div>
+</div>
+</section>
+<section class="slide level0">
+
+<h2>The habit to build now</h2>
+<div class="font120">
+<p>The summary Claude prints is a <strong>claim.</strong></p>
+</div>
+<p>. . .</p>
+<div class="font120">
+<p>The code it wrote is the <strong>evidence.</strong></p>
+</div>
+<p>. . .</p>
+<p><br></p>
+<div class="font130 darkgreen" style="text-align:center;">
+<p>Always read the evidence, not just the claim.</p>
+</div>
+<h1 class="inverse" data-background-color="#121212" id="part-3-the-whole-loop">Part 3 — The whole loop</h1>
+<h2 id="ask-verify-commit-push">Ask → verify → commit → push</h2>
+<div class="font110">
+<p>Now we string it together into one motion:</p>
+</div>
+<div class="font110">
+<ol type="1">
+<li><strong>Ask</strong> Claude to make a chart from the data</li>
+<li><strong>Verify</strong> it — do the numbers behind the chart match reality?</li>
+<li><strong>Commit</strong> the chart + code with a clear message</li>
+<li><strong>Push</strong> it to GitHub</li>
+</ol>
+</div>
+<p>. . .</p>
+<p><br></p>
+<div class="font110 darkgreen">
+<p>This is the exact loop you’ll run all semester. Everything else is details.</p>
+</div>
+</section>
+<section class="slide level0">
+
+<h2></h2>
+<div class="font200 fancy" style="text-align:center;">
+<p>Practice 3</p>
+</div>
+<div class="font120">
+<p><strong>Run the full loop yourself.</strong></p>
+<ol type="1">
+<li>Ask Claude to make a chart answering a question about <code>flights.csv</code></li>
+<li><strong>Verify</strong>: pick one bar/point and check it against the data by hand</li>
+<li>Does the chart <em>actually say what you asked?</em> If not, tell Claude what’s wrong</li>
+<li><strong>Commit</strong> (chart + code) → <strong>Push</strong> to GitHub</li>
+</ol>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<countdown-timer class="countdown" id="timer_cac7d6c6" minutes="20" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
+</div>
+</div>
+</section>
+<section class="slide level0">
+
+<h2>You just did the whole thing</h2>
+<div class="font120">
+<p>Directed an agent · read its work · <strong>verified</strong> it · versioned it · backed it up.</p>
+</div>
+<p>. . .</p>
+<p><br></p>
+<div class="font110">
+<p>That’s the job. But we skipped the most important word.</p>
+</div>
+<div class="font160 red" style="text-align:center; margin-top:0.4em;">
+<p>Verify.</p>
+</div>
+<h1 class="inverse" data-background-color="#121212" id="part-4-where-it-goes-wrong">Part 4 — Where it goes wrong</h1>
+<h2 id="the-agent-will-be-wrong-with-confidence">The agent will be wrong <em>with confidence</em></h2>
+<div class="font110">
+<p>It won’t say <em>“I’m not sure.”</em> It will hand you a clean, plausible,<br> <strong>wrong</strong> answer and move on. Common failure modes:</p>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><strong>Hallucinated</strong> column names</li>
+<li><strong>Silently dropped</strong> rows (<code>NA</code>s, bad joins)</li>
+<li>Wrong <strong>join direction</strong></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>A chart that <strong>misleads</strong> (bad axis, wrong aggregation)</li>
+<li>A <strong>made-up</strong> number that “looks right”</li>
+<li>Code that isn’t <strong>reproducible</strong></li>
+</ul>
+</div></div>
+<p>. . .</p>
+<div class="font120 red" style="text-align:center; margin-top:0.5em;">
+<p>Let me show you one live.</p>
+</div>
+</section>
+<section class="slide level0">
+
+<h2>Your verification checklist</h2>
+<div class="font110">
+<p>Run these every time — they’re the skill this whole course is really about:</p>
+<ul>
+<li>Did <strong>row / column counts</strong> change the way I expected?</li>
+<li>Did I <strong>read the code</strong>, not just the prose summary?</li>
+<li>Did I <strong>spot-check</strong> a few values against the source file?</li>
+<li>Were rows <strong>silently dropped</strong> (NA handling, inner vs.&nbsp;left join)?</li>
+<li>Do <strong>totals / aggregates</strong> sanity-check?</li>
+<li>Is it <strong>reproducible</strong> — or did it hard-code an answer?</li>
+</ul>
+</div>
+<div class="footnote">
+<p>We’ll come back to this list all semester. Screenshot it.</p>
+</div>
+</section>
+<section class="slide level0">
+
+<h2></h2>
+<div class="font200 fancy" style="text-align:center;">
+<p>Practice 4</p>
+</div>
+<div class="font120">
+<p><strong>Catch the bug.</strong></p>
+<p>I’ve given Claude a task where its <em>first answer is wrong.</em> Your job is to <strong>find it</strong> using the checklist.</p>
+<ol type="1">
+<li>Ask Claude to join <code>flights.csv</code> with <code>airlines.csv</code> and count flights per airline</li>
+<li><strong>Something is off.</strong> Verify before you believe it.</li>
+<li>When you catch it, tell Claude <em>specifically</em> what’s wrong and have it fix it</li>
+<li><strong>Commit</strong> the fix with a message that says what was broken</li>
+</ol>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<countdown-timer class="countdown" id="timer_8e3fb7f9" minutes="18" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
+</div>
+</div>
+</section>
+<section class="slide level0">
+
+<h2>The catch is the whole job</h2>
+<div class="font120">
+<p>An agent can write the code. <span class="red">It cannot know if the answer is <em>true</em>.</span></p>
+</div>
+<p>. . .</p>
+<div class="font120 darkgreen">
+<p><strong>That part is yours.</strong> It’s what you’re actually being graded on.</p>
+</div>
+<h1 class="inverse" data-background-color="#121212" id="wrap-up">Wrap-up</h1>
+<h2 id="today-in-one-slide">Today, in one slide</h2>
+<div class="font120" style="text-align:center; margin:0.4em 0; line-height:1.6;">
+<p><strong>prompt</strong> <span class="gray">→</span> <strong>read the diff</strong> <span class="gray">→</span> <strong>verify</strong> <span class="gray">→</span> <strong>commit / push</strong></p>
+</div>
+<div class="font110">
+<ul>
+<li>You can <strong>make a repo and push</strong> with a button</li>
+<li>You can <strong>direct Claude</strong> to import, analyze, and chart</li>
+<li>You know the agent <strong>lies with confidence</strong> — and you have a checklist</li>
+<li><strong>R or Python</strong> — your choice; the verification is the same job</li>
+</ul>
+</div>
+</section>
+<section class="slide level0">
+
+<h2>Before next week</h2>
+<div class="font110">
+<ul>
+<li>Finish pushing today’s work to your <code>eda-w2-practice</code> repo</li>
+<li><strong>Reading reflection:</strong> read forward on tidy data + joins, try the light practice, reflect</li>
+<li>Next week: <strong>Cleaning, Reshaping &amp; Joining</strong> — same loop, messier data</li>
+</ul>
+</div>
+<p>. . .</p>
+<p><br></p>
+<div class="font130 fancy darkgreen" style="text-align:center;">
+<p>Direct boldly. Verify relentlessly.</p>
+</div>
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="index_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="index_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="index_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="index_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="index_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="index_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1600,
+
+        height: 900,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

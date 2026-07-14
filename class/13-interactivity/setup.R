@@ -28,7 +28,10 @@ library(leaflet)
 library(plotly)
 library(DT)
 library(reactable)
-library(reactablefmtr)
+# reactablefmtr was archived from CRAN; only shown in non-executed example
+# code, so it isn't loaded here. To run those examples yourself:
+# remotes::install_github("kcuilla/reactablefmtr")
+# library(reactablefmtr)
 library(sparkline)
 
 # Read in data sets for class
