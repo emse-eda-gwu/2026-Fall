@@ -1,0 +1,250 @@
+---
+title: "Final Presentations"
+subtitle: "EMSE 4572/6572: Exploratory Data Analysis"
+author: "John Paul Helveston"
+institute: "The George Washington University | EMSE"
+week: 16
+displaydate: December 09, 2026
+format: lexis-revealjs
+# Navigate slides with the mouse wheel / trackpad (reveal's native mouseWheel).
+mouse-wheel: true
+progress: false
+execute:
+  echo: true
+  warning: false
+  message: false
+  freeze: false
+---
+
+{{< include ../setup.qmd >}}
+
+---
+
+{{< center >}}
+{{< middle >}}
+
+# Analysis of Global Insulin Supply
+
+## by Nick Pennino, Shannon Zhang,<br>Taegeon Bae, and Sung Jung
+
+---
+
+{{< center >}}
+{{< middle >}}
+
+# [Following the Funding:<br>DEI Trends in NSF Grants, 2018–2025](https://www.youtube.com/watch?v=ENYGzhK1u9E)
+
+## by Aisha Tarar, Chenxi Zhou, and Yousra Elzamzami
+
+---
+
+{{< center >}}
+{{< middle >}}
+
+# Fakes on the Rise
+
+## by Eunice, Donia, Elena, and Andrea
+
+---
+
+{{< center >}}
+{{< middle >}}
+
+# [Degrees of Inequality:<br>The Story of Education in America](https://vimeo.com/1144711990?fl=pl&fe=sh)
+
+## by Leshauna Hartman and Maya Schmidt
+
+---
+
+{{< center >}}
+{{< middle >}}
+
+# US Vehicle Market Trends Analysis:<br>Exploring Mileage, Depreciation, and Market Concentration Across Powertrains
+
+## by Nithin Sarva, Jake Springer,<br>and Jagannath Narayanaswamy
+
+---
+
+{{< center >}}
+{{< middle >}}
+
+# Electric Vehicles and the<br>Future of Highway Funding
+
+## by Eric Lehman, Lydia Ko, Sam Evans, and Hailey Kopp
+
+---
+
+{{< center >}}
+{{< middle >}}
+
+# [Basketball Teams with Most Loyal Fans](https://www.youtube.com/watch?v=0iZg_I8PKQw)
+
+## by Evelina Naumovich and Katya Balin
+
+---
+
+{{< center >}}
+{{< middle >}}
+
+# [The Study of Home Advantage<br>in the English Premier League](https://www.youtube.com/watch?v=Mi-ABg7Z93Q)
+
+## by Badr Ismail, Sammy Sorayanejad,<br>Sergio Ley, and Tomas Haché Caro
+
+---
+
+{{< center >}}
+{{< middle >}}
+
+# Trustworthiness of the<br>New York City Subway System
+
+## by Ernest Giahyue, Lawrenz Pacayo,<br>Sean Smolyanskiy, and Yusuf Ozaydin
+
+---
+
+{{< inverse >}}
+{{< center >}}
+{{< middle >}}
+
+# 🎉 Awards Ceremony 🎉
+
+---
+
+{{< inverse >}}
+{{< center >}}
+{{< middle >}}
+
+# ✨ The Nominees for the **Shiny** Award
+
+---
+
+{{< center >}}
+{{< middle >}}
+
+# **Shiny Nominee**: Trustworthiness of the<br>New York City Subway System
+
+```{r}
+#| echo: false
+
+htmltools::tags$iframe(
+  src = 'shooting-map.html',
+  width = "100%",
+  height = "400",
+  scrolling = "no",
+  seamless = "seamless",
+  frameBorder = "0"
+)
+```
+
+---
+
+{{< center >}}
+{{< middle >}}
+
+# **Shiny Nominee**: Electric Vehicles and the<br>Future of Highway Funding
+
+::: {.col width="70%"}
+![](images/gas-tax.png){width="100%"}
+:::
+
+::: {.col width="30%"}
+(And also [this chart](https://eda.seas.gwu.edu/showcase/2026-Fall/ev-taxes.html#results))
+:::
+
+---
+
+{{< center >}}
+{{< middle >}}
+
+# **Shiny Nominee**: Degrees of Inequality:<br>The Story of Education in America
+
+![](images/education.png){width="800"}
+
+---
+
+{{< inverse >}}
+{{< center >}}
+{{< middle >}}
+
+# ✨ The **Shiny** Award goes to...🥁
+
+---
+
+{{< inverse >}}
+{{< center >}}
+{{< middle >}}
+
+# 🎉🎉🎉
+
+::: {.col}
+## [Electric Vehicles and the<br>Future of Highway Funding](https://eda.seas.gwu.edu/showcase/2026-Fall/name.html)
+
+#### by Eric Lehman, Lydia Ko, Sam Evans, and Hailey Kopp
+:::
+
+::: {.col}
+![](images/gas-tax.png){width="100%"}
+:::
+
+---
+
+# 🗑️ The Nominees for the **Janitor** award are:
+
+::: {.col .fragment}
+### Electric Vehicles and the Future of Highway Funding
+
+#### by Eric Lehman, Lydia Ko, Sam Evans, and Hailey Kopp
+
+(for combining lots of different data files)
+:::
+
+::: {.col .fragment}
+### Degrees of Inequality: The Story of Education in America
+
+#### by Leshauna Hartman and Maya Schmidt
+
+(Dealt with 52 different government Excel sheet)
+:::
+
+::: {.col .fragment}
+### Trustworthiness of the New York City Subway System
+
+#### by Ernest Giahyue, Lawrenz Pacayo,<br>Sean Smolyanskiy, and Yusuf Ozaydin
+
+(Lots of data in PDFs)
+:::
+
+---
+
+{{< inverse >}}
+{{< center >}}
+{{< middle >}}
+
+# 🗑️ The **Janitor** award goes to...🥁
+
+---
+
+{{< inverse >}}
+{{< center >}}
+{{< middle >}}
+
+# 🎉🎉🎉
+
+## Degrees of Inequality: The Story of Education in America
+
+### by Leshauna Hartman and Maya Schmidt
+
+<br>
+
+(Final report.qmd was over 7,000 lines!)
+
+---
+
+{{< inverse >}}
+{{< center >}}
+{{< middle >}}
+
+## Fill out course evals: https://gwu.smartevals.com/
+
+### (please be specific!)
+
+![](https://media.tenor.com/images/76f5c6f0db05171eef3ee586eba77410/tenor.gif){width="600"}
