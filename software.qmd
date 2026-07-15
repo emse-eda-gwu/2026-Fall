@@ -1,29 +1,34 @@
 # Software
 
-> **You should install and set everything here _before_ the first day of class.**
+::: {.callout-warning}
 
-1. Sign up for [Slack]({{< var slack >}}). You should have been sent a link to join in the course intro email. If not, email Professor Helveston for an invite link. I recommend using your `@gwu.edu` email to sign up, but if you use another email for another Slack then use that.
+**You should install and set everything here _before_ the first day of class.**
 
-2. Install the Slack app on your phone and **Turn notifications on!**. I'll send all course communication via Slack, so please make sure your notifications are on so you don't miss anything.
+:::
 
-3. [Download and install R](https://cloud.r-project.org) (version 4.0.2 or higher). We'll still be doing all our analysis in R -- this course just changes *who's typing the code*, not the language.
+
+## Install the core class software
+
+1. **Sign up for [Slack]({{< var slack >}})**. You should have been sent a link to join in the course intro email. If not, email Professor Helveston for an invite link. I recommend using your `@gwu.edu` email to sign up, but if you use another email for another Slack then use that.
+
+2. **Install the Slack app** on your phone and **Turn notifications on!**. I'll send all course communication via Slack, so please make sure your notifications are on so you don't miss anything.
+
+3. [**Download and install R**](https://cloud.r-project.org) (version 4.0.2 or higher). We'll still be doing all our analysis in R -- this course just changes *who's typing the code*, not the language.
 
 4. **Install Positron**, the IDE we'll use all semester: [download it here](https://positron.posit.co/download.html) and follow the install instructions for your OS. Positron is Posit's newer IDE (built by the same company behind RStudio) and is what we'll use to work with R, Quarto, and Claude Code together in one place. We will not be using RStudio this semester.
 
 5. If you have a Mac, install [XQuartz](https://www.xquartz.org/). This is needed for making some figures and is only for Mac (if you're on Windows or Linux, skip this step).
 
-6. [Download and install Quarto](https://quarto.org/docs/get-started/)
+6. [**Download and install Quarto**](https://quarto.org/docs/get-started/)
 
-7. **Sign up for a Claude subscription.** You'll need at least a [Claude Pro](https://claude.ai) subscription to use Claude Code, the AI coding agent we'll be directing all semester (a free account isn't sufficient). Check Slack for whether the class has an institutional arrangement before you pay for your own.
+7. **Install course R packages**: Open Positron, open its R console, then copy-paste [this code](./content/packages.R) into the console and press Return. This will install all the packages listed in the file.
 
-8. **Install Claude Code**, following the official [Quickstart guide](https://code.claude.com/docs/en/quickstart). Once installed, verify it works: open Positron, open its integrated terminal, and run `claude` -- it should start a conversation and prompt you to log in.
+## Install an agentic CLI tool
 
-9. You'll need to install some R packages that we will use throughout the semester. To do so, open Positron, open its R console, then copy-paste [this code](./content/packages.R) into the console and press Return. This will install all the packages listed in the file.
+This course uses Claude Code as our primary agentic tool. If you do not already have a Claude subscription, you will need to sign up for one. You'll need at least a [Claude Pro](https://claude.ai) subscription to use Claude Code (a free account isn't sufficient).
+
+Once you have an account, **install Claude Code** following the official [Quickstart guide](https://code.claude.com/docs/en/quickstart). Once installed, verify it works: open Positron, open its integrated terminal, and run `claude` -- it should start a conversation and prompt you to log in.
+
+Alternatively, if you already have another agentic coding tool set up that you'd rather use instead -- e.g. [Google Gemini CLI](https://geminicli.com/) or OpenAI's Codex CLI -- that's fine, the underlying skills (directing an agent, verifying its output) transfer. Just know that in-class instruction, troubleshooting help, and these materials will all assume Claude Code, so you're on your own for translating anything tool-specific.
 
 That's it - you're all set for class!
-
-::: {.callout-note}
-
-**Using a different AI coding agent?** This course teaches and demonstrates everything with Claude Code specifically. If you already have another agentic coding tool set up that you'd rather use instead -- e.g. Gemini CLI or OpenAI's Codex CLI -- that's fine, the underlying skills (directing an agent, verifying its output) transfer. Just know that in-class instruction, troubleshooting help, and these materials will all assume Claude Code, so you're on your own for translating anything tool-specific.
-
-:::

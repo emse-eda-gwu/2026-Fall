@@ -7,3 +7,5 @@ Having successfully completed this course, students will be able to:
 - Apply fundamental principles of visualizing information for exploratory analysis and communication.
 - Get data off the web and expose data, code, results on the web.
 - Generate fully reproducible reports that contain code, equations, visualizations, and narrative text.
+- Use Git, GitHub, and pull requests fluently as everyday version control and collaboration tools.
+- Direct agentic AI tools to write and audit code that supports analyses.
