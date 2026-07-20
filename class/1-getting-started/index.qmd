@@ -6,7 +6,6 @@ institute: "The George Washington University | EMSE"
 week: 1
 displaydate: August 26, 2026
 format: lexis-revealjs
-# Navigate slides with the mouse wheel / trackpad (reveal's native mouseWheel).
 mouse-wheel: true
 progress: false
 execute:

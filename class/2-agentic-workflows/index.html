@@ -6,11 +6,12 @@
 <script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="index_files/libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="index_files/libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.9.38">
 
   <meta name="author" content="John Paul Helveston">
-  <meta name="dcterms.date" content="2026-09-02">
   <title>Agentic Workflows &amp; GitHub</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -125,8 +126,8 @@
       margin-right: 0; 
     }
   </style>
-  <link href="index_files/libs/countdown-0.6.0/countdown.css" rel="stylesheet">
-  <script src="index_files/libs/countdown-0.6.0/countdown.js"></script>
+  <link href="index_files/libs/countdown/countdown.css" rel="stylesheet">
+  <script src="index_files/libs/countdown/countdown.js"></script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -141,18 +142,63 @@ built-in one.
 -->
 <section class="slide level0">
 
-<h1></h1>
-<div style="text-align:center; margin-top:1em;">
-<p><span class="fancy font200 white">Today</span></p>
+<section class="lexis-slide-title inverse center middle" data-state="no-slide-number">
+<h1 class="lexis-slide-title"></h1>
+<!-- Title slide -->
+<div class="cols-row" style="align-items:center;">
+<div class="col" style="flex:0 1 30%;width:30%">
+<center>
+<img src="https://eda.seas.gwu.edu/images/logo.png" width="100%">
+</center>
+</div>
+<div class="col" style="flex:0 1 70%;width:70%">
+<p> </p>
+<div id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206d657461207469746c65203e7d7d" class="h1">
+<span class="fancy">Agentic Workflows &amp; GitHub</span>
+</div>
+<div id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206661206275696c64696e672d636f6c756d6e73203e7d7d-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206d657461207375627469746c65203e7d7d" class="h3">
+<i class="fa-solid fa-building-columns" aria-label="building-columns"></i> EMSE 4572/6572: Exploratory Data Analysis
+</div>
+<div id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2066612075736572203e7d7d-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206d65746120617574686f72203e7d7d" class="h3">
+<i class="fa-solid fa-user" aria-label="user"></i> John Paul Helveston
+</div>
+<div id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2066612063616c656e6461722d616c74203e7d7d-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206d65746120646973706c617964617465203e7d7d" class="h3">
+<i class="fa-solid fa-calendar-alt" aria-label="calendar-alt"></i> September 2, 2026
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="slide level0">
+
+<section id="week-2-agentic-workflows-github" class="inverse middle">
+<h1>Week 2: <span class="fancy">Agentic Workflows &amp; GitHub</span></h1>
+<div style="height: 1.5em;">
+
+</div>
+<h3 id="version-control-with-github">1. Version Control with GitHub</h3>
+<h3 id="setting-up-using-claude-code">2. Setting Up &amp; Using Claude Code</h3>
+<h3 id="slash-commands-skills">3. Slash Commands &amp; Skills</h3>
+<h3 id="working-safely">4. Working Safely</h3>
+</section>
+</section>
+<section class="slide level0">
+
+<section class="lexis-slide-title inverse">
+<h1 class="lexis-slide-title"></h1>
+<div class="center">
+<p><span class="fancy font200">Today</span></p>
 </div>
 <div class="font120">
 <p>Last week you got the whole stack <strong>installed</strong>.<br> Today you <strong>use</strong> it — for real, end to end.</p>
 </div>
 </section>
+</section>
 <section class="slide level0">
 
+<section id="the-one-loop-for-the-whole-semester" class="inverse">
 <h2>The one loop for the whole semester</h2>
-<div class="font140" style="text-align:center; margin-top:0.6em; line-height:1.6;">
+<div class="font140 center">
 <p><strong>prompt</strong> <span class="gray">→</span> <strong>read the diff</strong> <span class="gray">→</span> <strong>verify</strong> <span class="gray">→</span> <strong>commit / push</strong></p>
 </div>
 <p>. . .</p>
@@ -165,11 +211,39 @@ built-in one.
 <p>Your job moves from <em>typing code</em> to <strong>directing and checking it.</strong></p>
 </div>
 </section>
+</section>
 <section class="slide level0">
 
-<h2>Why version control + agents belong together</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
+<h1>What you’ll actually do today</h1>
+<ol type="1">
+<li>Make a repo and <strong>push</strong> to GitHub — with a button, no command line</li>
+<li><strong>Set up Claude Code</strong> and direct it to build something real</li>
+<li>Learn the <strong>slash commands</strong> that keep a session healthy</li>
+<li>Watch the agent be <strong>confidently wrong</strong> — and <em>catch it</em></li>
+</ol>
+<p>. . .</p>
+<div class="font110 darkgreen">
+<p>Mostly <strong>hands-on</strong>. I talk a little; you practice a lot.</p>
+</div>
+</section>
+<section class="slide level0">
+
+<section id="week-2-agentic-workflows-github-1" class="inverse middle">
+<h1>Week 2: <span class="fancy">Agentic Workflows &amp; GitHub</span></h1>
+<div style="height: 1.5em;">
+
+</div>
+<h3 id="version-control-with-github-1">1. <span class="orange">Version Control with GitHub</span></h3>
+<h3 id="setting-up-using-claude-code-1">2. Setting Up &amp; Using Claude Code</h3>
+<h3 id="slash-commands-skills-1">3. Slash Commands &amp; Skills</h3>
+<h3 id="working-safely-1">4. Working Safely</h3>
+</section>
+</section>
+<section class="slide level0">
+
+<h1>Why version control + agents belong together</h1>
+<div class="cols-row">
+<div class="col">
 <div id="version-control" class="h3">
 Version control
 </div>
@@ -178,7 +252,8 @@ Version control
 <li>A <strong>cloud backup</strong> of your work</li>
 <li>A record of <em>what changed and when</em></li>
 </ul>
-</div><div class="column" style="width:50%;">
+</div>
+<div class="col">
 <div id="agentic-workflow" class="h3">
 Agentic workflow
 </div>
@@ -187,45 +262,37 @@ Agentic workflow
 <li>Fast — and occasionally <strong>wrong</strong></li>
 <li>You need a <strong>safety net</strong></li>
 </ul>
-</div></div>
+</div>
+</div>
 <p>. . .</p>
 <p><br></p>
-<div class="font120" style="text-align:center;">
+<div class="font120 center">
 <p>You <strong>commit often</strong> <em>precisely so</em> it’s safe to let an agent<br>loose on your files. <span class="darkgreen">The two are one workflow.</span></p>
 </div>
 </section>
 <section class="slide level0">
 
-<h2>What you’ll actually do today</h2>
-<ol type="1">
-<li>Make a repo and <strong>push</strong> to GitHub — with a button, no command line</li>
-<li>Point <strong>Claude Code</strong> at some data and read what it does</li>
-<li>Run the <strong>whole loop</strong>: ask → verify → commit → push</li>
-<li>Watch the agent be <strong>confidently wrong</strong> — and <em>catch it</em></li>
-</ol>
-<p>. . .</p>
-<div class="font110 darkgreen" style="margin-top:0.8em;">
-<p>Mostly <strong>hands-on</strong>. I talk a little; you practice a lot.</p>
-</div>
-<h1 class="inverse" data-background-color="#121212" id="part-1-github-desktop">Part 1 — GitHub Desktop</h1>
-<h2 id="three-words-thats-the-whole-model">Three words, that’s the whole model</h2>
-<div class="columns">
-<div class="column" style="width:33%;">
+<h1>Three words, that’s the whole model</h1>
+<div class="cols-row">
+<div class="col">
 <div id="repo" class="h3">
 repo
 </div>
 <p>A project folder that <strong>tracks its own history</strong></p>
-</div><div class="column" style="width:33%;">
+</div>
+<div class="col">
 <div id="commit" class="h3">
 commit
 </div>
 <p>A <strong>labeled save point</strong> — “this is a state worth remembering”</p>
-</div><div class="column" style="width:33%;">
+</div>
+<div class="col">
 <div id="push" class="h3">
 push
 </div>
 <p>Send your commits <strong>up to GitHub</strong> (the cloud copy)</p>
-</div></div>
+</div>
+</div>
 <p>. . .</p>
 <p><br></p>
 <div class="font110">
@@ -234,8 +301,86 @@ push
 </section>
 <section class="slide level0">
 
-<h2></h2>
-<div class="font200 fancy" style="text-align:center;">
+<h1>The GitHub Desktop loop</h1>
+<p><br></p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 50%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Term</th>
+<th>What it is</th>
+<th>Button</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Changes</strong></td>
+<td>Files you’ve edited since the last save</td>
+<td><em>(the left panel)</em></td>
+</tr>
+<tr class="even">
+<td><strong>Commit</strong></td>
+<td>Bundle those changes with a message</td>
+<td><strong>Commit to main</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Push</strong></td>
+<td>Send commits to GitHub’s copy</td>
+<td><strong>Push origin</strong></td>
+</tr>
+<tr class="even">
+<td><strong>History</strong></td>
+<td>Every commit, in order — your undo</td>
+<td><em>(the History tab)</em></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<div class="font110 darkgreen">
+<p>Edit → <strong>Commit</strong> (with a message) → <strong>Push</strong>. That’s the entire cycle.</p>
+</div>
+</section>
+<section class="slide level0">
+
+<h1>Write commit messages you’d thank yourself for</h1>
+<div class="cols-row">
+<div class="col">
+<div id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20666120786d61726b203e7d7d-useless" class="h3">
+<i class="fa-solid fa-xmark" aria-label="xmark"></i> <span class="red">Useless</span>
+</div>
+<ul>
+<li><code>stuff</code></li>
+<li><code>update</code></li>
+<li><code>asdf</code></li>
+<li><code>fixed it</code></li>
+</ul>
+</div>
+<div class="col">
+<div id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20666120636865636b203e7d7d-useful" class="h3">
+<i class="fa-solid fa-check" aria-label="check"></i> <span class="darkgreen">Useful</span>
+</div>
+<ul>
+<li><code>Add flights bar chart</code></li>
+<li><code>Fix airline join dropping NAs</code></li>
+<li><code>Clean column names in import</code></li>
+</ul>
+</div>
+</div>
+<p>. . .</p>
+<p><br></p>
+<div class="font110 center">
+<p>A message is a note to <strong>future you</strong> — the one scrolling History<br>trying to find where it broke.</p>
+</div>
+</section>
+<section class="slide level0">
+
+<section class="lexis-slide-title inverse">
+<h1 class="lexis-slide-title"></h1>
+<div class="font200 fancy center">
 <p>Practice 1</p>
 </div>
 <div class="font120">
@@ -250,13 +395,14 @@ push
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_cc0dcd50" minutes="15" seconds="0" warn-when="60" update-every="1" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_78e07fe1" minutes="15" seconds="0" warn-when="60" update-every="1" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
 </div>
 </div>
 </section>
+</section>
 <section class="slide level0">
 
-<h2>What just happened</h2>
+<h1>What just happened</h1>
 <div class="font110">
 <ul>
 <li>Your work now exists in <strong>two places</strong> (your laptop + GitHub)</li>
@@ -266,145 +412,577 @@ push
 </div>
 <p>. . .</p>
 <p><br></p>
-<div class="font120 darkgreen" style="text-align:center;">
+<div class="font120 darkgreen center">
 <p>Now let’s give ourselves something worth undoing.</p>
-</div>
-<h1 class="inverse" data-background-color="#121212" id="part-2-meet-claude-code">Part 2 — Meet Claude Code</h1>
-<h2 id="claude-code-in-positron">Claude Code, in Positron</h2>
-<div class="font110">
-<ul>
-<li>Open your <strong>project folder</strong> in Positron (not a stray file — the folder)</li>
-<li>Start <strong>Claude Code</strong> in the terminal pane</li>
-<li>You <strong>describe</strong> what you want; it <strong>reads your files</strong> and <strong>proposes edits</strong></li>
-<li>You <strong>read the diff</strong> and decide: accept, or push back</li>
-</ul>
-</div>
-<p>. . .</p>
-<p><br></p>
-<div class="font110 darkgreen">
-<p>Watch me do one first — then you’ll do your own.</p>
-</div>
-<div class="footnote">
-<p>Prefer Python? You may use it. My demos are in R — but <em>you</em> still own the verification either way.</p>
 </div>
 </section>
 <section class="slide level0">
 
-<h2></h2>
-<div class="font200 fancy" style="text-align:center;">
+<section id="week-2-agentic-workflows-github-2" class="inverse middle">
+<h1>Week 2: <span class="fancy">Agentic Workflows &amp; GitHub</span></h1>
+<div style="height: 1.5em;">
+
+</div>
+<h3 id="version-control-with-github-2">1. Version Control with GitHub</h3>
+<h3 id="setting-up-using-claude-code-2">2. <span class="orange">Setting Up &amp; Using Claude Code</span></h3>
+<h3 id="slash-commands-skills-2">3. Slash Commands &amp; Skills</h3>
+<h3 id="working-safely-2">4. Working Safely</h3>
+</section>
+</section>
+<section class="slide level0">
+
+<h1>Assistants vs.&nbsp;Agents</h1>
+<div class="cols-row">
+<div class="col">
+<div id="assistants" class="h3">
+<span class="blue">Assistants</span>
+</div>
+<p><strong>One-off tasks.</strong></p>
+<ul>
+<li>ChatGPT · Claude · Gemini</li>
+<li>Daily questions, small tasks</li>
+<li>A smarter search engine</li>
+</ul>
+</div>
+<div class="col">
+<div id="agents" class="h3">
+<span class="orange">Agents</span>
+</div>
+<p><strong>Full project workflows.</strong></p>
+<ul>
+<li>Claude Code · Codex · Gemini CLI</li>
+<li><strong>Edit your files</strong>, run commands</li>
+<li>Carry a project forward over time</li>
+</ul>
+</div>
+</div>
+<p>. . .</p>
+<p><br></p>
+<div class="font120 center">
+<p>This class lives on the <span class="orange"><strong>agent</strong></span> side.</p>
+</div>
+</section>
+<section class="slide level0">
+
+<h1><span class="center">An agent = model + skills + files</span></h1>
+<p><br></p>
+<div class="cols-row">
+<div class="col center">
+<div id="model" class="h3">
+<span class="purple">Model</span>
+</div>
+<p>The reasoning<br><em>(Claude)</em></p>
+</div>
+<div class="col center">
+<div id="skills" class="h3">
+<span class="darkgreen">Skills</span>
+</div>
+<p>Reusable know-how<br><em>(slash commands)</em></p>
+</div>
+<div class="col center">
+<div id="files" class="h3">
+<span class="orange">Files</span>
+</div>
+<p>Your project<br><em>(the folder it works in)</em></p>
+</div>
+</div>
+<p>. . .</p>
+<p><br></p>
+<div class="font110 center">
+<p>Claude Code is the agent. <strong>You</strong> supply the project and the direction.</p>
+</div>
+</section>
+<section class="slide level0">
+
+<h1>Where you launch it matters</h1>
+<div class="cols-row">
+<div class="col">
+<div id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20666120686f757365203e7d7d-home-directory" class="h3">
+<i class="fa-solid fa-house" aria-label="house"></i> Home directory <code>~</code>
+</div>
+<ul>
+<li>Global <code>~/.claude/</code> settings</li>
+<li>A top-level <code>CLAUDE.md</code> of <em>generic</em> rules</li>
+<li>Applies to <strong>every</strong> project</li>
+</ul>
+</div>
+<div class="col">
+<div id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20666120666f6c646572203e7d7d-a-project-folder" class="h3">
+<i class="fa-solid fa-folder" aria-label="folder"></i> A project folder
+</div>
+<ul>
+<li>Your actual work lives here</li>
+<li>Its <strong>own</strong> <code>CLAUDE.md</code> + history</li>
+<li>Where you’ll launch Claude <strong>99% of the time</strong></li>
+</ul>
+</div>
+</div>
+<p>. . .</p>
+<p><br></p>
+<div class="font110 red center">
+<p>Open the <strong>project folder</strong> — not a stray file, not your whole home directory.</p>
+</div>
+</section>
+<section class="slide level0">
+
+<h1>Open your workspace, then launch</h1>
+<p><br></p>
+<h2 id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20666120666f6c6465722d706c7573203e7d7d-make-a-folder-no-spaces-in-the-name">1. <i class="fa-solid fa-folder-plus" aria-label="folder-plus"></i> Make a folder (no spaces in the name)</h2>
+<div class="fragment">
+<div id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206661206c6170746f702d636f6465203e7d7d-in-positron-file-open-folder-and-pick-it" class="h2">
+2. <i class="fa-solid fa-laptop-code" aria-label="laptop-code"></i> In Positron: <strong>File › Open Folder…</strong> and pick it
+</div>
+</div>
+<div class="fragment">
+<div id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206661207465726d696e616c203e7d7d-in-the-terminal-pane-type-claude-and-press-enter" class="h2">
+3. <i class="fa-solid fa-terminal" aria-label="terminal"></i> In the terminal pane, type <code>claude</code> and press Enter
+</div>
+</div>
+<p><br></p>
+<div class="fragment font110 darkgreen">
+<p>You <strong>describe</strong> what you want; it <strong>reads your files</strong> and <strong>proposes edits</strong>.<br> You <strong>read the diff</strong> and decide: accept, or push back.</p>
+</div>
+</section>
+<section class="slide level0">
+
+<h1>An agent can do almost anything with files</h1>
+<div class="cols-row">
+<div class="col">
+<ul>
+<li><i class="fa-solid fa-code" aria-label="code"></i> Write code</li>
+<li><i class="fa-solid fa-bug" aria-label="bug"></i> Debug &amp; refactor</li>
+<li><i class="fa-solid fa-chart-column" aria-label="chart-column"></i> Analyze data</li>
+<li><i class="fa-solid fa-image" aria-label="image"></i> Generate images</li>
+</ul>
+</div>
+<div class="col">
+<ul>
+<li><i class="fa-solid fa-book-open" aria-label="book-open"></i> Summarize documents</li>
+<li><i class="fa-solid fa-pen" aria-label="pen"></i> Write &amp; edit prose</li>
+<li><i class="fa-solid fa-terminal" aria-label="terminal"></i> Automate tasks</li>
+<li><i class="fa-solid fa-globe" aria-label="globe"></i> Build a website</li>
+</ul>
+</div>
+</div>
+<p>. . .</p>
+<p><br></p>
+<div class="font120 center">
+<p>Let’s start with the last one — a <strong>website</strong> — because you can <em>see</em> it work.</p>
+</div>
+</section>
+<section class="slide level0">
+
+<h1>Your first real prompt</h1>
+<p><br></p>
+<p>Talk it, or type it — the agent takes it from here:</p>
+<div class="font110">
+<blockquote>
+<p>Create a single-page HTML introduction for <strong>someone you admire</strong> (a scientist, athlete, artist — anyone), and put all the styling in a separate <code>styles.css</code> file.</p>
+</blockquote>
+</div>
+<p>. . .</p>
+<p><br></p>
+<div class="font110 darkgreen">
+<p>Then <strong>open <code>index.html</code></strong> in your browser and look. Don’t like it? Just say so.</p>
+</div>
+</section>
+<section class="slide level0">
+
+<h1>One more prompt turns a page into a site</h1>
+<p><br></p>
+<div class="font110">
+<blockquote>
+<p>For each thing on the page, create its own HTML page. <strong>Link them together</strong> so I can click between them, and add a “Back” button at the top of each. <strong>Reuse the same <code>styles.css</code></strong> so everything matches.</p>
+</blockquote>
+</div>
+<p>. . .</p>
+<p><br></p>
+<div class="font110 center">
+<p>You never wrote a line of HTML. You <strong>described a structure</strong> and <em>checked</em> it.</p>
+</div>
+</section>
+<section class="slide level0">
+
+<h1>Know enough to supervise</h1>
+<p><br></p>
+<div class="font110 center">
+<p><span class="purple"><strong>A minimum website</strong></span> &nbsp;=&nbsp; <span class="orange">several HTML pages</span> &nbsp;+&nbsp; <span class="blue">one stylesheet</span></p>
+</div>
+<p><br></p>
+<div class="font110">
+<pre><code>my-website/
+├─ index.html      ← the home page
+├─ about.html      ← more pages...
+├─ contact.html
+└─ styles.css      ← shared look for all of them</code></pre>
+</div>
+<p>. . .</p>
+<div class="font110 darkgreen center">
+<p>You don’t have to <em>write</em> it — but you should recognize what it built.</p>
+</div>
+</section>
+<section class="slide level0">
+
+<section class="lexis-slide-title inverse">
+<h1 class="lexis-slide-title"></h1>
+<div class="font200 fancy center">
 <p>Practice 2</p>
 </div>
 <div class="font120">
-<p><strong>Let Claude import some data — and read what it did.</strong></p>
+<p><strong>Direct the agent to build something you can see.</strong></p>
 <ol type="1">
-<li>Drop <code>flights.csv</code> into your repo’s <code>data/</code> folder</li>
-<li>Ask Claude: <em>“Import <code>data/flights.csv</code> and give me a quick summary of what’s in it.”</em></li>
-<li><strong>Read the code it wrote.</strong> Not just the summary — the actual code.</li>
-<li>Tell a neighbor: <em>what did it do, and how do you know it’s right?</em></li>
+<li>Make a new folder, open it in Positron, launch <code>claude</code></li>
+<li>Ask for a <strong>one-page site</strong> about someone you admire (+ a <code>styles.css</code>)</li>
+<li><strong>Open <code>index.html</code></strong> — iterate on the look until you like it</li>
+<li>Add <strong>more linked pages</strong>, then <strong>commit + push</strong> it to GitHub</li>
 </ol>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_138f1ef0" minutes="12" seconds="0" warn-when="60" update-every="1" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_8d410c9d" minutes="20" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
+</div>
+</div>
+</section>
+</section>
+<section class="slide level0">
+
+<section id="week-2-agentic-workflows-github-3" class="inverse middle">
+<h1>Week 2: <span class="fancy">Agentic Workflows &amp; GitHub</span></h1>
+<div style="height: 1.5em;">
+
+</div>
+<h3 id="version-control-with-github-3">1. Version Control with GitHub</h3>
+<h3 id="setting-up-using-claude-code-3">2. Setting Up &amp; Using Claude Code</h3>
+<h3 id="slash-commands-skills-3">3. <span class="orange">Slash Commands &amp; Skills</span></h3>
+<h3 id="working-safely-3">4. Working Safely</h3>
+</section>
+</section>
+<section class="slide level0">
+
+<h1>Slash commands: steering the session</h1>
+<p><br></p>
+<p>Type <code>/</code> in Claude Code and you get <strong>commands that control the session itself</strong> — not the code, the <em>conversation</em>.</p>
+<p><br></p>
+<div class="font110">
+<p>Three you’ll reach for constantly:</p>
+</div>
+<div class="font120 center">
+<p><code>/model</code>  ·  <code>/clear</code>  ·  <code>/compact</code></p>
+</div>
+</section>
+<section class="slide level0">
+
+<h1><code>/model</code> — pick the right brain for the job</h1>
+<p><br></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>Good for</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Opus</strong></td>
+<td>Hard reasoning, tricky bugs, big refactors</td>
+</tr>
+<tr class="even">
+<td><strong>Sonnet</strong></td>
+<td>Everyday work — fast, capable, cheaper</td>
+</tr>
+<tr class="odd">
+<td><strong>Haiku</strong></td>
+<td>Quick, simple, high-volume tasks</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<div class="font110">
+<p><code>/model</code> switches anytime. Bigger isn’t always better — <strong>match the model to the task</strong>.</p>
+</div>
+</section>
+<section class="slide level0">
+
+<h1><code>/clear</code> vs.&nbsp;<code>/compact</code> — managing memory</h1>
+<div class="cols-row">
+<div class="col">
+<div id="clear" class="h3">
+<code>/clear</code>
+</div>
+<p><strong>Wipe the slate.</strong></p>
+<ul>
+<li>Forgets the whole conversation</li>
+<li>Fresh start, empty context</li>
+<li>Use it <strong>between unrelated tasks</strong></li>
+</ul>
+</div>
+<div class="col">
+<div id="compact" class="h3">
+<code>/compact</code>
+</div>
+<p><strong>Summarize and continue.</strong></p>
+<ul>
+<li>Condenses the chat so far</li>
+<li>Keeps the gist, frees up room</li>
+<li>Use it <strong>mid-task</strong> when things get long</li>
+</ul>
+</div>
+</div>
+<p>. . .</p>
+<p><br></p>
+<div class="font110 red center">
+<p>Why it matters: the agent has <strong>limited memory</strong>. A bloated,<br>unfocused context makes it <em>slower and dumber</em>.</p>
+</div>
+</section>
+<section class="slide level0">
+
+<h1><code>CLAUDE.md</code>: standing instructions</h1>
+<div class="font110">
+<ul>
+<li>A file the agent <strong>reads every session</strong> — your project’s house rules</li>
+<li>Run <code>/init</code> and Claude drafts one by reading your project</li>
+<li>Keep it <strong>high-level</strong>, not exhaustive; refresh it at milestones</li>
+</ul>
+</div>
+<p><br></p>
+<div class="cols-row">
+<div class="col">
+<p><strong>Home</strong> <code>~/.claude/CLAUDE.md</code><br><span class="gray">rules for <em>everything</em> you do</span></p>
+</div>
+<div class="col">
+<p><strong>Project</strong> <code>CLAUDE.md</code><br><span class="gray">rules for <em>this</em> repo</span></p>
 </div>
 </div>
 </section>
 <section class="slide level0">
 
-<h2>The habit to build now</h2>
-<div class="font120">
-<p>The summary Claude prints is a <strong>claim.</strong></p>
-</div>
-<p>. . .</p>
-<div class="font120">
-<p>The code it wrote is the <strong>evidence.</strong></p>
-</div>
-<p>. . .</p>
-<p><br></p>
-<div class="font130 darkgreen" style="text-align:center;">
-<p>Always read the evidence, not just the claim.</p>
-</div>
-<h1 class="inverse" data-background-color="#121212" id="part-3-the-whole-loop">Part 3 — The whole loop</h1>
-<h2 id="ask-verify-commit-push">Ask → verify → commit → push</h2>
-<div class="font110">
-<p>Now we string it together into one motion:</p>
-</div>
-<div class="font110">
-<ol type="1">
-<li><strong>Ask</strong> Claude to make a chart from the data</li>
-<li><strong>Verify</strong> it — do the numbers behind the chart match reality?</li>
-<li><strong>Commit</strong> the chart + code with a clear message</li>
-<li><strong>Push</strong> it to GitHub</li>
-</ol>
-</div>
-<p>. . .</p>
-<p><br></p>
-<div class="font110 darkgreen">
-<p>This is the exact loop you’ll run all semester. Everything else is details.</p>
-</div>
-</section>
-<section class="slide level0">
-
-<h2></h2>
-<div class="font200 fancy" style="text-align:center;">
+<section class="lexis-slide-title inverse">
+<h1 class="lexis-slide-title"></h1>
+<div class="font200 fancy center">
 <p>Practice 3</p>
 </div>
 <div class="font120">
-<p><strong>Run the full loop yourself.</strong></p>
+<p><strong>Drive the session, not just the code.</strong></p>
 <ol type="1">
-<li>Ask Claude to make a chart answering a question about <code>flights.csv</code></li>
-<li><strong>Verify</strong>: pick one bar/point and check it against the data by hand</li>
-<li>Does the chart <em>actually say what you asked?</em> If not, tell Claude what’s wrong</li>
-<li><strong>Commit</strong> (chart + code) → <strong>Push</strong> to GitHub</li>
+<li>Run <code>/model</code> and read what your options are</li>
+<li>Ask Claude a question, then <code>/compact</code> — watch it keep going, leaner</li>
+<li>Start an unrelated task with <code>/clear</code> first</li>
+<li>Run <code>/init</code> to generate a <code>CLAUDE.md</code>, then <strong>read it</strong> — is it right?</li>
 </ol>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_cac7d6c6" minutes="20" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_84b85e0c" minutes="15" seconds="0" warn-when="60" update-every="1" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
+</div>
+</div>
+</section>
+</section>
+<section class="slide level0">
+
+<h1>Skills: a command that wraps a whole recipe</h1>
+<div class="font110">
+<p>A <strong>skill</strong> is a slash command that bundles a reusable, multi-step recipe — so the agent produces the <em>same good result</em> every time, without you re-explaining the how.</p>
+</div>
+<p><br></p>
+<div class="cols-row">
+<div class="col">
+<div id="why-they-help" class="h3">
+Why they help
+</div>
+<ul>
+<li><i class="fa-solid fa-clock" aria-label="clock"></i> Save time</li>
+<li><i class="fa-solid fa-recycle" aria-label="recycle"></i> Reproducible</li>
+<li><i class="fa-solid fa-shield" aria-label="shield"></i> Stable &amp; consistent</li>
+</ul>
+</div>
+<div class="col">
+<div id="using-one" class="h3">
+Using one
+</div>
+<ul>
+<li>Skills live in <code>~/.claude/skills/</code></li>
+<li>Invoke with <code>/name</code></li>
+<li>We’ll try one for <strong>charts</strong>: <code>/my-chart-style</code></li>
+</ul>
 </div>
 </div>
 </section>
 <section class="slide level0">
 
-<h2>You just did the whole thing</h2>
+<h1>A skill in action: <span class="blue"><code>/my-chart-style</code></span></h1>
+<p>Same request — <em>“mean departure delay by airline, as a bar chart”</em> — twice:</p>
+<div class="cols-row">
+<div class="col">
+<p><span class="red"><strong>Without</strong> the skill</span></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="figs/unnamed-chunk-10-1.png" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="col">
+<p><span class="darkgreen"><strong>With</strong> the skill</span></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="figs/unnamed-chunk-11-1.png" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level0">
+
+<h1>The skill did the remembering</h1>
+<div class="font110">
+<p>You typed <strong>one short request</strong> both times. The polished version didn’t come from a longer prompt — it came from the <strong>skill</strong>, which carries the house style so you never restate it:</p>
+</div>
+<div class="font90">
+<ul>
+<li>a cowplot minimal theme (gridlines matched to the plot)</li>
+<li>white background, de-cluttered gridlines</li>
+<li>a consistent color palette + sorted bars</li>
+<li>a title / caption that state the point and the source</li>
+</ul>
+</div>
+<p>. . .</p>
+<div class="font110 darkgreen center">
+<p>Learn the conventions once → encode them in a skill → get them <strong>for free</strong>, forever.</p>
+</div>
+</section>
+<section class="slide level0">
+
+<section class="lexis-slide-title inverse">
+<h1 class="lexis-slide-title"></h1>
+<div class="font200 fancy center">
+<p>Practice 4</p>
+</div>
 <div class="font120">
-<p>Directed an agent · read its work · <strong>verified</strong> it · versioned it · backed it up.</p>
+<p><strong>Feel the difference a skill makes.</strong></p>
+<ol type="1">
+<li>From the class files, install the <code>my-chart-style</code> skill into <code>~/.claude/skills/</code></li>
+<li>Ask Claude for a chart from <code>flights.csv</code> — <strong>without</strong> the skill</li>
+<li>Ask again, invoking <strong><code>/my-chart-style</code></strong> — compare the two</li>
+<li>Which one would you put in a report? <strong>Why?</strong> Tell a neighbor</li>
+</ol>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<countdown-timer class="countdown" id="timer_86baded1" minutes="15" seconds="0" warn-when="60" update-every="1" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
+</div>
+</div>
+</section>
+</section>
+<section class="slide level0">
+
+<section id="week-2-agentic-workflows-github-4" class="inverse middle">
+<h1>Week 2: <span class="fancy">Agentic Workflows &amp; GitHub</span></h1>
+<div style="height: 1.5em;">
+
+</div>
+<h3 id="version-control-with-github-4">1. Version Control with GitHub</h3>
+<h3 id="setting-up-using-claude-code-4">2. Setting Up &amp; Using Claude Code</h3>
+<h3 id="slash-commands-skills-4">3. Slash Commands &amp; Skills</h3>
+<h3 id="working-safely-4">4. <span class="orange">Working Safely</span></h3>
+</section>
+</section>
+<section class="slide level0">
+
+<h1>The agent will be wrong <em>with confidence</em></h1>
+<div class="font110">
+<p>It won’t say <em>“I’m not sure.”</em> It hands you a clean, plausible,<br> <strong>wrong</strong> answer and moves on.</p>
+</div>
+<p>. . .</p>
+<div class="font120 center">
+<p><span class="red">Fast</span> &nbsp;≠&nbsp; <span class="darkgreen">Better</span></p>
+</div>
+<div class="font110 center">
+<p>Throughput goes up. <strong>Quality is not guaranteed.</strong></p>
+</div>
+</section>
+<section class="slide level0">
+
+<h1>Three ways it goes wrong</h1>
+<div class="cols-row">
+<div class="col">
+<div id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20666120747269616e676c652d6578636c616d6174696f6e203e7d7d-plausible-code-wrong-assumptions" class="h3">
+<i class="fa-solid fa-triangle-exclamation" aria-label="triangle-exclamation"></i> <span class="red">Plausible code,<br>wrong assumptions</span>
+</div>
+<p>Runs fine, shape looks right — but the <strong>join, filter, or group is wrong</strong>.</p>
+</div>
+<div class="col">
+<div id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2066612071756f74652d6c656674203e7d7d-confident-summary-of-a-noisy-result" class="h3">
+<i class="fa-solid fa-quote-left" aria-label="quote-left"></i> <span class="red">Confident summary<br>of a noisy result</span>
+</div>
+<p>Reads like an abstract. <strong>Confidence not calibrated</strong> to the evidence.</p>
+</div>
+<div class="col">
+<div id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2066612067617567652d68696768203e7d7d-velocity-that-hides-the-error" class="h3">
+<i class="fa-solid fa-gauge-high" aria-label="gauge-high"></i> <span class="red">Velocity that<br>hides the error</span>
+</div>
+<p>Errors <strong>compound</strong>. By the time you notice, ten steps need re-tracing.</p>
+</div>
+</div>
+<p>. . .</p>
+<div class="font110 center">
+<p>Each one is <em>invisible at the moment it happens.</em></p>
+</div>
+</section>
+<section class="slide level0">
+
+<h1>Verify against an <em>independent</em> check</h1>
+<div class="font110">
+<p>Don’t ask the agent if it’s right — it’ll say yes. Check it a way it <strong>can’t fake</strong>:</p>
+</div>
+<div class="cols-row">
+<div class="col">
+<div id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20666120626f6f6b203e7d7d-a-published-number" class="h3">
+<i class="fa-solid fa-book" aria-label="book"></i> A published number
+</div>
+<p>Codebook, prior paper,<br>official table</p>
+</div>
+<div class="col">
+<div id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2066612063616c63756c61746f72203e7d7d-a-hand-calculation" class="h3">
+<i class="fa-solid fa-calculator" aria-label="calculator"></i> A hand calculation
+</div>
+<p>Back-of-envelope,<br>done by <em>you</em></p>
+</div>
+<div class="col">
+<div id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206661207573657273203e7d7d-a-second-analyst" class="h3">
+<i class="fa-solid fa-users" aria-label="users"></i> A second analyst
+</div>
+<p>Different chat, different<br>prompt, different model</p>
+</div>
 </div>
 <p>. . .</p>
 <p><br></p>
-<div class="font110">
-<p>That’s the job. But we skipped the most important word.</p>
-</div>
-<div class="font160 red" style="text-align:center; margin-top:0.4em;">
-<p>Verify.</p>
-</div>
-<h1 class="inverse" data-background-color="#121212" id="part-4-where-it-goes-wrong">Part 4 — Where it goes wrong</h1>
-<h2 id="the-agent-will-be-wrong-with-confidence">The agent will be wrong <em>with confidence</em></h2>
-<div class="font110">
-<p>It won’t say <em>“I’m not sure.”</em> It will hand you a clean, plausible,<br> <strong>wrong</strong> answer and move on. Common failure modes:</p>
-</div>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li><strong>Hallucinated</strong> column names</li>
-<li><strong>Silently dropped</strong> rows (<code>NA</code>s, bad joins)</li>
-<li>Wrong <strong>join direction</strong></li>
-</ul>
-</div><div class="column" style="width:50%;">
-<ul>
-<li>A chart that <strong>misleads</strong> (bad axis, wrong aggregation)</li>
-<li>A <strong>made-up</strong> number that “looks right”</li>
-<li>Code that isn’t <strong>reproducible</strong></li>
-</ul>
-</div></div>
-<p>. . .</p>
-<div class="font120 red" style="text-align:center; margin-top:0.5em;">
-<p>Let me show you one live.</p>
+<div class="font110 red center">
+<p>Disagreement ⇒ the pipeline is <strong>wrong until you can explain the gap.</strong></p>
 </div>
 </section>
 <section class="slide level0">
 
-<h2>Your verification checklist</h2>
+<h1>You are the gatekeeper</h1>
+<p><br></p>
+<div class="font130 center">
+<p><span class="blue">AI assists</span> &nbsp;→&nbsp; <span class="darkgreen"><strong>YOU</strong> decide &amp; sign off</span> &nbsp;→&nbsp; <span class="purple">a defensible claim</span></p>
+</div>
+<p><br></p>
+<div class="font110 center">
+<p>The agent drafts the mechanics. <strong>You</strong> own the decisions and the sign-off.<br> Decide which steps a human <em>must</em> own — then hold that line.</p>
+</div>
+</section>
+<section class="slide level0">
+
+<section id="your-verification-checklist" data-background-color="#EAE9EA">
+<h1>Your verification checklist</h1>
 <div class="font110">
 <p>Run these every time — they’re the skill this whole course is really about:</p>
 <ul>
@@ -420,15 +998,17 @@ push
 <p>We’ll come back to this list all semester. Screenshot it.</p>
 </div>
 </section>
+</section>
 <section class="slide level0">
 
-<h2></h2>
-<div class="font200 fancy" style="text-align:center;">
-<p>Practice 4</p>
+<section class="lexis-slide-title inverse">
+<h1 class="lexis-slide-title"></h1>
+<div class="font200 fancy center">
+<p>Practice 5</p>
 </div>
 <div class="font120">
 <p><strong>Catch the bug.</strong></p>
-<p>I’ve given Claude a task where its <em>first answer is wrong.</em> Your job is to <strong>find it</strong> using the checklist.</p>
+<p>I’ve given Claude a task where its <em>first answer is wrong.</em> Find it with the checklist.</p>
 <ol type="1">
 <li>Ask Claude to join <code>flights.csv</code> with <code>airlines.csv</code> and count flights per airline</li>
 <li><strong>Something is off.</strong> Verify before you believe it.</li>
@@ -438,47 +1018,60 @@ push
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_8e3fb7f9" minutes="18" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_3bf3d4ae" minutes="18" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
 </div>
 </div>
 </section>
+</section>
 <section class="slide level0">
 
-<h2>The catch is the whole job</h2>
+<h1>The catch is the whole job</h1>
 <div class="font120">
 <p>An agent can write the code. <span class="red">It cannot know if the answer is <em>true</em>.</span></p>
+</div>
+<p>. . .</p>
+<div class="font120">
+<p><em>Plausible</em> is not the same as <em>correct</em>. <em>Reproducible</em> is not the same as <em>defensible</em>.</p>
 </div>
 <p>. . .</p>
 <div class="font120 darkgreen">
 <p><strong>That part is yours.</strong> It’s what you’re actually being graded on.</p>
 </div>
-<h1 class="inverse" data-background-color="#121212" id="wrap-up">Wrap-up</h1>
-<h2 id="today-in-one-slide">Today, in one slide</h2>
-<div class="font120" style="text-align:center; margin:0.4em 0; line-height:1.6;">
+</section>
+<section class="slide level0">
+
+<section id="wrap-up" class="inverse center middle">
+<h1><span class="fancy">Wrap-up</span></h1>
+</section>
+</section>
+<section class="slide level0">
+
+<h1>Today, in one slide</h1>
+<div class="font120 center">
 <p><strong>prompt</strong> <span class="gray">→</span> <strong>read the diff</strong> <span class="gray">→</span> <strong>verify</strong> <span class="gray">→</span> <strong>commit / push</strong></p>
 </div>
 <div class="font110">
 <ul>
 <li>You can <strong>make a repo and push</strong> with a button</li>
-<li>You can <strong>direct Claude</strong> to import, analyze, and chart</li>
+<li>You can <strong>set up and direct Claude Code</strong> — and read what it does</li>
+<li>You know <code>/model</code>, <code>/clear</code>, <code>/compact</code>, <code>CLAUDE.md</code>, and skills</li>
 <li>You know the agent <strong>lies with confidence</strong> — and you have a checklist</li>
-<li><strong>R or Python</strong> — your choice; the verification is the same job</li>
 </ul>
 </div>
 </section>
 <section class="slide level0">
 
-<h2>Before next week</h2>
+<h1>Before next week</h1>
 <div class="font110">
 <ul>
 <li>Finish pushing today’s work to your <code>eda-w2-practice</code> repo</li>
 <li><strong>Reading reflection:</strong> read forward on tidy data + joins, try the light practice, reflect</li>
-<li>Next week: <strong>Cleaning, Reshaping &amp; Joining</strong> — same loop, messier data</li>
+<li>Next week: <strong>Cleaning, Reshaping &amp; Joining</strong> — same loop, on real data</li>
 </ul>
 </div>
 <p>. . .</p>
 <p><br></p>
-<div class="font130 fancy darkgreen" style="text-align:center;">
+<div class="font130 fancy darkgreen center">
 <p>Direct boldly. Verify relentlessly.</p>
 </div>
 
@@ -534,7 +1127,7 @@ push
         controlsBackArrows: 'faded',
 
         // Display a presentation progress bar
-        progress: true,
+        progress: false,
 
         // Display the page number of the current slide
         slideNumber: 'c/t',
@@ -627,7 +1220,7 @@ push
         defaultTiming: null,
 
         // Enable slide navigation via mouse wheel
-        mouseWheel: false,
+        mouseWheel: true,
 
         // The display mode that will be used to show slides
         display: 'block',

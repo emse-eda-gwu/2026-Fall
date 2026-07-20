@@ -3,18 +3,11 @@ title: "Agentic Workflows & GitHub"
 subtitle: "EMSE 4572/6572: Exploratory Data Analysis"
 author: "John Paul Helveston"
 institute: "The George Washington University | EMSE"
-date: "September 2, 2026"
-format:
-  revealjs:
-    theme: lexis.scss
-    slide-number: c/t
-    incremental: false
-    code-line-numbers: false
-    highlight-style: github
-    width: 1600
-    height: 900
-    fig-width: 7
-    fig-height: 4
+week: 2
+displaydate: September 2, 2026
+format: lexis-revealjs
+mouse-wheel: true
+progress: false
 execute:
   echo: true
   warning: false
@@ -22,16 +15,34 @@ execute:
   freeze: false
 ---
 
-```{r setup}
+{{< include ../setup.qmd >}}
+
+```{r}
 #| include: false
-library(tidyverse)
-library(countdown)
+
+agenda_items <- c(
+  "Version Control with GitHub",
+  "Setting Up & Using Claude Code",
+  "Slash Commands & Skills",
+  "Working Safely"
+)
 ```
 
-# {.inverse background-color="#121212"}
+---
 
-::: {style="text-align:center; margin-top:1em;"}
-[Today]{.fancy .font200 .white}
+```{r}
+#| echo: false
+#| results: asis
+
+agenda(0)
+```
+
+---
+
+{{< inverse >}}
+
+::: {.center}
+[Today]{.fancy .font200}
 :::
 
 ::: {.font120}
@@ -41,9 +52,11 @@ Today you **use** it — for real, end to end.
 
 ---
 
-## The one loop for the whole semester {background-color="#121212" .inverse}
+{{< inverse >}}
 
-::: {.font140 style="text-align:center; margin-top:0.6em; line-height:1.6;"}
+## The one loop for the whole semester
+
+::: {.font140 .center}
 **prompt** [→]{.gray} **read the diff** [→]{.gray} **verify** [→]{.gray} **commit / push**
 :::
 
@@ -63,10 +76,33 @@ Your job moves from *typing code* to **directing and checking it.**
 
 ---
 
-## Why version control + agents belong together
+# What you'll actually do today
 
-::: {.columns}
-::: {.column width="50%"}
+1. Make a repo and **push** to GitHub — with a button, no command line
+2. **Set up Claude Code** and direct it to build something real
+3. Learn the **slash commands** that keep a session healthy
+4. Watch the agent be **confidently wrong** — and *catch it*
+
+. . .
+
+::: {.font110 .darkgreen}
+Mostly **hands-on**. I talk a little; you practice a lot.
+:::
+
+---
+
+```{r}
+#| echo: false
+#| results: asis
+
+agenda(1)
+```
+
+---
+
+# Why version control + agents belong together
+
+::: {.col}
 ### Version control
 
 - A **save point** you can return to
@@ -74,57 +110,39 @@ Your job moves from *typing code* to **directing and checking it.**
 - A record of *what changed and when*
 :::
 
-::: {.column width="50%"}
+::: {.col}
 ### Agentic workflow
 
 - You **direct**, the agent **edits your files**
 - Fast — and occasionally **wrong**
 - You need a **safety net**
 :::
-:::
 
 . . .
 
 <br>
 
-::: {.font120 style="text-align:center;"}
+::: {.font120 .center}
 You **commit often** *precisely so* it's safe to let an agent<br>loose on your files. [The two are one workflow.]{.darkgreen}
 :::
 
 ---
 
-## What you'll actually do today
+# Three words, that's the whole model
 
-1. Make a repo and **push** to GitHub — with a button, no command line
-2. Point **Claude Code** at some data and read what it does
-3. Run the **whole loop**: ask → verify → commit → push
-4. Watch the agent be **confidently wrong** — and *catch it*
-
-. . .
-
-::: {.font110 .darkgreen style="margin-top:0.8em;"}
-Mostly **hands-on**. I talk a little; you practice a lot.
-:::
-
-# Part 1 — GitHub Desktop {background-color="#121212" .inverse}
-
-## Three words, that's the whole model
-
-::: {.columns}
-::: {.column width="33%"}
+::: {.col}
 ### repo
 A project folder that **tracks its own history**
 :::
 
-::: {.column width="33%"}
+::: {.col}
 ### commit
 A **labeled save point** — "this is a state worth remembering"
 :::
 
-::: {.column width="33%"}
+::: {.col}
 ### push
 Send your commits **up to GitHub** (the cloud copy)
-:::
 :::
 
 . . .
@@ -137,9 +155,57 @@ No `git` in a terminal. Everything today is a **button in GitHub Desktop.**
 
 ---
 
-## {.inverse background-color="#121212"}
+# The GitHub Desktop loop
 
-::: {.font200 .fancy style="text-align:center;"}
+<br>
+
+Term            | What it is                        | Button
+----------------|-----------------------------------|------------------
+**Changes**     | Files you've edited since the last save | *(the left panel)*
+**Commit**      | Bundle those changes with a message | **Commit to main**
+**Push**        | Send commits to GitHub's copy      | **Push origin**
+**History**     | Every commit, in order — your undo | *(the History tab)*
+
+<br>
+
+::: {.font110 .darkgreen}
+Edit → **Commit** (with a message) → **Push**. That's the entire cycle.
+:::
+
+---
+
+# Write commit messages you'd thank yourself for
+
+::: {.col}
+### {{< fa xmark >}} [Useless]{.red}
+
+- `stuff`
+- `update`
+- `asdf`
+- `fixed it`
+:::
+
+::: {.col}
+### {{< fa check >}} [Useful]{.darkgreen}
+
+- `Add flights bar chart`
+- `Fix airline join dropping NAs`
+- `Clean column names in import`
+:::
+
+. . .
+
+<br>
+
+::: {.font110 .center}
+A message is a note to **future you** — the one scrolling History<br>trying to find where it broke.
+:::
+
+---
+
+{{< inverse >}}
+
+::: {.font200 .fancy .center}
 Practice 1
 :::
 
@@ -160,7 +226,7 @@ countdown(minutes = 15, warn_when = 60, top = 0, right = 0, font_size = "2em")
 
 ---
 
-## What just happened
+# What just happened
 
 ::: {.font110}
 - Your work now exists in **two places** (your laptop + GitHub)
@@ -172,90 +238,169 @@ countdown(minutes = 15, warn_when = 60, top = 0, right = 0, font_size = "2em")
 
 <br>
 
-::: {.font120 .darkgreen style="text-align:center;"}
+::: {.font120 .darkgreen .center}
 Now let's give ourselves something worth undoing.
-:::
-
-# Part 2 — Meet Claude Code {background-color="#121212" .inverse}
-
-## Claude Code, in Positron
-
-::: {.font110}
-- Open your **project folder** in Positron (not a stray file — the folder)
-- Start **Claude Code** in the terminal pane
-- You **describe** what you want; it **reads your files** and **proposes edits**
-- You **read the diff** and decide: accept, or push back
-:::
-
-. . .
-
-<br>
-
-::: {.font110 .darkgreen}
-Watch me do one first — then you'll do your own.
-:::
-
-::: {.footnote}
-Prefer Python? You may use it. My demos are in R — but *you* still own the verification either way.
 :::
 
 ---
 
-## {.inverse background-color="#121212"}
-
-::: {.font200 .fancy style="text-align:center;"}
-Practice 2
-:::
-
-::: {.font120}
-**Let Claude import some data — and read what it did.**
-
-1. Drop `flights.csv` into your repo's `data/` folder
-2. Ask Claude: *"Import `data/flights.csv` and give me a quick summary of what's in it."*
-3. **Read the code it wrote.** Not just the summary — the actual code.
-4. Tell a neighbor: *what did it do, and how do you know it's right?*
-:::
-
 ```{r}
 #| echo: false
-countdown(minutes = 12, warn_when = 60, top = 0, right = 0, font_size = "2em")
+#| results: asis
+
+agenda(2)
 ```
 
 ---
 
-## The habit to build now
+# Assistants vs. Agents
 
-::: {.font120}
-The summary Claude prints is a **claim.**
+::: {.col}
+### [Assistants]{.blue}
+
+**One-off tasks.**
+
+- ChatGPT · Claude · Gemini
+- Daily questions, small tasks
+- A smarter search engine
 :::
 
-. . .
+::: {.col}
+### [Agents]{.orange}
 
-::: {.font120}
-The code it wrote is the **evidence.**
+**Full project workflows.**
+
+- Claude Code · Codex · Gemini CLI
+- **Edit your files**, run commands
+- Carry a project forward over time
 :::
 
 . . .
 
 <br>
 
-::: {.font130 .darkgreen style="text-align:center;"}
-Always read the evidence, not just the claim.
+::: {.font120 .center}
+This class lives on the [**agent**]{.orange} side.
 :::
 
-# Part 3 — The whole loop {background-color="#121212" .inverse}
+---
 
-## Ask → verify → commit → push
+# [An agent = model + skills + files]{.center}
 
-::: {.font110}
-Now we string it together into one motion:
+<br>
+
+::: {.col .center}
+### [Model]{.purple}
+The reasoning<br>*(Claude)*
 :::
 
+::: {.col .center}
+### [Skills]{.darkgreen}
+Reusable know-how<br>*(slash commands)*
+:::
+
+::: {.col .center}
+### [Files]{.orange}
+Your project<br>*(the folder it works in)*
+:::
+
+. . .
+
+<br>
+
+::: {.font110 .center}
+Claude Code is the agent. **You** supply the project and the direction.
+:::
+
+---
+
+# Where you launch it matters
+
+::: {.col}
+### {{< fa house >}} Home directory `~`
+
+- Global `~/.claude/` settings
+- A top-level `CLAUDE.md` of *generic* rules
+- Applies to **every** project
+:::
+
+::: {.col}
+### {{< fa folder >}} A project folder
+
+- Your actual work lives here
+- Its **own** `CLAUDE.md` + history
+- Where you'll launch Claude **99% of the time**
+:::
+
+. . .
+
+<br>
+
+::: {.font110 .red .center}
+Open the **project folder** — not a stray file, not your whole home directory.
+:::
+
+---
+
+# Open your workspace, then launch
+
+<br>
+
+## 1. {{< fa folder-plus >}} Make a folder (no spaces in the name)
+
+::: {.fragment}
+## 2. {{< fa laptop-code >}} In Positron: **File › Open Folder…** and pick it
+:::
+
+::: {.fragment}
+## 3. {{< fa terminal >}} In the terminal pane, type `claude` and press Enter
+:::
+
+<br>
+
+::: {.fragment .font110 .darkgreen}
+You **describe** what you want; it **reads your files** and **proposes edits**.<br>
+You **read the diff** and decide: accept, or push back.
+:::
+
+---
+
+# An agent can do almost anything with files
+
+::: {.col}
+- {{< fa code >}} Write code
+- {{< fa bug >}} Debug & refactor
+- {{< fa chart-column >}} Analyze data
+- {{< fa image >}} Generate images
+:::
+
+::: {.col}
+- {{< fa book-open >}} Summarize documents
+- {{< fa pen >}} Write & edit prose
+- {{< fa terminal >}} Automate tasks
+- {{< fa globe >}} Build a website
+:::
+
+. . .
+
+<br>
+
+::: {.font120 .center}
+Let's start with the last one — a **website** — because you can *see* it work.
+:::
+
+---
+
+# Your first real prompt
+
+<br>
+
+Talk it, or type it — the agent takes it from here:
+
 ::: {.font110}
-1. **Ask** Claude to make a chart from the data
-2. **Verify** it — do the numbers behind the chart match reality?
-3. **Commit** the chart + code with a clear message
-4. **Push** it to GitHub
+> Create a single-page HTML introduction for **someone you admire**
+> (a scientist, athlete, artist — anyone), and put all the styling in a
+> separate `styles.css` file.
 :::
 
 . . .
@@ -263,24 +408,72 @@ Now we string it together into one motion:
 <br>
 
 ::: {.font110 .darkgreen}
-This is the exact loop you'll run all semester. Everything else is details.
+Then **open `index.html`** in your browser and look. Don't like it? Just say so.
 :::
 
 ---
 
-## {.inverse background-color="#121212"}
+# One more prompt turns a page into a site
 
-::: {.font200 .fancy style="text-align:center;"}
-Practice 3
+<br>
+
+::: {.font110}
+> For each thing on the page, create its own HTML page. **Link them
+> together** so I can click between them, and add a "Back" button at the
+> top of each. **Reuse the same `styles.css`** so everything matches.
+:::
+
+. . .
+
+<br>
+
+::: {.font110 .center}
+You never wrote a line of HTML. You **described a structure** and *checked* it.
+:::
+
+---
+
+# Know enough to supervise
+
+<br>
+
+::: {.font110 .center}
+[**A minimum website**]{.purple} &nbsp;=&nbsp; [several HTML pages]{.orange} &nbsp;+&nbsp; [one stylesheet]{.blue}
+:::
+
+<br>
+
+::: {.font110}
+```
+my-website/
+├─ index.html      ← the home page
+├─ about.html      ← more pages...
+├─ contact.html
+└─ styles.css      ← shared look for all of them
+```
+:::
+
+. . .
+
+::: {.font110 .darkgreen .center}
+You don't have to *write* it — but you should recognize what it built.
+:::
+
+---
+
+{{< inverse >}}
+
+::: {.font200 .fancy .center}
+Practice 2
 :::
 
 ::: {.font120}
-**Run the full loop yourself.**
+**Direct the agent to build something you can see.**
 
-1. Ask Claude to make a chart answering a question about `flights.csv`
-2. **Verify**: pick one bar/point and check it against the data by hand
-3. Does the chart *actually say what you asked?* If not, tell Claude what's wrong
-4. **Commit** (chart + code) → **Push** to GitHub
+1. Make a new folder, open it in Positron, launch `claude`
+2. Ask for a **one-page site** about someone you admire (+ a `styles.css`)
+3. **Open `index.html`** — iterate on the look until you like it
+4. Add **more linked pages**, then **commit + push** it to GitHub
 :::
 
 ```{r}
@@ -290,56 +483,371 @@ countdown(minutes = 20, warn_when = 120, top = 0, right = 0, font_size = "2em")
 
 ---
 
-## You just did the whole thing
+```{r}
+#| echo: false
+#| results: asis
 
-::: {.font120}
-Directed an agent · read its work · **verified** it · versioned it · backed it up.
+agenda(3)
+```
+
+---
+
+# Slash commands: steering the session
+
+<br>
+
+Type `/` in Claude Code and you get **commands that control the session itself** — not the code, the *conversation*.
+
+<br>
+
+::: {.font110}
+Three you'll reach for constantly:
+:::
+
+::: {.font120 .center}
+`/model` &ensp;·&ensp; `/clear` &ensp;·&ensp; `/compact`
+:::
+
+---
+
+# `/model` — pick the right brain for the job
+
+<br>
+
+Model         | Good for
+--------------|--------------------------------------------
+**Opus**      | Hard reasoning, tricky bugs, big refactors
+**Sonnet**    | Everyday work — fast, capable, cheaper
+**Haiku**     | Quick, simple, high-volume tasks
+
+<br>
+
+::: {.font110}
+`/model` switches anytime. Bigger isn't always better — **match the model to the task**.
+:::
+
+---
+
+# `/clear` vs. `/compact` — managing memory
+
+::: {.col}
+### `/clear`
+
+**Wipe the slate.**
+
+- Forgets the whole conversation
+- Fresh start, empty context
+- Use it **between unrelated tasks**
+:::
+
+::: {.col}
+### `/compact`
+
+**Summarize and continue.**
+
+- Condenses the chat so far
+- Keeps the gist, frees up room
+- Use it **mid-task** when things get long
 :::
 
 . . .
 
 <br>
 
-::: {.font110}
-That's the job. But we skipped the most important word.
-:::
-
-::: {.font160 .red style="text-align:center; margin-top:0.4em;"}
-Verify.
-:::
-
-# Part 4 — Where it goes wrong {background-color="#121212" .inverse}
-
-## The agent will be wrong *with confidence*
-
-::: {.font110}
-It won't say *"I'm not sure."* It will hand you a clean, plausible,<br>
-**wrong** answer and move on. Common failure modes:
-:::
-
-::: {.columns}
-::: {.column width="50%"}
-- **Hallucinated** column names
-- **Silently dropped** rows (`NA`s, bad joins)
-- Wrong **join direction**
-:::
-
-::: {.column width="50%"}
-- A chart that **misleads** (bad axis, wrong aggregation)
-- A **made-up** number that "looks right"
-- Code that isn't **reproducible**
-:::
-:::
-
-. . .
-
-::: {.font120 .red style="text-align:center; margin-top:0.5em;"}
-Let me show you one live.
+::: {.font110 .red .center}
+Why it matters: the agent has **limited memory**. A bloated,<br>unfocused context makes it *slower and dumber*.
 :::
 
 ---
 
-## Your verification checklist {background-color="#EAE9EA"}
+# `CLAUDE.md`: standing instructions
+
+::: {.font110}
+- A file the agent **reads every session** — your project's house rules
+- Run `/init` and Claude drafts one by reading your project
+- Keep it **high-level**, not exhaustive; refresh it at milestones
+:::
+
+<br>
+
+::: {.col}
+**Home** `~/.claude/CLAUDE.md`<br>[rules for *everything* you do]{.gray}
+:::
+
+::: {.col}
+**Project** `CLAUDE.md`<br>[rules for *this* repo]{.gray}
+:::
+
+---
+
+{{< inverse >}}
+
+::: {.font200 .fancy .center}
+Practice 3
+:::
+
+::: {.font120}
+**Drive the session, not just the code.**
+
+1. Run `/model` and read what your options are
+2. Ask Claude a question, then `/compact` — watch it keep going, leaner
+3. Start an unrelated task with `/clear` first
+4. Run `/init` to generate a `CLAUDE.md`, then **read it** — is it right?
+:::
+
+```{r}
+#| echo: false
+countdown(minutes = 15, warn_when = 60, top = 0, right = 0, font_size = "2em")
+```
+
+---
+
+# Skills: a command that wraps a whole recipe
+
+::: {.font110}
+A **skill** is a slash command that bundles a reusable, multi-step recipe —
+so the agent produces the *same good result* every time, without you
+re-explaining the how.
+:::
+
+<br>
+
+::: {.col}
+### Why they help
+- {{< fa clock >}} Save time
+- {{< fa recycle >}} Reproducible
+- {{< fa shield >}} Stable & consistent
+:::
+
+::: {.col}
+### Using one
+- Skills live in `~/.claude/skills/`
+- Invoke with `/name`
+- We'll try one for **charts**: `/my-chart-style`
+:::
+
+---
+
+# A skill in action: [`/my-chart-style`]{.blue}
+
+Same request — *"mean departure delay by airline, as a bar chart"* — twice:
+
+```{r}
+#| include: false
+
+library(here)
+
+flights <- read_csv(here("data", "flights.csv"))
+airlines <- read_csv(here("data", "airlines.csv"))
+
+delay_by_airline <- flights |>
+  left_join(airlines, by = "carrier") |>
+  group_by(name) |>
+  summarize(mean_dep_delay = mean(dep_delay, na.rm = TRUE)) |>
+  filter(!is.na(name), !is.nan(mean_dep_delay))
+```
+
+::: {.col}
+[**Without** the skill]{.red}
+
+```{r}
+#| echo: false
+#| fig-width: 6
+#| fig-height: 4.6
+
+ggplot(delay_by_airline, aes(x = mean_dep_delay, y = name)) +
+  geom_col()
+```
+:::
+
+::: {.col}
+[**With** the skill]{.darkgreen}
+
+```{r}
+#| echo: false
+#| fig-width: 6
+#| fig-height: 4.6
+
+font <- "sans"
+
+delay_by_airline |>
+  ggplot(aes(x = mean_dep_delay, y = reorder(name, mean_dep_delay))) +
+  geom_col(fill = "#80C5DCFF", width = 0.8) +
+  scale_x_continuous(expand = expansion(mult = c(0, 0.05))) +
+  labs(
+    x = "Mean departure delay (minutes)",
+    y = NULL,
+    title = "Some airlines leave late more than others",
+    caption = "Data source: nycflights13"
+  ) +
+  theme_minimal_vgrid(font_family = font) +
+  theme(
+    plot.title.position = "plot",
+    plot.caption.position = "plot",
+    plot.caption = element_text(hjust = 0, face = "italic"),
+    panel.background = element_rect(fill = "white", color = NA),
+    plot.background = element_rect(fill = "white", color = NA)
+  )
+```
+:::
+
+---
+
+# The skill did the remembering
+
+::: {.font110}
+You typed **one short request** both times. The polished version didn't come
+from a longer prompt — it came from the **skill**, which carries the house
+style so you never restate it:
+:::
+
+::: {.font90}
+- a cowplot minimal theme (gridlines matched to the plot)
+- white background, de-cluttered gridlines
+- a consistent color palette + sorted bars
+- a title / caption that state the point and the source
+:::
+
+. . .
+
+::: {.font110 .darkgreen .center}
+Learn the conventions once → encode them in a skill → get them **for free**, forever.
+:::
+
+---
+
+{{< inverse >}}
+
+::: {.font200 .fancy .center}
+Practice 4
+:::
+
+::: {.font120}
+**Feel the difference a skill makes.**
+
+1. From the class files, install the `my-chart-style` skill into `~/.claude/skills/`
+2. Ask Claude for a chart from `flights.csv` — **without** the skill
+3. Ask again, invoking **`/my-chart-style`** — compare the two
+4. Which one would you put in a report? **Why?** Tell a neighbor
+:::
+
+```{r}
+#| echo: false
+countdown(minutes = 15, warn_when = 60, top = 0, right = 0, font_size = "2em")
+```
+
+---
+
+```{r}
+#| echo: false
+#| results: asis
+
+agenda(4)
+```
+
+---
+
+# The agent will be wrong *with confidence*
+
+::: {.font110}
+It won't say *"I'm not sure."* It hands you a clean, plausible,<br>
+**wrong** answer and moves on.
+:::
+
+. . .
+
+::: {.font120 .center}
+[Fast]{.red} &nbsp;≠&nbsp; [Better]{.darkgreen}
+:::
+
+::: {.font110 .center}
+Throughput goes up. **Quality is not guaranteed.**
+:::
+
+---
+
+# Three ways it goes wrong
+
+::: {.col}
+### {{< fa triangle-exclamation >}} [Plausible code,<br>wrong assumptions]{.red}
+
+Runs fine, shape looks right — but the **join, filter, or group is wrong**.
+:::
+
+::: {.col}
+### {{< fa quote-left >}} [Confident summary<br>of a noisy result]{.red}
+
+Reads like an abstract. **Confidence not calibrated** to the evidence.
+:::
+
+::: {.col}
+### {{< fa gauge-high >}} [Velocity that<br>hides the error]{.red}
+
+Errors **compound**. By the time you notice, ten steps need re-tracing.
+:::
+
+. . .
+
+::: {.font110 .center}
+Each one is *invisible at the moment it happens.*
+:::
+
+---
+
+# Verify against an *independent* check
+
+::: {.font110}
+Don't ask the agent if it's right — it'll say yes. Check it a way it **can't fake**:
+:::
+
+::: {.col}
+### {{< fa book >}} A published number
+
+Codebook, prior paper,<br>official table
+:::
+
+::: {.col}
+### {{< fa calculator >}} A hand calculation
+
+Back-of-envelope,<br>done by *you*
+:::
+
+::: {.col}
+### {{< fa users >}} A second analyst
+
+Different chat, different<br>prompt, different model
+:::
+
+. . .
+
+<br>
+
+::: {.font110 .red .center}
+Disagreement ⇒ the pipeline is **wrong until you can explain the gap.**
+:::
+
+---
+
+# You are the gatekeeper
+
+<br>
+
+::: {.font130 .center}
+[AI assists]{.blue} &nbsp;→&nbsp; [**YOU** decide & sign off]{.darkgreen} &nbsp;→&nbsp; [a defensible claim]{.purple}
+:::
+
+<br>
+
+::: {.font110 .center}
+The agent drafts the mechanics. **You** own the decisions and the sign-off.<br>
+Decide which steps a human *must* own — then hold that line.
+:::
+
+---
+
+{{< bg-color "#EAE9EA" >}}
+
+# Your verification checklist
 
 ::: {.font110}
 Run these every time — they're the skill this whole course is really about:
@@ -358,17 +866,16 @@ We'll come back to this list all semester. Screenshot it.
 
 ---
 
-## {.inverse background-color="#121212"}
+{{< inverse >}}
 
-::: {.font200 .fancy style="text-align:center;"}
-Practice 4
+::: {.font200 .fancy .center}
+Practice 5
 :::
 
 ::: {.font120}
 **Catch the bug.**
 
-I've given Claude a task where its *first answer is wrong.* Your job is to
-**find it** using the checklist.
+I've given Claude a task where its *first answer is wrong.* Find it with the checklist.
 
 1. Ask Claude to join `flights.csv` with `airlines.csv` and count flights per airline
 2. **Something is off.** Verify before you believe it.
@@ -383,10 +890,16 @@ countdown(minutes = 18, warn_when = 120, top = 0, right = 0, font_size = "2em")
 
 ---
 
-## The catch is the whole job
+# The catch is the whole job
 
 ::: {.font120}
 An agent can write the code. [It cannot know if the answer is *true*.]{.red}
+:::
+
+. . .
+
+::: {.font120}
+*Plausible* is not the same as *correct*. *Reproducible* is not the same as *defensible*.
 :::
 
 . . .
@@ -395,35 +908,43 @@ An agent can write the code. [It cannot know if the answer is *true*.]{.red}
 **That part is yours.** It's what you're actually being graded on.
 :::
 
-# Wrap-up {background-color="#121212" .inverse}
+---
 
-## Today, in one slide
+{{< inverse >}}
+{{< center >}}
+{{< middle >}}
 
-::: {.font120 style="text-align:center; margin:0.4em 0; line-height:1.6;"}
+# [Wrap-up]{.fancy}
+
+---
+
+# Today, in one slide
+
+::: {.font120 .center}
 **prompt** [→]{.gray} **read the diff** [→]{.gray} **verify** [→]{.gray} **commit / push**
 :::
 
 ::: {.font110}
 - You can **make a repo and push** with a button
-- You can **direct Claude** to import, analyze, and chart
+- You can **set up and direct Claude Code** — and read what it does
+- You know `/model`, `/clear`, `/compact`, `CLAUDE.md`, and skills
 - You know the agent **lies with confidence** — and you have a checklist
-- **R or Python** — your choice; the verification is the same job
 :::
 
 ---
 
-## Before next week
+# Before next week
 
 ::: {.font110}
 - Finish pushing today's work to your `eda-w2-practice` repo
 - **Reading reflection:** read forward on tidy data + joins, try the light practice, reflect
-- Next week: **Cleaning, Reshaping & Joining** — same loop, messier data
+- Next week: **Cleaning, Reshaping & Joining** — same loop, on real data
 :::
 
 . . .
 
 <br>
 
-::: {.font130 .fancy .darkgreen style="text-align:center;"}
+::: {.font130 .fancy .darkgreen .center}
 Direct boldly. Verify relentlessly.
 :::
