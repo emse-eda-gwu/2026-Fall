@@ -240,12 +240,6 @@ engagement_data <- engagement_data %>%
     cols = c(City, County),
     names_to = "Location",
     values_to = "Engagement"
-  ) %>%
-  mutate(
-    Location = fct_relevel(
-      Location,
-      c("City", "County")
-    )
   )
 
 engagement_data
@@ -255,6 +249,18 @@ engagement_data
 :::
 
 ---
+
+```{r}
+#| echo: false
+
+engagement_data <- engagement_data %>%
+  mutate(
+    Location = fct_relevel(
+      Location,
+      c("City", "County")
+    )
+  )
+```
 
 # Data exploration: an iterative process
 
@@ -277,7 +283,7 @@ engagement_data %>%
 :::
 
 ::: {.col .fragment}
-More exploratory plotting:<br>highlight difference
+More exploratory plotting:<br>**highlight difference**
 
 ```{r}
 #| echo: false
@@ -347,7 +353,11 @@ engagement_plot
 
 ### Code
 
+
 ::: {.col}
+
+**Clean the data**
+
 ::: {.font60}
 ```r
 data <- data.frame(
@@ -375,7 +385,10 @@ data <- data.frame(
 
 ::: {.col}
 
+**Make the plot**
+
 ::: {.font60}
+
 ```r
 plot <- ggplot(data, aes(
   x = x, y = Engagement, group = School, color = Highlight
@@ -419,7 +432,7 @@ engagement_plot
 
 # Data exploration: an iterative process
 
-![](images/eda.png){width="800"}
+![](images/eda.png){width="900"}
 
 ---
 
@@ -446,7 +459,7 @@ agenda(2)
 
 ::: {.col width="70%" .font80}
 
-### John Helveston, Ph.D.
+### **John Helveston, Ph.D.**
 
 - 2025 - Present: Associate Professor, EMSE (w/tenure)
 - 2018 - 2025: Assistant Professor, EMSE
@@ -460,25 +473,33 @@ agenda(2)
 
 ---
 
-# Meet your tutors!
+{{< middle >}}
 
-::: {.col width="30%"}
-::: {.circle}
-![](images/bunea.jpg){width="300"}
-:::
+# Meet your tutor!
+
+<br>
+
+::: {.col width="30%" .circle}
+
+![](images/ko.png){width="400"}
+
 :::
 
 ::: {.col width="70%"}
-### **Bogdan Bunea**
+
+### **Lydia Ko**
 
 - Learning Assistant (LA)
 - EMSE Junior & P4A / EDA alumni
-- Check out his team's [project](https://eda.seas.gwu.edu/showcase/2023-Fall/ukraine-war.html) from 2023
+- Check out her team's [project](https://eda.seas.gwu.edu/showcase/2025-Fall/ev-taxes.html) from 2025
+
 :::
 
 ---
 
 # Prerequisites
+
+<br>
 
 ## [EMSE 4574 / 6574: Intro to Programming for Analytics](https://p4a.seas.gwu.edu/)
 
@@ -495,27 +516,41 @@ You should be able to:
 
 # Course website
 
-## {{< fa globe >}} Everything you need will be on the course website:<br>https://eda.seas.gwu.edu/2026-Fall/
+<br>
+
+## {{< fa globe >}} Everything you need will be on the course website:<br>[https://eda.seas.gwu.edu/2026-Fall/](https://eda.seas.gwu.edu/2026-Fall/)
+
+<br>
 
 ::: {.fragment}
+
 ## {{< fa calendar-alt >}} The [schedule](https://emse-eda-gwu.github.io/2026-Fall/schedule.html) is the best starting point
+
 :::
 
 ---
 
 # **Quizzes** (10% of grade)
 
-::: {.fragment}
-## `r fa("calendar")` At the start of class every other week-ish. Make ups only for excused absences (i.e. don't be late).
-:::
+<br>
 
 ::: {.fragment}
-## `r fa("calendar")` 5 total, lowest dropped
+## {{< fa calendar-alt >}} At the start of class every other week-ish. Make ups only for excused absences (i.e. don't be late).
 :::
 
+<br>
+
 ::: {.fragment}
-## `r fa("clock")` 10 minutes
+## {{< fa calendar-alt >}} 5 total, lowest dropped
 :::
+
+<br>
+
+::: {.fragment}
+## {{< fa clock >}} 10 minutes
+:::
+
+<br>
 
 ::: {.fragment}
 > **Why quiz at all?** The "retrieval effect" - basically, you have to _practice_ remembering things, otherwise your brain won't remember them (see the book ["Make It Stick: The Science of Successful Learning"](https://www.hup.harvard.edu/catalog.php?isbn=9780674729018))
@@ -525,16 +560,18 @@ You should be able to:
 
 # Assignments
 
+<br>
+
 ::: {.fragment}
-## 1) `r fa("book")` Weekly Reflections: [HW1](https://eda.seas.gwu.edu/2026-Fall/hw/1-agentic-workflows.html)
+## 1) {{< fa book >}} Weekly Reflections: [HW1](https://eda.seas.gwu.edu/2026-Fall/hw/1-agentic-workflows.html)
 :::
 
 ::: {.fragment}
-## 2) `r fa("pen-ruler")` 3 Mini Projects (due 2 weeks from date assigned)
+## 2) {{< fa pen-ruler >}} 3 Mini Projects (due 2 weeks from date assigned)
 :::
 
 ::: {.fragment}
-## 3) `r fa("pen-ruler")` [Final Project](https://eda.seas.gwu.edu/2026-Fall/project/0-overview.html)
+## 3) {{< fa pen-ruler >}} [Final Project](https://eda.seas.gwu.edu/2026-Fall/project/0-overview.html)
 
 ::: {.col}
 **Undergrads**: Teams of 3 - 4 students
@@ -545,10 +582,10 @@ You should be able to:
 ::: {.col}
 Item            | Due Date
 ----------------|---------------
-Proposal        | Sep 21
-Progress Report | Oct 26
-Final Report    | Dec 07
-Presentation    | Dec 09
+Proposal        | Sep 20
+Initial Report  | Nov 01
+Final Report    | Dec 06
+Presentation    | Dec 08
 :::
 :::
 
@@ -564,7 +601,7 @@ Quizzes                        | 10 %   | 5 quizzes, lowest dropped
 Mini Project 1                 | 9 %    | Individual assignments
 Mini Project 2                 | 9 %    |
 Mini Project 3                 | 9 %    |
-Final Project: Proposal        | 6 %    |
+Final Project: Proposal        | 6 %    | Team project
 Final Project: Progress Report | 6 %    |
 Final Project: Report          | 17 %   |
 Final Project: Presentation    | 6 %    |
@@ -572,93 +609,75 @@ Final Interview                | 10 %   | Individual interview
 
 ---
 
+{{< center >}}
 {{< bg-color "#ffffff" >}}
 
-# [Grades]{.center}
+# Grades
 
-![](https://eda.seas.gwu.edu/2026-Fall/figs/grade-breakdown-1.png){width="90%"}
+![](https://eda.seas.gwu.edu/2026-Fall/figs/grade-breakdown-1.png){width=100%}
 
 ---
 
 # Course policies
 
-::: {.fragment}
-::: {.col width="35%"}
+<br>
+
+::: {.fragment .col width="35%"}
+
 ## BE NICE
 ## BE HONEST
 ## DON'T CHEAT
-:::
+
 :::
 
-::: {.col width="65%" .fragment}
+::: {.fragment .col width="65%"}
+
 ## Copying is good, stealing is bad
 
 > "Plagiarism is trying to pass someone else's work off as your own. Copying is about reverse-engineering."
 >
 > [-- Austin Kleon, from [Steal Like An Artist](https://austinkleon.com/steal/)&ensp;]{.right}
+
 :::
 
 ---
 
-# Use of chatGPT and other AI tools
+# Use of AI
 
 <br>
 
 ::: {.incremental}
+
 - Large language models (LLMs) are pretty good
 - Sometimes they suck.
 - I will grade whatever you submit. **It should not suck.**
+
 :::
 
 ---
 
 # Ways to not have your work suck:
 
+<br>
+
 ::: {.incremental}
 - Don't submit code that doesn't run (actually run it before submitting it).
-- Actually read what the AI generates, and **don't submit something you don't understand**. (Ask the LLM how it works)
-- There are dozens of ways to do things - **you should use the approach I teach**.
-- Ask yourself **"what would I ask Prof. Helveston?"**
+- Actually read what the AI generates, and **don't submit something you don't understand**. (Ask the LLM to explain _why_ something works or doesn't work)
 ::: 
 
+<br>
+
 ::: {.fragment}
-### **Use AI as an assistant, not a solutions manual**
-:::
 
----
+### **Use the approach I teach**: agentic workflows (starting next week)
 
-{{< inverse >}}
-{{< middle >}}
-
-::: {.col width="75%"}
-![](images/llm-bad.png){width="100%"}
-:::
-
-::: {.col width="25%"}
-## [The **wrong** ways to use LLMs]{.center}
-
-Don't copy-paste past the basics - it'll rob you of mastery
-:::
-
----
-
-{{< inverse >}}
-{{< middle >}}
-
-::: {.col width="75%"}
-![](images/llm-good.png){width="100%"}
-:::
-
-::: {.col width="25%"}
-## [The **right** way to use LLMs]{.center}
-
-- Asking to explain error messages
-- Asking to explain _why_ something works or doesn't work
 :::
 
 ---
 
 # Late submissions
+
+<br>
 
 ## - **3** late days - use them anytime, no questions asked
 ## - No more than **2** late days on any one assignment
@@ -668,60 +687,68 @@ Don't copy-paste past the basics - it'll rob you of mastery
 
 # How to succeed in this class
 
+<br>
+
 ::: {.fragment}
-## `r fa("users")` Participate during class!
+
+## {{< fa users >}} Participate during class!
+
 :::
 
 ::: {.fragment}
-## `r fa("pen-ruler")` Start assignments early and **read carefully**!
+## {{< fa pen-ruler >}} Start assignments early and **read carefully**!
 :::
 
 ::: {.fragment}
-## `r fa("book")` Actually read (before class)!
+## {{< fa book >}} Actually read (before class)!
 :::
 
 ::: {.fragment}
-## `r fa("bed")` Get sleep and take breaks often!
+## {{< fa bed >}} Get sleep and take breaks often!
 :::
 
 ::: {.fragment}
-## `r fa("people-carry-box")` Ask for help!
+## {{< fa people-carry-box >}} Ask for help!
 :::
 
 ---
 
 # Getting Help
 
+<br>
+
 ::: {.fragment}
-## `r fa("slack")` Use [Slack](https://emse-eda-f26.slack.com/) to ask questions.
+## {{< fa brands slack >}} Use [Slack](https://emse-eda-f26.slack.com/) to ask questions.
 :::
 
 ::: {.fragment}
-## `r fa("person-chalkboard")` Meet with your tutors
+## {{< fa person-chalkboard >}} Meet with your tutors
 :::
 
 ::: {.fragment}
-## `r fa("user-clock")` [Schedule a meeting](https://jhelvy.appointlet.com/b/professor-helveston) w/Prof. Helveston (Mon/Tue/Fri)
+## {{< fa user-clock >}} [Schedule a meeting](https://jhelvy.appointlet.com/b/professor-helveston) w/Prof. Helveston (Mon/Tue/Fri)
 :::
 
 ::: {.fragment}
-## `r fa("code")` [GW Coders](http://gwcoders.github.io/)
+## {{< fa code >}} [GW Coders](http://gwcoders.github.io/)
 :::
 
 ---
 
 # [Course Software](https://eda.seas.gwu.edu/2026-Fall/software.html)
 
+<br>
+
 ::: {.fragment}
-## `r fa("slack")` [Slack](https://emse-eda-f26.slack.com/): **turn notifications on**!
+## {{< fa brands slack >}} [Slack](https://emse-eda-f26.slack.com/): **turn notifications on**!
 :::
 
 ::: {.fragment}
-## `r fa("r-project")` [R](https://cloud.r-project.org/) & [Positron](https://positron.posit.co/) (Install both)
+## {{< fa brands r-project >}} [R](https://cloud.r-project.org/) & [Positron](https://positron.posit.co/) (Install both)
 :::
 
 ::: {.fragment}
-## `r fa("cloud")` [Posit Cloud](https://posit.cloud/) (Register for free!)
+## {{< fa cloud >}} [Posit Cloud](https://posit.cloud/) (Register for free!)
 :::
 
 ---
@@ -731,9 +758,11 @@ Don't copy-paste past the basics - it'll rob you of mastery
 
 # [Break]{.fancy}
 
+<br>
+
 1. If you haven't already, install everything on the [software page](https://eda.seas.gwu.edu/2026-Fall/software.html)
 
-2. Stand up, meet each other, (maybe form teams?...use [this sheet](https://docs.google.com/spreadsheets/d/1pPfVs7bBcbA-L1Hp6sXcYg2ybTBsRmpfcXdF2oBf7xQ/edit?usp=sharing))
+2. Stand up, meet each other, (maybe form teams?...use [this sheet](https://docs.google.com/spreadsheets/d/1cXNvWVfZ-WN4oLqbhv76cFTXPBi0KCiQdkCG7ivm7i4/edit?usp=sharing))
 
 ```{r}
 #| echo: false
@@ -768,7 +797,7 @@ agenda(3)
 # [Quick demo]{.center}
 
 ## 1. Open `quarto_demo.qmd`
-## 2. Click "Render"
+## 2. Click "Preview"
 
 ![](images/how-qmd-works.png){width="100%"}
 
@@ -877,7 +906,7 @@ format: docx
 
 # [Headers]{.center}
 
-. . .
+<br>
 
 ::: {.col}
 ```markdown
@@ -895,7 +924,7 @@ format: docx
 ```
 :::
 
-::: {.col .fragment}
+::: {.col}
 # HEADER 1
 
 ## HEADER 2
@@ -912,6 +941,8 @@ format: docx
 ---
 
 # [Basic Text Formatting]{.center}
+
+<br>
 
 ::: {.col}
 ## Type this...
@@ -940,6 +971,8 @@ format: docx
 ---
 
 # [Lists]{.center}
+
+<br>
 
 ::: {.col}
 Bullet list:
@@ -973,6 +1006,8 @@ Numbered list:
 
 # [Links]{.center}
 
+<br>
+
 Simple **url link** to another site:
 
 ```markdown
@@ -980,18 +1015,6 @@ Simple **url link** to another site:
 ```
 
 [Download R](http://www.r-project.org/)
-
----
-
-{{< inverse >}}
-{{< center >}}
-{{< middle >}}
-
-# Don't want to use Markdown?
-
-# [Use Visual Mode!]{.red}
-
-![](images/visual-mode.png){width="700"}
 
 ---
 
@@ -1009,7 +1032,7 @@ Simple **url link** to another site:
 
 # R Code
 
-. . .
+<br>
 
 ::: {.col}
 ## Inline code
@@ -1034,11 +1057,13 @@ insert more code here
 
 # Inline R code
 
+<br>
+
 ```markdown
 The sum of 3 and 4 is `r knitr::inline_expr("3 + 4")`
 ```
 
-. . .
+<br>
 
 Produces this:
 
@@ -1048,6 +1073,8 @@ The sum of 3 and 4 is `r 3 + 4`
 
 # R Code chunks
 
+<br>
+
 ::: {.col}
 This code chunk...
 
@@ -1055,24 +1082,26 @@ This code chunk...
 ```{{r}}
 library(palmerpenguins)
 
-head(penguins)
+glimpse(penguins)
 ```
 ````
 :::
 
 ::: {.col .fragment}
-...will produce this when compiled:
+...will produce this when rendered:
 
 ```{r}
 library(palmerpenguins)
 
-head(penguins)
+glimpse(penguins)
 ```
 :::
 
 ---
 
 # Chunk options
+
+<br>
 
 Control what chunks output using options
 
@@ -1089,9 +1118,9 @@ knitr::include_graphics("images/chunks_options.png")
 
 # [Chunk output options]{.center}
 
-[By default, code chunks print **code** + **output**]{.center}
+<br>
 
-. . .
+[By default, code chunks print **code** + **output**]{.center}
 
 ::: {.col}
 ````markdown
@@ -1151,6 +1180,8 @@ cat("hello world!")
 
 # A global `setup` chunk 🌍
 
+<br>
+
 ::: {.col}
 ````markdown
 ```{{r}}
@@ -1188,9 +1219,11 @@ agenda(4)
 
 # Workflow for reading in data
 
+<br>
+
 1) Open your project **folder** in Positron - **don't double-click .R files**!
 
-. . .
+::: {.fragment}
 
 2) Use the `here` package to create file paths
 
@@ -1198,7 +1231,9 @@ agenda(4)
 path <- here::here("folder", "file.csv")
 ```
 
-. . .
+:::
+
+::: {.fragment}
 
 3) Import data with these functions:
 
@@ -1208,9 +1243,13 @@ File type  | Function       | Library
 `.txt`     | `read.table()` | **utils**
 `.xlsx`    | `read_excel()` | **readxl**
 
+:::
+
 ---
 
 # Importing Comma Separated Values (.csv)
+
+<br>
 
 Read in `.csv` files with `read_csv()`:
 
@@ -1228,6 +1267,8 @@ head(milk_production)
 
 # Importing Text Files (.txt)
 
+<br>
+
 Read in `.txt` files with `read.table()`:
 
 ```{r}
@@ -1240,6 +1281,8 @@ head(global_temps)
 ---
 
 # Importing Text Files (.txt)
+
+<br>
 
 Read in `.txt` files with `read.table()`:
 
@@ -1316,6 +1359,8 @@ countdown(
 
 # Your turn
 
+<br>
+
 Open the `practice.qmd` file.
 
 Write code to import the following data files from the "data" folder:
@@ -1342,11 +1387,13 @@ agenda(5)
 :::
 
 ::: {.col}
-# [The data frame...<br>in `r fa("r-project", fill = "blue")`]{.center}
+# [The data frame...<br>in [{{< fa brands r-project >}}]{.blue}]{.center}
 
+::: {.font50}
 ```{r}
 lotr
 ```
+:::
 :::
 
 ---
@@ -1380,8 +1427,6 @@ Information about the first row:
 lotr[1, ]
 ```
 
-. . .
-
 Information about rows 1 & 2:
 
 ```{r}
@@ -1393,6 +1438,8 @@ lotr[1:2, ]
 {{< inverse >}}
 
 ## Quick Practice
+
+<br>
 
 Read in the `data.csv` file in the "data" folder:
 
@@ -1414,7 +1461,7 @@ Now answer these questions:
 
 ### The tidyverse: `stringr` + `dplyr` + `readr` + `ggplot2` + ...
 
-![](images/horst_monsters_tidyverse.jpeg){width="950"}
+![](images/horst_monsters_tidyverse.jpeg){width="1050"}
 
 Art by [Allison Horst](https://www.allisonhorst.com/)
 
@@ -1438,7 +1485,7 @@ Art by [Allison Horst](https://www.allisonhorst.com/)
 
 # [`%>%`]{.center}
 
-. . .
+<br>
 
 ## Think of the words "...and then..."
 
@@ -1578,8 +1625,6 @@ lotr %>%
 
 ### [`ifelse(<condition>, <if TRUE>, <else>)`]{.center}
 
-. . .
-
 ```{r}
 lotr %>%
   mutate(word1000 = ifelse(word_count >= 1000, TRUE, FALSE))
@@ -1625,6 +1670,8 @@ countdown(
 ```
 
 # Your turn
+
+<br>
 
 Read in the `data.csv` file in the "data" folder:
 
@@ -1681,9 +1728,11 @@ Concept developed by Leland Wilkinson (1999)
 
 # Layer 1: The data
 
+::: {.font70}
 ```{r}
 head(mpg)
 ```
+:::
 
 ---
 

@@ -5,7 +5,6 @@
 library(knitr)
 library(tidyverse)
 library(cowplot)
-library(fontawesome)
 library(kableExtra)
 library(countdown)
 library(ggrepel)
