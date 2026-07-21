@@ -184,50 +184,6 @@ built-in one.
 </section>
 <section class="slide level0">
 
-<section class="lexis-slide-title inverse">
-<h1 class="lexis-slide-title"></h1>
-<div class="center">
-<p><span class="fancy font200">Today</span></p>
-</div>
-<div class="font120">
-<p>Last week you got the whole stack <strong>installed</strong>.<br> Today you <strong>use</strong> it — for real, end to end.</p>
-</div>
-</section>
-</section>
-<section class="slide level0">
-
-<section id="the-one-loop-for-the-whole-semester" class="inverse">
-<h2>The one loop for the whole semester</h2>
-<div class="font140 center">
-<p><strong>prompt</strong> <span class="gray">→</span> <strong>read the diff</strong> <span class="gray">→</span> <strong>verify</strong> <span class="gray">→</span> <strong>commit / push</strong></p>
-</div>
-<p>. . .</p>
-<p><br></p>
-<div class="font110">
-<p>The agent is <strong>fast</strong>, <strong>confident</strong>, and <strong>sometimes wrong</strong>.</p>
-</div>
-<p>. . .</p>
-<div class="font110 darkgreen">
-<p>Your job moves from <em>typing code</em> to <strong>directing and checking it.</strong></p>
-</div>
-</section>
-</section>
-<section class="slide level0">
-
-<h1>What you’ll actually do today</h1>
-<ol type="1">
-<li>Make a repo and <strong>push</strong> to GitHub — with a button, no command line</li>
-<li><strong>Set up Claude Code</strong> and direct it to build something real</li>
-<li>Learn the <strong>slash commands</strong> that keep a session healthy</li>
-<li>Watch the agent be <strong>confidently wrong</strong> — and <em>catch it</em></li>
-</ol>
-<p>. . .</p>
-<div class="font110 darkgreen">
-<p>Mostly <strong>hands-on</strong>. I talk a little; you practice a lot.</p>
-</div>
-</section>
-<section class="slide level0">
-
 <section id="week-2-agentic-workflows-github-1" class="inverse middle">
 <h1>Week 2: <span class="fancy">Agentic Workflows &amp; GitHub</span></h1>
 <div style="height: 1.5em;">
@@ -241,66 +197,57 @@ built-in one.
 </section>
 <section class="slide level0">
 
-<h1>Why version control + agents belong together</h1>
-<div class="cols-row">
-<div class="col">
-<div id="version-control" class="h3">
-Version control
+<section id="the-github-workflow" class="center" data-background-color="#fff">
+<h1>The github workflow</h1>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/github-workflow.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
 </div>
-<ul>
-<li>A <strong>save point</strong> you can return to</li>
-<li>A <strong>cloud backup</strong> of your work</li>
-<li>A record of <em>what changed and when</em></li>
-</ul>
-</div>
-<div class="col">
-<div id="agentic-workflow" class="h3">
-Agentic workflow
-</div>
-<ul>
-<li>You <strong>direct</strong>, the agent <strong>edits your files</strong></li>
-<li>Fast — and occasionally <strong>wrong</strong></li>
-<li>You need a <strong>safety net</strong></li>
-</ul>
-</div>
-</div>
-<p>. . .</p>
-<p><br></p>
-<div class="font120 center">
-<p>You <strong>commit often</strong> <em>precisely so</em> it’s safe to let an agent<br>loose on your files. <span class="darkgreen">The two are one workflow.</span></p>
-</div>
+</section>
 </section>
 <section class="slide level0">
 
-<h1>Three words, that’s the whole model</h1>
+<h1><span class="center">Git vocabulary you should know</span></h1>
+<p><br></p>
 <div class="cols-row">
-<div class="col">
+<div class="col fragment">
 <div id="repo" class="h3">
-repo
+<span class="center">“repo”</span>
 </div>
 <p>A project folder that <strong>tracks its own history</strong></p>
 </div>
-<div class="col">
+<div class="col fragment">
 <div id="commit" class="h3">
-commit
+<span class="center">“commit”</span>
 </div>
 <p>A <strong>labeled save point</strong> — “this is a state worth remembering”</p>
 </div>
-<div class="col">
+<div class="col fragment">
 <div id="push" class="h3">
-push
+<span class="center">“push”</span>
 </div>
 <p>Send your commits <strong>up to GitHub</strong> (the cloud copy)</p>
 </div>
 </div>
-<p>. . .</p>
-<p><br></p>
-<div class="font110">
-<p>No <code>git</code> in a terminal. Everything today is a <strong>button in GitHub Desktop.</strong></p>
-</div>
 </section>
 <section class="slide level0">
 
+<section class="lexis-slide-title center" data-background-color="#fff">
+<h1 class="lexis-slide-title"></h1>
+<div class="cols-row">
+<div class="col">
+<p>We won’t use <code>git</code> in a terminal <img data-src="images/terminal-no.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</div>
+<div class="col">
+<p>Everything is a <strong>button in GitHub Desktop</strong> <img data-src="images/ghd-yes.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</div>
+</div>
+</section>
+</section>
+<section class="slide level0">
+
+<section id="the-github-desktop-loop" class="center">
 <h1>The GitHub Desktop loop</h1>
 <p><br></p>
 <table class="caption-top">
@@ -341,12 +288,15 @@ push
 </table>
 <p><br></p>
 <div class="font110 darkgreen">
-<p>Edit → <strong>Commit</strong> (with a message) → <strong>Push</strong>. That’s the entire cycle.</p>
+<p>Edit → <strong>Commit</strong> (with a message) → <strong>Push</strong></p>
 </div>
+</section>
 </section>
 <section class="slide level0">
 
+<section id="write-commit-messages-youd-thank-yourself-for" class="center">
 <h1>Write commit messages you’d thank yourself for</h1>
+<p><br></p>
 <div class="cols-row">
 <div class="col">
 <div id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20666120786d61726b203e7d7d-useless" class="h3">
@@ -370,11 +320,11 @@ push
 </ul>
 </div>
 </div>
-<p>. . .</p>
 <p><br></p>
 <div class="font110 center">
 <p>A message is a note to <strong>future you</strong> — the one scrolling History<br>trying to find where it broke.</p>
 </div>
+</section>
 </section>
 <section class="slide level0">
 
@@ -395,7 +345,7 @@ push
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_78e07fe1" minutes="15" seconds="0" warn-when="60" update-every="1" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_04318b18" minutes="15" seconds="0" warn-when="60" update-every="1" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -639,7 +589,7 @@ push
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_8d410c9d" minutes="20" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_6377094b" minutes="20" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -772,7 +722,7 @@ push
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_84b85e0c" minutes="15" seconds="0" warn-when="60" update-every="1" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_385c9991" minutes="15" seconds="0" warn-when="60" update-every="1" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -875,7 +825,7 @@ Using one
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_86baded1" minutes="15" seconds="0" warn-when="60" update-every="1" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_148bebe4" minutes="15" seconds="0" warn-when="60" update-every="1" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -1018,7 +968,7 @@ Using one
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_3bf3d4ae" minutes="18" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_80a72227" minutes="18" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
 </div>
 </div>
 </section>

@@ -39,58 +39,6 @@ agenda(0)
 
 ---
 
-{{< inverse >}}
-
-::: {.center}
-[Today]{.fancy .font200}
-:::
-
-::: {.font120}
-Last week you got the whole stack **installed**.<br>
-Today you **use** it — for real, end to end.
-:::
-
----
-
-{{< inverse >}}
-
-## The one loop for the whole semester
-
-::: {.font140 .center}
-**prompt** [→]{.gray} **read the diff** [→]{.gray} **verify** [→]{.gray} **commit / push**
-:::
-
-. . .
-
-<br>
-
-::: {.font110}
-The agent is **fast**, **confident**, and **sometimes wrong**.
-:::
-
-. . .
-
-::: {.font110 .darkgreen}
-Your job moves from *typing code* to **directing and checking it.**
-:::
-
----
-
-# What you'll actually do today
-
-1. Make a repo and **push** to GitHub — with a button, no command line
-2. **Set up Claude Code** and direct it to build something real
-3. Learn the **slash commands** that keep a session healthy
-4. Watch the agent be **confidently wrong** — and *catch it*
-
-. . .
-
-::: {.font110 .darkgreen}
-Mostly **hands-on**. I talk a little; you practice a lot.
-:::
-
----
-
 ```{r}
 #| echo: false
 #| results: asis
@@ -100,60 +48,52 @@ agenda(1)
 
 ---
 
-# Why version control + agents belong together
+{{< center >}}
+{{< bg-color "#fff" >}}
 
-::: {.col}
-### Version control
+# The github workflow
 
-- A **save point** you can return to
-- A **cloud backup** of your work
-- A record of *what changed and when*
-:::
-
-::: {.col}
-### Agentic workflow
-
-- You **direct**, the agent **edits your files**
-- Fast — and occasionally **wrong**
-- You need a **safety net**
-:::
-
-. . .
-
-<br>
-
-::: {.font120 .center}
-You **commit often** *precisely so* it's safe to let an agent<br>loose on your files. [The two are one workflow.]{.darkgreen}
-:::
+![](images/github-workflow.png){fig-align="center" width=100%}
 
 ---
 
-# Three words, that's the whole model
+# [Git vocabulary you should know]{.center}
 
-::: {.col}
-### repo
+<br>
+
+::: {.col .fragment}
+### ["repo"]{.center}
 A project folder that **tracks its own history**
 :::
 
-::: {.col}
-### commit
+::: {.col .fragment}
+### ["commit"]{.center}
 A **labeled save point** — "this is a state worth remembering"
 :::
 
-::: {.col}
-### push
+::: {.col .fragment}
+### ["push"]{.center}
 Send your commits **up to GitHub** (the cloud copy)
 :::
 
-. . .
+---
 
-<br>
+{{< center >}}
+{{< bg-color "#fff" >}}
 
-::: {.font110}
-No `git` in a terminal. Everything today is a **button in GitHub Desktop.**
+::: {.col}
+We won't use `git` in a terminal
+![](images/terminal-no.png){fig-align="center" width=100%}
+:::
+
+::: {.col}
+Everything is a **button in GitHub Desktop**
+![](images/ghd-yes.png){fig-align="center" width=100%}
 :::
 
 ---
+
+{{< center >}}
 
 # The GitHub Desktop loop
 
@@ -169,12 +109,16 @@ Term            | What it is                        | Button
 <br>
 
 ::: {.font110 .darkgreen}
-Edit → **Commit** (with a message) → **Push**. That's the entire cycle.
+Edit → **Commit** (with a message) → **Push**
 :::
 
 ---
 
+{{< center >}}
+
 # Write commit messages you'd thank yourself for
+
+<br>
 
 ::: {.col}
 ### {{< fa xmark >}} [Useless]{.red}
@@ -192,8 +136,6 @@ Edit → **Commit** (with a message) → **Push**. That's the entire cycle.
 - `Fix airline join dropping NAs`
 - `Clean column names in import`
 :::
-
-. . .
 
 <br>
 
