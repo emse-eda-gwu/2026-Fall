@@ -34,7 +34,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-06b2970f93ff6c2bfe65a658f3b67b41.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-f22f4f678f9ba7c6b1b7827aca671d05.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -197,13 +197,27 @@ built-in one.
 </section>
 <section class="slide level0">
 
+<section class="lexis-slide-title center">
+<h1 class="lexis-slide-title"></h1>
+<p><img data-src="images/git.png" style="width:50.0%"></p>
+<p>VCS = Version Control System</p>
+<p>Original domain: <strong>software development</strong></p>
+<p>Git = The most popular VCS</p>
+<p>Our domain: <strong>data analysis &amp; agentic workflows</strong></p>
+</section>
+</section>
+<section class="slide level0">
+
+<section id="we-collaborate-using-git-on-github.com" class="center" data-background-color="#fff">
+<h1>We collaborate using git on github.com</h1>
+<p><img data-src="images/colab.png" style="width:70.0%"></p>
+</section>
+</section>
+<section class="slide level0">
+
 <section id="the-github-workflow" class="center" data-background-color="#fff">
-<h1>The github workflow</h1>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/github-workflow.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
+<h2>The github workflow</h2>
+<p><img data-src="images/github-workflow.png" style="width:90.0%"></p>
 </section>
 </section>
 <section class="slide level0">
@@ -233,15 +247,21 @@ built-in one.
 </section>
 <section class="slide level0">
 
+<section id="we-wont-use-git-in-a-terminal" class="center" data-background-color="#fff">
+<h1>We won’t use <code>git</code> in a terminal</h1>
+<h2 id="you-can-if-you-want-to">(you can if you want to)</h2>
+<p><img data-src="images/terminal-no.png" style="width:50.0%"></p>
+</section>
+</section>
+<section class="slide level0">
+
 <section class="lexis-slide-title center" data-background-color="#fff">
 <h1 class="lexis-slide-title"></h1>
-<div class="cols-row">
-<div class="col">
-<p>We won’t use <code>git</code> in a terminal <img data-src="images/terminal-no.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</div>
-<div class="col">
-<p>Everything is a <strong>button in GitHub Desktop</strong> <img data-src="images/ghd-yes.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</div>
+<p>Everything is a <strong>button in GitHub Desktop</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/ghd-yes.png" class="quarto-figure quarto-figure-center" style="width:90.0%"></p>
+</figure>
 </div>
 </section>
 </section>
@@ -333,38 +353,84 @@ built-in one.
 <div class="font200 fancy center">
 <p>Practice 1</p>
 </div>
-<div class="font120">
+<div class="font90">
 <p><strong>Make a repo and push to it.</strong></p>
 <ol type="1">
-<li>GitHub Desktop → <strong>File › New Repository</strong> → name it <code>eda-w2-practice</code></li>
-<li><strong>Publish</strong> it to GitHub (make it private)</li>
-<li>Add a line to <code>README.md</code>, then <strong>Commit</strong> (write a message!)</li>
-<li><strong>Push</strong> — then open it on github.com and confirm it’s there</li>
+<li>GitHub Desktop → <strong>File › New Repository</strong> → name it <code>eda-w2-practice</code><br>(for now, ignore the “Git Ignore” and “License” part)</li>
+<li><strong>Publish</strong> it to GitHub.com (make it private)</li>
+<li>Open your repo at GitHub.com, and create a README by clicking on “Create a README”</li>
+<li>Write something in your README.md file on GitHub.com, then click “commit”. The README.md should now be in your repo.</li>
+<li><strong>Fetch</strong> your changes on your local GitHub Desktop app to pull in those changes.</li>
+<li>On your local computer, open your README.md in Positron, edit it, then view those changes on GitHub Desktop.</li>
+<li>Write a description of your changes in the bottom-left box, then Commit your changes and <strong>Push</strong> then to github.com.</li>
 <li>Change the README again → <strong>Commit</strong> → <strong>Push</strong> → look at <strong>History</strong></li>
 </ol>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_04318b18" minutes="15" seconds="0" warn-when="60" update-every="1" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
+<div class="countdown" id="timer_1d32687c" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
 </div>
 </div>
 </section>
 </section>
 <section class="slide level0">
 
-<h1>What just happened</h1>
-<div class="font110">
-<ul>
-<li>Your work now exists in <strong>two places</strong> (your laptop + GitHub)</li>
-<li>Every commit is a point you can <strong>come back to</strong></li>
-<li>That History tab is your <strong>undo button</strong> for the whole project</li>
-</ul>
+<h1>How do I collaborate with others?</h1>
+</section>
+<section class="slide level0">
+
+<section id="two-new-moves" class="center">
+<h2>Two new moves</h2>
+<div class="cols-row">
+<div class="col fragment">
+<div id="clone" class="h3">
+<span class="center">“clone”</span>
 </div>
-<p>. . .</p>
+<p>Make your own <strong>local copy</strong> of someone else’s repo</p>
+</div>
+<div class="col fragment">
+<div id="pull-request-pr" class="h3">
+<span class="center">“pull request” (PR)</span>
+</div>
+<p><strong>Propose your changes</strong> back — they review, then <strong>merge</strong></p>
+</div>
+</div>
 <p><br></p>
-<div class="font120 darkgreen center">
-<p>Now let’s give ourselves something worth undoing.</p>
+<div class="font110 center fragment">
+<p>You work on a <strong>branch</strong>, so their <code>main</code> is untouched<br>until they say <em>yes</em>.</p>
 </div>
+</section>
+</section>
+<section class="slide level0">
+
+<section class="lexis-slide-title inverse">
+<h1 class="lexis-slide-title"></h1>
+<div class="font200 fancy center">
+<p>Practice 2</p>
+</div>
+<div class="font90">
+<p><strong>Team up and send your partner a pull request.</strong></p>
+<ol type="1">
+<li>Pair with a neighbor. In <em>your</em> <code>eda-w2-practice</code> repo on GitHub.com:<br><strong>Settings › Collaborators</strong> → add your partner → they <strong>accept</strong> the emailed invite</li>
+<li>Swap repo links. In GitHub Desktop, <strong>File › Clone Repository</strong> → clone <em>your partner’s</em> repo</li>
+<li><strong>Branch › New Branch</strong> → name it <code>yourname-edits</code></li>
+<li>Edit their <code>README.md</code> in Positron → <strong>Commit</strong> to your branch → <strong>Publish branch</strong></li>
+<li>Click <strong>Create Pull Request</strong> → describe your change → submit it on GitHub.com</li>
+<li>Back on <em>your</em> repo, review your partner’s PR and <strong>Merge</strong> it</li>
+</ol>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="countdown" id="timer_44cb363d" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section class="slide level0">
 
@@ -381,13 +447,13 @@ built-in one.
 </section>
 <section class="slide level0">
 
-<h1>Assistants vs.&nbsp;Agents</h1>
+<h1><span class="center">Assistants vs.&nbsp;Agents</span></h1>
 <div class="cols-row">
 <div class="col">
 <div id="assistants" class="h3">
-<span class="blue">Assistants</span>
+<span class="blue center">Assistants</span>
 </div>
-<p><strong>One-off tasks.</strong></p>
+<p><strong>One-off tasks</strong></p>
 <ul>
 <li>ChatGPT · Claude · Gemini</li>
 <li>Daily questions, small tasks</li>
@@ -396,9 +462,9 @@ built-in one.
 </div>
 <div class="col">
 <div id="agents" class="h3">
-<span class="orange">Agents</span>
+<span class="orange center">Agents</span>
 </div>
-<p><strong>Full project workflows.</strong></p>
+<p><strong>Full project workflows</strong></p>
 <ul>
 <li>Claude Code · Codex · Gemini CLI</li>
 <li><strong>Edit your files</strong>, run commands</li>
@@ -406,7 +472,6 @@ built-in one.
 </ul>
 </div>
 </div>
-<p>. . .</p>
 <p><br></p>
 <div class="font120 center">
 <p>This class lives on the <span class="orange"><strong>agent</strong></span> side.</p>
@@ -414,6 +479,7 @@ built-in one.
 </section>
 <section class="slide level0">
 
+<section id="an-agent-model-skills-files" class="center">
 <h1><span class="center">An agent = model + skills + files</span></h1>
 <p><br></p>
 <div class="cols-row">
@@ -441,6 +507,7 @@ built-in one.
 <div class="font110 center">
 <p>Claude Code is the agent. <strong>You</strong> supply the project and the direction.</p>
 </div>
+</section>
 </section>
 <section class="slide level0">
 
@@ -576,7 +643,7 @@ built-in one.
 <section class="lexis-slide-title inverse">
 <h1 class="lexis-slide-title"></h1>
 <div class="font200 fancy center">
-<p>Practice 2</p>
+<p>Practice 3</p>
 </div>
 <div class="font120">
 <p><strong>Direct the agent to build something you can see.</strong></p>
@@ -589,7 +656,10 @@ built-in one.
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_6377094b" minutes="20" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
+<div class="countdown" id="timer_ac7747b4" data-warn-when="120" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">20</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
 </div>
 </div>
 </section>
@@ -709,7 +779,7 @@ built-in one.
 <section class="lexis-slide-title inverse">
 <h1 class="lexis-slide-title"></h1>
 <div class="font200 fancy center">
-<p>Practice 3</p>
+<p>Practice 4</p>
 </div>
 <div class="font120">
 <p><strong>Drive the session, not just the code.</strong></p>
@@ -722,7 +792,10 @@ built-in one.
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_385c9991" minutes="15" seconds="0" warn-when="60" update-every="1" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
+<div class="countdown" id="timer_3bbb1b2a" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
 </div>
 </div>
 </section>
@@ -768,7 +841,7 @@ Using one
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="figs/unnamed-chunk-10-1.png" width="576"></p>
+<p><img data-src="figs/unnamed-chunk-11-1.png" width="576"></p>
 </figure>
 </div>
 </div>
@@ -780,7 +853,7 @@ Using one
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="figs/unnamed-chunk-11-1.png" width="576"></p>
+<p><img data-src="figs/unnamed-chunk-12-1.png" width="576"></p>
 </figure>
 </div>
 </div>
@@ -812,7 +885,7 @@ Using one
 <section class="lexis-slide-title inverse">
 <h1 class="lexis-slide-title"></h1>
 <div class="font200 fancy center">
-<p>Practice 4</p>
+<p>Practice 5</p>
 </div>
 <div class="font120">
 <p><strong>Feel the difference a skill makes.</strong></p>
@@ -825,7 +898,10 @@ Using one
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_148bebe4" minutes="15" seconds="0" warn-when="60" update-every="1" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
+<div class="countdown" id="timer_3041704f" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
 </div>
 </div>
 </section>
@@ -954,7 +1030,7 @@ Using one
 <section class="lexis-slide-title inverse">
 <h1 class="lexis-slide-title"></h1>
 <div class="font200 fancy center">
-<p>Practice 5</p>
+<p>Practice 6</p>
 </div>
 <div class="font120">
 <p><strong>Catch the bug.</strong></p>
@@ -968,7 +1044,10 @@ Using one
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_80a72227" minutes="18" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
+<div class="countdown" id="timer_dcf3f89e" data-warn-when="120" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">18</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
 </div>
 </div>
 </section>
