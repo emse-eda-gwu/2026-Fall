@@ -49,11 +49,34 @@ agenda(1)
 ---
 
 {{< center >}}
+
+![](images/git.png){width=50%}
+
+VCS = Version Control System
+
+Original domain: **software development**
+
+Git = The most popular VCS
+
+Our domain: **data analysis & agentic workflows**
+
+---
+
+{{< center >}}
 {{< bg-color "#fff" >}}
 
-# The github workflow
+# We collaborate using git on github.com
 
-![](images/github-workflow.png){fig-align="center" width=100%}
+![](images/colab.png){width=70%}
+
+---
+
+{{< center >}}
+{{< bg-color "#fff" >}}
+
+## The github workflow
+
+![](images/github-workflow.png){width=90%}
 
 ---
 
@@ -81,15 +104,20 @@ Send your commits **up to GitHub** (the cloud copy)
 {{< center >}}
 {{< bg-color "#fff" >}}
 
-::: {.col}
-We won't use `git` in a terminal
-![](images/terminal-no.png){fig-align="center" width=100%}
-:::
+# We won't use `git` in a terminal 
 
-::: {.col}
+## (you can if you want to)
+
+![](images/terminal-no.png){width=50%}
+
+---
+
+{{< center >}}
+{{< bg-color "#fff" >}}
+
 Everything is a **button in GitHub Desktop**
-![](images/ghd-yes.png){fig-align="center" width=100%}
-:::
+
+![](images/ghd-yes.png){fig-align="center" width=90%}
 
 ---
 
@@ -151,14 +179,17 @@ A message is a note to **future you** — the one scrolling History<br>trying to
 Practice 1
 :::
 
-::: {.font120}
+::: {.font90}
 **Make a repo and push to it.**
 
-1. GitHub Desktop → **File › New Repository** → name it `eda-w2-practice`
-2. **Publish** it to GitHub (make it private)
-3. Add a line to `README.md`, then **Commit** (write a message!)
-4. **Push** — then open it on github.com and confirm it's there
-5. Change the README again → **Commit** → **Push** → look at **History**
+1. GitHub Desktop → **File › New Repository** → name it `eda-w2-practice`<br>(for now, ignore the "Git Ignore" and "License" part)
+2. **Publish** it to GitHub.com (make it private)
+3. Open your repo at GitHub.com, and create a README by clicking on "Create a README"
+4. Write something in your README.md file on GitHub.com, then click "commit". The README.md should now be in your repo. 
+5. **Fetch** your changes on your local GitHub Desktop app to pull in those changes.
+6. On your local computer, open your README.md in Positron, edit it, then view those changes on GitHub Desktop.
+7. Write a description of your changes in the bottom-left box, then Commit your changes and **Push** then to github.com. 
+8. Change the README again → **Commit** → **Push** → look at **History**
 :::
 
 ```{r}
@@ -168,21 +199,53 @@ countdown(minutes = 15, warn_when = 60, top = 0, right = 0, font_size = "2em")
 
 ---
 
-# What just happened
+# How do I collaborate with others?
 
-::: {.font110}
-- Your work now exists in **two places** (your laptop + GitHub)
-- Every commit is a point you can **come back to**
-- That History tab is your **undo button** for the whole project
+---
+
+{{< center >}}
+
+## Two new moves
+
+::: {.col .fragment}
+### ["clone"]{.center}
+Make your own **local copy** of someone else's repo
 :::
 
-. . .
+::: {.col .fragment}
+### ["pull request" (PR)]{.center}
+**Propose your changes** back — they review, then **merge**
+:::
 
 <br>
 
-::: {.font120 .darkgreen .center}
-Now let's give ourselves something worth undoing.
+::: {.font110 .center .fragment}
+You work on a **branch**, so their `main` is untouched<br>until they say *yes*.
 :::
+
+---
+
+{{< inverse >}}
+
+::: {.font200 .fancy .center}
+Practice 2
+:::
+
+::: {.font90}
+**Team up and send your partner a pull request.**
+
+1. Pair with a neighbor. In *your* `eda-w2-practice` repo on GitHub.com:<br>**Settings › Collaborators** → add your partner → they **accept** the emailed invite
+2. Swap repo links. In GitHub Desktop, **File › Clone Repository** → clone *your partner's* repo
+3. **Branch › New Branch** → name it `yourname-edits`
+4. Edit their `README.md` in Positron → **Commit** to your branch → **Publish branch**
+5. Click **Create Pull Request** → describe your change → submit it on GitHub.com
+6. Back on *your* repo, review your partner's PR and **Merge** it
+:::
+
+```{r}
+#| echo: false
+countdown(minutes = 15, warn_when = 60, top = 0, right = 0, font_size = "2em")
+```
 
 ---
 
@@ -195,12 +258,12 @@ agenda(2)
 
 ---
 
-# Assistants vs. Agents
+# [Assistants vs. Agents]{.center}
 
 ::: {.col}
-### [Assistants]{.blue}
+### [Assistants]{.blue .center}
 
-**One-off tasks.**
+**One-off tasks**
 
 - ChatGPT · Claude · Gemini
 - Daily questions, small tasks
@@ -208,16 +271,14 @@ agenda(2)
 :::
 
 ::: {.col}
-### [Agents]{.orange}
+### [Agents]{.orange .center}
 
-**Full project workflows.**
+**Full project workflows**
 
 - Claude Code · Codex · Gemini CLI
 - **Edit your files**, run commands
 - Carry a project forward over time
 :::
-
-. . .
 
 <br>
 
@@ -226,6 +287,8 @@ This class lives on the [**agent**]{.orange} side.
 :::
 
 ---
+
+{{< center >}}
 
 # [An agent = model + skills + files]{.center}
 
@@ -406,7 +469,7 @@ You don't have to *write* it — but you should recognize what it built.
 {{< inverse >}}
 
 ::: {.font200 .fancy .center}
-Practice 2
+Practice 3
 :::
 
 ::: {.font120}
@@ -525,7 +588,7 @@ Why it matters: the agent has **limited memory**. A bloated,<br>unfocused contex
 {{< inverse >}}
 
 ::: {.font200 .fancy .center}
-Practice 3
+Practice 4
 :::
 
 ::: {.font120}
@@ -661,7 +724,7 @@ Learn the conventions once → encode them in a skill → get them **for free**,
 {{< inverse >}}
 
 ::: {.font200 .fancy .center}
-Practice 4
+Practice 5
 :::
 
 ::: {.font120}
@@ -811,7 +874,7 @@ We'll come back to this list all semester. Screenshot it.
 {{< inverse >}}
 
 ::: {.font200 .fancy .center}
-Practice 5
+Practice 6
 :::
 
 ::: {.font120}
