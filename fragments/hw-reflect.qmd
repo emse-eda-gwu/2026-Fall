@@ -1,0 +1,9 @@
+Reflect on what you've learned while going through these readings and exercises. Is there anything that jumped out at you? Anything you found particularly interesting or confusing?
+
+Write at least a paragraph in your ``r hw_file`` file, and include at least one question. The teaching team will review the questions we get and will try to answer them either in Slack or in class.
+
+Some thoughts you may want to try in your reflection:
+
+- "I used to think ______, now I think ______ 🤔"
+- Discuss some of the key insights or things you found interesting in the readings or recent class periods.
+- Connect the course content to your own work or project you're working on.

@@ -36,21 +36,8 @@ This week we'll learn about maps and geospatial data. Maps are a unique type of 
 
 > **This week, include in your reflection an image or link to a recent map you've seen (or one you thought was super interesting)**
 
-Reflect on what you've learned while going through these readings and exercises. Is there anything that jumped out at you? Anything you found particularly interesting or confusing?
-
-Write at least a paragraph in your ``r hw_file`` file, and include at least one question. The teaching team will review the questions we get and will try to answer them either in Slack or in class.
-
-Some thoughts you may want to try in your reflection:
-
-- Write about an interesting data visualization about trends you've seen.
-- "I used to think ______, now I think ______ 🤔"
-- Discuss some of the key insights or things you found interesting in the readings or recent class periods.
-- Connect the course content to your own work or project you're working on.
+{{< include ../fragments/hw-reflect.qmd >}}
 
 # 5. Submit
 
-To submit your assignment, follow these instructions:
-
-1. Render your .qmd file by either clicking the "Render" button in RStudio or running the command ``r paste0('quarto::quarto_render("', hw_file, '")')`` command.
-2. Open the rendered html file and make sure it looks good! Is all the formatting as you expected?
-3. Create a zip file of all the files in your R project folder for this assignment and submit it on the corresponding assignment submission on Blackboard.
+{{< include ../fragments/hw-submit.qmd >}}
