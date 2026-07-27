@@ -1,5 +1,5 @@
 ---
-title: Progress Report
+title: Initial Report
 toc: true
 toc-location: right
 execute:
@@ -17,7 +17,7 @@ params:
 
 source(here::here("_common.R"))
 
-rubric <- read_csv(here::here('rubrics', '2-progress-report.csv'))
+rubric <- read_csv(here::here('rubrics', '2-initial-report.csv'))
 maxPoints <- rubric %>%
     filter(rating == "Excellent") %>%
     summarise(max = sum(maxPoints)) %>%

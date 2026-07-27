@@ -80,8 +80,8 @@ website:
             href: project/0-overview.qmd
           - text: Proposal
             href: project/1-proposal.qmd
-          - text: Progress Report 
-            href: project/2-progress-report.qmd
+          - text: Initial Report
+            href: project/2-initial-report.qmd
           - text: Final Report
             href: project/3-final-report.qmd
           - text: Final Presentation
@@ -136,8 +136,6 @@ format:
     smooth-scroll: true
     link-external-newwindow: true
     link-external-icon: false
-    # This is to include fontawesome icons
-    include-in-header: "_includes/header.html"
 
 filters:
     - schedule.lua

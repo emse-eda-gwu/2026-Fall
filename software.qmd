@@ -23,6 +23,8 @@
 
 7. **Install course R packages**: Open Positron, open its R console, then copy-paste [this code](./content/packages.R) into the console and press Return. This will install all the packages listed in the file.
 
+8. **Create your GitHub account**: If you do not yet have a GitHub account, you'll need to [create one](https://github.com/signup?). Choose a user name that you like, recognizing that this will be viewed by many in the professional world (Professor Helveston's is [jhelvy](https://github.com/jhelvy/)), and use a personal email address that will follow you after leaving GW (I recommend **not** using your GW email as it eventually expires).
+
 ## Install an agentic CLI tool
 
 This course uses Claude Code as our primary agentic tool. If you do not already have a Claude subscription, you will need to sign up for one. You'll need at least a [Claude Pro](https://claude.ai) subscription to use Claude Code (a free account isn't sufficient).

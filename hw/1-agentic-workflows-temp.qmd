@@ -5,6 +5,7 @@ params:
   purpose: "This course is built around a fundamental shift in how we do data analysis. We used to live in a paradigm where we hand-wrote every line of code. No more. Instead, we now direct an AI coding agent (Claude Code) to do the majority of the coding while our job changes to supervising, verifying, and taking responsibility for the resulting analysis produced by the code. This assignment is designed to make sure you have all your tools installed and properly configured and to ensure you can have productive conversations with an AI agent. Going forward, we will focus class time on working with agents them rather than troubleshooting installations and configurations."
 ---
 
+
 ```{r child = here::here("fragments", "hw.qmd")}
 ```
 
@@ -19,9 +20,11 @@ If you haven't yet, go to the [software page](../software.qmd) and make sure you
 
 Then, **verify everything works**: open Positron, open the project folder for this assignment (the template you downloaded), open the terminal window in Positron, and run `claude`. If it starts a conversation and asks for your login, it's working.
 
-If you get stuck on installation, post in Slack -- don't wait until class to mention it.
+If you get stuck on installation, post in Slack and we can help you. Don't wait until Monday night - ask sooner!
 
-# 3. Read & Practice
+# 3. Readings & Exercises
+
+- **Getting Familiar with the Course**: Follow [Snoop's advice](https://www.youtube.com/watch?v=Tnlaokj1opA) and read the entire [Course Syllabus](../syllabus.html) (actually read the whole thing). Then review the [schedule](../schedule.html) and make sure to note important upcoming deadlines.
 
 - [How Claude Code is used in practice](https://www.anthropic.com/research/claude-code-expertise) (Anthropic): read this one carefully. Its central finding is directly relevant to this whole course: *domain expertise (not coding proficiency) is what makes people effective with a coding agent.* That's the whole premise of how this class is taught this semester -- you don't need to be a stronger programmer than the agent to get good at analyzing data; rather, you need to become a better judge of whether its output is accurate.
 

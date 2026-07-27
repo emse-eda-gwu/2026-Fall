@@ -74,36 +74,6 @@ Our domain: **data analysis & agentic workflows**
 {{< center >}}
 {{< bg-color "#fff" >}}
 
-## The github workflow
-
-![](images/github-workflow.png){width=90%}
-
----
-
-# [Git vocabulary you should know]{.center}
-
-<br>
-
-::: {.col .fragment}
-### ["repo"]{.center}
-A project folder that **tracks its own history**
-:::
-
-::: {.col .fragment}
-### ["commit"]{.center}
-A **labeled save point** — "this is a state worth remembering"
-:::
-
-::: {.col .fragment}
-### ["push"]{.center}
-Send your commits **up to GitHub** (the cloud copy)
-:::
-
----
-
-{{< center >}}
-{{< bg-color "#fff" >}}
-
 # We won't use `git` in a terminal 
 
 ## (you can if you want to)
@@ -118,6 +88,36 @@ Send your commits **up to GitHub** (the cloud copy)
 Everything is a **button in GitHub Desktop**
 
 ![](images/ghd-yes.png){fig-align="center" width=90%}
+
+---
+
+{{< center >}}
+{{< bg-color "#fff" >}}
+
+## The github workflow
+
+![](images/github-workflow.png){width=90%}
+
+---
+
+# [Git vocabulary you should know]{.center}
+
+<br>
+
+::: {.col .fragment}
+### ["repo"]{.center}
+A project folder that<br>**tracks its own history**<br><br>**Example**: course website: [https://github.com/emse-eda-gwu/2026-Fall](https://github.com/emse-eda-gwu/2026-Fall)
+:::
+
+::: {.col .fragment}
+### ["commit"]{.center}
+A **labeled save point** — "this is a state worth remembering"
+:::
+
+::: {.col .fragment}
+### ["push" / "pull"]{.center}
+Send / recieve your commits **up to GitHub**<br>(the cloud copy)
+:::
 
 ---
 
@@ -176,20 +176,21 @@ A message is a note to **future you** — the one scrolling History<br>trying to
 {{< inverse >}}
 
 ::: {.font200 .fancy .center}
-Practice 1
+Your turn: make a repo.
 :::
 
-::: {.font90}
-**Make a repo and push to it.**
+Video recording of this practice: [https://youtu.be/VlD8N0ZClBo](https://youtu.be/VlD8N0ZClBo) 
 
-1. GitHub Desktop → **File › New Repository** → name it `eda-w2-practice`<br>(for now, ignore the "Git Ignore" and "License" part)
-2. **Publish** it to GitHub.com (make it private)
-3. Open your repo at GitHub.com, and create a README by clicking on "Create a README"
-4. Write something in your README.md file on GitHub.com, then click "commit". The README.md should now be in your repo. 
-5. **Fetch** your changes on your local GitHub Desktop app to pull in those changes.
-6. On your local computer, open your README.md in Positron, edit it, then view those changes on GitHub Desktop.
-7. Write a description of your changes in the bottom-left box, then Commit your changes and **Push** then to github.com. 
-8. Change the README again → **Commit** → **Push** → look at **History**
+::: {.font90}
+
+1. GitHub Desktop → **File › New Repository** → name it `demo-repo`<br>Click on the box for "initialize this repository with a README", and choose "None" in the "Git Ignore" and "License" parts
+2. **Publish** it to GitHub.com (make it private).
+3. In GitHub Desktop, click on "Show in Finder" to open your local clone. 
+4. Open the README.md file in Positron and add a line or two of text, save it. 
+5. Back in GitHub Desktop, notice the "diff" (showing the changes made).
+6. Write a description of your changes in the bottom-left box, then Commit your changes.
+7. **Push** your change github.com (button with up arrow at the top)
+8. Look at your **History** tab to see changes, then click on "View on GitHub" to confirm your changes are in the main repo.
 :::
 
 ```{r}
