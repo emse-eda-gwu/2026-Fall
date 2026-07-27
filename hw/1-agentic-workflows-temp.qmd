@@ -37,12 +37,12 @@ Using your GitHub account (which you should have made when installing the course
 
 # 4. Clone your course repo
 
-The repo you just made was practice. Everything you actually submit this semester -- every reading reflection and every mini project -- goes in a single **private** repo that I have already created for you in the course's GitHub organization. It comes pre-loaded with a folder for each assignment, so you never have to make one yourself.
+The repo you just made was practice. Everything you actually submit this semester will go in a single **private** repo that I have already created for you in the course's GitHub organization. It comes pre-loaded with a folder for each assignment, so you never have to make one yourself.
 
-1. Check your email for an invitation to join the `eda-f26` organization on GitHub and **accept it**. Check your spam folder if you don't see it. You can't reach your repo until you've accepted, so do this first.
-2. In GitHub Desktop → **File › Clone Repository** → the **GitHub.com** tab. Your repo (`eda-f26/your-username`) will be in the list. Select it and click **Clone**.
-3. Choose a sensible place to put it -- you'll be opening this folder all semester, so don't bury it somewhere you'll never find again.
-4. Click "Show in Finder" and look around. You should see a folder for each assignment, including `hw1`.
+1. Check your email for an invitation to join the `eda-f26` organization on GitHub and **accept it**. Check your spam folder if you don't see it. You can't reach your repo until you've accepted, so do this first. Message Prof. Helveston on Slack and if you can't find it.
+2. In GitHub Desktop → **File › Clone Repository** → the **GitHub.com** tab. Your repo will be in the list as `eda-f26/eda-netID`, where `netID` is your GW netID (not your GitHub user name). Select it and click **Clone**.
+3. Choose a sensible place to put it on your computer. You'll be opening this folder all semester, so don't bury it somewhere you'll never find again.
+4. Click "Show in Finder" and look around. You should see a folder for each assignment, including `hw1`, which you'll need later to add your [reflection](#reflect) at the end of this assignment.
 
 # 5. Read about Claude code
 
@@ -53,11 +53,11 @@ Read [how Claude Code is used in practice](https://www.anthropic.com/research/cl
 Open the course repo you just cloned in Positron (**File › Open Folder**, then choose that folder). Open the terminal window, run `claude`, and try a couple of low-stakes things:
 
 - Ask it to look around the folder and tell you what's in it. Do this one first -- it shows you that the agent can see the files in whatever folder you've opened, which is the single most important thing to understand about working with one.
-- Ask it what a `.qmd` file does, how is it different from a plain `.R` script, and for a quick demonstration of each.
+- Ask it what a `.qmd` file does, how is it different from a plain `.R` script, and for a quick demonstration of each. As it to put the demonstration files in the `hw1` folder.
 
-You don't need a data file or a real analysis task for this -- the point is just to see the agent read, reason about, and explain something concrete, and to get a feel for the back-and-forth.
+You don't need a data file or a real analysis task for this. The point is just to see the agent read, reason about, and explain something concrete, and to get a feel for the back-and-forth of working with an agent.
 
-If the agent creates any files while you're poking around, that's fine -- you don't have to commit them. The only thing that has to end up on GitHub is your reflection.
+If the agent creates any files while you're poking around, that's fine. You don't have to commit them. The only thing that has to end up on GitHub is your reflection (next step).
 
 # 7. Reflect
 
@@ -70,7 +70,7 @@ In your course repo, open the file `hw1/reflection.md` and write at least a para
 
 Then commit and push it, exactly the way you practiced in step 3: go back to GitHub Desktop, look at the diff, write a short commit message, Commit, then Push.
 
-::: {.callout-warning}
+::: {.callout-note title="Remember"}
 Your reflection isn't submitted until you've **pushed** it. Committing only saves the change on your own computer -- go look at your repo on GitHub.com and confirm your reflection is actually there before you call this done.
 :::
 
