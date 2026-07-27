@@ -176,26 +176,26 @@ A message is a note to **future you** — the one scrolling History<br>trying to
 {{< inverse >}}
 
 ::: {.font200 .fancy .center}
-Your turn: make a repo.
+Checkpoint {{< fa thumbs-up >}}
 :::
 
-Video recording of this practice: [https://youtu.be/VlD8N0ZClBo](https://youtu.be/VlD8N0ZClBo) 
+::: {.font120}
+You already ran the solo loop in **HW1** — let's make sure it stuck.
 
-::: {.font90}
+1. In **GitHub Desktop**, confirm your **`eda-practice`** repo is there
+2. Open it on **GitHub.com** — can you see your commit in **History**?
+3. **Thumbs up** once you can see your pushed change online
+:::
 
-1. GitHub Desktop → **File › New Repository** → name it `demo-repo`<br>Click on the box for "initialize this repository with a README", and choose "None" in the "Git Ignore" and "License" parts
-2. **Publish** it to GitHub.com (make it private).
-3. In GitHub Desktop, click on "Show in Finder" to open your local clone. 
-4. Open the README.md file in Positron and add a line or two of text, save it. 
-5. Back in GitHub Desktop, notice the "diff" (showing the changes made).
-6. Write a description of your changes in the bottom-left box, then Commit your changes.
-7. **Push** your change github.com (button with up arrow at the top)
-8. Look at your **History** tab to see changes, then click on "View on GitHub" to confirm your changes are in the main repo.
+<br>
+
+::: {.font100}
+Missing it, or joined the class late? Flag me now — grab the steps from HW1 or this [2-min walkthrough](https://youtu.be/VlD8N0ZClBo).
 :::
 
 ```{r}
 #| echo: false
-countdown(minutes = 15, warn_when = 60, top = 0, right = 0, font_size = "2em")
+countdown(minutes = 3, warn_when = 30, top = 0, right = 0, font_size = "2em")
 ```
 
 ---
@@ -226,16 +226,66 @@ You work on a **branch**, so their `main` is untouched<br>until they say *yes*.
 
 ---
 
+# Why work on a branch?
+
+::: {.col}
+### {{< fa code-branch >}} [On a branch]{.darkgreen}
+
+- Their `main` stays **untouched**
+- You experiment freely
+- Nothing lands until it's **approved**
+:::
+
+::: {.col}
+### {{< fa triangle-exclamation >}} [Straight to `main`]{.red}
+
+- Your half-done work **is** the project
+- No review step
+- Mistakes hit everyone at once
+:::
+
+. . .
+
+<br>
+
+::: {.font110 .center}
+A branch is a **sandbox**. The pull request is where they say *yes, bring it in.*
+:::
+
+---
+
+{{< center >}}
+
+# The pull request loop
+
+<br>
+
+Term             | What it is                          | Button
+-----------------|-------------------------------------|------------------
+**Branch**       | A safe side-copy to work on         | **New Branch**
+**Publish**      | Send your branch up to GitHub       | **Publish branch**
+**Pull request** | "Please pull my branch into `main`" | **Create Pull Request**
+**Review**       | They read your diff & approve       | *(on GitHub.com)*
+**Merge**        | Your work joins their `main`        | **Merge pull request**
+
+<br>
+
+::: {.font110 .darkgreen}
+Branch → **Commit** → **Publish** → **Pull Request** → they **Merge**
+:::
+
+---
+
 {{< inverse >}}
 
 ::: {.font200 .fancy .center}
-Practice 2
+Practice 1
 :::
 
 ::: {.font90}
 **Team up and send your partner a pull request.**
 
-1. Pair with a neighbor. In *your* `eda-w2-practice` repo on GitHub.com:<br>**Settings › Collaborators** → add your partner → they **accept** the emailed invite
+1. Pair with a neighbor. In *your* `eda-practice` repo on GitHub.com:<br>**Settings › Collaborators** → add your partner → they **accept** the emailed invite
 2. Swap repo links. In GitHub Desktop, **File › Clone Repository** → clone *your partner's* repo
 3. **Branch › New Branch** → name it `yourname-edits`
 4. Edit their `README.md` in Positron → **Commit** to your branch → **Publish branch**
@@ -470,7 +520,7 @@ You don't have to *write* it — but you should recognize what it built.
 {{< inverse >}}
 
 ::: {.font200 .fancy .center}
-Practice 3
+Practice 2
 :::
 
 ::: {.font120}
@@ -589,7 +639,7 @@ Why it matters: the agent has **limited memory**. A bloated,<br>unfocused contex
 {{< inverse >}}
 
 ::: {.font200 .fancy .center}
-Practice 4
+Practice 3
 :::
 
 ::: {.font120}
@@ -725,7 +775,7 @@ Learn the conventions once → encode them in a skill → get them **for free**,
 {{< inverse >}}
 
 ::: {.font200 .fancy .center}
-Practice 5
+Practice 4
 :::
 
 ::: {.font120}
@@ -875,7 +925,7 @@ We'll come back to this list all semester. Screenshot it.
 {{< inverse >}}
 
 ::: {.font200 .fancy .center}
-Practice 6
+Practice 5
 :::
 
 ::: {.font120}
@@ -942,7 +992,7 @@ An agent can write the code. [It cannot know if the answer is *true*.]{.red}
 # Before next week
 
 ::: {.font110}
-- Finish pushing today's work to your `eda-w2-practice` repo
+- Finish pushing today's work to your `eda-practice` repo
 - **Reading reflection:** read forward on tidy data + joins, try the light practice, reflect
 - Next week: **Cleaning, Reshaping & Joining** — same loop, on real data
 :::
