@@ -23,7 +23,9 @@
 
 7. **Install course R packages**: Open Positron, open its R console, then copy-paste [this code](./content/packages.R) into the console and press Return. This will install all the packages listed in the file.
 
-8. **Create your GitHub account**: If you do not yet have a GitHub account, you'll need to [create one](https://github.com/signup?). Choose a user name that you like, recognizing that this will be viewed by many in the professional world (Professor Helveston's is [jhelvy](https://github.com/jhelvy/)), and use a personal email address that will follow you after leaving GW (I recommend **not** using your GW email as it eventually expires).
+8. [**Download and install GitHub Desktop**](https://desktop.github.com/download/)
+
+9. **Create your GitHub account**: If you do not yet have a GitHub account, you'll need to [create one](https://github.com/signup?). Choose a user name that you like, recognizing that this will be viewed by many in the professional world (Professor Helveston's is [jhelvy](https://github.com/jhelvy/)), and use a personal email address that will follow you after leaving GW (I recommend **not** using your GW email as it eventually expires).
 
 ## Install an agentic CLI tool
 

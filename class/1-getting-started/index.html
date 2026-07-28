@@ -100,7 +100,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-06b2970f93ff6c2bfe65a658f3b67b41.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-1022f0380474e01544233dbd96a55ff2.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -192,6 +192,242 @@
       margin-right: 0; 
     }
   </style>
+  <!--
+  lexis overview (`o`) — the JS half of the xaringan-style tile grid.
+
+  The layout itself is pure CSS (see the "Overview mode" block in lexis.scss):
+  `.slides` becomes a scrolling CSS grid and each <section> is shrunk to a
+  thumbnail with `zoom`. What's left is the handful of jobs CSS alone can't do,
+  which is all this script is for:
+
+    1. Pick the thumbnail scale. The grid's track width has to be an exact
+       multiple of the slide width (1600px * scale) or the tiles won't tile, and
+       CSS can't divide one length by another. So compute cols/scale here and
+       publish `--lexis-ov-scale`; every size in the CSS derives from it.
+    2. Load every slide, because a thumbnail grid shows slides reveal considers
+       far away and has therefore left empty.
+    3. Paint  /  tiles. Those backgrounds live in
+       reveal's separate `.backgrounds` layer, whose tiles reveal positions with
+       inline transforms for ITS row layout — meaningless in our grid, so the CSS
+       hides the layer. Copy each slide's background onto the <section> instead
+       while overview is open, and undo it on the way out.
+    4. Keep the wheel to itself, and scroll the current slide into view — with
+       50+ slides the deck is a long scrolling strip, so opening `o` has to land
+       you where you already are.
+    5. Drive the grid from the keyboard: up/down move a whole ROW (reveal only
+       knows about its one row of slides, so it reads them as prev/next), and
+       Enter opens whichever tile is selected.
+  -->
+  <script>
+  (function () {
+    "use strict";
+
+    // Keep in sync with --lexis-ov-gap / --lexis-ov-pad in lexis.scss.
+    var GAP = 26;       // px between tiles
+    var PAD = 30;       // px around the grid
+    var MIN_TILE = 260; // narrowest thumbnail worth rendering, in px
+    var MAX_COLS = 6;   // past this the slides are unreadable
+
+    function init(Reveal) {
+      var viewportEl = Reveal.getViewportElement();
+      var slidesEl = Reveal.getSlidesElement();
+
+      // "12 / 55" on every tile, like the xaringan tile view. Set once, always;
+      // the CSS only reveals it (as a ::after) inside overview mode.
+      var slides = Reveal.getSlides();
+      slides.forEach(function (slide, i) {
+        slide.setAttribute("data-lexis-ov-num", (i + 1) + " / " + slides.length);
+      });
+
+      // ---- 1. thumbnail scale -------------------------------------------------
+      function fitGrid() {
+        if (!Reveal.isOverview()) return;
+        var avail = slidesEl.clientWidth - 2 * PAD; // clientWidth is scrollbar-aware
+        if (avail <= 0) return;
+        var cols = Math.floor((avail + GAP) / (MIN_TILE + GAP));
+        cols = Math.max(1, Math.min(MAX_COLS, cols));
+        var tile = (avail - GAP * (cols - 1)) / cols;
+        var scale = tile / Reveal.getComputedSlideSize().width;
+        viewportEl.style.setProperty("--lexis-ov-scale", String(scale));
+      }
+
+      // ---- 2. make every tile show its real content ---------------------------
+      // reveal only keeps ~10 slides either side of the current one "loaded", and
+      // Quarto ships slide images as `data-src` — so in a 55-slide deck most of
+      // the grid would be picture frames with nothing in them. (The CSS forces
+      // the sections themselves visible; this is about their contents.) Asking
+      // reveal to load each slide is cheap and idempotent: `loadSlide` drops the
+      // `data-src` attributes as it promotes them, so a second call does nothing.
+      function loadEverySlide() {
+        if (typeof Reveal.loadSlide !== "function") return;
+        slides.forEach(function (slide) { Reveal.loadSlide(slide); });
+      }
+
+      // ---- 3. background slides ----------------------------------------------
+      function paintBackgrounds() {
+        slides.forEach(function (slide) {
+          var color = slide.getAttribute("data-background-color");
+          var image = slide.getAttribute("data-background-image");
+          if (!color && !image) return;
+          if (color) slide.style.backgroundColor = color;
+          if (image) {
+            // Bare paths need url(); gradients and existing url()s go through.
+            slide.style.backgroundImage = /^\s*(url|[a-z-]+-gradient)\s*\(/i.test(image)
+              ? image
+              : 'url("' + image + '")';
+            slide.style.backgroundSize = slide.getAttribute("data-background-size") || "cover";
+            slide.style.backgroundPosition = slide.getAttribute("data-background-position") || "center";
+            slide.style.backgroundRepeat = slide.getAttribute("data-background-repeat") || "no-repeat";
+          }
+          slide.setAttribute("data-lexis-ov-painted", "");
+        });
+      }
+
+      function clearBackgrounds() {
+        slides.forEach(function (slide) {
+          if (!slide.hasAttribute("data-lexis-ov-painted")) return;
+          slide.style.backgroundColor = "";
+          slide.style.backgroundImage = "";
+          slide.style.backgroundSize = "";
+          slide.style.backgroundPosition = "";
+          slide.style.backgroundRepeat = "";
+          slide.removeAttribute("data-lexis-ov-painted");
+        });
+      }
+
+      // ---- 4. let the grid have the wheel ------------------------------------
+      // `mouse-wheel: true` decks bind a wheel handler on `document` that flips
+      // to the next slide, and reveal never guards it against overview mode — so
+      // a flick through the tiles would also navigate the deck. Swallow those
+      // events before they leave the grid (capture phase, so this runs ahead of
+      // the document listener). Not preventDefault: the scroll itself must go on
+      // happening. Same story for a touch swipe, which reveal treats as a
+      // navigation gesture on the wrapper.
+      ["wheel", "touchstart", "touchmove"].forEach(function (type) {
+        slidesEl.addEventListener(type, function (event) {
+          if (Reveal.isOverview()) event.stopPropagation();
+        }, true);
+      });
+
+      // ---- 5. keyboard ---------------------------------------------------------
+      // reveal's arrow keys walk its own one-dimensional row of slides, so left
+      // and right already read as "previous/next tile" in the grid — but up and
+      // down land on the neighbouring slide too, when what the grid asks for is
+      // the tile a whole ROW away. And there is no key for "open the tile I'm on"
+      // at all; you have to remember that `o` toggles back out onto it.
+      //
+      // Handled on `document` in the CAPTURE phase and swallowed, so reveal's own
+      // keydown listener never sees these three keys while the grid is open.
+      // Deliberately NOT Reveal.addKeyBinding(): that replaces a key's default
+      // action deck-wide, which would mean re-implementing normal up/down
+      // navigation for the other 99% of the time. This way nothing outside
+      // overview mode changes at all.
+
+      // The REAL column count, straight from the laid-out grid — `auto-fill` gets
+      // the last word (a scrollbar can cost a column), so don't trust fitGrid's.
+      function gridColumns() {
+        var tracks = getComputedStyle(slidesEl).gridTemplateColumns;
+        if (!tracks || tracks === "none") return 1;
+        return Math.max(1, tracks.split(" ").length);
+      }
+
+      // One row up or down, in tiles. The grid item is the top-level <section>,
+      // which is what `h` indexes — so a row is exactly `cols` steps of `h`.
+      function rowStep(direction) {
+        var cols = gridColumns();
+        var last = Reveal.getHorizontalSlides().length - 1;
+        var from = Reveal.getIndices().h;
+        var to = from + direction * cols;
+        if (to < 0 || to > last) {
+          // No tile a full row away. Falling off the bottom of a ragged last row
+          // still means "go down", so finish at the end of the deck; falling off
+          // the top means there is nothing above and we stay put.
+          var rowOf = function (i) { return Math.floor(i / cols); };
+          to = direction > 0 && rowOf(last) > rowOf(from) ? last : from;
+        }
+        if (to !== from) Reveal.slide(to, 0);
+      }
+
+      document.addEventListener("keydown", function (event) {
+        if (!Reveal.isOverview()) return;
+        if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+        if (event.key === "ArrowDown") rowStep(1);
+        else if (event.key === "ArrowUp") rowStep(-1);
+        else if (event.key === "Enter") Reveal.toggleOverview(false); // lands on the selected tile
+        else return;
+        event.preventDefault();
+        event.stopPropagation();
+      }, true);
+
+      // ---- 6. keep the current slide in view ----------------------------------
+      function scrollCurrentIntoView(smooth) {
+        if (!Reveal.isOverview()) return;
+        var current = Reveal.getCurrentSlide();
+        if (!current) return;
+        // The grid item is the top-level <section> — for a slide carrying a lexis
+        // shortcode that's the .stack wrapper reveal built around it.
+        var tile = current.parentElement && current.parentElement.classList.contains("stack")
+          ? current.parentElement
+          : current;
+        // Measured, not offsetTop: the tiles sit inside a `zoom`ed subtree, and
+        // getBoundingClientRect is the one measurement that reports real px.
+        var box = tile.getBoundingClientRect();
+        var frame = slidesEl.getBoundingClientRect();
+        var delta = (box.top - frame.top) - (frame.height - box.height) / 2;
+        if (Math.abs(delta) < 1) return;
+        slidesEl.scrollTo({
+          top: slidesEl.scrollTop + delta,
+          behavior: smooth ? "smooth" : "auto"
+        });
+      }
+
+      Reveal.on("overviewshown", function () {
+        loadEverySlide();
+        paintBackgrounds();
+        fitGrid();
+        // Two frames: the first lays the grid out (which may add a scrollbar and
+        // so change the width fitGrid just measured), the second measures for the
+        // scroll — by then the tiles are where they will stay.
+        requestAnimationFrame(function () {
+          fitGrid();
+          requestAnimationFrame(function () { scrollCurrentIntoView(false); });
+        });
+      });
+
+      Reveal.on("overviewhidden", function () {
+        clearBackgrounds();
+        slidesEl.scrollTop = 0;
+      });
+
+      // Arrow keys still move the selection while the grid is open; follow it.
+      Reveal.on("slidechanged", function () { scrollCurrentIntoView(true); });
+
+      window.addEventListener("resize", function () {
+        fitGrid();
+        requestAnimationFrame(function () { scrollCurrentIntoView(false); });
+      });
+    }
+
+    // This runs from <head>, so wait for Reveal to exist and finish booting.
+    function whenReady(callback) {
+      if (window.Reveal && window.Reveal.isReady && window.Reveal.isReady()) {
+        callback(window.Reveal);
+        return;
+      }
+      var tries = 0;
+      var timer = setInterval(function () {
+        if (window.Reveal && window.Reveal.isReady && window.Reveal.isReady()) {
+          clearInterval(timer);
+          callback(window.Reveal);
+        } else if (++tries > 600) { // ~30s, then give up quietly
+          clearInterval(timer);
+        }
+      }, 50);
+    }
+
+    whenReady(init);
+  })();
+  </script>
   <link href="index_files/libs/countdown/countdown.css" rel="stylesheet">
   <script src="index_files/libs/countdown/countdown.js"></script>
 </head>
@@ -614,16 +850,16 @@ Course 2: <a href="https://eda.seas.gwu.edu/">Exploratory Data Analysis</a>
 <p><br></p>
 <div class="cols-row">
 <div class="col circle" style="flex:0 1 30%;width:30%">
-<p><img data-src="images/ko.png" width="400"></p>
+<p><img data-src="images/nurullaeva.png" width="400"></p>
 </div>
 <div class="col" style="flex:0 1 70%;width:70%">
-<div id="lydia-ko" class="h3">
-<strong>Lydia Ko</strong>
+<div id="lola-nurullaeva" class="h3">
+<strong>Lola Nurullaeva</strong>
 </div>
 <ul>
-<li>Learning Assistant (LA)</li>
-<li>EMSE Junior &amp; P4A / EDA alumni</li>
-<li>Check out her team’s <a href="https://eda.seas.gwu.edu/showcase/2025-Fall/ev-taxes.html">project</a> from 2025</li>
+<li>Graduate Teaching Assistant (GTA)</li>
+<li>EMSE Ph.D.&nbsp;Student (B.S. SE &amp; M.S. Data Analytics)</li>
+<li>Check out her team’s <a href="https://eda.seas.gwu.edu/showcase/2023-Fall/parking.html">project</a> from 2023</li>
 </ul>
 </div>
 </div>
@@ -662,23 +898,23 @@ Course 2: <a href="https://eda.seas.gwu.edu/">Exploratory Data Analysis</a>
 <h1><strong>Quizzes</strong> (10% of grade)</h1>
 <p><br></p>
 <div class="fragment">
-<div id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2066612063616c656e6461722d616c74203e7d7d-at-the-start-of-class-every-other-week-ish.-make-ups-only-for-excused-absences-i.e.-dont-be-late." class="h2">
-<i class="fa-solid fa-calendar-alt" aria-label="calendar-alt"></i> At the start of class every other week-ish. Make ups only for excused absences (i.e.&nbsp;don’t be late).
+<h2 id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2066612063616c656e6461722d616c74203e7d7d-at-the-start-of-class-every-other-week-ish.-make-ups-only-for-excused-absences-i.e.-dont-be-late."><i class="fa-solid fa-calendar-alt" aria-label="calendar-alt"></i> At the start of class every other week-ish. Make ups only for excused absences (i.e.&nbsp;don’t be late).</h2>
+<div style="height: 1em;">
+
 </div>
 </div>
-<p><br></p>
 <div class="fragment">
-<div id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2066612063616c656e6461722d616c74203e7d7d-5-total-lowest-dropped" class="h2">
-<i class="fa-solid fa-calendar-alt" aria-label="calendar-alt"></i> 5 total, lowest dropped
+<h2 id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2066612063616c656e6461722d616c74203e7d7d-5-total-lowest-dropped"><i class="fa-solid fa-calendar-alt" aria-label="calendar-alt"></i> 5 total, lowest dropped</h2>
+<div style="height: 1em;">
+
 </div>
 </div>
-<p><br></p>
 <div class="fragment">
-<div id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20666120636c6f636b203e7d7d-10-minutes" class="h2">
-<i class="fa-solid fa-clock" aria-label="clock"></i> 10 minutes
+<h2 id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20666120636c6f636b203e7d7d-10-minutes"><i class="fa-solid fa-clock" aria-label="clock"></i> 10 minutes</h2>
+<div style="height: 1em;">
+
 </div>
 </div>
-<p><br></p>
 <div class="fragment">
 <blockquote>
 <p><strong>Why quiz at all?</strong> The “retrieval effect” - basically, you have to <em>practice</em> remembering things, otherwise your brain won’t remember them (see the book <a href="https://www.hup.harvard.edu/catalog.php?isbn=9780674729018">“Make It Stick: The Science of Successful Learning”</a>)</p>
@@ -850,7 +1086,9 @@ Copying is good, stealing is bad
 </section>
 <section class="slide level0">
 
-<h1>Use of AI</h1>
+<h1><span class="center">Use of AI</span></h1>
+<p><br></p>
+<h2 id="we-will-heavily-use-ai-tools-this-semester"><span class="center">We will heavily use AI tools this semester</span></h2>
 <p><br></p>
 <ul>
 <li class="fragment">Large language models (LLMs) are pretty good</li>
@@ -940,20 +1178,30 @@ Copying is good, stealing is bad
 
 <h1><a href="https://eda.seas.gwu.edu/2026-Fall/software.html">Course Software</a></h1>
 <p><br></p>
-<div class="fragment">
-<div id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206661206272616e647320736c61636b203e7d7d-slack-turn-notifications-on" class="h2">
-<i class="fa-brands fa-slack" aria-label="slack"></i> <a href="https://emse-eda-f26.slack.com/">Slack</a>: <strong>turn notifications on</strong>!
-</div>
-</div>
-<div class="fragment">
-<div id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206661206272616e647320722d70726f6a656374203e7d7d-r-positron-install-both" class="h2">
-<i class="fa-brands fa-r-project" aria-label="r-project"></i> <a href="https://cloud.r-project.org/">R</a> &amp; <a href="https://positron.posit.co/">Positron</a> (Install both)
-</div>
+<h2 id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206661206272616e647320736c61636b203e7d7d-slack-turn-notifications-on"><i class="fa-brands fa-slack" aria-label="slack"></i> <a href="https://emse-eda-f26.slack.com/">Slack</a>: <strong>turn notifications on</strong>!</h2>
+<div style="height: 1em;">
+
 </div>
 <div class="fragment">
-<div id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20666120636c6f7564203e7d7d-posit-cloud-register-for-free" class="h2">
-<i class="fa-solid fa-cloud" aria-label="cloud"></i> <a href="https://posit.cloud/">Posit Cloud</a> (Register for free!)
+<h2 id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206661206272616e647320722d70726f6a656374203e7d7d-r-positron-install-both"><i class="fa-brands fa-r-project" aria-label="r-project"></i> <a href="https://cloud.r-project.org/">R</a> &amp; <a href="https://positron.posit.co/">Positron</a> (Install both)</h2>
+<div style="height: 1em;">
+
 </div>
+</div>
+<div class="fragment">
+<h2 id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20666120636c6f7564203e7d7d-posit-cloud-register-for-free"><i class="fa-solid fa-cloud" aria-label="cloud"></i> <a href="https://posit.cloud/">Posit Cloud</a> (Register for free!)</h2>
+<div style="height: 1em;">
+
+</div>
+</div>
+<div class="fragment">
+<h2 id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20666120626f6f6b203e7d7d-quarto"><i class="fa-solid fa-book" aria-label="book"></i> <a href="https://quarto.org/docs/get-started/">Quarto</a></h2>
+<div style="height: 1em;">
+
+</div>
+</div>
+<div class="fragment">
+<h2 id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206661206272616e647320676974687562203e7d7d-github-desktop"><i class="fa-brands fa-github" aria-label="github"></i> <a href="https://desktop.github.com/download/">GitHub Desktop</a></h2>
 </div>
 </section>
 <section class="slide level0">
@@ -963,11 +1211,11 @@ Copying is good, stealing is bad
 <p><br></p>
 <ol type="1">
 <li><p>If you haven’t already, install everything on the <a href="https://eda.seas.gwu.edu/2026-Fall/software.html">software page</a></p></li>
-<li><p>Stand up, meet each other, (maybe form teams?…use <a href="https://docs.google.com/spreadsheets/d/1cXNvWVfZ-WN4oLqbhv76cFTXPBi0KCiQdkCG7ivm7i4/edit?usp=sharing">this sheet</a>)</p></li>
+<li><p>Please add your <strong>GitHub username</strong> (NOT GW netID) in <a href="https://docs.google.com/spreadsheets/d/13Q4Q9QV28bkGRB2BdGEb2s1zhRrqpnajdyErzIbLS3E/edit?usp=sharing">this sheet</a> next to your name</p></li>
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_7457d617" data-warn-when="30" data-update-every="1" tabindex="0" style="top:1;right:0;bottom:0;left:0;margin:5%;font-size:8em;">
+<div class="countdown" id="timer_fec1b89e" data-warn-when="30" data-update-every="1" tabindex="0" style="top:1;right:0;bottom:0;left:0;margin:5%;font-size:8em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1071,15 +1319,24 @@ Microsoft Word
 </section>
 <section class="slide level0">
 
-<div class="center">
-<h1 id="right-now-bookmark-this">Right now, bookmark this! 👇</h1>
-<h2 id="httpscommonmark.orghelp"><a href="https://commonmark.org/help/" class="uri">https://commonmark.org/help/</a></h2>
-<br>
-<hr>
-<p><br></p>
-<h1 id="when-you-have-10-minutes-do-this">(When you have 10 minutes, do this! 👇)</h1>
-<h2 id="httpscommonmark.orghelptutorial"><a href="https://commonmark.org/help/tutorial/" class="uri">https://commonmark.org/help/tutorial/</a></h2>
+<section class="lexis-slide-title center middle">
+<h1 class="lexis-slide-title"></h1>
+<div class="col">
+<div id="right-now-bookmark-this" class="h2">
+Right now, bookmark this! 👇
 </div>
+<div id="httpscommonmark.orghelp" class="h2">
+<a href="https://commonmark.org/help/" class="uri">https://commonmark.org/help/</a>
+</div>
+<p><br></p>
+<div id="when-you-have-10-minutes-do-this" class="h2">
+(When you have 10 minutes, do this! 👇)
+</div>
+<div id="httpscommonmark.orghelptutorial" class="h2">
+<a href="https://commonmark.org/help/tutorial/" class="uri">https://commonmark.org/help/tutorial/</a>
+</div>
+</div>
+</section>
 </section>
 <section class="slide level0">
 
@@ -1253,17 +1510,21 @@ Code chunks
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a><span class="fu">library</span>(palmerpenguins)</span>
 <span id="cb21-2"><a href=""></a></span>
 <span id="cb21-3"><a href=""></a><span class="fu">glimpse</span>(penguins)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="font60">
+<div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; Rows: 344
+<pre><code>#&gt; Rows: 4
 #&gt; Columns: 8
-#&gt; $ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adelie…
-#&gt; $ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgersen, Torgersen, Torgersen, Torgersen, Torgersen, Torgersen, Torgersen, Torgersen, Torgersen, Torgersen, Torgersen, Torgersen, Torgersen, Torgersen, Torgersen, Torgersen, Bi…
-#&gt; $ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, 42.0, 37.8, 37.8, 41.1, 38.6, 34.6, 36.6, 38.7, 42.5, 34.4, 46.0, 37.8, 37.7, 35.9, 38.2, 38.8, 35.3, 40.6, 40.5, 37.9, 40.5, 39.5, 37.2, 39.5, 40.9, 36.4, 39.2, 38.8, 42…
-#&gt; $ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, 20.2, 17.1, 17.3, 17.6, 21.2, 21.1, 17.8, 19.0, 20.7, 18.4, 21.5, 18.3, 18.7, 19.2, 18.1, 17.2, 18.9, 18.6, 17.9, 18.6, 18.9, 16.7, 18.1, 17.8, 18.9, 17.0, 21.1, 20.0, 18…
-#&gt; $ flipper_length_mm &lt;int&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186, 180, 182, 191, 198, 185, 195, 197, 184, 194, 174, 180, 189, 185, 180, 187, 183, 187, 172, 180, 178, 178, 188, 184, 195, 196, 190, 180, 181, 184, 182, 195, 186, 196, 185…
-#&gt; $ body_mass_g       &lt;int&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, 4250, 3300, 3700, 3200, 3800, 4400, 3700, 3450, 4500, 3325, 4200, 3400, 3600, 3800, 3950, 3800, 3800, 3550, 3200, 3150, 3950, 3250, 3900, 3300, 3900, 3325, 4150, 3950, 35…
-#&gt; $ sex               &lt;fct&gt; male, female, female, NA, female, male, female, male, NA, NA, NA, NA, female, male, male, female, female, male, female, male, female, male, female, male, male, female, male, female, female, male, female, male, female, male…
-#&gt; $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, …</code></pre>
+#&gt; $ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie
+#&gt; $ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen
+#&gt; $ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, NA
+#&gt; $ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, NA
+#&gt; $ flipper_length_mm &lt;int&gt; 181, 186, 195, NA
+#&gt; $ body_mass_g       &lt;int&gt; 3750, 3800, 3250, NA
+#&gt; $ sex               &lt;fct&gt; male, female, female, NA
+#&gt; $ year              &lt;int&gt; 2007, 2007, 2007, 2007</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -1543,7 +1804,7 @@ Code chunks
 <h1>Your turn</h1>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_c2107f64" data-warn-when="30" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_b8e4d22c" data-warn-when="30" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -2109,7 +2370,7 @@ Code chunks
 <h1>Your turn</h1>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_d7c2e9af" data-warn-when="30" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_7f0d750e" data-warn-when="30" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -2206,7 +2467,7 @@ Code chunks
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="figs/unnamed-chunk-49-1.png" width="672"></p>
+<p><img data-src="figs/unnamed-chunk-50-1.png" width="672"></p>
 </figure>
 </div>
 </div>
@@ -2230,7 +2491,7 @@ Code chunks
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="figs/unnamed-chunk-50-1.png" width="672"></p>
+<p><img data-src="figs/unnamed-chunk-51-1.png" width="672"></p>
 </figure>
 </div>
 </div>
@@ -2255,7 +2516,7 @@ Code chunks
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="figs/unnamed-chunk-51-1.png" width="672"></p>
+<p><img data-src="figs/unnamed-chunk-52-1.png" width="672"></p>
 </figure>
 </div>
 </div>
@@ -2285,7 +2546,7 @@ Code chunks
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="figs/unnamed-chunk-52-1.png" width="672"></p>
+<p><img data-src="figs/unnamed-chunk-53-1.png" width="672"></p>
 </figure>
 </div>
 </div>
@@ -2315,7 +2576,7 @@ Code chunks
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="figs/unnamed-chunk-53-1.png" width="672"></p>
+<p><img data-src="figs/unnamed-chunk-54-1.png" width="672"></p>
 </figure>
 </div>
 </div>
@@ -2338,7 +2599,7 @@ Code chunks
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="figs/unnamed-chunk-54-1.png" width="576"></p>
+<p><img data-src="figs/unnamed-chunk-55-1.png" width="576"></p>
 </figure>
 </div>
 </div>
@@ -2354,7 +2615,7 @@ Code chunks
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="figs/unnamed-chunk-55-1.png" width="576"></p>
+<p><img data-src="figs/unnamed-chunk-56-1.png" width="576"></p>
 </figure>
 </div>
 </div>
@@ -2376,7 +2637,7 @@ Code chunks
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="figs/unnamed-chunk-56-1.png" width="576"></p>
+<p><img data-src="figs/unnamed-chunk-57-1.png" width="576"></p>
 </figure>
 </div>
 </div>
@@ -2392,7 +2653,7 @@ Code chunks
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="figs/unnamed-chunk-57-1.png" width="576"></p>
+<p><img data-src="figs/unnamed-chunk-58-1.png" width="576"></p>
 </figure>
 </div>
 </div>
@@ -2410,7 +2671,7 @@ Code chunks
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="figs/unnamed-chunk-58-1.png" width="696"></p>
+<p><img data-src="figs/unnamed-chunk-59-1.png" width="696"></p>
 </figure>
 </div>
 </div>
@@ -2419,7 +2680,7 @@ Code chunks
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="figs/unnamed-chunk-59-1.png" width="696"></p>
+<p><img data-src="figs/unnamed-chunk-60-1.png" width="696"></p>
 </figure>
 </div>
 </div>
@@ -2428,7 +2689,7 @@ Code chunks
 <div class="col">
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_3f104e59" data-warn-when="15" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_c7b4d665" data-warn-when="15" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -2443,7 +2704,7 @@ Your turn
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="figs/unnamed-chunk-61-1.png" width="696"></p>
+<p><img data-src="figs/unnamed-chunk-62-1.png" width="696"></p>
 </figure>
 </div>
 </div>
@@ -2462,7 +2723,7 @@ Your turn
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="figs/unnamed-chunk-62-1.png" width="672"></p>
+<p><img data-src="figs/unnamed-chunk-63-1.png" width="672"></p>
 </figure>
 </div>
 </div>
@@ -2473,7 +2734,7 @@ Your turn
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="figs/unnamed-chunk-63-1.png" width="576"></p>
+<p><img data-src="figs/unnamed-chunk-64-1.png" width="576"></p>
 </figure>
 </div>
 </div>
@@ -2481,6 +2742,12 @@ Your turn
 </div>
 </div>
 </section>
+</section>
+<section class="slide level0">
+
+<ol start="2" type="1">
+<li>Stand up, meet each other, (maybe form teams?…use <a href="https://docs.google.com/spreadsheets/d/1cXNvWVfZ-WN4oLqbhv76cFTXPBi0KCiQdkCG7ivm7i4/edit?usp=sharing">this sheet</a>)</li>
+</ol>
 
 </section>
     </div>
