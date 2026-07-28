@@ -179,6 +179,8 @@ A message is a note to **future you** — the one scrolling History<br>trying to
 Checkpoint {{< fa thumbs-up >}}
 :::
 
+<br>
+
 ::: {.font120}
 You already ran the solo loop in **HW1** — let's make sure it stuck.
 
@@ -189,8 +191,10 @@ You already ran the solo loop in **HW1** — let's make sure it stuck.
 
 <br>
 
-::: {.font100}
-Missing it, or joined the class late? Flag me now — grab the steps from HW1 or this [2-min walkthrough](https://youtu.be/VlD8N0ZClBo).
+::: {.font100 .center}
+Missing it, or joined the class late?
+
+Flag me now — grab the steps from [HW1](https://eda.seas.gwu.edu/2026-Fall/hw/1-agentic-workflows.html) or this [2-min walkthrough](https://youtu.be/VlD8N0ZClBo)
 :::
 
 ```{r}
@@ -200,6 +204,10 @@ countdown(minutes = 3, warn_when = 30, top = 0, right = 0, font_size = "2em")
 
 ---
 
+{{< inverse >}}
+{{< center >}}
+{{< middle >}}
+
 # How do I collaborate with others?
 
 ---
@@ -208,14 +216,14 @@ countdown(minutes = 3, warn_when = 30, top = 0, right = 0, font_size = "2em")
 
 ## Two new moves
 
-::: {.col .fragment}
-### ["clone"]{.center}
-Make your own **local copy** of someone else's repo
+::: {.col .fragment .center}
+### "clone"
+Make your own **local copy** <br> of someone else's repo
 :::
 
-::: {.col .fragment}
-### ["pull request" (PR)]{.center}
-**Propose your changes** back — they review, then **merge**
+::: {.col .fragment .center}
+### "pull request" (PR)
+**Propose your changes** back <br> they review, then **merge**
 :::
 
 <br>
@@ -226,7 +234,9 @@ You work on a **branch**, so their `main` is untouched<br>until they say *yes*.
 
 ---
 
-# Why work on a branch?
+# [Why work on a branch?]{.center}
+
+<br>
 
 ::: {.col}
 ### {{< fa code-branch >}} [On a branch]{.darkgreen}
@@ -276,18 +286,32 @@ Branch → **Commit** → **Publish** → **Pull Request** → they **Merge**
 
 ---
 
+{{< bg-color "#fff" >}}
+{{< middle >}}
+
+![](images/branch-flow.png){fig-align="center" width=100%}
+
+---
+
 {{< inverse >}}
 
 ::: {.font200 .fancy .center}
-Practice 1
+Your turn
 :::
 
-::: {.font90}
-**Team up and send your partner a pull request.**
+<br>
 
-1. Pair with a neighbor. In *your* `eda-practice` repo on GitHub.com:<br>**Settings › Collaborators** → add your partner → they **accept** the emailed invite
+::: {.center}
+**Team up and send your partner a pull request**
+:::
+
+<br>
+
+::: {.font90}
+
+1. Pair with a neighbor. In *your* `eda-practice` repo on GitHub.com:<br>**Settings › Collaborators** → add your partner's GH username → they **accept** the emailed invite
 2. Swap repo links. In GitHub Desktop, **File › Clone Repository** → clone *your partner's* repo
-3. **Branch › New Branch** → name it `yourname-edits`
+3. **Branch › New Branch** → name it `new-edits`
 4. Edit their `README.md` in Positron → **Commit** to your branch → **Publish branch**
 5. Click **Create Pull Request** → describe your change → submit it on GitHub.com
 6. Back on *your* repo, review your partner's PR and **Merge** it
@@ -311,8 +335,10 @@ agenda(2)
 
 # [Assistants vs. Agents]{.center}
 
+<br>
+
 ::: {.col}
-### [Assistants]{.blue .center}
+### [Assistants]{.blue}
 
 **One-off tasks**
 
@@ -322,7 +348,7 @@ agenda(2)
 :::
 
 ::: {.col}
-### [Agents]{.orange .center}
+### [Agents]{.orange}
 
 **Full project workflows**
 
