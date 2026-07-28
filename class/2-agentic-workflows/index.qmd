@@ -23,7 +23,8 @@ execute:
 agenda_items <- c(
   "Version Control with GitHub",
   "Setting Up & Using Claude Code",
-  "Slash Commands & Skills",
+  "Slash Commands",
+  "Skills",
   "Working Safely"
 )
 ```
@@ -458,20 +459,18 @@ agenda(3)
 
 ---
 
-# Slash commands: steering the session
+{{< center >}}
 
-<br>
-
-Type `/` in Claude Code and you get **commands that control the session itself** — not the code, the *conversation*.
+# More control over session with slash commands
 
 <br>
 
 ::: {.font110}
-Four you'll reach for constantly:
+Five you'll reach for constantly:
 :::
 
 ::: {.font120 .center}
-`/init` &ensp;·&ensp; `/model` &ensp;·&ensp; `/clear` &ensp;·&ensp; `/compact`
+`/init` &ensp;·&ensp; `/model` &ensp;·&ensp; `/effort` &ensp;·&ensp; `/clear` &ensp;·&ensp; `/compact`
 :::
 
 ---
@@ -479,19 +478,100 @@ Four you'll reach for constantly:
 # `CLAUDE.md`: standing instructions
 
 ::: {.font110}
-- A file the agent **reads every session** — your project's house rules
-- Run `/init` and Claude drafts one by reading your project
+- A plain markdown file the agent **reads at the start of every session**
+- It's your project's **house rules** — what this project is, how to run it, what you want done differently
 - Keep it **high-level**, not exhaustive; refresh it at milestones
 :::
 
 <br>
 
 ::: {.col}
-**Home** `~/.claude/CLAUDE.md`<br>[rules for *everything* you do]{.gray}
+**Project** `CLAUDE.md`<br>[rules for *this* repo, shared with anyone who clones it]{.gray}
 :::
 
 ::: {.col}
-**Project** `CLAUDE.md`<br>[rules for *this* repo]{.gray}
+**Home** `~/.claude/CLAUDE.md`<br>[rules for *everything* you do, on your machine only]{.gray}
+:::
+
+---
+
+# `/init` — let the agent write it for you
+
+::: {.font110}
+You don't write `CLAUDE.md` from scratch. `/init` is a **prompt that tells Claude to go read your project and describe it back to you.**
+:::
+
+<br>
+
+::: {.font110}
+When you run it, Claude:
+
+1. Walks the folder — file tree, `README`, config files, existing code
+2. Works out **what the project is** and **how it gets built or run**
+3. Writes `CLAUDE.md` in the project root
+:::
+
+---
+
+# What `/init` actually produces
+
+::: {.font110}
+A short file, roughly:
+:::
+
+::: {.font90}
+```markdown
+# CLAUDE.md
+
+## Project overview
+A multi-page Quarto website about Ada Lovelace.
+
+## Building
+`quarto render` builds the site to `_site/`.
+`quarto preview` for live preview.
+
+## Structure
+- `index.qmd` — home page
+- `_quarto.yml` — site config & navbar
+```
+:::
+
+. . .
+
+::: {.font110 .center}
+Notice it's **all things you could have written yourself** —<br>the agent just saved you the typing.
+:::
+
+---
+
+# `/init` is a *draft*, not gospel
+
+::: {.font110}
+Claude is **guessing** from what it can see. It gets things wrong.
+:::
+
+<br>
+
+::: {.col}
+### {{< fa triangle-exclamation >}} Always read it
+- Is the description right?
+- Are the build commands real?
+- Did it invent a convention you don't follow?
+:::
+
+::: {.col}
+### {{< fa pen >}} Then edit it by hand
+- Delete what's wrong or obvious
+- Add rules it can't know:<br>*"charts use `theme_minimal_hgrid()`"*
+- Re-run `/init` only after big changes
+:::
+
+. . .
+
+<br>
+
+::: {.font110 .red .center}
+This file steers **every future session** — a wrong line in `CLAUDE.md` is a mistake you'll make over and over.
 :::
 
 ---
@@ -510,6 +590,57 @@ Model         | Good for
 
 ::: {.font110}
 `/model` switches anytime. Bigger isn't always better — **match the model to the task**.
+:::
+
+---
+
+# `/effort` — how *hard* the model thinks
+
+::: {.font110}
+Same model, different amount of thinking before it acts.
+:::
+
+Level         | What it's for
+--------------|--------------------------------------------
+`low`         | Simple, mechanical edits — fastest, cheapest
+`medium`      | Everyday work
+`high`        | Multi-step tasks, debugging, design decisions
+`xhigh`       | Genuinely hard problems — slowest, most expensive
+
+<br>
+
+::: {.font110}
+`/effort auto` returns to your model's default.
+:::
+
+---
+
+# `/model` vs. `/effort`
+
+::: {.col}
+### `/model`
+**Which brain.**
+
+Changes the underlying capability — reasoning ability, speed, cost per token.
+:::
+
+::: {.col}
+### `/effort`
+**How long it thinks.**
+
+Same brain, more deliberation before it starts editing files.
+:::
+
+. . .
+
+<br>
+
+::: {.font110 .center}
+Rule of thumb: **turn effort up when the task is ambiguous** — when *deciding what to do* is the hard part, not typing the code.
+:::
+
+::: {.font110 .gray .center}
+Turn it down when you already know exactly what you want.
 :::
 
 ---
@@ -548,17 +679,20 @@ Why it matters: the agent has **limited memory**. A bloated,<br>unfocused contex
 
 {{< inverse >}}
 
-::: {.font200 .fancy .center}
-Practice 3
+# [Your turn]{.center}
+
+::: {.font120 .center}
+Go back to your `my-website` repo
 :::
 
-::: {.font120}
-**Drive the session, not just the code.**
-
-1. Run `/model` and read what your options are
-2. Ask Claude a question, then `/compact` — watch it keep going, leaner
-3. Start an unrelated task with `/clear` first
-4. Run `/init` to generate a `CLAUDE.md`, then **read it** — is it right?
+::: {.font110}
+1. Run `/init` — then **open the `CLAUDE.md` it wrote and read it.** Is it right? Fix anything wrong, and add one rule of your own.
+2. Run `/model` and `/effort` to see your options.
+3. Ask for a **small** change (new page, tweak the navbar) at `/effort low`.
+4. Ask for something harder, e.g., "*collapse everything into a single page website*" at `/effort high`. Note the difference.
+5. `/compact`, then keep going — it should still know what you're building.
+6. `/clear`, then ask *"what am I working on?"* — see what it lost, and what `CLAUDE.md` saved.
+7. **Commit + push** your changes to GitHub.
 :::
 
 ```{r}
@@ -568,13 +702,27 @@ countdown(minutes = 15, warn_when = 60, top = 0, right = 0, font_size = "2em")
 
 ---
 
+```{r}
+#| echo: false
+#| results: asis
+
+agenda(4)
+```
+
+---
+
 # Skills: a command that wraps a whole recipe
 
-::: {.font110}
-A **skill** is a slash command that bundles a reusable, multi-step recipe —
-so the agent produces the *same good result* every time, without you
-re-explaining the how.
-:::
+<br>
+
+`/init`, `/clear`, `/effort`, etc. are **built in** with Claude Code
+
+<br>
+
+
+A **skill** is a slash command *you* define that teaches the agent one of **your** recipes.
+
+. . .
 
 <br>
 
@@ -587,8 +735,8 @@ re-explaining the how.
 
 ::: {.col}
 ### Using one
-- Skills live in `~/.claude/skills/`
-- Invoke with `/name`
+- Live in `~/.claude/skills/`<br>[(or `.claude/skills/` in a repo)]{.gray}
+- Invoke with `/skill-name`
 - We'll try one for **charts**: `/my-chart-style`
 :::
 
@@ -596,7 +744,7 @@ re-explaining the how.
 
 # A skill in action: [`/my-chart-style`]{.blue}
 
-Same request — *"mean departure delay by airline, as a bar chart"* — twice:
+Same request — *"mean departure delay by airline, as a bar chart"* :
 
 ```{r}
 #| include: false
@@ -659,25 +807,19 @@ delay_by_airline |>
 
 ---
 
-# The skill did the remembering
+# What this skill defines
 
-::: {.font110}
-You typed **one short request** both times. The polished version didn't come
-from a longer prompt — it came from the **skill**, which carries the house
-style so you never restate it:
-:::
+<br>
 
-::: {.font90}
-- a cowplot minimal theme (gridlines matched to the plot)
+- a `cowplot` package minimal theme (gridlines matched to the plot)
 - white background, de-cluttered gridlines
 - a consistent color palette + sorted bars
 - a title / caption that state the point and the source
-:::
 
-. . .
+<br>
 
 ::: {.font110 .darkgreen .center}
-Learn the conventions once → encode them in a skill → get them **for free**, forever.
+Learn the conventions once → **encode them in a skill**
 :::
 
 ---
@@ -685,16 +827,19 @@ Learn the conventions once → encode them in a skill → get them **for free**,
 {{< inverse >}}
 
 ::: {.font200 .fancy .center}
-Practice 4
+Your turn
+:::
+
+::: {.center}
+**See the difference a skill makes**
 :::
 
 ::: {.font120}
-**Feel the difference a skill makes.**
 
-1. From the class files, install the `my-chart-style` skill into `~/.claude/skills/`
-2. Ask Claude for a chart from `flights.csv` — **without** the skill
-3. Ask again, invoking **`/my-chart-style`** — compare the two
-4. Which one would you put in a report? **Why?** Tell a neighbor
+1. From the class template for today, install the `my-chart-style` skill into `~/.claude/skills/`
+2. Come up with a chart you'd like to see that uses the `flights.csv` data.
+3. Ask Claude for a chart first **without** the skill, then again invoking **`/my-chart-style`**.
+4. Modify the skill, then re-create the chart again with the modified skill (e.g., tell it a specific color to use for all charts, tell it to use a different theme, etc.) 
 :::
 
 ```{r}
@@ -708,7 +853,7 @@ countdown(minutes = 15, warn_when = 60, top = 0, right = 0, font_size = "2em")
 #| echo: false
 #| results: asis
 
-agenda(4)
+agenda(5)
 ```
 
 ---
@@ -893,7 +1038,7 @@ An agent can write the code. [It cannot know if the answer is *true*.]{.red}
 ::: {.font110}
 - You can **make a repo and push** with a button
 - You can **set up and direct Claude Code** — and read what it does
-- You know `/model`, `/clear`, `/compact`, `CLAUDE.md`, and skills
+- You know `/init`, `/model`, `/effort`, `/clear`, `/compact`, `CLAUDE.md`, and skills
 - You know the agent **lies with confidence** — and you have a checklist
 :::
 
