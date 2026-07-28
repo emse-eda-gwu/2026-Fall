@@ -264,30 +264,16 @@ A branch is a **sandbox**. The pull request is where they say *yes, bring it in.
 
 ---
 
+{{< bg-color "#fff" >}}
 {{< center >}}
-
-# The pull request loop
-
-<br>
-
-Term             | What it is                          | Button
------------------|-------------------------------------|------------------
-**Branch**       | A safe side-copy to work on         | **New Branch**
-**Publish**      | Send your branch up to GitHub       | **Publish branch**
-**Pull request** | "Please pull my branch into `main`" | **Create Pull Request**
-**Review**       | They read your diff & approve       | *(on GitHub.com)*
-**Merge**        | Your work joins their `main`        | **Merge pull request**
 
 <br>
 
 ::: {.font110 .darkgreen}
-Branch → **Commit** → **Publish** → **Pull Request** → they **Merge**
+**New Branch** → **Commit** on branch → **Make PR** → **Merge** to `main`
 :::
 
----
-
-{{< bg-color "#fff" >}}
-{{< middle >}}
+# Pull request loop
 
 ![](images/branch-flow.png){fig-align="center" width=100%}
 
@@ -319,7 +305,7 @@ Your turn
 
 ```{r}
 #| echo: false
-countdown(minutes = 15, warn_when = 60, top = 0, right = 0, font_size = "2em")
+countdown(minutes = 10, warn_when = 60, top = 0, right = 0, font_size = "2em")
 ```
 
 ---
@@ -367,7 +353,7 @@ This class lives on the [**agent**]{.orange} side.
 
 {{< center >}}
 
-# [An agent = model + skills + files]{.center}
+# [Agent = model + skills + files]{.center}
 
 <br>
 
@@ -386,8 +372,6 @@ Reusable know-how<br>*(slash commands)*
 Your project<br>*(the folder it works in)*
 :::
 
-. . .
-
 <br>
 
 ::: {.font110 .center}
@@ -396,46 +380,18 @@ Claude Code is the agent. **You** supply the project and the direction.
 
 ---
 
-# Where you launch it matters
-
-::: {.col}
-### {{< fa house >}} Home directory `~`
-
-- Global `~/.claude/` settings
-- A top-level `CLAUDE.md` of *generic* rules
-- Applies to **every** project
-:::
-
-::: {.col}
-### {{< fa folder >}} A project folder
-
-- Your actual work lives here
-- Its **own** `CLAUDE.md` + history
-- Where you'll launch Claude **99% of the time**
-:::
-
-. . .
-
-<br>
-
-::: {.font110 .red .center}
-Open the **project folder** — not a stray file, not your whole home directory.
-:::
-
----
-
 # Open your workspace, then launch
 
 <br>
 
-## 1. {{< fa folder-plus >}} Make a folder (no spaces in the name)
+## 1. Make a folder (no spaces in the name)
 
 ::: {.fragment}
-## 2. {{< fa laptop-code >}} In Positron: **File › Open Folder…** and pick it
+## 2. In Positron: **File › Open Folder…** and pick it
 :::
 
 ::: {.fragment}
-## 3. {{< fa terminal >}} In the terminal pane, type `claude` and press Enter
+## 3. In the terminal pane, type `claude` and press Enter
 :::
 
 <br>
@@ -447,120 +403,48 @@ You **read the diff** and decide: accept, or push back.
 
 ---
 
-# An agent can do almost anything with files
+# [An agent can do almost anything with files]{.center}
+
+<br><br>
+
+::: {.col}
+:::
 
 ::: {.col}
 - {{< fa code >}} Write code
 - {{< fa bug >}} Debug & refactor
 - {{< fa chart-column >}} Analyze data
 - {{< fa image >}} Generate images
-:::
-
-::: {.col}
 - {{< fa book-open >}} Summarize documents
 - {{< fa pen >}} Write & edit prose
 - {{< fa terminal >}} Automate tasks
 - {{< fa globe >}} Build a website
 :::
 
-. . .
-
-<br>
-
-::: {.font120 .center}
-Let's start with the last one — a **website** — because you can *see* it work.
-:::
-
----
-
-# Your first real prompt
-
-<br>
-
-Talk it, or type it — the agent takes it from here:
-
-::: {.font110}
-> Create a single-page HTML introduction for **someone you admire**
-> (a scientist, athlete, artist — anyone), and put all the styling in a
-> separate `styles.css` file.
-:::
-
-. . .
-
-<br>
-
-::: {.font110 .darkgreen}
-Then **open `index.html`** in your browser and look. Don't like it? Just say so.
-:::
-
----
-
-# One more prompt turns a page into a site
-
-<br>
-
-::: {.font110}
-> For each thing on the page, create its own HTML page. **Link them
-> together** so I can click between them, and add a "Back" button at the
-> top of each. **Reuse the same `styles.css`** so everything matches.
-:::
-
-. . .
-
-<br>
-
-::: {.font110 .center}
-You never wrote a line of HTML. You **described a structure** and *checked* it.
-:::
-
----
-
-# Know enough to supervise
-
-<br>
-
-::: {.font110 .center}
-[**A minimum website**]{.purple} &nbsp;=&nbsp; [several HTML pages]{.orange} &nbsp;+&nbsp; [one stylesheet]{.blue}
-:::
-
-<br>
-
-::: {.font110}
-```
-my-website/
-├─ index.html      ← the home page
-├─ about.html      ← more pages...
-├─ contact.html
-└─ styles.css      ← shared look for all of them
-```
-:::
-
-. . .
-
-::: {.font110 .darkgreen .center}
-You don't have to *write* it — but you should recognize what it built.
+::: {.col}
 :::
 
 ---
 
 {{< inverse >}}
 
-::: {.font200 .fancy .center}
-Practice 2
-:::
+# [Your first agentic project:<br>**a Quarto website**]{.center}
 
 ::: {.font120}
-**Direct the agent to build something you can see.**
-
-1. Make a new folder, open it in Positron, launch `claude`
-2. Ask for a **one-page site** about someone you admire (+ a `styles.css`)
-3. **Open `index.html`** — iterate on the look until you like it
-4. Add **more linked pages**, then **commit + push** it to GitHub
+Direct the agent to build a multi-page Quarto website about **someone you admire (a scientist, athlete, artist, etc.)**
 :::
+
+1. Using GitHub Desktop, make a new repo called `my-website` like you did in the HW (include a `README` file). Make it `public` (not `private`), and publish it to GitHub.
+2. On your computer, open Positron, then open the folder of the repo. 
+3. Launch `claude` in terminal.
+4. Prompt Claude for a mutli-page **Quarto website** about someone you admire.
+5. When it's done, ask it to render the site (if it didn't already).
+6. Open the `index.html` file in the `_site` folder.
+7. If satisfied with the site, **commit + push** it to GitHub.
 
 ```{r}
 #| echo: false
-countdown(minutes = 20, warn_when = 120, top = 0, right = 0, font_size = "2em")
+countdown(minutes = 15, warn_when = 120, top = 0, right = 0, font_size = "2em")
 ```
 
 ---
@@ -583,11 +467,31 @@ Type `/` in Claude Code and you get **commands that control the session itself**
 <br>
 
 ::: {.font110}
-Three you'll reach for constantly:
+Four you'll reach for constantly:
 :::
 
 ::: {.font120 .center}
-`/model` &ensp;·&ensp; `/clear` &ensp;·&ensp; `/compact`
+`/init` &ensp;·&ensp; `/model` &ensp;·&ensp; `/clear` &ensp;·&ensp; `/compact`
+:::
+
+---
+
+# `CLAUDE.md`: standing instructions
+
+::: {.font110}
+- A file the agent **reads every session** — your project's house rules
+- Run `/init` and Claude drafts one by reading your project
+- Keep it **high-level**, not exhaustive; refresh it at milestones
+:::
+
+<br>
+
+::: {.col}
+**Home** `~/.claude/CLAUDE.md`<br>[rules for *everything* you do]{.gray}
+:::
+
+::: {.col}
+**Project** `CLAUDE.md`<br>[rules for *this* repo]{.gray}
 :::
 
 ---
@@ -638,26 +542,6 @@ Model         | Good for
 
 ::: {.font110 .red .center}
 Why it matters: the agent has **limited memory**. A bloated,<br>unfocused context makes it *slower and dumber*.
-:::
-
----
-
-# `CLAUDE.md`: standing instructions
-
-::: {.font110}
-- A file the agent **reads every session** — your project's house rules
-- Run `/init` and Claude drafts one by reading your project
-- Keep it **high-level**, not exhaustive; refresh it at milestones
-:::
-
-<br>
-
-::: {.col}
-**Home** `~/.claude/CLAUDE.md`<br>[rules for *everything* you do]{.gray}
-:::
-
-::: {.col}
-**Project** `CLAUDE.md`<br>[rules for *this* repo]{.gray}
 :::
 
 ---
