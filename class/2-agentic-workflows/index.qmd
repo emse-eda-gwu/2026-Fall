@@ -858,40 +858,68 @@ agenda(5)
 
 ---
 
-# The agent will be wrong *with confidence*
+{{< center >}}
 
-::: {.font110}
-It won't say *"I'm not sure."* It hands you a clean, plausible,<br>
-**wrong** answer and moves on.
-:::
+# Agents will be *confidently wrong*
+
+<br>
 
 . . .
 
-::: {.font120 .center}
-[Fast]{.red} &nbsp;≠&nbsp; [Better]{.darkgreen}
-:::
+They won't say *"I'm not sure"*
 
-::: {.font110 .center}
-Throughput goes up. **Quality is not guaranteed.**
-:::
+<br>
+
+[Fast]{.red} &nbsp;≠&nbsp; [Better]{.darkgreen}
+
+<br>
+
+Throughput goes up, but **quality is not guaranteed**
 
 ---
 
-# Three ways it goes wrong
+{{< inverse >}}
+{{< middle >}}
 
-::: {.col}
+# [Defense Strategies]{.center}
+
+::: {.col width="10%"}
+::: 
+
+::: {.col width="90%"}
+
+## 1. Use AI to generate code, never the artifact
+
+## 2. Run sanity-checks
+
+## 3. Use fake data
+
+::: 
+
+---
+
+
+---
+
+{{< middle >}}
+
+# [Three ways agents goes wrong]{.center}
+
+<br>
+
+::: {.col .fragment}
 ### {{< fa triangle-exclamation >}} [Plausible code,<br>wrong assumptions]{.red}
 
 Runs fine, shape looks right — but the **join, filter, or group is wrong**.
 :::
 
-::: {.col}
+::: {.col .fragment}
 ### {{< fa quote-left >}} [Confident summary<br>of a noisy result]{.red}
 
 Reads like an abstract. **Confidence not calibrated** to the evidence.
 :::
 
-::: {.col}
+::: {.col .fragment}
 ### {{< fa gauge-high >}} [Velocity that<br>hides the error]{.red}
 
 Errors **compound**. By the time you notice, ten steps need re-tracing.
@@ -899,17 +927,25 @@ Errors **compound**. By the time you notice, ten steps need re-tracing.
 
 . . .
 
-::: {.font110 .center}
+<br>
+
+::: {.center}
 Each one is *invisible at the moment it happens.*
 :::
 
 ---
 
-# Verify against an *independent* check
+{{< middle >}}
 
-::: {.font110}
-Don't ask the agent if it's right — it'll say yes. Check it a way it **can't fake**:
+# [Verify against an *independent* check]{.center}
+
+<br>
+
+::: {.center}
+Don't ask the agent if it's right — it'll say yes.<br> Check it a way it **can't fake**:
 :::
+
+<br>
 
 ::: {.col}
 ### {{< fa book >}} A published number
@@ -929,29 +965,22 @@ Back-of-envelope,<br>done by *you*
 Different chat, different<br>prompt, different model
 :::
 
-. . .
-
-<br>
-
-::: {.font110 .red .center}
-Disagreement ⇒ the pipeline is **wrong until you can explain the gap.**
-:::
-
 ---
 
-# You are the gatekeeper
+{{< middle >}}
 
-<br>
+# [You are the gatekeeper]{.center}
+
+<br><br>
 
 ::: {.font130 .center}
 [AI assists]{.blue} &nbsp;→&nbsp; [**YOU** decide & sign off]{.darkgreen} &nbsp;→&nbsp; [a defensible claim]{.purple}
 :::
 
-<br>
+<br><br>
 
-::: {.font110 .center}
-The agent drafts the mechanics. **You** own the decisions and the sign-off.<br>
-Decide which steps a human *must* own — then hold that line.
+::: {.center}
+The agent drafts the mechanics.<br>**You** own the decisions and the sign-off.
 :::
 
 ---
@@ -960,19 +989,17 @@ Decide which steps a human *must* own — then hold that line.
 
 # Your verification checklist
 
+<br>
+
 ::: {.font110}
 Run these every time — they're the skill this whole course is really about:
 
 - Did **row / column counts** change the way I expected?
-- Did I **read the code**, not just the prose summary?
+- Did I **read the code**, not just the summary?
 - Did I **spot-check** a few values against the source file?
-- Were rows **silently dropped** (NA handling, inner vs. left join)?
+- Were rows **silently dropped** (`NA` handling, inner vs. left join)?
 - Do **totals / aggregates** sanity-check?
 - Is it **reproducible** — or did it hard-code an answer?
-:::
-
-::: {.footnote}
-We'll come back to this list all semester. Screenshot it.
 :::
 
 ---
