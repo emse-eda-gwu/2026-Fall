@@ -768,15 +768,16 @@ Final Interview                | 10 %   | Individual interview
 ---
 
 {{< inverse >}}
-{{< center >}}
 
-# [Break]{.fancy}
+# [Break]{.fancy .center}
 
 <br>
 
-1. If you haven't already, install everything on the [software page](https://eda.seas.gwu.edu/2026-Fall/software.html)
+### 1. Install everything on the [software page](https://eda.seas.gwu.edu/2026-Fall/software.html)
 
-2. Please add your **GitHub username** (NOT GW netID) in [this sheet](https://docs.google.com/spreadsheets/d/13Q4Q9QV28bkGRB2BdGEb2s1zhRrqpnajdyErzIbLS3E/edit?usp=sharing) next to your name
+<br>
+
+### 2. Add your **GitHub username** (NOT GW netID) in <br>[this sheet](https://docs.google.com/spreadsheets/d/13Q4Q9QV28bkGRB2BdGEb2s1zhRrqpnajdyErzIbLS3E/edit?usp=sharing) next to your name
 
 ```{r}
 #| echo: false
@@ -1340,9 +1341,15 @@ xlsxPath <- here("data", "pv_cell_production.xlsx")
 pv_cells <- read_excel(xlsxPath, sheet = "Cell Prod by Country", skip = 2)
 ```
 
-::: {.font60}
 ```{r}
+#| eval: false
 glimpse(pv_cells)
+```
+
+::: {.font80}
+```{r}
+#| echo: false
+glimpse(head(pv_cells))
 ```
 :::
 
@@ -1363,28 +1370,21 @@ pv_cells <- read_excel(xlsxPath, sheet = "Cell Prod by Country", skip = 2) %>%
   filter(!is.na(Year)) # Drop NA rows in Year
 ```
 
-::: {.font50}
 ```{r}
+#| eval: false
 glimpse(pv_cells)
+```
+
+::: {.font80}
+```{r}
+#| echo: false
+glimpse(head(pv_cells))
 ```
 :::
 
 ---
 
 {{< inverse >}}
-
-```{r}
-#| echo: false
-
-countdown(
-  minutes = 10,
-  warn_when = 30,
-  update_every = 1,
-  top = 0,
-  right = 0,
-  font_size = "2em"
-)
-```
 
 # Your turn
 
@@ -1397,6 +1397,11 @@ Write code to import the following data files from the "data" folder:
 - For `lotr_words.csv`, call the data frame `lotr`
 - For `north_america_bear_killings.txt`, call the data frame `bears`
 - For `uspto_clean_energy_patents.xlsx`, call the data frame `patents`
+
+```{r}
+#| echo: false
+countdown(minutes = 10, warn_when = 30, top = 0, right = 0, font_size = "2em")
+```
 
 ---
 
@@ -2088,4 +2093,8 @@ mpg %>%
 
 ---
 
-2. Stand up, meet each other, (maybe form teams?...use [this sheet](https://docs.google.com/spreadsheets/d/1cXNvWVfZ-WN4oLqbhv76cFTXPBi0KCiQdkCG7ivm7i4/edit?usp=sharing))
+{{< inverse >}}
+{{< center >}}
+{{< middle >}}
+
+# Use [this link](https://docs.google.com/spreadsheets/d/1cXNvWVfZ-WN4oLqbhv76cFTXPBi0KCiQdkCG7ivm7i4/edit?usp=sharing) to form teams
