@@ -351,26 +351,27 @@ built-in one.
 <section class="lexis-slide-title inverse">
 <h1 class="lexis-slide-title"></h1>
 <div class="font200 fancy center">
-<p>Your turn: make a repo.</p>
+<p>Checkpoint <i class="fa-solid fa-thumbs-up" aria-label="thumbs-up"></i></p>
 </div>
-<p>Video recording of this practice: <a href="https://youtu.be/VlD8N0ZClBo">https://youtu.be/VlD8N0ZClBo</a></p>
-<div class="font90">
+<p><br></p>
+<div class="font120">
+<p>You already ran the solo loop in <strong>HW1</strong> — let’s make sure it stuck.</p>
 <ol type="1">
-<li>GitHub Desktop → <strong>File › New Repository</strong> → name it <code>demo-repo</code><br>Click on the box for “initialize this repository with a README”, and choose “None” in the “Git Ignore” and “License” parts</li>
-<li><strong>Publish</strong> it to GitHub.com (make it private).</li>
-<li>In GitHub Desktop, click on “Show in Finder” to open your local clone.</li>
-<li>Open the README.md file in Positron and add a line or two of text, save it.</li>
-<li>Back in GitHub Desktop, notice the “diff” (showing the changes made).</li>
-<li>Write a description of your changes in the bottom-left box, then Commit your changes.</li>
-<li><strong>Push</strong> your change github.com (button with up arrow at the top)</li>
-<li>Look at your <strong>History</strong> tab to see changes, then click on “View on GitHub” to confirm your changes are in the main repo.</li>
+<li>In <strong>GitHub Desktop</strong>, confirm your <strong><code>eda-practice</code></strong> repo is there</li>
+<li>Open it on <strong>GitHub.com</strong> — can you see your commit in <strong>History</strong>?</li>
+<li><strong>Thumbs up</strong> once you can see your pushed change online</li>
 </ol>
+</div>
+<p><br></p>
+<div class="font100 center">
+<p>Missing it, or joined the class late?</p>
+<p>Flag me now — grab the steps from <a href="https://eda.seas.gwu.edu/2026-Fall/hw/1-agentic-workflows.html">HW1</a> or this <a href="https://youtu.be/VlD8N0ZClBo">2-min walkthrough</a></p>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_dadf90fc" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_3068a2bf" data-warn-when="30" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+<code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 </div>
 </div>
@@ -378,24 +379,26 @@ built-in one.
 </section>
 <section class="slide level0">
 
+<section id="how-do-i-collaborate-with-others" class="inverse center middle">
 <h1>How do I collaborate with others?</h1>
+</section>
 </section>
 <section class="slide level0">
 
 <section id="two-new-moves" class="center">
 <h2>Two new moves</h2>
 <div class="cols-row">
-<div class="col fragment">
+<div class="col fragment center">
 <div id="clone" class="h3">
-<span class="center">“clone”</span>
+“clone”
 </div>
-<p>Make your own <strong>local copy</strong> of someone else’s repo</p>
+<p>Make your own <strong>local copy</strong> <br> of someone else’s repo</p>
 </div>
-<div class="col fragment">
+<div class="col fragment center">
 <div id="pull-request-pr" class="h3">
-<span class="center">“pull request” (PR)</span>
+“pull request” (PR)
 </div>
-<p><strong>Propose your changes</strong> back — they review, then <strong>merge</strong></p>
+<p><strong>Propose your changes</strong> back <br> they review, then <strong>merge</strong></p>
 </div>
 </div>
 <p><br></p>
@@ -406,17 +409,116 @@ built-in one.
 </section>
 <section class="slide level0">
 
+<h1><span class="center">Why work on a branch?</span></h1>
+<p><br></p>
+<div class="cols-row">
+<div class="col">
+<div id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20666120636f64652d6272616e6368203e7d7d-on-a-branch" class="h3">
+<i class="fa-solid fa-code-branch" aria-label="code-branch"></i> <span class="darkgreen">On a branch</span>
+</div>
+<ul>
+<li>Their <code>main</code> stays <strong>untouched</strong></li>
+<li>You experiment freely</li>
+<li>Nothing lands until it’s <strong>approved</strong></li>
+</ul>
+</div>
+<div class="col">
+<div id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20666120747269616e676c652d6578636c616d6174696f6e203e7d7d-straight-to-main" class="h3">
+<i class="fa-solid fa-triangle-exclamation" aria-label="triangle-exclamation"></i> <span class="red">Straight to <code>main</code></span>
+</div>
+<ul>
+<li>Your half-done work <strong>is</strong> the project</li>
+<li>No review step</li>
+<li>Mistakes hit everyone at once</li>
+</ul>
+</div>
+</div>
+<p>. . .</p>
+<p><br></p>
+<div class="font110 center">
+<p>A branch is a <strong>sandbox</strong>. The pull request is where they say <em>yes, bring it in.</em></p>
+</div>
+</section>
+<section class="slide level0">
+
+<section id="the-pull-request-loop" class="center">
+<h1>The pull request loop</h1>
+<p><br></p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 51%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Term</th>
+<th>What it is</th>
+<th>Button</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Branch</strong></td>
+<td>A safe side-copy to work on</td>
+<td><strong>New Branch</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Publish</strong></td>
+<td>Send your branch up to GitHub</td>
+<td><strong>Publish branch</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Pull request</strong></td>
+<td>“Please pull my branch into <code>main</code>”</td>
+<td><strong>Create Pull Request</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Review</strong></td>
+<td>They read your diff &amp; approve</td>
+<td><em>(on GitHub.com)</em></td>
+</tr>
+<tr class="odd">
+<td><strong>Merge</strong></td>
+<td>Your work joins their <code>main</code></td>
+<td><strong>Merge pull request</strong></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<div class="font110 darkgreen">
+<p>Branch → <strong>Commit</strong> → <strong>Publish</strong> → <strong>Pull Request</strong> → they <strong>Merge</strong></p>
+</div>
+</section>
+</section>
+<section class="slide level0">
+
+<section class="lexis-slide-title middle" data-background-color="#fff">
+<h1 class="lexis-slide-title"></h1>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/branch-flow.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</section>
+</section>
+<section class="slide level0">
+
 <section class="lexis-slide-title inverse">
 <h1 class="lexis-slide-title"></h1>
 <div class="font200 fancy center">
-<p>Practice 2</p>
+<p>Your turn</p>
 </div>
+<p><br></p>
+<div class="center">
+<p><strong>Team up and send your partner a pull request</strong></p>
+</div>
+<p><br></p>
 <div class="font90">
-<p><strong>Team up and send your partner a pull request.</strong></p>
 <ol type="1">
-<li>Pair with a neighbor. In <em>your</em> <code>eda-w2-practice</code> repo on GitHub.com:<br><strong>Settings › Collaborators</strong> → add your partner → they <strong>accept</strong> the emailed invite</li>
+<li>Pair with a neighbor. In <em>your</em> <code>eda-practice</code> repo on GitHub.com:<br><strong>Settings › Collaborators</strong> → add your partner’s GH username → they <strong>accept</strong> the emailed invite</li>
 <li>Swap repo links. In GitHub Desktop, <strong>File › Clone Repository</strong> → clone <em>your partner’s</em> repo</li>
-<li><strong>Branch › New Branch</strong> → name it <code>yourname-edits</code></li>
+<li><strong>Branch › New Branch</strong> → name it <code>new-edits</code></li>
 <li>Edit their <code>README.md</code> in Positron → <strong>Commit</strong> to your branch → <strong>Publish branch</strong></li>
 <li>Click <strong>Create Pull Request</strong> → describe your change → submit it on GitHub.com</li>
 <li>Back on <em>your</em> repo, review your partner’s PR and <strong>Merge</strong> it</li>
@@ -424,7 +526,7 @@ built-in one.
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_51fbe68f" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_c66296d5" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -448,10 +550,11 @@ built-in one.
 <section class="slide level0">
 
 <h1><span class="center">Assistants vs.&nbsp;Agents</span></h1>
+<p><br></p>
 <div class="cols-row">
 <div class="col">
 <div id="assistants" class="h3">
-<span class="blue center">Assistants</span>
+<span class="blue">Assistants</span>
 </div>
 <p><strong>One-off tasks</strong></p>
 <ul>
@@ -462,7 +565,7 @@ built-in one.
 </div>
 <div class="col">
 <div id="agents" class="h3">
-<span class="orange center">Agents</span>
+<span class="orange">Agents</span>
 </div>
 <p><strong>Full project workflows</strong></p>
 <ul>
@@ -643,7 +746,7 @@ built-in one.
 <section class="lexis-slide-title inverse">
 <h1 class="lexis-slide-title"></h1>
 <div class="font200 fancy center">
-<p>Practice 3</p>
+<p>Practice 2</p>
 </div>
 <div class="font120">
 <p><strong>Direct the agent to build something you can see.</strong></p>
@@ -656,7 +759,7 @@ built-in one.
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_9cfb3584" data-warn-when="120" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_b82d9f07" data-warn-when="120" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">20</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -779,7 +882,7 @@ built-in one.
 <section class="lexis-slide-title inverse">
 <h1 class="lexis-slide-title"></h1>
 <div class="font200 fancy center">
-<p>Practice 4</p>
+<p>Practice 3</p>
 </div>
 <div class="font120">
 <p><strong>Drive the session, not just the code.</strong></p>
@@ -792,7 +895,7 @@ built-in one.
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_54afadc8" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_8033327a" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -885,7 +988,7 @@ Using one
 <section class="lexis-slide-title inverse">
 <h1 class="lexis-slide-title"></h1>
 <div class="font200 fancy center">
-<p>Practice 5</p>
+<p>Practice 4</p>
 </div>
 <div class="font120">
 <p><strong>Feel the difference a skill makes.</strong></p>
@@ -898,7 +1001,7 @@ Using one
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_12c63368" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_522760d6" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1030,7 +1133,7 @@ Using one
 <section class="lexis-slide-title inverse">
 <h1 class="lexis-slide-title"></h1>
 <div class="font200 fancy center">
-<p>Practice 6</p>
+<p>Practice 5</p>
 </div>
 <div class="font120">
 <p><strong>Catch the bug.</strong></p>
@@ -1044,7 +1147,7 @@ Using one
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_894f9f34" data-warn-when="120" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_162ca7b6" data-warn-when="120" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">18</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1093,7 +1196,7 @@ Using one
 <h1>Before next week</h1>
 <div class="font110">
 <ul>
-<li>Finish pushing today’s work to your <code>eda-w2-practice</code> repo</li>
+<li>Finish pushing today’s work to your <code>eda-practice</code> repo</li>
 <li><strong>Reading reflection:</strong> read forward on tidy data + joins, try the light practice, reflect</li>
 <li>Next week: <strong>Cleaning, Reshaping &amp; Joining</strong> — same loop, on real data</li>
 </ul>
