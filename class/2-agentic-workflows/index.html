@@ -34,7 +34,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-f22f4f678f9ba7c6b1b7827aca671d05.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-1022f0380474e01544233dbd96a55ff2.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -126,6 +126,242 @@
       margin-right: 0; 
     }
   </style>
+  <!--
+  lexis overview (`o`) — the JS half of the xaringan-style tile grid.
+
+  The layout itself is pure CSS (see the "Overview mode" block in lexis.scss):
+  `.slides` becomes a scrolling CSS grid and each <section> is shrunk to a
+  thumbnail with `zoom`. What's left is the handful of jobs CSS alone can't do,
+  which is all this script is for:
+
+    1. Pick the thumbnail scale. The grid's track width has to be an exact
+       multiple of the slide width (1600px * scale) or the tiles won't tile, and
+       CSS can't divide one length by another. So compute cols/scale here and
+       publish `--lexis-ov-scale`; every size in the CSS derives from it.
+    2. Load every slide, because a thumbnail grid shows slides reveal considers
+       far away and has therefore left empty.
+    3. Paint  /  tiles. Those backgrounds live in
+       reveal's separate `.backgrounds` layer, whose tiles reveal positions with
+       inline transforms for ITS row layout — meaningless in our grid, so the CSS
+       hides the layer. Copy each slide's background onto the <section> instead
+       while overview is open, and undo it on the way out.
+    4. Keep the wheel to itself, and scroll the current slide into view — with
+       50+ slides the deck is a long scrolling strip, so opening `o` has to land
+       you where you already are.
+    5. Drive the grid from the keyboard: up/down move a whole ROW (reveal only
+       knows about its one row of slides, so it reads them as prev/next), and
+       Enter opens whichever tile is selected.
+  -->
+  <script>
+  (function () {
+    "use strict";
+
+    // Keep in sync with --lexis-ov-gap / --lexis-ov-pad in lexis.scss.
+    var GAP = 26;       // px between tiles
+    var PAD = 30;       // px around the grid
+    var MIN_TILE = 260; // narrowest thumbnail worth rendering, in px
+    var MAX_COLS = 6;   // past this the slides are unreadable
+
+    function init(Reveal) {
+      var viewportEl = Reveal.getViewportElement();
+      var slidesEl = Reveal.getSlidesElement();
+
+      // "12 / 55" on every tile, like the xaringan tile view. Set once, always;
+      // the CSS only reveals it (as a ::after) inside overview mode.
+      var slides = Reveal.getSlides();
+      slides.forEach(function (slide, i) {
+        slide.setAttribute("data-lexis-ov-num", (i + 1) + " / " + slides.length);
+      });
+
+      // ---- 1. thumbnail scale -------------------------------------------------
+      function fitGrid() {
+        if (!Reveal.isOverview()) return;
+        var avail = slidesEl.clientWidth - 2 * PAD; // clientWidth is scrollbar-aware
+        if (avail <= 0) return;
+        var cols = Math.floor((avail + GAP) / (MIN_TILE + GAP));
+        cols = Math.max(1, Math.min(MAX_COLS, cols));
+        var tile = (avail - GAP * (cols - 1)) / cols;
+        var scale = tile / Reveal.getComputedSlideSize().width;
+        viewportEl.style.setProperty("--lexis-ov-scale", String(scale));
+      }
+
+      // ---- 2. make every tile show its real content ---------------------------
+      // reveal only keeps ~10 slides either side of the current one "loaded", and
+      // Quarto ships slide images as `data-src` — so in a 55-slide deck most of
+      // the grid would be picture frames with nothing in them. (The CSS forces
+      // the sections themselves visible; this is about their contents.) Asking
+      // reveal to load each slide is cheap and idempotent: `loadSlide` drops the
+      // `data-src` attributes as it promotes them, so a second call does nothing.
+      function loadEverySlide() {
+        if (typeof Reveal.loadSlide !== "function") return;
+        slides.forEach(function (slide) { Reveal.loadSlide(slide); });
+      }
+
+      // ---- 3. background slides ----------------------------------------------
+      function paintBackgrounds() {
+        slides.forEach(function (slide) {
+          var color = slide.getAttribute("data-background-color");
+          var image = slide.getAttribute("data-background-image");
+          if (!color && !image) return;
+          if (color) slide.style.backgroundColor = color;
+          if (image) {
+            // Bare paths need url(); gradients and existing url()s go through.
+            slide.style.backgroundImage = /^\s*(url|[a-z-]+-gradient)\s*\(/i.test(image)
+              ? image
+              : 'url("' + image + '")';
+            slide.style.backgroundSize = slide.getAttribute("data-background-size") || "cover";
+            slide.style.backgroundPosition = slide.getAttribute("data-background-position") || "center";
+            slide.style.backgroundRepeat = slide.getAttribute("data-background-repeat") || "no-repeat";
+          }
+          slide.setAttribute("data-lexis-ov-painted", "");
+        });
+      }
+
+      function clearBackgrounds() {
+        slides.forEach(function (slide) {
+          if (!slide.hasAttribute("data-lexis-ov-painted")) return;
+          slide.style.backgroundColor = "";
+          slide.style.backgroundImage = "";
+          slide.style.backgroundSize = "";
+          slide.style.backgroundPosition = "";
+          slide.style.backgroundRepeat = "";
+          slide.removeAttribute("data-lexis-ov-painted");
+        });
+      }
+
+      // ---- 4. let the grid have the wheel ------------------------------------
+      // `mouse-wheel: true` decks bind a wheel handler on `document` that flips
+      // to the next slide, and reveal never guards it against overview mode — so
+      // a flick through the tiles would also navigate the deck. Swallow those
+      // events before they leave the grid (capture phase, so this runs ahead of
+      // the document listener). Not preventDefault: the scroll itself must go on
+      // happening. Same story for a touch swipe, which reveal treats as a
+      // navigation gesture on the wrapper.
+      ["wheel", "touchstart", "touchmove"].forEach(function (type) {
+        slidesEl.addEventListener(type, function (event) {
+          if (Reveal.isOverview()) event.stopPropagation();
+        }, true);
+      });
+
+      // ---- 5. keyboard ---------------------------------------------------------
+      // reveal's arrow keys walk its own one-dimensional row of slides, so left
+      // and right already read as "previous/next tile" in the grid — but up and
+      // down land on the neighbouring slide too, when what the grid asks for is
+      // the tile a whole ROW away. And there is no key for "open the tile I'm on"
+      // at all; you have to remember that `o` toggles back out onto it.
+      //
+      // Handled on `document` in the CAPTURE phase and swallowed, so reveal's own
+      // keydown listener never sees these three keys while the grid is open.
+      // Deliberately NOT Reveal.addKeyBinding(): that replaces a key's default
+      // action deck-wide, which would mean re-implementing normal up/down
+      // navigation for the other 99% of the time. This way nothing outside
+      // overview mode changes at all.
+
+      // The REAL column count, straight from the laid-out grid — `auto-fill` gets
+      // the last word (a scrollbar can cost a column), so don't trust fitGrid's.
+      function gridColumns() {
+        var tracks = getComputedStyle(slidesEl).gridTemplateColumns;
+        if (!tracks || tracks === "none") return 1;
+        return Math.max(1, tracks.split(" ").length);
+      }
+
+      // One row up or down, in tiles. The grid item is the top-level <section>,
+      // which is what `h` indexes — so a row is exactly `cols` steps of `h`.
+      function rowStep(direction) {
+        var cols = gridColumns();
+        var last = Reveal.getHorizontalSlides().length - 1;
+        var from = Reveal.getIndices().h;
+        var to = from + direction * cols;
+        if (to < 0 || to > last) {
+          // No tile a full row away. Falling off the bottom of a ragged last row
+          // still means "go down", so finish at the end of the deck; falling off
+          // the top means there is nothing above and we stay put.
+          var rowOf = function (i) { return Math.floor(i / cols); };
+          to = direction > 0 && rowOf(last) > rowOf(from) ? last : from;
+        }
+        if (to !== from) Reveal.slide(to, 0);
+      }
+
+      document.addEventListener("keydown", function (event) {
+        if (!Reveal.isOverview()) return;
+        if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+        if (event.key === "ArrowDown") rowStep(1);
+        else if (event.key === "ArrowUp") rowStep(-1);
+        else if (event.key === "Enter") Reveal.toggleOverview(false); // lands on the selected tile
+        else return;
+        event.preventDefault();
+        event.stopPropagation();
+      }, true);
+
+      // ---- 6. keep the current slide in view ----------------------------------
+      function scrollCurrentIntoView(smooth) {
+        if (!Reveal.isOverview()) return;
+        var current = Reveal.getCurrentSlide();
+        if (!current) return;
+        // The grid item is the top-level <section> — for a slide carrying a lexis
+        // shortcode that's the .stack wrapper reveal built around it.
+        var tile = current.parentElement && current.parentElement.classList.contains("stack")
+          ? current.parentElement
+          : current;
+        // Measured, not offsetTop: the tiles sit inside a `zoom`ed subtree, and
+        // getBoundingClientRect is the one measurement that reports real px.
+        var box = tile.getBoundingClientRect();
+        var frame = slidesEl.getBoundingClientRect();
+        var delta = (box.top - frame.top) - (frame.height - box.height) / 2;
+        if (Math.abs(delta) < 1) return;
+        slidesEl.scrollTo({
+          top: slidesEl.scrollTop + delta,
+          behavior: smooth ? "smooth" : "auto"
+        });
+      }
+
+      Reveal.on("overviewshown", function () {
+        loadEverySlide();
+        paintBackgrounds();
+        fitGrid();
+        // Two frames: the first lays the grid out (which may add a scrollbar and
+        // so change the width fitGrid just measured), the second measures for the
+        // scroll — by then the tiles are where they will stay.
+        requestAnimationFrame(function () {
+          fitGrid();
+          requestAnimationFrame(function () { scrollCurrentIntoView(false); });
+        });
+      });
+
+      Reveal.on("overviewhidden", function () {
+        clearBackgrounds();
+        slidesEl.scrollTop = 0;
+      });
+
+      // Arrow keys still move the selection while the grid is open; follow it.
+      Reveal.on("slidechanged", function () { scrollCurrentIntoView(true); });
+
+      window.addEventListener("resize", function () {
+        fitGrid();
+        requestAnimationFrame(function () { scrollCurrentIntoView(false); });
+      });
+    }
+
+    // This runs from <head>, so wait for Reveal to exist and finish booting.
+    function whenReady(callback) {
+      if (window.Reveal && window.Reveal.isReady && window.Reveal.isReady()) {
+        callback(window.Reveal);
+        return;
+      }
+      var tries = 0;
+      var timer = setInterval(function () {
+        if (window.Reveal && window.Reveal.isReady && window.Reveal.isReady()) {
+          clearInterval(timer);
+          callback(window.Reveal);
+        } else if (++tries > 600) { // ~30s, then give up quietly
+          clearInterval(timer);
+        }
+      }, 50);
+    }
+
+    whenReady(init);
+  })();
+  </script>
   <link href="index_files/libs/countdown/countdown.css" rel="stylesheet">
   <script src="index_files/libs/countdown/countdown.js"></script>
 </head>
@@ -369,7 +605,7 @@ built-in one.
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_3068a2bf" data-warn-when="30" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_ec831572" data-warn-when="30" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -433,68 +669,21 @@ built-in one.
 </ul>
 </div>
 </div>
-<p>. . .</p>
+<div class="fragment">
 <p><br></p>
 <div class="font110 center">
 <p>A branch is a <strong>sandbox</strong>. The pull request is where they say <em>yes, bring it in.</em></p>
 </div>
-</section>
-<section class="slide level0">
-
-<section id="the-pull-request-loop" class="center">
-<h1>The pull request loop</h1>
-<p><br></p>
-<table class="caption-top">
-<colgroup>
-<col style="width: 23%">
-<col style="width: 51%">
-<col style="width: 25%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Term</th>
-<th>What it is</th>
-<th>Button</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Branch</strong></td>
-<td>A safe side-copy to work on</td>
-<td><strong>New Branch</strong></td>
-</tr>
-<tr class="even">
-<td><strong>Publish</strong></td>
-<td>Send your branch up to GitHub</td>
-<td><strong>Publish branch</strong></td>
-</tr>
-<tr class="odd">
-<td><strong>Pull request</strong></td>
-<td>“Please pull my branch into <code>main</code>”</td>
-<td><strong>Create Pull Request</strong></td>
-</tr>
-<tr class="even">
-<td><strong>Review</strong></td>
-<td>They read your diff &amp; approve</td>
-<td><em>(on GitHub.com)</em></td>
-</tr>
-<tr class="odd">
-<td><strong>Merge</strong></td>
-<td>Your work joins their <code>main</code></td>
-<td><strong>Merge pull request</strong></td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<div class="font110 darkgreen">
-<p>Branch → <strong>Commit</strong> → <strong>Publish</strong> → <strong>Pull Request</strong> → they <strong>Merge</strong></p>
 </div>
 </section>
-</section>
 <section class="slide level0">
 
-<section class="lexis-slide-title middle" data-background-color="#fff">
-<h1 class="lexis-slide-title"></h1>
+<section id="pull-request-loop" class="center" data-background-color="#fff">
+<h1>Pull request loop</h1>
+<p><br></p>
+<div class="font110 darkgreen">
+<p><strong>New Branch</strong> → <strong>Commit</strong> on branch → <strong>Make PR</strong> → <strong>Merge</strong> to <code>main</code></p>
+</div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/branch-flow.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
@@ -526,9 +715,9 @@ built-in one.
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_c66296d5" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_42ebcfef" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 </div>
 </div>
@@ -582,8 +771,8 @@ built-in one.
 </section>
 <section class="slide level0">
 
-<section id="an-agent-model-skills-files" class="center">
-<h1><span class="center">An agent = model + skills + files</span></h1>
+<section id="agent-model-skills-files" class="center">
+<h1><span class="center">Agent = model + skills + files</span></h1>
 <p><br></p>
 <div class="cols-row">
 <div class="col center">
@@ -605,7 +794,6 @@ built-in one.
 <p>Your project<br><em>(the folder it works in)</em></p>
 </div>
 </div>
-<p>. . .</p>
 <p><br></p>
 <div class="font110 center">
 <p>Claude Code is the agent. <strong>You</strong> supply the project and the direction.</p>
@@ -614,48 +802,17 @@ built-in one.
 </section>
 <section class="slide level0">
 
-<h1>Where you launch it matters</h1>
-<div class="cols-row">
-<div class="col">
-<div id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20666120686f757365203e7d7d-home-directory" class="h3">
-<i class="fa-solid fa-house" aria-label="house"></i> Home directory <code>~</code>
-</div>
-<ul>
-<li>Global <code>~/.claude/</code> settings</li>
-<li>A top-level <code>CLAUDE.md</code> of <em>generic</em> rules</li>
-<li>Applies to <strong>every</strong> project</li>
-</ul>
-</div>
-<div class="col">
-<div id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20666120666f6c646572203e7d7d-a-project-folder" class="h3">
-<i class="fa-solid fa-folder" aria-label="folder"></i> A project folder
-</div>
-<ul>
-<li>Your actual work lives here</li>
-<li>Its <strong>own</strong> <code>CLAUDE.md</code> + history</li>
-<li>Where you’ll launch Claude <strong>99% of the time</strong></li>
-</ul>
-</div>
-</div>
-<p>. . .</p>
-<p><br></p>
-<div class="font110 red center">
-<p>Open the <strong>project folder</strong> — not a stray file, not your whole home directory.</p>
-</div>
-</section>
-<section class="slide level0">
-
 <h1>Open your workspace, then launch</h1>
 <p><br></p>
-<h2 id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20666120666f6c6465722d706c7573203e7d7d-make-a-folder-no-spaces-in-the-name">1. <i class="fa-solid fa-folder-plus" aria-label="folder-plus"></i> Make a folder (no spaces in the name)</h2>
+<h2 id="make-a-folder-no-spaces-in-the-name">1. Make a folder (no spaces in the name)</h2>
 <div class="fragment">
-<div id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206661206c6170746f702d636f6465203e7d7d-in-positron-file-open-folder-and-pick-it" class="h2">
-2. <i class="fa-solid fa-laptop-code" aria-label="laptop-code"></i> In Positron: <strong>File › Open Folder…</strong> and pick it
+<div id="in-positron-file-open-folder-and-pick-it" class="h2">
+2. In Positron: <strong>File › Open Folder…</strong> and pick it
 </div>
 </div>
 <div class="fragment">
-<div id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206661207465726d696e616c203e7d7d-in-the-terminal-pane-type-claude-and-press-enter" class="h2">
-3. <i class="fa-solid fa-terminal" aria-label="terminal"></i> In the terminal pane, type <code>claude</code> and press Enter
+<div id="in-the-terminal-pane-type-claude-and-press-enter" class="h2">
+3. In the terminal pane, type <code>claude</code> and press Enter
 </div>
 </div>
 <p><br></p>
@@ -665,103 +822,50 @@ built-in one.
 </section>
 <section class="slide level0">
 
-<h1>An agent can do almost anything with files</h1>
+<h1><span class="center">An agent can do almost anything with files</span></h1>
+<p><br><br></p>
 <div class="cols-row">
+<div class="col">
+
+</div>
 <div class="col">
 <ul>
 <li><i class="fa-solid fa-code" aria-label="code"></i> Write code</li>
 <li><i class="fa-solid fa-bug" aria-label="bug"></i> Debug &amp; refactor</li>
 <li><i class="fa-solid fa-chart-column" aria-label="chart-column"></i> Analyze data</li>
 <li><i class="fa-solid fa-image" aria-label="image"></i> Generate images</li>
-</ul>
-</div>
-<div class="col">
-<ul>
 <li><i class="fa-solid fa-book-open" aria-label="book-open"></i> Summarize documents</li>
 <li><i class="fa-solid fa-pen" aria-label="pen"></i> Write &amp; edit prose</li>
 <li><i class="fa-solid fa-terminal" aria-label="terminal"></i> Automate tasks</li>
 <li><i class="fa-solid fa-globe" aria-label="globe"></i> Build a website</li>
 </ul>
 </div>
+<div class="col">
+
 </div>
-<p>. . .</p>
-<p><br></p>
-<div class="font120 center">
-<p>Let’s start with the last one — a <strong>website</strong> — because you can <em>see</em> it work.</p>
 </div>
 </section>
 <section class="slide level0">
 
-<h1>Your first real prompt</h1>
-<p><br></p>
-<p>Talk it, or type it — the agent takes it from here:</p>
-<div class="font110">
-<blockquote>
-<p>Create a single-page HTML introduction for <strong>someone you admire</strong> (a scientist, athlete, artist — anyone), and put all the styling in a separate <code>styles.css</code> file.</p>
-</blockquote>
-</div>
-<p>. . .</p>
-<p><br></p>
-<div class="font110 darkgreen">
-<p>Then <strong>open <code>index.html</code></strong> in your browser and look. Don’t like it? Just say so.</p>
-</div>
-</section>
-<section class="slide level0">
-
-<h1>One more prompt turns a page into a site</h1>
-<p><br></p>
-<div class="font110">
-<blockquote>
-<p>For each thing on the page, create its own HTML page. <strong>Link them together</strong> so I can click between them, and add a “Back” button at the top of each. <strong>Reuse the same <code>styles.css</code></strong> so everything matches.</p>
-</blockquote>
-</div>
-<p>. . .</p>
-<p><br></p>
-<div class="font110 center">
-<p>You never wrote a line of HTML. You <strong>described a structure</strong> and <em>checked</em> it.</p>
-</div>
-</section>
-<section class="slide level0">
-
-<h1>Know enough to supervise</h1>
-<p><br></p>
-<div class="font110 center">
-<p><span class="purple"><strong>A minimum website</strong></span> &nbsp;=&nbsp; <span class="orange">several HTML pages</span> &nbsp;+&nbsp; <span class="blue">one stylesheet</span></p>
-</div>
-<p><br></p>
-<div class="font110">
-<pre><code>my-website/
-├─ index.html      ← the home page
-├─ about.html      ← more pages...
-├─ contact.html
-└─ styles.css      ← shared look for all of them</code></pre>
-</div>
-<p>. . .</p>
-<div class="font110 darkgreen center">
-<p>You don’t have to <em>write</em> it — but you should recognize what it built.</p>
-</div>
-</section>
-<section class="slide level0">
-
-<section class="lexis-slide-title inverse">
-<h1 class="lexis-slide-title"></h1>
-<div class="font200 fancy center">
-<p>Practice 2</p>
-</div>
+<section id="your-first-agentic-project-a-quarto-website" class="inverse">
+<h1><span class="center">Your first agentic project:<br><strong>a Quarto website</strong></span></h1>
 <div class="font120">
-<p><strong>Direct the agent to build something you can see.</strong></p>
-<ol type="1">
-<li>Make a new folder, open it in Positron, launch <code>claude</code></li>
-<li>Ask for a <strong>one-page site</strong> about someone you admire (+ a <code>styles.css</code>)</li>
-<li><strong>Open <code>index.html</code></strong> — iterate on the look until you like it</li>
-<li>Add <strong>more linked pages</strong>, then <strong>commit + push</strong> it to GitHub</li>
-</ol>
+<p>Direct the agent to build a multi-page Quarto website about <strong>someone you admire (a scientist, athlete, artist, etc.)</strong></p>
 </div>
+<ol type="1">
+<li>Using GitHub Desktop, make a new repo called <code>my-website</code> like you did in the HW (include a <code>README</code> file). Make it <code>public</code> (not <code>private</code>), and publish it to GitHub.</li>
+<li>On your computer, open Positron, then open the folder of the repo.</li>
+<li>Launch <code>claude</code> in terminal.</li>
+<li>Prompt Claude for a mutli-page <strong>Quarto website</strong> about someone you admire.</li>
+<li>When it’s done, ask it to render the site (if it didn’t already).</li>
+<li>Open the <code>index.html</code> file in the <code>_site</code> folder.</li>
+<li>If satisfied with the site, <strong>commit + push</strong> it to GitHub.</li>
+</ol>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_b82d9f07" data-warn-when="120" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_8cb9eccc" data-warn-when="120" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">20</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+<code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 </div>
 </div>
@@ -787,10 +891,30 @@ built-in one.
 <p>Type <code>/</code> in Claude Code and you get <strong>commands that control the session itself</strong> — not the code, the <em>conversation</em>.</p>
 <p><br></p>
 <div class="font110">
-<p>Three you’ll reach for constantly:</p>
+<p>Four you’ll reach for constantly:</p>
 </div>
 <div class="font120 center">
-<p><code>/model</code>  ·  <code>/clear</code>  ·  <code>/compact</code></p>
+<p><code>/init</code>  ·  <code>/model</code>  ·  <code>/clear</code>  ·  <code>/compact</code></p>
+</div>
+</section>
+<section class="slide level0">
+
+<h1><code>CLAUDE.md</code>: standing instructions</h1>
+<div class="font110">
+<ul>
+<li>A file the agent <strong>reads every session</strong> — your project’s house rules</li>
+<li>Run <code>/init</code> and Claude drafts one by reading your project</li>
+<li>Keep it <strong>high-level</strong>, not exhaustive; refresh it at milestones</li>
+</ul>
+</div>
+<p><br></p>
+<div class="cols-row">
+<div class="col">
+<p><strong>Home</strong> <code>~/.claude/CLAUDE.md</code><br><span class="gray">rules for <em>everything</em> you do</span></p>
+</div>
+<div class="col">
+<p><strong>Project</strong> <code>CLAUDE.md</code><br><span class="gray">rules for <em>this</em> repo</span></p>
+</div>
 </div>
 </section>
 <section class="slide level0">
@@ -851,29 +975,10 @@ built-in one.
 </ul>
 </div>
 </div>
-<p>. . .</p>
+<div class="fragment">
 <p><br></p>
 <div class="font110 red center">
 <p>Why it matters: the agent has <strong>limited memory</strong>. A bloated,<br>unfocused context makes it <em>slower and dumber</em>.</p>
-</div>
-</section>
-<section class="slide level0">
-
-<h1><code>CLAUDE.md</code>: standing instructions</h1>
-<div class="font110">
-<ul>
-<li>A file the agent <strong>reads every session</strong> — your project’s house rules</li>
-<li>Run <code>/init</code> and Claude drafts one by reading your project</li>
-<li>Keep it <strong>high-level</strong>, not exhaustive; refresh it at milestones</li>
-</ul>
-</div>
-<p><br></p>
-<div class="cols-row">
-<div class="col">
-<p><strong>Home</strong> <code>~/.claude/CLAUDE.md</code><br><span class="gray">rules for <em>everything</em> you do</span></p>
-</div>
-<div class="col">
-<p><strong>Project</strong> <code>CLAUDE.md</code><br><span class="gray">rules for <em>this</em> repo</span></p>
 </div>
 </div>
 </section>
@@ -895,7 +1000,7 @@ built-in one.
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_8033327a" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_da6ec7b2" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -978,9 +1083,10 @@ Using one
 <li>a title / caption that state the point and the source</li>
 </ul>
 </div>
-<p>. . .</p>
+<div class="fragment">
 <div class="font110 darkgreen center">
 <p>Learn the conventions once → encode them in a skill → get them <strong>for free</strong>, forever.</p>
+</div>
 </div>
 </section>
 <section class="slide level0">
@@ -1001,7 +1107,7 @@ Using one
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_522760d6" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_90569a22" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1028,12 +1134,13 @@ Using one
 <div class="font110">
 <p>It won’t say <em>“I’m not sure.”</em> It hands you a clean, plausible,<br> <strong>wrong</strong> answer and moves on.</p>
 </div>
-<p>. . .</p>
+<div class="fragment">
 <div class="font120 center">
 <p><span class="red">Fast</span> &nbsp;≠&nbsp; <span class="darkgreen">Better</span></p>
 </div>
 <div class="font110 center">
 <p>Throughput goes up. <strong>Quality is not guaranteed.</strong></p>
+</div>
 </div>
 </section>
 <section class="slide level0">
@@ -1059,9 +1166,10 @@ Using one
 <p>Errors <strong>compound</strong>. By the time you notice, ten steps need re-tracing.</p>
 </div>
 </div>
-<p>. . .</p>
+<div class="fragment">
 <div class="font110 center">
 <p>Each one is <em>invisible at the moment it happens.</em></p>
+</div>
 </div>
 </section>
 <section class="slide level0">
@@ -1090,10 +1198,11 @@ Using one
 <p>Different chat, different<br>prompt, different model</p>
 </div>
 </div>
-<p>. . .</p>
+<div class="fragment">
 <p><br></p>
 <div class="font110 red center">
 <p>Disagreement ⇒ the pipeline is <strong>wrong until you can explain the gap.</strong></p>
+</div>
 </div>
 </section>
 <section class="slide level0">
@@ -1147,7 +1256,7 @@ Using one
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_162ca7b6" data-warn-when="120" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_af31c8c9" data-warn-when="120" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">18</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1161,13 +1270,15 @@ Using one
 <div class="font120">
 <p>An agent can write the code. <span class="red">It cannot know if the answer is <em>true</em>.</span></p>
 </div>
-<p>. . .</p>
+<div class="fragment">
 <div class="font120">
 <p><em>Plausible</em> is not the same as <em>correct</em>. <em>Reproducible</em> is not the same as <em>defensible</em>.</p>
 </div>
-<p>. . .</p>
+</div>
+<div class="fragment">
 <div class="font120 darkgreen">
 <p><strong>That part is yours.</strong> It’s what you’re actually being graded on.</p>
+</div>
 </div>
 </section>
 <section class="slide level0">
@@ -1201,10 +1312,11 @@ Using one
 <li>Next week: <strong>Cleaning, Reshaping &amp; Joining</strong> — same loop, on real data</li>
 </ul>
 </div>
-<p>. . .</p>
+<div class="fragment">
 <p><br></p>
 <div class="font130 fancy darkgreen center">
 <p>Direct boldly. Verify relentlessly.</p>
+</div>
 </div>
 
 </section>
