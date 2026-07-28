@@ -31,6 +31,7 @@ agenda_items <- c(
 
 library(here)
 library(ggrepel)
+library(palmerpenguins)
 
 lotr <- read_csv(here('data', 'lotr_words.csv'))
 
@@ -480,17 +481,17 @@ agenda(2)
 
 ::: {.col width="30%" .circle}
 
-![](images/ko.png){width="400"}
+![](images/nurullaeva.png){width="400"}
 
 :::
 
 ::: {.col width="70%"}
 
-### **Lydia Ko**
+### **Lola Nurullaeva**
 
-- Learning Assistant (LA)
-- EMSE Junior & P4A / EDA alumni
-- Check out her team's [project](https://eda.seas.gwu.edu/showcase/2025-Fall/ev-taxes.html) from 2025
+- Graduate Teaching Assistant (GTA)
+- EMSE Ph.D. Student (B.S. SE & M.S. Data Analytics)
+- Check out her team's [project](https://eda.seas.gwu.edu/showcase/2023-Fall/parking.html) from 2023
 
 :::
 
@@ -533,27 +534,27 @@ You should be able to:
 
 <br>
 
-::: {.fragment}
+. . .
+
 ## {{< fa calendar-alt >}} At the start of class every other week-ish. Make ups only for excused absences (i.e. don't be late).
-:::
 
-<br>
+`r sp(1)`
 
-::: {.fragment}
+. . .
+
 ## {{< fa calendar-alt >}} 5 total, lowest dropped
-:::
 
-<br>
+`r sp(1)`
 
-::: {.fragment}
+. . .
+
 ## {{< fa clock >}} 10 minutes
-:::
 
-<br>
+`r sp(1)`
 
-::: {.fragment}
+. . .
+
 > **Why quiz at all?** The "retrieval effect" - basically, you have to _practice_ remembering things, otherwise your brain won't remember them (see the book ["Make It Stick: The Science of Successful Learning"](https://www.hup.harvard.edu/catalog.php?isbn=9780674729018))
-:::
 
 ---
 
@@ -641,7 +642,11 @@ Final Interview                | 10 %   | Individual interview
 
 ---
 
-# Use of AI
+# [Use of AI]{.center}
+
+<br>
+
+## [We will heavily use AI tools this semester]{.center}
 
 <br>
 
@@ -738,17 +743,27 @@ Final Interview                | 10 %   | Individual interview
 
 <br>
 
-::: {.fragment}
 ## {{< fa brands slack >}} [Slack](https://emse-eda-f26.slack.com/): **turn notifications on**!
-:::
 
-::: {.fragment}
+`r sp(1)`
+. . . 
+
 ## {{< fa brands r-project >}} [R](https://cloud.r-project.org/) & [Positron](https://positron.posit.co/) (Install both)
-:::
 
-::: {.fragment}
+`r sp(1)`
+. . . 
+
 ## {{< fa cloud >}} [Posit Cloud](https://posit.cloud/) (Register for free!)
-:::
+
+`r sp(1)`
+. . . 
+
+## {{< fa book >}} [Quarto](https://quarto.org/docs/get-started/) 
+
+`r sp(1)`
+. . . 
+
+## {{< fa brands github >}} [GitHub Desktop](https://desktop.github.com/download/) 
 
 ---
 
@@ -761,7 +776,7 @@ Final Interview                | 10 %   | Individual interview
 
 1. If you haven't already, install everything on the [software page](https://eda.seas.gwu.edu/2026-Fall/software.html)
 
-2. Stand up, meet each other, (maybe form teams?...use [this sheet](https://docs.google.com/spreadsheets/d/1cXNvWVfZ-WN4oLqbhv76cFTXPBi0KCiQdkCG7ivm7i4/edit?usp=sharing))
+2. Please add your **GitHub username** (NOT GW netID) in [this sheet](https://docs.google.com/spreadsheets/d/13Q4Q9QV28bkGRB2BdGEb2s1zhRrqpnajdyErzIbLS3E/edit?usp=sharing) next to your name
 
 ```{r}
 #| echo: false
@@ -890,16 +905,21 @@ format: docx
 ---
 
 {{< center >}}
+{{< middle >}}
 
-# Right now, bookmark this! 👇
+::: {.col valign="middle"}
+
+## Right now, bookmark this! 👇
 
 ## <https://commonmark.org/help/>
 
-<br><hr><br>
+<br>
 
-# (When you have 10 minutes, do this! 👇)
+## (When you have 10 minutes, do this! 👇)
 
 ## <https://commonmark.org/help/tutorial/>
+
+:::
 
 ---
 
@@ -1090,10 +1110,20 @@ glimpse(penguins)
 ...will produce this when rendered:
 
 ```{r}
+#| eval: false
 library(palmerpenguins)
 
 glimpse(penguins)
 ```
+
+::: {.font60}
+```{r}
+#| echo: false
+
+glimpse(head(penguins, 4))
+```
+:::
+
 :::
 
 ---
@@ -2055,3 +2085,7 @@ mpg %>%
   theme_minimal()
 ```
 :::
+
+---
+
+2. Stand up, meet each other, (maybe form teams?...use [this sheet](https://docs.google.com/spreadsheets/d/1cXNvWVfZ-WN4oLqbhv76cFTXPBi0KCiQdkCG7ivm7i4/edit?usp=sharing))
