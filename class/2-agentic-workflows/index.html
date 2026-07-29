@@ -937,7 +937,10 @@ built-in one.
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_926b671f" minutes="3" seconds="0" warn-when="30" update-every="1" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
+<div class="countdown" id="timer_2a87fed5" data-warn-when="30" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
 </div>
 </div>
 </section>
@@ -946,6 +949,17 @@ built-in one.
 
 <section id="how-do-i-collaborate-with-others" class="inverse center middle">
 <h1>How do I collaborate with others?</h1>
+</section>
+</section>
+<section class="slide level0">
+
+<section id="add-collaborators-in-repo-settings" class="center">
+<h2>Add collaborators in repo settings</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/collaborators.png" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
+</figure>
+</div>
 </section>
 </section>
 <section class="slide level0">
@@ -1044,9 +1058,18 @@ built-in one.
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_59fd20c9" minutes="10" seconds="0" warn-when="60" update-every="1" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
+<div class="countdown" id="timer_004c7fb6" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 </div>
+</div>
+</section>
+</section>
+<section class="slide level0">
+
+<section id="in-github-you-can-contribute-to-any-public-repo" class="inverse center middle">
+<h1>In GitHub, you can contribute to <em>any</em> public repo</h1>
 </section>
 </section>
 <section class="slide level0">
@@ -1190,7 +1213,10 @@ built-in one.
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_5b6eab23" minutes="15" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
+<div class="countdown" id="timer_564c45db" data-warn-when="120" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
 </div>
 </div>
 </section>
@@ -1219,6 +1245,10 @@ built-in one.
 </div>
 <div class="font120 center">
 <p><code>/init</code>  ·  <code>/model</code>  ·  <code>/effort</code>  ·  <code>/clear</code>  ·  <code>/compact</code></p>
+</div>
+<p><br></p>
+<div class="font110 gray">
+<p>…and one thing that <em>isn’t</em> a command: <strong>modes</strong> (shift + tab)</p>
 </div>
 </section>
 </section>
@@ -1347,14 +1377,15 @@ built-in one.
 </tbody>
 </table>
 <p><br></p>
-<div class="font110">
-<p><code>/model</code> switches anytime. Bigger isn’t always better — <strong>match the model to the task</strong>.</p>
+<div class="font110 center">
+<p><code>/model</code> switches anytime. Bigger isn’t always better.<br><strong>Match the model to the task</strong>.</p>
 </div>
 </section>
 <section class="slide level0">
 
-<h1><code>/effort</code> — how <em>hard</em> the model thinks</h1>
-<div class="font110">
+<h1><span class="center"><code>/effort</code> — how <em>hard</em> the model thinks</span></h1>
+<p><br></p>
+<div class="font110 center">
 <p>Same model, different amount of thinking before it acts.</p>
 </div>
 <table class="caption-top">
@@ -1384,13 +1415,14 @@ built-in one.
 </tbody>
 </table>
 <p><br></p>
-<div class="font110">
+<div class="font110 center">
 <p><code>/effort auto</code> returns to your model’s default.</p>
 </div>
 </section>
 <section class="slide level0">
 
-<h1><code>/model</code> vs.&nbsp;<code>/effort</code></h1>
+<h1><span class="center"><code>/model</code> vs.&nbsp;<code>/effort</code></span></h1>
+<p><br></p>
 <div class="cols-row">
 <div class="col">
 <div id="model-1" class="h3">
@@ -1412,14 +1444,15 @@ built-in one.
 <div class="font110 center">
 <p>Rule of thumb: <strong>turn effort up when the task is ambiguous</strong> — when <em>deciding what to do</em> is the hard part, not typing the code.</p>
 </div>
-<div class="font110 gray center">
-<p>Turn it down when you already know exactly what you want.</p>
+<div class="font110 red center">
+<p>Turn it <strong>down</strong> when you already know exactly what you want.</p>
 </div>
 </div>
 </section>
 <section class="slide level0">
 
 <h1><code>/clear</code> vs.&nbsp;<code>/compact</code> — managing memory</h1>
+<p><br></p>
 <div class="cols-row">
 <div class="col">
 <div id="clear" class="h3">
@@ -1453,6 +1486,112 @@ built-in one.
 </section>
 <section class="slide level0">
 
+<h1>Not everything is a command: <span class="blue">modes</span></h1>
+<p><br></p>
+<div class="font110 center">
+<p>Slash commands change <em>settings</em>.<br><strong>Modes</strong> change how much the agent can do <strong>without asking you first</strong>.</p>
+</div>
+<p><br></p>
+<div class="font130 center">
+<p>Press <span class="blue"><strong>shift + tab</strong></span> to cycle through them</p>
+</div>
+<p><br></p>
+<div class="font110 center">
+<p>The current mode always shows at the <strong>bottom of the prompt box</strong> — glance there before you hit Enter.</p>
+</div>
+</section>
+<section class="slide level0">
+
+<h1>The three modes</h1>
+<div class="font105">
+<table class="caption-top">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 91%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Mode</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Normal</strong></td>
+<td>Asks before every edit and every command. The default.</td>
+</tr>
+<tr class="even">
+<td><strong>Auto-accept edits</strong></td>
+<td>Applies file edits without asking. Fast, but you’re not watching.</td>
+</tr>
+<tr class="odd">
+<td><strong>Plan mode</strong></td>
+<td>Reads and researches only — <strong>changes nothing</strong> until you approve a plan.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><br></p>
+<div class="cols-row">
+<div class="col">
+<div id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2066612067617567652d68696768203e7d7d-auto-accept" class="h3">
+<i class="fa-solid fa-gauge-high" aria-label="gauge-high"></i> <span class="orange">Auto-accept</span>
+</div>
+<p>Fine when the work is <strong>small and reversible</strong> and you’ve committed recently.</p>
+</div>
+<div class="col">
+<div id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206661206d6170203e7d7d-plan-mode" class="h3">
+<i class="fa-solid fa-map" aria-label="map"></i> <span class="darkgreen">Plan mode</span>
+</div>
+<p>Best when the task is <strong>big or vague</strong> and a wrong start costs you time.</p>
+</div>
+</div>
+</section>
+<section class="slide level0">
+
+<h1>Plan mode is the one to build a habit around</h1>
+<div class="font110">
+<p>In plan mode the agent can read your files, but it <strong>can’t edit anything</strong>. It comes back with a proposal, and you either approve it or send it back.</p>
+</div>
+<p><br></p>
+<div class="font110">
+<p>Why that’s worth the extra step:</p>
+<ul>
+<li>You see the <strong>plan</strong> before you see a pile of changes</li>
+<li>Disagreements get caught in a sentence, not in 200 lines of diff</li>
+<li>It pairs naturally with <code>/effort high</code> — <em>thinking hard about what to do</em>, before doing any of it</li>
+</ul>
+</div>
+<div class="fragment">
+<p><br></p>
+<div class="font110 center">
+<p>Rule of thumb: <strong>plan mode for anything you’d be annoyed to undo.</strong></p>
+</div>
+</div>
+</section>
+<section class="slide level0">
+
+<h1><span class="center">Modes are your permission dial</span></h1>
+<p><br></p>
+<div class="font120 center">
+<p><span class="darkgreen">plan</span> &nbsp;→&nbsp; <span class="blue">normal</span> &nbsp;→&nbsp; <span class="orange">auto-accept</span></p>
+</div>
+<div class="font110 center">
+<p><span class="gray">less freedom, more supervision</span>    <span class="gray">more freedom, less supervision</span></p>
+</div>
+<p><br></p>
+<div class="fragment">
+<div class="font110">
+<p>There’s no correct setting — you move the dial <strong>during a session</strong> as the stakes change. Plan the risky part, auto-accept the tedious part.</p>
+</div>
+<p><br></p>
+<div class="font110 red center">
+<p>Whatever the mode, <strong>git is your real safety net.</strong><br>Commit before you let the agent run loose.</p>
+</div>
+</div>
+</section>
+<section class="slide level0">
+
 <section id="your-turn" class="inverse">
 <h1><span class="center">Your turn</span></h1>
 <div class="font120 center">
@@ -1463,7 +1602,7 @@ built-in one.
 <li>Run <code>/init</code> — then <strong>open the <code>CLAUDE.md</code> it wrote and read it.</strong> Is it right? Fix anything wrong, and add one rule of your own.</li>
 <li>Run <code>/model</code> and <code>/effort</code> to see your options.</li>
 <li>Ask for a <strong>small</strong> change (new page, tweak the navbar) at <code>/effort low</code>.</li>
-<li>Ask for something harder, e.g., “<em>collapse everything into a single page website</em>” at <code>/effort high</code>. Note the difference.</li>
+<li>Hit <strong>shift + tab</strong> into <strong>plan mode</strong>, then ask for something harder, e.g., “<em>collapse everything into a single page website</em>” at <code>/effort high</code>. Read the plan before you approve it.</li>
 <li><code>/compact</code>, then keep going — it should still know what you’re building.</li>
 <li><code>/clear</code>, then ask <em>“what am I working on?”</em> — see what it lost, and what <code>CLAUDE.md</code> saved.</li>
 <li><strong>Commit + push</strong> your changes to GitHub.</li>
@@ -1471,7 +1610,10 @@ built-in one.
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_3ea06ca3" minutes="15" seconds="0" warn-when="60" update-every="1" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
+<div class="countdown" id="timer_72ff7373" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
 </div>
 </div>
 </section>
@@ -1589,7 +1731,10 @@ Using one
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_4a1aa856" minutes="15" seconds="0" warn-when="60" update-every="1" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
+<div class="countdown" id="timer_8fe2283b" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
 </div>
 </div>
 </section>
@@ -1759,7 +1904,10 @@ Using one
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_ec3e202f" minutes="18" seconds="0" warn-when="120" update-every="1" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
+<div class="countdown" id="timer_9031edaa" data-warn-when="120" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">18</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
 </div>
 </div>
 </section>
@@ -1797,7 +1945,7 @@ Using one
 <ul>
 <li>You can <strong>make a repo and push</strong> with a button</li>
 <li>You can <strong>set up and direct Claude Code</strong> — and read what it does</li>
-<li>You know <code>/init</code>, <code>/model</code>, <code>/effort</code>, <code>/clear</code>, <code>/compact</code>, <code>CLAUDE.md</code>, and skills</li>
+<li>You know <code>/init</code>, <code>/model</code>, <code>/effort</code>, <code>/clear</code>, <code>/compact</code>, <code>CLAUDE.md</code>, skills, and <strong>modes</strong></li>
 <li>You know the agent <strong>lies with confidence</strong> — and you have a checklist</li>
 </ul>
 </div>

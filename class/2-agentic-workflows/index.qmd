@@ -215,6 +215,14 @@ countdown(minutes = 3, warn_when = 30, top = 0, right = 0, font_size = "2em")
 
 {{< center >}}
 
+## Add collaborators in repo settings
+
+![](images/collaborators.png){fig-align="center" width=80%}
+
+---
+
+{{< center >}}
+
 ## Two new moves
 
 ::: {.col .fragment .center}
@@ -308,6 +316,14 @@ Your turn
 #| echo: false
 countdown(minutes = 10, warn_when = 60, top = 0, right = 0, font_size = "2em")
 ```
+
+---
+
+{{< inverse >}}
+{{< center >}}
+{{< middle >}}
+
+# In GitHub, you can contribute to *any* public repo
 
 ---
 
@@ -473,6 +489,12 @@ Five you'll reach for constantly:
 `/init` &ensp;·&ensp; `/model` &ensp;·&ensp; `/effort` &ensp;·&ensp; `/clear` &ensp;·&ensp; `/compact`
 :::
 
+<br>
+
+::: {.font110 .gray}
+...and one thing that *isn't* a command: **modes** (shift + tab)
+:::
+
 ---
 
 # `CLAUDE.md`: standing instructions
@@ -588,15 +610,17 @@ Model         | Good for
 
 <br>
 
-::: {.font110}
-`/model` switches anytime. Bigger isn't always better — **match the model to the task**.
+::: {.font110 .center}
+`/model` switches anytime. Bigger isn't always better.<br>**Match the model to the task**.
 :::
 
 ---
 
-# `/effort` — how *hard* the model thinks
+# [`/effort` — how *hard* the model thinks]{.center}
 
-::: {.font110}
+<br>
+
+::: {.font110 .center}
 Same model, different amount of thinking before it acts.
 :::
 
@@ -609,13 +633,15 @@ Level         | What it's for
 
 <br>
 
-::: {.font110}
+::: {.font110 .center}
 `/effort auto` returns to your model's default.
 :::
 
 ---
 
-# `/model` vs. `/effort`
+# [`/model` vs. `/effort`]{.center}
+
+<br>
 
 ::: {.col}
 ### `/model`
@@ -639,13 +665,15 @@ Same brain, more deliberation before it starts editing files.
 Rule of thumb: **turn effort up when the task is ambiguous** — when *deciding what to do* is the hard part, not typing the code.
 :::
 
-::: {.font110 .gray .center}
-Turn it down when you already know exactly what you want.
+::: {.font110 .red .center}
+Turn it **down** when you already know exactly what you want.
 :::
 
 ---
 
 # `/clear` vs. `/compact` — managing memory
+
+<br>
 
 ::: {.col}
 ### `/clear`
@@ -677,6 +705,106 @@ Why it matters: the agent has **limited memory**. A bloated,<br>unfocused contex
 
 ---
 
+# Not everything is a command: [modes]{.blue}
+
+<br>
+
+::: {.font110 .center}
+Slash commands change *settings*.<br>**Modes** change how much the agent can do **without asking you first**.
+:::
+
+<br>
+
+::: {.font130 .center}
+Press [**shift + tab**]{.blue} to cycle through them
+:::
+
+<br>
+
+::: {.font110 .center}
+The current mode always shows at the **bottom of the prompt box** — glance there before you hit Enter.
+:::
+
+---
+
+# The three modes
+
+::: {.font105}
+Mode | What it does
+-----|-------------------------------------------------------
+**Normal** | Asks before every edit and every command. The default.
+**Auto-accept edits** | Applies file edits without asking. Fast, but you're not watching.
+**Plan mode** | Reads and researches only — **changes nothing** until you approve a plan.
+:::
+
+<br>
+
+::: {.col}
+### {{< fa gauge-high >}} [Auto-accept]{.orange}
+Fine when the work is **small and reversible** and you've committed recently.
+:::
+
+::: {.col}
+### {{< fa map >}} [Plan mode]{.darkgreen}
+Best when the task is **big or vague** and a wrong start costs you time.
+:::
+
+---
+
+# Plan mode is the one to build a habit around
+
+::: {.font110}
+In plan mode the agent can read your files, but it **can't edit anything**. It comes back with a proposal, and you either approve it or send it back.
+:::
+
+<br>
+
+::: {.font110}
+Why that's worth the extra step:
+
+- You see the **plan** before you see a pile of changes
+- Disagreements get caught in a sentence, not in 200 lines of diff
+- It pairs naturally with `/effort high` — *thinking hard about what to do*, before doing any of it
+:::
+
+. . .
+
+<br>
+
+::: {.font110 .center}
+Rule of thumb: **plan mode for anything you'd be annoyed to undo.**
+:::
+
+---
+
+# [Modes are your permission dial]{.center}
+
+<br>
+
+::: {.font120 .center}
+[plan]{.darkgreen} &nbsp;→&nbsp; [normal]{.blue} &nbsp;→&nbsp; [auto-accept]{.orange}
+:::
+
+::: {.font110 .center}
+[less freedom, more supervision]{.gray} &emsp;&emsp; [more freedom, less supervision]{.gray}
+:::
+
+<br>
+
+. . .
+
+::: {.font110}
+There's no correct setting — you move the dial **during a session** as the stakes change. Plan the risky part, auto-accept the tedious part.
+:::
+
+<br>
+
+::: {.font110 .red .center}
+Whatever the mode, **git is your real safety net.**<br>Commit before you let the agent run loose.
+:::
+
+---
+
 {{< inverse >}}
 
 # [Your turn]{.center}
@@ -689,7 +817,7 @@ Go back to your `my-website` repo
 1. Run `/init` — then **open the `CLAUDE.md` it wrote and read it.** Is it right? Fix anything wrong, and add one rule of your own.
 2. Run `/model` and `/effort` to see your options.
 3. Ask for a **small** change (new page, tweak the navbar) at `/effort low`.
-4. Ask for something harder, e.g., "*collapse everything into a single page website*" at `/effort high`. Note the difference.
+4. Hit **shift + tab** into **plan mode**, then ask for something harder, e.g., "*collapse everything into a single page website*" at `/effort high`. Read the plan before you approve it.
 5. `/compact`, then keep going — it should still know what you're building.
 6. `/clear`, then ask *"what am I working on?"* — see what it lost, and what `CLAUDE.md` saved.
 7. **Commit + push** your changes to GitHub.
@@ -1065,7 +1193,7 @@ An agent can write the code. [It cannot know if the answer is *true*.]{.red}
 ::: {.font110}
 - You can **make a repo and push** with a button
 - You can **set up and direct Claude Code** — and read what it does
-- You know `/init`, `/model`, `/effort`, `/clear`, `/compact`, `CLAUDE.md`, and skills
+- You know `/init`, `/model`, `/effort`, `/clear`, `/compact`, `CLAUDE.md`, skills, and **modes**
 - You know the agent **lies with confidence** — and you have a checklist
 :::
 
