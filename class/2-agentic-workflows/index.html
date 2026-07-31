@@ -100,7 +100,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-1022f0380474e01544233dbd96a55ff2.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-e5a934acb88329c8422b3f540c307657.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -744,7 +744,7 @@ built-in one.
 </div>
 <h3 id="version-control-with-github">1. Version Control with GitHub</h3>
 <h3 id="setting-up-using-claude-code">2. Setting Up &amp; Using Claude Code</h3>
-<h3 id="slash-commands">3. Slash Commands</h3>
+<h3 id="modes-slash-commands">3. Modes &amp; Slash Commands</h3>
 <h3 id="skills">4. Skills</h3>
 <h3 id="working-safely">5. Working Safely</h3>
 </section>
@@ -758,7 +758,7 @@ built-in one.
 </div>
 <h3 id="version-control-with-github-1">1. <span class="orange">Version Control with GitHub</span></h3>
 <h3 id="setting-up-using-claude-code-1">2. Setting Up &amp; Using Claude Code</h3>
-<h3 id="slash-commands-1">3. Slash Commands</h3>
+<h3 id="modes-slash-commands-1">3. Modes &amp; Slash Commands</h3>
 <h3 id="skills-1">4. Skills</h3>
 <h3 id="working-safely-1">5. Working Safely</h3>
 </section>
@@ -937,7 +937,7 @@ built-in one.
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_2a87fed5" data-warn-when="30" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_6aa04d9a" data-warn-when="30" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1058,7 +1058,7 @@ built-in one.
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_004c7fb6" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_04d57946" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1081,7 +1081,7 @@ built-in one.
 </div>
 <h3 id="version-control-with-github-2">1. Version Control with GitHub</h3>
 <h3 id="setting-up-using-claude-code-2">2. <span class="orange">Setting Up &amp; Using Claude Code</span></h3>
-<h3 id="slash-commands-2">3. Slash Commands</h3>
+<h3 id="modes-slash-commands-2">3. Modes &amp; Slash Commands</h3>
 <h3 id="skills-2">4. Skills</h3>
 <h3 id="working-safely-2">5. Working Safely</h3>
 </section>
@@ -1152,7 +1152,7 @@ built-in one.
 </section>
 <section class="slide level0">
 
-<h1>Open your workspace, then launch</h1>
+<h1><span class="center">Open your workspace, then launch</span></h1>
 <p><br></p>
 <h2 id="make-a-folder-no-spaces-in-the-name">1. Make a folder (no spaces in the name)</h2>
 <div class="fragment">
@@ -1172,28 +1172,76 @@ built-in one.
 </section>
 <section class="slide level0">
 
+<section id="an-agent-can-do-almost-anything-with-files" class="middle">
 <h1><span class="center">An agent can do almost anything with files</span></h1>
-<p><br><br></p>
-<div class="cols-row">
-<div class="col">
-
+<p><br></p>
+<div class="card-grid" style="--lexis-card-cols:4;">
+<div class="card center" style="--lexis-card-accent:var(--lexis-color-purple, purple);">
+<div class="card-icon">
+<p><i class="fa-solid fa-code" aria-label="code"></i></p>
 </div>
-<div class="col">
-<ul>
-<li><i class="fa-solid fa-code" aria-label="code"></i> Write code</li>
-<li><i class="fa-solid fa-bug" aria-label="bug"></i> Debug &amp; refactor</li>
-<li><i class="fa-solid fa-chart-column" aria-label="chart-column"></i> Analyze data</li>
-<li><i class="fa-solid fa-image" aria-label="image"></i> Generate images</li>
-<li><i class="fa-solid fa-book-open" aria-label="book-open"></i> Summarize documents</li>
-<li><i class="fa-solid fa-pen" aria-label="pen"></i> Write &amp; edit prose</li>
-<li><i class="fa-solid fa-terminal" aria-label="terminal"></i> Automate tasks</li>
-<li><i class="fa-solid fa-globe" aria-label="globe"></i> Build a website</li>
-</ul>
-</div>
-<div class="col">
-
+<div id="write-code" class="h3">
+Write code
 </div>
 </div>
+<div class="card center" style="--lexis-card-accent:var(--lexis-color-darkgreen, darkgreen);">
+<div class="card-icon">
+<p><i class="fa-solid fa-bug" aria-label="bug"></i></p>
+</div>
+<div id="debug-refactor" class="h3">
+Debug &amp; refactor
+</div>
+</div>
+<div class="card center" style="--lexis-card-accent:var(--lexis-color-dodgerblue, dodgerblue);">
+<div class="card-icon">
+<p><i class="fa-solid fa-chart-column" aria-label="chart-column"></i></p>
+</div>
+<div id="analyze-data" class="h3">
+Analyze data
+</div>
+</div>
+<div class="card center" style="--lexis-card-accent:var(--lexis-color-purple, purple);">
+<div class="card-icon">
+<p><i class="fa-solid fa-image" aria-label="image"></i></p>
+</div>
+<div id="generate-images" class="h3">
+Generate images
+</div>
+</div>
+<div class="card center" style="--lexis-card-accent:var(--lexis-color-orange, orange);">
+<div class="card-icon">
+<p><i class="fa-solid fa-book-open" aria-label="book-open"></i></p>
+</div>
+<div id="summarize-docs" class="h3">
+Summarize docs
+</div>
+</div>
+<div class="card center" style="--lexis-card-accent:var(--lexis-color-darkgreen, darkgreen);">
+<div class="card-icon">
+<p><i class="fa-solid fa-pen" aria-label="pen"></i></p>
+</div>
+<div id="write-edit-prose" class="h3">
+Write &amp; edit prose
+</div>
+</div>
+<div class="card center" style="--lexis-card-accent:var(--lexis-color-gray, gray);">
+<div class="card-icon">
+<p><i class="fa-solid fa-terminal" aria-label="terminal"></i></p>
+</div>
+<div id="automate-tasks" class="h3">
+Automate tasks
+</div>
+</div>
+<div class="card center" style="--lexis-card-accent:var(--lexis-color-red, red);">
+<div class="card-icon">
+<p><i class="fa-solid fa-file-code" aria-label="file-code"></i></p>
+</div>
+<div id="build-html" class="h3">
+Build HTML
+</div>
+</div>
+</div>
+</section>
 </section>
 <section class="slide level0">
 
@@ -1213,7 +1261,7 @@ built-in one.
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_564c45db" data-warn-when="120" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_edb3ea3e" data-warn-when="120" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1230,9 +1278,87 @@ built-in one.
 </div>
 <h3 id="version-control-with-github-3">1. Version Control with GitHub</h3>
 <h3 id="setting-up-using-claude-code-3">2. Setting Up &amp; Using Claude Code</h3>
-<h3 id="slash-commands-3">3. <span class="orange">Slash Commands</span></h3>
+<h3 id="modes-slash-commands-3">3. <span class="orange">Modes &amp; Slash Commands</span></h3>
 <h3 id="skills-4">4. Skills</h3>
 <h3 id="working-safely-3">5. Working Safely</h3>
+</section>
+</section>
+<section class="slide level0">
+
+<section id="four-modes-of-claude-code" class="middle">
+<h2><span class="center">Four modes of Claude Code</span></h2>
+<p><br></p>
+<div class="card-grid" style="--lexis-card-cols:2;">
+<div class="card icon-left" style="--lexis-card-accent:var(--lexis-color-dodgerblue, dodgerblue);">
+<div class="card-icon">
+<p><i class="fa-solid fa-map" aria-label="map"></i></p>
+</div>
+<div id="plan" class="h3">
+Plan
+</div>
+<p>Make a plan before doing big work.</p>
+<p><span class="tag">read-only</span></p>
+</div>
+<div class="card icon-left" style="--lexis-card-accent:var(--lexis-color-gray, gray);">
+<div class="card-icon">
+<p><i class="fa-solid fa-hand" aria-label="hand"></i></p>
+</div>
+<div id="manual" class="h3">
+Manual
+</div>
+<p>Approve or deny each edit.</p>
+<p><span class="tag">safe but slow</span></p>
+</div>
+<div class="card icon-left" style="--lexis-card-accent:var(--lexis-color-darkgreen, darkgreen);">
+<div class="card-icon">
+<p><i class="fa-solid fa-pen" aria-label="pen"></i></p>
+</div>
+<div id="accept-edits" class="h3">
+Accept Edits
+</div>
+<p>Auto-applies file edits.</p>
+<p><span class="tag">semi engagement</span></p>
+</div>
+<div class="card icon-left" style="--lexis-card-accent:var(--lexis-color-orange, orange);">
+<div class="card-icon">
+<p><i class="fa-solid fa-bolt" aria-label="bolt"></i></p>
+</div>
+<div id="auto" class="h3">
+Auto
+</div>
+<p>Approves EVERYTHING.</p>
+<p><span class="tag">full file access, use with care</span></p>
+</div>
+</div>
+<div class="font130 center">
+<p>Press <span class="blue"><strong>shift + tab</strong></span> to cycle through them</p>
+</div>
+<div class="font110 center">
+<p>The current mode always shows at the <strong>bottom of the prompt box</strong></p>
+</div>
+</section>
+</section>
+<section class="slide level0">
+
+<section id="modes-are-your-permission-dial" class="middle">
+<h1><span class="center">Modes are your permission dial</span></h1>
+<p><br></p>
+<div class="font120 center">
+<p><span class="blue">plan</span> &nbsp;→&nbsp; <span class="gray">manual</span> &nbsp;→&nbsp; <span class="darkgreen">accept edits</span> &nbsp;→&nbsp; <span class="orange">auto</span></p>
+</div>
+<div class="font110 center">
+<p><span class="gray">less freedom, more supervision</span>    <span class="gray">more freedom, less supervision</span></p>
+</div>
+<p><br></p>
+<div class="fragment">
+<div class="font110 center">
+<p>Give more autonomy to Claude when<br>you have a <em>very</em> clear step-by-step plan</p>
+</div>
+<p><br></p>
+<div class="font110 red center">
+<p>Whatever the mode, <strong>git is your safety net.</strong><br>Commit before you let the agent run loose.</p>
+</div>
+</div>
 </section>
 </section>
 <section class="slide level0">
@@ -1245,10 +1371,6 @@ built-in one.
 </div>
 <div class="font120 center">
 <p><code>/init</code>  ·  <code>/model</code>  ·  <code>/effort</code>  ·  <code>/clear</code>  ·  <code>/compact</code></p>
-</div>
-<p><br></p>
-<div class="font110 gray">
-<p>…and one thing that <em>isn’t</em> a command: <strong>modes</strong> (shift + tab)</p>
 </div>
 </section>
 </section>
@@ -1346,7 +1468,7 @@ built-in one.
 <div class="fragment">
 <p><br></p>
 <div class="font110 red center">
-<p>This file steers <strong>every future session</strong> — a wrong line in <code>CLAUDE.md</code> is a mistake you’ll make over and over.</p>
+<p>This file steers <strong>every future session</strong><br>A wrong line in <code>CLAUDE.md</code> is a mistake you’ll make over and over</p>
 </div>
 </div>
 </section>
@@ -1441,12 +1563,11 @@ built-in one.
 </div>
 <div class="fragment">
 <p><br></p>
-<div class="font110 center">
-<p>Rule of thumb: <strong>turn effort up when the task is ambiguous</strong> — when <em>deciding what to do</em> is the hard part, not typing the code.</p>
-</div>
-<div class="font110 red center">
-<p>Turn it <strong>down</strong> when you already know exactly what you want.</p>
-</div>
+<p>General rules of thumb:</p>
+<ul>
+<li>Turn effort <strong>up</strong> when the hart part is <strong><em>deciding what to do</em></strong></li>
+<li>Turn effort <strong>down</strong> when <strong>you already know exactly what you want</strong></li>
+</ul>
 </div>
 </section>
 <section class="slide level0">
@@ -1480,113 +1601,7 @@ built-in one.
 <div class="fragment">
 <p><br></p>
 <div class="font110 red center">
-<p>Why it matters: the agent has <strong>limited memory</strong>. A bloated,<br>unfocused context makes it <em>slower and dumber</em>.</p>
-</div>
-</div>
-</section>
-<section class="slide level0">
-
-<h1>Not everything is a command: <span class="blue">modes</span></h1>
-<p><br></p>
-<div class="font110 center">
-<p>Slash commands change <em>settings</em>.<br><strong>Modes</strong> change how much the agent can do <strong>without asking you first</strong>.</p>
-</div>
-<p><br></p>
-<div class="font130 center">
-<p>Press <span class="blue"><strong>shift + tab</strong></span> to cycle through them</p>
-</div>
-<p><br></p>
-<div class="font110 center">
-<p>The current mode always shows at the <strong>bottom of the prompt box</strong> — glance there before you hit Enter.</p>
-</div>
-</section>
-<section class="slide level0">
-
-<h1>The three modes</h1>
-<div class="font105">
-<table class="caption-top">
-<colgroup>
-<col style="width: 8%">
-<col style="width: 91%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Mode</th>
-<th>What it does</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Normal</strong></td>
-<td>Asks before every edit and every command. The default.</td>
-</tr>
-<tr class="even">
-<td><strong>Auto-accept edits</strong></td>
-<td>Applies file edits without asking. Fast, but you’re not watching.</td>
-</tr>
-<tr class="odd">
-<td><strong>Plan mode</strong></td>
-<td>Reads and researches only — <strong>changes nothing</strong> until you approve a plan.</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><br></p>
-<div class="cols-row">
-<div class="col">
-<div id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2066612067617567652d68696768203e7d7d-auto-accept" class="h3">
-<i class="fa-solid fa-gauge-high" aria-label="gauge-high"></i> <span class="orange">Auto-accept</span>
-</div>
-<p>Fine when the work is <strong>small and reversible</strong> and you’ve committed recently.</p>
-</div>
-<div class="col">
-<div id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206661206d6170203e7d7d-plan-mode" class="h3">
-<i class="fa-solid fa-map" aria-label="map"></i> <span class="darkgreen">Plan mode</span>
-</div>
-<p>Best when the task is <strong>big or vague</strong> and a wrong start costs you time.</p>
-</div>
-</div>
-</section>
-<section class="slide level0">
-
-<h1>Plan mode is the one to build a habit around</h1>
-<div class="font110">
-<p>In plan mode the agent can read your files, but it <strong>can’t edit anything</strong>. It comes back with a proposal, and you either approve it or send it back.</p>
-</div>
-<p><br></p>
-<div class="font110">
-<p>Why that’s worth the extra step:</p>
-<ul>
-<li>You see the <strong>plan</strong> before you see a pile of changes</li>
-<li>Disagreements get caught in a sentence, not in 200 lines of diff</li>
-<li>It pairs naturally with <code>/effort high</code> — <em>thinking hard about what to do</em>, before doing any of it</li>
-</ul>
-</div>
-<div class="fragment">
-<p><br></p>
-<div class="font110 center">
-<p>Rule of thumb: <strong>plan mode for anything you’d be annoyed to undo.</strong></p>
-</div>
-</div>
-</section>
-<section class="slide level0">
-
-<h1><span class="center">Modes are your permission dial</span></h1>
-<p><br></p>
-<div class="font120 center">
-<p><span class="darkgreen">plan</span> &nbsp;→&nbsp; <span class="blue">normal</span> &nbsp;→&nbsp; <span class="orange">auto-accept</span></p>
-</div>
-<div class="font110 center">
-<p><span class="gray">less freedom, more supervision</span>    <span class="gray">more freedom, less supervision</span></p>
-</div>
-<p><br></p>
-<div class="fragment">
-<div class="font110">
-<p>There’s no correct setting — you move the dial <strong>during a session</strong> as the stakes change. Plan the risky part, auto-accept the tedious part.</p>
-</div>
-<p><br></p>
-<div class="font110 red center">
-<p>Whatever the mode, <strong>git is your real safety net.</strong><br>Commit before you let the agent run loose.</p>
+<p>Agents have <strong>limited memory</strong><br>Unfocused context makes the agent <em>slower and dumber</em></p>
 </div>
 </div>
 </section>
@@ -1610,7 +1625,7 @@ built-in one.
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_72ff7373" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_95e2a292" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1627,7 +1642,7 @@ built-in one.
 </div>
 <h3 id="version-control-with-github-4">1. Version Control with GitHub</h3>
 <h3 id="setting-up-using-claude-code-4">2. Setting Up &amp; Using Claude Code</h3>
-<h3 id="slash-commands-4">3. Slash Commands</h3>
+<h3 id="modes-slash-commands-4">3. Modes &amp; Slash Commands</h3>
 <h3 id="skills-5">4. <span class="orange">Skills</span></h3>
 <h3 id="working-safely-4">5. Working Safely</h3>
 </section>
@@ -1731,7 +1746,7 @@ Using one
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_8fe2283b" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_f24557bd" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1748,7 +1763,7 @@ Using one
 </div>
 <h3 id="version-control-with-github-5">1. Version Control with GitHub</h3>
 <h3 id="setting-up-using-claude-code-5">2. Setting Up &amp; Using Claude Code</h3>
-<h3 id="slash-commands-5">3. Slash Commands</h3>
+<h3 id="modes-slash-commands-5">3. Modes &amp; Slash Commands</h3>
 <h3 id="skills-6">4. Skills</h3>
 <h3 id="working-safely-5">5. <span class="orange">Working Safely</span></h3>
 </section>
@@ -1904,7 +1919,7 @@ Using one
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_9031edaa" data-warn-when="120" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_6d609140" data-warn-when="120" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">18</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
