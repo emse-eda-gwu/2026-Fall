@@ -1225,3 +1225,11 @@ An agent can write the code. [It cannot know if the answer is *true*.]{.red}
 ::: {.font130 .fancy .darkgreen .center}
 Direct boldly. Verify relentlessly.
 :::
+
+---
+
+{{< inverse >}}
+{{< center >}}
+{{< middle >}}
+
+# Use [this link](https://docs.google.com/spreadsheets/d/1cXNvWVfZ-WN4oLqbhv76cFTXPBi0KCiQdkCG7ivm7i4/edit?usp=sharing) to form teams
