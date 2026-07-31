@@ -61,6 +61,31 @@ website (Fall 2026), built with [Quarto](https://quarto.org/).
   students to open a `.Rproj` file or open/use "RStudio" — direct them to open
   the project folder in Positron instead. See the pending cleanup item above.
 
+- **Class practice files live in ONE repo, not per-class zips.**
+  <https://github.com/eda-f26/class-practice> holds every class's practice files
+  in subfolders. Students **clone it once** (W2, GitHub Desktop) and `Fetch
+  origin` before each class; **clone, never fork** — a clone can't push, so their
+  in-class edits stay local and never appear on GitHub. The old
+  `class/N-stub/N-stub.zip` files are gone; don't reintroduce a zip anywhere, and
+  don't add a per-class link to a subfolder (students already have the repo). The
+  URL lives in `_variables.yml` as `practice_repo` — use
+  `{{< var practice_repo >}}`, never a hardcoded link. It is deliberately the
+  same on every class page.
+  - **Append-only discipline:** once a class has been taught, its folder is
+    frozen. Fixes go in *before* that class; post-class additions must be new
+    files. Students only ever edit the current week's files, so edits to *later*
+    weeks (which happen all semester as decks get rewritten) are invisible to
+    them and their pulls stay fast-forward.
+  - **Week 1 is the exception** — GitHub Desktop isn't taught until W2, so W1
+    uses the repo's green **Code → Download ZIP** button. Students clone properly
+    in W2.
+
+- **Class landing pages are all built from `fragments/class.qmd`** — one child
+  fragment feeds every `class/N-*.qmd`, so edit it, not the individual pages. It
+  derives three per-class paths from `params$class`: slides (`index.html`), the
+  slide PDF (`<class>.pdf`), and the summary PDF (`<class>-summary.pdf`, built by
+  `class/render.R` from `summary.qmd`).
+
 - **Data-driven schedule:** edit `schedule.csv`; `_common.R` (`get_schedule()`)
   builds the HTML columns and `schedule.lua` is a Pandoc table filter. Don't
   hand-edit the table in `schedule.qmd`. Tracks/columns: `*_class`, `*_assign`
