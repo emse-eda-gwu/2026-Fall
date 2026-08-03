@@ -745,7 +745,7 @@
     "href": "faq.html#my-r-positron-is-totally-fubar-what-should-i-do",
     "title": "Frequenly Asked Questions",
     "section": "My R / Positron is totally FUBAR, what should I do?",
-    "text": "My R / Positron is totally FUBAR, what should I do?\nIf you want to get back up to speed quickly, you can open a cloud version of RStudio on the web at https://posit.cloud/plans/free. It isn’t the IDE we use in class, but it will run your R code in a pinch.\nYou can try to troubleshoot, but often the next easiest thing to do is just re-install R and Positron. Be careful to save your work first!",
+    "text": "My R / Positron is totally FUBAR, what should I do?\nIf you want to get back up to speed quickly, you can open a cloud version of Positron on the web at https://posit.cloud/plans/free. It isn’t the IDE we use in class, but it will run your R code in a pinch.\nYou can try to troubleshoot, but often the next easiest thing to do is just re-install R and Positron. Be careful to save your work first!",
     "crumbs": [
       "FAQ"
     ]
