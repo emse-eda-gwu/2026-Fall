@@ -43,7 +43,7 @@ If you're submitting late, please **send your submission to Professor Helveston 
 
 ## My R / Positron is totally [FUBAR](https://en.wikipedia.org/wiki/List_of_military_slang_terms#FUBAR), what should I do?
 
-If you want to get back up to speed quickly, you can open a cloud version of RStudio on the web at [https://posit.cloud/plans/free](https://posit.cloud/plans/free). It isn't the IDE we use in class, but it will run your R code in a pinch.
+If you want to get back up to speed quickly, you can open a cloud version of Positron on the web at [https://posit.cloud/plans/free](https://posit.cloud/plans/free). It isn't the IDE we use in class, but it will run your R code in a pinch.
 
 You can try to troubleshoot, but often the next easiest thing to do is just re-install R and Positron. Be careful to save your work first!
 
