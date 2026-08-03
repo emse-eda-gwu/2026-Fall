@@ -73,19 +73,19 @@ countdown(
 Seen before:
 
 ```{r, eval=FALSE}
-gapminder        <- read_csv(here::here('data', 'gapminder.csv'))
-milk_production  <- read_csv(here::here('data', 'milk_production.csv'))
-global_temps     <- read_csv(here::here('data', 'nasa_global_temps.csv'))
-internet_region  <- read_csv(here::here('data', 'internet_users_region.csv'))
-hotdogs          <- read_csv(here::here('data', 'hot_dog_winners.csv'))
-internet_country <- read_csv(here::here('data', 'internet_users_country.csv'))
+gapminder        <- read_csv(file.path('data', 'gapminder.csv'))
+milk_production  <- read_csv(file.path('data', 'milk_production.csv'))
+global_temps     <- read_csv(file.path('data', 'nasa_global_temps.csv'))
+internet_region  <- read_csv(file.path('data', 'internet_users_region.csv'))
+hotdogs          <- read_csv(file.path('data', 'hot_dog_winners.csv'))
+internet_country <- read_csv(file.path('data', 'internet_users_country.csv'))
 ```
 
 New datasets:
 
 ```{r, eval=FALSE}
-us_covid         <- read_csv(here::here('data', 'us_covid.csv'))
-us_diseases      <- read_csv(here::here('data', 'us_contagious_diseases.csv'))
+us_covid         <- read_csv(file.path('data', 'us_covid.csv'))
+us_diseases      <- read_csv(file.path('data', 'us_contagious_diseases.csv'))
 ```
 
 ---
@@ -440,7 +440,7 @@ Consider using:
 .rightcol[
 
 ```{r}
-global_temps <- read_csv(here::here(
+global_temps <- read_csv(file.path(
   'data', 'nasa_global_temps.csv'))
 
 head(global_temps)
@@ -596,7 +596,7 @@ animate(milk_region_anim,  #<<
         renderer = magick_renderer()) #<<
 
 # Save last animation
-anim_save(here::here(
+anim_save(file.path(
   'figs', 'milk_region_animation.gif'))
 ```
 
@@ -1501,7 +1501,7 @@ Use the `us_covid` data frame to explore ways to visualize the number of daily c
 .rightcol[
 
 ```{r}
-us_covid <- read_csv(here::here(
+us_covid <- read_csv(file.path(
   'data', 'us_covid.csv'))
 
 head(us_covid)

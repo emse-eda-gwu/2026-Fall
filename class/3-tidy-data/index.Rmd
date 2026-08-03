@@ -24,19 +24,18 @@ output:
 ```
 
 ```{r, include=FALSE}
-library(here)
 library(ggrepel)
 library(readxl)
 
 # Read in data sets for class
-tb_cases <- read_csv(here('data', 'tb_cases.csv'))
-milk_production <- read_csv(here('data', 'milk_production.csv'))
-fed_spend_long <- read_csv(here('data', 'fed_spend_long.csv'))
+tb_cases <- read_csv(file.path('data', 'tb_cases.csv'))
+milk_production <- read_csv(file.path('data', 'milk_production.csv'))
+fed_spend_long <- read_csv(file.path('data', 'fed_spend_long.csv'))
 fed_spend <- fed_spend_long
-fed_spend_wide <- read_csv(here('data', 'fed_spend_wide.csv'))
-lotr_words <- read_csv(here('data', 'lotr_words.csv'))
+fed_spend_wide <- read_csv(file.path('data', 'fed_spend_wide.csv'))
+lotr_words <- read_csv(file.path('data', 'lotr_words.csv'))
 pv_cells <- read_excel(
-    here('data', 'pv_cell_production.xlsx'),
+    file.path('data', 'pv_cell_production.xlsx'),
     sheet = 'Cell Prod by Country', skip = 2) %>%
   mutate(Year = as.numeric(Year)) %>% 
   filter(!is.na(Year)) 
@@ -710,8 +709,8 @@ Run the code chunk to read in the two data files, then convert the data into a t
 .leftcol[
 
 ```{r, echo=FALSE}
-lotr <- read_csv(here::here('data', 'lotr_words.csv'))
-fed_spending <- read_csv(here::here('data', 'fed_spend_wide.csv'))
+lotr <- read_csv(file.path('data', 'lotr_words.csv'))
+fed_spending <- read_csv(file.path('data', 'fed_spend_wide.csv'))
 
 lotr %>% 
     pivot_longer(

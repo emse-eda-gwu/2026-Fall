@@ -1,14 +1,13 @@
 library(hrbrthemes)
-library(here)
 library(viridis)
 
 # Read in data
-wildlife_impacts <- read_csv(here::here('data', 'wildlife_impacts.csv'))
-federal_spending <- read_csv(here::here('data', 'federal_spending_long.csv'))
-lotr_words       <- read_csv(here::here('data', 'lotr_words.csv'))
-milk_production  <- read_csv(here::here('data', 'milk_production.csv'))
-msleep           <- read_csv(here::here('data', 'msleep.csv'))
-us_gdp <- read_csv(here::here('data', 'total_gdp_us_inflation_adjusted.csv'))
+wildlife_impacts <- read_csv(file.path('data', 'wildlife_impacts.csv'))
+federal_spending <- read_csv(file.path('data', 'federal_spending_long.csv'))
+lotr_words       <- read_csv(file.path('data', 'lotr_words.csv'))
+milk_production  <- read_csv(file.path('data', 'milk_production.csv'))
+msleep           <- read_csv(file.path('data', 'msleep.csv'))
+us_gdp <- read_csv(file.path('data', 'total_gdp_us_inflation_adjusted.csv'))
 transit_cost <- read_csv('http://eda.seas.gwu.edu/2022-Fall/data/transit_cost.csv')
 
 # Make data summaries

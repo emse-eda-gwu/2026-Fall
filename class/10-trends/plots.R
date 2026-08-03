@@ -80,7 +80,7 @@ animate(global_temps_points_anim, end_pause = 10, duration = 8,
         width = 600, height = 500, res = 75)
 
 # Save last the animation
-anim_save(here::here('images', 'global_temps_points_anim.gif'))
+anim_save(file.path('images', 'global_temps_points_anim.gif'))
 
 # Milk production by region over time ---------------------------------------
 
@@ -189,14 +189,14 @@ animate(milk_region_anim, end_pause = 15, duration = 10,
         width = 1100, height = 650, res = 150)
 
 # Save last animation
-anim_save(here::here('images', 'milk_region_animation.gif'))
+anim_save(file.path('images', 'milk_region_animation.gif'))
 
 # Render the animation
 animate(milk_region_anim, end_pause = 0, duration = 10,
         width = 1000, height = 650, res = 150)
 
 # Save last animation
-anim_save(here::here('images', 'milk_region_animation_no_pause.gif'))
+anim_save(file.path('images', 'milk_region_animation_no_pause.gif'))
 
 # Milk heat map -----------------------------------------------
 
@@ -261,7 +261,7 @@ animate(internet_country_anim, end_pause = 10,
         width = 800, height = 500, res = 150)
 
 # Save last animation
-anim_save(here::here('images', 'internet_country_animation.gif'))
+anim_save(file.path('images', 'internet_country_animation.gif'))
 
 # Internet users - region -------------------------------------------------
 
@@ -390,7 +390,7 @@ animate(gapminder_anim, end_pause = 10,
         width = 800, height = 700, res = 150)
 
 # Save last the animation
-anim_save(here::here('images', 'gapminder_animation.gif'))
+anim_save(file.path('images', 'gapminder_animation.gif'))
 
 # Milk production bar chart race --------------------------------------------
 
@@ -441,7 +441,7 @@ animate(milk_race_anim, duration = 17, end_pause = 15,
         width = 800, height = 700, res = 150)
 
 # Save last the animation
-anim_save(here::here('images', 'milk_race_anim.gif'))
+anim_save(file.path('images', 'milk_race_anim.gif'))
 
 
 

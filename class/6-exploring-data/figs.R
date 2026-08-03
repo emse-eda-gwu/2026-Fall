@@ -6,17 +6,16 @@ library(countdown)
 library(knitr)
 library(cowplot)
 library(tidyverse)
-library(here)
 library(ggrepel)
 
 # Set main theme settings
 theme_set(theme_gray(base_size = 18))
 
 # Read in data
-wildlife_impacts <- read_csv(here::here('data', 'wildlife_impacts.csv'))
-msleep           <- read_csv(here::here('data', 'msleep.csv'))
-marathon <- read_csv(here::here('data', 'marathon.csv'))
-tb_cases <- read_csv(here::here('data', 'tb_cases.csv'))
+wildlife_impacts <- read_csv(file.path('data', 'wildlife_impacts.csv'))
+msleep           <- read_csv(file.path('data', 'msleep.csv'))
+marathon <- read_csv(file.path('data', 'marathon.csv'))
+tb_cases <- read_csv(file.path('data', 'tb_cases.csv'))
 daysToShip <- data.frame(
     order = seq(12),
     warehouseA = c(3,3,3,4,4,4,5,5,5,5,5,5),
@@ -50,7 +49,7 @@ wildlife_hist <- wildlife_impacts %>%
                hjust = 0, nudge_x = 3000, size = 6)
 
 ggsave(
-    here::here('figs', 'wildlife-hist.png'),
+    file.path('figs', 'wildlife-hist.png'),
     wildlife_hist, width = 9, height = 5
 )
 
@@ -92,7 +91,7 @@ daysToShip_fig <- daysToShip %>%
          x = 'Order', y = 'Days to ship')
 
 ggsave(
-    here::here('figs', 'days-to-ship.png'),
+    file.path('figs', 'days-to-ship.png'),
     daysToShip_fig, width = 12, height = 6
 )
 
@@ -114,7 +113,7 @@ daysToShip_sd_fig <- daysToShip %>%
          x = 'Order', y = 'Days to ship')
 
 ggsave(
-    here::here('figs', 'days-to-ship-sd.png'),
+    file.path('figs', 'days-to-ship-sd.png'),
     daysToShip_sd_fig, width = 6, height = 5
 )
 
@@ -141,7 +140,7 @@ anscombe_quartet <- ansDf %>%
         plot.margin = margin(0, 0, 0, 0, "cm"))
 
 ggsave(
-    here::here('figs', 'anscombe-quartet.png'),
+    file.path('figs', 'anscombe-quartet.png'),
     anscombe_quartet, width = 8, height = 6
 )
 
@@ -162,7 +161,7 @@ galtonScatterplot <- ggplot(GaltonFamilies) +
     labs(x = 'Midparent height (inches)',
          y = 'Child height (inches)')
 
-ggsave(here::here('figs', 'galtonScatterplot.png'),
+ggsave(file.path('figs', 'galtonScatterplot.png'),
        galtonScatterplot, width = 5, height = 4)
 
 # Fitting a line
@@ -171,7 +170,7 @@ galtonScatterplotSmooth <- galtonScatterplot +
                 method = 'lm', se = FALSE)
 
 ggsave(
-    here::here('figs', 'galtonScatterplotSmooth.png'),
+    file.path('figs', 'galtonScatterplotSmooth.png'),
     galtonScatterplotSmooth, width = 5, height = 4
 )
 
@@ -195,12 +194,12 @@ penguinScatterplot <- penguinScatterplotBase +
              hjust = 0, size = 5)
 
 ggsave(
-    here::here('figs', 'penguinScatterplotBase.png'),
+    file.path('figs', 'penguinScatterplotBase.png'),
     penguinScatterplotBase, width = 5, height = 4
 )
 
 ggsave(
-    here::here('figs', 'penguinScatterplot.png'),
+    file.path('figs', 'penguinScatterplot.png'),
     penguinScatterplot, width = 5, height = 4
 )
 
@@ -226,15 +225,15 @@ penguinScatterplotAbline <- penguinScatterplot +
                 color = 'blue', size = 1)
 
 ggsave(
-    here::here('figs', 'penguinScatterplotSmooth.png'),
+    file.path('figs', 'penguinScatterplotSmooth.png'),
     penguinScatterplotSmooth, width = 5, height = 4
 )
 ggsave(
-    here::here('figs', 'penguinScatterplotAbline.png'),
+    file.path('figs', 'penguinScatterplotAbline.png'),
     penguinScatterplotAbline, width = 5, height = 4
 )
 ggsave(
-    here::here('figs', 'penguinScatterplotEq.png'),
+    file.path('figs', 'penguinScatterplotEq.png'),
     penguinScatterplotEq, width = 5, height = 4
 )
 
@@ -294,12 +293,12 @@ simpson_penguins_good <- penguins %>%
          color = "Species")
 
 ggsave(
-    here::here('figs', 'simpson_penguins.png'),
+    file.path('figs', 'simpson_penguins.png'),
     simpson_penguins, width = 5, height = 4
 )
 
 ggsave(
-    here::here('figs', 'simpson_penguins_good.png'),
+    file.path('figs', 'simpson_penguins_good.png'),
     simpson_penguins_good, width = 6, height = 4
 )
 
@@ -389,27 +388,27 @@ cor_p <- plot_grid(cor_weak_p, cor_moderate_p,
 cor_n <- plot_grid(cor_weak_n, cor_moderate_n,
                    cor_strong_n, cor_vstrong_n, ncol = 2)
 
-ggsave(here::here('figs', 'cor_quad.png'),
+ggsave(file.path('figs', 'cor_quad.png'),
        cor_quad, width = cor_w, height = cor_h)
-ggsave(here::here('figs', 'cor_vstrong_p.png'),
+ggsave(file.path('figs', 'cor_vstrong_p.png'),
        cor_vstrong_p, width = cor_w, height = cor_h)
-ggsave(here::here('figs', 'cor_strong_p.png'),
+ggsave(file.path('figs', 'cor_strong_p.png'),
        cor_strong_p, width = cor_w, height = cor_h)
-ggsave(here::here('figs', 'cor_moderate_p.png'),
+ggsave(file.path('figs', 'cor_moderate_p.png'),
        cor_moderate_p, width = cor_w, height = cor_h)
-ggsave(here::here('figs', 'cor_weak_p.png'),
+ggsave(file.path('figs', 'cor_weak_p.png'),
        cor_weak_p, width = cor_w, height = cor_h)
-ggsave(here::here('figs', 'cor_vstrong_n.png'),
+ggsave(file.path('figs', 'cor_vstrong_n.png'),
        cor_vstrong_n, width = cor_w, height = cor_h)
-ggsave(here::here('figs', 'cor_strong_n.png'),
+ggsave(file.path('figs', 'cor_strong_n.png'),
        cor_strong_n, width = cor_w, height = cor_h)
-ggsave(here::here('figs', 'cor_moderate_n.png'),
+ggsave(file.path('figs', 'cor_moderate_n.png'),
        cor_moderate_n, width = cor_w, height = cor_h)
-ggsave(here::here('figs', 'cor_weak_n.png'),
+ggsave(file.path('figs', 'cor_weak_n.png'),
        cor_weak_n, width = cor_w, height = cor_h)
-ggsave(here::here('figs', 'cor_n.png'),
+ggsave(file.path('figs', 'cor_n.png'),
        cor_n, width = cor_w*2, height = cor_h*2)
-ggsave(here::here('figs', 'cor_p.png'),
+ggsave(file.path('figs', 'cor_p.png'),
        cor_p, width = cor_w*2, height = cor_h*2)
 
 # outliers ----------------------------------------------------------------
@@ -475,15 +474,15 @@ pearson_base  <- outlier_plot(outliers %>% filter(case == 'y5'), case_p_labels)
 pearson_1     <- outlier_plot(outliers %>% filter(case == 'y2'), case_p_labels)
 pearson_2     <- outlier_plot(outliers %>% filter(case == 'y1'), case_p_labels)
 
-ggsave(here::here('figs', 'pearson_grid.png'),
+ggsave(file.path('figs', 'pearson_grid.png'),
        pearson_grid, width = 8, height = 7)
-ggsave(here::here('figs', 'spearman_grid.png'),
+ggsave(file.path('figs', 'spearman_grid.png'),
        spearman_grid, width = 8, height = 7)
-ggsave(here::here('figs', 'pearson_base.png'),
+ggsave(file.path('figs', 'pearson_base.png'),
        pearson_base, width = cor_w, height = cor_h)
-ggsave(here::here('figs', 'pearson1.png'),
+ggsave(file.path('figs', 'pearson1.png'),
        pearson_1, width = cor_w, height = cor_h)
-ggsave(here::here('figs', 'pearson2.png'),
+ggsave(file.path('figs', 'pearson2.png'),
        pearson_2, width = cor_w, height = cor_h)
 
 # Plot summary of comparison
@@ -501,7 +500,7 @@ outlier_compare <- outliers %>%
     theme_bw(base_size = 12) +
     labs(x = NULL)
 
-ggsave(here::here('figs', 'outlier_compare.png'),
+ggsave(file.path('figs', 'outlier_compare.png'),
        outlier_compare, width = 4, height = 4)
 
 # mtcars corr ------------------------------------------------------------
@@ -520,10 +519,10 @@ mtcarsScatterplot <- mtcarsScatterplotBase +
              label = paste('r = ', mtcarsCorr), hjust = 0,
              size = 7)
 
-ggsave(here::here('figs', 'mtcarsScatterplotBase.png'),
+ggsave(file.path('figs', 'mtcarsScatterplotBase.png'),
        mtcarsScatterplotBase, width = 5, height = 4)
 
-ggsave(here::here('figs', 'mtcarsScatterplot.png'),
+ggsave(file.path('figs', 'mtcarsScatterplot.png'),
        mtcarsScatterplot, width = 5, height = 4)
 
 # wildlife_impacts ------------------------------------------------------------
@@ -654,22 +653,22 @@ ggcor_mtcars_colors <- mtcars %>%
     scale_alpha_manual(values = c("TRUE" = 0.50, "FALSE" = 0)) +
     guides(color = FALSE, alpha = FALSE)
 
-ggsave(here::here('figs', 'ggcor_mtcars.png'),
+ggsave(file.path('figs', 'ggcor_mtcars.png'),
        ggcor_mtcars, width = 6, height = 5)
 
-ggsave(here::here('figs', 'ggcor_mtcars_labels.png'),
+ggsave(file.path('figs', 'ggcor_mtcars_labels.png'),
        ggcor_mtcars_labels, width = 6, height = 5)
 
-ggsave(here::here('figs', 'ggcor_mtcars_pearson.png'),
+ggsave(file.path('figs', 'ggcor_mtcars_pearson.png'),
        ggcor_mtcars_pearson, width = 6, height = 5)
 
-ggsave(here::here('figs', 'ggcor_mtcars_spearman.png'),
+ggsave(file.path('figs', 'ggcor_mtcars_spearman.png'),
        ggcor_mtcars_spearman, width = 6, height = 5)
 
-ggsave(here::here('figs', 'ggcor_mtcars_final.png'),
+ggsave(file.path('figs', 'ggcor_mtcars_final.png'),
        ggcor_mtcars_final, width = 6, height = 5)
 
-ggsave(here::here('figs', 'ggcor_mtcars_colors.png'),
+ggsave(file.path('figs', 'ggcor_mtcars_colors.png'),
        ggcor_mtcars_colors, width = 6, height = 5)
 
 # ggpairs ------------------------------------------------------------------
@@ -685,9 +684,9 @@ ggpairs_mtcars_classic <- mtcars %>%
     ggpairs() +
     theme_classic(base_size = 18)
 
-ggsave(here::here('figs', 'ggpairs_mtcars.png'),
+ggsave(file.path('figs', 'ggpairs_mtcars.png'),
        ggpairs_mtcars, width = 7, height = 6)
 
-ggsave(here::here('figs', 'ggpairs_mtcars_classic.png'),
+ggsave(file.path('figs', 'ggpairs_mtcars_classic.png'),
        ggpairs_mtcars_classic, width = 7, height = 6)
 

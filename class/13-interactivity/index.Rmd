@@ -306,7 +306,7 @@ htmltools::tags$iframe(
 ```{r, eval=FALSE}
 htmlwidgets::saveWidget(
   ggplotly(plot),
-  file = here::here('figs', 'gapminder.html')
+  file = file.path('figs', 'gapminder.html')
 )
 ```
 
@@ -316,7 +316,7 @@ htmlwidgets::saveWidget(
 
 ```{r, eval=FALSE}
 htmltools::tags$iframe(
-  src         = here::here('figs', 'gapminder.html'),
+  src         = file.path('figs', 'gapminder.html'),
   width       = "100%",
   height      = "400",
   scrolling   = "no",

@@ -44,16 +44,22 @@ website (Fall 2026), built with [Quarto](https://quarto.org/).
 - ⏳ **New slide decks not built.** W2 (`class/2-agentic-workflows/`) is the
   first genuinely new deck. Most `class/*.qmd` landing pages show "Coming soon!".
 - ⏳ Reading-reflection content (`hw/*.qmd`) not yet updated for the new toolchain.
-- ⏳ **RStudio → Positron cleanup, sitewide.** The course used to teach in
-  RStudio; it now teaches in Positron. Many pages still tell students to open
-  a `.Rproj` file or reference "RStudio" — these are stale. As of July 2026
-  this is fixed in `mini/1-data-cleaning.qmd` (done manually by John); still
-  outstanding elsewhere, e.g. `mini/2-exploring-data.qmd`,
-  `mini/3-redesign.qmd`, `project/*.qmd`, `hw/*-temp.qmd`, `software.qmd`,
-  `syllabus.qmd`, `course-primer.qmd`, `faq.qmd`, `references.qmd`,
-  `fragments/pep-talk.qmd`, and the assignment template zips/`.Rproj` files
-  themselves. Fix incrementally as each file gets revised rather than as one
-  sweep, since many of these pages are being rewritten anyway.
+- ✅ **RStudio → Positron cleanup, sitewide** (August 2026). Every page that
+  *instructed* students to use RStudio or open a `.Rproj` now says to open the
+  folder in Positron: `faq.qmd`, `course-primer.qmd`, all 10 `hw/*-temp.qmd`,
+  `project/{1-proposal,2-initial-report,3-final-report}.qmd`, plus
+  `mini/1-data-cleaning.qmd` (done earlier by John). `software.qmd` and
+  `syllabus.qmd` already named Positron and mention RStudio deliberately
+  ("we will not be using RStudio") — leave them.
+  - **Remaining RStudio strings are deliberate and must NOT be swapped:**
+    external URLs and org names (`shiny.rstudio.com`, `rstudio.github.io/DT`,
+    `rstudio-education.github.io`), image filenames
+    (`images/rstudio-cheatsheet-*.png`), the RStudio cheatsheet listings in
+    `references.qmd`, and "RStudio Package Manager" in
+    `.github/workflows/main.yml`. Renaming any of these breaks links or images.
+  - ⏳ Still stale: `templates/project-template.zip` ships a `report.Rproj`
+    that nothing references anymore (plus `__MACOSX/` junk and a 1.3 MB stale
+    `report.html`). Rebuild the zip when that assignment next gets revised.
 
 ## Conventions
 
@@ -102,9 +108,15 @@ website (Fall 2026), built with [Quarto](https://quarto.org/).
   - **`class/render.R` uses `basename(getwd())`, not `here::here()`**, to derive
     `lesson` — with the deck `.Rproj` files gone, `here()` there returns the repo
     root and every output would be named `2026-Fall`.
-  - Converted so far: W2 deck + all `practice.qmd` / `practice-solutions.qmd`.
-    The other 11 decks still call `here()` and still need their `.Rproj`;
-    convert each as it gets rewritten.
+  - **Fully converted as of August 2026** — all 14 decks (`index.qmd`, plus
+    `plots.R` / `figs.R` / `setup.R` and the legacy xaringan `index.Rmd`
+    sources), every `practice.qmd` / `practice-solutions.qmd`, and all 13 deck
+    `.Rproj` files deleted. New decks should never need one.
+  - Two exceptions worth remembering: `13-interactivity/apps/*.R` use
+    `file.path('..', 'data', ...)` because Shiny sets the working directory to
+    the app's own folder; and `class/_summary-styles.qmd` contains Typst
+    `raw.where(` / `heading.where(` — never regex `here(` without a
+    non-word-character lookbehind or you'll corrupt those.
 
 - **Class landing pages are all built from `fragments/class.qmd`** — one child
   fragment feeds every `class/N-*.qmd`, so edit it, not the individual pages. It

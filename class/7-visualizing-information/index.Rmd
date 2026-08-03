@@ -32,7 +32,6 @@ library(ggrepel)
 library(readxl)
 library(lubridate)
 library(janitor)
-library(here)
 
 options(
   htmltools.dir.version = FALSE,
@@ -86,8 +85,8 @@ path_pdf <- paste0(root, class, ".pdf")
 path_notes <- paste0(root, class, ".zip")
 
 # Read in data sets for class
-wildlife_impacts <- read_csv(here('data', 'wildlife_impacts.csv'))
-gapminder <- read_csv(here('data', 'gapminder.csv'))
+wildlife_impacts <- read_csv(file.path('data', 'wildlife_impacts.csv'))
+gapminder <- read_csv(file.path('data', 'gapminder.csv'))
 ```
 
 background-image: url("images/nasa_global_preview.png")

@@ -6,7 +6,6 @@ library(tidyverse)
 library(ggrepel)
 library(cowplot)
 library(viridis)
-library(here)
 library(janitor)
 
 # Libraries specific for mapping
@@ -25,9 +24,9 @@ library(rnaturalearthhires)
 
 # Read in data sets for class
 # Read in data
-milk_production <- read_csv(here::here('data', 'milk_production.csv'))
-internet_users  <- read_csv(here::here('data', 'internet_users_country.csv'))
-us_coffee_shops <- read_csv(here::here('data', 'us_coffee_shops.csv'))
+milk_production <- read_csv(file.path('data', 'milk_production.csv'))
+internet_users  <- read_csv(file.path('data', 'internet_users_country.csv'))
+us_coffee_shops <- read_csv(file.path('data', 'us_coffee_shops.csv'))
 
 # Filter out coffee shops to continental 48 states
 us_coffee_shops <- us_coffee_shops %>%
@@ -35,4 +34,4 @@ us_coffee_shops <- us_coffee_shops %>%
            long > -150, long < -66)
 
 # Load state_abbs data frame, containing state abbreviations 
-source(here::here('data', 'state_abbs.R'))
+source(file.path('data', 'state_abbs.R'))

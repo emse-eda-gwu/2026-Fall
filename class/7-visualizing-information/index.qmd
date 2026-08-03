@@ -58,11 +58,10 @@ bp <- function(highlight = NULL) {
   cat(lines, sep = "\n\n")
 }
 
-library(here)
 
 # Read in data sets for class
-wildlife_impacts <- read_csv(here('data', 'wildlife_impacts.csv'))
-gapminder <- read_csv(here('data', 'gapminder.csv'))
+wildlife_impacts <- read_csv(file.path('data', 'wildlife_impacts.csv'))
+gapminder <- read_csv(file.path('data', 'gapminder.csv'))
 ```
 
 ---

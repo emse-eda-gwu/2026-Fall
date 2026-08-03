@@ -55,8 +55,9 @@ unlink(zipfile)
 # Lecture-only weeks have nothing to hand out -- no zip, and the class page
 # drops the download button on its own.
 #
-# The folder's .Rproj is deliberately NOT included: it exists so here::here()
-# resolves while building the slides, and is no use to students.
+# Nothing but the practice files goes in: decks and practice files build paths
+# with file.path() relative to their own folder, so there is no .Rproj or .here
+# marker to ship.
 if (length(practice_files)) {
   zip::zip(zipfile = zipfile, files = practice_files)
 }

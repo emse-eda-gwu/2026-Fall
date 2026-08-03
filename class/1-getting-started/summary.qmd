@@ -148,10 +148,12 @@ do the tutorial there.
 
 1. **Open the project *folder* in Positron.** Do not double-click a `.R` or
    `.qmd` file — that starts R in the wrong place and every path breaks.
-2. **Build paths with `here`**, never with `"C:/Users/..."`:
+2. **Build paths with `file.path()`**, never with `"C:/Users/..."`. Paths are
+   relative to the folder you opened, and `file.path()` joins them correctly on
+   both Mac and Windows:
 
 ```r
-path <- here::here("data", "file.csv")
+path <- file.path("data", "file.csv")
 ```
 
 3. **Import with the function that matches the file type:**
@@ -245,7 +247,7 @@ a fixed value — `geom_point(aes(color = class))` colors by class, while
 |---------|-------------|
 | `could not find function` | The library isn't loaded — `library(tidyverse)` |
 | `object 'x' not found` | Typo, or you ran chunks out of order |
-| `cannot open file` | Wrong path — use `here()` and open the *folder* |
+| `cannot open file` | Wrong path — use `file.path()` and open the *folder* |
 | `unexpected symbol` | Missing comma, quote, or paren on the line above |
 | Plot never appears | You used `%>%` where a `+` belongs |
 | Numbers came in as text | Preamble rows in the file — `skip = n` |

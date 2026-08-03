@@ -7,7 +7,6 @@
 # I modified his plots to use the gapminder data instead of mtcars
 
 library(tidyverse)
-library(here)
 library(RColorBrewer)
 library(scales)
 library(cowplot)
@@ -22,7 +21,7 @@ set.seed(42)
 # Climate change barcode ------------------------------------------------------
 
 climateChangeBarcode <- read.table(
-    here('data', 'nasa_global_temps.txt'),
+    file.path('data', 'nasa_global_temps.txt'),
     col.names = c('year', 'meanTempCelsius', 'smoothTempCelsius'), skip=5) %>%
     mutate(group = "group") %>%
     ggplot(aes(x = group, y = as.factor(year))) +
@@ -39,7 +38,7 @@ climateChangeBarcode <- read.table(
         legend.position = "none",
         plot.margin = margin(-2, 0, -2, 0, "cm"))
 
-ggsave(here('figs', 'climateChangeBarcode.png'),
+ggsave(file.path('figs', 'climateChangeBarcode.png'),
        climateChangeBarcode, width = 9, height = 4, dpi = 150)
 
 # Student engagement ------------------------------------------------------
@@ -117,16 +116,16 @@ engagement_final <- engagement_data %>%
           axis.ticks = element_blank(),
           legend.position = 'none')
 
-ggsave(here('figs', 'engagement.png'),
+ggsave(file.path('figs', 'engagement.png'),
        engagement, width = 5, height = 4)
-ggsave(here('figs', 'engagement_labeled.png'),
+ggsave(file.path('figs', 'engagement_labeled.png'),
        engagement_labeled, width = 5, height = 4)
-ggsave(here('figs', 'engagement_final.png'),
+ggsave(file.path('figs', 'engagement_final.png'),
        engagement_final, width = 6, height = 5)
 
 # Milk region ----------------------------------------------------------
 
-milk_production  <- read_csv(here::here('data', 'milk_production.csv'))
+milk_production  <- read_csv(file.path('data', 'milk_production.csv'))
 
 milk_region <- milk_production %>%
     filter(region %in% c(
@@ -160,9 +159,9 @@ milk_region_label <- milk_region +
          y = 'Milk produced (billion lbs)',
          title = 'Milk production in four US regions')
 
-ggsave(here('figs', 'milk_region.png'),
+ggsave(file.path('figs', 'milk_region.png'),
        milk_region, width = 7, height = 4.5)
-ggsave(here('figs', 'milk_region_label.png'),
+ggsave(file.path('figs', 'milk_region_label.png'),
        milk_region_label, width = 8, height = 4.5)
 
 # Background Checks ------------------------------------------------------
@@ -186,7 +185,7 @@ backgroundChecks <- data.frame(
                        '\nsupport universal background checks,\n',
                        'including gun owners'))
 
-ggsave(here('figs', 'backgroundChecks.png'),
+ggsave(file.path('figs', 'backgroundChecks.png'),
        backgroundChecks, width = 5, height = 5)
 
 
@@ -211,11 +210,11 @@ anscombePlot <- ansDf %>%
         axis.title = element_blank(),
         plot.margin = margin(0, 0, 0, 0, "cm"))
 
-ggsave(here('figs', 'anscombePlot.png'),
+ggsave(file.path('figs', 'anscombePlot.png'),
        anscombePlot, width = 8, height = 6)
 
 # Print out table of data
-write_csv(anscombe, here('figs', 'anscombe.csv'))
+write_csv(anscombe, file.path('figs', 'anscombe.csv'))
 
 # Graph quality over time ----------------------------------------------------
 
@@ -227,7 +226,7 @@ graphQuality <- data.frame(
     theme_minimal_hgrid() +
     labs(x = 'Year', y = 'Graph quality', title = 'Graphing quality over time')
 
-ggsave(here('figs', 'graphQuality.png'),
+ggsave(file.path('figs', 'graphQuality.png'),
        graphQuality, width = 6, height = 3.5)
 
 # mammals ----------------------------------------------------------
@@ -241,7 +240,7 @@ mammalsScatter <- mammals %>%
     stat_smooth(method = 'lm', col = 'red', se = F, size = 0.7) +
     labs(x = 'log(body weight)', y = 'log(brain weight)')
 
-ggsave(here('figs', 'mammalsScatter.png'),
+ggsave(file.path('figs', 'mammalsScatter.png'),
        mammalsScatter, width = 5, height = 4)
 
 # Mtcars scatterplot ------------------------------------------------------
@@ -367,35 +366,35 @@ mtCarsScatterLabels <- mtCarsScatter +
     scale_y_continuous(limits = c(0, 340)) +
     theme(legend.position = 'none')
 
-ggsave(here('figs', 'mtCarsScatter.png'),
+ggsave(file.path('figs', 'mtCarsScatter.png'),
        mtCarsScatter, width = 4, height = 3)
-ggsave(here('figs', 'mtCarsScatterSmooth.png'),
+ggsave(file.path('figs', 'mtCarsScatterSmooth.png'),
        mtCarsScatterSmooth, width = 4, height = 3)
-ggsave(here('figs', 'mtCarsScatterGradient.png'),
+ggsave(file.path('figs', 'mtCarsScatterGradient.png'),
        mtCarsScatterGradient, width = 4, height = 3)
-ggsave(here('figs', 'mtCarsScatterColor.png'),
+ggsave(file.path('figs', 'mtCarsScatterColor.png'),
        mtCarsScatterColor, width = 4, height = 3)
-ggsave(here('figs', 'mtCarsScatterShape1.png'),
+ggsave(file.path('figs', 'mtCarsScatterShape1.png'),
        mtCarsScatterShape1, width = 4, height = 3)
-ggsave(here('figs', 'mtCarsScatterShape2.png'),
+ggsave(file.path('figs', 'mtCarsScatterShape2.png'),
        mtCarsScatterShape2, width = 4, height = 3)
-ggsave(here('figs', 'mtCarsScatterShape3.png'),
+ggsave(file.path('figs', 'mtCarsScatterShape3.png'),
        mtCarsScatterShape3, width = 4, height = 3)
-ggsave(here('figs', 'mtCarsScatterSmall.png'),
+ggsave(file.path('figs', 'mtCarsScatterSmall.png'),
        mtCarsScatterSmall, width = 4, height = 3)
-ggsave(here('figs', 'mtCarsScatterGray.png'),
+ggsave(file.path('figs', 'mtCarsScatterGray.png'),
        mtCarsScatterGray, width = 4, height = 3)
-ggsave(here('figs', 'mtCarsScatterGrid1.png'),
+ggsave(file.path('figs', 'mtCarsScatterGrid1.png'),
        mtCarsScatterGrid1, width = 4, height = 3)
-ggsave(here('figs', 'mtCarsScatterGrid2.png'),
+ggsave(file.path('figs', 'mtCarsScatterGrid2.png'),
        mtCarsScatterGrid2, width = 4, height = 3)
-ggsave(here('figs', 'mtCarsScatterGrid3.png'),
+ggsave(file.path('figs', 'mtCarsScatterGrid3.png'),
        mtCarsScatterGrid3, width = 4, height = 3)
-ggsave(here('figs', 'mtCarsScatterGrid4.png'),
+ggsave(file.path('figs', 'mtCarsScatterGrid4.png'),
        mtCarsScatterGrid4, width = 4, height = 3)
-ggsave(here('figs', 'mtCarsScatterGrid5.png'),
+ggsave(file.path('figs', 'mtCarsScatterGrid5.png'),
        mtCarsScatterGrid5, width = 4, height = 3)
-ggsave(here('figs', 'mtCarsScatterLabels.png'),
+ggsave(file.path('figs', 'mtCarsScatterLabels.png'),
        mtCarsScatterLabels, width = 7, height = 5)
 
 # Monster bars ------------------------------------------------------
@@ -410,7 +409,7 @@ monsterBars <- data.frame(
     labs(x = 'Year', y = 'Campaign expenditures ($ mil)',
          title = 'Total House and Senate\ncampaign expenditures')
 
-ggsave(here('figs', 'monsterBars.png'),
+ggsave(file.path('figs', 'monsterBars.png'),
        monsterBars, width = 4.5, height = 4)
 
 # Preattentive color vs. shape ----------------------------------------------
@@ -457,11 +456,11 @@ preattentive3 <- makePlotData() %>%
     plotTheme() +
     labs(x = '', y = '')
 
-ggsave(here('figs', 'preattentive1.png'),
+ggsave(file.path('figs', 'preattentive1.png'),
     preattentive1, width = 4, height = 4)
-ggsave(here('figs', 'preattentive2.png'),
+ggsave(file.path('figs', 'preattentive2.png'),
     preattentive2, width = 4, height = 4)
-ggsave(here('figs', 'preattentive3.png'),
+ggsave(file.path('figs', 'preattentive3.png'),
     preattentive3, width = 4, height = 4)
 
 # Preattentive dots ------------------------------------------------------
@@ -482,9 +481,9 @@ preattentive_good <- preattentiveData %>%
     theme_bw() +
     facet_wrap(vars(category))
 
-ggsave(here('figs', 'preattentive-bad.png'),
+ggsave(file.path('figs', 'preattentive-bad.png'),
        preattentive_bad, width = 4, height = 3)
-ggsave(here('figs', 'preattentive-good.png'),
+ggsave(file.path('figs', 'preattentive-good.png'),
        preattentive_good, width = 5, height = 5)
 
 # faceted bars -------------------------------------------------------------
@@ -500,7 +499,7 @@ facetedBars <- data.frame(
     coord_flip() +
     theme_bw()
 
-ggsave(here('figs', 'facetedBars.png'),
+ggsave(file.path('figs', 'facetedBars.png'),
        facetedBars, width = 7, height = 5)
 
 # simple bars ------------------------------------------------------------
@@ -513,7 +512,7 @@ simpleBars <- data.frame(
     scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
     theme_minimal_hgrid()
 
-ggsave(here('figs', 'simpleBars.png'),
+ggsave(file.path('figs', 'simpleBars.png'),
        simpleBars, width = 4.5, height = 4)
 
 # mpg bars ------------------------------------------------------------
@@ -535,13 +534,13 @@ mpg_bars_flipped_sorted <- mpg %>%
     coord_flip() +
     theme_cowplot()
 
-ggsave(here('figs', 'mpg_bars.png'),
+ggsave(file.path('figs', 'mpg_bars.png'),
        mpg_bars, width = 6, height = 5)
-ggsave(here('figs', 'mpg_bars_bad.png'),
+ggsave(file.path('figs', 'mpg_bars_bad.png'),
        mpg_bars, width = 5, height = 5)
-ggsave(here('figs', 'mpg_bars_flipped.png'),
+ggsave(file.path('figs', 'mpg_bars_flipped.png'),
        mpg_bars_flipped, width = 6, height = 4)
-ggsave(here('figs', 'mpg_bars_flipped_sorted.png'),
+ggsave(file.path('figs', 'mpg_bars_flipped_sorted.png'),
        mpg_bars_flipped_sorted, width = 6, height = 4)
 
 # Bar chart at zero ------------------------------------------------------------
@@ -556,7 +555,7 @@ barchart_zero <- data.frame(
     scale_y_continuous(breaks = seq(0, 8, 2), limits = c(0,8),
                        expand = expansion(mult = c(0, 0.05)))
 
-ggsave(here('figs', 'barchart_zero.png'),
+ggsave(file.path('figs', 'barchart_zero.png'),
        barchart_zero, width = 3, height = 4)
 
 # Pies ------------------------------------------------------------
@@ -591,9 +590,9 @@ statesBar <- statesData %>%
     labs(x = 'Region', y = 'Area (Sq. Miles)') +
     theme(legend.position = 'none')
 
-ggsave(here('figs', 'statesPie.png'),
+ggsave(file.path('figs', 'statesPie.png'),
     statesPie, width = 5, height = 4)
-ggsave(here('figs', 'statesBar.png'),
+ggsave(file.path('figs', 'statesBar.png'),
     statesBar, width = 5, height = 4)
 
 # Color blind ------------------------------------------------------------
@@ -615,11 +614,11 @@ colorBlindBad3 <- colorBlindData %>%
     facet_wrap(vars(group)) +
     theme_bw()
 
-ggsave(here('figs', 'colorBlindBad1.png'),
+ggsave(file.path('figs', 'colorBlindBad1.png'),
        colorBlindBad1, width = 5, height = 4)
-ggsave(here('figs', 'colorBlindBad2.png'),
+ggsave(file.path('figs', 'colorBlindBad2.png'),
        colorBlindBad2, width = 5, height = 4)
-ggsave(here('figs', 'colorBlindBad3.png'),
+ggsave(file.path('figs', 'colorBlindBad3.png'),
        colorBlindBad3, width = 5, height = 4)
 
 # Prisoner bars ------------------------------------------------------------
@@ -641,7 +640,7 @@ prisoner_bars <- data.frame(
         y = 'Recidivism rate (%)',
         title = 'Recidivism rate of prisoners released in 1994')
 
-ggsave(here('figs', 'prisoner_bars.png'),
+ggsave(file.path('figs', 'prisoner_bars.png'),
        prisoner_bars, width = 7, height = 4)
 
 
@@ -649,7 +648,7 @@ ggsave(here('figs', 'prisoner_bars.png'),
 # Begin ASIA plots from Hauser ---------
 #-----------------------------------------------------------------------------
 
-asia <- read_csv(here('data', 'gapminder.csv')) %>%
+asia <- read_csv(file.path('data', 'gapminder.csv')) %>%
     filter(continent == "Asia") %>%
     filter(year == max(year)) %>%
     # Removing a "middle" country so that it's just 32 countries
@@ -948,53 +947,53 @@ jr_circle <- ggplot(circleData, aes(x, y)) +
     coord_equal() +
     theme_cowplot()
 
-ggsave(here('figs', 'jr_hue.png'),
+ggsave(file.path('figs', 'jr_hue.png'),
        jr_hue, width = 5, height = 4)
-ggsave(here('figs', 'jr_hue_ordered.png'),
+ggsave(file.path('figs', 'jr_hue_ordered.png'),
        jr_hue_ordered, width = 5, height = 4)
-ggsave(here('figs', 'jr_saturation.png'),
+ggsave(file.path('figs', 'jr_saturation.png'),
        jr_saturation, width = 5, height = 4)
-ggsave(here('figs', 'jr_saturation_ordered.png'),
+ggsave(file.path('figs', 'jr_saturation_ordered.png'),
        jr_saturation_ordered, width = 5, height = 4)
-ggsave(here('figs', 'jr_saturation_ordered_zero.png'),
+ggsave(file.path('figs', 'jr_saturation_ordered_zero.png'),
        jr_saturation_ordered_zero, width = 5, height = 4)
-ggsave(here('figs', 'jr_area.png'),
+ggsave(file.path('figs', 'jr_area.png'),
        jr_area, width = 5, height = 4)
-ggsave(here('figs', 'jr_angle.png'),
+ggsave(file.path('figs', 'jr_angle.png'),
        jr_angle, width = 5, height = 4)
-ggsave(here('figs', 'jr_length.png'),
+ggsave(file.path('figs', 'jr_length.png'),
        jr_length, width = 5, height = 4)
-ggsave(here('figs', 'jr_bars.png'),
+ggsave(file.path('figs', 'jr_bars.png'),
        jr_bars, width = 5, height = 4)
-ggsave(here('figs', 'jr_position_non_aligned.png'),
+ggsave(file.path('figs', 'jr_position_non_aligned.png'),
        jr_position_non_aligned, width = 5, height = 4)
-ggsave(here('figs', 'jr_position_aligned.png'),
+ggsave(file.path('figs', 'jr_position_aligned.png'),
        jr_position_aligned, width = 5, height = 4)
-ggsave(here('figs', 'jr_position_aligned_ordered.png'),
+ggsave(file.path('figs', 'jr_position_aligned_ordered.png'),
        jr_position_aligned_ordered, width = 5, height = 4)
-ggsave(here('figs', 'jr_position_aligned_ordered_zero.png'),
+ggsave(file.path('figs', 'jr_position_aligned_ordered_zero.png'),
        jr_position_aligned_ordered_zero, width = 5, height = 4)
-ggsave(here('figs', 'jr_position_aligned_lollipop.png'),
+ggsave(file.path('figs', 'jr_position_aligned_lollipop.png'),
        jr_position_aligned_lollipop, width = 5, height = 4)
-ggsave(here('figs', 'jr_diamonds_bars_stacked.png'),
+ggsave(file.path('figs', 'jr_diamonds_bars_stacked.png'),
        jr_diamonds_bars_stacked, width = 6, height = 4)
-ggsave(here('figs', 'jr_diamonds_bars_dodged.png'),
+ggsave(file.path('figs', 'jr_diamonds_bars_dodged.png'),
        jr_diamonds_bars_dodged, width = 6, height = 4)
-ggsave(here('figs', 'jr_diamonds_line_total.png'),
+ggsave(file.path('figs', 'jr_diamonds_line_total.png'),
        jr_diamonds_line_total, width = 6, height = 4)
-ggsave(here('figs', 'jr_diamonds_line_cut.png'),
+ggsave(file.path('figs', 'jr_diamonds_line_cut.png'),
        jr_diamonds_line_cut, width = 6, height = 4)
-ggsave(here('figs', 'jr_phones_area.png'),
+ggsave(file.path('figs', 'jr_phones_area.png'),
        jr_phones_area, width = 7, height = 4)
-ggsave(here('figs', 'jr_phones_line.png'),
+ggsave(file.path('figs', 'jr_phones_line.png'),
        jr_phones_line, width = 7, height = 4)
-ggsave(here('figs', 'jr_circle.png'),
+ggsave(file.path('figs', 'jr_circle.png'),
        jr_circle, width = 5, height = 5)
 
 
 # Making a GOOD plot ----------------------------------------------------
 
-wildlife_impacts <- read_csv(here('data', 'wildlife_impacts.csv'))
+wildlife_impacts <- read_csv(file.path('data', 'wildlife_impacts.csv'))
 
 birds_before <- wildlife_impacts %>%
   count(operator) %>%
@@ -1054,19 +1053,19 @@ minimal_hgrid <- ggplot(df, aes(x = x, y = y)) +
   labs(title = "theme_minimal_hgrid()")
 cowplot_themes <- plot_grid(half_open, minimal_grid, minimal_hgrid, minimal_vgrid, nrow=1)
 
-ggsave(here('figs', 'birds_before.png'),
+ggsave(file.path('figs', 'birds_before.png'),
        birds_before, width = 4, height = 3.5)
-ggsave(here('figs', 'birds_coord_flip.png'),
+ggsave(file.path('figs', 'birds_coord_flip.png'),
        birds_coord_flip, width = 6, height = 4)
-ggsave(here('figs', 'birds_fct_reorder.png'),
+ggsave(file.path('figs', 'birds_fct_reorder.png'),
        birds_fct_reorder, width = 6.5, height = 4)
-ggsave(here('figs', 'birds_scales1.png'),
+ggsave(file.path('figs', 'birds_scales1.png'),
        birds_scales1, width = 6.5, height = 4)
-ggsave(here('figs', 'birds_scales2.png'),
+ggsave(file.path('figs', 'birds_scales2.png'),
        birds_scales2, width = 6.5, height = 4)
-ggsave(here('figs', 'birds_theme.png'),
+ggsave(file.path('figs', 'birds_theme.png'),
        birds_theme, width = 6.5, height = 4)
-ggsave(here('figs', 'birds_after.png'),
+ggsave(file.path('figs', 'birds_after.png'),
        birds_after, width = 7, height = 3.5)
-ggsave(here('figs', 'cowplot_themes.png'),
+ggsave(file.path('figs', 'cowplot_themes.png'),
        cowplot_themes, width = 15, height = 4)

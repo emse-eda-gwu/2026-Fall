@@ -1,15 +1,14 @@
 library(tidyverse)
-library(here)
 library(cowplot)
 library(waffle)
 
-avengers         <- read_csv(here('data', 'avengers.csv'))
-bears            <- read_csv(here('data', 'north_america_bear_killings.csv'))
-federal_spending <- read_csv(here('data', 'federal_spending_long.csv'))
-gapminder        <- read_csv(here('data', 'gapminder.csv'))
-lotr_words       <- read_csv(here('data', 'lotr_words.csv'))
-milk_production  <- read_csv(here('data', 'milk_production.csv'))
-wildlife_impacts <- read_csv(here('data', 'wildlife_impacts.csv'))
+avengers         <- read_csv(file.path('data', 'avengers.csv'))
+bears            <- read_csv(file.path('data', 'north_america_bear_killings.csv'))
+federal_spending <- read_csv(file.path('data', 'federal_spending_long.csv'))
+gapminder        <- read_csv(file.path('data', 'gapminder.csv'))
+lotr_words       <- read_csv(file.path('data', 'lotr_words.csv'))
+milk_production  <- read_csv(file.path('data', 'milk_production.csv'))
+wildlife_impacts <- read_csv(file.path('data', 'wildlife_impacts.csv'))
 
 # Federal spending ------------------------------------------------------
 
@@ -103,21 +102,21 @@ federal_spending_bars_highlight_title <- federal_spending_summary_highlight %>%
          y = NULL, 
          title = "The DOD's R&D budget is nearly the\nsame as all other departments combined")
 
-ggsave(here('figs', 'federal_spending_bars_unsorted.png'),
+ggsave(file.path('figs', 'federal_spending_bars_unsorted.png'),
        federal_spending_bars_unsorted, width = 6, height = 4)
-ggsave(here('figs', 'federal_spending_bars.png'),
+ggsave(file.path('figs', 'federal_spending_bars.png'),
        federal_spending_bars, width = 6, height = 4)
-ggsave(here('figs', 'federal_spending_bars_top5.png'),
+ggsave(file.path('figs', 'federal_spending_bars_top5.png'),
        federal_spending_bars_top5, width = 6, height = 4)
-ggsave(here('figs', 'federal_spending_dots.png'),
+ggsave(file.path('figs', 'federal_spending_dots.png'),
        federal_spending_dots, width = 6, height = 4)
-ggsave(here('figs', 'federal_spending_lollipop.png'),
+ggsave(file.path('figs', 'federal_spending_lollipop.png'),
        federal_spending_lollipop, width = 6, height = 4)
-ggsave(here('figs', 'federal_spending_bars_highlight.png'),
+ggsave(file.path('figs', 'federal_spending_bars_highlight.png'),
        federal_spending_bars_highlight, width = 6, height = 4)
-ggsave(here('figs', 'federal_spending_bars_highlight_title.png'),
+ggsave(file.path('figs', 'federal_spending_bars_highlight_title.png'),
        federal_spending_bars_highlight_title, width = 6, height = 4)
-ggsave(here('figs', 'federal_spending_bars_highlight_badcolor.png'),
+ggsave(file.path('figs', 'federal_spending_bars_highlight_badcolor.png'),
        federal_spending_bars_highlight_badcolor, width = 6, height = 4)
 
 # gapminder --------------------------------------------------------
@@ -161,11 +160,11 @@ life_expectancy_dots <- gapminder_americas %>%
     labs(x = 'Country',
          y = 'Life expectancy (years)')
 
-ggsave(here('figs', 'life_expectancy_bars.png'),
+ggsave(file.path('figs', 'life_expectancy_bars.png'),
        life_expectancy_bars, width = 6, height = 6)
-ggsave(here('figs', 'life_expectancy_lollipop.png'),
+ggsave(file.path('figs', 'life_expectancy_lollipop.png'),
        life_expectancy_lollipop, width = 6, height = 6)
-ggsave(here('figs', 'life_expectancy_dots.png'),
+ggsave(file.path('figs', 'life_expectancy_dots.png'),
        life_expectancy_dots, width = 6, height = 6)
 
 # milk production --------------------------------------------------------
@@ -319,25 +318,25 @@ milk_waffle_2017 <- milk_production %>%
        title = '2017 Milk Production by State',
        subtitle = '(1 square = 1 billion lbs)')
 
-ggsave(here('figs', 'milk_bars.png'),
+ggsave(file.path('figs', 'milk_bars.png'),
        milk_bars, width = 6, height = 5)
-ggsave(here('figs', 'milk_dots.png'),
+ggsave(file.path('figs', 'milk_dots.png'),
        milk_dots, width = 6, height = 5)
-ggsave(here('figs', 'milk_lollipop.png'),
+ggsave(file.path('figs', 'milk_lollipop.png'),
        milk_lollipop, width = 6, height = 5)
-ggsave(here('figs', 'milk_2017_bars_stacked.png'),
+ggsave(file.path('figs', 'milk_2017_bars_stacked.png'),
        milk_2017_bars_stacked, width = 4, height = 6)
-ggsave(here('figs', 'milk_2017_bars_stacked_rotated.png'),
+ggsave(file.path('figs', 'milk_2017_bars_stacked_rotated.png'),
        milk_2017_bars_stacked_rotated, width = 7, height = 3.5)
-ggsave(here('figs', 'milk_2017_bars_stacked_toomany.png'),
+ggsave(file.path('figs', 'milk_2017_bars_stacked_toomany.png'),
        milk_2017_bars_stacked_toomany, width = 4, height = 6)
-ggsave(here('figs', 'milk_2017_bars_dodged.png'),
+ggsave(file.path('figs', 'milk_2017_bars_dodged.png'),
        milk_2017_bars_dodged, width = 7, height = 3.5)
-ggsave(here('figs', 'milk_compare_bars_stacked.png'),
+ggsave(file.path('figs', 'milk_compare_bars_stacked.png'),
        milk_compare_bars_stacked, width = 7, height = 3.5)
-ggsave(here('figs', 'milk_compare_bars_dodged.png'),
+ggsave(file.path('figs', 'milk_compare_bars_dodged.png'),
        milk_compare_bars_dodged, width = 7, height = 4)
-ggsave(here('figs', 'milk_waffle_2017.png'),
+ggsave(file.path('figs', 'milk_waffle_2017.png'),
        milk_waffle_2017, width = 5, height = 4)
 
 # lotr_words -----------------------------------------------------------
@@ -399,13 +398,13 @@ lotr_bars_relevel_recode <- lotr_words %>%
     expand = expansion(mult = c(0, 0.05))) +
   theme_minimal_vgrid(font_size = 18)
 
-ggsave(here('figs', 'lotr_bars.png'),
+ggsave(file.path('figs', 'lotr_bars.png'),
        lotr_bars, width = 7, height = 4)
-ggsave(here('figs', 'lotr_bars_relevel.png'),
+ggsave(file.path('figs', 'lotr_bars_relevel.png'),
        lotr_bars_relevel, width = 7, height = 4)
-ggsave(here('figs', 'lotr_bars_recode.png'),
+ggsave(file.path('figs', 'lotr_bars_recode.png'),
        lotr_bars_recode, width = 7, height = 4)
-ggsave(here('figs', 'lotr_bars_relevel_recode.png'),
+ggsave(file.path('figs', 'lotr_bars_relevel_recode.png'),
        lotr_bars_relevel_recode, width = 7, height = 4)
 
 # avengers --------------------------------------------------------------
@@ -447,9 +446,9 @@ avengers_bars_top10_gender <- avengers %>%
     expand = expansion(mult = c(0, 0.05))) +
   theme_minimal_vgrid(font_size = 18)
 
-ggsave(here('figs', 'avengers_bars.png'),
+ggsave(file.path('figs', 'avengers_bars.png'),
        avengers_bars, width = 8, height = 8)
-ggsave(here('figs', 'avengers_bars_top10.png'),
+ggsave(file.path('figs', 'avengers_bars_top10.png'),
        avengers_bars_top10, width = 8, height = 8)
-ggsave(here('figs', 'avengers_bars_top10_gender.png'),
+ggsave(file.path('figs', 'avengers_bars_top10_gender.png'),
        avengers_bars_top10_gender, width = 8, height = 8)
