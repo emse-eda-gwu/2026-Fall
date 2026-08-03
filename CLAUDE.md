@@ -96,15 +96,15 @@ website (Fall 2026), built with [Quarto](https://quarto.org/).
 - **Class slides** live in `class/N-stub/` and are **excluded from render** in
   `_quarto.yml` until built; the landing page `class/N-stub.qmd` links to them.
 - **Slide-deck Quarto extensions have ONE source of truth:**
-  `class/_extensions/` (lexis + fontawesome). Each deck folder needs its own
-  physical copy because the deck folders are render-excluded: Quarto treats an
-  excluded file as standalone and only looks for `_extensions` in the file's
-  own directory (no upward search), while a NON-excluded file would find a
-  shared copy but render into `_site/` instead of in situ. Don't edit the
-  per-deck copies — edit/update `class/_extensions/`; `class/render.R`
-  refreshes the copy for the class being rendered as its first step. (A
-  symlink per deck also works and was tried first, but plain copies are
-  friendlier to Windows checkouts and GitHub tooling.)
+  `class/_extensions/` (lexis + fontawesome). Each deck folder needs an
+  `_extensions` entry of its own because the deck folders are render-excluded:
+  Quarto treats an excluded file as standalone and only looks for
+  `_extensions` in the file's own directory (no upward search), while a
+  NON-excluded file would find a shared copy but render into `_site/` instead
+  of in situ. So **every `class/N-*/_extensions` is a symlink to
+  `../_extensions`** (committed to git as a symlink) — edit/update
+  `class/_extensions/` and every deck picks it up with no copying step. New
+  deck folders need the link created: `ln -s ../_extensions _extensions`.
 - **Sizing in slide decks: `.fontNN` only — `.codeNN` no longer exists.** As
   of July 2026 the lexis theme has a single sizing system: wrap anything —
   paragraphs, lists, or code chunks — in `::: {.fontNN}` (5% steps,
