@@ -24,11 +24,10 @@ output:
 ```
 
 ```{r, include=FALSE}
-library(here)
 
 # Read in data
-wildlife_impacts <- read_csv(here::here('data', 'wildlife_impacts.csv'))
-milk_production  <- read_csv(here::here('data', 'milk_production.csv'))
+wildlife_impacts <- read_csv(file.path('data', 'wildlife_impacts.csv'))
+milk_production  <- read_csv(file.path('data', 'milk_production.csv'))
 tb_rates <- table3
 
 # Add new variables
@@ -141,16 +140,16 @@ class: center, middle, inverse
 "Clean" data
 
 ```{r, eval=FALSE}
-wildlife_impacts <- read_csv(here::here('data', 'wildlife_impacts.csv'))
-milk_production <- read_csv(here::here('data', 'milk_production.csv'))
-msleep <- read_csv(here::here('data', 'msleep.csv'))
+wildlife_impacts <- read_csv(file.path('data', 'wildlife_impacts.csv'))
+milk_production <- read_csv(file.path('data', 'milk_production.csv'))
+msleep <- read_csv(file.path('data', 'msleep.csv'))
 ```
 
 "Messy" data
 
 ```{r, eval=FALSE}
-wind <- read_excel(here::here('data', 'US_State_Wind_Energy_Facts_2018.xlsx'))
-hot_dogs <- read_excel(here::here('data', 'hot_dog_winners.xlsx'))
+wind <- read_excel(file.path('data', 'US_State_Wind_Energy_Facts_2018.xlsx'))
+hot_dogs <- read_excel(file.path('data', 'hot_dog_winners.xlsx'))
 ```
 
 ---
@@ -493,7 +492,7 @@ glimpse(wildlife_impacts2)
 ## Always check variable types after reading in data!
 
 ```{r}
-wind <- read_excel(here::here(
+wind <- read_excel(file.path(
   'data', 'US_State_Wind_Energy_Facts_2018.xlsx'))
 
 glimpse(wind)
@@ -531,7 +530,7 @@ parse_number(c("1-800-123-4567"))
 ---
 
 ```{r}
-wind <- read_excel(here::here(
+wind <- read_excel(file.path(
   'data', 'US_State_Wind_Energy_Facts_2018.xlsx')) %>%
   mutate(
     Ranking = as.numeric(Ranking),#<<
@@ -572,7 +571,7 @@ https://suzan.rbind.io/2018/01/dplyr-tutorial-1/
 .rightcol65[
 
 ```{r}
-wind <- read_excel(here::here(
+wind <- read_excel(file.path(
   'data', 'US_State_Wind_Energy_Facts_2018.xlsx'))
 
 glimpse(wind)
@@ -599,7 +598,7 @@ glimpse(wind)
 ```{r}
 library(janitor) #<<
 
-wind <- read_excel(here::here(
+wind <- read_excel(file.path(
   'data', 'US_State_Wind_Energy_Facts_2018.xlsx')) %>%
   clean_names() #<<
 
@@ -627,7 +626,7 @@ glimpse(wind)
 ```{r}
 library(janitor) #<<
 
-wind <- read_excel(here::here(
+wind <- read_excel(file.path(
   'data', 'US_State_Wind_Energy_Facts_2018.xlsx')) %>%
   clean_names(case = 'lower_camel') #<<
 
@@ -655,7 +654,7 @@ glimpse(wind)
 ```{r}
 library(janitor) #<<
 
-wind <- read_excel(here::here(
+wind <- read_excel(file.path(
   'data', 'US_State_Wind_Energy_Facts_2018.xlsx')) %>%
   clean_names(case = 'screaming_snake') #<<
 
@@ -896,7 +895,7 @@ Read in the `hot_dog_winners.xlsx` file and adjust the variable names and types 
 
 ```{r, echo=FALSE}
 hot_dogs <- read_excel(
-    here::here('data', 'hot_dog_winners.xlsx'),
+    file.path('data', 'hot_dog_winners.xlsx'),
     col_types = c(
         'numeric', 'text', 'numeric', 'text',
         'text', 'numeric', 'text')
@@ -1606,7 +1605,7 @@ Steps:
 
 ```{r}
 hot_dogs <- read_excel(
-    here::here('data', 'hot_dog_winners.xlsx'),
+    file.path('data', 'hot_dog_winners.xlsx'),
     sheet = 'hot_dog_winners') %>%
     clean_names() %>%
     dplyr::filter(!is.na(mens))
@@ -1721,7 +1720,7 @@ Steps:
 
 ```{r}
 hot_dogs <- read_excel(
-    here::here('data', 'hot_dog_winners.xlsx'),
+    file.path('data', 'hot_dog_winners.xlsx'),
     sheet = 'hot_dog_winners') %>%
     clean_names() %>%
     dplyr::filter(!is.na(mens))
@@ -1838,7 +1837,7 @@ Divide & conquer
 
 ```{r, eval=FALSE}
 hot_dogs <- read_excel(
-    here::here('data', 'hot_dog_winners.xlsx'),
+    file.path('data', 'hot_dog_winners.xlsx'),
     sheet = 'hot_dog_winners') %>%
     clean_names() %>%
     dplyr::filter(!is.na(mens))
@@ -1876,7 +1875,7 @@ Pivot long, separate, pivot wide
 
 ```{r, eval=FALSE}
 hot_dogs <- read_excel(
-    here::here('data', 'hot_dog_winners.xlsx'),
+    file.path('data', 'hot_dog_winners.xlsx'),
     sheet = 'hot_dog_winners') %>%
     clean_names() %>%
     dplyr::filter(!is.na(mens)) %>%
@@ -1947,7 +1946,7 @@ Steps:
 
 ```{r}
 pc_sales <- read_excel(
-    here::here('data', 'pc_sales_2018.xlsx'),
+    file.path('data', 'pc_sales_2018.xlsx'),
     sheet = 'pc_sales', skip = 5) %>% #<<
     clean_names() %>%
     rename(country = regions_countries)
@@ -2107,7 +2106,7 @@ drop <- c(
   'ASIA/OCEANIA/MIDDLE EAST', 'AFRICA', 'ALL COUNTRIES')
 
 pc_sales <- read_excel(
-  here::here('data', 'pc_sales_2018.xlsx'),
+  file.path('data', 'pc_sales_2018.xlsx'),
   sheet = 'pc_sales', skip = 5) %>%
   clean_names() %>%
   rename(country = regions_countries) %>% 
@@ -2137,7 +2136,7 @@ head(pc_sales, 3)
 .leftcol[
 
 ```{r}
-pc_regions <- read_csv(here::here(
+pc_regions <- read_csv(file.path(
   "data", "pc_regions.csv"))
 
 head(pc_regions)
@@ -2178,10 +2177,10 @@ drop <- c(
   'NAFTA', 'CENTRAL & SOUTH AMERICA',
   'ASIA/OCEANIA/MIDDLE EAST', 'AFRICA', 'ALL COUNTRIES')
 
-pc_regions <- read_csv(here::here("data", "pc_regions.csv"))
+pc_regions <- read_csv(file.path("data", "pc_regions.csv"))
 
 pc_sales <- read_excel(
-  here::here('data', 'pc_sales_2018.xlsx'),
+  file.path('data', 'pc_sales_2018.xlsx'),
   sheet = 'pc_sales', skip = 5) %>%
   clean_names() %>%
   rename(country = regions_countries) %>% 

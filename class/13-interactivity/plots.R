@@ -12,8 +12,8 @@ library(reactablefmtr)
 library(sparkline)
 
 # Read in data sets for class
-gapminder <- read_csv(here::here("data", "gapminder.csv"))
-internet_users <- read_csv(here::here('data', 'internet_users_country.csv'))
+gapminder <- read_csv(file.path("data", "gapminder.csv"))
+internet_users <- read_csv(file.path('data', 'internet_users_country.csv'))
 
 # Process 
 world_internet_2015 <- ne_countries(
@@ -43,24 +43,24 @@ plot <- gapminder %>%
 # Save
 htmlwidgets::saveWidget(
   ggplotly(plot),
-  here::here('figs', 'gapminder.html'),
+  file.path('figs', 'gapminder.html'),
   selfcontained = TRUE, 
-  libdir = here::here('figs', 'libs')
+  libdir = file.path('figs', 'libs')
 )
 
 htmlwidgets::saveWidget(
   ggplotly(plot, tooltip = c("country", "pop")),
-  here::here('figs', 'gapminder_tooltip.html'), 
+  file.path('figs', 'gapminder_tooltip.html'), 
   selfcontained = TRUE, 
-  libdir = here::here('figs', 'libs')
+  libdir = file.path('figs', 'libs')
 )
 
 htmlwidgets::saveWidget(
   ggplotly(plot, tooltip = c("country", "pop")) %>%
   layout(legend = list(orientation = "h", x = 0, y = -0.3)),
-  here::here('figs', 'gapminder_legend.html'), 
+  file.path('figs', 'gapminder_legend.html'), 
   selfcontained = TRUE, 
-  libdir = here::here('figs', 'libs')
+  libdir = file.path('figs', 'libs')
 )
 
 # Use plot_ly -------
@@ -99,16 +99,16 @@ gapminder_plot_ly_anim <- plot_ly(
 # Save
 htmlwidgets::saveWidget(
   gapminder_plot_ly,
-  here::here('figs', 'gapminder_plot_ly.html'), 
+  file.path('figs', 'gapminder_plot_ly.html'), 
   selfcontained = TRUE, 
-  libdir = here::here('figs', 'libs')
+  libdir = file.path('figs', 'libs')
 )
 
 htmlwidgets::saveWidget(
   gapminder_plot_ly_anim,
-  here::here('figs', 'gapminder_plot_ly_anim.html'),
+  file.path('figs', 'gapminder_plot_ly_anim.html'),
   selfcontained = TRUE, 
-  libdir = here::here('figs', 'libs')
+  libdir = file.path('figs', 'libs')
 )
 
 # Tables - DT ---------
@@ -155,30 +155,30 @@ gapminder_dt_bars <- gapminder_dt_style %>%
 
 htmlwidgets::saveWidget(
   gapminder_dt,
-  here::here('figs', 'gapminder_dt.html'), 
+  file.path('figs', 'gapminder_dt.html'), 
   selfcontained = TRUE, 
-  libdir = here::here('figs', 'libs')
+  libdir = file.path('figs', 'libs')
 )
 
 htmlwidgets::saveWidget(
   gapminder_dt_pages,
-  here::here('figs', 'gapminder_dt_pages.html'), 
+  file.path('figs', 'gapminder_dt_pages.html'), 
   selfcontained = TRUE, 
-  libdir = here::here('figs', 'libs')
+  libdir = file.path('figs', 'libs')
 )
 
 htmlwidgets::saveWidget(
   gapminder_dt_style,
-  here::here('figs', 'gapminder_dt_style.html'), 
+  file.path('figs', 'gapminder_dt_style.html'), 
   selfcontained = TRUE, 
-  libdir = here::here('figs', 'libs')
+  libdir = file.path('figs', 'libs')
 )
 
 htmlwidgets::saveWidget(
   gapminder_dt_bars,
-  here::here('figs', 'gapminder_dt_bars.html'),
+  file.path('figs', 'gapminder_dt_bars.html'),
   selfcontained = TRUE, 
-  libdir = here::here('figs', 'libs')
+  libdir = file.path('figs', 'libs')
 )
 
 # Tables - reactable ---------
@@ -259,35 +259,35 @@ gapminder_reactable_flags <- gapminder_flags %>%
 
 htmlwidgets::saveWidget(
   gapminder_reactable,
-  here::here('figs', 'gapminder_reactable.html'), 
+  file.path('figs', 'gapminder_reactable.html'), 
   selfcontained = TRUE, 
-  libdir = here::here('figs', 'libs')
+  libdir = file.path('figs', 'libs')
 )
 
 htmlwidgets::saveWidget(
   gapminder_reactable_options,
-  here::here('figs', 'gapminder_reactable_options.html'), 
+  file.path('figs', 'gapminder_reactable_options.html'), 
   selfcontained = TRUE, 
-  libdir = here::here('figs', 'libs')
+  libdir = file.path('figs', 'libs')
 )
 
 htmlwidgets::saveWidget(
   gapminder_reactable_bars,
-  here::here('figs', 'gapminder_reactable_bars.html'), 
+  file.path('figs', 'gapminder_reactable_bars.html'), 
   selfcontained = TRUE, 
-  libdir = here::here('figs', 'libs')
+  libdir = file.path('figs', 'libs')
 )
 
 htmlwidgets::saveWidget(
   gapminder_reactable_sparkline,
-  here::here('figs', 'gapminder_reactable_sparkline.html'), 
+  file.path('figs', 'gapminder_reactable_sparkline.html'), 
   selfcontained = TRUE, 
-  libdir = here::here('figs', 'libs')
+  libdir = file.path('figs', 'libs')
 )
 
 htmlwidgets::saveWidget(
   gapminder_reactable_flags,
-  here::here('figs', 'gapminder_reactable_flags.html'),
+  file.path('figs', 'gapminder_reactable_flags.html'),
   selfcontained = TRUE, 
-  libdir = here::here('figs', 'libs')
+  libdir = file.path('figs', 'libs')
 )

@@ -20,7 +20,7 @@ polygon_world <- ggplot(world,
        aes(x = long, y = lat, group = group)) +
     geom_polygon(fill = "grey90", color = "grey60")
 
-ggsave(here::here('images', 'plots', 'polygon_world.png'),
+ggsave(file.path('images', 'plots', 'polygon_world.png'),
        polygon_world, width = 6, height = 3.7)
 
 us_states <- map_data("state")
@@ -28,7 +28,7 @@ polygon_us <- ggplot(us_states,
        aes(x = long, y = lat, group = group)) +
     geom_polygon(fill = "grey90", color = "grey60")
 
-ggsave(here::here('images', 'plots', 'polygon_us.png'),
+ggsave(file.path('images', 'plots', 'polygon_us.png'),
        polygon_us, width = 6, height = 3.7)
 
 # Simple features maps -----------------------------------------------------
@@ -39,7 +39,7 @@ world <- ne_countries(scale = "medium", returnclass = "sf")
 sf_world <- ggplot(data = world) +
     geom_sf(fill = 'grey90', color = 'grey60')
 
-ggsave(here::here('images', 'plots', 'sf_world.png'),
+ggsave(file.path('images', 'plots', 'sf_world.png'),
        sf_world, width = 6, height = 3.7)
 
 # ggplot(data = world) +
@@ -54,7 +54,7 @@ us_states <- ne_states(
 sf_us <- ggplot(data = us_states) +
     geom_sf(fill = 'grey90', color = 'grey60')
 
-ggsave(here::here('images', 'plots', 'sf_us.png'),
+ggsave(file.path('images', 'plots', 'sf_us.png'),
        sf_us, width = 6, height = 3.7)
 
 # US States, continental
@@ -66,7 +66,7 @@ us_states_cont <- ne_states(
 sf_us_cont <- ggplot(data = us_states_cont) +
     geom_sf(fill = 'grey90', color = 'grey60')
 
-ggsave(here::here('images', 'plots', 'sf_us_cont.png'),
+ggsave(file.path('images', 'plots', 'sf_us_cont.png'),
        sf_us_cont, width = 6, height = 3.7)
 
 # US with Hawaii and Alaska
@@ -81,7 +81,7 @@ us_sf %>%
     ggplot() +
     geom_sf()
 
-ggsave(here::here('images', 'plots', 'sf_us_alhi.png'),
+ggsave(file.path('images', 'plots', 'sf_us_alhi.png'),
        width = 6, height = 3.7)
 
 # US Counties
@@ -92,14 +92,14 @@ us_counties <- st_as_sf(map("county", plot = FALSE, fill = TRUE))
 sf_us_counties <- ggplot(data = us_counties) +
     geom_sf(fill = 'grey90', color = 'grey60')
 
-ggsave(here::here('images', 'plots', 'sf_us_counties.png'),
+ggsave(file.path('images', 'plots', 'sf_us_counties.png'),
        sf_us_counties, width = 6, height = 3.7)
 
 sf_us_counties_albers <- ggplot(data = us_counties) +
     geom_sf(fill = 'grey90', color = 'grey60') +
     coord_sf(crs = "ESRI:102003")
 
-ggsave(here::here('images', 'plots', 'sf_us_counties_albers.png'),
+ggsave(file.path('images', 'plots', 'sf_us_counties_albers.png'),
        sf_us_counties_albers, width = 6, height = 3.7)
 
 # China
@@ -110,7 +110,7 @@ china <- ne_states(
 sf_china <- ggplot(data = china) +
     geom_sf(fill = 'grey90', color = 'grey60')
 
-ggsave(here::here('images', 'plots', 'sf_china.png'),
+ggsave(file.path('images', 'plots', 'sf_china.png'),
        sf_china, width = 6, height = 3.7)
 
 # Africa
@@ -121,13 +121,13 @@ africa <- world %>%
 sf_africa <- ggplot(data = africa) +
     geom_sf(fill = 'grey90', color = 'grey60')
 
-ggsave(here::here('images', 'plots', 'sf_africa.png'),
+ggsave(file.path('images', 'plots', 'sf_africa.png'),
        sf_africa, width = 6, height = 3.7)
 
 
 # Read shape file --------------------------------------------------------
 
-world <- st_read(here::here(
+world <- st_read(file.path(
     'data', 'natural_earth_countries',
     'ne_50m_admin_0_countries.shp')) %>%
     clean_names()
@@ -135,13 +135,13 @@ world <- st_read(here::here(
 ggplot(data = world) +
     geom_sf(fill = 'grey90', color = 'grey60') 
 
-central_park <- st_read(here::here(
+central_park <- st_read(file.path(
     'data', 'central_park', 'CentralPark.shp'))
 
 sf_central_park <- ggplot(data = central_park) +
     geom_sf(color = 'grey75')
 
-ggsave(here::here('images', 'plots', 'sf_central_park.png'),
+ggsave(file.path('images', 'plots', 'sf_central_park.png'),
        sf_central_park, width = 8, height = 7)
 
 # Projections Polygons --------------------------------------------------------
@@ -164,14 +164,14 @@ sf_world_robinson <- ggplot(data = world) +
     geom_sf() +
     coord_sf(crs = "ESRI:54030")
 
-ggsave(here::here('images', 'plots', 'sf_world_robinson.png'),
+ggsave(file.path('images', 'plots', 'sf_world_robinson.png'),
        sf_world_robinson, width = 6, height = 3.7)
 
 sf_world_mollweide <- ggplot(data = world) +
     geom_sf() +
     coord_sf(crs = "ESRI:54009")
 
-ggsave(here::here('images', 'plots', 'sf_world_mollweide.png'),
+ggsave(file.path('images', 'plots', 'sf_world_mollweide.png'),
        sf_world_mollweide, width = 6, height = 3.7)
 
 # North America, Albers projection
@@ -184,28 +184,28 @@ sf_us_cont_albers <- ggplot(data = us_states_cont) +
     geom_sf() +
     coord_sf(crs = "ESRI:102003")
 
-ggsave(here::here('images', 'plots', 'sf_us_cont_albers.png'),
+ggsave(file.path('images', 'plots', 'sf_us_cont_albers.png'),
        sf_us_cont_albers, width = 6, height = 3.7)
 
 sf_us_cont_nad83 <- ggplot(data = us_states_cont) +
     geom_sf() +
     coord_sf(crs = 4269)
 
-ggsave(here::here('images', 'plots', 'sf_us_cont_nad83.png'),
+ggsave(file.path('images', 'plots', 'sf_us_cont_nad83.png'),
        sf_us_cont_nad83, width = 6, height = 3.7)
 
 sf_us_cont_merc <- ggplot(data = us_states_cont) +
     geom_sf() +
     coord_sf(crs = "ESRI:54004")
 
-ggsave(here::here('images', 'plots', 'sf_us_cont_merc.png'),
+ggsave(file.path('images', 'plots', 'sf_us_cont_merc.png'),
        sf_us_cont_merc, width = 6, height = 3.7)
 
 sf_us_cont_robinson <- ggplot(data = us_states_cont) +
     geom_sf() +
     coord_sf(crs = "ESRI:54030")
 
-ggsave(here::here('images', 'plots', 'sf_us_cont_robinson.png'),
+ggsave(file.path('images', 'plots', 'sf_us_cont_robinson.png'),
        sf_us_cont_robinson, width = 6, height = 3.7)
 
 # China 
@@ -218,7 +218,7 @@ sf_china_proj <- ggplot(data = china) +
     geom_sf() +
     coord_sf(crs = st_crs(china_crs))
 
-ggsave(here::here('images', 'plots', 'sf_china_proj.png'),
+ggsave(file.path('images', 'plots', 'sf_china_proj.png'),
        sf_china_proj, width = 6, height = 3.7)
 
 # Choropleth milk -------------------------------------------------------
@@ -248,7 +248,7 @@ sf_us_milk_2017 <- ggplot(us_states) +
     labs(fill = 'Milk produced\n(billions lbs)', 
          title = 'Milk Production by State in 2017')
 
-ggsave(here::here('images', 'plots', 'sf_us_milk_2017.png'),
+ggsave(file.path('images', 'plots', 'sf_us_milk_2017.png'),
        sf_us_milk_2017, width = 6, height = 3.7)
 
 # Milk fill quad
@@ -263,7 +263,7 @@ sf_us_milk_2017_quad <- ggplot(us_states) +
     labs(fill = 'Milk produced\n(billions lbs)', 
          title = 'Milk Production by State in 2017')
 
-ggsave(here::here('images', 'plots', 'sf_us_milk_2017_quad.png'),
+ggsave(file.path('images', 'plots', 'sf_us_milk_2017_quad.png'),
        sf_us_milk_2017_quad, width = 6, height = 3.7)
 
 # Albers projection
@@ -278,7 +278,7 @@ sf_us_milk_2017_albers <- ggplot(us_states) +
     labs(fill = 'Milk produced\n(billions lbs)', 
          title = 'Milk Production by State in 2017')
 
-ggsave(here::here('images', 'plots', 'sf_us_milk_2017_albers.png'),
+ggsave(file.path('images', 'plots', 'sf_us_milk_2017_albers.png'),
        sf_us_milk_2017_albers, width = 6, height = 3.7)
 # 
 # # Animation...broken
@@ -362,13 +362,13 @@ sf_world_internet_robinson <- sf_world_internet +
 sf_world_internet_mercator <- sf_world_internet +
     coord_sf(crs = "ESRI:54004")
 
-ggsave(here::here('images', 'plots', 'sf_world_internet.png'),
+ggsave(file.path('images', 'plots', 'sf_world_internet.png'),
        sf_world_internet, width = 6, height = 3.7)
 
-ggsave(here::here('images', 'plots', 'sf_world_internet_robinson.png'),
+ggsave(file.path('images', 'plots', 'sf_world_internet_robinson.png'),
        sf_world_internet_robinson, width = 6, height = 3.7)
 
-ggsave(here::here('images', 'plots', 'sf_world_internet_mercator.png'),
+ggsave(file.path('images', 'plots', 'sf_world_internet_mercator.png'),
        sf_world_internet_mercator, width = 6, height = 3.7)
 
 
@@ -416,7 +416,7 @@ uk_cities_plot <- ggplot() +
     coord_map() +
     theme_void()
 
-ggsave(here::here('images', 'plots', 'uk_cities_plot.png'),
+ggsave(file.path('images', 'plots', 'uk_cities_plot.png'),
        uk_cities_plot, width = 4.5, height = 4.5)
 
 # Now all cities with population and color scale
@@ -463,17 +463,17 @@ uk_pop_area <- ggplot() +
 uk_pop_radius <- uk_pop_area +
     scale_radius(range = c(0.02, 7), breaks = mybreaks)
 
-ggsave(here::here('images', 'plots', 'uk_pop_area.png'),
+ggsave(file.path('images', 'plots', 'uk_pop_area.png'),
        uk_pop_area, width = 4.5, height = 4.5)
 
-ggsave(here::here('images', 'plots', 'uk_pop_radius.png'),
+ggsave(file.path('images', 'plots', 'uk_pop_radius.png'),
        uk_pop_radius, width = 4.5, height = 4.5)
 
 # Bubble map squirrels ------------------------------------------------------
 
-central_park <- st_read(here::here(
+central_park <- st_read(file.path(
     'data', 'central_park', 'CentralPark.shp'))
-squirrels <- read_csv(here::here('data', 'nyc_squirrels.csv'))
+squirrels <- read_csv(file.path('data', 'nyc_squirrels.csv'))
 
 squirrels <- squirrels %>% 
     filter(!is.na(primary_fur_color))
@@ -489,7 +489,7 @@ sf_central_park_squirrels <- ggplot(data = central_park) +
     labs(color = 'Primary fur color', 
          title = 'Squirrels in NYC Central Park')
 
-ggsave(here::here('images', 'plots', 'sf_central_park_squirrels.png'),
+ggsave(file.path('images', 'plots', 'sf_central_park_squirrels.png'),
        sf_central_park_squirrels, width = 8, height = 7)
 
 # Facets
@@ -504,7 +504,7 @@ sf_central_park_squirrels_facet <- ggplot(data = central_park) +
           plot.title = element_text(hjust = 0.5)) +
     labs(title = 'Squirrels in NYC Central Park')
 
-ggsave(here::here('images', 'plots', 'sf_central_park_squirrels_facet.png'),
+ggsave(file.path('images', 'plots', 'sf_central_park_squirrels_facet.png'),
        sf_central_park_squirrels_facet, width = 10, height = 4)
 
 
@@ -534,14 +534,14 @@ sf_us_coffee <- ggplot() +
     labs(color = 'Coffee shop', 
          title = 'Coffee Shops in the US')
 
-ggsave(here::here('images', 'plots', 'sf_us_coffee.png'),
+ggsave(file.path('images', 'plots', 'sf_us_coffee.png'),
        sf_us_coffee, width = 9, height = 6)
 
 # Plot points with Albers projection
 sf_us_coffee_albers_bad <- sf_us_coffee +
     coord_sf(crs = "ESRI:102003")
 
-ggsave(here::here('images', 'plots', 'sf_us_coffee_albers_bad.png'),
+ggsave(file.path('images', 'plots', 'sf_us_coffee_albers_bad.png'),
        sf_us_coffee_albers_bad, width = 9, height = 6)
 
 # First convert coordinate system of coffee shops
@@ -566,21 +566,21 @@ sf_us_coffee_base <- ggplot() +
     labs(fill = 'Coffee shop', 
          title = 'Coffee Shops in the US')
 
-ggsave(here::here('images', 'plots', 'sf_us_coffee_base.png'),
+ggsave(file.path('images', 'plots', 'sf_us_coffee_base.png'),
        sf_us_coffee_base, width = 9, height = 6)
 
 # Now add the albers CRS
 sf_us_coffee_albers <- sf_us_coffee_base +
     coord_sf(crs = "ESRI:102003")
 
-ggsave(here::here('images', 'plots', 'sf_us_coffee_albers.png'),
+ggsave(file.path('images', 'plots', 'sf_us_coffee_albers.png'),
        sf_us_coffee_albers, width = 9, height = 6)
 
 # LCC projection
 sf_us_coffee_lcc <- sf_us_coffee_base +
     coord_sf(crs = "ESRI:102004") 
 
-ggsave(here::here('images', 'plots', 'sf_us_coffee_lcc.png'),
+ggsave(file.path('images', 'plots', 'sf_us_coffee_lcc.png'),
        sf_us_coffee_lcc, width = 9, height = 6)
 
 
@@ -606,7 +606,7 @@ sf_us_labeled <- ggplot(us_states_cont) +
     geom_label(aes(x = label_x, y = label_y, label = state_abb)) +
     theme_void(base_size = 15)
     
-ggsave(here::here('images', 'plots', 'sf_us_labeled.png'),
+ggsave(file.path('images', 'plots', 'sf_us_labeled.png'),
        sf_us_labeled, width = 9, height = 5.5)
 
 
@@ -630,7 +630,7 @@ ggsave(here::here('images', 'plots', 'sf_us_labeled.png'),
 int_users_2015 <- internet_users %>%
     filter(year == 2015)
 
-world_shapes <- st_read(here::here(
+world_shapes <- st_read(file.path(
     'data', 'natural_earth_countries', 'ne_50m_admin_0_countries.shp'),
     stringsAsFactors = FALSE) %>%
     clean_names()

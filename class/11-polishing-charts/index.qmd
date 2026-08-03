@@ -76,11 +76,11 @@ scales::show_col(colors)
 ```{r}
 #| eval: false
 
-wildlife_impacts <- read_csv(here::here('data', 'wildlife_impacts.csv'))
-federal_spending <- read_csv(here::here('data', 'federal_spending_long.csv'))
-milk_production  <- read_csv(here::here('data', 'milk_production.csv'))
-lotr_words       <- read_csv(here::here('data', 'lotr_words.csv'))
-msleep           <- read_csv(here::here('data', 'msleep.csv'))
+wildlife_impacts <- read_csv(file.path('data', 'wildlife_impacts.csv'))
+federal_spending <- read_csv(file.path('data', 'federal_spending_long.csv'))
+milk_production  <- read_csv(file.path('data', 'milk_production.csv'))
+lotr_words       <- read_csv(file.path('data', 'lotr_words.csv'))
+msleep           <- read_csv(file.path('data', 'msleep.csv'))
 ```
 
 ## New (?) package:

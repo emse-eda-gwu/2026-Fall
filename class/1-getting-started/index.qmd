@@ -29,11 +29,10 @@ agenda_items <- c(
   "Visualizing Data"
 )
 
-library(here)
 library(ggrepel)
 library(palmerpenguins)
 
-lotr <- read_csv(here('data', 'lotr_words.csv'))
+lotr <- read_csv(file.path('data', 'lotr_words.csv'))
 
 engagement <- data.frame(
   City = c(643, 735, 590, 863),
@@ -1255,10 +1254,10 @@ agenda(4)
 
 ::: {.fragment}
 
-2) Use the `here` package to create file paths
+2) Build file paths with `file.path()` — relative to the folder you opened
 
 ```r
-path <- here::here("folder", "file.csv")
+path <- file.path("folder", "file.csv")
 ```
 
 :::
@@ -1285,9 +1284,8 @@ Read in `.csv` files with `read_csv()`:
 
 ```{r}
 library(tidyverse)
-library(here)
 
-csvPath <- here("data", "milk_production.csv")
+csvPath <- file.path("data", "milk_production.csv")
 milk_production <- read_csv(csvPath)
 
 head(milk_production)
@@ -1302,7 +1300,7 @@ head(milk_production)
 Read in `.txt` files with `read.table()`:
 
 ```{r}
-txtPath <- here("data", "nasa_global_temps.txt")
+txtPath <- file.path("data", "nasa_global_temps.txt")
 global_temps <- read.table(txtPath, skip = 5, header = FALSE)
 
 head(global_temps)
@@ -1319,7 +1317,7 @@ Read in `.txt` files with `read.table()`:
 ```{r}
 #| code-line-numbers: "3"
 
-txtPath <- here("data", "nasa_global_temps.txt")
+txtPath <- file.path("data", "nasa_global_temps.txt")
 global_temps <- read.table(txtPath, skip = 5, header = FALSE)
 names(global_temps) <- c("year", "no_smoothing", "loess") # Add header
 
@@ -1337,7 +1335,7 @@ Read in `.xlsx` files with `read_excel()`:
 
 library(readxl)
 
-xlsxPath <- here("data", "pv_cell_production.xlsx")
+xlsxPath <- file.path("data", "pv_cell_production.xlsx")
 pv_cells <- read_excel(xlsxPath, sheet = "Cell Prod by Country", skip = 2)
 ```
 
@@ -1364,7 +1362,7 @@ Read in `.xlsx` files with `read_excel()`:
 
 library(readxl)
 
-xlsxPath <- here("data", "pv_cell_production.xlsx")
+xlsxPath <- file.path("data", "pv_cell_production.xlsx")
 pv_cells <- read_excel(xlsxPath, sheet = "Cell Prod by Country", skip = 2) %>%
   mutate(Year = as.numeric(Year)) %>% # Convert "non-years" to NA
   filter(!is.na(Year)) # Drop NA rows in Year
@@ -1478,7 +1476,7 @@ lotr[1:2, ]
 Read in the `data.csv` file in the "data" folder:
 
 ```r
-data <- read_csv(here("data", "data.csv"))
+data <- read_csv(file.path("data", "data.csv"))
 ```
 
 Now answer these questions:
@@ -1710,7 +1708,7 @@ countdown(
 Read in the `data.csv` file in the "data" folder:
 
 ```r
-data <- read_csv(here("data", "data.csv"))
+data <- read_csv(file.path("data", "data.csv"))
 ```
 
 ::: {.font80}

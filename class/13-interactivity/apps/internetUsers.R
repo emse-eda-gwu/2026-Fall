@@ -3,7 +3,7 @@ library(tidyverse)
 library(rnaturalearth)
 
 # Load the internet user data
-internet_users  <- read_csv(here::here('data', 'internet_users_country.csv'))
+internet_users  <- read_csv(file.path('..', 'data', 'internet_users_country.csv'))
 
 # Load the world shape file with national borders
 world <- ne_countries(

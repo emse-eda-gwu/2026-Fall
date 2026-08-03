@@ -34,11 +34,11 @@ agenda_items <- c(
 library(HistData)
 
 # Read in data sets for class
-milk_production <- read_csv(here::here('data', 'milk_production.csv'))
-lotr_words <- read_csv(here::here('data', 'lotr_words.csv'))
-marathon <- read_csv(here::here('data', 'marathon.csv'))
-tb_cases <- read_csv(here::here('data', 'tb_cases.csv'))
-wildlife_impacts <- read_csv(here::here('data', 'wildlife_impacts.csv'))
+milk_production <- read_csv(file.path('data', 'milk_production.csv'))
+lotr_words <- read_csv(file.path('data', 'lotr_words.csv'))
+marathon <- read_csv(file.path('data', 'marathon.csv'))
+tb_cases <- read_csv(file.path('data', 'tb_cases.csv'))
+wildlife_impacts <- read_csv(file.path('data', 'wildlife_impacts.csv'))
 daysToShip <- data.frame(
     order = seq(12),
     warehouseA = c(3,3,3,4,4,4,5,5,5,5,5,5),

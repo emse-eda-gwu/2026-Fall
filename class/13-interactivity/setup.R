@@ -35,8 +35,8 @@ library(reactable)
 library(sparkline)
 
 # Read in data sets for class
-gapminder <- read_csv(here::here("data", "gapminder.csv"))
-internet_users <- read_csv(here::here('data', 'internet_users_country.csv'))
+gapminder <- read_csv(file.path("data", "gapminder.csv"))
+internet_users <- read_csv(file.path('data', 'internet_users_country.csv'))
 
 # Process
 world_internet_2015 <- ne_countries(

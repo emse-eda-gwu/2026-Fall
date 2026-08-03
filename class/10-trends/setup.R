@@ -3,20 +3,19 @@ library(cowplot)
 library(viridis)
 library(gganimate)
 library(ggrepel)
-library(here)
 
 # Set main plot theme
 theme_set(theme_cowplot(font_size = 20))
 
 # Read in data
-gapminder        <- read_csv(here::here('data', 'gapminder.csv'))
-milk_production  <- read_csv(here::here('data', 'milk_production.csv'))
-global_temps     <- read_csv(here::here('data', 'nasa_global_temps.csv'))
-hotdogs          <- read_csv(here::here('data', 'hot_dog_winners.csv'))
-internet_country <- read_csv(here::here('data', 'internet_users_country.csv'))
-internet_region  <- read_csv(here::here('data', 'internet_users_region.csv'))
-us_diseases      <- read_csv(here::here('data', 'us_contagious_diseases.csv'))
-us_covid         <- read_csv(here::here('data', 'us_covid.csv'))
+gapminder        <- read_csv(file.path('data', 'gapminder.csv'))
+milk_production  <- read_csv(file.path('data', 'milk_production.csv'))
+global_temps     <- read_csv(file.path('data', 'nasa_global_temps.csv'))
+hotdogs          <- read_csv(file.path('data', 'hot_dog_winners.csv'))
+internet_country <- read_csv(file.path('data', 'internet_users_country.csv'))
+internet_region  <- read_csv(file.path('data', 'internet_users_region.csv'))
+us_diseases      <- read_csv(file.path('data', 'us_contagious_diseases.csv'))
+us_covid         <- read_csv(file.path('data', 'us_covid.csv'))
 
 # Modify data
 milk_production <- milk_production %>%

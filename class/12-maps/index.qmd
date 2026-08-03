@@ -71,8 +71,8 @@ countdown(
 ```{r}
 #| eval: false
 
-milk_production <- read_csv(here::here('data', 'milk_production.csv'))
-us_coffee_shops <- read_csv(here::here('data', 'us_coffee_shops.csv'))
+milk_production <- read_csv(file.path('data', 'milk_production.csv'))
+us_coffee_shops <- read_csv(file.path('data', 'us_coffee_shops.csv'))
 ```
 
 ## New packages:
@@ -486,7 +486,7 @@ Read in the "World" shape file from [Natural Earth](http://www.naturalearthdata.
 
 library(sf)
 
-world <- st_read(here::here(
+world <- st_read(file.path(
     'data', 'natural_earth_countries',
     'ne_50m_admin_0_countries.shp')) %>%
     clean_names()
@@ -509,7 +509,7 @@ Read in the "World" shape file
 
 library(sf)
 
-world <- st_read(here::here(
+world <- st_read(file.path(
   'data', 'natural_earth_countries',
   'ne_50m_admin_0_countries.shp')) %>%
   clean_names()
@@ -542,7 +542,7 @@ Read in the "Central Park" shape file [[source]](https://github.com/malcolmbarre
 
 library(sf)
 
-central_park <- st_read(here::here(
+central_park <- st_read(file.path(
   'data', 'central_park', 'CentralPark.shp'))
 ```
 
@@ -1004,7 +1004,7 @@ us_states_cont <- ne_states(
 Read in the coffee shop data
 
 ```{r}
-us_coffee_shops  <- read_csv(here::here(
+us_coffee_shops  <- read_csv(file.path(
     'data', 'us_coffee_shops.csv'))
 
 # Only keep data in continental US

@@ -25,13 +25,13 @@ output:
 
 ```{r, include=FALSE}
 # Read in data sets for class
-avengers         <- read_csv(here::here('data', 'avengers.csv'))
-bears            <- read_csv(here::here('data', 'north_america_bear_killings.csv'))
-federal_spending <- read_csv(here::here('data', 'fed_spending_long.csv'))
-gapminder        <- read_csv(here::here('data', 'gapminder.csv'))
-lotr_words       <- read_csv(here::here('data', 'lotr_words.csv'))
-milk_production  <- read_csv(here::here('data', 'milk_production.csv'))
-wildlife_impacts <- read_csv(here::here('data', 'wildlife_impacts.csv'))
+avengers         <- read_csv(file.path('data', 'avengers.csv'))
+bears            <- read_csv(file.path('data', 'north_america_bear_killings.csv'))
+federal_spending <- read_csv(file.path('data', 'fed_spending_long.csv'))
+gapminder        <- read_csv(file.path('data', 'gapminder.csv'))
+lotr_words       <- read_csv(file.path('data', 'lotr_words.csv'))
+milk_production  <- read_csv(file.path('data', 'milk_production.csv'))
+wildlife_impacts <- read_csv(file.path('data', 'wildlife_impacts.csv'))
 milk_summary_2017 <- milk_production %>%
   filter(year == 2017) %>%
   mutate(state = fct_other(state,
@@ -92,13 +92,13 @@ class: inverse, middle
 ## Today's data
 
 ```{r, eval=FALSE}
-avengers         <- read_csv(here('data', 'avengers.csv'))
-bears            <- read_csv(here('data', 'north_america_bear_killings.csv'))
-federal_spending <- read_csv(here('data', 'fed_spend_long.csv'))
-gapminder        <- read_csv(here('data', 'gapminder.csv'))
-lotr_words       <- read_csv(here('data', 'lotr_words.csv'))
-milk_production  <- read_csv(here('data', 'milk_production.csv'))
-wildlife_impacts <- read_csv(here('data', 'wildlife_impacts.csv'))
+avengers         <- read_csv(file.path('data', 'avengers.csv'))
+bears            <- read_csv(file.path('data', 'north_america_bear_killings.csv'))
+federal_spending <- read_csv(file.path('data', 'fed_spend_long.csv'))
+gapminder        <- read_csv(file.path('data', 'gapminder.csv'))
+lotr_words       <- read_csv(file.path('data', 'lotr_words.csv'))
+milk_production  <- read_csv(file.path('data', 'milk_production.csv'))
+wildlife_impacts <- read_csv(file.path('data', 'wildlife_impacts.csv'))
 ```
 
 ## New packages

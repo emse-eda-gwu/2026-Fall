@@ -27,15 +27,14 @@ agenda_items <- c(
   "Comparing distributions"
 )
 
-library(here)
 library(ggridges)
 
 # Read in data sets for class
-college_all_ages <- read_csv(here('data', 'college_all_ages.csv'))
-gapminder        <- read_csv(here('data', 'gapminder.csv'))
-marathon         <- read_csv(here('data', 'marathon.csv'))
-milk_production  <- read_csv(here('data', 'milk_production.csv'))
-internet_regions <- read_csv(here('data', 'internet_users_region.csv'))
+college_all_ages <- read_csv(file.path('data', 'college_all_ages.csv'))
+gapminder        <- read_csv(file.path('data', 'gapminder.csv'))
+marathon         <- read_csv(file.path('data', 'marathon.csv'))
+milk_production  <- read_csv(file.path('data', 'milk_production.csv'))
+internet_regions <- read_csv(file.path('data', 'internet_users_region.csv'))
 
 # Processed data
 milk_compare <- milk_production %>%
@@ -114,11 +113,11 @@ https://twitter.com/i/status/995394452821721088
 #| eval: false
 #| code-line-numbers: "5"
 
-college_all_ages <- read_csv(here('data', 'college_all_ages.csv'))
-gapminder        <- read_csv(here('data', 'gapminder.csv'))
-marathon         <- read_csv(here('data', 'marathon.csv'))
-milk_production  <- read_csv(here('data', 'milk_production.csv'))
-internet_regions <- read_csv(here('data', 'internet_users_region.csv'))
+college_all_ages <- read_csv(file.path('data', 'college_all_ages.csv'))
+gapminder        <- read_csv(file.path('data', 'gapminder.csv'))
+marathon         <- read_csv(file.path('data', 'marathon.csv'))
+milk_production  <- read_csv(file.path('data', 'milk_production.csv'))
+internet_regions <- read_csv(file.path('data', 'internet_users_region.csv'))
 ```
 
 ## New packages
