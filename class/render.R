@@ -1,5 +1,7 @@
-lesson <- strsplit(here::here(), "/")[[1]]
-lesson <- lesson[length(lesson)]
+# Run this from inside the deck folder -- everything below keys off `lesson`.
+# Deliberately NOT here::here(): deck folders sit inside the site's Quarto
+# project, so here() roots at the repo, not the deck.
+lesson <- basename(getwd())
 
 # Note: each deck's _extensions is a symlink to class/_extensions (lexis +
 # fontawesome), the single source of truth.
@@ -16,44 +18,45 @@ tools::compactPDF(paste0(lesson, ".pdf"), gs_quality = 'ebook')
 quarto::quarto_render("summary.qmd", output_format = "typst")
 file.rename("summary.pdf", paste0(lesson, "-summary.pdf"))
 
-# Zip the class practice folder up
+# Zip up the class practice files students download from the class page.
 
-files1 <- c(
+practice_base <- c(
   'data',
-  'practice-solutions.qmd',
   'practice.qmd',
-  'quarto_demo.qmd'
-)
-files2 <- c(
-  'data',
-  'practice-solutions.qmd',
-  'practice.qmd'
-)
-files3 <- files2
-files4 <- files2
-files5 <- files2
-files6 <- files2
-files8 <- files2
-files9 <- files2
-files10 <- files2
-files11 <- files2
-
-files13 <- c(
-  'caseConverter_solution.R',
-  'caseConverter.R',
-  'data',
-  'internetUsers_solution.R',
-  'internetUsers.R',
-  'mpg.R',
-  'practice-solutions.qmd',
-  'practice.qmd',
-  'shinyWidgets.R',
-  'widgets.R'
+  'practice-solutions.qmd'
 )
 
-# Create zip files of class notes
-zip::zip(
-  zipfile = paste0(lesson, ".zip"),
-  files = c(files11, paste0(lesson, ".Rproj"))
+practice_extras <- list(
+  '1-getting-started' = 'quarto_demo.qmd',
+  '2-agentic-workflows' = 'my-chart-style',
+  '13-interactivity' = c(
+    'caseConverter.R',
+    'caseConverter_solution.R',
+    'internetUsers.R',
+    'internetUsers_solution.R',
+    'mpg.R',
+    'shinyWidgets.R',
+    'widgets.R'
+  )
 )
 
+extras <- if (lesson %in% names(practice_extras)) {
+  practice_extras[[lesson]]
+} else {
+  character(0)
+}
+
+practice_files <- c(practice_base, extras)
+practice_files <- practice_files[file.exists(practice_files)]
+
+zipfile <- paste0(lesson, ".zip")
+unlink(zipfile)
+
+# Lecture-only weeks have nothing to hand out -- no zip, and the class page
+# drops the download button on its own.
+#
+# The folder's .Rproj is deliberately NOT included: it exists so here::here()
+# resolves while building the slides, and is no use to students.
+if (length(practice_files)) {
+  zip::zip(zipfile = zipfile, files = practice_files)
+}

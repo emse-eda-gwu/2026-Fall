@@ -937,10 +937,8 @@ Same request — *"mean departure delay by airline, as a bar chart"* :
 ```{r}
 #| include: false
 
-library(here)
-
-flights <- read_csv(here("data", "flights.csv"))
-airlines <- read_csv(here("data", "airlines.csv"))
+flights <- read_csv(file.path("data", "flights.csv"))
+airlines <- read_csv(file.path("data", "airlines.csv"))
 
 delay_by_airline <- flights |>
   left_join(airlines, by = "carrier") |>

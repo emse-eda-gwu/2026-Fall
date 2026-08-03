@@ -28,7 +28,6 @@ knitr::opts_chunk$set(
 
 # Load libraries
 library(tidyverse)
-library(here)
 library(readxl)
 ```
 
@@ -41,13 +40,13 @@ Write code to import the following data files from the "data" folder:
 - `uspto_clean_energy_patents.xlsx`
 
 ```{r}
-lotrPath <- here('data', 'lotr_words.csv')
+lotrPath <- file.path('data', 'lotr_words.csv')
 lotr <- read_csv(lotrPath)
 
-bearPath <- here('data', 'north_america_bear_killings.txt')
+bearPath <- file.path('data', 'north_america_bear_killings.txt')
 bears <- read.table(bearPath, header = TRUE)
 
-usptoPath <- here('data', 'uspto_clean_energy_patents.xlsx')
+usptoPath <- file.path('data', 'uspto_clean_energy_patents.xlsx')
 patents <- read_excel(usptoPath, sheet = "Figure 6-45", skip = 3)
 ```
 
@@ -89,7 +88,7 @@ view(msleep) # This is "read-only" so you can't corrupt the data :)
 Read in a data set:
 
 ```{r}
-data <- read_csv(here('data', 'data.csv'))
+data <- read_csv(file.path('data', 'data.csv'))
 ```
 
 How many rows and columns are in the data frame?
@@ -128,7 +127,7 @@ min(data$air_time, na.rm = TRUE)
 Read in the `data.csv` file in the "data" folder:
 
 ```{r}
-data <- read_csv(here('data', 'data.csv'))
+data <- read_csv(file.path('data', 'data.csv'))
 ```
 
 Now answer these questions:

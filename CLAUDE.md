@@ -61,24 +61,50 @@ website (Fall 2026), built with [Quarto](https://quarto.org/).
   students to open a `.Rproj` file or open/use "RStudio" — direct them to open
   the project folder in Positron instead. See the pending cleanup item above.
 
-- **Class practice files live in ONE repo, not per-class zips.**
-  <https://github.com/eda-f26/class-practice> holds every class's practice files
-  in subfolders. Students **clone it once** (W2, GitHub Desktop) and `Fetch
-  origin` before each class; **clone, never fork** — a clone can't push, so their
-  in-class edits stay local and never appear on GitHub. The old
-  `class/N-stub/N-stub.zip` files are gone; don't reintroduce a zip anywhere, and
-  don't add a per-class link to a subfolder (students already have the repo). The
-  URL lives in `_variables.yml` as `practice_repo` — use
-  `{{< var practice_repo >}}`, never a hardcoded link. It is deliberately the
-  same on every class page.
-  - **Append-only discipline:** once a class has been taught, its folder is
-    frozen. Fixes go in *before* that class; post-class additions must be new
-    files. Students only ever edit the current week's files, so edits to *later*
-    weeks (which happen all semester as decks get rewritten) are invisible to
-    them and their pulls stay fast-forward.
-  - **Week 1 is the exception** — GitHub Desktop isn't taught until W2, so W1
-    uses the repo's green **Code → Download ZIP** button. Students clone properly
-    in W2.
+- **Class practice files ship as a per-class zip.** Each `class/N-stub/` folder
+  holds that week's practice files; `class/render.R` zips them into
+  `class/N-stub/N-stub.zip`, and the class landing page offers it as a download.
+  Students grab the zip for each class — no repo to clone, nothing to keep in
+  sync. *(A shared `eda-f26/class-practice` clone-once repo was tried mid-2026
+  and reverted in August 2026 back to per-class zips.)*
+  - **The zip's file list lives in `render.R`, keyed by folder name, not week
+    number** — `practice_base` (`data/`, `practice.qmd`,
+    `practice-solutions.qmd`) plus a `practice_extras` entry for the few weeks
+    with one-off scripts. Keying by name means renumbering the schedule can't
+    silently hand out the wrong week's files. Listed files that don't exist are
+    dropped, so a lecture-only week (14, 15) produces no zip and
+    `fragments/class.qmd` hides the download button.
+  - **Re-run `class/render.R` from inside a deck folder** after touching that
+    week's practice files. It derives `lesson` from the working directory, so
+    there is nothing to edit per class — set the folder, run the whole script.
+  - **The folder's `.Rproj` stays out of the zip** — see the path convention
+    below.
+
+- **File paths: `here::here()` for the site, `file.path()` everywhere else.**
+  Three zones, and they don't behave the same:
+  - **The site itself** (`fragments/`, `_common.R`, the `child = here::here(...)`
+    includes) — **keep `here()`.** These files live inside the site's Quarto
+    project, so `here()` walks up to the repo root's `_quarto.yml`, which is the
+    correct root. This is the case `here` is good at, and it lets fragments reach
+    parent folders without counting `../`.
+  - **Slide decks (`class/N-stub/`)** — **use `file.path()`, paths relative to
+    the deck folder.** Deck folders are *nested inside* the project `here()`
+    locks onto, so it roots at the repo, never the deck; the `.Rproj` files
+    existed only to override that. knitr sets the working directory to the
+    `.qmd`'s own folder on render, so relative paths resolve correctly no matter
+    what's open in Positron. As each deck converts, delete its `.Rproj`.
+  - **Student practice files** — **use `file.path()`, relative to the folder.**
+    Once unzipped these sit anywhere on a student's disk, so whether `here()`
+    resolves depends on what happens to be above them. A `.here` marker would
+    work but is one more unexplained file in the folder.
+  - `file.path('data', 'x.csv')` over `'data/x.csv'` is deliberate — it's the
+    habit being taught, and it survives being shared across Mac and Windows.
+  - **`class/render.R` uses `basename(getwd())`, not `here::here()`**, to derive
+    `lesson` — with the deck `.Rproj` files gone, `here()` there returns the repo
+    root and every output would be named `2026-Fall`.
+  - Converted so far: W2 deck + all `practice.qmd` / `practice-solutions.qmd`.
+    The other 11 decks still call `here()` and still need their `.Rproj`;
+    convert each as it gets rewritten.
 
 - **Class landing pages are all built from `fragments/class.qmd`** — one child
   fragment feeds every `class/N-*.qmd`, so edit it, not the individual pages. It

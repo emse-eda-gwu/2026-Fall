@@ -34,7 +34,6 @@ knitr::opts_chunk$set(
 # Should be installed from previous classes:
 library(knitr)
 library(tidyverse)
-library(here)
 library(fontawesome)
 library(countdown)
 library(metathis)
@@ -53,9 +52,9 @@ library(reactablefmtr)
 library(sparkline)
 
 # Read in data sets
-gapminder <- read_csv(here::here("data", "gapminder.csv"))
-internet_users <- read_csv(here::here('data', 'internet_users_country.csv'))
-internet_regions <- read_csv(here('data', 'internet_users_region.csv'))
+gapminder <- read_csv(file.path("data", "gapminder.csv"))
+internet_users <- read_csv(file.path('data', 'internet_users_country.csv'))
+internet_regions <- read_csv(file.path('data', 'internet_users_region.csv'))
 ```
 
 # 1. Interactive Charts

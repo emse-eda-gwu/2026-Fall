@@ -34,11 +34,10 @@ library(cowplot)
 library(readxl)
 library(lubridate)
 library(janitor)
-library(here)
 
 # Load all the data sets:
-wildlife_impacts <- read_csv(here::here('data', 'wildlife_impacts.csv'))
-milk_production <- read_csv(here::here('data', 'milk_production.csv'))
+wildlife_impacts <- read_csv(file.path('data', 'wildlife_impacts.csv'))
+milk_production <- read_csv(file.path('data', 'milk_production.csv'))
 
 # Abbreviations data, from: https://www.50states.com/abbreviations.htm
 state_abbs <- tibble::tribble(
@@ -150,7 +149,7 @@ Read in the `hot_dog_winners.xlsx` file and adjust the variable names and types 
 
 ```{r}
 hot_dogs <- read_excel(
-    here::here('data', 'hot_dog_winners.xlsx'),
+    file.path('data', 'hot_dog_winners.xlsx'),
     col_types = c(
         'numeric', 'text', 'numeric', 'text',
         'text', 'numeric', 'text')
@@ -172,7 +171,7 @@ glimpse(hot_dogs)
 
 ```{r}
 hot_dogs <- read_excel(
-    here::here('data', 'hot_dog_winners.xlsx')) %>%
+    file.path('data', 'hot_dog_winners.xlsx')) %>%
     clean_names() %>%
     select(
         year,

@@ -29,12 +29,11 @@ library(viridis)
 library(ggrepel)
 library(gganimate)
 library(magick)
-library(here)
 
 
 # Load all the data sets:
-global_temps <- read_csv(here::here('data', 'nasa_global_temps.csv'))
-us_covid     <- read_csv(here::here('data', 'us_covid.csv'))
+global_temps <- read_csv(file.path('data', 'nasa_global_temps.csv'))
+us_covid     <- read_csv(file.path('data', 'us_covid.csv'))
 ```
 
 # 1. Visualizing single variables over time
