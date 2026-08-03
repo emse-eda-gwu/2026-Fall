@@ -838,45 +838,8 @@ built-in one.
 <section id="the-github-desktop-loop" class="center">
 <h1>The GitHub Desktop loop</h1>
 <p><br></p>
-<table class="caption-top">
-<colgroup>
-<col style="width: 23%">
-<col style="width: 50%">
-<col style="width: 26%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Term</th>
-<th>What it is</th>
-<th>Button</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Changes</strong></td>
-<td>Files you’ve edited since the last save</td>
-<td><em>(the left panel)</em></td>
-</tr>
-<tr class="even">
-<td><strong>Commit</strong></td>
-<td>Bundle those changes with a message</td>
-<td><strong>Commit to main</strong></td>
-</tr>
-<tr class="odd">
-<td><strong>Push</strong></td>
-<td>Send commits to GitHub’s copy</td>
-<td><strong>Push origin</strong></td>
-</tr>
-<tr class="even">
-<td><strong>History</strong></td>
-<td>Every commit, in order — your undo</td>
-<td><em>(the History tab)</em></td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
 <div class="font110 darkgreen">
-<p>Edit → <strong>Commit</strong> (with a message) → <strong>Push</strong></p>
+<p><strong>Changes</strong> (locally on your computer) → <strong>Commit</strong> (with a message) → <strong>Push</strong></p>
 </div>
 </section>
 </section>
@@ -937,7 +900,7 @@ built-in one.
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_6aa04d9a" data-warn-when="30" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_c8dd0a4b" data-warn-when="30" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1058,7 +1021,7 @@ built-in one.
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_04d57946" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_b02b6ff8" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1152,26 +1115,6 @@ built-in one.
 </section>
 <section class="slide level0">
 
-<h1><span class="center">Open your workspace, then launch</span></h1>
-<p><br></p>
-<h2 id="make-a-folder-no-spaces-in-the-name">1. Make a folder (no spaces in the name)</h2>
-<div class="fragment">
-<div id="in-positron-file-open-folder-and-pick-it" class="h2">
-2. In Positron: <strong>File › Open Folder…</strong> and pick it
-</div>
-</div>
-<div class="fragment">
-<div id="in-the-terminal-pane-type-claude-and-press-enter" class="h2">
-3. In the terminal pane, type <code>claude</code> and press Enter
-</div>
-</div>
-<p><br></p>
-<div class="fragment font110 darkgreen">
-<p>You <strong>describe</strong> what you want; it <strong>reads your files</strong> and <strong>proposes edits</strong>.<br> You <strong>read the diff</strong> and decide: accept, or push back.</p>
-</div>
-</section>
-<section class="slide level0">
-
 <section id="an-agent-can-do-almost-anything-with-files" class="middle">
 <h1><span class="center">An agent can do almost anything with files</span></h1>
 <p><br></p>
@@ -1245,6 +1188,42 @@ Build HTML
 </section>
 <section class="slide level0">
 
+<h1><span class="center">Claude Code is an agent (a particular “harness”)</span></h1>
+<p><br></p>
+<p>Other agents:</p>
+<div class="cols-row">
+<div class="col">
+<div id="gemini-cli" class="h3">
+<span class="blue"><a href="https://github.com/google-gemini/gemini-cli">Gemini CLI</a></span>
+</div>
+<p>Google’s open-source terminal agent</p>
+</div>
+<div class="col">
+<div id="codex" class="h3">
+<span class="darkgreen"><a href="https://openai.com/codex/">Codex</a></span>
+</div>
+<p>OpenAI’s coding agent (CLI + cloud)</p>
+</div>
+</div>
+</section>
+<section class="slide level0">
+
+<h1><span class="center">Using Claude code in Positron</span></h1>
+<p><br></p>
+<h2 id="make-a-folder-no-spaces-in-the-name">1. Make a folder (no spaces in the name)</h2>
+<div class="fragment">
+<div id="in-positron-file-open-folder-and-pick-it" class="h2">
+2. In Positron: <strong>File › Open Folder…</strong> and pick it
+</div>
+</div>
+<div class="fragment">
+<div id="in-the-terminal-pane-type-claude-and-press-enter" class="h2">
+3. In the terminal pane, type <code>claude</code> and press Enter
+</div>
+</div>
+</section>
+<section class="slide level0">
+
 <section id="your-first-agentic-project-a-quarto-website" class="inverse">
 <h1><span class="center">Your first agentic project:<br><strong>a Quarto website</strong></span></h1>
 <div class="font120">
@@ -1261,12 +1240,26 @@ Build HTML
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_edb3ea3e" data-warn-when="120" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_61c0f6d9" data-warn-when="120" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 </div>
 </div>
+</section>
+</section>
+<section class="slide level0">
+
+<section id="bonus-publish-your-site-with-github-pages" class="inverse">
+<h1><span class="center">Bonus: publish your site with GitHub Pages</span></h1>
+<p><br></p>
+<ol type="1">
+<li>Ask Claude to change the Quarto output folder from <code>_site</code> to <code>docs</code> (edit <code>_quarto.yml</code>’s <code>output-dir</code>), then re-render.</li>
+<li><strong>Commit + push</strong> your changes to GitHub.</li>
+<li>On GitHub.com, go to your repo’s <strong>Settings › Pages</strong>.</li>
+<li>Under <strong>Build and deployment</strong>, set <strong>Source: Deploy from a branch</strong>, <strong>Branch: <code>main</code></strong>, <strong>Folder: <code>/docs</code></strong> → <strong>Save</strong>.</li>
+<li>Wait a minute, then visit the URL GitHub shows you at the top of the Pages settings page.</li>
+</ol>
 </section>
 </section>
 <section class="slide level0">
@@ -1396,7 +1389,8 @@ Auto
 </section>
 <section class="slide level0">
 
-<h1><code>/init</code> — let the agent write it for you</h1>
+<h1><code>/init</code> — let the agent write <code>CLAUDE.md</code> for you</h1>
+<p><br></p>
 <div class="font110">
 <p>You don’t write <code>CLAUDE.md</code> from scratch. <code>/init</code> is a <strong>prompt that tells Claude to go read your project and describe it back to you.</strong></p>
 </div>
@@ -1474,7 +1468,7 @@ Auto
 </section>
 <section class="slide level0">
 
-<h1><code>/model</code> — pick the right brain for the job</h1>
+<h1><span class="center"><code>/model</code> — pick the right <strong>brain</strong> for the job</span></h1>
 <p><br></p>
 <table class="caption-top">
 <thead>
@@ -1625,7 +1619,7 @@ Auto
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_95e2a292" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_0059f92a" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1738,7 +1732,7 @@ Using one
 </div>
 <div class="font120">
 <ol type="1">
-<li>From the class template for today, install the <code>my-chart-style</code> skill into <code>~/.claude/skills/</code></li>
+<li>Ask Claude to copy the <code>my-chart-style</code> skill from today’s class folder into <code>.claude/skills/</code> in your project (create the folder if it doesn’t exist)</li>
 <li>Come up with a chart you’d like to see that uses the <code>flights.csv</code> data.</li>
 <li>Ask Claude for a chart first <strong>without</strong> the skill, then again invoking <strong><code>/my-chart-style</code></strong>.</li>
 <li>Modify the skill, then re-create the chart again with the modified skill (e.g., tell it a specific color to use for all charts, tell it to use a different theme, etc.)</li>
@@ -1746,7 +1740,7 @@ Using one
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_f24557bd" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_5c536f5c" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1919,7 +1913,7 @@ Using one
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_6d609140" data-warn-when="120" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_5a217c35" data-warn-when="120" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">18</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1981,6 +1975,12 @@ Using one
 <p>Direct boldly. Verify relentlessly.</p>
 </div>
 </div>
+</section>
+<section class="slide level0">
+
+<section id="use-this-link-to-form-teams" class="inverse center middle">
+<h1>Use <a href="https://docs.google.com/spreadsheets/d/1cXNvWVfZ-WN4oLqbhv76cFTXPBi0KCiQdkCG7ivm7i4/edit?usp=sharing">this link</a> to form teams</h1>
+</section>
 
 </section>
     </div>
