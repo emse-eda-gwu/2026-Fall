@@ -128,17 +128,8 @@ Send / recieve your commits **up to GitHub**<br>(the cloud copy)
 
 <br>
 
-Term            | What it is                        | Button
-----------------|-----------------------------------|------------------
-**Changes**     | Files you've edited since the last save | *(the left panel)*
-**Commit**      | Bundle those changes with a message | **Commit to main**
-**Push**        | Send commits to GitHub's copy      | **Push origin**
-**History**     | Every commit, in order — your undo | *(the History tab)*
-
-<br>
-
 ::: {.font110 .darkgreen}
-Edit → **Commit** (with a message) → **Push**
+**Changes** (locally on your computer) → **Commit** (with a message) → **Push**
 :::
 
 ---
@@ -397,29 +388,6 @@ Claude Code is the agent. **You** supply the project and the direction.
 
 ---
 
-# [Open your workspace, then launch]{.center}
-
-<br>
-
-## 1. Make a folder (no spaces in the name)
-
-::: {.fragment}
-## 2. In Positron: **File › Open Folder…** and pick it
-:::
-
-::: {.fragment}
-## 3. In the terminal pane, type `claude` and press Enter
-:::
-
-<br>
-
-::: {.fragment .font110 .darkgreen}
-You **describe** what you want; it **reads your files** and **proposes edits**.<br>
-You **read the diff** and decide: accept, or push back.
-:::
-
----
-
 {{< middle >}}
 
 # [An agent can do almost anything with files]{.center}
@@ -474,6 +442,40 @@ You **read the diff** and decide: accept, or push back.
 ### Build HTML
 :::
 
+--- 
+
+# [Claude Code is an agent (a particular "harness")]{.center}
+
+<br>
+
+Other agents:
+
+::: {.col}
+### [[Gemini CLI](https://github.com/google-gemini/gemini-cli)]{.blue}
+Google's open-source terminal agent
+:::
+
+::: {.col}
+### [[Codex](https://openai.com/codex/)]{.darkgreen}
+OpenAI's coding agent (CLI + cloud)
+:::
+
+---
+
+# [Using Claude code in Positron]{.center}
+
+<br>
+
+## 1. Make a folder (no spaces in the name)
+
+::: {.fragment}
+## 2. In Positron: **File › Open Folder…** and pick it
+:::
+
+::: {.fragment}
+## 3. In the terminal pane, type `claude` and press Enter
+:::
+
 ---
 
 {{< inverse >}}
@@ -496,6 +498,21 @@ Direct the agent to build a multi-page Quarto website about **someone you admire
 #| echo: false
 countdown(minutes = 15, warn_when = 120, top = 0, right = 0, font_size = "2em")
 ```
+
+---
+
+{{< inverse >}}
+
+# [Bonus: publish your site with GitHub Pages]{.center}
+
+<br>
+
+1. Ask Claude to change the Quarto output folder from `_site` to `docs` (edit `_quarto.yml`'s `output-dir`), then re-render.
+2. **Commit + push** your changes to GitHub.
+3. On GitHub.com, go to your repo's **Settings › Pages**.
+4. Under **Build and deployment**, set **Source: Deploy from a branch**, **Branch: `main`**, **Folder: `/docs`** → **Save**.
+5. Wait a minute, then visit the URL GitHub shows you at the top of the Pages settings page.
+
 
 ---
 
@@ -631,7 +648,9 @@ Five you'll reach for constantly:
 
 ---
 
-# `/init` — let the agent write it for you
+# `/init` — let the agent write `CLAUDE.md` for you
+
+<br>
 
 ::: {.font110}
 You don't write `CLAUDE.md` from scratch. `/init` is a **prompt that tells Claude to go read your project and describe it back to you.**
@@ -712,7 +731,7 @@ This file steers **every future session**<br>A wrong line in `CLAUDE.md` is a mi
 
 ---
 
-# `/model` — pick the right brain for the job
+# [`/model` — pick the right **brain** for the job]{.center}
 
 <br>
 
@@ -975,7 +994,7 @@ Your turn
 
 ::: {.font120}
 
-1. From the class template for today, install the `my-chart-style` skill into `~/.claude/skills/`
+1. Ask Claude to copy the `my-chart-style` skill from today's class folder into `.claude/skills/` in your project (create the folder if it doesn't exist)
 2. Come up with a chart you'd like to see that uses the `flights.csv` data.
 3. Ask Claude for a chart first **without** the skill, then again invoking **`/my-chart-style`**.
 4. Modify the skill, then re-create the chart again with the modified skill (e.g., tell it a specific color to use for all charts, tell it to use a different theme, etc.) 
