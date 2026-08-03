@@ -1075,7 +1075,80 @@ defense_strategies(1)
 
 ---
 
+{{< center >}}
 
+# The pipeline hasn't changed
+
+<br>
+
+::: {.font140 .center}
+[`data.csv`]{.blue} &nbsp;→&nbsp; [`script.R`]{.purple} &nbsp;→&nbsp; [`figure.png`]{.darkgreen}
+:::
+
+<br>
+
+::: {.font110 .center}
+Raw data in, a script in the middle, a result out.<br>That's still the whole job — agent or not.
+:::
+
+---
+
+# [Same workflow, with or without AI]{.center}
+
+<br>
+
+::: {.col}
+### {{< fa hand >}} [By hand]{.red}
+
+- Set up the project
+- Build the scripts
+- Run it
+- **Verify the output**
+:::
+
+::: {.col}
+### {{< fa robot >}} [With AI]{.darkgreen}
+
+- Set up the project
+- Build the scripts
+- Run it
+- **Verify the output** <- Still yours
+:::
+
+. . .
+
+<br>
+
+::: {.font110 .center}
+AI can do the first three. [**Verifying the output is still yours.**]{.red}
+:::
+
+---
+
+{{< center >}}
+
+# Agents rarely make a syntax mistake
+
+<br>
+
+- No typos
+- No missing brackets
+- A tidy `input/` `scripts/` `output/` layout
+:::
+
+<br>
+
+. . .
+
+::: {.font130 .center .darkgreen}
+But **running** isn't the same as **right**.
+:::
+
+<br>
+
+::: {.font120 .center}
+**You are still the gatekeeper for the results.**
+:::
 
 ---
 
@@ -1085,40 +1158,6 @@ defense_strategies(1)
 
 defense_strategies(2)
 ```
-
----
-
-{{< middle >}}
-
-# [Three ways agents goes wrong]{.center}
-
-<br>
-
-::: {.col .fragment}
-### {{< fa triangle-exclamation >}} [Plausible code,<br>wrong assumptions]{.red}
-
-Runs fine, shape looks right — but the **join, filter, or group is wrong**.
-:::
-
-::: {.col .fragment}
-### {{< fa quote-left >}} [Confident summary<br>of a noisy result]{.red}
-
-Reads like an abstract. **Confidence not calibrated** to the evidence.
-:::
-
-::: {.col .fragment}
-### {{< fa gauge-high >}} [Velocity that<br>hides the error]{.red}
-
-Errors **compound**. By the time you notice, ten steps need re-tracing.
-:::
-
-. . .
-
-<br>
-
-::: {.center}
-Each one is *invisible at the moment it happens.*
-:::
 
 ---
 
@@ -1154,24 +1193,6 @@ Different chat, different<br>prompt, different model
 
 ---
 
-{{< middle >}}
-
-# [You are the gatekeeper]{.center}
-
-<br><br>
-
-::: {.font130 .center}
-[AI assists]{.blue} &nbsp;→&nbsp; [**YOU** decide & sign off]{.darkgreen} &nbsp;→&nbsp; [a defensible claim]{.purple}
-:::
-
-<br><br>
-
-::: {.center}
-The agent drafts the mechanics.<br>**You** own the decisions and the sign-off.
-:::
-
----
-
 {{< bg-color "#EAE9EA" >}}
 
 # Your verification checklist
@@ -1185,8 +1206,28 @@ Run these every time — they're the skill this whole course is really about:
 - Did I **read the code**, not just the summary?
 - Did I **spot-check** a few values against the source file?
 - Were rows **silently dropped** (`NA` handling, inner vs. left join)?
-- Do **totals / aggregates** sanity-check?
-- Is it **reproducible** — or did it hard-code an answer?
+- Do **totals / aggregates** make sense?
+- Is it **reproducible**, or did it hard-code an answer?
+:::
+
+---
+
+{{< center >}}
+
+# What a sanity-check script looks like
+
+<br>
+
+::: {.font110}
+- {{< fa check >}} row count survived the merge — [1,200 → 1,200]{.darkgreen}
+- {{< fa check >}} every ID appears once — [0 duplicates]{.darkgreen}
+- {{< fa triangle-exclamation >}} a percentage above 100% — [check the units]{.orange}
+:::
+
+<br>
+
+::: {.font110 .center}
+Two checks passed silently. **One caught something real.**
 :::
 
 ---
@@ -1197,6 +1238,157 @@ Run these every time — they're the skill this whole course is really about:
 
 defense_strategies(3)
 ```
+
+---
+
+{{< center >}}
+
+# Sometimes you *can't* hand over the data
+
+<br>
+
+- Medical records.
+- Student grades. 
+- Proprietary sales figures.
+- Anything under an NDA or an IRB protocol.
+
+<br>
+
+. . .
+
+::: {.font120 .center .darkgreen}
+Make **fake data with the same shape**, and work on that instead.
+:::
+
+---
+
+{{< center >}}
+
+# The better reason: [you know the answer]{.blue}
+
+<br>
+
+::: {.font110}
+Real data has no answer key. **Fake data does — you wrote it.**
+:::
+
+<br>
+
+. . .
+
+::: {.font110}
+Plant exactly 3 duplicate IDs. Plant exactly 12 `NA`s.<br>Set the mean to exactly 50.
+:::
+
+<br>
+
+. . .
+
+::: {.font120 .center}
+If the script doesn't find them, [the *script* is wrong]{.red} — not the data.
+:::
+
+---
+
+# The fake-data workflow
+
+<br>
+
+::: {.font110}
+1. Build a **small fake table** with the same columns and types as the real thing
+2. Have the agent write the script against **that**
+3. Check the result against the answer **you** planted
+4. Run the *same script* on the real data — on your machine
+:::
+
+<br>
+
+. . .
+
+::: {.font120 .center .darkgreen}
+The agent never sees the real data. **The script still works on it.**
+:::
+
+---
+
+# [`charlatan`]{.blue}: fake data in R
+
+::: {.col .font80}
+```r
+install.packages("charlatan")
+library(charlatan)
+
+ch_name()
+#> "Dr. Garey Hamill"
+
+ch_job()
+#> "Corporate investment banker"
+
+# reproducible, like any RNG in R
+set.seed(42)
+```
+:::
+
+::: {.col .font80}
+```r
+# a whole data frame at once
+ch_generate("name", "job", "phone_number", n = 5)
+
+#> # A tibble: 5 x 3
+#>   name             job                 phone_number
+#>   <chr>            <chr>               <chr>
+#> 1 Dr. Garey Hamill Corporate inves...  1-536-993-1904
+#> 2 Elmer Rippin     Herbalist           (901)584-4419
+#> ...
+```
+:::
+
+<br>
+
+::: {.font105 .center}
+Also emails, addresses, colors, coordinates, credit cards, DOIs — and other locales:<br>`ch_job(locale = "fr_FR", n = 3)`
+:::
+
+---
+
+# Same idea in Python: [`faker`]{.blue}
+
+::: {.col .font80}
+```bash
+pip install Faker
+```
+
+```python
+from faker import Faker
+fake = Faker()
+
+fake.name()
+#> 'Lucy Cechtelar'
+
+fake.email()
+#> 'tremblay.noe@example.org'
+```
+:::
+
+::: {.col .font80}
+```python
+# reproducible
+Faker.seed(4321)
+
+# other locales
+fake = Faker('fr_FR')
+
+# build rows however you like
+[fake.name() for _ in range(5)]
+```
+:::
+
+<br>
+
+::: {.font105 .center}
+{{< fa circle-info >}} &nbsp;`charlatan` is an R port of this package — [same idea, either language]{.gray}<br>
+[github.com/joke2k/faker]{.font90}
+:::
 
 ---
 

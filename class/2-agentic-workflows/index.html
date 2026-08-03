@@ -900,7 +900,7 @@ built-in one.
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_9992470c" data-warn-when="30" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_32c635e1" data-warn-when="30" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1021,7 +1021,7 @@ built-in one.
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_1b0c56c5" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_e3b75b0d" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1240,7 +1240,7 @@ Build HTML
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_67c0b890" data-warn-when="120" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_7db1f7ff" data-warn-when="120" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1619,7 +1619,7 @@ Auto
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_51dc3dce" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_5df45fe6" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1740,7 +1740,7 @@ Using one
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_14df2643" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_6e48f78e" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1800,6 +1800,77 @@ Using one
 </section>
 <section class="slide level0">
 
+<section id="the-pipeline-hasnt-changed" class="center">
+<h1>The pipeline hasn’t changed</h1>
+<p><br></p>
+<div class="font140 center">
+<p><span class="blue"><code>data.csv</code></span> &nbsp;→&nbsp; <span class="purple"><code>script.R</code></span> &nbsp;→&nbsp; <span class="darkgreen"><code>figure.png</code></span></p>
+</div>
+<p><br></p>
+<div class="font110 center">
+<p>Raw data in, a script in the middle, a result out.<br>That’s still the whole job — agent or not.</p>
+</div>
+</section>
+</section>
+<section class="slide level0">
+
+<h1><span class="center">Same workflow, with or without AI</span></h1>
+<p><br></p>
+<div class="cols-row">
+<div class="col">
+<div id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2066612068616e64203e7d7d-by-hand" class="h3">
+<i class="fa-solid fa-hand" aria-label="hand"></i> <span class="red">By hand</span>
+</div>
+<ul>
+<li>Set up the project</li>
+<li>Build the scripts</li>
+<li>Run it</li>
+<li><strong>Verify the output</strong></li>
+</ul>
+</div>
+<div class="col">
+<div id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20666120726f626f74203e7d7d-with-ai" class="h3">
+<i class="fa-solid fa-robot" aria-label="robot"></i> <span class="darkgreen">With AI</span>
+</div>
+<ul>
+<li>Set up the project</li>
+<li>Build the scripts</li>
+<li>Run it</li>
+<li><strong>Verify the output</strong> &lt;- Still yours</li>
+</ul>
+</div>
+</div>
+<div class="fragment">
+<p><br></p>
+<div class="font110 center">
+<p>AI can do the first three. <span class="red"><strong>Verifying the output is still yours.</strong></span></p>
+</div>
+</div>
+</section>
+<section class="slide level0">
+
+<section id="agents-rarely-make-a-syntax-mistake" class="center">
+<h1>Agents rarely make a syntax mistake</h1>
+<p><br></p>
+<ul>
+<li>No typos</li>
+<li>No missing brackets</li>
+<li>A tidy <code>input/</code> <code>scripts/</code> <code>output/</code> layout :::</li>
+</ul>
+<p><br></p>
+<div class="fragment">
+<div class="font130 center darkgreen">
+<p>But <strong>running</strong> isn’t the same as <strong>right</strong>.</p>
+</div>
+<p><br></p>
+<div class="font120 center">
+<p><strong>You are still the gatekeeper for the results.</strong></p>
+</div>
+</div>
+</section>
+</section>
+<section class="slide level0">
+
 <section id="defense-strategies-1" class="inverse middle">
 <h1><span class="center">Defense Strategies</span><br></h1>
 <div class="cols-row">
@@ -1816,39 +1887,6 @@ Using one
 <div id="use-fake-data-1" class="h2">
 3. Use fake data
 </div>
-</div>
-</div>
-</section>
-</section>
-<section class="slide level0">
-
-<section id="three-ways-agents-goes-wrong" class="middle">
-<h1><span class="center">Three ways agents goes wrong</span></h1>
-<p><br></p>
-<div class="cols-row">
-<div class="col fragment">
-<div id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20666120747269616e676c652d6578636c616d6174696f6e203e7d7d-plausible-code-wrong-assumptions" class="h3">
-<i class="fa-solid fa-triangle-exclamation" aria-label="triangle-exclamation"></i> <span class="red">Plausible code,<br>wrong assumptions</span>
-</div>
-<p>Runs fine, shape looks right — but the <strong>join, filter, or group is wrong</strong>.</p>
-</div>
-<div class="col fragment">
-<div id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2066612071756f74652d6c656674203e7d7d-confident-summary-of-a-noisy-result" class="h3">
-<i class="fa-solid fa-quote-left" aria-label="quote-left"></i> <span class="red">Confident summary<br>of a noisy result</span>
-</div>
-<p>Reads like an abstract. <strong>Confidence not calibrated</strong> to the evidence.</p>
-</div>
-<div class="col fragment">
-<div id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2066612067617567652d68696768203e7d7d-velocity-that-hides-the-error" class="h3">
-<i class="fa-solid fa-gauge-high" aria-label="gauge-high"></i> <span class="red">Velocity that<br>hides the error</span>
-</div>
-<p>Errors <strong>compound</strong>. By the time you notice, ten steps need re-tracing.</p>
-</div>
-</div>
-<div class="fragment">
-<p><br></p>
-<div class="center">
-<p>Each one is <em>invisible at the moment it happens.</em></p>
 </div>
 </div>
 </section>
@@ -1886,20 +1924,6 @@ Using one
 </section>
 <section class="slide level0">
 
-<section id="you-are-the-gatekeeper" class="middle">
-<h1><span class="center">You are the gatekeeper</span></h1>
-<p><br><br></p>
-<div class="font130 center">
-<p><span class="blue">AI assists</span> &nbsp;→&nbsp; <span class="darkgreen"><strong>YOU</strong> decide &amp; sign off</span> &nbsp;→&nbsp; <span class="purple">a defensible claim</span></p>
-</div>
-<p><br><br></p>
-<div class="center">
-<p>The agent drafts the mechanics.<br><strong>You</strong> own the decisions and the sign-off.</p>
-</div>
-</section>
-</section>
-<section class="slide level0">
-
 <section id="your-verification-checklist" data-background-color="#EAE9EA">
 <h1>Your verification checklist</h1>
 <p><br></p>
@@ -1910,9 +1934,27 @@ Using one
 <li>Did I <strong>read the code</strong>, not just the summary?</li>
 <li>Did I <strong>spot-check</strong> a few values against the source file?</li>
 <li>Were rows <strong>silently dropped</strong> (<code>NA</code> handling, inner vs.&nbsp;left join)?</li>
-<li>Do <strong>totals / aggregates</strong> sanity-check?</li>
-<li>Is it <strong>reproducible</strong> — or did it hard-code an answer?</li>
+<li>Do <strong>totals / aggregates</strong> make sense?</li>
+<li>Is it <strong>reproducible</strong>, or did it hard-code an answer?</li>
 </ul>
+</div>
+</section>
+</section>
+<section class="slide level0">
+
+<section id="what-a-sanity-check-script-looks-like" class="center">
+<h1>What a sanity-check script looks like</h1>
+<p><br></p>
+<div class="font110">
+<ul>
+<li><i class="fa-solid fa-check" aria-label="check"></i> row count survived the merge — <span class="darkgreen">1,200 → 1,200</span></li>
+<li><i class="fa-solid fa-check" aria-label="check"></i> every ID appears once — <span class="darkgreen">0 duplicates</span></li>
+<li><i class="fa-solid fa-triangle-exclamation" aria-label="triangle-exclamation"></i> a percentage above 100% — <span class="orange">check the units</span></li>
+</ul>
+</div>
+<p><br></p>
+<div class="font110 center">
+<p>Two checks passed silently. <strong>One caught something real.</strong></p>
 </div>
 </section>
 </section>
@@ -1940,6 +1982,131 @@ Using one
 </section>
 <section class="slide level0">
 
+<section id="sometimes-you-cant-hand-over-the-data" class="center">
+<h1>Sometimes you <em>can’t</em> hand over the data</h1>
+<p><br></p>
+<ul>
+<li>Medical records.</li>
+<li>Student grades.</li>
+<li>Proprietary sales figures.</li>
+<li>Anything under an NDA or an IRB protocol.</li>
+</ul>
+<p><br></p>
+<div class="fragment">
+<div class="font120 center darkgreen">
+<p>Make <strong>fake data with the same shape</strong>, and work on that instead.</p>
+</div>
+</div>
+</section>
+</section>
+<section class="slide level0">
+
+<section id="the-better-reason-you-know-the-answer" class="center">
+<h1>The better reason: <span class="blue">you know the answer</span></h1>
+<p><br></p>
+<div class="font110">
+<p>Real data has no answer key. <strong>Fake data does — you wrote it.</strong></p>
+</div>
+<p><br></p>
+<div class="fragment">
+<div class="font110">
+<p>Plant exactly 3 duplicate IDs. Plant exactly 12 <code>NA</code>s.<br>Set the mean to exactly 50.</p>
+</div>
+<p><br></p>
+</div>
+<div class="fragment">
+<div class="font120 center">
+<p>If the script doesn’t find them, <span class="red">the <em>script</em> is wrong</span> — not the data.</p>
+</div>
+</div>
+</section>
+</section>
+<section class="slide level0">
+
+<h1>The fake-data workflow</h1>
+<p><br></p>
+<div class="font110">
+<ol type="1">
+<li>Build a <strong>small fake table</strong> with the same columns and types as the real thing</li>
+<li>Have the agent write the script against <strong>that</strong></li>
+<li>Check the result against the answer <strong>you</strong> planted</li>
+<li>Run the <em>same script</em> on the real data — on your machine</li>
+</ol>
+</div>
+<p><br></p>
+<div class="fragment">
+<div class="font120 center darkgreen">
+<p>The agent never sees the real data. <strong>The script still works on it.</strong></p>
+</div>
+</div>
+</section>
+<section class="slide level0">
+
+<h1><span class="blue"><code>charlatan</code></span>: fake data in R</h1>
+<div class="cols-row">
+<div class="col font80">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="fu">install.packages</span>(<span class="st">"charlatan"</span>)</span>
+<span id="cb2-2"><a href=""></a><span class="fu">library</span>(charlatan)</span>
+<span id="cb2-3"><a href=""></a></span>
+<span id="cb2-4"><a href=""></a><span class="fu">ch_name</span>()</span>
+<span id="cb2-5"><a href=""></a><span class="co">#&gt; "Dr. Garey Hamill"</span></span>
+<span id="cb2-6"><a href=""></a></span>
+<span id="cb2-7"><a href=""></a><span class="fu">ch_job</span>()</span>
+<span id="cb2-8"><a href=""></a><span class="co">#&gt; "Corporate investment banker"</span></span>
+<span id="cb2-9"><a href=""></a></span>
+<span id="cb2-10"><a href=""></a><span class="co"># reproducible, like any RNG in R</span></span>
+<span id="cb2-11"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="col font80">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="co"># a whole data frame at once</span></span>
+<span id="cb3-2"><a href=""></a><span class="fu">ch_generate</span>(<span class="st">"name"</span>, <span class="st">"job"</span>, <span class="st">"phone_number"</span>, <span class="at">n =</span> <span class="dv">5</span>)</span>
+<span id="cb3-3"><a href=""></a></span>
+<span id="cb3-4"><a href=""></a><span class="co">#&gt; # A tibble: 5 x 3</span></span>
+<span id="cb3-5"><a href=""></a><span class="co">#&gt;   name             job                 phone_number</span></span>
+<span id="cb3-6"><a href=""></a><span class="co">#&gt;   &lt;chr&gt;            &lt;chr&gt;               &lt;chr&gt;</span></span>
+<span id="cb3-7"><a href=""></a><span class="co">#&gt; 1 Dr. Garey Hamill Corporate inves...  1-536-993-1904</span></span>
+<span id="cb3-8"><a href=""></a><span class="co">#&gt; 2 Elmer Rippin     Herbalist           (901)584-4419</span></span>
+<span id="cb3-9"><a href=""></a><span class="co">#&gt; ...</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<p><br></p>
+<div class="font105 center">
+<p>Also emails, addresses, colors, coordinates, credit cards, DOIs — and other locales:<br><code>ch_job(locale = "fr_FR", n = 3)</code></p>
+</div>
+</section>
+<section class="slide level0">
+
+<h1>Same idea in Python: <span class="blue"><code>faker</code></span></h1>
+<div class="cols-row">
+<div class="col font80">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href=""></a><span class="ex">pip</span> install Faker</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a><span class="im">from</span> faker <span class="im">import</span> Faker</span>
+<span id="cb5-2"><a href=""></a>fake <span class="op">=</span> Faker()</span>
+<span id="cb5-3"><a href=""></a></span>
+<span id="cb5-4"><a href=""></a>fake.name()</span>
+<span id="cb5-5"><a href=""></a><span class="co">#&gt; 'Lucy Cechtelar'</span></span>
+<span id="cb5-6"><a href=""></a></span>
+<span id="cb5-7"><a href=""></a>fake.email()</span>
+<span id="cb5-8"><a href=""></a><span class="co">#&gt; 'tremblay.noe@example.org'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="col font80">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href=""></a><span class="co"># reproducible</span></span>
+<span id="cb6-2"><a href=""></a>Faker.seed(<span class="dv">4321</span>)</span>
+<span id="cb6-3"><a href=""></a></span>
+<span id="cb6-4"><a href=""></a><span class="co"># other locales</span></span>
+<span id="cb6-5"><a href=""></a>fake <span class="op">=</span> Faker(<span class="st">'fr_FR'</span>)</span>
+<span id="cb6-6"><a href=""></a></span>
+<span id="cb6-7"><a href=""></a><span class="co"># build rows however you like</span></span>
+<span id="cb6-8"><a href=""></a>[fake.name() <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<p><br></p>
+<div class="font105 center">
+<p><i class="fa-solid fa-circle-info" aria-label="circle-info"></i> &nbsp;<code>charlatan</code> is an R port of this package — <span class="gray">same idea, either language</span><br> <span class="font90">github.com/joke2k/faker</span></p>
+</div>
+</section>
+<section class="slide level0">
+
 <section class="lexis-slide-title inverse">
 <h1 class="lexis-slide-title"></h1>
 <div class="font200 fancy center">
@@ -1957,7 +2124,7 @@ Using one
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_21e84e87" data-warn-when="120" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_6ed48217" data-warn-when="120" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">18</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
