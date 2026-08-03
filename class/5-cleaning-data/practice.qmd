@@ -34,11 +34,10 @@ library(cowplot)
 library(readxl)
 library(lubridate)
 library(janitor)
-library(here)
 
 # Load all the data sets:
-wildlife_impacts <- read_csv(here::here('data', 'wildlife_impacts.csv'))
-milk_production <- read_csv(here::here('data', 'milk_production.csv'))
+wildlife_impacts <- read_csv(file.path('data', 'wildlife_impacts.csv'))
+milk_production <- read_csv(file.path('data', 'milk_production.csv'))
 
 # Abbreviations data, from: https://www.50states.com/abbreviations.htm
 state_abbs <- tibble::tribble(

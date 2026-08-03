@@ -27,19 +27,18 @@ library(HistData)
 library(GGally)
 library(palmerpenguins)
 library(tidyverse)
-library(here)
 
 # Set the global ggplot theme
 theme_set(theme_bw(base_size = 20)) # Set theme for all ggplots
 
 # Read in data
-milk_production <- read_csv(here('data', 'milk_production.csv'))
-lotr_words <- read_csv(here('data', 'lotr_words.csv'))
-marathon <- read_csv(here('data', 'marathon.csv'))
-wildlife_impacts <- read_csv(here('data', 'wildlife_impacts.csv'))
-faithful <- read_csv(here('data', 'faithful.csv'))
-candy_rankings <- read_csv(here('data', 'candy_rankings.csv'))
-msleep <- read_csv(here('data', 'msleep.csv'))
+milk_production <- read_csv(file.path('data', 'milk_production.csv'))
+lotr_words <- read_csv(file.path('data', 'lotr_words.csv'))
+marathon <- read_csv(file.path('data', 'marathon.csv'))
+wildlife_impacts <- read_csv(file.path('data', 'wildlife_impacts.csv'))
+faithful <- read_csv(file.path('data', 'faithful.csv'))
+candy_rankings <- read_csv(file.path('data', 'candy_rankings.csv'))
+msleep <- read_csv(file.path('data', 'msleep.csv'))
 ```
 
 

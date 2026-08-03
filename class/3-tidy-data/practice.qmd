@@ -24,7 +24,6 @@ knitr::opts_chunk$set(
 # Load libraries
 
 library(tidyverse)
-library(here)
 library(readxl)
 ```
 
@@ -37,9 +36,9 @@ Run the code chunk to read in the following two data files:
 - `milk_production.csv`: Data on milk production by state
 
 ```{r}
-milk_production <- read_csv(here::here('data', 'milk_production.csv'))
+milk_production <- read_csv(file.path('data', 'milk_production.csv'))
 pv_cells <- read_excel(
-    here::here('data', 'pv_cell_production.xlsx'),
+    file.path('data', 'pv_cell_production.xlsx'),
     sheet = 'Cell Prod by Country',
     skip = 2
 ) %>%
@@ -77,8 +76,8 @@ Run the code chunk to read in the following two data files:
 - `gdp.csv`: GDP of different countries over time
 
 ```{r}
-gapminder <- read_csv(here::here('data', 'gapminder.csv'))
-gdp <- read_csv(here::here('data', 'gdp.csv'))
+gapminder <- read_csv(file.path('data', 'gapminder.csv'))
+gdp <- read_csv(file.path('data', 'gdp.csv'))
 ```
 
 Now convert the data into a tidy (long) structure, then create the following summary data frames:
@@ -103,8 +102,8 @@ Run the code chunk to read in the following two data files:
 - `fed_spending.csv`: Federal R&D spending by department
 
 ```{r}
-lotr <- read_csv(here::here('data', 'lotr_words.csv'))
-fed_spending <- read_csv(here::here('data', 'fed_spend_wide.csv'))
+lotr <- read_csv(file.path('data', 'lotr_words.csv'))
+fed_spending <- read_csv(file.path('data', 'fed_spend_wide.csv'))
 ```
 
 Now convert the data into a tidy (long) structure, then create the following charts

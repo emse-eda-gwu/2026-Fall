@@ -20,22 +20,21 @@ knitr::opts_chunk$set(
 
 # install.packages("waffle")
 library(tidyverse)
-library(here)
 library(cowplot)
 library(waffle)
 
 # Read in data
-fed_spending_wide <- read_csv(here('data', 'fed_spending_wide.csv'))
-fed_spending_long <- read_csv(here('data', 'fed_spending_long.csv'))
-milk_prod_wide    <- read_csv(here('data', 'milk_prod_wide.csv'))
-milk_prod_long    <- read_csv(here('data', 'milk_prod_long.csv'))
-avengers          <- read_csv(here('data', 'avengers.csv'))
-bears             <- read_csv(here('data', 'north_america_bear_killings.csv'))
-federal_spending  <- read_csv(here('data', 'fed_spending_long.csv'))
-gapminder         <- read_csv(here('data', 'gapminder.csv'))
-lotr_words        <- read_csv(here('data', 'lotr_words.csv'))
-milk_production   <- read_csv(here('data', 'milk_production.csv'))
-wildlife_impacts  <- read_csv(here('data', 'wildlife_impacts.csv'))
+fed_spending_wide <- read_csv(file.path('data', 'fed_spending_wide.csv'))
+fed_spending_long <- read_csv(file.path('data', 'fed_spending_long.csv'))
+milk_prod_wide    <- read_csv(file.path('data', 'milk_prod_wide.csv'))
+milk_prod_long    <- read_csv(file.path('data', 'milk_prod_long.csv'))
+avengers          <- read_csv(file.path('data', 'avengers.csv'))
+bears             <- read_csv(file.path('data', 'north_america_bear_killings.csv'))
+federal_spending  <- read_csv(file.path('data', 'fed_spending_long.csv'))
+gapminder         <- read_csv(file.path('data', 'gapminder.csv'))
+lotr_words        <- read_csv(file.path('data', 'lotr_words.csv'))
+milk_production   <- read_csv(file.path('data', 'milk_production.csv'))
+wildlife_impacts  <- read_csv(file.path('data', 'wildlife_impacts.csv'))
 ```
 
 # Tidy data review
