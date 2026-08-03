@@ -900,7 +900,7 @@ built-in one.
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_32c635e1" data-warn-when="30" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_145bedc7" data-warn-when="30" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1021,7 +1021,7 @@ built-in one.
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_e3b75b0d" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_50aac46e" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1240,7 +1240,7 @@ Build HTML
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_7db1f7ff" data-warn-when="120" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_b7839bb1" data-warn-when="120" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1619,7 +1619,7 @@ Auto
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_5df45fe6" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_6cd97c0e" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1740,7 +1740,7 @@ Using one
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_6e48f78e" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_2af2462d" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -2001,35 +2001,12 @@ Using one
 </section>
 <section class="slide level0">
 
-<section id="the-better-reason-you-know-the-answer" class="center">
-<h1>The better reason: <span class="blue">you know the answer</span></h1>
-<p><br></p>
-<div class="font110">
-<p>Real data has no answer key. <strong>Fake data does — you wrote it.</strong></p>
-</div>
-<p><br></p>
-<div class="fragment">
-<div class="font110">
-<p>Plant exactly 3 duplicate IDs. Plant exactly 12 <code>NA</code>s.<br>Set the mean to exactly 50.</p>
-</div>
-<p><br></p>
-</div>
-<div class="fragment">
-<div class="font120 center">
-<p>If the script doesn’t find them, <span class="red">the <em>script</em> is wrong</span> — not the data.</p>
-</div>
-</div>
-</section>
-</section>
-<section class="slide level0">
-
 <h1>The fake-data workflow</h1>
 <p><br></p>
 <div class="font110">
 <ol type="1">
 <li>Build a <strong>small fake table</strong> with the same columns and types as the real thing</li>
 <li>Have the agent write the script against <strong>that</strong></li>
-<li>Check the result against the answer <strong>you</strong> planted</li>
 <li>Run the <em>same script</em> on the real data — on your machine</li>
 </ol>
 </div>
@@ -2112,19 +2089,22 @@ Using one
 <div class="font200 fancy center">
 <p>Practice 5</p>
 </div>
-<div class="font120">
-<p><strong>Catch the bug.</strong></p>
-<p>I’ve given Claude a task where its <em>first answer is wrong.</em> Find it with the checklist.</p>
+<p><strong>Which airline should you avoid?</strong></p>
+<p>The code will run. The chart will look great. <span class="orange">The answer may be wrong.</span></p>
 <ol type="1">
-<li>Ask Claude to join <code>flights.csv</code> with <code>airlines.csv</code> and count flights per airline</li>
-<li><strong>Something is off.</strong> Verify before you believe it.</li>
-<li>When you catch it, tell Claude <em>specifically</em> what’s wrong and have it fix it</li>
-<li><strong>Commit</strong> the fix with a message that says what was broken</li>
+<li>Ask Claude to rank the airlines by <strong>mean departure delay</strong> — joining <code>flights.csv</code> to <code>airlines.csv</code> for the names — and chart it</li>
+<li>It will hand you a clean chart and a confident answer.</li>
+<li>Then ask yourself three questions:
+<ul>
+<li>How many flights is each bar calculated from?</li>
+<li>What happened to the <strong>cancelled</strong> flights?</li>
+<li>Is any airline <strong>missing</strong> from the chart?</li>
+</ul></li>
+<li>If something is wrong, tell Claude <em>specifically</em> what’s wrong, and have it fix the chart.</li>
 </ol>
-</div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_6ed48217" data-warn-when="120" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_62c2e9ca" data-warn-when="120" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">18</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -2134,18 +2114,36 @@ Using one
 </section>
 <section class="slide level0">
 
-<h1>The catch is the whole job</h1>
-<div class="font120">
-<p>An agent can write the code. <span class="red">It cannot know if the answer is <em>true</em>.</span></p>
+<h1><span class="center">What that chart was hiding</span></h1>
+<p><br></p>
+<div class="cols-row">
+<div class="col">
+<div id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206661206d61676e696679696e672d676c617373203e7d7d-sample-size" class="h3">
+<i class="fa-solid fa-magnifying-glass" aria-label="magnifying-glass"></i> <span class="red">Sample size</span>
 </div>
+<p>Alaska ranks <strong>worst</strong>, but<br>only has <strong>20 flights</strong>.</p>
+<p>Mesa: 10. Hawaiian: 11.</p>
+<p><strong>These are tiny samples</strong></p>
+</div>
+<div class="col">
+<div id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c2066612067686f7374203e7d7d-the-vanished-airline" class="h3">
+<i class="fa-solid fa-ghost" aria-label="ghost"></i> <span class="red">The vanished airline</span>
+</div>
+<p>SkyWest flew <strong>once</strong><br>but it was <strong>cancelled</strong>.</p>
+<p><code>mean()</code> returned <code>NaN</code>, so it dropped off the chart silently.</p>
+</div>
+<div class="col">
+<div id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c206661206d61736b203e7d7d-cancellations" class="h3">
+<i class="fa-solid fa-mask" aria-label="mask"></i> <span class="red">Cancellations</span>
+</div>
+<p><code>na.rm = TRUE</code> deletes every cancelled flight.</p>
+<p>Endeavor cancelled <strong>7.3%</strong> — none of those count as “late.”</p>
+</div>
+</div>
+<p><br></p>
 <div class="fragment">
-<div class="font120">
-<p><em>Plausible</em> is not the same as <em>correct</em>. <em>Reproducible</em> is not the same as <em>defensible</em>.</p>
-</div>
-</div>
-<div class="fragment">
-<div class="font120 darkgreen">
-<p><strong>That part is yours.</strong> It’s what you’re actually being graded on.</p>
+<div class="font115 center">
+<p>Every one of these is <strong>invisible in the chart</strong> and <strong>invisible in the code</strong>.<br><span class="darkgreen">You only find them if you go looking.</span></p>
 </div>
 </div>
 </section>
@@ -2158,9 +2156,11 @@ Using one
 <section class="slide level0">
 
 <h1>Today, in one slide</h1>
+<p><br></p>
 <div class="font120 center">
 <p><strong>prompt</strong> <span class="gray">→</span> <strong>read the diff</strong> <span class="gray">→</span> <strong>verify</strong> <span class="gray">→</span> <strong>commit / push</strong></p>
 </div>
+<p><br></p>
 <div class="font110">
 <ul>
 <li>You can <strong>make a repo and push</strong> with a button</li>
@@ -2172,26 +2172,16 @@ Using one
 </section>
 <section class="slide level0">
 
-<h1>Before next week</h1>
-<div class="font110">
+<div class="middle">
+<h1 id="before-next-week"><span class="center">Before next week</span></h1>
+<p><br></p>
 <ul>
-<li>Finish pushing today’s work to your <code>eda-practice</code> repo</li>
-<li><strong>Reading reflection:</strong> read forward on tidy data + joins, try the light practice, reflect</li>
+<li><a href="https://eda.seas.gwu.edu/2026-Fall/hw/2-tidy-data.html"><strong>HW2</strong></a>: read forward on tidy data + joins, try the light practice, reflect</li>
 <li>Next week: <strong>Cleaning, Reshaping &amp; Joining</strong> — same loop, on real data</li>
 </ul>
-</div>
-<div class="fragment">
 <p><br></p>
-<div class="font130 fancy darkgreen center">
-<p>Direct boldly. Verify relentlessly.</p>
+<h1 id="use-this-link-to-form-teams"><span class="center">Use <a href="https://docs.google.com/spreadsheets/d/1cXNvWVfZ-WN4oLqbhv76cFTXPBi0KCiQdkCG7ivm7i4/edit?usp=sharing">this link</a> to form teams</span></h1>
 </div>
-</div>
-</section>
-<section class="slide level0">
-
-<section id="use-this-link-to-form-teams" class="inverse center middle">
-<h1>Use <a href="https://docs.google.com/spreadsheets/d/1cXNvWVfZ-WN4oLqbhv76cFTXPBi0KCiQdkCG7ivm7i4/edit?usp=sharing">this link</a> to form teams</h1>
-</section>
 
 </section>
     </div>

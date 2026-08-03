@@ -1262,34 +1262,6 @@ Make **fake data with the same shape**, and work on that instead.
 
 ---
 
-{{< center >}}
-
-# The better reason: [you know the answer]{.blue}
-
-<br>
-
-::: {.font110}
-Real data has no answer key. **Fake data does — you wrote it.**
-:::
-
-<br>
-
-. . .
-
-::: {.font110}
-Plant exactly 3 duplicate IDs. Plant exactly 12 `NA`s.<br>Set the mean to exactly 50.
-:::
-
-<br>
-
-. . .
-
-::: {.font120 .center}
-If the script doesn't find them, [the *script* is wrong]{.red} — not the data.
-:::
-
----
-
 # The fake-data workflow
 
 <br>
@@ -1297,8 +1269,7 @@ If the script doesn't find them, [the *script* is wrong]{.red} — not the data.
 ::: {.font110}
 1. Build a **small fake table** with the same columns and types as the real thing
 2. Have the agent write the script against **that**
-3. Check the result against the answer **you** planted
-4. Run the *same script* on the real data — on your machine
+3. Run the *same script* on the real data — on your machine
 :::
 
 <br>
@@ -1398,16 +1369,17 @@ fake = Faker('fr_FR')
 Practice 5
 :::
 
-::: {.font120}
-**Catch the bug.**
+**Which airline should you avoid?**
 
-I've given Claude a task where its *first answer is wrong.* Find it with the checklist.
+The code will run. The chart will look great. [The answer may be wrong.]{.orange}
 
-1. Ask Claude to join `flights.csv` with `airlines.csv` and count flights per airline
-2. **Something is off.** Verify before you believe it.
-3. When you catch it, tell Claude *specifically* what's wrong and have it fix it
-4. **Commit** the fix with a message that says what was broken
-:::
+1. Ask Claude to rank the airlines by **mean departure delay** — joining `flights.csv` to `airlines.csv` for the names — and chart it
+2. It will hand you a clean chart and a confident answer. 
+3. Then ask yourself three questions:
+    - How many flights is each bar calculated from?
+    - What happened to the **cancelled** flights?
+    - Is any airline **missing** from the chart?
+4. If something is wrong, tell Claude *specifically* what's wrong, and have it fix the chart.
 
 ```{r}
 #| echo: false
@@ -1416,22 +1388,42 @@ countdown(minutes = 18, warn_when = 120, top = 0, right = 0, font_size = "2em")
 
 ---
 
-# The catch is the whole job
+# [What that chart was hiding]{.center}
 
-::: {.font120}
-An agent can write the code. [It cannot know if the answer is *true*.]{.red}
+<br>
+
+::: {.col}
+### {{< fa magnifying-glass >}} [Sample size]{.red}
+
+Alaska ranks **worst**, but<br>only has **20 flights**.
+
+Mesa: 10. Hawaiian: 11.
+
+**These are tiny samples**
 :::
+
+::: {.col}
+### {{< fa ghost >}} [The vanished airline]{.red}
+
+SkyWest flew **once**<br>but it was **cancelled**.
+
+`mean()` returned `NaN`, so it dropped off the chart silently.
+:::
+
+::: {.col}
+### {{< fa mask >}} [Cancellations]{.red}
+
+`na.rm = TRUE` deletes every cancelled flight.
+
+Endeavor cancelled **7.3%** — none of those count as "late."
+:::
+
+<br>
 
 . . .
 
-::: {.font120}
-*Plausible* is not the same as *correct*. *Reproducible* is not the same as *defensible*.
-:::
-
-. . .
-
-::: {.font120 .darkgreen}
-**That part is yours.** It's what you're actually being graded on.
+::: {.font115 .center}
+Every one of these is **invisible in the chart** and **invisible in the code**.<br>[You only find them if you go looking.]{.darkgreen}
 :::
 
 ---
@@ -1446,9 +1438,13 @@ An agent can write the code. [It cannot know if the answer is *true*.]{.red}
 
 # Today, in one slide
 
+<br>
+
 ::: {.font120 .center}
 **prompt** [→]{.gray} **read the diff** [→]{.gray} **verify** [→]{.gray} **commit / push**
 :::
+
+<br>
 
 ::: {.font110}
 - You can **make a repo and push** with a button
@@ -1459,26 +1455,15 @@ An agent can write the code. [It cannot know if the answer is *true*.]{.red}
 
 ---
 
-# Before next week
+{{< middle >}}
 
-::: {.font110}
-- Finish pushing today's work to your `eda-practice` repo
-- **Reading reflection:** read forward on tidy data + joins, try the light practice, reflect
-- Next week: **Cleaning, Reshaping & Joining** — same loop, on real data
-:::
-
-. . .
+# [Before next week]{.center}
 
 <br>
 
-::: {.font130 .fancy .darkgreen .center}
-Direct boldly. Verify relentlessly.
-:::
+- [**HW2**](https://eda.seas.gwu.edu/2026-Fall/hw/2-tidy-data.html): read forward on tidy data + joins, try the light practice, reflect
+- Next week: **Cleaning, Reshaping & Joining** — same loop, on real data
 
----
+<br>
 
-{{< inverse >}}
-{{< center >}}
-{{< middle >}}
-
-# Use [this link](https://docs.google.com/spreadsheets/d/1cXNvWVfZ-WN4oLqbhv76cFTXPBi0KCiQdkCG7ivm7i4/edit?usp=sharing) to form teams
+# [Use [this link](https://docs.google.com/spreadsheets/d/1cXNvWVfZ-WN4oLqbhv76cFTXPBi0KCiQdkCG7ivm7i4/edit?usp=sharing) to form teams]{.center}
