@@ -27,6 +27,36 @@ agenda_items <- c(
   "Skills",
   "Working Safely"
 )
+
+defense_items <- c(
+  "Ask for code, not results",
+  "Run sanity-checks",
+  "Use fake data"
+)
+
+# Re-usable "Defense Strategies" title slide — call once per item as you get
+# to it (defense_strategies(1), then more slides, then defense_strategies(2),
+# etc.) instead of copy-pasting the slide with a different line colored.
+defense_strategies <- function(highlight = NULL) {
+  lines <- c(
+    "{{< inverse >}}",
+    "{{< middle >}}",
+    "# [Defense Strategies]{.center}<br>",
+    '::: {.col width="10%"}',
+    ":::",
+    '::: {.col width="90%"}',
+    ""
+  )
+  for (i in seq_along(defense_items)) {
+    item <- defense_items[i]
+    if (!is.null(highlight) && i == highlight) {
+      item <- sprintf("[%s]{.orange}", item)
+    }
+    lines <- c(lines, sprintf("## %d. %s", i, item))
+  }
+  lines <- c(lines, ":::")
+  cat(lines, sep = "\n\n")
+}
 ```
 
 ---
@@ -1036,26 +1066,25 @@ Throughput goes up, but **quality is not guaranteed**
 
 ---
 
-{{< inverse >}}
-{{< middle >}}
+```{r}
+#| echo: false
+#| results: asis
 
-# [Defense Strategies]{.center}<br>
-
-::: {.col width="10%"}
-::: 
-
-::: {.col width="90%"}
-
-## 1. Ask for code, not results
-
-## 2. Run sanity-checks
-
-## 3. Use fake data
-
-::: 
+defense_strategies(1)
+```
 
 ---
 
+
+
+---
+
+```{r}
+#| echo: false
+#| results: asis
+
+defense_strategies(2)
+```
 
 ---
 
@@ -1159,6 +1188,15 @@ Run these every time — they're the skill this whole course is really about:
 - Do **totals / aggregates** sanity-check?
 - Is it **reproducible** — or did it hard-code an answer?
 :::
+
+---
+
+```{r}
+#| echo: false
+#| results: asis
+
+defense_strategies(3)
+```
 
 ---
 
