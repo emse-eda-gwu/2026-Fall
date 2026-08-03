@@ -1039,14 +1039,14 @@ Throughput goes up, but **quality is not guaranteed**
 {{< inverse >}}
 {{< middle >}}
 
-# [Defense Strategies]{.center}
+# [Defense Strategies]{.center}<br>
 
 ::: {.col width="10%"}
 ::: 
 
 ::: {.col width="90%"}
 
-## 1. Use AI to generate code, never the artifact
+## 1. Ask for code, not results
 
 ## 2. Run sanity-checks
 
