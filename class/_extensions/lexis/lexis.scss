@@ -511,6 +511,22 @@ $progress-color: $color-blue;
   border: none;
 }
 
+// Wide printed output (e.g. head() of a wide data frame with options(width = 250))
+// must scroll sideways inside its gray box rather than wrap or get clipped. The
+// <pre> is the scroll container; the inner <code> must NOT wrap so the line
+// actually overflows and triggers the scrollbar.
+.reveal .cell-output pre,
+.reveal .cell-output-stdout pre,
+.reveal pre.text-output {
+  overflow-x: auto;
+}
+.reveal .cell-output pre code,
+.reveal .cell-output-stdout pre code,
+.reveal pre.text-output code {
+  white-space: pre;
+  word-wrap: normal;
+}
+
 // ---- Blockquotes ----------------------------------------------------------
 .reveal blockquote {
   width: auto;
