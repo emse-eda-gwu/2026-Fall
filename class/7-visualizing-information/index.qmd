@@ -803,8 +803,6 @@ Align to 0 scale:
 
 # [[Assembly]{.red}: Gestalt Psychology]{.font130}
 
-<br>
-
 ### The whole has a reality that is entirely separate from the parts
 
 ---
@@ -821,8 +819,6 @@ Align to 0 scale:
 {{< bg-color "#ffffff" >}}
 
 # Reification
-
-<br>
 
 ![](images/gestalt-f1-logo.jpg){width="700"}
 
@@ -859,8 +855,6 @@ Our minds fill in the missing information
 {{< center >}}
 
 # [Prägnanz]{.font120}
-
-<br>
 
 ### We strongly prefer to interpret stimuli as regular, simple, and orderly
 

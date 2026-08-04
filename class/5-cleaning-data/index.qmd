@@ -139,8 +139,6 @@ state_abbs_50 <- state_abbs %>%
 
 ## Copy-paste magic with [`datapasta`](https://milesmcbain.github.io/datapasta/)
 
-<br>
-
 ### **Useful for "small data"**: e.g., [U.S. State Abbreviations](https://www.50states.com/abbreviations.htm)
 
 ---

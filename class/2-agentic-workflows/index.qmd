@@ -135,8 +135,6 @@ Everything is a **button in GitHub Desktop**
 
 # [Git vocabulary you should know]{.center}
 
-<br>
-
 ::: {.col .fragment}
 ### ["repo"]{.center}
 A project folder that<br>**tracks its own history**<br><br>**Example**: course website: [https://github.com/emse-eda-gwu/2026-Fall](https://github.com/emse-eda-gwu/2026-Fall)
@@ -158,8 +156,6 @@ Send / recieve your commits **up to GitHub**<br>(the cloud copy)
 
 # The GitHub Desktop loop
 
-<br>
-
 ::: {.font110 .darkgreen}
 **Changes** (locally on your computer) → **Commit** (with a message) → **Push**
 :::
@@ -169,8 +165,6 @@ Send / recieve your commits **up to GitHub**<br>(the cloud copy)
 {{< center >}}
 
 # Write commit messages you'd thank yourself for
-
-<br>
 
 ::: {.col}
 ### {{< fa xmark >}} [Useless]{.red}
@@ -268,8 +262,6 @@ You work on a **branch**, so their `main` is untouched<br>until they say *yes*.
 
 # [Why work on a branch?]{.center}
 
-<br>
-
 ::: {.col}
 ### {{< fa code-branch >}} [On a branch]{.darkgreen}
 
@@ -361,8 +353,6 @@ agenda(2)
 
 # [Assistants vs. Agents]{.center}
 
-<br>
-
 ::: {.col}
 ### [Assistants]{.blue}
 
@@ -395,8 +385,6 @@ This class lives on the [**agent**]{.orange} side.
 
 # [Agent = model + skills + files]{.center}
 
-<br>
-
 ::: {.col .center}
 ### [Model]{.purple}
 The reasoning<br>*(Claude)*
@@ -423,8 +411,6 @@ Claude Code is the agent. **You** supply the project and the direction.
 {{< middle >}}
 
 # [An agent can do almost anything with files]{.center}
-
-<br>
 
 ::: {.card .center cols="4" color="purple"}
 {{< fa code >}}
@@ -478,8 +464,6 @@ Claude Code is the agent. **You** supply the project and the direction.
 
 # [Claude Code is an agent (a particular "harness")]{.center}
 
-<br>
-
 Other agents:
 
 ::: {.col}
@@ -495,8 +479,6 @@ OpenAI's coding agent (CLI + cloud)
 ---
 
 # [Using Claude code in Positron]{.center}
-
-<br>
 
 ## 1. Make a folder (no spaces in the name)
 
@@ -537,8 +519,6 @@ countdown(minutes = 15, warn_when = 120, top = 0, right = 0, font_size = "2em")
 
 # [Bonus: publish your site with GitHub Pages]{.center}
 
-<br>
-
 1. Ask Claude to change the Quarto output folder from `_site` to `docs` (edit `_quarto.yml`'s `output-dir`), then re-render.
 2. **Commit + push** your changes to GitHub.
 3. On GitHub.com, go to your repo's **Settings › Pages**.
@@ -560,8 +540,6 @@ agenda(3)
 {{< middle >}}
 
 ## [Four modes of Claude Code]{.center}
-
-<br>
 
 ::: {.card .icon-left cols="2" color="dodgerblue"}
 {{< fa map >}}
@@ -617,8 +595,6 @@ The current mode always shows at the **bottom of the prompt box**
 
 # [Modes are your permission dial]{.center}
 
-<br>
-
 ::: {.font120 .center}
 [plan]{.blue} &nbsp;→&nbsp; [manual]{.gray} &nbsp;→&nbsp; [accept edits]{.darkgreen} &nbsp;→&nbsp; [auto]{.orange}
 :::
@@ -647,8 +623,6 @@ Whatever the mode, **git is your safety net.**<br>Commit before you let the agen
 {{< center >}}
 
 # More control over session with slash commands
-
-<br>
 
 ::: {.font110}
 Five you'll reach for constantly:
@@ -681,8 +655,6 @@ Five you'll reach for constantly:
 ---
 
 # `/init` — let the agent write `CLAUDE.md` for you
-
-<br>
 
 ::: {.font110}
 You don't write `CLAUDE.md` from scratch. `/init` is a **prompt that tells Claude to go read your project and describe it back to you.**
@@ -765,8 +737,6 @@ This file steers **every future session**<br>A wrong line in `CLAUDE.md` is a mi
 
 # [`/model` — pick the right **brain** for the job]{.center}
 
-<br>
-
 Model         | Good for
 --------------|--------------------------------------------
 **Opus**      | Hard reasoning, tricky bugs, big refactors
@@ -782,8 +752,6 @@ Model         | Good for
 ---
 
 # [`/effort` — how *hard* the model thinks]{.center}
-
-<br>
 
 ::: {.font110 .center}
 Same model, different amount of thinking before it acts.
@@ -805,8 +773,6 @@ Level         | What it's for
 ---
 
 # [`/model` vs. `/effort`]{.center}
-
-<br>
 
 ::: {.col}
 ### `/model`
@@ -834,8 +800,6 @@ General rules of thumb:
 ---
 
 # `/clear` vs. `/compact` — managing memory
-
-<br>
 
 ::: {.col}
 ### `/clear`
@@ -902,8 +866,6 @@ agenda(4)
 ---
 
 # Skills: a command that wraps a whole recipe
-
-<br>
 
 `/init`, `/clear`, `/effort`, etc. are **built in** with Claude Code
 
@@ -997,8 +959,6 @@ delay_by_airline |>
 
 # What this skill defines
 
-<br>
-
 - a `cowplot` package minimal theme (gridlines matched to the plot)
 - white background, de-cluttered gridlines
 - a consistent color palette + sorted bars
@@ -1050,8 +1010,6 @@ agenda(5)
 
 # Agents will be *confidently wrong*
 
-<br>
-
 . . .
 
 They won't say *"I'm not sure"*
@@ -1079,8 +1037,6 @@ defense_strategies(1)
 
 # The pipeline hasn't changed
 
-<br>
-
 ::: {.font140 .center}
 [`data.csv`]{.blue} &nbsp;→&nbsp; [`script.R`]{.purple} &nbsp;→&nbsp; [`figure.png`]{.darkgreen}
 :::
@@ -1094,8 +1050,6 @@ Raw data in, a script in the middle, a result out.<br>That's still the whole job
 ---
 
 # [Same workflow, with or without AI]{.center}
-
-<br>
 
 ::: {.col}
 ### {{< fa hand >}} [By hand]{.red}
@@ -1128,8 +1082,6 @@ AI can do the first three. [**Verifying the output is still yours.**]{.red}
 {{< center >}}
 
 # Agents rarely make a syntax mistake
-
-<br>
 
 - No typos
 - No missing brackets
@@ -1164,8 +1116,6 @@ defense_strategies(2)
 
 # [Verify against an *independent* check]{.center}
 
-<br>
-
 ::: {.center}
 Don't ask the agent if it's right — it'll say yes.<br> Check it a way it **can't fake**:
 :::
@@ -1196,8 +1146,6 @@ Different chat, different<br>prompt, different model
 
 # Your verification checklist
 
-<br>
-
 ::: {.font110}
 Run these every time — they're the skill this whole course is really about:
 
@@ -1214,8 +1162,6 @@ Run these every time — they're the skill this whole course is really about:
 {{< center >}}
 
 # What a sanity-check script looks like
-
-<br>
 
 ::: {.font110}
 - {{< fa check >}} row count survived the merge — [1,200 → 1,200]{.darkgreen}
@@ -1244,8 +1190,6 @@ defense_strategies(3)
 
 # Sometimes you *can't* hand over the data
 
-<br>
-
 - Medical records.
 - Student grades. 
 - Proprietary sales figures.
@@ -1262,8 +1206,6 @@ Make **fake data with the same shape**, and work on that instead.
 ---
 
 # The fake-data workflow
-
-<br>
 
 ::: {.font110}
 1. Build a **small fake table** with the same columns and types as the real thing
@@ -1389,8 +1331,6 @@ countdown(minutes = 18, warn_when = 120, top = 0, right = 0, font_size = "2em")
 
 # [What that chart was hiding]{.center}
 
-<br>
-
 ::: {.col}
 ### {{< fa magnifying-glass >}} [Sample size]{.red}
 
@@ -1437,8 +1377,6 @@ Every one of these is **invisible in the chart** and **invisible in the code**.<
 
 # Today, in one slide
 
-<br>
-
 ::: {.font120 .center}
 **prompt** [→]{.gray} **read the diff** [→]{.gray} **verify** [→]{.gray} **commit / push**
 :::
@@ -1457,8 +1395,6 @@ Every one of these is **invisible in the chart** and **invisible in the code**.<
 {{< middle >}}
 
 # [Before next week]{.center}
-
-<br>
 
 - [**HW2**](https://eda.seas.gwu.edu/2026-Fall/hw/2-tidy-data.html): read forward on tidy data + joins, try the light practice, reflect
 - Next week: **Cleaning, Reshaping & Joining** — same loop, on real data

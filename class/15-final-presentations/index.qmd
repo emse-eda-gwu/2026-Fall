@@ -235,8 +235,6 @@ htmltools::tags$iframe(
 
 ### by Leshauna Hartman and Maya Schmidt
 
-<br>
-
 (Final report.qmd was over 7,000 lines!)
 
 ---

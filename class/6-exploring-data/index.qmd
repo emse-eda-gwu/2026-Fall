@@ -452,8 +452,6 @@ agenda(3)
 
 ### [A single number representing the _middle_ of a set of numbers]{.center}
 
-<br>
-
 . . .
 
 ### **Mean**: $\frac{\text{Sum of values}}{\text{# of values}}$
@@ -1170,8 +1168,6 @@ galtonScatterplot <- ggplot(GaltonFamilies) +
 
 # How do you measure correlation?
 
-<br>
-
 # Pearson came up with this:
 
 # $r = \frac{\text{Cov}(x, y)}{\text{sd}(x) * \text{sd}(y)}$
@@ -1249,8 +1245,6 @@ cor(x = GaltonFamilies$midparentHeight,
 
 # Visualizing correlation is...um...easy, right?
 
-<br>
-
 # [guessthecorrelation.com](http://guessthecorrelation.com/)
 
 # Click [here](https://docs.google.com/presentation/d/1-7VqNRJp53FawfNJwKLEkpoubGQ_x0wIkN2lAMP7Emw/edit?usp=sharing) to vote!
@@ -1297,8 +1291,6 @@ $r$ | $r^2$
 ---
 
 ## You should report both $r$ and $r^2$
-
-<br>
 
 ### Correlation between parent and child height is 0.32, therefore 10% of the variance in the child height is explained by the parent height.
 

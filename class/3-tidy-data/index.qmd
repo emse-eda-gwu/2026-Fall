@@ -82,9 +82,7 @@ agenda(1)
 
 ---
 
-## [Federal R&D Spending by Department]{.center}
-
-<br>
+# [Federal R&D Spending by Department]{.center}
 
 :::: {.font70}
 
@@ -99,8 +97,6 @@ head(fed_spend_wide)
 ---
 
 ## [Federal R&D Spending by Department]{.center}
-
-<br>
 
 ::: {.col width="60%"}
 # "Wide" format
