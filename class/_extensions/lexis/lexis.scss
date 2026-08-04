@@ -610,6 +610,25 @@ $progress-color: $color-blue;
   }
 }
 
+// ---- Breathing room below a slide title -----------------------------------
+// The default gap under an h1/h2 slide title runs tight; open it up so body
+// content doesn't crowd the header (replaces hand-adding `<br>` after titles).
+// Only DIRECT-child titles are targeted, so column sub-headings (inside
+// `::: {.col}`) are left alone. The amount lives in the `--title-gap` custom
+// property, which inherits down the slide, so any slide can retune it without a
+// specificity fight:
+//   * vertically-centered section slides ({{< middle >}}) zero it automatically
+//     so a two-line section title stays tight and centered;
+//   * {{< tight >}} on a slide opts that one slide out.
+// To add EVEN MORE space on a slide, an explicit `<br>` after the title still
+// stacks on top of this as before.
+.reveal .slides section > h1,
+.reveal .slides section > h2 {
+  margin-bottom: var(--title-gap, 0.6em);
+}
+.reveal .slides section.middle { --title-gap: 0; }
+.reveal .slides section.tight  { --title-gap: 0; }
+
 // ---- Black border around plot output --------------------------------------
 // The old deck wrapped rendered ggplots in `.blackborder[...]`. Alias of
 // `.border` above, kept by name so ported slides read like the originals.
@@ -1317,5 +1336,20 @@ html.print-pdf {
   }
   .reveal .slides .pdf-page:has(> section[data-state~="no-slide-number"]) > .slide-number-pdf {
     display: none !important;
+  }
+
+  // ---- 6. Tall images near the page bottom ---------------------------------
+  // Chrome's print-to-PDF rasterizer silently DROPS any image whose bottom edge
+  // lands in roughly the bottom ~15% of the page. Verified headlessly against a
+  // real export: the identical image prints when positioned higher and vanishes
+  // once its bottom is pushed past ~780px of the 900px page — independent of the
+  // background, the ICC profile, and z-order (it renders fine on screen and even
+  // in print-media emulation; only the PDF rasterizer culls it). The usual way
+  // into that zone is a title stacked above a tall, centered image, e.g. a
+  // {{< bg-color >}} hero slide. Cap image height in the export so the bottom
+  // edge stays clear of the cull band; the live deck is untouched. 600px keeps a
+  // title+image slide's image bottom around 748px, with margin below the cliff.
+  .reveal .slides section img {
+    max-height: 600px !important;
   }
 }

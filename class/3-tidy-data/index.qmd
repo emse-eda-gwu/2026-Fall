@@ -105,7 +105,7 @@ head(fed_spend_wide)
 ::: {.col width="60%"}
 # "Wide" format
 
-::: {.font60}
+::: {.font70}
 ```{r}
 #| echo: false
 
