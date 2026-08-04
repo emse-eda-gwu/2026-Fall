@@ -1,5 +1,5 @@
 week,date,quiz,quiz_content,theme,n_class,stub_class,name_class,description_class,n_assign,name_assign,stub_assign,due_assign,n_mini,stub_mini,name_mini,due_mini,n_project,stub_project,name_project,due_project
-1,2026/08/26,,,Foundations,1,getting-started,Getting Started,Class orientation; workflow; Quarto; importing data; data wrangling & plotting refresher,1,,agentic-workflows,2026/08/31,,,,,,,,
+1,2026/08/26,,,Foundations,1,getting-started,Getting Started,Class orientation; workflow; Quarto; importing data; data wrangling & plotting refresher,1,,agentic-workflows-and-github,2026/08/31,,,,,,,,
 2,2026/09/02,,,Workflow,2,agentic-workflows,Agentic Workflows & GitHub,Version control with GitHub Desktop (no command line); setting up Claude Code in Positron; your first AI-assisted data import,2,,tidy-data,2026/09/07,,,,,,,,
 3,2026/09/09,1,Weeks 1 - 2,Workflow,3,tidy-data,Tidy Data,Tidy data; reshaping data; data provenance; writing a research question,,<b>Work on Proposals!</b>,,,,,,,1,proposal,Proposal,2026/09/20
 4,2026/09/16,,,,4,workshop-proposals,Team Proposal Workshops - no class,One-on-one team meetings w/Prof. Helveston to scope semester project,3,,cleaning-data,2026/09/21,1,data-cleaning,MP1: Clean & Verify,2026/10/04,,,,
