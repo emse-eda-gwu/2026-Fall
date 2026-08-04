@@ -611,23 +611,20 @@ $progress-color: $color-blue;
 }
 
 // ---- Breathing room below a slide title -----------------------------------
-// The default gap under an h1/h2 slide title runs tight; open it up so body
-// content doesn't crowd the header (replaces hand-adding `<br>` after titles).
-// Only DIRECT-child titles are targeted, so column sub-headings (inside
-// `::: {.col}`) are left alone. The amount lives in the `--title-gap` custom
-// property, which inherits down the slide, so any slide can retune it without a
-// specificity fight:
-//   * vertically-centered section slides ({{< middle >}}) zero it automatically
-//     so a two-line section title stays tight and centered;
-//   * {{< tight >}} on a slide opts that one slide out.
-// To add EVEN MORE space on a slide, an explicit `<br>` after the title still
-// stacks on top of this as before.
+// The default gap under a slide title runs tight; open it up so body content
+// doesn't crowd the header (replaces hand-adding `<br>` after titles). Covers
+// title levels h1-h3. Only DIRECT-child titles are targeted, so column
+// sub-headings (inside `::: {.col}`) are left alone. The amount lives in the
+// `--title-gap` custom property, which inherits down the slide, so any slide can
+// retune it without a specificity fight — `{{< tight >}}` opts a slide out. The
+// gap holds on centered ({{< middle >}}) section slides too. To add EVEN MORE
+// space on a slide, an explicit `<br>` after the title still stacks on top.
 .reveal .slides section > h1,
-.reveal .slides section > h2 {
-  margin-bottom: var(--title-gap, 0.6em);
+.reveal .slides section > h2,
+.reveal .slides section > h3 {
+  margin-bottom: var(--title-gap, 0.9em);
 }
-.reveal .slides section.middle { --title-gap: 0; }
-.reveal .slides section.tight  { --title-gap: 0; }
+.reveal .slides section.tight { --title-gap: 0; }
 
 // ---- Black border around plot output --------------------------------------
 // The old deck wrapped rendered ggplots in `.blackborder[...]`. Alias of

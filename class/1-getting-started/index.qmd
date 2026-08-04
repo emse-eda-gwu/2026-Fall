@@ -450,8 +450,6 @@ agenda(2)
 
 # Meet your instructor!
 
-<br>
-
 ::: {.col width="30%" .circle}
 
 ![](https://www.jhelvy.com/images/lab/john_helveston_square.png){width="400"}
@@ -478,8 +476,6 @@ agenda(2)
 
 # Meet your tutor!
 
-<br>
-
 ::: {.col width="30%" .circle}
 
 ![](images/nurullaeva.png){width="400"}
@@ -500,8 +496,6 @@ agenda(2)
 
 # Prerequisites
 
-<br>
-
 ## [EMSE 4574 / 6574: Intro to Programming for Analytics](https://p4a.seas.gwu.edu/)
 
 You should be able to:
@@ -517,11 +511,7 @@ You should be able to:
 
 # Course website
 
-<br>
-
 ## {{< fa globe >}} Everything you need will be on the course website:<br>[https://eda.seas.gwu.edu/2026-Fall/](https://eda.seas.gwu.edu/2026-Fall/)
-
-<br>
 
 ::: {.fragment}
 
@@ -532,8 +522,6 @@ You should be able to:
 ---
 
 # **Quizzes** (10% of grade)
-
-<br>
 
 . . .
 
@@ -560,8 +548,6 @@ You should be able to:
 ---
 
 # Assignments
-
-<br>
 
 ::: {.fragment}
 ## 1) {{< fa book >}} Weekly Reflections: [HW1](https://eda.seas.gwu.edu/2026-Fall/hw/1-agentic-workflows.html)
@@ -621,8 +607,6 @@ Final Interview                | 10 %   | Individual interview
 
 # Course policies
 
-<br>
-
 ::: {.fragment .col width="35%"}
 
 ## BE NICE
@@ -645,11 +629,7 @@ Final Interview                | 10 %   | Individual interview
 
 # [Use of AI]{.center}
 
-<br>
-
 ## [We will heavily use AI tools this semester]{.center}
-
-<br>
 
 ::: {.incremental}
 
@@ -662,8 +642,6 @@ Final Interview                | 10 %   | Individual interview
 ---
 
 # Ways to not have your work suck:
-
-<br>
 
 ::: {.incremental}
 - Don't submit code that doesn't run (actually run it before submitting it).
@@ -682,8 +660,6 @@ Final Interview                | 10 %   | Individual interview
 
 # Late submissions
 
-<br>
-
 ## - **3** late days - use them anytime, no questions asked
 ## - No more than **2** late days on any one assignment
 ## - Contact me for special cases
@@ -691,8 +667,6 @@ Final Interview                | 10 %   | Individual interview
 ---
 
 # How to succeed in this class
-
-<br>
 
 ::: {.fragment}
 
@@ -720,8 +694,6 @@ Final Interview                | 10 %   | Individual interview
 
 # Getting Help
 
-<br>
-
 ::: {.fragment}
 ## {{< fa brands slack >}} Use [Slack](https://emse-eda-f26.slack.com/) to ask questions.
 :::
@@ -741,8 +713,6 @@ Final Interview                | 10 %   | Individual interview
 ---
 
 # [Course Software](https://eda.seas.gwu.edu/2026-Fall/software.html)
-
-<br>
 
 ## {{< fa brands slack >}} [Slack](https://emse-eda-f26.slack.com/): **turn notifications on**!
 
@@ -772,11 +742,7 @@ Final Interview                | 10 %   | Individual interview
 
 # [Break]{.fancy .center}
 
-<br>
-
 ### 1. Install everything on the [software page](https://eda.seas.gwu.edu/2026-Fall/software.html)
-
-<br>
 
 ### 2. Add your **GitHub username** (NOT GW netID) in <br>[this sheet](https://docs.google.com/spreadsheets/d/13Q4Q9QV28bkGRB2BdGEb2s1zhRrqpnajdyErzIbLS3E/edit?usp=sharing) next to your name
 
@@ -820,8 +786,6 @@ agenda(3)
 ---
 
 # [Anatomy of a .qmd file]{.center}
-
-<br>
 
 # [Header]{.red}
 # Markdown text
@@ -898,8 +862,6 @@ format: docx
 
 # [Anatomy of a .qmd file]{.center}
 
-<br>
-
 # ~~Header~~
 # [Markdown text]{.red}
 # R code
@@ -926,8 +888,6 @@ format: docx
 ---
 
 # [Headers]{.center}
-
-<br>
 
 ::: {.col}
 ```markdown
@@ -963,8 +923,6 @@ format: docx
 
 # [Basic Text Formatting]{.center}
 
-<br>
-
 ::: {.col}
 ## Type this...
 
@@ -992,8 +950,6 @@ format: docx
 ---
 
 # [Lists]{.center}
-
-<br>
 
 ::: {.col}
 Bullet list:
@@ -1027,8 +983,6 @@ Numbered list:
 
 # [Links]{.center}
 
-<br>
-
 Simple **url link** to another site:
 
 ```markdown
@@ -1041,8 +995,6 @@ Simple **url link** to another site:
 
 # [Anatomy of a .qmd file]{.center}
 
-<br>
-
 # ~~Header (think of this as the "settings")~~
 # ~~Markdown text~~
 # [R code]{.red}
@@ -1052,8 +1004,6 @@ Simple **url link** to another site:
 {{< center >}}
 
 # R Code
-
-<br>
 
 ::: {.col}
 ## Inline code
@@ -1078,8 +1028,6 @@ insert more code here
 
 # Inline R code
 
-<br>
-
 ```markdown
 The sum of 3 and 4 is `r knitr::inline_expr("3 + 4")`
 ```
@@ -1093,8 +1041,6 @@ The sum of 3 and 4 is `r 3 + 4`
 ---
 
 # R Code chunks
-
-<br>
 
 ::: {.col}
 This code chunk...
@@ -1132,8 +1078,6 @@ glimpse(head(penguins, 4))
 
 # Chunk options
 
-<br>
-
 Control what chunks output using options
 
 All options [here](https://quarto.org/docs/reference/cells/cells-knitr.html)
@@ -1148,8 +1092,6 @@ knitr::include_graphics("images/chunks_options.png")
 ---
 
 # [Chunk output options]{.center}
-
-<br>
 
 [By default, code chunks print **code** + **output**]{.center}
 
@@ -1211,8 +1153,6 @@ cat("hello world!")
 
 # A global `setup` chunk 🌍
 
-<br>
-
 ::: {.col}
 ````markdown
 ```{{r}}
@@ -1250,8 +1190,6 @@ agenda(4)
 
 # Workflow for reading in data
 
-<br>
-
 1) Open your project **folder** in Positron - **don't double-click .R files**!
 
 ::: {.fragment}
@@ -1280,8 +1218,6 @@ File type  | Function       | Library
 
 # Importing Comma Separated Values (.csv)
 
-<br>
-
 Read in `.csv` files with `read_csv()`:
 
 ```{r}
@@ -1297,8 +1233,6 @@ head(milk_production)
 
 # Importing Text Files (.txt)
 
-<br>
-
 Read in `.txt` files with `read.table()`:
 
 ```{r}
@@ -1311,8 +1245,6 @@ head(global_temps)
 ---
 
 # Importing Text Files (.txt)
-
-<br>
 
 Read in `.txt` files with `read.table()`:
 
@@ -1387,8 +1319,6 @@ glimpse(head(pv_cells))
 {{< inverse >}}
 
 # Your turn
-
-<br>
 
 Open the `practice.qmd` file.
 
@@ -1473,8 +1403,6 @@ lotr[1:2, ]
 
 ## Quick Practice
 
-<br>
-
 Read in the `data.csv` file in the "data" folder:
 
 ```r
@@ -1503,8 +1431,6 @@ Art by [Allison Horst](https://www.allisonhorst.com/)
 
 # [The main `dplyr` "verbs"]{.center}
 
-<br>
-
 "Verb"        | What it does
 --------------|--------------------
 `select()`    | Select columns by name
@@ -1518,8 +1444,6 @@ Art by [Allison Horst](https://www.allisonhorst.com/)
 # [Core `tidyverse` concept:<br>**Chain functions together with "pipes"**]{.center}
 
 # [`%>%`]{.center}
-
-<br>
 
 ## Think of the words "...and then..."
 
@@ -1607,8 +1531,6 @@ lotr %>%
 ---
 
 # [Logic operators for `filter()`]{.center}
-
-<br>
 
 Description | Example
 ------------|------------
@@ -1705,8 +1627,6 @@ countdown(
 
 # Your turn
 
-<br>
-
 Read in the `data.csv` file in the "data" folder:
 
 ```r
@@ -1749,8 +1669,6 @@ Concept developed by Leland Wilkinson (1999)
 ---
 
 # Making plot layers with ggplot2
-
-<br>
 
 ### 1. The data
 ### 2. The aesthetic mapping (what goes on the axes?)

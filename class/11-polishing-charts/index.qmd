@@ -371,8 +371,6 @@ plot
 
 ### [Consider setting dimensions to "Golden Ratio" (1 : 1.618)]{.center}
 
-<br>
-
 ::: {.col}
 ![](images/golden_ratio.jpg)
 :::
@@ -2813,8 +2811,6 @@ This is some text that goes into detail and explains a lot more about the topic 
 
 # [Use fonts with **same-height** numbers]{.center}
 
-<br>
-
 ::: {.col .right width="35%"}
 ## "Oldstyle" (bad)
 
@@ -2830,8 +2826,6 @@ This is some text that goes into detail and explains a lot more about the topic 
 ---
 
 # [Use fonts with **same-width** numbers]{.center}
-
-<br>
 
 ::: {.col .right width="40%"}
 ## "Proportional" (bad)

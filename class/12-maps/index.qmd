@@ -706,8 +706,6 @@ Hexmaps:
 
 ## Manipulating fill scale produces wildly different maps
 
-<br>
-
 ::: {.col}
 ![](images/nyt_covid_travel1.jpeg){width="500"}
 
@@ -1145,8 +1143,6 @@ https://www.r-spatial.org/r/2018/10/25/ggplot2-sf-2.html
 ---
 
 # What is the best projection?...it depends
-
-<br>
 
 # [Compare country sizes](https://thetruesize.com/)
 
