@@ -1,10 +1,7 @@
 # Run this from inside the deck folder -- everything below keys off `lesson`.
-# Deliberately NOT here::here(): deck folders sit inside the site's Quarto
-# project, so here() roots at the repo, not the deck.
 lesson <- basename(getwd())
 
-# Note: each deck's _extensions is a symlink to class/_extensions (lexis +
-# fontawesome), the single source of truth.
+# Note: each deck's _extensions is a symlink to class/_extensions
 
 # Build the slides
 renderthis::to_html("index.qmd", "index.html")
@@ -13,8 +10,7 @@ renderthis::to_pdf("index.html", paste0(lesson, ".pdf"))
 # Compress the PDF to reduce size
 tools::compactPDF(paste0(lesson, ".pdf"), gs_quality = 'ebook')
 
-# Build the 1-2 page class summary (Quarto -> Typst -> PDF).
-# Styling lives in class/_summary-styles.qmd
+# Build the 1-2 page class summary
 quarto::quarto_render("summary.qmd", output_format = "typst")
 file.rename("summary.pdf", paste0(lesson, "-summary.pdf"))
 
@@ -52,12 +48,7 @@ practice_files <- practice_files[file.exists(practice_files)]
 zipfile <- paste0(lesson, ".zip")
 unlink(zipfile)
 
-# Lecture-only weeks have nothing to hand out -- no zip, and the class page
-# drops the download button on its own.
-#
-# Nothing but the practice files goes in: decks and practice files build paths
-# with file.path() relative to their own folder, so there is no .Rproj or .here
-# marker to ship.
+# Lecture-only weeks have nothing to hand out
 if (length(practice_files)) {
   zip::zip(zipfile = zipfile, files = practice_files)
 }

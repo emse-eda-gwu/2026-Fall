@@ -218,7 +218,7 @@ You already ran the solo loop in **HW1** — let's make sure it stuck.
 ::: {.font100 .center}
 Missing it, or joined the class late?
 
-Flag me now — grab the steps from [HW1](https://eda.seas.gwu.edu/2026-Fall/hw/1-agentic-workflows.html) or this [2-min walkthrough](https://youtu.be/VlD8N0ZClBo)
+Flag me now — grab the steps from [HW1](https://eda.seas.gwu.edu/2026-Fall/hw/1-agentic-workflows-and-github.html) or this [2-min walkthrough](https://youtu.be/VlD8N0ZClBo)
 :::
 
 ```{r}
@@ -1134,7 +1134,6 @@ AI can do the first three. [**Verifying the output is still yours.**]{.red}
 - No typos
 - No missing brackets
 - A tidy `input/` `scripts/` `output/` layout
-:::
 
 <br>
 
@@ -1466,4 +1465,4 @@ Every one of these is **invisible in the chart** and **invisible in the code**.<
 
 <br>
 
-# [Use [this link](https://docs.google.com/spreadsheets/d/1cXNvWVfZ-WN4oLqbhv76cFTXPBi0KCiQdkCG7ivm7i4/edit?usp=sharing) to form teams]{.center}
+# [Use [this link](https://docs.google.com/spreadsheets/d/1cXNvWVfZ-WN4oLqbhv76cFTXPBi0KCiQdkCG7ivm7i4/edit?usp=sharing){target='_blank'} to form teams]{.center}

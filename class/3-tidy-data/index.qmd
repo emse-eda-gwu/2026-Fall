@@ -42,15 +42,18 @@ fed_spend <- fed_spend_long
 fed_spend_wide <- read_csv(file.path('data', 'fed_spend_wide.csv'))
 lotr_words <- read_csv(file.path('data', 'lotr_words.csv'))
 pv_cells <- read_excel(
-    file.path('data', 'pv_cell_production.xlsx'),
-    sheet = 'Cell Prod by Country', skip = 2) %>%
+  file.path('data', 'pv_cell_production.xlsx'),
+  sheet = 'Cell Prod by Country',
+  skip = 2
+) %>%
   mutate(Year = as.numeric(Year)) %>%
   filter(!is.na(Year))
 
 fed_spend_bars <- ggplot(fed_spend_long) +
   geom_col(
     aes(x = rd_budget_mil, y = reorder(department, rd_budget_mil)),
-    width = 0.7, alpha = 0.8
+    width = 0.7,
+    alpha = 0.8
   ) +
   theme_bw(base_size = 15) +
   labs(
@@ -81,20 +84,28 @@ agenda(1)
 
 ## [Federal R&D Spending by Department]{.center}
 
+<br>
+
+:::: {.font70}
+
 ```{r}
 #| echo: false
 
 head(fed_spend_wide)
 ```
 
+:::
+
 ---
 
 ## [Federal R&D Spending by Department]{.center}
 
+<br>
+
 ::: {.col width="60%"}
 # "Wide" format
 
-::: {.font70}
+::: {.font60}
 ```{r}
 #| echo: false
 
@@ -127,6 +138,8 @@ head(fed_spend_long)
 #| echo: false
 
 head(fed_spend_wide)
+```
+```{r}
 dim(fed_spend_wide)
 ```
 :::
@@ -140,6 +153,8 @@ dim(fed_spend_wide)
 #| echo: false
 
 head(fed_spend_long)
+```
+```{r}
 dim(fed_spend_long)
 ```
 :::
@@ -152,7 +167,9 @@ dim(fed_spend_long)
 - Each **variable** has its own **column**
 - Each **observation** has its own **row**
 
-![](images/tidy-data.png){width="1000"}
+<center>
+<img src="images/tidy-data.png" width=100%>
+</center>
 
 ---
 
@@ -163,7 +180,7 @@ dim(fed_spend_long)
 - Each **observation** has its own **row**
 :::
 
-::: {.col}
+::: {.col .font80}
 ```{r}
 #| echo: false
 
@@ -171,7 +188,7 @@ head(fed_spend_long)
 ```
 :::
 
-![](images/tidy-data.png){width="1000"}
+![](images/tidy-data.png){width="100%"}
 
 ---
 
@@ -263,12 +280,12 @@ lotr_words
 #| echo: false
 
 lotr_words %>%
-    pivot_longer(
-        cols = Female:Male,
-        names_to = "Gender",
-        values_to = "Word_Count"
-    ) %>%
-    head(15)
+  pivot_longer(
+    cols = Female:Male,
+    names_to = "Gender",
+    values_to = "Word_Count"
+  ) %>%
+  head(15)
 ```
 
 ---
@@ -316,10 +333,10 @@ head(fed_spend_long)
 #| code-line-numbers: "3,4"
 
 fed_spend_wide <- fed_spend_long %>%
-    pivot_wider(
-        names_from  = department,
-        values_from = rd_budget_mil
-    )
+  pivot_wider(
+    names_from = department,
+    values_from = rd_budget_mil
+  )
 
 head(fed_spend_wide)
 ```
@@ -346,11 +363,11 @@ head(fed_spend_wide)
 #| code-line-numbers: "3,4,5"
 
 fed_spend_long <- fed_spend_wide %>%
-    pivot_longer(
-        names_to  = "department",
-        values_to = "rd_budget_mil",
-        cols      = DOD:Other
-    )
+  pivot_longer(
+    names_to = "department",
+    values_to = "rd_budget_mil",
+    cols = DOD:Other
+  )
 
 head(fed_spend_long)
 ```
@@ -371,11 +388,11 @@ names(fed_spend_wide)
 #| code-line-numbers: "5"
 
 fed_spend_long <- fed_spend_wide %>%
-    pivot_longer(
-        names_to  = "department",
-        values_to = "rd_budget_mil",
-        cols      = -year
-    )
+  pivot_longer(
+    names_to = "department",
+    values_to = "rd_budget_mil",
+    cols = -year
+  )
 
 head(fed_spend_long)
 ```
@@ -463,7 +480,22 @@ Compute the total R&D spending in each year
 
 ```{r}
 fed_spend_wide %>%
-  mutate(total = DHS + DOC + DOD + DOE + DOT + EPA + HHS + Interior + NASA + NIH + NSF + Other + USDA + VA) %>%
+  mutate(
+    total = DHS +
+      DOC +
+      DOD +
+      DOE +
+      DOT +
+      EPA +
+      HHS +
+      Interior +
+      NASA +
+      NIH +
+      NSF +
+      Other +
+      USDA +
+      VA
+  ) %>%
   select(year, total)
 ```
 
@@ -478,10 +510,11 @@ Compute the total R&D spending by department in each year
 ::: {.col}
 ```{r}
 fed_spend_long <- fed_spend_wide %>%
-    pivot_longer(
-        names_to = "department",
-        values_to = "rd_budget_mil",
-        cols = -year)
+  pivot_longer(
+    names_to = "department",
+    values_to = "rd_budget_mil",
+    cols = -year
+  )
 
 head(fed_spend_long)
 ```
@@ -490,8 +523,8 @@ head(fed_spend_long)
 ::: {.col .fragment}
 ```{r}
 fed_spend_long %>%
-    group_by(year) %>%
-    summarise(total = sum(rd_budget_mil))
+  group_by(year) %>%
+  summarise(total = sum(rd_budget_mil))
 ```
 :::
 
@@ -506,13 +539,13 @@ Compute the total R&D spending by department in each year
 ::: {.col}
 ```{r}
 annual_spending <- fed_spend_wide %>%
-    pivot_longer(
-        names_to = "department",
-        values_to = "rd_budget_mil",
-        cols = -year
-    ) %>%
-    group_by(year) %>%
-    summarise(total = sum(rd_budget_mil))
+  pivot_longer(
+    names_to = "department",
+    values_to = "rd_budget_mil",
+    cols = -year
+  ) %>%
+  group_by(year) %>%
+  summarise(total = sum(rd_budget_mil))
 ```
 :::
 
@@ -533,12 +566,13 @@ Compute the total R&D spending by department in each year
 ::: {.col}
 ```{r}
 total <- fed_spend_wide %>%
-    pivot_longer(
-        names_to = "department",
-        values_to = "rd_budget_mil",
-        cols = -year) %>%
-    group_by(year) %>%
-    summarise(total = sum(rd_budget_mil))
+  pivot_longer(
+    names_to = "department",
+    values_to = "rd_budget_mil",
+    cols = -year
+  ) %>%
+  group_by(year) %>%
+  summarise(total = sum(rd_budget_mil))
 ```
 :::
 
@@ -647,8 +681,8 @@ ggplot(fed_spend_wide) +
   geom_col(aes(x = rd_budget_mil, y = department)) +
   theme_bw() +
   labs(
-      x = "R&D Spending ($Millions)",
-      y = "Federal Agency"
+    x = "R&D Spending ($Millions)",
+    y = "Federal Agency"
   )
 ```
 :::
@@ -726,20 +760,20 @@ lotr <- read_csv(file.path('data', 'lotr_words.csv'))
 fed_spending <- read_csv(file.path('data', 'fed_spend_wide.csv'))
 
 lotr %>%
-    pivot_longer(
-        cols = Female:Male,
-        names_to = "gender",
-        values_to = "word_count"
-    ) %>%
-    ggplot() +
-    geom_col(aes(x = word_count, y = Film, fill = gender)) +
-    labs(
-        x     = "Number of words spoken by characters",
-        y     = 'Film',
-        fill  = "Gender of character",
-        title = "Male characters had far more speakings\nroles in the LOTR series films"
-    ) +
-    theme_bw()
+  pivot_longer(
+    cols = Female:Male,
+    names_to = "gender",
+    values_to = "word_count"
+  ) %>%
+  ggplot() +
+  geom_col(aes(x = word_count, y = Film, fill = gender)) +
+  labs(
+    x = "Number of words spoken by characters",
+    y = 'Film',
+    fill = "Gender of character",
+    title = "Male characters had far more speakings\nroles in the LOTR series films"
+  ) +
+  theme_bw()
 ```
 :::
 
@@ -748,22 +782,22 @@ lotr %>%
 #| echo: false
 
 fed_spending %>%
-    pivot_longer(
-        names_to = "department",
-        values_to = "rd_budget_mil",
-        cols = DOD:Other
-    ) %>%
-    group_by(year) %>%
-    summarise(total = sum(rd_budget_mil)) %>%
-    ggplot(aes(x = year, y = total)) +
-    geom_line() +
-    geom_point() +
-    labs(
-        x     = "Year",
-        y     = 'R&D Spending ($ M)',
-        title = "Total U.S. federal R&D spending over time"
-    ) +
-    theme_bw()
+  pivot_longer(
+    names_to = "department",
+    values_to = "rd_budget_mil",
+    cols = DOD:Other
+  ) %>%
+  group_by(year) %>%
+  summarise(total = sum(rd_budget_mil)) %>%
+  ggplot(aes(x = year, y = total)) +
+  geom_line() +
+  geom_point() +
+  labs(
+    x = "Year",
+    y = 'R&D Spending ($ M)',
+    title = "Total U.S. federal R&D spending over time"
+  ) +
+  theme_bw()
 ```
 :::
 
@@ -805,7 +839,7 @@ agenda(4)
 
 ---
 
-## `r fa("magnifying-glass")` **Document your source like a museum curator**
+## {{< fa magnifying-glass >}} **Document your source like a museum curator**
 
 **Example**: View `README.md` file in the `data` folder
 

@@ -477,9 +477,9 @@ gapminder %>%
 
 <br>
 
-- `r fa("square-check", fill = "green")` / `r fa("xmark", fill = "red")` **Discriminate**
-- `r fa("square-check", fill = "green")` / `r fa("xmark", fill = "red")` **Rank**
-- `r fa("xmark", fill = "red")` **Ratio**
+- [{{< fa square-check >}}]{.green} / [{{< fa xmark >}}]{.red} **Discriminate**
+- [{{< fa square-check >}}]{.green} / [{{< fa xmark >}}]{.red} **Rank**
+- [{{< fa xmark >}}]{.red} **Ratio**
 :::
 
 ::: {.col width="70%"}
@@ -501,9 +501,9 @@ gapminder %>%
 
 Sorting helps a bit...
 
-- `r fa("square-check", fill = "green")` / `r fa("xmark", fill = "red")` **Discriminate**
-- `r fa("square-check", fill = "green")` / `r fa("xmark", fill = "red")` **Rank**
-- `r fa("xmark", fill = "red")` **Ratio**
+- [{{< fa square-check >}}]{.green} / [{{< fa xmark >}}]{.red} **Discriminate**
+- [{{< fa square-check >}}]{.green} / [{{< fa xmark >}}]{.red} **Rank**
+- [{{< fa xmark >}}]{.red} **Ratio**
 :::
 
 ::: {.col width="70%"}
@@ -525,9 +525,9 @@ Sorting helps a bit...
 
 <br>
 
-- `r fa("square-check", fill = "green")` / `r fa("xmark", fill = "red")` **Discriminate**
-- `r fa("square-check", fill = "green")` / `r fa("xmark", fill = "red")` **Rank**
-- `r fa("xmark", fill = "red")` **Ratio**
+- [{{< fa square-check >}}]{.green} / [{{< fa xmark >}}]{.red} **Discriminate**
+- [{{< fa square-check >}}]{.green} / [{{< fa xmark >}}]{.red} **Rank**
+- [{{< fa xmark >}}]{.red} **Ratio**
 :::
 
 ::: {.col width="70%"}
@@ -549,9 +549,9 @@ Sorting helps a bit...
 
 Align to 0 scale:
 
-- `r fa("square-check", fill = "green")` / `r fa("xmark", fill = "red")` **Discriminate**
-- `r fa("square-check", fill = "green")` / `r fa("xmark", fill = "red")` **Rank**
-- `r fa("square-check", fill = "green")` / `r fa("xmark", fill = "red")` **Ratio**
+- [{{< fa square-check >}}]{.green} / [{{< fa xmark >}}]{.red} **Discriminate**
+- [{{< fa square-check >}}]{.green} / [{{< fa xmark >}}]{.red} **Rank**
+- [{{< fa square-check >}}]{.green} / [{{< fa xmark >}}]{.red} **Ratio**
 :::
 
 ::: {.col width="70%"}
@@ -573,9 +573,9 @@ Align to 0 scale:
 
 <br>
 
-- `r fa("square-check", fill = "green")` / `r fa("xmark", fill = "red")` **Discriminate**
-- `r fa("square-check", fill = "green")` / `r fa("xmark", fill = "red")` **Rank**
-- `r fa("square-check", fill = "green")` / `r fa("xmark", fill = "red")` **Ratio**
+- [{{< fa square-check >}}]{.green} / [{{< fa xmark >}}]{.red} **Discriminate**
+- [{{< fa square-check >}}]{.green} / [{{< fa xmark >}}]{.red} **Rank**
+- [{{< fa square-check >}}]{.green} / [{{< fa xmark >}}]{.red} **Ratio**
 :::
 
 ::: {.col width="70%"}
@@ -617,9 +617,9 @@ Align to 0 scale:
 
 <br>
 
-- `r fa("square-check", fill = "green")` / `r fa("xmark", fill = "red")` **Discriminate**
-- `r fa("square-check", fill = "green")` **Rank**
-- `r fa("square-check", fill = "green")` / `r fa("xmark", fill = "red")` **Ratio**
+- [{{< fa square-check >}}]{.green} / [{{< fa xmark >}}]{.red} **Discriminate**
+- [{{< fa square-check >}}]{.green} **Rank**
+- [{{< fa square-check >}}]{.green} / [{{< fa xmark >}}]{.red} **Ratio**
 :::
 
 ::: {.col width="70%"}
@@ -660,9 +660,9 @@ Align to 0 scale:
 
 <br>
 
-- `r fa("square-check", fill = "green")` / `r fa("xmark", fill = "red")` **Discriminate**
-- `r fa("square-check", fill = "green")` / `r fa("xmark", fill = "red")` **Rank**
-- `r fa("square-check", fill = "green")` **Ratio**
+- [{{< fa square-check >}}]{.green} / [{{< fa xmark >}}]{.red} **Discriminate**
+- [{{< fa square-check >}}]{.green} / [{{< fa xmark >}}]{.red} **Rank**
+- [{{< fa square-check >}}]{.green} **Ratio**
 :::
 
 ::: {.col width="70%"}
@@ -684,9 +684,9 @@ Align to 0 scale:
 
 <br>
 
-- `r fa("square-check", fill = "green")` / `r fa("xmark", fill = "red")` **Discriminate**
-- `r fa("square-check", fill = "green")` / `r fa("xmark", fill = "red")` **Rank**
-- `r fa("square-check", fill = "green")` **Ratio**
+- [{{< fa square-check >}}]{.green} / [{{< fa xmark >}}]{.red} **Discriminate**
+- [{{< fa square-check >}}]{.green} / [{{< fa xmark >}}]{.red} **Rank**
+- [{{< fa square-check >}}]{.green} **Ratio**
 :::
 
 ::: {.col width="70%"}
@@ -708,9 +708,9 @@ Align to 0 scale:
 
 <br>
 
-- `r fa("square-check", fill = "green")` **Discriminate**
-- `r fa("square-check", fill = "green")` **Rank**
-- `r fa("square-check", fill = "green")` **Ratio**
+- [{{< fa square-check >}}]{.green} **Discriminate**
+- [{{< fa square-check >}}]{.green} **Rank**
+- [{{< fa square-check >}}]{.green} **Ratio**
 :::
 
 ::: {.col width="70%"}
