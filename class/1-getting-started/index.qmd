@@ -354,7 +354,6 @@ engagement_plot
 
 ### Code
 
-
 ::: {.col}
 
 **Clean the data**
@@ -578,6 +577,8 @@ Presentation    | Dec 08
 
 ---
 
+{{< tight >}}
+
 # [Grades]{.center}
 
 Item                           | Weight | Notes
@@ -770,6 +771,26 @@ countdown(
 
 agenda(3)
 ```
+
+---
+
+{{< center >}}
+{{< middle >}}
+
+# This semester we use [Positron](https://positron.posit.co/download.html)
+
+## (not RStudio)
+
+---
+
+{{< bg-color "#ffffff" >}}
+{{< tight >}}
+
+# [Positron Orientation]{.center}
+
+<center>
+<img src="images/positron.png" width=90%>
+</center>
 
 ---
 
