@@ -351,60 +351,25 @@ agenda(2)
 
 ---
 
+{{< bg-color "#F8F7F0" >}}
+{{< center >}}
+
 # [Assistants vs. Agents]{.center}
 
-::: {.col}
-### [Assistants]{.blue}
-
-**One-off tasks**
-
-- ChatGPT · Claude · Gemini
-- Daily questions, small tasks
-- A smarter search engine
-:::
-
-::: {.col}
-### [Agents]{.orange}
-
-**Full project workflows**
-
-- Claude Code · Codex · Gemini CLI
-- **Edit your files**, run commands
-- Carry a project forward over time
-:::
-
-<br>
-
-::: {.font120 .center}
 This class lives on the [**agent**]{.orange} side.
-:::
+
+![](images/chat-vs-agents.png){fig-align="center" width=100%}
 
 ---
 
+{{< bg-color "#F8F7F0" >}}
 {{< center >}}
 
-# [Agent = model + skills + files]{.center}
+# [Agentic Workflow]{.center}
 
-::: {.col .center}
-### [Model]{.purple}
-The reasoning<br>*(Claude)*
-:::
-
-::: {.col .center}
-### [Skills]{.darkgreen}
-Reusable know-how<br>*(slash commands)*
-:::
-
-::: {.col .center}
-### [Files]{.orange}
-Your project<br>*(the folder it works in)*
-:::
-
-<br>
-
-::: {.font110 .center}
 Claude Code is the agent. **You** supply the project and the direction.
-:::
+
+![](images/agentic-workflow.png){fig-align="center" width=100%}
 
 ---
 
