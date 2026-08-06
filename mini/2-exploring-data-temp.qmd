@@ -18,13 +18,13 @@ params:
 #| include: false
 
 knitr::opts_chunk$set(
-    warning = FALSE,
-    message = FALSE,
-    fig.path = "figs/",
-    fig.width = 7.252,
-    fig.height = 4,
-    comment = "#>",
-    fig.retina = 3
+  warning = FALSE,
+  message = FALSE,
+  fig.path = "figs/",
+  fig.width = 7.252,
+  fig.height = 4,
+  comment = "#>",
+  fig.retina = 3
 )
 
 source(here::here("_common.R"))
@@ -32,9 +32,9 @@ source(here::here("_common.R"))
 # Read in rubric data
 rubric <- read_csv(here::here('rubrics', 'mini2.csv'))
 maxPoints <- rubric %>%
-    filter(rating == "Excellent") %>%
-    summarise(max = sum(maxPoints)) %>%
-    pull(max)
+  filter(rating == "Excellent") %>%
+  summarise(max = sum(maxPoints)) %>%
+  pull(max)
 ```
 
 ```{r child = here::here("fragments", "mini.qmd")}
@@ -51,7 +51,7 @@ Neither file is analysis-ready. The Olympics data is one row _per athlete per ev
 
 # 1. Get organized
 
-Open your course repo (`eda-f26/eda-netID`) in Positron using **File › Open Folder** and open it to the `mini2` folder. If you haven't cloned your course repo yet, follow the steps in [HW1](../hw/1-agentic-workflows-and-github.html#clone-your-course-repo) first.
+Open your course repo (`eda-f26/eda-netID`) in Positron using **File › Open Folder** and open it to the `mini2` folder.
 
 Everything for this assignment lives in the `mini2` folder. Inside it you'll find `report.qmd` and a `data` folder. Click on `report.qmd`. That is the primary file you will edit to conduct your analysis.
 

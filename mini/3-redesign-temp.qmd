@@ -59,10 +59,13 @@ With that in mind, here's what you need to do for this analysis:
 
 # 1. Get organized
 
-1. Open your course repo (`eda-f26/eda-netID`) in Positron using **File › Open Folder** and open it to the `mini3` folder. If you haven't cloned your course repo yet, follow the steps in [HW1](../hw/1-agentic-workflows-and-github.html#clone-your-course-repo) first.
-2. Everything for this assignment lives in the `mini3` folder. Inside it you'll find `report.qmd` and a `data` folder. Click on `report.qmd`. That is the primary file you will edit to conduct your analysis.
-3. Update the YAML with your name, a title, the date, etc.
-4. Delete any of the existing text / code in `report.qmd` before submitting - it is just there as a helpful guide.
+Open your course repo (`eda-f26/eda-netID`) in Positron using **File › Open Folder** and open it to the `mini3` folder.
+
+Everything for this assignment lives in the `mini3` folder. Inside it you'll find `report.qmd` and a `data` folder. Click on `report.qmd`. That is the primary file you will edit to conduct your analysis.
+
+Update the YAML with your name, a title, the date, etc.
+
+Be sure to delete any of the existing text / code in `report.qmd` before submitting - it is just there as a helpful guide.
 
 > **Points will be taken off for failing to follow these basic organizing steps.**
 
