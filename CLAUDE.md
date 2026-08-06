@@ -28,7 +28,7 @@ website (Fall 2026), built with [Quarto](https://quarto.org/).
   around *judgment and verification* — the things an agent can't do for you).
   Quizzes (5) retained. *(A "7 small labs" idea was explored and rejected in
   favor of keeping 3 ambitious mini projects.)*
-- **Grade breakdown:** Participation 5 · Reflections 13 · Quizzes 10 · Mini
+- **Grade breakdown:** Participation 7 · Weekly HW 11 · Quizzes 10 · Mini
   Projects 27 (3×9) · Final Project 35 (proposal 6 + progress 6 + report 17 +
   presentation 6) · Final Interview 10 = 100.
 

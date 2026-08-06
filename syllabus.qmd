@@ -91,7 +91,7 @@ Quizzes are **short** (10 minutes) and are designed to test for fluency and to d
 
 Students will be responsible for two types of assignments throughout the semester:
 
-- **Reading Reflections**: Each week, students will be assigned specific readings to prepare for the *next* class period, along with some light hands-on practice, and will submit a short, thoughtful reflection on those concepts.
+- **Weekly HW**: Each week, students will be assigned specific readings to prepare for the *next* class period, along with some light hands-on practice, and will submit a short, thoughtful reflection on those concepts.
 - **Mini Projects**: There will be three individual mini projects throughout the semester. These are more ambitious than the weekly assignments. Because agentic tools now handle most of the mechanical work, the mini projects focus on the judgment an agent *can't* do for you — asking good questions, verifying that the results are correct, critiquing analyses, and making and defending design decisions. While you may discuss approaches with peers, each student must submit their own work. Credit for each mini project is allocated according to a rubric provided in the assignment description.
 
 ## Final Project
@@ -114,8 +114,8 @@ Final grades will be calculated as follows:
 
 Item                           | Weight | Notes
 -------------------------------|--------|-------------------------------------
-Participation / Attendance     | 5%     | (Yes, I take attendance)
-Reflections                    | 13 %   | Weekly assignment, lowest dropped)
+Participation / Attendance     | 7%     | (Yes, I take attendance)
+Weekly HW                    | 11 %   | Lowest dropped
 Quizzes                        | 10 %   | 5 quizzes, lowest dropped
 Mini Project 1                 | 9 %    | Individual assignments
 Mini Project 2                 | 9 %    |
@@ -139,39 +139,61 @@ library(viridis)
 library(ggrepel)
 
 df <- data.frame(
-    category = c(
-      'Participation', 'Reflections', 'Quizzes', 'Mini Projects',
-      'Final Project',  'Interview'
-    ),
-    percent = c(5, 13, 10, 27, 35, 10)) %>%
-    arrange(desc(percent)) %>%
-    mutate(
-      cumpercent = cumsum(percent),
-      label_x = cumpercent - (percent / 2),
-      category = fct_reorder(category, percent))
+  category = c(
+    'Participation',
+    'Weekly HW',
+    'Quizzes',
+    'Mini Projects',
+    'Final Project',
+    'Interview'
+  ),
+  percent = c(7, 11, 10, 27, 35, 10)
+) %>%
+  arrange(desc(percent)) %>%
+  mutate(
+    cumpercent = cumsum(percent),
+    label_x = cumpercent - (percent / 2),
+    category = fct_reorder(category, percent)
+  )
 
 ggplot(df) +
-    geom_col(
-      aes(y = "", x = percent, fill = category),
-      width = 1.1, alpha = 0.8
-    ) +
-    geom_label(
-      data = filter(df, category %in% c(
-      'Mini Projects', 'Final Project')),
-      aes(y = "", x = label_x, label = category)
-    ) +
-    geom_label_repel(
-      data = filter(df, category %in% c(
-        'Participation', 'Quizzes', 'Interview', 'Reflections')
-      ),
-      aes(y = "", x = label_x, label = category),
-      direction = 'y', label.padding = 0.25, segment.size = 0
-    ) +
-    scale_x_continuous(expand = expansion(mult = c(0, 0.05))) +
-    scale_fill_viridis(discrete = TRUE) +
-    theme_minimal_vgrid() +
-    theme(legend.position = 'none') +
-    labs(x = 'Percent of final grade', y = NULL)
+  geom_col(
+    aes(y = "", x = percent, fill = category),
+    width = 1.1,
+    alpha = 0.8
+  ) +
+  geom_label(
+    data = filter(
+      df,
+      category %in%
+        c(
+          'Mini Projects',
+          'Final Project'
+        )
+    ),
+    aes(y = "", x = label_x, label = category)
+  ) +
+  geom_label_repel(
+    data = filter(
+      df,
+      category %in%
+        c(
+          'Participation',
+          'Quizzes',
+          'Interview',
+          'Weekly HW'
+        )
+    ),
+    aes(y = "", x = label_x, label = category),
+    direction = 'y',
+    label.padding = 0.25,
+    segment.size = 0
+  ) +
+  scale_x_continuous(expand = expansion(mult = c(0, 0.05))) +
+  scale_fill_viridis(discrete = TRUE) +
+  theme_minimal_vgrid() +
+  theme(legend.position = 'none') +
+  labs(x = 'Percent of final grade', y = NULL)
 ```
 
 ## Grading Scale

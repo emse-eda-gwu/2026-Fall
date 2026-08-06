@@ -549,7 +549,7 @@ You should be able to:
 # Assignments
 
 ::: {.fragment}
-## 1) {{< fa book >}} Weekly Reflections: [HW1](https://eda.seas.gwu.edu/2026-Fall/hw/1-agentic-workflows.html)
+## 1) {{< fa book >}} Weekly Homework: [HW1](https://eda.seas.gwu.edu/2026-Fall/hw/1-agentic-workflows-and-github.html)
 :::
 
 ::: {.fragment}
@@ -583,8 +583,8 @@ Presentation    | Dec 08
 
 Item                           | Weight | Notes
 -------------------------------|--------|-------------------------------------
-Participation / Attendance     | 5 %    | (Yes, I take attendance)
-Reflections                    | 13 %   | Weekly assignment, lowest dropped
+Participation / Attendance     | 7 %    | (Yes, I take attendance)
+Weekly HW                      | 11 %   | Weekly assignment, lowest dropped
 Quizzes                        | 10 %   | 5 quizzes, lowest dropped
 Mini Project 1                 | 9 %    | Individual assignments
 Mini Project 2                 | 9 %    |
