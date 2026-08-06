@@ -1,10 +1,10 @@
 order,category,label,rating,maxPoints,points,description
 1,organization,Organization & Formatting,Excellent,5,5,All formatting guidelines are followed; YAML is correctly filled out.
 1,organization,Organization & Formatting,Good,5,4,Most formatting guidelines are followed; YAML is correctly filled out.
-1,organization,Organization & Formatting,Needs work,5,3,Several or all formatting guidelines not followed; YAML contains elements that aren't updated from the template; template file wasn't used.
-2,documentation,Data Documentation,Excellent,5,5,The README file included in the template was updated with thoughtful and accurate information about the data.
-2,documentation,Data Documentation,Good,5,4,"The README file included in the template was updated, but some of the information was missing or inaccurate."
-2,documentation,Data Documentation,Needs work,5,3,"The README file included in the template was not updated, missing, or most of the information in it was inaccurate."
+1,organization,Organization & Formatting,Needs work,5,3,Several or all formatting guidelines not followed; YAML contains elements that aren't updated from the provided starter file; the provided report.qmd wasn't used.
+2,documentation,Data Documentation,Excellent,5,5,The README file included in the mini1 data folder was updated with thoughtful and accurate information about the data.
+2,documentation,Data Documentation,Good,5,4,"The README file included in the mini1 data folder was updated, but some of the information was missing or inaccurate."
+2,documentation,Data Documentation,Needs work,5,3,"The README file included in the mini1 data folder was not updated, missing, or most of the information in it was inaccurate."
 3,strategy,Strategy,Excellent,5,5,"A specific, numbered strategy is written before implementation; it correctly identifies the key judgment calls in the data (e.g. distinguishing countries from regions/subtotals) and describes how the data will be reshaped and cleaned."
 3,strategy,Strategy,Good,5,4,"A strategy is present and numbered, but is vague in places or misses one of the key judgment calls."
 3,strategy,Strategy,Needs work,5,3,"Strategy is missing, generic/copied from the assignment prompt, or clearly written after the cleaning code rather than guiding it."
@@ -14,6 +14,6 @@ order,category,label,rating,maxPoints,points,description
 5,verification,Verification,Excellent,10,9 - 10,"Runs and reports on multiple concrete, specific checks (e.g. row/shape counts, a duplicate check, an NA audit, an independent reconciliation against totals reported in the source file, manual spot-checks) with real output shown; clearly documents at least one place where Claude's first attempt was wrong and how it was caught and corrected. The exported transcript corroborates that the student -- not just the agent -- did the verifying and reasoning."
 5,verification,Verification,Good,10,6 - 8,"Runs some real checks, but they are generic (e.g. only `head()`/`glimpse()`) or the write-up asserts correctness without independent evidence. The transcript suggests verification was mostly outsourced to the agent (e.g. ""please verify this is correct"") rather than the student directly checking."
 5,verification,Verification,Needs work,10,0 - 5,"No real verification beyond visually inspecting the output. Claims the data was ""double checked"" or ""verified"" with no supporting checks in the report or evidence in the transcript."
-6,technical,Technical & Process,Excellent,5,5,"All code runs without errors; the submitted .zip contains exactly report.qmd, report.html, transcript.md, and my_clean_data.csv."
-6,technical,Technical & Process,Good,5,4,"Code has only one or two errors, otherwise runs; the submitted .zip is missing one of the four required files or includes extra clutter."
-6,technical,Technical & Process,Needs work,5,3,"Code has multiple errors; html file cannot be rendered without significant changes; the submitted .zip is missing report.qmd, report.html, transcript.md, or my_clean_data.csv."
+6,technical,Technical & Process,Excellent,5,5,"All code runs without errors; the mini1 folder pushed to GitHub contains exactly report.qmd, report.html, transcript.md, and my_clean_data.csv."
+6,technical,Technical & Process,Good,5,4,"Code has only one or two errors, otherwise runs; the pushed mini1 folder is missing one of the four required files or includes extra clutter."
+6,technical,Technical & Process,Needs work,5,3,"Code has multiple errors; html file cannot be rendered without significant changes; work was never pushed to GitHub; or the pushed mini1 folder is missing report.qmd, report.html, transcript.md, or my_clean_data.csv."

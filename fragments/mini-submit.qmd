@@ -2,19 +2,32 @@
 #| echo: false
 #| results: asis
 
+folder <- paste0("mini", params$number)
+
 if (!is.null(params$data_file)) {
-  zip_line <- sprintf(
-    "3. Make a [zip file](../faq.html#how-do-i-make-a-zip-file-for-my-homework) containing exactly four files -- `report.qmd`, `report.html`, `transcript.md`, and `%s` -- and submit that single zip file on the corresponding assignment submission on Blackboard.",
-    params$data_file
+  files_line <- sprintf(
+    "4. Check that your `%s` folder contains exactly four files -- `report.qmd`, `report.html`, `transcript.md`, and `%s` -- plus the `data` folder.",
+    folder, params$data_file
   )
 } else {
-  zip_line <- "3. Make a [zip file](../faq.html#how-do-i-make-a-zip-file-for-my-homework) containing exactly three files -- `report.qmd`, `report.html`, and `transcript.md` -- and submit that single zip file on the corresponding assignment submission on Blackboard."
+  files_line <- sprintf(
+    "4. Check that your `%s` folder contains exactly three files -- `report.qmd`, `report.html`, and `transcript.md` -- plus the `data` folder.",
+    folder
+  )
 }
 
 cat(
-  '1. Click "Render" to compile your `.qmd` file into an `.html` file. Open `report.html` in a browser and proofread it -- make sure there are no errors and the formatting looks correct.',
-  "2. Run `/export` in Claude Code and save the result as `transcript.md` in your project folder. This is a required part of your submission -- it's how your verification is checked.",
-  zip_line,
+  "To submit your assignment, follow these instructions:",
+  "",
+  '1. Render your `report.qmd` file by either clicking the "Preview" button in Positron or running `quarto render` in the terminal.',
+  "2. Open the rendered `report.html` file and proofread it -- make sure there are no errors and all the formatting looks as you expected.",
+  sprintf("3. Run `/export` in Claude Code and save the result as `transcript.md` in your `%s` folder. This is a required part of your submission -- it's how your verification is checked.", folder),
+  files_line,
+  "5. Commit and push your work using GitHub Desktop: look at the diff, write a short commit message, click **Commit**, then **Push**.",
   sep = "\n"
 )
 ```
+
+::: {.callout-note title="Remember"}
+Your work isn't submitted until you've **pushed** it. Committing only saves the change on your own computer -- go look at your repo on GitHub.com and confirm your work is actually there before you call this done.
+:::

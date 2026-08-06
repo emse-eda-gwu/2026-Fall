@@ -51,9 +51,11 @@ Neither file is analysis-ready. The Olympics data is one row _per athlete per ev
 
 # 1. Get organized
 
-Download and **unzip** [this template](../templates/mini2.zip) for your project, then open Positron to the unzipped template folder.
+Open your course repo (`eda-f26/eda-netID`) in Positron using **File › Open Folder** and open it to the `mini2` folder. If you haven't cloned your course repo yet, follow the steps in [HW1](../hw/1-agentic-workflows-and-github.html#clone-your-course-repo) first.
 
-Once Positron opens, click on the `report.qmd` file. That is the primary file you will edit to conduct your analysis.
+Everything for this assignment lives in the `mini2` folder. Inside it you'll find `report.qmd` and a `data` folder. Click on `report.qmd`. That is the primary file you will edit to conduct your analysis.
+
+Paths inside `report.qmd` are relative to the `mini2` folder, so refer to the data as `file.path('data', 'olympics_2016.csv')`.
 
 # 2. Document the data
 
@@ -138,7 +140,7 @@ For each question: state it, make the chart, and write at least one paragraph in
 
 # 9. Document Your Process
 
-**Save your joined, cleaned data** as `my_clean_data.csv` in the project root folder.
+**Save your joined, cleaned data** as `my_clean_data.csv` in your `mini2` folder, next to `report.qmd`.
 
 **Write a brief reflection** addressing:
 
@@ -147,7 +149,7 @@ For each question: state it, make the chart, and write at least one paragraph in
 - What specifically did you check to be confident your medal counts and join are correct?
 - What would you do differently if you encountered similar data again?
 
-**Deliverable:** Saved CSV file and written reflection (4-6 sentences).
+**Deliverable:** Saved `my_clean_data.csv` file in your `mini2` folder, and written reflection (4-6 sentences).
 
 # 10. Render and submit
 
