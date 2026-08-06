@@ -52,8 +52,8 @@ failure — it's the tool that tells you what to do next.
 
 | Item | Weight | Notes |
 |------|--------|-------|
-| Participation | 5% | Attendance is taken |
-| Reflections | 13% | Weekly, lowest dropped |
+| Participation | 7% | Attendance is taken |
+| Weekly HW | 11% | Weekly, lowest dropped |
 | Quizzes | 10% | 5 total, lowest dropped, 10 min |
 | Mini Projects (3) | 27% | 9% each, individual |
 | Final Project | 35% | Proposal 6, progress 6, report 17, presentation 6 |
