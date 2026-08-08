@@ -440,8 +440,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>With this in mind, your job is to develop and execute a strategy to go from the raw excel file to this cleaned version of the data.</p>
 <section id="get-organized" class="level2">
 <h2 class="anchored" data-anchor-id="get-organized">1. Get organized</h2>
-<p>Download and <strong>unzip</strong> <a href="../templates/mini1.zip">this template</a> for your project, then open Positron to the unzipped template folder.</p>
-<p>Once Positron opens, click on the <code>report.qmd</code> file. That is the primary file you will edit to conduct your analysis.</p>
+<p>Open your course repo (<code>eda-f26/eda-netID</code>) in Positron using <strong>File › Open Folder</strong> and open it to the <code>mini1</code> folder. If you haven’t cloned your course repo yet, follow the steps in <a href="../hw/1-agentic-workflows-and-github.html#clone-your-course-repo">HW1</a> first.</p>
+<p>Everything for this assignment lives in the <code>mini1</code> folder. Inside it you’ll find <code>report.qmd</code> and a <code>data</code> folder. Click on <code>report.qmd</code>. That is the primary file you will edit to conduct your analysis.</p>
+<p>Paths inside <code>report.qmd</code> are relative to the <code>mini1</code> folder, so refer to the data as <code>file.path('data', 'pc_sales_2024.xlsx')</code>.</p>
 </section>
 <section id="document-the-data" class="level2">
 <h2 class="anchored" data-anchor-id="document-the-data">2. Document the data</h2>
@@ -516,7 +517,7 @@ Note
 </section>
 <section id="document-your-process" class="level2">
 <h2 class="anchored" data-anchor-id="document-your-process">8. Document Your Process</h2>
-<p><strong>Save your cleaned data</strong> as <code>my_clean_data.csv</code> in the project root folder.</p>
+<p><strong>Save your cleaned data</strong> as <code>my_clean_data.csv</code> in your <code>mini1</code> folder, next to <code>report.qmd</code>.</p>
 <p><strong>Write a brief reflection</strong> addressing:</p>
 <ul>
 <li>What were the 2-3 biggest challenges in cleaning this data?</li>
@@ -524,16 +525,32 @@ Note
 <li>What specifically did you check to be confident your cleaned data is correct (beyond “it looked right”)?</li>
 <li>What would you do differently if you encountered similar data again?</li>
 </ul>
-<p><strong>Deliverable:</strong> Saved <code>my_clean_data.csv</code> file in the <code>data</code> folder, and written reflection (~4-6 sentences).</p>
+<p><strong>Deliverable:</strong> Saved <code>my_clean_data.csv</code> file in your <code>mini1</code> folder, and written reflection (~4-6 sentences).</p>
 </section>
 <section id="render-and-submit" class="level2">
 <h2 class="anchored" data-anchor-id="render-and-submit">9. Render and submit</h2>
 <div class="cell" data-layout-align="center">
+<p>To submit your assignment, follow these instructions:</p>
 <ol type="1">
-<li>Click “Render” to compile your <code>.qmd</code> file into an <code>.html</code> file. Open <code>report.html</code> in a browser and proofread it – make sure there are no errors and the formatting looks correct.</li>
-<li>Run <code>/export</code> in Claude Code and save the result as <code>transcript.md</code> in your project folder. This is a required part of your submission – it’s how your verification is checked.</li>
-<li>Make a <a href="../faq.html#how-do-i-make-a-zip-file-for-my-homework">zip file</a> containing exactly four files – <code>report.qmd</code>, <code>report.html</code>, <code>transcript.md</code>, and <code>my_clean_data.csv</code> – and submit that single zip file on the corresponding assignment submission on Blackboard.</li>
+<li>Render your <code>report.qmd</code> file by either clicking the “Preview” button in Positron or running <code>quarto render</code> in the terminal.</li>
+<li>Open the rendered <code>report.html</code> file and proofread it – make sure there are no errors and all the formatting looks as you expected.</li>
+<li>Run <code>/export</code> in Claude Code and save the result as <code>transcript.md</code> in your <code>mini1</code> folder. This is a required part of your submission – it’s how your verification is checked.</li>
+<li>Check that your <code>mini1</code> folder contains exactly four files – <code>report.qmd</code>, <code>report.html</code>, <code>transcript.md</code>, and <code>my_clean_data.csv</code> – plus the <code>data</code> folder.</li>
+<li>Commit and push your work using GitHub Desktop: look at the diff, write a short commit message, click <strong>Commit</strong>, then <strong>Push</strong>.</li>
 </ol>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Remember">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Remember
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Your work isn’t submitted until you’ve <strong>pushed</strong> it. Committing only saves the change on your own computer – go look at your repo on GitHub.com and confirm your work is actually there before you call this done.</p>
+</div>
 </div>
 </section>
 <section id="bonus-make-a-summary-visualization-5" class="level2">
@@ -573,16 +590,16 @@ All formatting guidelines are followed; YAML is correctly filled out.</td>
 <td style="text-align: left; width: 25%;"><strong>4</strong><br>
 Most formatting guidelines are followed; YAML is correctly filled out.</td>
 <td style="text-align: left; width: 25%;"><strong>3</strong><br>
-Several or all formatting guidelines not followed; YAML contains elements that aren't updated from the template; template file wasn't used.</td>
+Several or all formatting guidelines not followed; YAML contains elements that aren't updated from the provided starter file; the provided report.qmd wasn't used.</td>
 </tr>
 <tr class="even">
 <td style="text-align: left; width: 16%;">Data Documentation</td>
 <td style="text-align: left; width: 34%;"><strong>5</strong><br>
-The README file included in the template was updated with thoughtful and accurate information about the data.</td>
+The README file included in the mini1 data folder was updated with thoughtful and accurate information about the data.</td>
 <td style="text-align: left; width: 25%;"><strong>4</strong><br>
-The README file included in the template was updated, but some of the information was missing or inaccurate.</td>
+The README file included in the mini1 data folder was updated, but some of the information was missing or inaccurate.</td>
 <td style="text-align: left; width: 25%;"><strong>3</strong><br>
-The README file included in the template was not updated, missing, or most of the information in it was inaccurate.</td>
+The README file included in the mini1 data folder was not updated, missing, or most of the information in it was inaccurate.</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left; width: 16%;">Strategy</td>
@@ -614,11 +631,11 @@ No real verification beyond visually inspecting the output. Claims the data was 
 <tr class="even">
 <td style="text-align: left; width: 16%;">Technical &amp; Process</td>
 <td style="text-align: left; width: 34%;"><strong>5</strong><br>
-All code runs without errors; the submitted .zip contains exactly report.qmd, report.html, transcript.md, and my_clean_data.csv.</td>
+All code runs without errors; the mini1 folder pushed to GitHub contains exactly report.qmd, report.html, transcript.md, and my_clean_data.csv.</td>
 <td style="text-align: left; width: 25%;"><strong>4</strong><br>
-Code has only one or two errors, otherwise runs; the submitted .zip is missing one of the four required files or includes extra clutter.</td>
+Code has only one or two errors, otherwise runs; the pushed mini1 folder is missing one of the four required files or includes extra clutter.</td>
 <td style="text-align: left; width: 25%;"><strong>3</strong><br>
-Code has multiple errors; html file cannot be rendered without significant changes; the submitted .zip is missing report.qmd, report.html, transcript.md, or my_clean_data.csv.</td>
+Code has multiple errors; html file cannot be rendered without significant changes; work was never pushed to GitHub; or the pushed mini1 folder is missing report.qmd, report.html, transcript.md, or my_clean_data.csv.</td>
 </tr>
 </tbody>
 </table>

@@ -54,9 +54,11 @@ With this in mind, your job is to develop and execute a strategy to go from the 
 
 ## 1. Get organized
 
-Download and **unzip** [this template](../templates/mini1.zip) for your project, then open Positron to the unzipped template folder.
+Open your course repo (`eda-f26/eda-netID`) in Positron using **File › Open Folder** and open it to the `mini1` folder. If you haven't cloned your course repo yet, follow the steps in [HW1](../hw/1-agentic-workflows-and-github.html#clone-your-course-repo) first.
 
-Once Positron opens, click on the `report.qmd` file. That is the primary file you will edit to conduct your analysis.
+Everything for this assignment lives in the `mini1` folder. Inside it you'll find `report.qmd` and a `data` folder. Click on `report.qmd`. That is the primary file you will edit to conduct your analysis.
+
+Paths inside `report.qmd` are relative to the `mini1` folder, so refer to the data as `file.path('data', 'pc_sales_2024.xlsx')`.
 
 ## 2. Document the data
 
@@ -132,7 +134,7 @@ Run and document at least these checks:
 
 ## 8. Document Your Process
 
-**Save your cleaned data** as `my_clean_data.csv` in the project root folder.
+**Save your cleaned data** as `my_clean_data.csv` in your `mini1` folder, next to `report.qmd`.
 
 **Write a brief reflection** addressing:
 
@@ -141,7 +143,7 @@ Run and document at least these checks:
 - What specifically did you check to be confident your cleaned data is correct (beyond "it looked right")?
 - What would you do differently if you encountered similar data again?
 
-**Deliverable:** Saved `my_clean_data.csv` file in the `data` folder, and written reflection (~4-6 sentences).
+**Deliverable:** Saved `my_clean_data.csv` file in your `mini1` folder, and written reflection (~4-6 sentences).
 
 ## 9. Render and submit
 

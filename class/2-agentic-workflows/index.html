@@ -100,7 +100,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-85520e607e78399f333533d08902faca.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-d91063f734c5651f8531c17988f933d2.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -225,18 +225,26 @@
     // Keep in sync with --lexis-ov-gap / --lexis-ov-pad in lexis.scss.
     var GAP = 26;       // px between tiles
     var PAD = 30;       // px around the grid
-    var MIN_TILE = 260; // narrowest thumbnail worth rendering, in px
+    var MIN_TILE = 320; // narrowest thumbnail worth rendering, in px (a laptop
+                        // lands on 4 columns; a wide monitor gets 5)
     var MAX_COLS = 6;   // past this the slides are unreadable
 
     function init(Reveal) {
       var viewportEl = Reveal.getViewportElement();
       var slidesEl = Reveal.getSlidesElement();
 
-      // "12 / 55" on every tile, like the xaringan tile view. Set once, always;
-      // the CSS only reveals it (as a ::after) inside overview mode.
+      // "12 / 55" under every tile, like the xaringan tile view. Set once,
+      // always; the CSS only reveals it (as a ::after) inside overview mode. The
+      // attribute goes on the GRID ITEM (the .stack wrapper when reveal built
+      // one, else the section itself), not the leaf slide: the label is drawn
+      // below the tile in the row gap, so it has to hang off an element with
+      // `overflow: visible` — the leaf keeps `overflow: hidden` to clip content.
       var slides = Reveal.getSlides();
       slides.forEach(function (slide, i) {
-        slide.setAttribute("data-lexis-ov-num", (i + 1) + " / " + slides.length);
+        var tile = slide.parentElement && slide.parentElement.classList.contains("stack")
+          ? slide.parentElement
+          : slide;
+        tile.setAttribute("data-lexis-ov-num", (i + 1) + " / " + slides.length);
       });
 
       // ---- 1. thumbnail scale -------------------------------------------------
@@ -897,7 +905,7 @@ built-in one.
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_7eb3b7d4" data-warn-when="30" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_aebe2c04" data-warn-when="30" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1017,7 +1025,7 @@ built-in one.
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_77cb2ef0" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_ee5a503e" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1193,7 +1201,7 @@ Build HTML
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_e3003faa" data-warn-when="120" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_d1be663b" data-warn-when="120" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1563,7 +1571,7 @@ Auto
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_304fb479" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_8451c6af" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1682,7 +1690,7 @@ Using one
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_efe41492" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_fa9452d5" data-warn-when="60" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -2037,7 +2045,7 @@ Using one
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_38020ce9" data-warn-when="120" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_1297965e" data-warn-when="120" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">18</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
