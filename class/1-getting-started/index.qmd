@@ -630,7 +630,7 @@ Final Interview                | 10 %   | Individual interview
 
 # [Use of AI]{.center}
 
-## [We will heavily use AI tools this semester]{.center}
+## [We will ***heavily*** use AI tools this semester]{.center}
 
 ::: {.incremental}
 
@@ -2037,3 +2037,5 @@ mpg %>%
 {{< middle >}}
 
 # Use [this link](https://docs.google.com/spreadsheets/d/1cXNvWVfZ-WN4oLqbhv76cFTXPBi0KCiQdkCG7ivm7i4/edit?usp=sharing) to form teams
+
+# Check out some [potential project ideas](https://docs.google.com/presentation/d/1Z53tWwXvYgGpv5KNhdmL5MFmkR4NemmedCSgBbKJkNU/edit?usp=sharing)

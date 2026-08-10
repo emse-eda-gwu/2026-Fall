@@ -1364,6 +1364,12 @@ Every one of these is **invisible in the chart** and **invisible in the code**.<
 - [**HW2**](https://eda.seas.gwu.edu/2026-Fall/hw/2-tidy-data.html): read forward on tidy data + joins, try the light practice, reflect
 - Next week: **Cleaning, Reshaping & Joining** — same loop, on real data
 
-<br>
+---
 
-# [Use [this link](https://docs.google.com/spreadsheets/d/1cXNvWVfZ-WN4oLqbhv76cFTXPBi0KCiQdkCG7ivm7i4/edit?usp=sharing){target='_blank'} to form teams]{.center}
+{{< inverse >}}
+{{< center >}}
+{{< middle >}}
+
+## Use [this link](https://docs.google.com/spreadsheets/d/1cXNvWVfZ-WN4oLqbhv76cFTXPBi0KCiQdkCG7ivm7i4/edit?usp=sharing) to form teams
+
+## Check out some [potential project ideas](https://docs.google.com/presentation/d/1Z53tWwXvYgGpv5KNhdmL5MFmkR4NemmedCSgBbKJkNU/edit?usp=sharing)
