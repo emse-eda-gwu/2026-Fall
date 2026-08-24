@@ -700,7 +700,7 @@ Final Interview                | 10 %   | Individual interview
 :::
 
 ::: {.fragment}
-## {{< fa person-chalkboard >}} Meet with your tutors
+## {{< fa person-chalkboard >}} Meet with your tutor
 :::
 
 ::: {.fragment}
@@ -1701,7 +1701,7 @@ Concept developed by Leland Wilkinson (1999)
 
 # Layer 1: The data
 
-::: {.font70}
+::: {.col .font80}
 ```{r}
 head(mpg)
 ```
@@ -1713,7 +1713,7 @@ head(mpg)
 
 The `ggplot()` function initializes the plot with whatever data you're using
 
-::: {.col}
+::: {.col .font80}
 ```r
 mpg %>%
   ggplot()
@@ -1739,7 +1739,7 @@ mpg %>%
 
 The `aes()` function determines which variables will be _mapped_ to the geometries<br>(e.g. the axes)
 
-::: {.col}
+::: {.col .font80}
 ```r
 mpg %>%
   ggplot(aes(x = displ, y = hwy))
@@ -1763,9 +1763,9 @@ mpg %>%
 
 # Layer 3: The geometries
 
-Use `+` to add geometries, e.g. `geom_points()` for points
+Use `+` to add geometries, e.g. `geom_point()` for points
 
-::: {.col}
+::: {.col .font80}
 ```r
 mpg %>%
   ggplot(aes(x = displ, y = hwy)) +
@@ -1793,7 +1793,7 @@ mpg %>%
 
 Use `labs()` to modify most labels
 
-::: {.col}
+::: {.col .font80}
 ```r
 mpg %>%
   ggplot(aes(x = displ, y = hwy)) +
@@ -1829,7 +1829,7 @@ mpg %>%
 
 # Layer 5: The theme
 
-::: {.col}
+::: {.col .font80}
 ```r
 mpg %>%
   ggplot(aes(x = displ, y = hwy)) +
@@ -1867,7 +1867,7 @@ mpg %>%
 
 # Common themes
 
-::: {.col}
+::: {.col .font80}
 `theme_bw()`
 
 ```{r}
@@ -1881,7 +1881,7 @@ mpg %>%
 ```
 :::
 
-::: {.col}
+::: {.col .font80}
 `theme_minimal()`
 
 ```{r}
@@ -1899,7 +1899,7 @@ mpg %>%
 
 # Common themes
 
-::: {.col}
+::: {.col .font80}
 `theme_classic()`
 
 ```{r}
@@ -1913,7 +1913,7 @@ mpg %>%
 ```
 :::
 
-::: {.col}
+::: {.col .font80}
 `theme_void()`
 
 ```{r}
@@ -1932,7 +1932,7 @@ mpg %>%
 {{< inverse >}}
 {{< middle >}}
 
-::: {.col}
+::: {.col .font80}
 ```{r}
 #| echo: false
 
