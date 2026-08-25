@@ -7,6 +7,7 @@ week: 2
 displaydate: September 2, 2026
 format: 
   lexis-revealjs:
+    code-block-height: "660px"
     link-external-newwindow: true
 mouse-wheel: true
 progress: false
@@ -106,6 +107,7 @@ Our domain: **data analysis & agentic workflows**
 
 {{< center >}}
 {{< bg-color "#fff" >}}
+{{< tight >}}
 
 # We won't use `git` in a terminal 
 
@@ -117,8 +119,9 @@ Our domain: **data analysis & agentic workflows**
 
 {{< center >}}
 {{< bg-color "#fff" >}}
+{{< tight >}}
 
-Everything is a **button in GitHub Desktop**
+### Everything is a **button in GitHub Desktop**
 
 ![](images/ghd-yes.png){fig-align="center" width=90%}
 
@@ -126,6 +129,7 @@ Everything is a **button in GitHub Desktop**
 
 {{< center >}}
 {{< bg-color "#fff" >}}
+{{< tight >}}
 
 ## The github workflow
 
@@ -166,7 +170,10 @@ Send / recieve your commits **up to GitHub**<br>(the cloud copy)
 
 # Write commit messages you'd thank yourself for
 
-::: {.col}
+::: {.col width="10%"}
+:::
+
+::: {.col width="40%"}
 ### {{< fa xmark >}} [Useless]{.red}
 
 - `stuff`
@@ -175,7 +182,7 @@ Send / recieve your commits **up to GitHub**<br>(the cloud copy)
 - `fixed it`
 :::
 
-::: {.col}
+::: {.col width="50%"}
 ### {{< fa check >}} [Useful]{.darkgreen}
 
 - `Add flights bar chart`
@@ -186,7 +193,7 @@ Send / recieve your commits **up to GitHub**<br>(the cloud copy)
 <br>
 
 ::: {.font110 .center}
-A message is a note to **future you** — the one scrolling History<br>trying to find where it broke.
+A message is a note to **future you** 
 :::
 
 ---
@@ -231,6 +238,7 @@ countdown(minutes = 3, warn_when = 30, top = 0, right = 0, font_size = "2em")
 ---
 
 {{< center >}}
+{{< tight >}}
 
 ## Add collaborators in repo settings
 
@@ -240,7 +248,7 @@ countdown(minutes = 3, warn_when = 30, top = 0, right = 0, font_size = "2em")
 
 {{< center >}}
 
-## Two new moves
+## Two new ideas
 
 ::: {.col .fragment .center}
 ### "clone"
@@ -576,13 +584,6 @@ The current mode always shows at the **bottom of the prompt box**
 Give more autonomy to Claude when<br>you have a _very_ clear step-by-step plan
 :::
 
-<br>
-
-::: {.font110 .red .center}
-Whatever the mode, **git is your safety net.**<br>Commit before you let the agent run loose.
-:::
-
-
 ---
 
 {{< center >}}
@@ -604,7 +605,6 @@ Five you'll reach for constantly:
 ::: {.font110}
 - A plain markdown file the agent **reads at the start of every session**
 - It's your project's **house rules** — what this project is, how to run it, what you want done differently
-- Keep it **high-level**, not exhaustive; refresh it at milestones
 :::
 
 <br>
@@ -621,14 +621,14 @@ Five you'll reach for constantly:
 
 # `/init` — let the agent write `CLAUDE.md` for you
 
-::: {.font110}
-You don't write `CLAUDE.md` from scratch. `/init` is a **prompt that tells Claude to go read your project and describe it back to you.**
+::: {.font110 .center}
+**You don't write `CLAUDE.md` from scratch.**
 :::
 
 <br>
 
 ::: {.font110}
-When you run it, Claude:
+When you run `/init`, Claude:
 
 1. Walks the folder — file tree, `README`, config files, existing code
 2. Works out **what the project is** and **how it gets built or run**
@@ -643,7 +643,7 @@ When you run it, Claude:
 A short file, roughly:
 :::
 
-::: {.font90}
+::: {.font90 .col width="70%"}
 ```markdown
 # CLAUDE.md
 
@@ -660,17 +660,11 @@ A multi-page Quarto website about Ada Lovelace.
 ```
 :::
 
-. . .
-
-::: {.font110 .center}
-Notice it's **all things you could have written yourself** —<br>the agent just saved you the typing.
-:::
-
 ---
 
-# `/init` is a *draft*, not gospel
+# [`/init` is a *draft*, not gospel]{.center}
 
-::: {.font110}
+::: {.font110 .center}
 Claude is **guessing** from what it can see. It gets things wrong.
 :::
 
@@ -688,14 +682,6 @@ Claude is **guessing** from what it can see. It gets things wrong.
 - Delete what's wrong or obvious
 - Add rules it can't know:<br>*"charts use `theme_minimal_hgrid()`"*
 - Re-run `/init` only after big changes
-:::
-
-. . .
-
-<br>
-
-::: {.font110 .red .center}
-This file steers **every future session**<br>A wrong line in `CLAUDE.md` is a mistake you'll make over and over
 :::
 
 ---
@@ -764,6 +750,162 @@ General rules of thumb:
 
 ---
 
+{{< center >}}
+
+# [[Tokens]{.orange} are the currency]{.center}
+
+::: {.font120 .center}
+A **token** is a chunk of text — roughly ¾ of a word.<br>Everything the agent does is paid for in tokens.
+:::
+
+<br>
+
+::: {.card .icon-left color="purple"}
+{{< fa brain >}}
+
+### Thinking
+
+Reasoning before it acts
+:::
+
+::: {.card .icon-left color="darkgreen"}
+{{< fa screwdriver-wrench >}}
+
+### Running tools
+
+Every file it reads, every command it runs
+:::
+
+::: {.card .icon-left color="dodgerblue"}
+{{< fa code >}}
+
+### Writing code
+
+Everything it writes back to you
+:::
+
+---
+
+{{< center >}}
+
+# [Your budget refills on a clock]{.center}
+
+::: {.card .icon-left color="orange" cols="2"}
+{{< fa hourglass-half >}}
+
+### Every 5 hours
+
+The clock starts at your **first message**, then resets.
+
+[the one you'll actually hit]{.tag}
+:::
+
+::: {.card .icon-left color="red"}
+{{< fa calendar-days >}}
+
+### Every 7 days
+
+A **weekly cap** sitting on top of the 5-hour one.
+
+[the safety net]{.tag}
+:::
+
+<br>
+
+::: {.font110 .center}
+Run out mid-assignment and you *wait*
+:::
+
+---
+
+{{< center >}}
+
+# [Mind your [context]{.blue}]{.center}
+
+::: {.font120 .center}
+Every message re-sends the **whole conversation**, not just your last line.
+:::
+
+<br>
+
+::: {.card .icon-left color="darkgreen" cols="3"}
+{{< fa gauge-high >}}
+
+### 0–60%
+
+Room to think
+
+[healthy]{.tag}
+:::
+
+::: {.card .icon-left color="orange"}
+{{< fa gauge-high >}}
+
+### 60–80%
+
+Slower and pricier
+
+[trim it soon]{.tag}
+:::
+
+::: {.card .icon-left color="red"}
+{{< fa gauge-high >}}
+
+### 80–100%
+
+Hard stop at 100%
+
+[start fresh]{.tag}
+:::
+
+<br>
+
+::: {.font110 .center}
+Two consequences: a **tiny question pays for the whole history**,<br>and you should **start fresh early**, not at 99%.
+:::
+
+---
+
+{{< center >}}
+
+# [Fewer words in, fewer words out]{.center}
+
+::: {.font110 .center}
+The agent's *chattiness* is billed too — so tell it to be terse.<br>The [🪨 Caveman](https://github.com/JuliusBrussee/caveman) plugin does exactly that:<br>*"why use many token when few do trick"*
+:::
+
+<br>
+
+::: {.col}
+### {{< fa comments >}} [Normal agent]{.red}
+
+::: {.font80}
+"The reason your React component is re-rendering is likely because you're creating a new object reference on each render cycle. When you pass an inline object as a prop, React's shallow comparison sees it as a different object every time, which triggers a re-render. I'd recommend using `useMemo` to memoize the object."
+:::
+
+[69 tokens]{.tag}
+:::
+
+::: {.col}
+### {{< fa bolt >}} [With Caveman]{.darkgreen}
+
+::: {.font80}
+"New object ref each render. Inline object prop = new ref = re-render. Wrap in `useMemo`."
+:::
+
+[19 tokens]{.tag}
+:::
+
+. . .
+
+<br>
+
+::: {.font110 .center}
+[**65%** saved on prose]{.tag} &ensp; [**8.5%** on real coding runs]{.tag} &ensp; [accuracy **unchanged**]{.tag}
+:::
+
+---
+
 # `/clear` vs. `/compact` — managing memory
 
 ::: {.col}
@@ -786,14 +928,6 @@ General rules of thumb:
 - Use it **mid-task** when things get long
 :::
 
-. . .
-
-<br>
-
-::: {.font110 .red .center}
-Agents have **limited memory**<br>Unfocused context makes the agent *slower and dumber*
-:::
-
 ---
 
 {{< inverse >}}
@@ -804,7 +938,6 @@ Agents have **limited memory**<br>Unfocused context makes the agent *slower and 
 Go back to your `my-website` repo
 :::
 
-::: {.font110}
 1. Run `/init` — then **open the `CLAUDE.md` it wrote and read it.** Is it right? Fix anything wrong, and add one rule of your own.
 2. Run `/model` and `/effort` to see your options.
 3. Ask for a **small** change (new page, tweak the navbar) at `/effort low`.
@@ -812,7 +945,6 @@ Go back to your `my-website` repo
 5. `/compact`, then keep going — it should still know what you're building.
 6. `/clear`, then ask *"what am I working on?"* — see what it lost, and what `CLAUDE.md` saved.
 7. **Commit + push** your changes to GitHub.
-:::
 
 ```{r}
 #| echo: false
@@ -998,18 +1130,58 @@ defense_strategies(1)
 
 ---
 
+{{< inverse >}}
+{{< center >}}
+{{< middle >}}
+
+<center>
+<img src="images/africa-bad.png" height="600">
+
+[Source: [BBC](https://www.bbc.com/news/articles/c89n0xykw2go)]{.small}
+</center>
+
+---
+
+{{< inverse >}}
+{{< center >}}
+{{< tight >}}
+
+# There is no version that throws an error
+
+<center>
+<img src="images/africa-bad.png" height="600">
+
+[Source: [BBC](https://www.bbc.com/news/articles/c89n0xykw2go)]{.small}
+</center>
+
+---
+
+# [Same map from source]{.center}
+
+::: {.col width="55%" .font45}
+
+```{r}
+#| file: africa-map.R
+#| eval: false
+#| echo: true
+```
+
+:::
+
+::: {.col width="45%"}
+<center>
+<img src="images/africa-map.png" height="620">
+</center>
+:::
+
+---
+
 {{< center >}}
 
 # The pipeline hasn't changed
 
 ::: {.font140 .center}
 [`data.csv`]{.blue} &nbsp;→&nbsp; [`script.R`]{.purple} &nbsp;→&nbsp; [`figure.png`]{.darkgreen}
-:::
-
-<br>
-
-::: {.font110 .center}
-Raw data in, a script in the middle, a result out.<br>That's still the whole job — agent or not.
 :::
 
 ---
@@ -1209,7 +1381,12 @@ set.seed(42)
 ::: {.col .font80}
 ```r
 # a whole data frame at once
-ch_generate("name", "job", "phone_number", n = 5)
+ch_generate(
+  "name", 
+  "job", 
+  "phone_number", 
+  n = 5
+)
 
 #> # A tibble: 5 x 3
 #>   name             job                 phone_number
@@ -1223,7 +1400,7 @@ ch_generate("name", "job", "phone_number", n = 5)
 <br>
 
 ::: {.font105 .center}
-Also emails, addresses, colors, coordinates, credit cards, DOIs — and other locales:<br>`ch_job(locale = "fr_FR", n = 3)`
+Also emails, addresses, colors, coordinates, credit cards, etc.
 :::
 
 ---
@@ -1294,7 +1471,7 @@ countdown(minutes = 18, warn_when = 120, top = 0, right = 0, font_size = "2em")
 
 ---
 
-# [What that chart was hiding]{.center}
+# [What the chart was hiding]{.center}
 
 ::: {.col}
 ### {{< fa magnifying-glass >}} [Sample size]{.red}
@@ -1340,7 +1517,7 @@ Every one of these is **invisible in the chart** and **invisible in the code**.<
 
 ---
 
-# Today, in one slide
+# [Today, in one slide]{.center}
 
 ::: {.font120 .center}
 **prompt** [→]{.gray} **read the diff** [→]{.gray} **verify** [→]{.gray} **commit / push**
@@ -1370,6 +1547,6 @@ Every one of these is **invisible in the chart** and **invisible in the code**.<
 {{< center >}}
 {{< middle >}}
 
-## Use [this link](https://docs.google.com/spreadsheets/d/1cXNvWVfZ-WN4oLqbhv76cFTXPBi0KCiQdkCG7ivm7i4/edit?usp=sharing) to form teams
+# Use [this link](https://docs.google.com/spreadsheets/d/1cXNvWVfZ-WN4oLqbhv76cFTXPBi0KCiQdkCG7ivm7i4/edit?usp=sharing) to form teams
 
-## Check out some [potential project ideas](https://docs.google.com/presentation/d/1Z53tWwXvYgGpv5KNhdmL5MFmkR4NemmedCSgBbKJkNU/edit?usp=sharing)
+# Review [potential project ideas](https://docs.google.com/presentation/d/1Z53tWwXvYgGpv5KNhdmL5MFmkR4NemmedCSgBbKJkNU/edit?usp=sharing)
