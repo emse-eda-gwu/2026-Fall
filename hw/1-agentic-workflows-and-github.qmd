@@ -67,7 +67,7 @@ If the agent creates any files while you're poking around, that's fine. You don'
 
 # 7. Reflect
 
-In your course repo, open the file `hw1/reflection.qmd` and write at least a paragraph reflecting on your experiences from this assignment. Some prompts you could use:
+In your course repo, open the file `hw1/hw1.qmd` and write at least a paragraph reflecting on your experiences from this assignment. Some prompts you could use:
 
 - What surprised you about installing or using Claude Code for the first time?
 - Where do you already have questions or doubts about directing an AI agent to write code, versus writing it yourself?
