@@ -75,21 +75,6 @@ admire** — a scientist, athlete, artist, whoever.
 6. Open `index.html` in the `_site` folder.
 7. **Commit + push** to GitHub.
 
-Paste the prompt you actually used:
-
-```
-Your prompt here
-```
-
-What files did the agent create? (Ask it, or look at the file tree in Positron.)
-
-> Your answer here
-
-Did anything about the site surprise you — something wrong, invented, or better
-than you expected?
-
-> Your answer here
-
 ## Extra: publish with GitHub Pages
 
 1. Ask Claude to change the Quarto output folder from `_site` to `docs` (edit
