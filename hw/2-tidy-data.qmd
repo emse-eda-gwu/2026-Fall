@@ -5,4 +5,33 @@ params:
   purpose: 'The purpose of this assignment is to introduce yourself to the "tidy data" concept and to practice modifying data frames between long and wide formats in R.'
 ---
 
-Coming soon!
+```{r child = here::here("fragments", "hw.qmd")}
+```
+
+# 1. Get Organized
+
+Open your course repo (`eda-f26/eda-netID`) in Positron using **File › Open Folder** - open the folder itself, not a file inside it. If you haven't cloned your course repo yet, follow the steps in [HW1](1-agentic-workflows-and-github.html#clone-your-course-repo) first.
+
+Everything for this assignment lives in the ``r hw_dir`` folder. Open the ``r hw_file`` file inside it - that's the only file you need to edit. Take notes and write example code under the "Begin notes here" heading as you go through the readings and exercises below, then write your reflection under the "Reflection" heading at the end.
+
+# 2. Readings & Exercises
+
+- **Getting Familiar with Tidy Data**: Read [this tidyverse article](https://tidyr.tidyverse.org/articles/tidy-data.html) explaining the concept of tidy data. In your ``r hw_file``, copy some of the examples into a code chunk and run them to see the results of converting data between long and wide formats.
+- **Use AI to Practice Reshaping Messy Data**: Using an agent, ask for help creating a demo to practice the concept of reshaping data into long and wide formats in R using the tidyverse. Your agent should directly edit the `hw2.qmd` file. Once you have some examples to work with, ask the agent questions about reshaping data to make sure you understand the concept. Here is an example prompt to try (feel free to experiment with other prompts):
+
+> `I'm practicing the concept of tidy data in R. Provide me an example dataset in wide format and then show me R code for how to convert it to long format using the tidyverse. Afterwards, do the opposite - show me an example of a dataset in long format and show me R code for how to convert it to wide format.  In each case, explain your reasoning in addition to writing the code. Directly edit the hw2.qmd file.`
+
+#### **Optional**
+
+- [Chapter 6](https://r4ds.hadley.nz/data-tidy.html) in Hadley Wickham's R4DS book covers more detail on the concept of tidy data with even more examples. It's worth reading through for a more comprehensive understanding.
+- [Chapter 3](https://yardbook.jhelvy.com/tidy-data) in the YARDBook also covers tidy data.
+- [Chapter 29](https://r4ds.hadley.nz/quarto.html#code-chunks) in Hadley Wickham's R4DS book is a great introduction to [Quarto](https://quarto.org/). I highly recommend taking a look through it to get a better understanding of Quarto if you're still not quite comfortable with it (we'll be using it the whole semester!).
+
+# 3. Reflect
+
+{{< include ../fragments/hw-reflect.qmd >}}
+
+# 4. Submit
+
+{{< include ../fragments/hw-submit.qmd >}}
+
