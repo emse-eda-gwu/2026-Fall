@@ -222,11 +222,6 @@ Missing it, or joined the class late?
 Flag me now — grab the steps from [HW1](https://eda.seas.gwu.edu/2026-Fall/hw/1-agentic-workflows-and-github.html) or this [2-min walkthrough](https://youtu.be/VlD8N0ZClBo)
 :::
 
-```{r}
-#| echo: false
-countdown(minutes = 3, warn_when = 30, top = 0, right = 0, font_size = "2em")
-```
-
 ---
 
 {{< inverse >}}
@@ -339,14 +334,6 @@ Your turn
 #| echo: false
 countdown(minutes = 10, warn_when = 60, top = 0, right = 0, font_size = "2em")
 ```
-
----
-
-{{< inverse >}}
-{{< center >}}
-{{< middle >}}
-
-# In GitHub, you can contribute to *any* public repo
 
 ---
 
@@ -483,14 +470,14 @@ Direct the agent to build a multi-page Quarto website about **someone you admire
 
 ```{r}
 #| echo: false
-countdown(minutes = 15, warn_when = 120, top = 0, right = 0, font_size = "2em")
+countdown(minutes = 10, warn_when = 120, top = 0, right = 0, font_size = "2em")
 ```
 
 ---
 
 {{< inverse >}}
 
-# [Bonus: publish your site with GitHub Pages]{.center}
+# [Extra: publish your site with GitHub Pages]{.center}
 
 1. Ask Claude to change the Quarto output folder from `_site` to `docs` (edit `_quarto.yml`'s `output-dir`), then re-render.
 2. **Commit + push** your changes to GitHub.
@@ -948,7 +935,7 @@ Go back to your `my-website` repo
 
 ```{r}
 #| echo: false
-countdown(minutes = 15, warn_when = 60, top = 0, right = 0, font_size = "2em")
+countdown(minutes = 10, warn_when = 60, top = 0, right = 0, font_size = "2em")
 ```
 
 ---
@@ -1089,7 +1076,7 @@ Your turn
 
 ```{r}
 #| echo: false
-countdown(minutes = 15, warn_when = 60, top = 0, right = 0, font_size = "2em")
+countdown(minutes = 10, warn_when = 60, top = 0, right = 0, font_size = "2em")
 ```
 
 ---
@@ -1449,7 +1436,7 @@ fake = Faker('fr_FR')
 {{< inverse >}}
 
 ::: {.font200 .fancy .center}
-Practice 5
+Your turn
 :::
 
 **Which airline should you avoid?**
@@ -1466,12 +1453,12 @@ The code will run. The chart will look great. [The answer may be wrong.]{.orange
 
 ```{r}
 #| echo: false
-countdown(minutes = 18, warn_when = 120, top = 0, right = 0, font_size = "2em")
+countdown(minutes = 15, warn_when = 120, top = 0, right = 0, font_size = "2em")
 ```
 
 ---
 
-# [What the chart was hiding]{.center}
+# [Did the agent get any of this wrong?]{.center}
 
 ::: {.col}
 ### {{< fa magnifying-glass >}} [Sample size]{.red}
