@@ -41,23 +41,22 @@ Confirm that:
 
 If any of these fail, flag it now. The steps are in [HW1](https://eda.seas.gwu.edu/2026-Fall/hw/1-agentic-workflows-and-github.html).
 
-## Send your partner a pull request
+## Commit to your partner's repo
 
-Pair up with a neighbor and work through the collaboration loop:
+Pair up with a neighbor and work through the collaboration loop. You'll both push straight to the `main`branch.
 
 1. In *your* `eda-practice` repo on GitHub.com: **Settings › Collaborators** → add your partner's GitHub username → they accept the emailed invite
 2. Swap repo links. In GitHub Desktop: **File › Clone Repository** → clone *your partner's* repo
-3. **Branch › New Branch** → name it `new-edits`
-4. Edit their `README.md` in Positron → **Commit** to your branch →
-**Publish branch**
-5. Click **Create Pull Request** → describe your change → submit on GitHub.com
-6. Back on *your* repo, review your partner's PR and **Merge** it
+3. Edit their `README.md` in Positron → **Commit** to `main` → **Push**
+4. Back in *your own* repo, click **Fetch origin**, then **Pull**
+5. Open `README.md` — your partner's edit should be there
 
-Write down the URL of the pull request you opened:
+Write down the URL of your partner's repo, and what you changed in it:
 
 > Your answer here
 
-What did your partner's PR change, and how could you tell? (Where on the PR page did you look?)
+Look at your repo's **History** in GitHub Desktop. How can you tell which
+commit was your partner's, and what it changed?
 
 > Your answer here
 

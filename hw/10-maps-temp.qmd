@@ -25,12 +25,20 @@ This week we'll learn about maps and geospatial data. Maps are a unique type of 
 - Healy: [7 - Draw maps](http://socviz.co/maps.html#maps)
 - Drawing beautiful maps: Parts [one](https://www.r-spatial.org/r/2018/10/25/ggplot2-sf.html), [two](https://www.r-spatial.org/r/2018/10/25/ggplot2-sf-2.html), & [three](https://www.r-spatial.org/r/2018/10/25/ggplot2-sf-3.html)
 
-# 4. Reflect
+# 4. A map worth talking about
 
-> **This week, include in your reflection an image or link to a recent map you've seen (or one you thought was super interesting)**
+Find a map you've seen recently, or one you just think is interesting, and put it in your `hw10.qmd` file under the "A map worth talking about" heading. Add a link to where you found it, then write a few notes answering these questions:
+
+- What is actually being mapped - a count, a rate, a category, something else? If it's colored by a raw count, is it really just a population map?
+- What projection does it look like it's using, and does that distort the areas the map is making a claim about?
+- Would this be clearer as a map, or would a plain bar chart or table have told the story better?
+
+The "Tip of the week" at the top of your `hw10.qmd` file covers how to insert an image in Quarto - captions, sizing, alt text, and how to put two maps side by side for comparison.
+
+# 5. Reflect
 
 {{< include ../fragments/hw-reflect.qmd >}}
 
-# 5. Submit
+# 6. Submit
 
 {{< include ../fragments/hw-submit.qmd >}}
