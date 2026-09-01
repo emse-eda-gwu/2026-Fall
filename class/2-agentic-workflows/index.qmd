@@ -198,6 +198,40 @@ A message is a note to **future you**
 
 ---
 
+{{< center >}}
+
+# Not everything belongs in a repo
+
+::: {.font110}
+A **`.gitignore`** file lists what git should **pretend it can't see**.
+:::
+
+::: {.col width="48%"}
+### {{< fa xmark >}} [Keep out]{.red}
+
+- Rendered output (`_site/`, `*_files/`)
+- `.DS_Store`, `.Rhistory`
+- Anything with a **password or key**
+- Huge or private data files
+:::
+
+::: {.col width="52%"}
+### {{< fa check >}} [Commit]{.darkgreen}
+
+- Your source: `.qmd`, `.R`
+- Small data files
+- `README.md`, `CLAUDE.md`
+- `.gitignore` itself
+:::
+
+<br>
+
+::: {.font100 .center}
+Ignored files still live on **your** computer — they just never get pushed.
+:::
+
+---
+
 {{< inverse >}}
 
 ::: {.font200 .fancy .center}
@@ -251,56 +285,67 @@ Make your own **local copy** <br> of someone else's repo
 :::
 
 ::: {.col .fragment .center}
-### "pull request" (PR)
-**Propose your changes** back <br> they review, then **merge**
+### "collaborator"
+Someone they've given **write access** <br> so your pushes land in their repo
 :::
 
 <br>
 
 ::: {.font110 .center .fragment}
-You work on a **branch**, so their `main` is untouched<br>until they say *yes*.
+Add each other as collaborators and you both work on the **same `main`**.
 :::
 
 ---
 
-# [Why work on a branch?]{.center}
+{{< center >}}
 
-::: {.col}
-### {{< fa code-branch >}} [On a branch]{.darkgreen}
+# The same loop, now with two people
 
-- Their `main` stays **untouched**
-- You experiment freely
-- Nothing lands until it's **approved**
+::: {.font110 .darkgreen}
+**Pull** → **Changes** → **Commit** → **Push**
 :::
 
-::: {.col}
-### {{< fa triangle-exclamation >}} [Straight to `main`]{.red}
+<br>
 
-- Your half-done work **is** the project
-- No review step
-- Mistakes hit everyone at once
+::: {.font110 .center}
+One new step at the front: [**pull before you start.**]{.red}
+:::
+
+---
+
+{{< center >}}
+
+# When you both edit the same file
+
+::: {.font110}
+Different files, or different parts of a file → git merges them for you.
+:::
+
+<br>
+
+::: {.font110}
+**Same lines**, both changed → git stops and asks *which one do you want?*<br>That's a **merge conflict**, and you fix it by editing the file.
 :::
 
 . . .
 
 <br>
 
-::: {.font110 .center}
-A branch is a **sandbox**. The pull request is where they say *yes, bring it in.*
+::: {.font110 .center .darkgreen}
+Pull often. Commit small. Tell each other what you're working on.
 :::
 
 ---
 
 {{< bg-color "#fff" >}}
 {{< center >}}
+{{< tight >}}
 
-<br>
+# One more thing: branches
 
-::: {.font110 .darkgreen}
-**New Branch** → **Commit** on branch → **Make PR** → **Merge** to `main`
+::: {.font90}
+A **branch** is a sandbox copy of `main`. You work there, then open a **pull request** to merge it back. Big teams live this way. We'll stay on `main` all semester — but this is the picture you'll see everywhere.
 :::
-
-# Pull request loop
 
 ![](images/branch-flow.png){fig-align="center" width=100%}
 
@@ -315,7 +360,7 @@ Your turn
 <br>
 
 ::: {.center}
-**Team up and send your partner a pull request**
+**Team up and both commit to the same repo**
 :::
 
 <br>
@@ -324,10 +369,9 @@ Your turn
 
 1. Pair with a neighbor. In *your* `eda-practice` repo on GitHub.com:<br>**Settings › Collaborators** → add your partner's GH username → they **accept** the emailed invite
 2. Swap repo links. In GitHub Desktop, **File › Clone Repository** → clone *your partner's* repo
-3. **Branch › New Branch** → name it `new-edits`
-4. Edit their `README.md` in Positron → **Commit** to your branch → **Publish branch**
-5. Click **Create Pull Request** → describe your change → submit it on GitHub.com
-6. Back on *your* repo, review your partner's PR and **Merge** it
+3. Edit their `README.md` in Positron → **Commit** to `main` → **Push**
+4. Back in *your own* repo, click **Fetch origin**, then **Pull** — your partner's edit shows up in your files
+5. Check **History** in GitHub Desktop: you should see **both names** on the commit list
 :::
 
 ```{r}
