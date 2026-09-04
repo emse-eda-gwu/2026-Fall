@@ -8,7 +8,6 @@ displaydate: September 09, 2026
 format: 
   lexis-revealjs:
     link-external-newwindow: true
-# Navigate slides with the mouse wheel / trackpad (reveal's native mouseWheel).
 mouse-wheel: true
 progress: false
 execute:
@@ -258,13 +257,11 @@ tb_cases
 
 **Description**: Word counts in LOTR trilogy
 
-::: {.font90}
 ```{r}
 #| echo: false
 
 lotr_words
 ```
-:::
 
 ---
 
@@ -402,11 +399,11 @@ head(fed_spend_long)
 #| echo: false
 
 countdown(
-  minutes = 15,
+  minutes = 12,
   warn_when = 15,
   update_every = 1,
-  top = 0,
-  right = 0,
+  top = "1em",
+  right = "1em",
   font_size = "2em"
 )
 ```
@@ -474,7 +471,18 @@ Compute the total R&D spending in each year
 
 **Approach 1**: Create new `total` by adding each variable
 
+::: {.font90}
+```r
+fed_spend_wide %>%
+  mutate(total = DHS + DOC + DOD + DOE + DOT + EPA + HHS + Interior + NASA + NIH + NSF + Other + USDA + VA) %>%
+  select(year, total)
+```
+:::
+
+::: {.font90}
 ```{r}
+#| echo: false
+
 fed_spend_wide %>%
   mutate(
     total = DHS +
@@ -494,6 +502,7 @@ fed_spend_wide %>%
   ) %>%
   select(year, total)
 ```
+:::
 
 ---
 
@@ -503,7 +512,7 @@ Compute the total R&D spending by department in each year
 
 **Approach 2**: Reshape first, then summarise
 
-::: {.col}
+::: {.col .font90}
 ```{r}
 fed_spend_long <- fed_spend_wide %>%
   pivot_longer(
@@ -516,7 +525,7 @@ head(fed_spend_long)
 ```
 :::
 
-::: {.col .fragment}
+::: {.col .fragment .font90}
 ```{r}
 fed_spend_long %>%
   group_by(year) %>%
@@ -532,7 +541,7 @@ Compute the total R&D spending by department in each year
 
 **Approach 2**: Reshape first, then summarise
 
-::: {.col}
+::: {.col .font90}
 ```{r}
 annual_spending <- fed_spend_wide %>%
   pivot_longer(
@@ -545,36 +554,9 @@ annual_spending <- fed_spend_wide %>%
 ```
 :::
 
-::: {.col}
+::: {.col .font90}
 ```{r}
 head(annual_spending)
-```
-:::
-
----
-
-# Tidy data wrangling
-
-Compute the total R&D spending by department in each year
-
-**Approach 2**: Reshape first, then summarise
-
-::: {.col}
-```{r}
-total <- fed_spend_wide %>%
-  pivot_longer(
-    names_to = "department",
-    values_to = "rd_budget_mil",
-    cols = -year
-  ) %>%
-  group_by(year) %>%
-  summarise(total = sum(rd_budget_mil))
-```
-:::
-
-::: {.col}
-```{r}
-head(total)
 ```
 :::
 
@@ -586,11 +568,11 @@ head(total)
 #| echo: false
 
 countdown(
-  minutes = 12,
+  minutes = 15,
   warn_when = 15,
   update_every = 1,
-  top = 0,
-  right = 0,
+  top = "1em",
+  right = "1em",
   font_size = "2em"
 )
 ```
@@ -647,7 +629,7 @@ agenda(3)
 
 Make a bar chart of total R&D spending by agency
 
-::: {.col width="55%"}
+::: {.col width="55%" .font80}
 ```{r}
 head(fed_spend_wide)
 ```
@@ -667,13 +649,14 @@ fed_spend_bars
 
 Make a bar chart of total R&D spending by agency
 
-::: {.col width="55%"}
+::: {.col width="55%" .font80}
 ```{r}
 #| error: true
 #| fig-show: hide
-#| code-line-numbers: "2"
+#| code-line-numbers: "3"
 
-ggplot(fed_spend_wide) +
+fed_spend_wide %>%
+  ggplot() +
   geom_col(aes(x = rd_budget_mil, y = department)) +
   theme_bw() +
   labs(
@@ -697,11 +680,11 @@ fed_spend_bars
 
 Make a bar chart of total R&D spending by agency
 
-::: {.col width="55%"}
+::: {.col width="55%" .font80}
 ```{r}
 #| error: true
 #| fig-show: hide
-#| code-line-numbers: "2,3,4,5,6"
+#| code-line-numbers: "2,3,4,5,6,8"
 
 fed_spend_wide %>%
   pivot_longer(
@@ -738,8 +721,8 @@ countdown(
   minutes = 15,
   warn_when = 15,
   update_every = 1,
-  top = 0,
-  right = 0,
+  top = "0.5em",
+  right = "1em",
   font_size = "2em"
 )
 ```
@@ -862,8 +845,8 @@ countdown(
   minutes = 8,
   warn_when = 15,
   update_every = 1,
-  top = 0,
-  right = 0,
+  top = "0.5em",
+  right = "1em",
   font_size = "2em"
 )
 ```
@@ -873,7 +856,8 @@ countdown(
 Documentation in the "data/README.md" file is missing for the following data sets:
 
 - wildlife_impacts.csv: [source](https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-07-23)
-- north_america_bear_killings.txt: [source](https://data.world/makeovermonday/2019w21)
+- north_america_bear_killings.txt: [source](https://en.wikipedia.org/wiki/List_of_fatal_bear_attacks_in_North_America)
+<!-- https://data.world/makeovermonday/2019w21 -->
 - uspto_clean_energy_patents.xlsx: [source](https://www.nsf.gov/statistics/2018/nsb20181/report/sections/industry-technology-and-the-global-marketplace/global-trends-in-sustainable-energy-research-and-technologies)
 
 Go to the above sites and add the following information to the "data/README.md" file:
@@ -932,12 +916,17 @@ Follow [these guidelines](https://writingcenter.gmu.edu/guides/how-to-write-a-re
 - [Genders in the Workforce](https://eda.seas.gwu.edu/showcase/2021-Spring/gender_pay_gap.html): How has the US gender wage gap changed over time for different occupations and age groups?
 - [NFL Suspensions](https://eda.seas.gwu.edu/showcase/2021-Spring/nfl_suspensions.html): What factors contribute to the severity of disciplinary actions towards NFL players from 2002-2014?
 
-**Other good examples**: See the [Example Projects](https://eda.seas.gwu.edu/2024-Fall/project/examples.html) page
+**Other good examples**: See the [Example Projects](https://eda.seas.gwu.edu/2026-Fall/project/examples.html) page
 
 ---
 
 {{< inverse >}}
-{{< center >}}
 {{< middle >}}
 
-# Use [this link](https://docs.google.com/spreadsheets/d/1cXNvWVfZ-WN4oLqbhv76cFTXPBi0KCiQdkCG7ivm7i4/edit?usp=sharing) to form teams
+# To Do:
+
+# 1. Use [this link](https://docs.google.com/spreadsheets/d/1cXNvWVfZ-WN4oLqbhv76cFTXPBi0KCiQdkCG7ivm7i4/edit?usp=sharing) to form teams
+
+# 2. Sign up [here](https://calendar.app.google/niXopBudj9t4pmbj7) for your team proposal 1-on-1 with Prof. Helveston
+
+# 3. [HW 3](https://eda.seas.gwu.edu/2026-Fall/hw/3-cleaning-data.html) is due in **2 weeks**
