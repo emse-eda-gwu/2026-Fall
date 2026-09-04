@@ -40,8 +40,8 @@ long/tidy, no → wide.
 
 | Function | Direction | Key arguments |
 |----------|-----------|----------------|
-| `pivot_longer()` | wide → long | `cols` (which columns to stack), `names_to` (new column of old names), `values_to` (new column of the values) |
-| `pivot_wider()` | long → wide | `names_from` (column supplying new column names), `values_from` (column supplying the values) |
+| `pivot_longer()` | wide → long | `cols` to stack, `names_to`/`values_to` name the new columns |
+| `pivot_wider()` | long → wide | `names_from`/`values_from` supply the new column names and values |
 
 ```r
 # wide -> long
@@ -101,10 +101,9 @@ Three questions to ask of any dataset before you trust it:
 | Comprehension | Accurate, explainable, and the right data for the question? |
 | Reproducibility | Could someone fully replicate your results from your raw data and code? |
 
-**Document like a museum curator.** For every downloaded file, record: file
-name, download date, original file name (if renamed), the URL, the source of
-the *original* data (if different), how it was collected, and a data
-dictionary (one row per column).
+**Document like a museum curator.** Record: file name, download date, original
+file name (if renamed), URL, source of the *original* data (if different), how
+it was collected, and a data dictionary (one row per column).
 
 # Writing a research question
 
@@ -129,12 +128,11 @@ for full worked examples.
 |--------------------|-------------|
 | `object 'department' not found` in `aes()` | Data is still wide — `pivot_longer()` before mapping a category to `aes()` |
 | "Values ... are not uniquely identified" | `pivot_wider()` found duplicate `names_from`/row-id combos — `summarise()` first |
-| A numeric column imports as `<chr>` | Stray text (e.g. `"N/A"`) in an Excel column — `as.numeric()`, then check for new `NA`s |
 
 # Before next class
 
-No weekly reading reflection this week — the focus is your **final project
-proposal**, due **Sept 20**.
+No reading reflection this week — focus on your **final project proposal**,
+due **Sept 20**.
 
 - Form your team on the [team-formation sheet](https://docs.google.com/spreadsheets/d/1cXNvWVfZ-WN4oLqbhv76cFTXPBi0KCiQdkCG7ivm7i4/edit?usp=sharing), if you haven't.
 - Sign up for a [1-on-1 proposal meeting](https://calendar.app.google/niXopBudj9t4pmbj7) with Prof. Helveston.
