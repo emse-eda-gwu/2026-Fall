@@ -336,7 +336,7 @@
     "href": "project/3-final-report.html#get-organized",
     "title": "Final Report",
     "section": "1. Get organized",
-    "text": "1. Get organized\n\nDownload and unzip this template for your proposal report. Open the unzipped folder in Positron (File › Open Folder…) and write your progress report in the report.qmd file. The template comes with some text and code explaining how to use it - you should delete the template code and text as it is only for explanatory purposes. Be sure to adjust the content in the YAML:\n\nWrite your project title in the title field (and provide a subtitle if you wish, or delete the subtitle field).\nIn the author field, list the names of all teammates, e.g. author: Luke Skywalker, Leia Organa, and Han Solo.\n\nPut the data you are working with for your project in the appropriate folders. Even if you are reading in data directly from a website (e.g. data &lt;- read_csv(\"www.somewhere.com/data.csv)), be sure to download a local copy of the data and put it in the appropriate data folder.\nAt the bottom of your report, add an Appendix section that includes data dictionaries for the key data sets used in your analysis as well as a copy of all of the code used in your report, which can be automatically generated with a single chunk like this:\n\n```{r ref.label=knitr::all_labels()}\n#| echo: true\n#| eval: false\n```",
+    "text": "1. Get organized\n\nYour team’s repo (eda-f26/eda-team-&lt;letter&gt;) already has a 3-final-report/ folder seeded with a report.qmd starter file – open your team repo in Positron (File › Open Folder…) and write your report there. The starter comes with some text and code explaining how to use it - you should delete the template code and text as it is only for explanatory purposes. Be sure to adjust the content in the YAML:\n\nWrite your project title in the title field (and provide a subtitle if you wish, or delete the subtitle field).\nIn the author field, list the names of all teammates, e.g. author: Luke Skywalker, Leia Organa, and Han Solo.\n\nPut the data you are working with for your project in the appropriate folders. Even if you are reading in data directly from a website (e.g. data &lt;- read_csv(\"www.somewhere.com/data.csv)), be sure to download a local copy of the data and put it in the appropriate data folder.\nAt the bottom of your report, add an Appendix section that includes data dictionaries for the key data sets used in your analysis as well as a copy of all of the code used in your report, which can be automatically generated with a single chunk like this:\n\n```{r ref.label=knitr::all_labels()}\n#| echo: true\n#| eval: false\n```",
     "crumbs": [
       "Final Project",
       "Final Report"
@@ -413,7 +413,7 @@
     "href": "project/3-final-report.html#render-and-submit",
     "title": "Final Report",
     "section": "8. Render and submit",
-    "text": "8. Render and submit\nClick the “Render” button to compile your .qmd file into a html web page. Then open the report.html file in a web browser and proofread your report.\nDoes all of the formatting look correct? Make sure there are no errors in the rendered file before submitting it.\nOnce you’ve proofread your report, create a zip file of all the files in your R project folder for this assignment and submit it on the corresponding assignment submission on Blackboard.\nOnly one person from your team should submit.",
+    "text": "8. Render and submit\nTo submit this deliverable, follow these instructions:\n\nClick the “Render” button to compile your .qmd file into an html web page. Then open the report.html (or proposal.html) file in a web browser and proofread your report. Does all of the formatting look correct? Make sure there are no errors in the rendered file before submitting it.\nCommit and push your work to your team’s repo (eda-f26/eda-team-&lt;letter&gt;, where &lt;letter&gt; is your team letter) using GitHub Desktop: look at the diff, write a short commit message, click Commit, then Push.\n\n\n\n\n\n\n\nNoteRemember\n\n\n\nThis deliverable isn’t submitted until it’s pushed to your team repo. Any team member can push – there’s no need to designate just one person. Go look at your repo on GitHub.com and confirm the work is actually there before you call this done.",
     "crumbs": [
       "Final Project",
       "Final Report"
@@ -446,7 +446,7 @@
     "href": "project/1-proposal.html#get-organized",
     "title": "Project Proposal",
     "section": "1. Get organized",
-    "text": "1. Get organized\nDownload and unzip this template for your proposal report. Open the unzipped folder in Positron (File › Open Folder…) and write your proposal in the report.qmd file. The template comes with some text and code explaining how to use it - should should delete this code as it is only for explanatory purposes. Be sure to adjust the content in the YAML:\n\nWrite your project title in the title field (and provide a subtitle if you wish, or delete the subtitle field).\nIn the author field, list the names of all teammates, e.g. author: Luke Skywalker, Leia Organa, and Han Solo.",
+    "text": "1. Get organized\nYour team’s repo (eda-f26/eda-team-&lt;letter&gt;) already has a 1-proposal/ folder seeded with a proposal.qmd starter file – open your team repo in Positron (File › Open Folder…) and write your proposal there. The starter comes with some text and code explaining how to use it - you should delete this code as it is only for explanatory purposes. Be sure to adjust the content in the YAML:\n\nWrite your project title in the title field (and provide a subtitle if you wish, or delete the subtitle field).\nIn the author field, list the names of all teammates, e.g. author: Luke Skywalker, Leia Organa, and Han Solo.",
     "crumbs": [
       "Final Project",
       "Proposal"
@@ -512,7 +512,7 @@
     "href": "project/1-proposal.html#render-and-submit",
     "title": "Project Proposal",
     "section": "7. Render and submit",
-    "text": "7. Render and submit\nClick the “Render” button to compile your .qmd file into a html web page. Then open the report.html file in a web browser and proofread your report.\nDoes all of the formatting look correct? Make sure there are no errors in the rendered file before submitting it.\nOnce you’ve proofread your report, create a zip file of all the files in your R project folder for this assignment and submit it on the corresponding assignment submission on Blackboard.\nOnly one person from your team should submit.",
+    "text": "7. Render and submit\nTo submit this deliverable, follow these instructions:\n\nClick the “Render” button to compile your .qmd file into an html web page. Then open the report.html (or proposal.html) file in a web browser and proofread your report. Does all of the formatting look correct? Make sure there are no errors in the rendered file before submitting it.\nCommit and push your work to your team’s repo (eda-f26/eda-team-&lt;letter&gt;, where &lt;letter&gt; is your team letter) using GitHub Desktop: look at the diff, write a short commit message, click Commit, then Push.\n\n\n\n\n\n\n\nNoteRemember\n\n\n\nThis deliverable isn’t submitted until it’s pushed to your team repo. Any team member can push – there’s no need to designate just one person. Go look at your repo on GitHub.com and confirm the work is actually there before you call this done.",
     "crumbs": [
       "Final Project",
       "Proposal"
@@ -1183,7 +1183,7 @@
     "href": "project/2-initial-report.html#get-organized",
     "title": "Initial Report",
     "section": "1. Get organized",
-    "text": "1. Get organized\nDownload and unzip this template for your proposal report. Open the unzipped folder in Positron (File › Open Folder…) and write your progress report in the report.qmd file. The template comes with some text and code explaining how to use it - should should delete this code as it is only for explanatory purposes. Be sure to adjust the content in the YAML:\n\nWrite your project title in the title field (and provide a subtitle if you wish, or delete the subtitle field).\nIn the author field, list the names of all teammates, e.g. author: Luke Skywalker, Leia Organa, and Han Solo.\n\n\nYou should also put the data you are working with for your project in the appropriate folders.",
+    "text": "1. Get organized\nYour team’s repo (eda-f26/eda-team-&lt;letter&gt;) already has a 2-initial-report/ folder seeded with a report.qmd starter file – open your team repo in Positron (File › Open Folder…) and write your progress report there. The starter comes with some text and code explaining how to use it - you should delete this code as it is only for explanatory purposes. Be sure to adjust the content in the YAML:\n\nWrite your project title in the title field (and provide a subtitle if you wish, or delete the subtitle field).\nIn the author field, list the names of all teammates, e.g. author: Luke Skywalker, Leia Organa, and Han Solo.\n\n\nYou should also put the data you are working with for your project in the appropriate folders.",
     "crumbs": [
       "Final Project",
       "Initial Report"
@@ -1260,7 +1260,7 @@
     "href": "project/2-initial-report.html#render-and-submit",
     "title": "Initial Report",
     "section": "8. Render and submit",
-    "text": "8. Render and submit\nClick the “Render” button to compile your .qmd file into a html web page. Then open the report.html file in a web browser and proofread your report.\nDoes all of the formatting look correct? Make sure there are no errors in the rendered file before submitting it.\nOnce you’ve proofread your report, create a zip file of all the files in your R project folder for this assignment and submit it on the corresponding assignment submission on Blackboard.\nOnly one person from your team should submit.",
+    "text": "8. Render and submit\nTo submit this deliverable, follow these instructions:\n\nClick the “Render” button to compile your .qmd file into an html web page. Then open the report.html (or proposal.html) file in a web browser and proofread your report. Does all of the formatting look correct? Make sure there are no errors in the rendered file before submitting it.\nCommit and push your work to your team’s repo (eda-f26/eda-team-&lt;letter&gt;, where &lt;letter&gt; is your team letter) using GitHub Desktop: look at the diff, write a short commit message, click Commit, then Push.\n\n\n\n\n\n\n\nNoteRemember\n\n\n\nThis deliverable isn’t submitted until it’s pushed to your team repo. Any team member can push – there’s no need to designate just one person. Go look at your repo on GitHub.com and confirm the work is actually there before you call this done.",
     "crumbs": [
       "Final Project",
       "Initial Report"
@@ -1337,7 +1337,7 @@
     "href": "project/4-presentation.html#submit",
     "title": "Final Presentation",
     "section": "5. Submit",
-    "text": "5. Submit\nCreate a zip file of your slides as a pdf / pptx / qmd (whatever you used to make your slides) and submit it on the corresponding assignment submission on Blackboard. Only one person from your team should submit.",
+    "text": "5. Submit\nPush your slides (as a pdf, pptx, or qmd – whatever you used to make them) to your team’s repo (eda-f26/eda-team-&lt;letter&gt;, where &lt;letter&gt; is your team letter), inside the 4-presentation/ folder, using GitHub Desktop.\n\n\n\n\n\n\nNoteRemember\n\n\n\nThis deliverable isn’t submitted until it’s pushed to your team repo. Any team member can push – there’s no need to designate just one person. Go look at your repo on GitHub.com and confirm the work is actually there before you call this done.",
     "crumbs": [
       "Final Project",
       "Final Presentation"

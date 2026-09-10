@@ -31,7 +31,7 @@ Write a proposal of an exploratory data analysis that you plan to conduct for yo
 
 ## 1. Get organized
 
-Download and unzip [this template](../templates/project-template.zip) for your proposal report. Open the unzipped folder in Positron (**File › Open Folder…**) and write your proposal in the `report.qmd` file. The template comes with some text and code explaining how to use it - should should delete this code as it is only for explanatory purposes. Be sure to adjust the content in the YAML:
+Your team's repo (`eda-f26/eda-team-<letter>`) already has a `1-proposal/` folder seeded with a `proposal.qmd` starter file -- open your team repo in Positron (**File › Open Folder…**) and write your proposal there. The starter comes with some text and code explaining how to use it - you should delete this code as it is only for explanatory purposes. Be sure to adjust the content in the YAML:
 
 - Write your project title in the `title` field (and provide a subtitle if you wish, or delete the `subtitle` field).
  - In the `author` field, list the names of all teammates, e.g. `author: Luke Skywalker, Leia Organa, and Han Solo`.
@@ -95,13 +95,8 @@ Team members who do not make meaningful contributions to their projects will not
 
 ## 7. Render and submit
 
-Click the "Render" button to compile your `.qmd` file into a html web page. Then open the `report.html` file in a web browser and proofread your report.
-
-Does all of the formatting look correct? **Make sure there are no errors in the rendered file before submitting it.**
-
-Once you've proofread your report, create a zip file of all the files in your R project folder for this assignment and submit it on the corresponding assignment submission on Blackboard.
-
-**Only one person from your team should submit.**
+```{r child = here::here("fragments", "project-submit.qmd")}
+```
 
 ## Grading Rubric
 
