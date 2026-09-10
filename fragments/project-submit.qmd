@@ -1,0 +1,8 @@
+To submit this deliverable, follow these instructions:
+
+1. Click the "Render" button to compile your `.qmd` file into an html web page. Then open the `report.html` (or `proposal.html`) file in a web browser and proofread your report. Does all of the formatting look correct? **Make sure there are no errors in the rendered file before submitting it.**
+2. Commit and push your work to your team's repo (`eda-f26/eda-team-<letter>`, where `<letter>` is your team letter) using GitHub Desktop: look at the diff, write a short commit message, click **Commit**, then **Push**.
+
+::: {.callout-note title="Remember"}
+This deliverable isn't submitted until it's **pushed** to your team repo. Any team member can push -- there's no need to designate just one person. Go look at your repo on GitHub.com and confirm the work is actually there before you call this done.
+:::
