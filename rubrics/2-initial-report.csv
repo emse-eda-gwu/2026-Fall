@@ -17,6 +17,6 @@ order,category,label,rating,maxPoints,points,description
 6,viz2,Data Visualization 2,Excellent,10,10 / 9,Chart clearly communicates key message; Chart is an appropriate choice for showing the relationship / comparison; Design elements are clear and not confusing / misleading; Chart is functionally accurate and generally easy to understand; Annotations (if used) are appropriate; Chart addresses the research question posed.
 6,viz2,Data Visualization 2,Good,10,8 / 7 / 6,Chart communicates key message; Chart is generally appropriate for showing the relationship / comparison; Some design elements are distracting or confusing / misleading; Chart is functionally accurate; Annotations (if used) are appropriate; Chart mildly addresses research question.
 6,viz2,Data Visualization 2,Needs work,10,5 / 4 / 3,Key message of chart is unclear; Chart is inappropriate for showing the relationship / comparison; Design elements are distracting or confusing / misleading; Chart is functionally inaccurate; Annotations are not used; Chart is unrelated to research question.
-7,technical,Technical things,Excellent,5,5,All code runs without errors; all files included in the submitted .zip file.
-7,technical,Technical things,Good,5,4,"Code has only one or two error, otherwise runs; all files included in the submitted .zip file."
-7,technical,Technical things,Needs work,5,3,Code has multiple errors; submitted .zip file is missing components necessary to reproduce analysis.
+7,technical,Technical things,Excellent,5,5,All code runs without errors; all files needed to reproduce the analysis are pushed to the team repo.
+7,technical,Technical things,Good,5,4,"Code has only one or two error, otherwise runs; all files needed to reproduce the analysis are pushed to the team repo."
+7,technical,Technical things,Needs work,5,3,Code has multiple errors; team repo is missing components necessary to reproduce analysis.

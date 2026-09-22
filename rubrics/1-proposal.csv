@@ -11,6 +11,6 @@ order,category,label,rating,maxPoints,points,description
 4,anticipatedResults,Anticipated Results,Excellent,10,10 / 9,Detailed description of: 1) two variables and their expected distribution; 2) two expected relationships; 3) two charts that help visualize expected relationships; and 4) how chosen variables will inform research questions.
 4,anticipatedResults,Anticipated Results,Good,10,8 / 7 / 6,"Detailed description of only one expected variable, relationship, or chart; minimal description of two expected variables, relationships, or charts; minimal description of links between variables and research question."
 4,anticipatedResults,Anticipated Results,Needs work,10,5 / 4 / 3,"Poor or missing descriptions of variables, relationships, or charts; poor or missing description between variables and research question."
-6,technical,Technical things,Excellent,5,5,All code runs without errors; all files included in the submitted .zip file.
-6,technical,Technical things,Good,5,4,"Code has only one or two error, otherwise runs; all files included in the submitted .zip file."
-6,technical,Technical things,Needs work,5,3,Code has multiple errors; submitted .zip file is missing components necessary to reproduce analysis.
+6,technical,Technical things,Excellent,5,5,All code runs without errors; all files needed to reproduce the analysis are pushed to the team repo.
+6,technical,Technical things,Good,5,4,"Code has only one or two error, otherwise runs; all files needed to reproduce the analysis are pushed to the team repo."
+6,technical,Technical things,Needs work,5,3,Code has multiple errors; team repo is missing components necessary to reproduce analysis.
