@@ -7,6 +7,7 @@ week: 5
 displaydate: September 23, 2026
 format: 
   lexis-revealjs:
+    code-block-height: "660px"
     link-external-newwindow: true
 # Navigate slides with the mouse wheel / trackpad (reveal's native mouseWheel).
 mouse-wheel: true
@@ -35,83 +36,84 @@ agenda_items <- c(
 
 # Read in data
 wildlife_impacts <- read_csv(file.path('data', 'wildlife_impacts.csv'))
-milk_production  <- read_csv(file.path('data', 'milk_production.csv'))
+milk_production <- read_csv(file.path('data', 'milk_production.csv'))
 tb_rates <- table3
 
 # Add new variables
 wildlife_impacts_orig <- wildlife_impacts
 wildlife_impacts <- wildlife_impacts %>%
-    mutate(
-        weekday_name = wday(incident_date, label = TRUE),
-        phase_of_flt = str_to_lower(phase_of_flt),
-        phase_of_flt = case_when(
-            phase_of_flt %in% c('approach', 'arrival', 'descent',
-                                'landing roll') ~ 'arrival',
-            phase_of_flt %in% c('climb', 'departure',
-                                'take-off run') ~ 'departure',
-            TRUE ~ 'other'))
+  mutate(
+    weekday_name = wday(incident_date, label = TRUE),
+    phase_of_flt = str_to_lower(phase_of_flt),
+    phase_of_flt = case_when(
+      phase_of_flt %in%
+        c('approach', 'arrival', 'descent', 'landing roll') ~ 'arrival',
+      phase_of_flt %in% c('climb', 'departure', 'take-off run') ~ 'departure',
+      TRUE ~ 'other'
+    )
+  )
 
 # Abbreviations: https://www.50states.com/abbreviations.htm
 state_abbs <- tibble::tribble(
-                  ~state_name,              ~state_abb,
-                     "Alabama",             "AL",
-                      "Alaska",             "AK",
-                     "Arizona",             "AZ",
-                    "Arkansas",             "AR",
-                  "California",             "CA",
-                    "Colorado",             "CO",
-                 "Connecticut",             "CT",
-                    "Delaware",             "DE",
-                     "Florida",             "FL",
-                     "Georgia",             "GA",
-                      "Hawaii",             "HI",
-                       "Idaho",             "ID",
-                    "Illinois",             "IL",
-                     "Indiana",             "IN",
-                        "Iowa",             "IA",
-                      "Kansas",             "KS",
-                    "Kentucky",             "KY",
-                   "Louisiana",             "LA",
-                       "Maine",             "ME",
-                    "Maryland",             "MD",
-               "Massachusetts",             "MA",
-                    "Michigan",             "MI",
-                   "Minnesota",             "MN",
-                 "Mississippi",             "MS",
-                    "Missouri",             "MO",
-                     "Montana",             "MT",
-                    "Nebraska",             "NE",
-                      "Nevada",             "NV",
-               "New Hampshire",             "NH",
-                  "New Jersey",             "NJ",
-                  "New Mexico",             "NM",
-                    "New York",             "NY",
-              "North Carolina",             "NC",
-                "North Dakota",             "ND",
-                        "Ohio",             "OH",
-                    "Oklahoma",             "OK",
-                      "Oregon",             "OR",
-                "Pennsylvania",             "PA",
-                "Rhode Island",             "RI",
-              "South Carolina",             "SC",
-                "South Dakota",             "SD",
-                   "Tennessee",             "TN",
-                       "Texas",             "TX",
-                        "Utah",             "UT",
-                     "Vermont",             "VT",
-                    "Virginia",             "VA",
-                  "Washington",             "WA",
-               "West Virginia",             "WV",
-                   "Wisconsin",             "WI",
-                     "Wyoming",             "WY",
-        "District of Columbia",             "DC",
-            "Marshall Islands",             "MH",
-         "Armed Forces Africa",             "AE",
-       "Armed Forces Americas",             "AA",
-         "Armed Forces Canada",             "AE",
-         "Armed Forces Europe",             "AE",
-    "Armed Forces Middle East",             "AE",
-        "Armed Forces Pacific",             "AP"
+  ~state_name                , ~state_abb ,
+  "Alabama"                  , "AL"       ,
+  "Alaska"                   , "AK"       ,
+  "Arizona"                  , "AZ"       ,
+  "Arkansas"                 , "AR"       ,
+  "California"               , "CA"       ,
+  "Colorado"                 , "CO"       ,
+  "Connecticut"              , "CT"       ,
+  "Delaware"                 , "DE"       ,
+  "Florida"                  , "FL"       ,
+  "Georgia"                  , "GA"       ,
+  "Hawaii"                   , "HI"       ,
+  "Idaho"                    , "ID"       ,
+  "Illinois"                 , "IL"       ,
+  "Indiana"                  , "IN"       ,
+  "Iowa"                     , "IA"       ,
+  "Kansas"                   , "KS"       ,
+  "Kentucky"                 , "KY"       ,
+  "Louisiana"                , "LA"       ,
+  "Maine"                    , "ME"       ,
+  "Maryland"                 , "MD"       ,
+  "Massachusetts"            , "MA"       ,
+  "Michigan"                 , "MI"       ,
+  "Minnesota"                , "MN"       ,
+  "Mississippi"              , "MS"       ,
+  "Missouri"                 , "MO"       ,
+  "Montana"                  , "MT"       ,
+  "Nebraska"                 , "NE"       ,
+  "Nevada"                   , "NV"       ,
+  "New Hampshire"            , "NH"       ,
+  "New Jersey"               , "NJ"       ,
+  "New Mexico"               , "NM"       ,
+  "New York"                 , "NY"       ,
+  "North Carolina"           , "NC"       ,
+  "North Dakota"             , "ND"       ,
+  "Ohio"                     , "OH"       ,
+  "Oklahoma"                 , "OK"       ,
+  "Oregon"                   , "OR"       ,
+  "Pennsylvania"             , "PA"       ,
+  "Rhode Island"             , "RI"       ,
+  "South Carolina"           , "SC"       ,
+  "South Dakota"             , "SD"       ,
+  "Tennessee"                , "TN"       ,
+  "Texas"                    , "TX"       ,
+  "Utah"                     , "UT"       ,
+  "Vermont"                  , "VT"       ,
+  "Virginia"                 , "VA"       ,
+  "Washington"               , "WA"       ,
+  "West Virginia"            , "WV"       ,
+  "Wisconsin"                , "WI"       ,
+  "Wyoming"                  , "WY"       ,
+  "District of Columbia"     , "DC"       ,
+  "Marshall Islands"         , "MH"       ,
+  "Armed Forces Africa"      , "AE"       ,
+  "Armed Forces Americas"    , "AA"       ,
+  "Armed Forces Canada"      , "AE"       ,
+  "Armed Forces Europe"      , "AE"       ,
+  "Armed Forces Middle East" , "AE"       ,
+  "Armed Forces Pacific"     , "AP"
 )
 
 bad_abbs <- c("MH", "AE", "AA", "AE", "AP")
@@ -215,7 +217,7 @@ agenda(1)
 #| echo: false
 
 names <- data.frame(state_name = sort(state_abbs_50$state_name))
-abbs  <- data.frame(state_abb = sort(state_abbs_50$state_abb))
+abbs <- data.frame(state_abb = sort(state_abbs_50$state_abb))
 ```
 
 ```{r}
@@ -262,7 +264,7 @@ band_instruments
 
 ```{r}
 band_members %>%
-    inner_join(band_instruments)
+  inner_join(band_instruments)
 ```
 :::
 
@@ -279,7 +281,7 @@ band_members %>%
 
 ```{r}
 band_members %>%
-    full_join(band_instruments)
+  full_join(band_instruments)
 ```
 :::
 
@@ -296,7 +298,7 @@ band_members %>%
 
 ```{r}
 band_members %>%
-    left_join(band_instruments)
+  left_join(band_instruments)
 ```
 :::
 
@@ -313,7 +315,7 @@ band_members %>%
 
 ```{r}
 band_members %>%
-    right_join(band_instruments)
+  right_join(band_instruments)
 ```
 :::
 
@@ -332,7 +334,7 @@ band_members %>%
 #| message: true
 
 band_members %>%
-    left_join(band_instruments)
+  left_join(band_instruments)
 ```
 :::
 
@@ -342,10 +344,10 @@ band_members %>%
 #| code-line-numbers: "4"
 
 band_members %>%
-    left_join(
-        band_instruments,
-        by = 'name'
-    )
+  left_join(
+    band_instruments,
+    by = 'name'
+  )
 ```
 :::
 
@@ -370,10 +372,10 @@ band_instruments2
 #| code-line-numbers: "4"
 
 band_members %>%
-    left_join(
-        band_instruments2,
-        by = c("name" = "artist")
-    )
+  left_join(
+    band_instruments2,
+    by = c("name" = "artist")
+  )
 ```
 :::
 
@@ -398,11 +400,11 @@ band_instruments2
 #| code-line-numbers: "2,5"
 
 band_members %>%
-    rename(artist = name) %>%
-    left_join(
-        band_instruments2,
-        by = "artist"
-    )
+  rename(artist = name) %>%
+  left_join(
+    band_instruments2,
+    by = "artist"
+  )
 ```
 :::
 
@@ -435,9 +437,9 @@ Your result should look like this:
 #| include: false
 
 state_data <- milk_production %>%
-    left_join(state_abbs, by = c('state' = 'state_name')) %>%
-    select(region, state_name = state, state_abb) %>%
-    distinct()
+  left_join(state_abbs, by = c('state' = 'state_name')) %>%
+  select(region, state_name = state, state_abb) %>%
+  distinct()
 ```
 
 ```{r}
@@ -453,8 +455,8 @@ head(state_data)
 #| include: false
 
 wildlife_impacts2 <- state_data %>%
-    right_join(wildlife_impacts, by = c('state_abb' = 'state')) %>%
-    mutate(state_abb = ifelse(state_abb == 'N/A', NA, state_abb))
+  right_join(wildlife_impacts, by = c('state_abb' = 'state')) %>%
+  mutate(state_abb = ifelse(state_abb == 'N/A', NA, state_abb))
 ```
 
 ::: {.font50}
@@ -487,7 +489,9 @@ agenda(2)
 
 ```{r}
 wind <- read_excel(file.path(
-  'data', 'US_State_Wind_Energy_Facts_2018.xlsx'))
+  'data',
+  'US_State_Wind_Energy_Facts_2018.xlsx'
+))
 
 glimpse(wind)
 ```
@@ -521,11 +525,15 @@ parse_number(c("1-800-123-4567"))
 #| code-line-numbers: "4,5,6,7"
 
 wind <- read_excel(file.path(
-  'data', 'US_State_Wind_Energy_Facts_2018.xlsx')) %>%
+  'data',
+  'US_State_Wind_Energy_Facts_2018.xlsx'
+)) %>%
   mutate(
     Ranking = as.numeric(Ranking),
     `Equivalent Homes Powered` = as.numeric(`Equivalent Homes Powered`),
-    `Total Investment ($ Millions)` = as.numeric(`Total Investment ($ Millions)`),
+    `Total Investment ($ Millions)` = as.numeric(
+      `Total Investment ($ Millions)`
+    ),
     `# of Wind Turbines` = as.numeric(`# of Wind Turbines`)
   )
 
@@ -559,7 +567,9 @@ https://suzan.rbind.io/2018/01/dplyr-tutorial-1/
 ::: {.col width="65%" .fragment}
 ```{r}
 wind <- read_excel(file.path(
-  'data', 'US_State_Wind_Energy_Facts_2018.xlsx'))
+  'data',
+  'US_State_Wind_Energy_Facts_2018.xlsx'
+))
 
 glimpse(wind)
 ```
@@ -582,7 +592,9 @@ glimpse(wind)
 library(janitor)
 
 wind <- read_excel(file.path(
-  'data', 'US_State_Wind_Energy_Facts_2018.xlsx')) %>%
+  'data',
+  'US_State_Wind_Energy_Facts_2018.xlsx'
+)) %>%
   clean_names()
 
 glimpse(wind)
@@ -606,7 +618,9 @@ glimpse(wind)
 library(janitor)
 
 wind <- read_excel(file.path(
-  'data', 'US_State_Wind_Energy_Facts_2018.xlsx')) %>%
+  'data',
+  'US_State_Wind_Energy_Facts_2018.xlsx'
+)) %>%
   clean_names(case = 'lower_camel')
 
 glimpse(wind)
@@ -630,7 +644,9 @@ glimpse(wind)
 library(janitor)
 
 wind <- read_excel(file.path(
-  'data', 'US_State_Wind_Energy_Facts_2018.xlsx')) %>%
+  'data',
+  'US_State_Wind_Energy_Facts_2018.xlsx'
+)) %>%
   clean_names(case = 'screaming_snake')
 
 glimpse(wind)
@@ -725,8 +741,8 @@ Select only numeric columns:
 
 ```{r}
 msleep %>%
-    select_if(is.numeric) %>%
-    glimpse()
+  select_if(is.numeric) %>%
+  glimpse()
 ```
 :::
 
@@ -735,8 +751,8 @@ Select only character columns:
 
 ```{r}
 msleep %>%
-    select_if(is.character) %>%
-    glimpse()
+  select_if(is.character) %>%
+  glimpse()
 ```
 :::
 
@@ -750,8 +766,8 @@ msleep %>%
 ::: {.font70}
 ```{r}
 msleep %>%
-    select(everything()) %>%
-    glimpse()
+  select(everything()) %>%
+  glimpse()
 ```
 :::
 :::
@@ -760,8 +776,8 @@ msleep %>%
 ::: {.font70}
 ```{r}
 msleep %>%
-    select(conservation, awake, everything()) %>%
-    glimpse()
+  select(conservation, awake, everything()) %>%
+  glimpse()
 ```
 :::
 :::
@@ -867,32 +883,40 @@ countdown(
 
 Read in the `hot_dog_winners.xlsx` file and adjust the variable names and types to the following:
 
+::: {.font70}
 ```{r}
 #| echo: false
 
 hot_dogs <- read_excel(
-    file.path('data', 'hot_dog_winners.xlsx'),
-    col_types = c(
-        'numeric', 'text', 'numeric', 'text',
-        'text', 'numeric', 'text')
-    ) %>%
-    clean_names() %>%
-    select(
-        year,
-        competitor.mens   = mens,
-        competitor.womens = womens,
-        dogs_eaten.mens   = dogs_eaten_3,
-        dogs_eaten.womens = dogs_eaten_6,
-        country.mens      = country_4,
-        country.womens    = country_7
-    )
+  file.path('data', 'hot_dog_winners.xlsx'),
+  col_types = c(
+    'numeric',
+    'text',
+    'numeric',
+    'text',
+    'text',
+    'numeric',
+    'text'
+  )
+) %>%
+  clean_names() %>%
+  select(
+    year,
+    competitor.mens = mens,
+    competitor.womens = womens,
+    dogs_eaten.mens = dogs_eaten_3,
+    dogs_eaten.womens = dogs_eaten_6,
+    country.mens = country_4,
+    country.womens = country_7
+  )
 
 glimpse(hot_dogs)
 ```
 :::
+:::
 
 ::: {.col width="60%"}
-![](images/hot_dogs.png){width="500"}
+![](images/hot_dogs.png){width="620"}
 :::
 
 ---
@@ -964,15 +988,25 @@ Create a variable, `season`, based on the `incident_month` variable.
 :::
 
 ::: {.col width="65%"}
-::: {.font70}
+::: {.font60}
 ```{r}
 #| code-line-numbers: "2,3,4,5"
 
 wildlife_impacts2 <- wildlife_impacts %>%
-  mutate(season = ifelse(
-    incident_month %in% c(3, 4, 5), 'spring', ifelse(
-    incident_month %in% c(6, 7, 8), 'summer', ifelse(
-    incident_month %in% c(9, 10, 11), 'fall', 'winter')))
+  mutate(
+    season = ifelse(
+      incident_month %in% c(3, 4, 5),
+      'spring',
+      ifelse(
+        incident_month %in% c(6, 7, 8),
+        'summer',
+        ifelse(
+          incident_month %in% c(9, 10, 11),
+          'fall',
+          'winter'
+        )
+      )
+    )
   )
 
 wildlife_impacts2 %>%
@@ -998,11 +1032,13 @@ Create a variable, `season`, based on the `incident_month` variable.
 #| code-line-numbers: "2,3,4,5,6"
 
 wildlife_impacts2 <- wildlife_impacts %>%
-  mutate(season = case_when(
-    incident_month %in% c(3, 4, 5) ~ 'spring',
-    incident_month %in% c(6, 7, 8) ~ 'summer',
-    incident_month %in% c(9, 10, 11) ~ 'fall',
-    TRUE ~ 'winter')
+  mutate(
+    season = case_when(
+      incident_month %in% c(3, 4, 5) ~ 'spring',
+      incident_month %in% c(6, 7, 8) ~ 'summer',
+      incident_month %in% c(9, 10, 11) ~ 'fall',
+      TRUE ~ 'winter'
+    )
   )
 
 wildlife_impacts2 %>%
@@ -1026,16 +1062,18 @@ Create a variable, `season`, based on the `incident_month` variable.
 #| code-line-numbers: "3,4,5"
 
 wildlife_impacts2 <- wildlife_impacts %>%
-  mutate(season = case_when(
-    between(incident_month, 3, 5) ~ 'spring',
-    between(incident_month, 6, 8) ~ 'summer',
-    between(incident_month, 9, 11) ~ 'fall',
-    TRUE ~ 'winter')
+  mutate(
+    season = case_when(
+      between(incident_month, 3, 5) ~ 'spring',
+      between(incident_month, 6, 8) ~ 'summer',
+      between(incident_month, 9, 11) ~ 'fall',
+      TRUE ~ 'winter'
+    )
   )
 
 wildlife_impacts2 %>%
-    distinct(incident_month, season) %>%
-    head()
+  distinct(incident_month, season) %>%
+  head()
 ```
 :::
 :::
@@ -1054,12 +1092,24 @@ Convert the `num_engs` variable into a word of the number.
 ::: {.font70}
 ```{r}
 wildlife_impacts3 <- wildlife_impacts %>%
-  mutate(num_engs = ifelse(
-    num_engs == 1, 'one', ifelse(
-    num_engs == 2, 'two', ifelse(
-    num_engs == 3, 'three', ifelse(
-    num_engs == 4, 'four',
-    as.character(num_engs)))))
+  mutate(
+    num_engs = ifelse(
+      num_engs == 1,
+      'one',
+      ifelse(
+        num_engs == 2,
+        'two',
+        ifelse(
+          num_engs == 3,
+          'three',
+          ifelse(
+            num_engs == 4,
+            'four',
+            as.character(num_engs)
+          )
+        )
+      )
+    )
   )
 
 unique(wildlife_impacts3$num_engs)
@@ -1073,11 +1123,13 @@ unique(wildlife_impacts3$num_engs)
 ::: {.font70}
 ```{r}
 wildlife_impacts3 <- wildlife_impacts %>%
-  mutate(num_engs = case_when(
-    num_engs == 1 ~ 'one',
-    num_engs == 2 ~ 'two',
-    num_engs == 3 ~ 'three',
-    num_engs == 4 ~ 'four')
+  mutate(
+    num_engs = case_when(
+      num_engs == 1 ~ 'one',
+      num_engs == 2 ~ 'two',
+      num_engs == 3 ~ 'three',
+      num_engs == 4 ~ 'four'
+    )
   )
 
 unique(wildlife_impacts3$num_engs)
@@ -1089,13 +1141,13 @@ unique(wildlife_impacts3$num_engs)
 
 ## Break a single variable into two with `separate()`
 
-::: {.col width="40%"}
+::: {.col width="40%" .font80}
 ```{r}
 tb_rates
 ```
 :::
 
-::: {.col width="60%" .fragment}
+::: {.col width="60%" .fragment .font80}
 ```{r}
 #| code-line-numbers: "2"
 
@@ -1108,21 +1160,21 @@ tb_rates %>%
 
 ## Break a single variable into two with `separate()`
 
-::: {.col width="40%"}
+::: {.col width="40%" .font80}
 ```{r}
 tb_rates
 ```
 :::
 
-::: {.col width="60%"}
+::: {.col width="60%" .font80}
 ```{r}
 #| code-line-numbers: "3,4,5"
 
 tb_rates %>%
   separate(
-      rate,
-      into = c("cases", "population"),
-      sep = "/"
+    rate,
+    into = c("cases", "population"),
+    sep = "/"
   )
 ```
 :::
@@ -1131,22 +1183,22 @@ tb_rates %>%
 
 ## Break a single variable into two with `separate()`
 
-::: {.col width="40%"}
+::: {.col width="40%" .font80}
 ```{r}
 tb_rates
 ```
 :::
 
-::: {.col width="60%"}
+::: {.col width="60%" .font80}
 ```{r}
 #| code-line-numbers: "6"
 
 tb_rates %>%
   separate(
-      rate,
-      into = c("cases", "population"),
-      sep = "/",
-      convert = TRUE
+    rate,
+    into = c("cases", "population"),
+    sep = "/",
+    convert = TRUE
   )
 ```
 :::
@@ -1155,21 +1207,21 @@ tb_rates %>%
 
 ## You can also break up a variable by an index
 
-::: {.col width="40%"}
+::: {.col width="40%" .font80}
 ```{r}
 tb_rates
 ```
 :::
 
-::: {.col width="60%"}
+::: {.col width="60%" .font80}
 ```{r}
 #| code-line-numbers: "4,5"
 
 tb_rates %>%
   separate(
-      year,
-      into = c("century", "year"),
-      sep = 2
+    year,
+    into = c("century", "year"),
+    sep = 2
   )
 ```
 :::
@@ -1178,19 +1230,18 @@ tb_rates %>%
 
 ## `unite()`: The opposite of `separate()`
 
-::: {.col width="40%"}
+::: {.col width="40%" .font80}
 ```{r}
 tb_rates
 ```
 :::
 
-::: {.col width="60%"}
+::: {.col width="60%" .font80}
 ```{r}
 #| code-line-numbers: "4"
 
 tb_rates %>%
-  separate(year, into = c("century", "year"),
-           sep = 2) %>%
+  separate(year, into = c("century", "year"), sep = 2) %>%
   unite(year_new, century, year)
 ```
 :::
@@ -1199,21 +1250,19 @@ tb_rates %>%
 
 ## `unite()`: The opposite of `separate()`
 
-::: {.col width="40%"}
+::: {.col width="40%" .font80}
 ```{r}
 tb_rates
 ```
 :::
 
-::: {.col width="60%"}
+::: {.col width="60%" .font80}
 ```{r}
 #| code-line-numbers: "5"
 
 tb_rates %>%
-  separate(year, into = c("century", "year"),
-           sep = 2) %>%
-  unite(year_new, century, year,
-        sep = "")
+  separate(year, into = c("century", "year"), sep = 2) %>%
+  unite(year_new, century, year, sep = "")
 ```
 :::
 
@@ -1232,7 +1281,7 @@ agenda(5)
 {{< center >}}
 {{< middle >}}
 
-![](images/dates.png){width="600"}
+![](images/dates.png){width="700"}
 
 ---
 
@@ -1313,7 +1362,7 @@ dmy('9 Sep. 2026')
 {{< center >}}
 {{< middle >}}
 
-# Check out the `lubridate` **[cheat sheet](https://rawgit.com/rstudio/cheatsheets/master/lubridate.pdf)**
+# Check out the `lubridate` **[cheat sheet](https://rstudio.github.io/cheatsheets/html/lubridate.html)**
 
 ---
 
@@ -1391,7 +1440,7 @@ On what day of the week were you born?
 
 ::: {.col width="60%"}
 ```{r}
-wday("2026-09-09", label = TRUE)
+wday("2026-09-23", label = TRUE)
 ```
 :::
 
@@ -1490,15 +1539,16 @@ unique(str_to_lower(wildlife_impacts$phase_of_flt))
 #| echo: false
 
 countdown(
-    minutes = 20,
-    warn_when = 30,
-    update_every = 15,
-    right = 0,
-    font_size = '1.5em',
-    style = "position: relative; width: min-content;
-             display: block; margin-left: 300px;"
+  minutes = 20,
+  warn_when = 15,
+  update_every = 1,
+  top = 0,
+  right = 0,
+  font_size = "2em"
 )
 ```
+
+<br><br>
 
 2) Use the **lubridate** package to create a new variable, `weekday_name`, from the `incident_date` variable in the `wildlife_impacts` data.
 
@@ -1511,17 +1561,18 @@ countdown(
 #| fig-align: center
 
 wildlife_impacts %>%
-    filter(incident_year == 2016,
-           incident_month == 3) %>%
-    mutate(phase_of_flt = str_to_title(phase_of_flt)) %>%
-    count(weekday_name, phase_of_flt) %>%
-    ggplot() +
-    geom_col(aes(x = weekday_name, y = n), width = 0.8) +
-    facet_wrap(~phase_of_flt, nrow = 1) +
-    theme_minimal_hgrid() +
-    labs(x = 'Day of the week',
-         y = 'Number of incidents',
-         title = 'Impacts by day of the week & phase of flight in March, 2016')
+  filter(incident_year == 2016, incident_month == 3) %>%
+  mutate(phase_of_flt = str_to_title(phase_of_flt)) %>%
+  count(weekday_name, phase_of_flt) %>%
+  ggplot() +
+  geom_col(aes(x = weekday_name, y = n), width = 0.8) +
+  facet_wrap(~phase_of_flt, nrow = 1) +
+  theme_minimal_hgrid() +
+  labs(
+    x = 'Day of the week',
+    y = 'Number of incidents',
+    title = 'Impacts by day of the week & phase of flight in March, 2016'
+  )
 ```
 :::
 
@@ -1538,12 +1589,9 @@ agenda(6)
 
 # Reminders:
 
-- You have **11** days until your [Project Proposal](https://eda.seas.gwu.edu/2026-Fall/project/1-proposal.html) is due.
-- You have **13** days until your [Mini Project 1](https://eda.seas.gwu.edu/2026-Fall/mini/1-data-cleaning.html) is due.
-
-<br>
-
-- Next week: **Project Proposal Meetings** - sign up **[HERE](https://calendar.app.google/niXopBudj9t4pmbj7)**
+- You have **11** days until your [Mini Project 1](https://eda.seas.gwu.edu/2026-Fall/mini/1-data-cleaning.html) is due.
+- Look at [HW 4](https://eda.seas.gwu.edu/2026-Fall/hw/4-exploring-data.html), due next week
+- Quiz 2 next week 
 
 ---
 
@@ -1559,7 +1607,7 @@ Example: Winners of Nathan's hot dog eating contest
 :::
 
 ::: {.col width="60%" .center}
-![](images/hot_dogs.png){width="500"}
+![](images/hot_dogs.png){width="620"}
 :::
 
 ---
@@ -1574,13 +1622,14 @@ Steps:
 3. Remove `*` note at bottom of table
 :::
 
-::: {.col width="60%"}
+::: {.col width="60%" .font80}
 ```{r}
 hot_dogs <- read_excel(
-    file.path('data', 'hot_dog_winners.xlsx'),
-    sheet = 'hot_dog_winners') %>%
-    clean_names() %>%
-    dplyr::filter(!is.na(mens))
+  file.path('data', 'hot_dog_winners.xlsx'),
+  sheet = 'hot_dog_winners'
+) %>%
+  clean_names() %>%
+  dplyr::filter(!is.na(mens))
 
 glimpse(hot_dogs)
 ```
@@ -1600,26 +1649,28 @@ Steps
 5. **Create new variable in each data frame: `competition`**
 :::
 
-::: {.col width="60%"}
+::: {.col width="60%" .font80}
 ```{r}
 #| code-line-numbers: "7,15"
 
 hot_dogs_m <- hot_dogs %>%
-    select(
-        year,
-        competitor = mens,
-        dogs_eaten = dogs_eaten_3,
-        country    = country_4) %>%
-    mutate(competition = 'Mens')
+  select(
+    year,
+    competitor = mens,
+    dogs_eaten = dogs_eaten_3,
+    country = country_4
+  ) %>%
+  mutate(competition = 'Mens')
 
 hot_dogs_w <- hot_dogs %>%
-    select(
-        year,
-        competitor = womens,
-        dogs_eaten = dogs_eaten_6,
-        country    = country_7) %>%
-    mutate(competition = 'Womens') %>%
-    dplyr::filter(!is.na(competitor))
+  select(
+    year,
+    competitor = womens,
+    dogs_eaten = dogs_eaten_6,
+    country = country_7
+  ) %>%
+  mutate(competition = 'Womens') %>%
+  dplyr::filter(!is.na(competitor))
 ```
 :::
 
@@ -1639,15 +1690,16 @@ Steps
 7. **Clean up final data frame**
 :::
 
-::: {.col width="60%"}
+::: {.col width="60%" .font80}
 ```{r}
 #| code-line-numbers: "1"
 
 hot_dogs <- bind_rows(hot_dogs_m, hot_dogs_w) %>%
-    mutate(
-        new_record = str_detect(dogs_eaten, "\\*"),
-        dogs_eaten = parse_number(dogs_eaten),
-        year       = as.numeric(year))
+  mutate(
+    new_record = str_detect(dogs_eaten, "\\*"),
+    dogs_eaten = parse_number(dogs_eaten),
+    year = as.numeric(year)
+  )
 
 glimpse(hot_dogs)
 ```
@@ -1656,7 +1708,7 @@ glimpse(hot_dogs)
 ---
 
 ::: {.col width="45%"}
-![](images/hot_dogs.png){width="500"}
+![](images/hot_dogs.png){width="620"}
 :::
 
 ::: {.col width="55%"}
@@ -1679,13 +1731,14 @@ Steps:
 3. Remove `*` note at bottom of table
 :::
 
-::: {.col width="60%"}
+::: {.col width="60%" .font80}
 ```{r}
 hot_dogs <- read_excel(
-    file.path('data', 'hot_dog_winners.xlsx'),
-    sheet = 'hot_dog_winners') %>%
-    clean_names() %>%
-    dplyr::filter(!is.na(mens))
+  file.path('data', 'hot_dog_winners.xlsx'),
+  sheet = 'hot_dog_winners'
+) %>%
+  clean_names() %>%
+  dplyr::filter(!is.na(mens))
 
 glimpse(hot_dogs)
 ```
@@ -1705,21 +1758,25 @@ Steps:
 5. **Gather all the "joint" variables**
 :::
 
-::: {.col width="60%"}
+::: {.col width="60%" .font80}
 ```{r}
 #| code-line-numbers: "10,11"
 
 hot_dogs <- hot_dogs %>%
-    select(
-        year,
-        competitor.mens   = mens,
-        competitor.womens = womens,
-        dogs_eaten.mens   = dogs_eaten_3,
-        dogs_eaten.womens = dogs_eaten_6,
-        country.mens      = country_4,
-        country.womens    = country_7) %>%
-    pivot_longer(names_to = 'variable', values_to = 'value',
-           competitor.mens:country.womens)
+  select(
+    year,
+    competitor.mens = mens,
+    competitor.womens = womens,
+    dogs_eaten.mens = dogs_eaten_3,
+    dogs_eaten.womens = dogs_eaten_6,
+    country.mens = country_4,
+    country.womens = country_7
+  ) %>%
+  pivot_longer(
+    names_to = 'variable',
+    values_to = 'value',
+    competitor.mens:country.womens
+  )
 
 head(hot_dogs, 3)
 ```
@@ -1740,13 +1797,16 @@ Steps:
 6. **Separate "joint" variables into components**
 :::
 
-::: {.col width="70%"}
+::: {.col width="70%" .font80}
 ```{r}
 #| code-line-numbers: "2,3"
 
 hot_dogs <- hot_dogs %>%
-    separate(variable, into = c('variable', 'competition'),
-             sep = '\\.')
+  separate(
+    variable,
+    into = c('variable', 'competition'),
+    sep = '\\.'
+  )
 
 head(hot_dogs)
 ```
@@ -1769,16 +1829,17 @@ Steps:
 8. **Clean up final data frame**
 :::
 
-::: {.col width="70%"}
+::: {.col width="70%" .font80}
 ```{r}
 #| code-line-numbers: "2"
 
 hot_dogs <- hot_dogs %>%
-    spread(key = variable, value = value) %>%
-    mutate(
-        new_record = str_detect(dogs_eaten, "\\*"),
-        dogs_eaten = parse_number(dogs_eaten),
-        year       = as.numeric(year))
+  pivot_wider(names_from = variable, values_from = value) %>%
+  mutate(
+    new_record = str_detect(dogs_eaten, "\\*"),
+    dogs_eaten = parse_number(dogs_eaten),
+    year = as.numeric(year)
+  )
 
 glimpse(hot_dogs)
 ```
@@ -1789,40 +1850,43 @@ glimpse(hot_dogs)
 ::: {.col}
 Divide & conquer
 
-::: {.font60}
+::: {.font50}
 ```{r}
 #| eval: false
-#| code-line-numbers: "7-22,25"
 
 hot_dogs <- read_excel(
-    file.path('data', 'hot_dog_winners.xlsx'),
-    sheet = 'hot_dog_winners') %>%
-    clean_names() %>%
-    dplyr::filter(!is.na(mens))
+  file.path('data', 'hot_dog_winners.xlsx'),
+  sheet = 'hot_dog_winners'
+) %>%
+  clean_names() %>%
+  dplyr::filter(!is.na(mens))
 
 # Divide
 hot_dogs_m <- hot_dogs %>%
-    select(
-        year,
-        competitor = mens,
-        dogs_eaten = dogs_eaten_3,
-        country    = country_4) %>%
-    mutate(competition = 'Mens')
+  select(
+    year,
+    competitor = mens,
+    dogs_eaten = dogs_eaten_3,
+    country = country_4
+  ) %>%
+  mutate(competition = 'Mens')
 hot_dogs_w <- hot_dogs %>%
-    select(
-        year,
-        competitor = womens,
-        dogs_eaten = dogs_eaten_6,
-        country    = country_7) %>%
-    mutate(competition = 'Womens') %>%
-    dplyr::filter(!is.na(competitor))
+  select(
+    year,
+    competitor = womens,
+    dogs_eaten = dogs_eaten_6,
+    country = country_7
+  ) %>%
+  mutate(competition = 'Womens') %>%
+  dplyr::filter(!is.na(competitor))
 
 # Merge and finish cleaning
 hot_dogs <- bind_rows(hot_dogs_m, hot_dogs_w) %>%
-    mutate(
-        new_record = str_detect(dogs_eaten, "\\*"),
-        dogs_eaten = parse_number(dogs_eaten),
-        year       = as.numeric(year))
+  mutate(
+    new_record = str_detect(dogs_eaten, "\\*"),
+    dogs_eaten = parse_number(dogs_eaten),
+    year = as.numeric(year)
+  )
 ```
 :::
 :::
@@ -1830,39 +1894,43 @@ hot_dogs <- bind_rows(hot_dogs_m, hot_dogs_w) %>%
 ::: {.col}
 Pivot long, separate, pivot wide
 
-::: {.font60}
+::: {.font50}
 ```{r}
 #| eval: false
-#| code-line-numbers: "7-23"
 
 hot_dogs <- read_excel(
-    file.path('data', 'hot_dog_winners.xlsx'),
-    sheet = 'hot_dog_winners') %>%
-    clean_names() %>%
-    dplyr::filter(!is.na(mens)) %>%
+  file.path('data', 'hot_dog_winners.xlsx'),
+  sheet = 'hot_dog_winners'
+) %>%
+  clean_names() %>%
+  dplyr::filter(!is.na(mens)) %>%
 
-    # Rename variables
-    select(
-        year,
-        competitor.mens   = mens,
-        competitor.womens = womens,
-        dogs_eaten.mens   = dogs_eaten_3,
-        dogs_eaten.womens = dogs_eaten_6,
-        country.mens      = country_4,
-        country.womens    = country_7) %>%
-    # Gather "joint" variables
-    pivot_longer(names_to = 'variable', values_to = 'value',
-           competitor.mens:country.womens) %>%
-    # Separate "joint" variables
-    separate(variable, into = c('variable', 'competition'),
-             sep = '\\.') %>%
-    # Spread "joint" variables
-    pivot_wider(names_from = variable, values_from = value) %>%
-    # Finish cleaning
-    mutate(
-        new_record = str_detect(dogs_eaten, "\\*"),
-        dogs_eaten = parse_number(dogs_eaten),
-        year       = as.numeric(year))
+  # Rename variables
+  select(
+    year,
+    competitor.mens = mens,
+    competitor.womens = womens,
+    dogs_eaten.mens = dogs_eaten_3,
+    dogs_eaten.womens = dogs_eaten_6,
+    country.mens = country_4,
+    country.womens = country_7
+  ) %>%
+  # Gather "joint" variables
+  pivot_longer(
+    names_to = 'variable',
+    values_to = 'value',
+    competitor.mens:country.womens
+  ) %>%
+  # Separate "joint" variables
+  separate(variable, into = c('variable', 'competition'), sep = '\\.') %>%
+  # Spread "joint" variables
+  pivot_wider(names_from = variable, values_from = value) %>%
+  # Finish cleaning
+  mutate(
+    new_record = str_detect(dogs_eaten, "\\*"),
+    dogs_eaten = parse_number(dogs_eaten),
+    year = as.numeric(year)
+  )
 ```
 :::
 :::
@@ -1882,7 +1950,7 @@ OICA passenger car sales data
 ::: {.col width="70%" .center}
 <br>
 
-![](images/pc_sales.png){width="800"}
+![](images/pc_sales.png){width="950"}
 :::
 
 ---
@@ -1896,15 +1964,17 @@ Steps:
 2. Clean the names
 :::
 
-::: {.col width="60%"}
+::: {.col width="60%" .font80}
 ```{r}
 #| code-line-numbers: "3"
 
 pc_sales <- read_excel(
-    file.path('data', 'pc_sales_2018.xlsx'),
-    sheet = 'pc_sales', skip = 5) %>%
-    clean_names() %>%
-    rename(country = regions_countries)
+  file.path('data', 'pc_sales_2018.xlsx'),
+  sheet = 'pc_sales',
+  skip = 5
+) %>%
+  clean_names() %>%
+  rename(country = regions_countries)
 
 glimpse(pc_sales)
 ```
@@ -1927,21 +1997,30 @@ Steps:
 Use **datapasta** to get rows to drop
 :::
 
-::: {.col width="70%"}
+::: {.col width="70%" .font60}
 ```{r}
 #| code-line-numbers: "10"
 
 drop <- c(
-    'EUROPE', 'EU 28 countries + EFTA',
-    'EU 15 countries + EFTA', 'EUROPE NEW MEMBERS',
-    'RUSSIA, TURKEY & OTHER EUROPE', 'AMERICA',
-    'NAFTA', 'CENTRAL & SOUTH AMERICA',
-    'ASIA/OCEANIA/MIDDLE EAST', 'AFRICA', 'ALL COUNTRIES')
+  'EUROPE',
+  'EU 28 countries + EFTA',
+  'EU 15 countries + EFTA',
+  'EUROPE NEW MEMBERS',
+  'RUSSIA, TURKEY & OTHER EUROPE',
+  'AMERICA',
+  'NAFTA',
+  'CENTRAL & SOUTH AMERICA',
+  'ASIA/OCEANIA/MIDDLE EAST',
+  'AFRICA',
+  'ALL COUNTRIES'
+)
 
 pc_sales <- pc_sales %>%
-    select(-c(x2:x4)) %>%       # Drop bad columns
-    filter(! country %in% drop, # Drop bad rows
-           ! is.na(country))
+  select(-c(x2:x4)) %>% # Drop bad columns
+  filter(
+    !country %in% drop, # Drop bad rows
+    !is.na(country)
+  )
 
 head(pc_sales)
 ```
@@ -1961,13 +2040,16 @@ Steps:
 5. **Gather the year variables**
 :::
 
-::: {.col width="70%"}
+::: {.col width="70%" .font80}
 ```{r}
 #| code-line-numbers: "3"
 
 pc_sales <- pc_sales %>%
-    pivot_longer(names_to = 'year', values_to = 'num_cars',
-                 cols = x2005:x2018)
+  pivot_longer(
+    names_to = 'year',
+    values_to = 'num_cars',
+    cols = x2005:x2018
+  )
 
 head(pc_sales)
 ```
@@ -1988,13 +2070,17 @@ Steps:
 6. **Separate the "x" from the year**
 :::
 
-::: {.col width="70%"}
+::: {.col width="70%" .font80}
 ```{r}
 #| code-line-numbers: "2,3"
 
 pc_sales <- pc_sales %>%
-    separate(year, into = c('drop', 'year'), sep = 'x',
-             convert = TRUE)
+  separate(
+    year,
+    into = c('drop', 'year'),
+    sep = 'x',
+    convert = TRUE
+  )
 
 head(pc_sales)
 ```
@@ -2017,13 +2103,13 @@ Steps:
 8. **Finish cleaning**
 :::
 
-::: {.col width="70%"}
+::: {.col width="70%" .font80}
 ```{r}
 #| code-line-numbers: "2"
 
 pc_sales <- pc_sales %>%
   select(-drop) %>%
-  mutate(country  = str_to_title(country))
+  mutate(country = str_to_title(country))
 
 head(pc_sales)
 ```
@@ -2042,28 +2128,40 @@ head(pc_sales)
 
 ---
 
-::: {.font70}
+::: {.font60}
 ```{r}
 drop <- c(
-  'EUROPE', 'EU 28 countries + EFTA',
-  'EU 15 countries + EFTA', 'EUROPE NEW MEMBERS',
-  'RUSSIA, TURKEY & OTHER EUROPE', 'AMERICA',
-  'NAFTA', 'CENTRAL & SOUTH AMERICA',
-  'ASIA/OCEANIA/MIDDLE EAST', 'AFRICA', 'ALL COUNTRIES')
+  'EUROPE',
+  'EU 28 countries + EFTA',
+  'EU 15 countries + EFTA',
+  'EUROPE NEW MEMBERS',
+  'RUSSIA, TURKEY & OTHER EUROPE',
+  'AMERICA',
+  'NAFTA',
+  'CENTRAL & SOUTH AMERICA',
+  'ASIA/OCEANIA/MIDDLE EAST',
+  'AFRICA',
+  'ALL COUNTRIES'
+)
 
 pc_sales <- read_excel(
   file.path('data', 'pc_sales_2018.xlsx'),
-  sheet = 'pc_sales', skip = 5) %>%
+  sheet = 'pc_sales',
+  skip = 5
+) %>%
   clean_names() %>%
   rename(country = regions_countries) %>%
-  select(-c(x2:x4)) %>%       # Drop bad columns
-  filter(! country %in% drop, # Drop bad rows
-         ! is.na(country)) %>%
+  select(-c(x2:x4)) %>% # Drop bad columns
+  filter(
+    !country %in% drop, # Drop bad rows
+    !is.na(country)
+  ) %>%
   pivot_longer(
-    names_to = 'year', values_to = 'num_cars',
-    cols = x2005:x2018) %>%
-  separate(year, into = c('drop', 'year'), sep = 'x',
-           convert = TRUE) %>%
+    names_to = 'year',
+    values_to = 'num_cars',
+    cols = x2005:x2018
+  ) %>%
+  separate(year, into = c('drop', 'year'), sep = 'x', convert = TRUE) %>%
   select(-drop)
 
 head(pc_sales, 3)
@@ -2078,16 +2176,18 @@ head(pc_sales, 3)
 
 . . .
 
-::: {.col}
+::: {.col .font80}
 ```{r}
 pc_regions <- read_csv(file.path(
-  "data", "pc_regions.csv"))
+  "data",
+  "pc_regions.csv"
+))
 
 head(pc_regions)
 ```
 :::
 
-::: {.col .fragment}
+::: {.col .fragment .font80}
 ```{r}
 #| code-line-numbers: "2"
 
@@ -2108,33 +2208,46 @@ head(pc_sales)
 ::: {.font50}
 ```{r}
 drop <- c(
-  'EUROPE', 'EU 28 countries + EFTA',
-  'EU 15 countries + EFTA', 'EUROPE NEW MEMBERS',
-  'RUSSIA, TURKEY & OTHER EUROPE', 'AMERICA',
-  'NAFTA', 'CENTRAL & SOUTH AMERICA',
-  'ASIA/OCEANIA/MIDDLE EAST', 'AFRICA', 'ALL COUNTRIES')
+  'EUROPE',
+  'EU 28 countries + EFTA',
+  'EU 15 countries + EFTA',
+  'EUROPE NEW MEMBERS',
+  'RUSSIA, TURKEY & OTHER EUROPE',
+  'AMERICA',
+  'NAFTA',
+  'CENTRAL & SOUTH AMERICA',
+  'ASIA/OCEANIA/MIDDLE EAST',
+  'AFRICA',
+  'ALL COUNTRIES'
+)
 
 pc_regions <- read_csv(file.path("data", "pc_regions.csv"))
 
 pc_sales <- read_excel(
   file.path('data', 'pc_sales_2018.xlsx'),
-  sheet = 'pc_sales', skip = 5) %>%
+  sheet = 'pc_sales',
+  skip = 5
+) %>%
   clean_names() %>%
   rename(country = regions_countries) %>%
-  select(-c(x2:x4)) %>%       # Drop bad columns
-  filter(! country %in% drop, # Drop bad rows
-         ! is.na(country)) %>%
+  select(-c(x2:x4)) %>% # Drop bad columns
+  filter(
+    !country %in% drop, # Drop bad rows
+    !is.na(country)
+  ) %>%
   pivot_longer(
-    names_to = 'year', values_to = 'num_cars',
-    cols = x2005:x2018) %>%
-  separate(year, into = c('drop', 'year'), sep = 'x',
-           convert = TRUE) %>%
+    names_to = 'year',
+    values_to = 'num_cars',
+    cols = x2005:x2018
+  ) %>%
+  separate(year, into = c('drop', 'year'), sep = 'x', convert = TRUE) %>%
   select(-drop) %>%
   left_join(pc_regions) %>%
   mutate(
-    country  = str_to_title(country),
-    region  = str_to_title(region),
-    subregion  = str_to_title(subregion))
+    country = str_to_title(country),
+    region = str_to_title(region),
+    subregion = str_to_title(subregion)
+  )
 
 head(pc_sales)
 ```
