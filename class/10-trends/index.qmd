@@ -58,7 +58,7 @@ milk_region_line_label <- ggplot(milk_region,
 
 {{< inverse >}}
 
-# Quiz 3
+# Quiz 4
 
 ```{r}
 #| echo: false
@@ -85,7 +85,7 @@ countdown(
 ::: {.col}
 <br>
 
-![](https://github.com/emse-p4a-gwu/2022-Spring/raw/main/images/quiz_doge.png){width="400"}
+![](https://github.com/emse-eda-gwu/2026-Fall/raw/main/images/quiz_doge.png){width="400"}
 :::
 
 ---

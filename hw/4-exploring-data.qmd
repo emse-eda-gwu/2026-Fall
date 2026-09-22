@@ -12,11 +12,19 @@ params:
 
 # 2. Read & Practice
 
-- [R4DS - 7: Exploratory data analysis](https://r4ds.had.co.nz/exploratory-data-analysis.html): Provides some more "hands on" strategies for exploring data using R and the **ggplot2** library.
+Before class, install the packages we'll use in the practice exercises:
+
+```{r}
+#| eval: false
+
+install.packages(c('HistData', 'GGally', 'palmerpenguins'))
+```
+
+- [R4DS - 10: Exploratory data analysis](https://r4ds.hadley.nz/EDA.html): Provides some more "hands on" strategies for exploring data using R and the **ggplot2** library.
 - [Wilke - 12: Visualizing associations](https://clauswilke.com/dataviz/visualizing-associations.html): An overview of ways to visualize associations between two or more variables.
 - ["Beware Spurious Correlations", Harvard Business Review](https://hbr.org/2015/06/beware-spurious-correlations) (if you don't have a subscription to see it, a backed up version can be found [here](https://github.com/emse-eda-gwu/2026-Fall/raw/main/content/beware-spurious-correlations.pdf)).
 - Watch [this 20 minute video](https://www.youtube.com/watch?v=zHcQPKP6NpM) to learn about some basic data types and descriptive statistics.
-- Watch [this 15 minute video](https://www.youtube.com/embed/fmK5YWWobH8) to learn about the basics of correlation measures.
+- Watch [this 15 minute video](https://www.youtube.com/watch?v=fmK5YWWobH8) to learn about the basics of correlation measures.
 
 ### Choosing the right chart
 
@@ -27,13 +35,15 @@ You will want to choose different chart types depending on the relationship or m
 
 ### Optional readings
 
-The history of statistical correlation is rather ugly and routed in racism and eugenics. These readings discuss this topics in more detail:
+The history of statistical correlation is rather ugly and rooted in racism and eugenics. These readings discuss these topics in more detail:
 
 - [Francis Galton pioneered scientific advances in many fields – but also founded the racist pseudoscience of eugenics](https://theconversation.com/francis-galton-pioneered-scientific-advances-in-many-fields-but-also-founded-the-racist-pseudoscience-of-eugenics-144465)
 - [Column: The false, racist theory of eugenics once ruled science. Let’s never let that happen again](https://www.pbs.org/newshour/nation/column-the-false-racist-theory-of-eugenics-once-ruled-science-lets-never-let-that-happen-again)
 - Listen to [this Radiolab episode](https://podcasts.apple.com/us/podcast/g-unfit/id152249110?i=1000444689017) on eugenics.
 
 # 3. Reflect
+
+> **This week, consider writing about an example of a correlation that you could (incorrectly) assume was causation.**
 
 {{< include ../fragments/hw-reflect.qmd >}}
 
