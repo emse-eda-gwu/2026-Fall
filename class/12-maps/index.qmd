@@ -36,7 +36,7 @@ source('setup.R')
 
 {{< inverse >}}
 
-# Quiz 4
+# Quiz 5 - last one!
 
 ```{r}
 #| echo: false
@@ -63,7 +63,7 @@ countdown(
 ::: {.col}
 <br>
 
-![](https://github.com/emse-p4a-gwu/2022-Spring/raw/main/images/quiz_doge.png){width="400"}
+![](https://github.com/emse-eda-gwu/2026-Fall/raw/main/images/quiz_doge.png){width="400"}
 :::
 
 ---

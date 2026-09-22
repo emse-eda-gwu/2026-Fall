@@ -26,6 +26,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -364,12 +399,16 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="read-practice" class="level1">
 <h1>2. Read &amp; Practice</h1>
+<p>Before class, install the packages we’ll use in the practice exercises:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">'HistData'</span>, <span class="st">'GGally'</span>, <span class="st">'palmerpenguins'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <ul>
-<li><a href="https://r4ds.had.co.nz/exploratory-data-analysis.html">R4DS - 7: Exploratory data analysis</a>: Provides some more “hands on” strategies for exploring data using R and the <strong>ggplot2</strong> library.</li>
+<li><a href="https://r4ds.hadley.nz/EDA.html">R4DS - 10: Exploratory data analysis</a>: Provides some more “hands on” strategies for exploring data using R and the <strong>ggplot2</strong> library.</li>
 <li><a href="https://clauswilke.com/dataviz/visualizing-associations.html">Wilke - 12: Visualizing associations</a>: An overview of ways to visualize associations between two or more variables.</li>
 <li><a href="https://hbr.org/2015/06/beware-spurious-correlations">“Beware Spurious Correlations”, Harvard Business Review</a> (if you don’t have a subscription to see it, a backed up version can be found <a href="https://github.com/emse-eda-gwu/2026-Fall/raw/main/content/beware-spurious-correlations.pdf">here</a>).</li>
 <li>Watch <a href="https://www.youtube.com/watch?v=zHcQPKP6NpM">this 20 minute video</a> to learn about some basic data types and descriptive statistics.</li>
-<li>Watch <a href="https://www.youtube.com/embed/fmK5YWWobH8">this 15 minute video</a> to learn about the basics of correlation measures.</li>
+<li>Watch <a href="https://www.youtube.com/watch?v=fmK5YWWobH8">this 15 minute video</a> to learn about the basics of correlation measures.</li>
 </ul>
 <section id="choosing-the-right-chart" class="level3">
 <h3 class="anchored" data-anchor-id="choosing-the-right-chart">Choosing the right chart</h3>
@@ -381,7 +420,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="optional-readings" class="level3">
 <h3 class="anchored" data-anchor-id="optional-readings">Optional readings</h3>
-<p>The history of statistical correlation is rather ugly and routed in racism and eugenics. These readings discuss this topics in more detail:</p>
+<p>The history of statistical correlation is rather ugly and rooted in racism and eugenics. These readings discuss these topics in more detail:</p>
 <ul>
 <li><a href="https://theconversation.com/francis-galton-pioneered-scientific-advances-in-many-fields-but-also-founded-the-racist-pseudoscience-of-eugenics-144465">Francis Galton pioneered scientific advances in many fields – but also founded the racist pseudoscience of eugenics</a></li>
 <li><a href="https://www.pbs.org/newshour/nation/column-the-false-racist-theory-of-eugenics-once-ruled-science-lets-never-let-that-happen-again">Column: The false, racist theory of eugenics once ruled science. Let’s never let that happen again</a></li>
@@ -391,6 +430,9 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="reflect" class="level1">
 <h1>3. Reflect</h1>
+<blockquote class="blockquote">
+<p><strong>This week, consider writing about an example of a correlation that you could (incorrectly) assume was causation.</strong></p>
+</blockquote>
 <p>Reflect on what you’ve learned while going through these readings and exercises. Is there anything that jumped out at you? Anything you found particularly interesting or confusing?</p>
 <p>Write at least a paragraph in your <code>hw4.qmd</code> file, and include at least one question. The teaching team will review the questions we get and will try to answer them either in Slack or in class.</p>
 <p>Some thoughts you may want to try in your reflection:</p>

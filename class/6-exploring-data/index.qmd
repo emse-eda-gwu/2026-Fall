@@ -52,7 +52,7 @@ daysToShip <- data.frame(
 
 {{< inverse >}}
 
-# Quiz 1
+# Quiz 2
 
 ```{r}
 #| echo: false
@@ -79,7 +79,7 @@ countdown(
 ::: {.col}
 <br>
 
-![](https://github.com/emse-p4a-gwu/2022-Spring/raw/main/images/quiz_doge.png){width="400"}
+![](https://github.com/emse-eda-gwu/2026-Fall/raw/main/images/quiz_doge.png){width="400"}
 :::
 
 ---
@@ -2003,3 +2003,10 @@ countdown(
 - Bar chart
 - Scatterplot
 - Boxplot
+
+---
+
+# Reminders:
+
+- You have **4** days until your [Mini Project 1](https://eda.seas.gwu.edu/2026-Fall/mini/1-data-cleaning.html) is due (Oct. 4).
+- Look at [HW 5](https://eda.seas.gwu.edu/2026-Fall/hw/5-visualizing-information.html), due next week
