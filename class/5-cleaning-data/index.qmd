@@ -7,7 +7,7 @@ week: 5
 displaydate: September 23, 2026
 format: 
   lexis-revealjs:
-    code-block-height: "660px"
+    code-block-height: "800px"
     link-external-newwindow: true
 # Navigate slides with the mouse wheel / trackpad (reveal's native mouseWheel).
 mouse-wheel: true
@@ -341,7 +341,6 @@ band_members %>%
 ::: {.col}
 ```{r}
 #| message: true
-#| code-line-numbers: "4"
 
 band_members %>%
   left_join(
@@ -369,8 +368,6 @@ band_instruments2
 
 ::: {.col .fragment}
 ```{r}
-#| code-line-numbers: "4"
-
 band_members %>%
   left_join(
     band_instruments2,
@@ -397,8 +394,6 @@ band_instruments2
 
 ::: {.col}
 ```{r}
-#| code-line-numbers: "2,5"
-
 band_members %>%
   rename(artist = name) %>%
   left_join(
@@ -432,7 +427,7 @@ countdown(
 
 Your result should look like this:
 
-::: {.font70}
+::: {.font80}
 ```{r}
 #| include: false
 
@@ -459,7 +454,7 @@ wildlife_impacts2 <- state_data %>%
   mutate(state_abb = ifelse(state_abb == 'N/A', NA, state_abb))
 ```
 
-::: {.font50}
+::: {.font70}
 ```{r}
 #| eval: false
 
@@ -522,8 +517,6 @@ parse_number(c("1-800-123-4567"))
 ---
 
 ```{r}
-#| code-line-numbers: "4,5,6,7"
-
 wind <- read_excel(file.path(
   'data',
   'US_State_Wind_Energy_Facts_2018.xlsx'
@@ -587,8 +580,6 @@ glimpse(wind)
 
 ::: {.col width="65%"}
 ```{r}
-#| code-line-numbers: "1,5"
-
 library(janitor)
 
 wind <- read_excel(file.path(
@@ -613,8 +604,6 @@ glimpse(wind)
 
 ::: {.col width="65%"}
 ```{r}
-#| code-line-numbers: "1,5"
-
 library(janitor)
 
 wind <- read_excel(file.path(
@@ -639,8 +628,6 @@ glimpse(wind)
 
 ::: {.col width="65%"}
 ```{r}
-#| code-line-numbers: "1,5"
-
 library(janitor)
 
 wind <- read_excel(file.path(
@@ -681,8 +668,6 @@ Use `select()` to choose which columns to **keep**
 
 ::: {.font70}
 ```{r}
-#| code-line-numbers: "2"
-
 msleep %>%
   select(name:order, sleep_total:sleep_cycle) %>%
   glimpse()
@@ -793,8 +778,6 @@ Use `rename()` to just change the name
 
 ::: {.font70}
 ```{r}
-#| code-line-numbers: "2"
-
 msleep %>%
   rename(
     animal = name,
@@ -810,8 +793,6 @@ Use `select()` to change the name **and drop everything else**
 
 ::: {.font70}
 ```{r}
-#| code-line-numbers: "2"
-
 msleep %>%
   select(
     animal = name,
@@ -831,8 +812,6 @@ Use `rename()` to just change the name
 
 ::: {.font70}
 ```{r}
-#| code-line-numbers: "2"
-
 msleep %>%
   rename(
     animal = name,
@@ -848,8 +827,6 @@ Use `select()` + `everything()` to change names **and keep everything else**
 
 ::: {.font70}
 ```{r}
-#| code-line-numbers: "2,6"
-
 msleep %>%
   select(
     animal = name,
@@ -962,8 +939,6 @@ Example: Create a variable, `cost_high`, that is `TRUE` if the repair costs were
 ::: {.col width="65%"}
 ::: {.font70}
 ```{r}
-#| code-line-numbers: "6"
-
 wildlife_impacts1 <- wildlife_impacts %>%
   rename(cost = cost_repairs_infl_adj) %>%
   filter(!is.na(cost)) %>%
@@ -990,8 +965,6 @@ Create a variable, `season`, based on the `incident_month` variable.
 ::: {.col width="65%"}
 ::: {.font60}
 ```{r}
-#| code-line-numbers: "2,3,4,5"
-
 wildlife_impacts2 <- wildlife_impacts %>%
   mutate(
     season = ifelse(
@@ -1029,8 +1002,6 @@ Create a variable, `season`, based on the `incident_month` variable.
 ::: {.col width="65%"}
 ::: {.font70}
 ```{r}
-#| code-line-numbers: "2,3,4,5,6"
-
 wildlife_impacts2 <- wildlife_impacts %>%
   mutate(
     season = case_when(
@@ -1059,8 +1030,6 @@ Create a variable, `season`, based on the `incident_month` variable.
 ::: {.col width="65%"}
 ::: {.font70}
 ```{r}
-#| code-line-numbers: "3,4,5"
-
 wildlife_impacts2 <- wildlife_impacts %>%
   mutate(
     season = case_when(
@@ -1149,8 +1118,6 @@ tb_rates
 
 ::: {.col width="60%" .fragment .font80}
 ```{r}
-#| code-line-numbers: "2"
-
 tb_rates %>%
   separate(rate, into = c("cases", "population"))
 ```
@@ -1168,8 +1135,6 @@ tb_rates
 
 ::: {.col width="60%" .font80}
 ```{r}
-#| code-line-numbers: "3,4,5"
-
 tb_rates %>%
   separate(
     rate,
@@ -1191,8 +1156,6 @@ tb_rates
 
 ::: {.col width="60%" .font80}
 ```{r}
-#| code-line-numbers: "6"
-
 tb_rates %>%
   separate(
     rate,
@@ -1215,8 +1178,6 @@ tb_rates
 
 ::: {.col width="60%" .font80}
 ```{r}
-#| code-line-numbers: "4,5"
-
 tb_rates %>%
   separate(
     year,
@@ -1238,8 +1199,6 @@ tb_rates
 
 ::: {.col width="60%" .font80}
 ```{r}
-#| code-line-numbers: "4"
-
 tb_rates %>%
   separate(year, into = c("century", "year"), sep = 2) %>%
   unite(year_new, century, year)
@@ -1258,8 +1217,6 @@ tb_rates
 
 ::: {.col width="60%" .font80}
 ```{r}
-#| code-line-numbers: "5"
-
 tb_rates %>%
   separate(year, into = c("century", "year"), sep = 2) %>%
   unite(year_new, century, year, sep = "")
@@ -1651,8 +1608,6 @@ Steps
 
 ::: {.col width="60%" .font80}
 ```{r}
-#| code-line-numbers: "7,15"
-
 hot_dogs_m <- hot_dogs %>%
   select(
     year,
@@ -1692,8 +1647,6 @@ Steps
 
 ::: {.col width="60%" .font80}
 ```{r}
-#| code-line-numbers: "1"
-
 hot_dogs <- bind_rows(hot_dogs_m, hot_dogs_w) %>%
   mutate(
     new_record = str_detect(dogs_eaten, "\\*"),
@@ -1760,8 +1713,6 @@ Steps:
 
 ::: {.col width="60%" .font80}
 ```{r}
-#| code-line-numbers: "10,11"
-
 hot_dogs <- hot_dogs %>%
   select(
     year,
@@ -1799,8 +1750,6 @@ Steps:
 
 ::: {.col width="70%" .font80}
 ```{r}
-#| code-line-numbers: "2,3"
-
 hot_dogs <- hot_dogs %>%
   separate(
     variable,
@@ -1831,8 +1780,6 @@ Steps:
 
 ::: {.col width="70%" .font80}
 ```{r}
-#| code-line-numbers: "2"
-
 hot_dogs <- hot_dogs %>%
   pivot_wider(names_from = variable, values_from = value) %>%
   mutate(
@@ -1966,8 +1913,6 @@ Steps:
 
 ::: {.col width="60%" .font80}
 ```{r}
-#| code-line-numbers: "3"
-
 pc_sales <- read_excel(
   file.path('data', 'pc_sales_2018.xlsx'),
   sheet = 'pc_sales',
@@ -1999,8 +1944,6 @@ Use **datapasta** to get rows to drop
 
 ::: {.col width="70%" .font60}
 ```{r}
-#| code-line-numbers: "10"
-
 drop <- c(
   'EUROPE',
   'EU 28 countries + EFTA',
@@ -2042,8 +1985,6 @@ Steps:
 
 ::: {.col width="70%" .font80}
 ```{r}
-#| code-line-numbers: "3"
-
 pc_sales <- pc_sales %>%
   pivot_longer(
     names_to = 'year',
@@ -2072,8 +2013,6 @@ Steps:
 
 ::: {.col width="70%" .font80}
 ```{r}
-#| code-line-numbers: "2,3"
-
 pc_sales <- pc_sales %>%
   separate(
     year,
@@ -2105,8 +2044,6 @@ Steps:
 
 ::: {.col width="70%" .font80}
 ```{r}
-#| code-line-numbers: "2"
-
 pc_sales <- pc_sales %>%
   select(-drop) %>%
   mutate(country = str_to_title(country))
@@ -2189,8 +2126,6 @@ head(pc_regions)
 
 ::: {.col .fragment .font80}
 ```{r}
-#| code-line-numbers: "2"
-
 pc_sales <- pc_sales %>%
   left_join(pc_regions)
 
