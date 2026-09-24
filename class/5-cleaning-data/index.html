@@ -101,7 +101,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-5ff6e335d0d52d86cbf631b2ed8909f0.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-87157d27a282c5e1492015bc674b9d3c.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -1073,7 +1073,7 @@ built-in one.
 </div>
 <div class="col">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href=""></a>band_members <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href=""></a>band_members <span class="sc">%&gt;%</span></span>
 <span id="cb25-2"><a href=""></a>  <span class="fu">left_join</span>(</span>
 <span id="cb25-3"><a href=""></a>    band_instruments,</span>
 <span id="cb25-4"><a href=""></a>    <span class="at">by =</span> <span class="st">'name'</span></span>
@@ -1121,7 +1121,7 @@ built-in one.
 </div>
 <div class="col fragment">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href=""></a>band_members <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href=""></a>band_members <span class="sc">%&gt;%</span></span>
 <span id="cb31-2"><a href=""></a>  <span class="fu">left_join</span>(</span>
 <span id="cb31-3"><a href=""></a>    band_instruments2,</span>
 <span id="cb31-4"><a href=""></a>    <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"name"</span> <span class="ot">=</span> <span class="st">"artist"</span>)</span>
@@ -1169,7 +1169,7 @@ built-in one.
 </div>
 <div class="col">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37" data-code-line-numbers="2,5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href=""></a>band_members <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href=""></a>band_members <span class="sc">%&gt;%</span></span>
 <span id="cb37-2"><a href=""></a>  <span class="fu">rename</span>(<span class="at">artist =</span> name) <span class="sc">%&gt;%</span></span>
 <span id="cb37-3"><a href=""></a>  <span class="fu">left_join</span>(</span>
 <span id="cb37-4"><a href=""></a>    band_instruments2,</span>
@@ -1193,7 +1193,7 @@ built-in one.
 <h1 class="lexis-slide-title"></h1>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_63433a1a" data-warn-when="15" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_2fb87e35" data-warn-when="15" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1206,7 +1206,7 @@ built-in one.
 <li>Create a data frame called <code>state_data</code> by joining the data frames <code>states_abbs</code> and <code>milk_production</code> and then selecting the variables <code>region</code>, <code>state_name</code>, <code>state_abb</code>. <strong>Hint</strong>: Use the <code>distinct()</code> function to drop repeated rows.</li>
 </ol>
 <p>Your result should look like this:</p>
-<div class="font70">
+<div class="font80">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href=""></a><span class="fu">head</span>(state_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1227,7 +1227,7 @@ built-in one.
 <ol start="2" type="1">
 <li>Join the <code>state_data</code> data frame to the <code>wildlife_impacts</code> data frame, adding the variables <code>region</code> and <code>state_name</code></li>
 </ol>
-<div class="font50">
+<div class="font70">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href=""></a><span class="fu">glimpse</span>(wildlife_impacts)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -1404,7 +1404,7 @@ https://suzan.rbind.io/2018/01/dplyr-tutorial-1/
 </div>
 <div class="col" style="flex:0 1 65%;width:65%">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57" data-code-line-numbers="1,5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href=""></a><span class="fu">library</span>(janitor)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href=""></a><span class="fu">library</span>(janitor)</span>
 <span id="cb57-2"><a href=""></a></span>
 <span id="cb57-3"><a href=""></a>wind <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="fu">file.path</span>(</span>
 <span id="cb57-4"><a href=""></a>  <span class="st">'data'</span>,</span>
@@ -1438,7 +1438,7 @@ https://suzan.rbind.io/2018/01/dplyr-tutorial-1/
 </div>
 <div class="col" style="flex:0 1 65%;width:65%">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59" data-code-line-numbers="1,5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href=""></a><span class="fu">library</span>(janitor)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href=""></a><span class="fu">library</span>(janitor)</span>
 <span id="cb59-2"><a href=""></a></span>
 <span id="cb59-3"><a href=""></a>wind <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="fu">file.path</span>(</span>
 <span id="cb59-4"><a href=""></a>  <span class="st">'data'</span>,</span>
@@ -1472,7 +1472,7 @@ https://suzan.rbind.io/2018/01/dplyr-tutorial-1/
 </div>
 <div class="col" style="flex:0 1 65%;width:65%">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61" data-code-line-numbers="1,5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href=""></a><span class="fu">library</span>(janitor)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href=""></a><span class="fu">library</span>(janitor)</span>
 <span id="cb61-2"><a href=""></a></span>
 <span id="cb61-3"><a href=""></a>wind <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="fu">file.path</span>(</span>
 <span id="cb61-4"><a href=""></a>  <span class="st">'data'</span>,</span>
@@ -1538,7 +1538,7 @@ https://suzan.rbind.io/2018/01/dplyr-tutorial-1/
 <p>Use <code>select()</code> to choose which columns to <strong>keep</strong></p>
 <div class="font70">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href=""></a>msleep <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href=""></a>msleep <span class="sc">%&gt;%</span></span>
 <span id="cb65-2"><a href=""></a>  <span class="fu">select</span>(name<span class="sc">:</span>order, sleep_total<span class="sc">:</span>sleep_cycle) <span class="sc">%&gt;%</span></span>
 <span id="cb65-3"><a href=""></a>  <span class="fu">glimpse</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1729,7 +1729,7 @@ https://suzan.rbind.io/2018/01/dplyr-tutorial-1/
 <p>Use <code>rename()</code> to just change the name</p>
 <div class="font70">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href=""></a>msleep <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href=""></a>msleep <span class="sc">%&gt;%</span></span>
 <span id="cb81-2"><a href=""></a>  <span class="fu">rename</span>(</span>
 <span id="cb81-3"><a href=""></a>    <span class="at">animal =</span> name,</span>
 <span id="cb81-4"><a href=""></a>    <span class="at">extinction_threat =</span> conservation</span>
@@ -1757,7 +1757,7 @@ https://suzan.rbind.io/2018/01/dplyr-tutorial-1/
 <p>Use <code>select()</code> to change the name <strong>and drop everything else</strong></p>
 <div class="font70">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb83" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href=""></a>msleep <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href=""></a>msleep <span class="sc">%&gt;%</span></span>
 <span id="cb83-2"><a href=""></a>  <span class="fu">select</span>(</span>
 <span id="cb83-3"><a href=""></a>    <span class="at">animal =</span> name,</span>
 <span id="cb83-4"><a href=""></a>    <span class="at">extinction_threat =</span> conservation</span>
@@ -1783,7 +1783,7 @@ https://suzan.rbind.io/2018/01/dplyr-tutorial-1/
 <p>Use <code>rename()</code> to just change the name</p>
 <div class="font70">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb85" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href=""></a>msleep <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href=""></a>msleep <span class="sc">%&gt;%</span></span>
 <span id="cb85-2"><a href=""></a>  <span class="fu">rename</span>(</span>
 <span id="cb85-3"><a href=""></a>    <span class="at">animal =</span> name,</span>
 <span id="cb85-4"><a href=""></a>    <span class="at">extinction_threat =</span> conservation</span>
@@ -1811,7 +1811,7 @@ https://suzan.rbind.io/2018/01/dplyr-tutorial-1/
 <p>Use <code>select()</code> + <code>everything()</code> to change names <strong>and keep everything else</strong></p>
 <div class="font70">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb87" data-code-line-numbers="2,6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href=""></a>msleep <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href=""></a>msleep <span class="sc">%&gt;%</span></span>
 <span id="cb87-2"><a href=""></a>  <span class="fu">select</span>(</span>
 <span id="cb87-3"><a href=""></a>    <span class="at">animal =</span> name,</span>
 <span id="cb87-4"><a href=""></a>    <span class="at">extinction_threat =</span> conservation,</span>
@@ -1844,7 +1844,7 @@ https://suzan.rbind.io/2018/01/dplyr-tutorial-1/
 <h1 class="lexis-slide-title"></h1>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_553d06f0" data-warn-when="15" data-update-every="1" tabindex="0" style="bottom:0;left:0;font-size:2em;">
+<div class="countdown" id="timer_2ad3c984" data-warn-when="15" data-update-every="1" tabindex="0" style="bottom:0;left:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1884,7 +1884,7 @@ Your turn
 <h1><span class="fancy">Break</span></h1>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_5389e6d7" data-warn-when="30" data-update-every="1" tabindex="0" style="top:1;right:0;bottom:0;left:0;margin:5%;font-size:8em;">
+<div class="countdown" id="timer_8a1d4ec5" data-warn-when="30" data-update-every="1" tabindex="0" style="top:1;right:0;bottom:0;left:0;margin:5%;font-size:8em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1917,7 +1917,7 @@ Your turn
 <div class="col" style="flex:0 1 65%;width:65%">
 <div class="font70">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb90" data-code-line-numbers="6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href=""></a>wildlife_impacts1 <span class="ot">&lt;-</span> wildlife_impacts <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href=""></a>wildlife_impacts1 <span class="ot">&lt;-</span> wildlife_impacts <span class="sc">%&gt;%</span></span>
 <span id="cb90-2"><a href=""></a>  <span class="fu">rename</span>(<span class="at">cost =</span> cost_repairs_infl_adj) <span class="sc">%&gt;%</span></span>
 <span id="cb90-3"><a href=""></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(cost)) <span class="sc">%&gt;%</span></span>
 <span id="cb90-4"><a href=""></a>  <span class="fu">mutate</span>(</span>
@@ -1954,7 +1954,7 @@ Your turn
 <div class="col" style="flex:0 1 65%;width:65%">
 <div class="font60">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb92" data-code-line-numbers="2,3,4,5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href=""></a>wildlife_impacts2 <span class="ot">&lt;-</span> wildlife_impacts <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href=""></a>wildlife_impacts2 <span class="ot">&lt;-</span> wildlife_impacts <span class="sc">%&gt;%</span></span>
 <span id="cb92-2"><a href=""></a>  <span class="fu">mutate</span>(</span>
 <span id="cb92-3"><a href=""></a>    <span class="at">season =</span> <span class="fu">ifelse</span>(</span>
 <span id="cb92-4"><a href=""></a>      incident_month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>),</span>
@@ -2001,7 +2001,7 @@ Your turn
 <div class="col" style="flex:0 1 65%;width:65%">
 <div class="font70">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb94" data-code-line-numbers="2,3,4,5,6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href=""></a>wildlife_impacts2 <span class="ot">&lt;-</span> wildlife_impacts <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href=""></a>wildlife_impacts2 <span class="ot">&lt;-</span> wildlife_impacts <span class="sc">%&gt;%</span></span>
 <span id="cb94-2"><a href=""></a>  <span class="fu">mutate</span>(</span>
 <span id="cb94-3"><a href=""></a>    <span class="at">season =</span> <span class="fu">case_when</span>(</span>
 <span id="cb94-4"><a href=""></a>      incident_month <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>) <span class="sc">~</span> <span class="st">'spring'</span>,</span>
@@ -2040,7 +2040,7 @@ Your turn
 <div class="col" style="flex:0 1 65%;width:65%">
 <div class="font70">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb96" data-code-line-numbers="3,4,5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href=""></a>wildlife_impacts2 <span class="ot">&lt;-</span> wildlife_impacts <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href=""></a>wildlife_impacts2 <span class="ot">&lt;-</span> wildlife_impacts <span class="sc">%&gt;%</span></span>
 <span id="cb96-2"><a href=""></a>  <span class="fu">mutate</span>(</span>
 <span id="cb96-3"><a href=""></a>    <span class="at">season =</span> <span class="fu">case_when</span>(</span>
 <span id="cb96-4"><a href=""></a>      <span class="fu">between</span>(incident_month, <span class="dv">3</span>, <span class="dv">5</span>) <span class="sc">~</span> <span class="st">'spring'</span>,</span>
@@ -2153,7 +2153,7 @@ Your turn
 </div>
 <div class="col fragment font80" style="flex:0 1 60%;width:60%">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb104" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href=""></a>tb_rates <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href=""></a>tb_rates <span class="sc">%&gt;%</span></span>
 <span id="cb104-2"><a href=""></a>  <span class="fu">separate</span>(rate, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"cases"</span>, <span class="st">"population"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; # A tibble: 6 × 4
@@ -2192,7 +2192,7 @@ Your turn
 </div>
 <div class="col font80" style="flex:0 1 60%;width:60%">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb108" data-code-line-numbers="3,4,5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href=""></a>tb_rates <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href=""></a>tb_rates <span class="sc">%&gt;%</span></span>
 <span id="cb108-2"><a href=""></a>  <span class="fu">separate</span>(</span>
 <span id="cb108-3"><a href=""></a>    rate,</span>
 <span id="cb108-4"><a href=""></a>    <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"cases"</span>, <span class="st">"population"</span>),</span>
@@ -2235,7 +2235,7 @@ Your turn
 </div>
 <div class="col font80" style="flex:0 1 60%;width:60%">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb112" data-code-line-numbers="6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href=""></a>tb_rates <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb112"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href=""></a>tb_rates <span class="sc">%&gt;%</span></span>
 <span id="cb112-2"><a href=""></a>  <span class="fu">separate</span>(</span>
 <span id="cb112-3"><a href=""></a>    rate,</span>
 <span id="cb112-4"><a href=""></a>    <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"cases"</span>, <span class="st">"population"</span>),</span>
@@ -2279,7 +2279,7 @@ Your turn
 </div>
 <div class="col font80" style="flex:0 1 60%;width:60%">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb116" data-code-line-numbers="4,5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href=""></a>tb_rates <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb116"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href=""></a>tb_rates <span class="sc">%&gt;%</span></span>
 <span id="cb116-2"><a href=""></a>  <span class="fu">separate</span>(</span>
 <span id="cb116-3"><a href=""></a>    year,</span>
 <span id="cb116-4"><a href=""></a>    <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"century"</span>, <span class="st">"year"</span>),</span>
@@ -2322,7 +2322,7 @@ Your turn
 </div>
 <div class="col font80" style="flex:0 1 60%;width:60%">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb120" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href=""></a>tb_rates <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb120"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href=""></a>tb_rates <span class="sc">%&gt;%</span></span>
 <span id="cb120-2"><a href=""></a>  <span class="fu">separate</span>(year, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"century"</span>, <span class="st">"year"</span>), <span class="at">sep =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb120-3"><a href=""></a>  <span class="fu">unite</span>(year_new, century, year)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -2362,7 +2362,7 @@ Your turn
 </div>
 <div class="col font80" style="flex:0 1 60%;width:60%">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb124" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb124-1"><a href=""></a>tb_rates <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb124"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb124-1"><a href=""></a>tb_rates <span class="sc">%&gt;%</span></span>
 <span id="cb124-2"><a href=""></a>  <span class="fu">separate</span>(year, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"century"</span>, <span class="st">"year"</span>), <span class="at">sep =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb124-3"><a href=""></a>  <span class="fu">unite</span>(year_new, century, year, <span class="at">sep =</span> <span class="st">""</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -2525,7 +2525,7 @@ Your turn
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb152"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb152-1"><a href=""></a>date <span class="ot">&lt;-</span> <span class="fu">today</span>()</span>
 <span id="cb152-2"><a href=""></a>date</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; [1] "2026-09-22"</code></pre>
+<pre><code>#&gt; [1] "2026-09-24"</code></pre>
 </div>
 </div>
 </div>
@@ -2556,7 +2556,7 @@ Your turn
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb156"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb156-1"><a href=""></a>date <span class="ot">&lt;-</span> <span class="fu">today</span>()</span>
 <span id="cb156-2"><a href=""></a>date</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; [1] "2026-09-22"</code></pre>
+<pre><code>#&gt; [1] "2026-09-24"</code></pre>
 </div>
 </div>
 </div>
@@ -2589,17 +2589,17 @@ Your turn
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb164"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb164-1"><a href=""></a><span class="co"># Get the day</span></span>
 <span id="cb164-2"><a href=""></a><span class="fu">day</span>(date)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; [1] 22</code></pre>
+<pre><code>#&gt; [1] 24</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb166"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb166-1"><a href=""></a><span class="co"># Get the weekday</span></span>
 <span id="cb166-2"><a href=""></a><span class="fu">wday</span>(date)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; [1] 3</code></pre>
+<pre><code>#&gt; [1] 5</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb168"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb168-1"><a href=""></a><span class="co"># Get the weekday name</span></span>
 <span id="cb168-2"><a href=""></a><span class="fu">wday</span>(date, <span class="at">label =</span> <span class="cn">TRUE</span>, <span class="at">abbr =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; [1] Tue
+<pre><code>#&gt; [1] Thu
 #&gt; Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
 </div>
 </div>
@@ -2635,7 +2635,7 @@ Your turn
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb172"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb172-1"><a href=""></a>date <span class="ot">&lt;-</span> <span class="fu">today</span>()</span>
 <span id="cb172-2"><a href=""></a>date</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; [1] "2026-09-22"</code></pre>
+<pre><code>#&gt; [1] "2026-09-24"</code></pre>
 </div>
 </div>
 <div class="fragment">
@@ -2644,7 +2644,7 @@ Your turn
 <span id="cb174-2"><a href=""></a><span class="fu">year</span>(date) <span class="ot">&lt;-</span> <span class="dv">2016</span></span>
 <span id="cb174-3"><a href=""></a>date</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; [1] "2016-09-22"</code></pre>
+<pre><code>#&gt; [1] "2016-09-24"</code></pre>
 </div>
 </div>
 </div>
@@ -2720,7 +2720,7 @@ Your turn
 <div class="col font80 fragment">
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_78fbee9f" data-warn-when="15" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
+<div class="countdown" id="timer_b0600bdc" data-warn-when="15" data-update-every="1" tabindex="0" style="top:0;right:0;font-size:2em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">20</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -2844,7 +2844,7 @@ Stragies
 </div>
 <div class="col font80" style="flex:0 1 60%;width:60%">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb187" data-code-line-numbers="7,15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb187-1"><a href=""></a>hot_dogs_m <span class="ot">&lt;-</span> hot_dogs <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb187"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb187-1"><a href=""></a>hot_dogs_m <span class="ot">&lt;-</span> hot_dogs <span class="sc">%&gt;%</span></span>
 <span id="cb187-2"><a href=""></a>  <span class="fu">select</span>(</span>
 <span id="cb187-3"><a href=""></a>    year,</span>
 <span id="cb187-4"><a href=""></a>    <span class="at">competitor =</span> mens,</span>
@@ -2884,7 +2884,7 @@ Stragies
 </div>
 <div class="col font80" style="flex:0 1 60%;width:60%">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb188" data-code-line-numbers="1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb188-1"><a href=""></a>hot_dogs <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(hot_dogs_m, hot_dogs_w) <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb188"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb188-1"><a href=""></a>hot_dogs <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(hot_dogs_m, hot_dogs_w) <span class="sc">%&gt;%</span></span>
 <span id="cb188-2"><a href=""></a>  <span class="fu">mutate</span>(</span>
 <span id="cb188-3"><a href=""></a>    <span class="at">new_record =</span> <span class="fu">str_detect</span>(dogs_eaten, <span class="st">"</span><span class="sc">\\</span><span class="st">*"</span>),</span>
 <span id="cb188-4"><a href=""></a>    <span class="at">dogs_eaten =</span> <span class="fu">parse_number</span>(dogs_eaten),</span>
@@ -2985,7 +2985,7 @@ Stragies
 </div>
 <div class="col font80" style="flex:0 1 60%;width:60%">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb194" data-code-line-numbers="10,11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb194-1"><a href=""></a>hot_dogs <span class="ot">&lt;-</span> hot_dogs <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb194"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb194-1"><a href=""></a>hot_dogs <span class="ot">&lt;-</span> hot_dogs <span class="sc">%&gt;%</span></span>
 <span id="cb194-2"><a href=""></a>  <span class="fu">select</span>(</span>
 <span id="cb194-3"><a href=""></a>    year,</span>
 <span id="cb194-4"><a href=""></a>    <span class="at">competitor.mens =</span> mens,</span>
@@ -3031,7 +3031,7 @@ Stragies
 </div>
 <div class="col font80" style="flex:0 1 70%;width:70%">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb196" data-code-line-numbers="2,3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb196-1"><a href=""></a>hot_dogs <span class="ot">&lt;-</span> hot_dogs <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb196"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb196-1"><a href=""></a>hot_dogs <span class="ot">&lt;-</span> hot_dogs <span class="sc">%&gt;%</span></span>
 <span id="cb196-2"><a href=""></a>  <span class="fu">separate</span>(</span>
 <span id="cb196-3"><a href=""></a>    variable,</span>
 <span id="cb196-4"><a href=""></a>    <span class="at">into =</span> <span class="fu">c</span>(<span class="st">'variable'</span>, <span class="st">'competition'</span>),</span>
@@ -3073,7 +3073,7 @@ Stragies
 </div>
 <div class="col font80" style="flex:0 1 70%;width:70%">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb198" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb198-1"><a href=""></a>hot_dogs <span class="ot">&lt;-</span> hot_dogs <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb198"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb198-1"><a href=""></a>hot_dogs <span class="ot">&lt;-</span> hot_dogs <span class="sc">%&gt;%</span></span>
 <span id="cb198-2"><a href=""></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> variable, <span class="at">values_from =</span> value) <span class="sc">%&gt;%</span></span>
 <span id="cb198-3"><a href=""></a>  <span class="fu">mutate</span>(</span>
 <span id="cb198-4"><a href=""></a>    <span class="at">new_record =</span> <span class="fu">str_detect</span>(dogs_eaten, <span class="st">"</span><span class="sc">\\</span><span class="st">*"</span>),</span>
@@ -3211,7 +3211,7 @@ Strategies for dealing with <strong>sub-headers</strong>
 </div>
 <div class="col font80" style="flex:0 1 60%;width:60%">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb202" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb202-1"><a href=""></a>pc_sales <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb202"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb202-1"><a href=""></a>pc_sales <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(</span>
 <span id="cb202-2"><a href=""></a>  <span class="fu">file.path</span>(<span class="st">'data'</span>, <span class="st">'pc_sales_2018.xlsx'</span>),</span>
 <span id="cb202-3"><a href=""></a>  <span class="at">sheet =</span> <span class="st">'pc_sales'</span>,</span>
 <span id="cb202-4"><a href=""></a>  <span class="at">skip =</span> <span class="dv">5</span></span>
@@ -3263,7 +3263,7 @@ Strategies for dealing with <strong>sub-headers</strong>
 </div>
 <div class="col font60" style="flex:0 1 70%;width:70%">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb204" data-code-line-numbers="10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb204-1"><a href=""></a>drop <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb204"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb204-1"><a href=""></a>drop <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
 <span id="cb204-2"><a href=""></a>  <span class="st">'EUROPE'</span>,</span>
 <span id="cb204-3"><a href=""></a>  <span class="st">'EU 28 countries + EFTA'</span>,</span>
 <span id="cb204-4"><a href=""></a>  <span class="st">'EU 15 countries + EFTA'</span>,</span>
@@ -3316,7 +3316,7 @@ Strategies for dealing with <strong>sub-headers</strong>
 </div>
 <div class="col font80" style="flex:0 1 70%;width:70%">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb206" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb206-1"><a href=""></a>pc_sales <span class="ot">&lt;-</span> pc_sales <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb206"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb206-1"><a href=""></a>pc_sales <span class="ot">&lt;-</span> pc_sales <span class="sc">%&gt;%</span></span>
 <span id="cb206-2"><a href=""></a>  <span class="fu">pivot_longer</span>(</span>
 <span id="cb206-3"><a href=""></a>    <span class="at">names_to =</span> <span class="st">'year'</span>,</span>
 <span id="cb206-4"><a href=""></a>    <span class="at">values_to =</span> <span class="st">'num_cars'</span>,</span>
@@ -3356,7 +3356,7 @@ Strategies for dealing with <strong>sub-headers</strong>
 </div>
 <div class="col font80" style="flex:0 1 70%;width:70%">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb208" data-code-line-numbers="2,3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb208-1"><a href=""></a>pc_sales <span class="ot">&lt;-</span> pc_sales <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb208"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb208-1"><a href=""></a>pc_sales <span class="ot">&lt;-</span> pc_sales <span class="sc">%&gt;%</span></span>
 <span id="cb208-2"><a href=""></a>  <span class="fu">separate</span>(</span>
 <span id="cb208-3"><a href=""></a>    year,</span>
 <span id="cb208-4"><a href=""></a>    <span class="at">into =</span> <span class="fu">c</span>(<span class="st">'drop'</span>, <span class="st">'year'</span>),</span>
@@ -3399,7 +3399,7 @@ Strategies for dealing with <strong>sub-headers</strong>
 </div>
 <div class="col font80" style="flex:0 1 70%;width:70%">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb210" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb210-1"><a href=""></a>pc_sales <span class="ot">&lt;-</span> pc_sales <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb210"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb210-1"><a href=""></a>pc_sales <span class="ot">&lt;-</span> pc_sales <span class="sc">%&gt;%</span></span>
 <span id="cb210-2"><a href=""></a>  <span class="fu">select</span>(<span class="sc">-</span>drop) <span class="sc">%&gt;%</span></span>
 <span id="cb210-3"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">country =</span> <span class="fu">str_to_title</span>(country))</span>
 <span id="cb210-4"><a href=""></a></span>
@@ -3457,7 +3457,7 @@ Strategies for dealing with <strong>sub-headers</strong>
 </div>
 <div class="col fragment font80">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb214" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb214-1"><a href=""></a>pc_sales <span class="ot">&lt;-</span> pc_sales <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb214"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb214-1"><a href=""></a>pc_sales <span class="ot">&lt;-</span> pc_sales <span class="sc">%&gt;%</span></span>
 <span id="cb214-2"><a href=""></a>  <span class="fu">left_join</span>(pc_regions)</span>
 <span id="cb214-3"><a href=""></a></span>
 <span id="cb214-4"><a href=""></a><span class="fu">head</span>(pc_sales)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
