@@ -1,0 +1,237 @@
+---
+format:
+  typst:
+    papersize: us-letter
+    margin:
+      x: 1.4cm
+      y: 1.2cm
+    fontsize: 8.6pt
+    mainfont: "Source Sans Pro"
+    keep-typ: false
+---
+
+{{< include ../_summary-styles.qmd >}}
+
+```{=typst}
+#summary-header(6, "Exploring Data", "September 30, 2026")
+#show: rest => columns(2, rest)
+```
+
+# Why explore
+
+**Exploratory** analysis *forms* hypotheses and improves the quality of your
+**questions** — that's this class. **Confirmatory** analysis *tests*
+hypotheses and improves the quality of your **answers** — that's a stats
+class. EDA is iterative: summarize, visualize, ask a sharper question, repeat.
+
+> "An *approximate* answer to the *right* question is better than an *exact*
+> answer to the *wrong* question." — John Tukey
+
+A number alone means nothing. "24,901" becomes information only with its
+labels: *Earth's circumference at the equator, in miles*.
+
+# Types of data
+
+The type decides which summaries and charts make sense.
+
+| Type | Kind | Key property | Example |
+|------|------|--------------|---------|
+| Nominal | Categorical | Order doesn't matter | `country` |
+| Ordinal | Categorical | Order matters; gaps unequal | Race placement |
+| Interval | Numerical | No true zero; can't say "double" | Temperature |
+| Ratio | Numerical | True zero; "double" makes sense | Height, speed |
+
+Two questions sort any variable. **Categorical:** does the order matter?
+(yes = ordinal). **Numerical:** is there a baseline zero? (yes = ratio).
+
+## Watch the encoding
+
+- **Numbers that are categories**: dummy codes (`1` / `0`), or regions coded
+  1–4. Averaging these is meaningless.
+- **Counts**: ratio data measured in whole units (eggs, heartbeats, age).
+- **Time** can be ordinal (Jan., Feb.), interval (Jan. 1, Jan. 2), or ratio
+  (30 sec, 60 sec).
+
+# Centrality & variability
+
+| Measure | What it is | Robust? |
+|---------|------------|---------|
+| Mean | Sum of values / number of values | No |
+| Median | Middle value; 50% above and below | Yes |
+| Standard deviation | Typical distance from the mean | No |
+| IQR | $Q_3 - Q_1$, the middle 50% | Yes |
+| Range | Max − min | No |
+
+$$s = \sqrt{\frac{\sum_{i=1}^{N}(x_i - \bar{x})^2}{N - 1}}$$
+
+**Beware the flaw of averages.** Planes hit birds at a *mean* height near
+1,000 ft, but most strikes happen under 100 ft — the mean sits above most of
+the data. And two warehouses can share a mean and median shipping time while
+one ranges 3–5 days and the other 1–10. The spread is the story.
+
+**Outliers** fall below $Q_1 - 1.5 \times \text{IQR}$ or above
+$Q_3 + 1.5 \times \text{IQR}$; **extreme values** use $3 \times \text{IQR}$.
+Change one value of `c(3, 3, 4, 5, 5, 6, 6, 7, 8, 9)` to 20: the mean jumps
+5.6 to 6.7 and the SD 2.0 to 4.9, but the median stays 5.5.
+**Skewed or outlier-heavy data: use median and IQR.**
+
+```r
+wildlife_impacts %>%
+  summarise(mean = mean(height, na.rm = TRUE),
+            median = median(height, na.rm = TRUE),
+            sd = sd(height, na.rm = TRUE),
+            iqr = IQR(height, na.rm = TRUE))
+summary(wildlife_impacts$height)  # quick view
+```
+
+# The type sets the summary
+
+| Type | Measures | Chart |
+|------|----------|-------|
+| Nominal | Counts, proportions | Bars, sorted |
+| Ordinal | Counts; median, mode, IQR | Bars, in order |
+| Continuous | Mean, median, SD, IQR, range | Histogram, boxplot |
+
+```r
+wildlife_impacts %>%
+  count(operator, sort = TRUE) %>%
+  mutate(p = n / sum(n)) %>%
+  ggplot() +
+  geom_col(aes(x = n, y = reorder(operator, n)))
+```
+
+**Histograms** show skewness and the number of modes; try a few `bins`
+values. **Boxplots** show outliers and compare groups. Use both — each hides
+what the other shows.
+
+# Always plot the data
+
+Anscombe's quartet and the datasaurus share means, SDs, and correlations to
+two decimals, yet look nothing alike once plotted. Summary numbers compress;
+charts reveal shape, clusters, and outliers.
+
+```{=typst}
+#block(breakable: false, keypoint[
+  *A summary statistic is a claim about the data — a chart is how you check
+  it.* Before you trust a mean or an $r$ (yours or an agent's), look at the
+  histogram, boxplot, or scatterplot behind it.
+])
+```
+
+# Correlation
+
+Pearson's $r$ is the covariance of $x$ and $y$ divided by the product of their
+standard deviations, so $-1 \le r \le 1$. The closer to $\pm 1$, the stronger
+the relationship.
+
+| $|r|$ | Strength |
+|-------|----------|
+| 0.1–0.3 | Weak |
+| 0.3–0.5 | Moderate |
+| 0.5–0.8 | Strong |
+| 0.8–1.0 | Very strong |
+
+| | Pearson | Spearman |
+|---|---------|----------|
+| Data | Interval or ratio | Ordinal, interval, or ratio |
+| Detects | **Linear** relationship | **Monotonic** relationship |
+| Outliers | Highly sensitive | Robust (uses ranks) |
+
+```r
+cor(x, y, method = "pearson", use = "complete.obs")
+cor(x, y, method = "spearman", use = "complete.obs")
+```
+
+**Report both $r$ and $r^2$.** $r^2$ is the share of variance in one variable
+explained by the other. Parent and child height: $r = 0.32$, so
+$r^2 \approx 0.10$ — 10% of the variance explained.
+
+## Where correlation misleads
+
+- **Correlation isn't causation.** X may cause Y, Y may cause X, or a third
+  variable Z may cause both.
+- **Simpson's paradox.** Penguin body mass and bill depth correlate
+  *negatively* overall but *positively* within each species. Color by group.
+- **Dual axes** can manufacture spurious correlations. Use one axis.
+- **History.** Correlation came from Galton and Pearson's work in eugenics.
+
+# Visualizing relationships
+
+| Variables | Summary | Chart |
+|-----------|---------|-------|
+| 2 categorical | `count(a, b)`, then `pivot_wider()` | Dodged bars, `fill` = 2nd var |
+| 2 continuous | `cor()` | Scatterplot |
+| 1 continuous, 1 categorical | Grouped `summarise()` | Boxplot |
+
+```r
+# Label a scatterplot with its correlation
+r <- cor(mtcars$mpg, mtcars$hp)
+scatterplot +
+  annotate(geom = 'text', x = 25, y = 310, hjust = 0,
+           label = paste('r = ', round(r, 2)))
+```
+
+Scan many variables at once with GGally:
+
+```r
+mtcars %>% ggcorr(label = TRUE, label_round = 2,
+                  method = c("pairwise", "spearman"))
+mtcars %>%
+  select(mpg, cyl, disp, hp, wt) %>%
+  ggpairs()
+```
+
+**Tip:** `theme_set(theme_bw(base_size = 20))` at the top of a file sets the
+theme for every plot after it.
+
+# An EDA loop for a new data set
+
+1. `glimpse()` it. Note each variable's type and what it measures.
+2. Summarize each variable: counts for categories; median, IQR, and range
+   for numbers.
+3. Plot each variable: bars, a histogram, or a boxplot.
+4. Write a question about two variables, then pick the chart that answers it.
+5. Let what you see raise the next question. Repeat.
+
+```{=typst}
+#colbreak()
+```
+
+# Directing an agent to explore
+
+An agent will happily report a mean and an $r$. Your job is to ask for the
+evidence behind them and to choose the robust measure when the data call for it:
+
+- *"Summarize `height`: mean, median, SD, and IQR. Show a histogram and a
+  boxplot, and tell me whether it's skewed."*
+- *"Compute Pearson and Spearman correlations for every numeric pair. Flag
+  pairs where they disagree, and plot those."*
+- *"Plot `body_mass_g` against `bill_depth_mm`, colored by `species`. Does the
+  trend hold within each group?"*
+
+# Errors you may hit this week
+
+| Message / symptom | Usual cause |
+|--------------------|-------------|
+| `mean()` or `sd()` returns `NA` | Missing values; add `na.rm = TRUE` |
+| `cor()` returns `NA` | Missing values; add `use = "complete.obs"` |
+| "argument is not numeric or logical" | Column is `<chr>`; check `glimpse()` |
+| "Removed N rows containing non-finite values" | `NA`s dropped from the plot; count them |
+| "`stat_bin()` using `bins = 30`" | Default bins; try a few `bins` values |
+| Month drawn as a continuous axis | Numbers as categories; wrap in `as.factor()` |
+| Bars in alphabetical order | Sort with `reorder(operator, n)` |
+| `ggcorr()`: "not numeric and were ignored" | Text columns skipped; expected |
+
+# Before next class
+
+- **[HW5: Visualizing Information](https://eda.seas.gwu.edu/2026-Fall/hw/5-visualizing-information.html)**, due **Oct 5**.
+- **[MP1: Clean & Verify](https://eda.seas.gwu.edu/2026-Fall/mini/1-data-cleaning.html)**, due **Oct 4** (9% of grade).
+- **Quiz 3** on Oct 14, covering Weeks 6–7.
+
+You should be able to:
+
+- Classify a variable as nominal, ordinal, interval, or ratio.
+- Pick mean/SD or median/IQR, and explain why.
+- Choose a bar chart, histogram, or boxplot for one variable.
+- Compute and interpret Pearson and Spearman correlations, plus $r^2$.
+- Choose the right chart for a two-variable relationship.
