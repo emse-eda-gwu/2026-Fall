@@ -33,9 +33,19 @@ Watch [this 40-minute video](https://www.youtube.com/watch?v=fSgEeI2Xpdc) titled
 
 # 3. Make a chart (or a bunch of charts)
 
-Go to the [Data to Viz](https://www.data-to-viz.com/) website and find a visualization that you find interesting. Then click on "R Graph Gallery" to view an example of how to make that types of chart in R using ggplot. In a code chunk, replicate that code and see if you can get it to run on your machine.
+Go to the [Data to Viz](https://www.data-to-viz.com/) website and find a visualization that you find interesting. Then click on "R Graph Gallery" to view an example of how to make that type of chart in R using ggplot. In a code chunk, replicate that code and see if you can get it to run on your machine.
 
-Then make as many charts as you want. I recommend spending a little time trying to create more than one kind of chart using ggplot. For example, you could go back to the first day of class slides and try to create the [bonus charts](https://eda.seas.gwu.edu/2026-Fall/class/1-getting-started/?panelset_002=code2#145). Or you could review the [homework on data visualization](https://p4a.seas.gwu.edu/2025-Spring/hw/10-data-visualization.html) from my spring course and try to make a chart with one of the datasets from that assignment. Or go find something else, perhaps a dataset from your project! The more time you spend trying out things with ggplot, the more comfortable you will be with it. We'll be using a LOT of ggplot in the coming month, so getting comfortable with ggplot is a good idea.
+Then make at least one chart of your own. I recommend spending a little time trying to create more than one kind of chart using ggplot. For example, you could go back to the first day of class slides and try to create the [extra practice charts](https://eda.seas.gwu.edu/2026-Fall/class/1-getting-started/#/extra-practice). Or you could review the [homework on data visualization](https://p4a.seas.gwu.edu/2026-Spring/hw/10-data-visualization.html) from my spring course and try to make a chart with one of the datasets from that assignment. Or go find something else, perhaps a dataset from your project! The more time you spend trying out things with ggplot, the more comfortable you will be with it. We'll be using a LOT of ggplot in the coming month, so getting comfortable with ggplot is a good idea.
+
+In your ``r hw_file`` file, include:
+
+- The chart you reproduced from the R Graph Gallery.
+- At least one chart of your own.
+- One or two sentences under each chart describing what it shows.
+
+### Using an agent
+
+You are welcome to use an agent to help you make your charts if it's helpful. If you do, write a few sentences about how it went: What did you ask it to do? Did it get the chart right on the first try? What did you have to change or correct?
 
 # 4. Reflect
 
