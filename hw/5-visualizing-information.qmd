@@ -20,7 +20,7 @@ params:
 
 These two chapters cover a lot of excellent examples of what makes a chart "good" and "bad"---the focus of what we'll talk about in class next week:
 
-- [Healy 1: Look at Data](http://socviz.co/lookatdata.html#lookatdata): What makes figures good and bad
+- [Healy 1: Look at Data](https://socviz.co/01-look-at-data.html): What makes figures good and bad
 - [Wilke 1: Introduction](https://clauswilke.com/dataviz/introduction.html): Definitions of "ugly", "bad", and "wrong" figures
 
 ### Video on the psychology of data viz
