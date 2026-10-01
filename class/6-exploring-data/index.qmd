@@ -1099,11 +1099,18 @@ countdown(
 
 # Practicing visual summaries
 
-::: {.font90}
+<br>
+
+::: {.col}
+
 1) Read in the following data sets:
 
 - `faithful.csv`
 - `marathon.csv`
+
+:::
+
+::: {.col}
 
 2) Summarize the following variables using an appropriate chart (bar chart, histogram, and / or boxplot):
 
@@ -1113,6 +1120,7 @@ countdown(
 - marathon: `State`
 - marathon: `Country`
 - marathon: `` `Official Time` ``
+
 :::
 
 ---
@@ -1192,7 +1200,7 @@ Galton, F. (1886). ["Regression towards mediocrity in hereditary stature"](http:
 
 "midparent height" is just a scaled mean:
 
-::: {.font80}
+::: {.font70}
 ```{r}
 #| eval: false
 
