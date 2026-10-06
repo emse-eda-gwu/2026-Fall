@@ -1,0 +1,232 @@
+---
+engine: markdown
+format:
+  typst:
+    papersize: us-letter
+    margin:
+      x: 1.4cm
+      y: 1.2cm
+    fontsize: 8.6pt
+    mainfont: "Source Sans Pro"
+    keep-typ: false
+---
+
+{{< include ../_summary-styles.qmd >}}
+
+```{=typst}
+#summary-header(7, "Visualizing Information", "October 7, 2026")
+#show: rest => columns(2, rest)
+```
+
+# Why design matters
+
+*"Having word processing software doesn't make us great writers."*\
+— Stephen Few
+
+ggplot (or an agent) will draw any chart you ask for. Whether it *works*
+depends on how human perception reads it. A chart can be **ugly** (poor
+aesthetics), **bad** (hard to perceive accurately), or **wrong** (misleading
+about the data). This week is about the rules behind good charts, so you can
+judge one, yours or an agent's.
+
+# The visual-memory system
+
+A (very) simplified model: what you see lands in **iconic memory**
+(fast, automatic), a little of it moves into **working memory** (slow,
+small, effortful), and only some of that reaches **long-term memory**.
+Effective charts do two things:
+
+1. **Grab and direct attention** (iconic memory).
+2. **Reduce processing demands** (working memory).
+
+## Pre-attentive attributes
+
+Some features pop out before you consciously search: color, size, shape,
+position, orientation. Counting every "5" in a block of digits is slow; it's
+instant once the 5s are colored. Use these attributes to point the eye at
+what matters.
+
+- **Numerical (ratio) data:** position, length, size.
+- **Categorical data:** hue beats shape. Picking out a red dot among blue
+  dots is instant; among circles and triangles it's slow.
+- **Less is more.** A few categories stay in working memory; ten colors
+  make the reader flip back and forth to the legend.
+
+# Cleveland's pattern perception
+
+Cleveland & McGill (1985) name three operations a reader performs on a chart:
+**estimation**, **assembly**, and **detection**.
+
+## 1. Estimation
+
+Judging values: **discriminate** (is X equal to Y?), **rank** (is X greater
+than Y?), and **ratio** (is X double Y?). Encodings differ in how accurately
+they support each, from most to least accurate:
+
+| Encoding | Discriminate | Rank | Ratio |
+|----------|:---:|:---:|:---:|
+| 1. Position, common scale | Yes | Yes | Yes |
+| 2. Position, non-aligned | Partly | Partly | Yes |
+| 3. Length | Partly | Partly | Yes |
+| 4. Angle | Partly | Yes | Partly |
+| 5. Area | Partly | Partly | Partly |
+| 6. Color saturation | Partly | Partly | No |
+| 7. Color hue | Partly | Partly | No |
+
+- **Sorting helps every encoding.** Even a well-encoded dot plot is hard to
+  read in alphabetical order.
+- **Dots on a common scale don't need a zero baseline.** Starting at zero
+  lowers resolution and isn't needed for ratioing. **Bars encode length, so
+  bars must start at zero.**
+- Area works okay for bubble charts (Gapminder), not for precise values.
+
+## 2. Assembly: Gestalt psychology
+
+Assembly is how we group graphical elements. *The whole has a reality
+entirely separate from the parts.*
+
+| Law | We tend to... | Chart use |
+|-----|---------------|-----------|
+| Closure | Fill in missing information | Gaps read as shapes |
+| Prägnanz | Prefer regular, simple, orderly | Sort the bars |
+| Continuity | Group objects along a direction | Trend lines |
+| Similarity | Group *similar-looking* objects | Color or shape groups |
+| Proximity | Group *nearby* objects | Dodged bars, facets |
+
+## 3. Detection
+
+Recognizing that a geometric object encodes a value. A **Norman door** gives
+the wrong signal and needs a sign to correct it. A chart that needs a
+paragraph of explanation is a Norman door.
+
+```{=typst}
+#block(breakable: false, keypoint[
+  *Encode your most important comparison with the most accurate channel:
+  position on a common scale, sorted.* Hue, area, and angle are for
+  secondary information. If the reader has to estimate a ratio from a pie
+  slice or a color, the chart is working against them.
+])
+```
+
+# 10 data viz best practices
+
+| # | Rule | Exception / note |
+|---|------|------------------|
+| 1 | Remove chart junk | "Erase non-data ink" (Tufte) |
+| 2 | No 3D plots | Hardly ever |
+| 3 | Don't lie | Bars start at 0; no cherry-picking |
+| 4 | No pie charts | OK: small data, simple fractions |
+| 5 | Don't stack bars | OK when the *total* matters most |
+| 6 | Rotate & sort axes | Ordinal variables keep their order |
+| 7 | Label geoms directly | Legend OK for repeated categories |
+| 8 | No pattern fills | Use color or shade instead |
+| 9 | No red with green | Color-blind readers |
+| 10 | Tables for small data | A 2 × 2 is a table |
+
+## Why these rules
+
+- **3D:** we're bad at judging depth, ink proportions stop matching true
+  proportions, geoms occlude each other, and the third dimension distracts.
+- **Lying:** truncated bar axes, cherry-picked time windows, and charts whose
+  parts don't add up (percentages over 100%).
+- **Stacked bars:** only the bottom segment sits on a common scale. A
+  parallel-coordinates (line) plot usually works better.
+- **Sorting:** the default alphabetical order is almost always wrong. Order
+  by value with `reorder()`.
+- **Color blindness:** about 10% of males and 1% of females. Facets can
+  avoid color altogether.
+
+# Making a (good) ggplot
+
+Seven steps, applied to the wildlife strikes data:
+
+| Step | What to do |
+|------|------------|
+| 1. Format data frame | `count()`, `filter()`, `mutate()` |
+| 2. Add geoms | `geom_col()`, `geom_point()`, ... |
+| 3. Flip coordinates? | Put long labels on the *y* axis |
+| 4. Reorder factors? | `reorder(operator, n)` |
+| 5. Adjust scales | Remove padding; set breaks |
+| 6. Adjust theme | A cowplot theme |
+| 7. Annotate | `labs()` for title and axes |
+
+```r
+wildlife_impacts %>%
+  count(operator) %>%                         # 1
+  mutate(operator = str_to_title(operator)) %>%
+  ggplot() +
+  geom_col(                                   # 2
+    aes(x = n, y = reorder(operator, n)),     # 3, 4
+    width = 0.7, alpha = 0.8
+  ) +
+  scale_x_continuous(                         # 5
+    expand = expansion(mult = c(0, 0.05))
+  ) +
+  theme_minimal_vgrid() +                     # 6
+  labs(x = 'Count', y = NULL)                 # 7
+```
+
+- Flip by mapping the count to `x` and the category to `y`, rather than
+  adding `coord_flip()`.
+- `expand = expansion(mult = c(0, 0.05))` makes the bars touch the axis.
+  Add `breaks = ` and `limits = ` to control tick marks.
+- Four cowplot themes: `theme_half_open()`, `theme_minimal_grid()`,
+  `theme_minimal_vgrid()`, `theme_minimal_hgrid()`. **Horizontal bars get
+  only vertical grid lines** (`vgrid`); vertical bars get `hgrid`.
+
+The practice file repeats this with `gapminder.csv`: life expectancy in
+2007 for countries in the Americas, sorted, as horizontal bars.
+
+# Critiquing a chart
+
+The in-class exercise, and a habit for every chart an agent hands you:
+
+1. Where does it fall on Cleveland's hierarchy? Which encoding carries the
+   main comparison?
+2. Which design rules does it break?
+3. Suggest at least two improvements.
+
+# Directing an agent to plot
+
+An agent defaults to ggplot defaults: alphabetical order, legends, gray
+backgrounds. Ask for the design, then check it against the rules above:
+
+- *"Make horizontal bars of strike counts by operator, sorted by count, with
+  bars starting at the axis and only vertical grid lines."*
+- *"Replace the legend with direct labels at the end of each line."*
+- *"This is a stacked bar chart. Redo it as dodged bars or a line plot so
+  each category sits on a common scale."*
+- *"Check this palette for red-green color-blind readers."*
+
+```{=typst}
+#colbreak()
+```
+
+# Chart symptoms & fixes
+
+| Symptom | Fix |
+|---------|-----|
+| Bars in alphabetical order | `reorder(operator, n)` |
+| Overlapping category labels | Map the category to `y` |
+| Gap between bars and axis | Set `expand` in the scale |
+| Gray background, heavy grid | A cowplot theme |
+| Eyes bounce to the legend | Direct labels; drop the legend |
+| Too many colors to track | Fewer groups, or facets |
+| Bar axis starts above 0 | Start at 0, or switch to dots |
+| Parts hard to compare | Dodged bars, not stacked or pie |
+
+# Before next class
+
+- **[HW6: Factors, Amounts, & Proportions](https://eda.seas.gwu.edu/2026-Fall/hw/6-factors-amounts-proportions.html)**, due **Oct 12**.
+- **[MP2: Explore & Interrogate](https://eda.seas.gwu.edu/2026-Fall/mini/2-exploring-data.html)**, due **Oct 25** (9% of grade).
+- **Quiz 3** on Oct 14, covering Weeks 6–7.
+- References: [data viz cheat sheet](https://github.com/emse-eda-gwu/2026-Fall/raw/main/content/cheatsheet-dataviz.pdf) and [data viz reference page](https://eda.seas.gwu.edu/2026-Fall/references.html#visualizing-data).
+
+You should be able to:
+
+- Explain the two objectives of an effective chart.
+- Rank encodings on Cleveland's hierarchy and say which support ratioing.
+- Name the five Gestalt laws and spot them in a chart.
+- Apply the 10 best practices and their exceptions.
+- Build a sorted, cleanly themed bar chart in seven steps.
+- Critique a chart and propose concrete improvements.
