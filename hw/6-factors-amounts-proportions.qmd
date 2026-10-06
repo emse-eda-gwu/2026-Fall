@@ -2,7 +2,71 @@
 title: "Factors, Amounts, & Proportions"
 params:
   number: 6
-  purpose: 'learn some of the technical details of how to write code to create "good" information visualizations that follow the design principles we discussed last week. We will focus on graphing **amounts** and **proportions**.'
+  purpose: 'The purpose of this assignment is to turn the data visualization best practices from class into a custom agent skill that you design, then use that skill to make a "good" chart of **amounts** or **proportions**. Along the way, you will learn enough about factors and facets to check whether your agent got the details right.'
 ---
 
-Coming soon!
+```{r child = here::here("fragments", "hw.qmd")}
+```
+
+{{< include ../fragments/hw-get-organized.qmd >}}
+
+# 2. Read & Practice
+
+The readings listed below are broken into two groups:
+
+1. Design principles
+2. Coding techniques to implement those principles
+
+### Design principles
+
+The design principles discussed in the following readings repeat many of the concepts we saw last week, except focused on the particular subset of charts for this week:
+
+- Wilke: [6 - Visualizing amounts](https://clauswilke.com/dataviz/visualizing-amounts.html)
+- Wilke: [10 - Visualizing proportions](https://clauswilke.com/dataviz/visualizing-proportions.html)
+- [Square pie chart beats out the rest in perception study](https://eagereyes.org/blog/2016/a-reanalysis-of-a-study-about-square-pie-charts-from-2009)
+- [When Are 100% Stacked Bar Graphs Useful?](https://www.perceptualedge.com/blog/?p=2239)
+
+### Coding techniques
+
+The readings below cover two things that show up constantly in charts of amounts and proportions: **factors & facets**. Factors are how R stores categorical variables, and they control the order in which categories appear in a chart. An agent will happily hand you bars sorted alphabetically, which is almost never what you want, so you need to know enough about factors (and the [forcats](https://forcats.tidyverse.org/) package) to spot when the order is wrong and to ask for the right fix. Facets are the ggplot version of the "small multiples" we saw in class: one chart split into panels, which is often a better option than stacking bars or adding more colors.
+
+- R4DS: [16 - Factors](https://r4ds.hadley.nz/factors.html)
+- R4DS: [9.4 - Facets](https://r4ds.hadley.nz/layers.html#facets)
+
+# 3. Build a skill, then make a chart
+
+In week 2 you tried out the `my-chart-style` skill that I wrote. This week you will design **your own** skill around good data visualization practices, then use it to make a chart.
+
+### Build your skill
+
+The end of the [Visualizing Information slides](https://eda.seas.gwu.edu/2026-Fall/class/7-visualizing-information/) contains two things that make great raw material for a skill:
+
+- The **10 data viz best practices** (remove chart junk, don't stack bars, rotate and sort categorical axes, directly label geoms, etc.).
+- The **"Making a (good) ggplot"** example, which walks step by step from a default bar chart to a finished one.
+
+1. Open Claude Code in your course repo and point it to the slides URL above. Ask it to help you create a skill that encodes those best practices and the steps for making a good chart. Save the skill in `.claude/skills/` in your course repo (e.g., `.claude/skills/my-dataviz/SKILL.md`).
+2. **Read what it wrote.** Does the skill actually capture the best practices from class? Did it leave anything out, or add rules that weren't in the slides?
+3. **Make it yours.** Edit the skill (directly, or by asking Claude to) to customize it. For example, pick a color palette and theme you like, set your own rules for titles and captions, or add guidance for when a pie chart or stacked bar is acceptable.
+
+### Use your skill to make a chart
+
+Find a dataset with at least one categorical variable. You can use one from the [Packages](../finding-data.html#packages) section of the "Finding Data" page, or data from your project. Then ask Claude to make a chart of **amounts** or **proportions** using your skill (invoke it with `/your-skill-name`).
+
+Check the result against the best practices. In particular, look closely at the factors: are the categories in a meaningful order, or just alphabetical? Are any categories missing, mislabeled, or lumped together in a way that hides something important? If something is wrong, fix it, and consider whether your skill should be updated so that it gets it right next time.
+
+In your ``r hw_file`` file, include:
+
+- The name and location of your skill (the skill file itself will be in your repo when you submit).
+- A few sentences on what you changed after Claude drafted the skill, and why.
+- The chart you made with your skill, with one or two sentences under it describing what it shows.
+- A few sentences on how it went: Did the chart follow your skill on the first try? What did you have to check, correct, or change in the skill?
+
+# 4. Reflect
+
+> **This week, consider writing about a chart you've seen that shows amounts or proportions (like a bar chart, or a parts-of-a-whole figure).**
+
+{{< include ../fragments/hw-reflect.qmd >}}
+
+# 5. Submit
+
+{{< include ../fragments/hw-submit.qmd >}}

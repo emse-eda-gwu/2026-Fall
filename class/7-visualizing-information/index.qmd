@@ -98,7 +98,9 @@ gapminder <- read_csv(file.path('data', 'gapminder.csv'))
 
 ![](images/chart-quality.jpg){width="90%"}
 
-[From [here](https://psyteachr.github.io/msc-data-skills/ggplot.html)]{.left}
+::: {.left}
+From [here](https://psyteachr.github.io/msc-data-skills/ggplot.html)
+:::
 
 ---
 
@@ -117,15 +119,17 @@ gapminder <- read_csv(file.path('data', 'gapminder.csv'))
 
 {{< center >}}
 
-::: {.col}
+::: {.col .center}
 # We don't write paragraphs like this
 
 ![](images/bad_text.png){width="100%"}
 
-[Image from Few (2012, pg. 227)]{.left .font80}
+::: {.left .font80}
+Image from Few (2012, pg. 227)
+:::
 :::
 
-::: {.col .fragment}
+::: {.col .center .fragment}
 # So don't make<br>graphs like this
 
 ![](images/bad_3d_bars.png){width="70%"}
@@ -229,11 +233,11 @@ agenda(1)
 
 {{< center >}}
 
-::: {.col}
+::: {.col .center}
 ![](images/preattentive-attributes-1.png){width="100%"}
 :::
 
-::: {.col .fragment}
+::: {.col .center .fragment}
 ## Pre-attentive attributes
 
 <br>
@@ -245,11 +249,11 @@ agenda(1)
 
 {{< center >}}
 
-::: {.col}
+::: {.col .center}
 ![](images/preattentive-attributes-2.png){width="100%"}
 :::
 
-::: {.col}
+::: {.col .center}
 ## Pre-attentive attributes
 
 ### [Numerical (ratio) data]{.red}
@@ -261,11 +265,11 @@ agenda(1)
 
 {{< center >}}
 
-::: {.col}
+::: {.col .center}
 ![](images/preattentive-attributes-3.png){width="100%"}
 :::
 
-::: {.col}
+::: {.col .center}
 ## Pre-attentive attributes
 
 ### [Numerical (ratio) data]{.red}<br>[Categorical (ordinal) data]{.blue}
@@ -289,15 +293,15 @@ agenda(1)
 
 . . .
 
-::: {.col}
+::: {.col .center}
 ![](figs/preattentive1.png){width="100%"}
 :::
 
-::: {.col .fragment}
+::: {.col .center .fragment}
 ![](figs/preattentive2.png){width="100%"}
 :::
 
-::: {.col .fragment}
+::: {.col .center .fragment}
 ![](figs/preattentive3.png){width="100%"}
 :::
 
@@ -399,6 +403,7 @@ Cleveland, W. S., & McGill, R. (1985). Graphical perception and graphical method
 :::
 
 ::: {.col}
+`r sp(0.3)`
 - ### **Discrimination** (X equal to Y?)
 - ### **Ranking** (X greater than Y?)
 - ### **Ratioing** (X double Y?)
@@ -413,11 +418,11 @@ Cleveland, W. S., & McGill, R. (1985). Graphical perception and graphical method
 
 ![](images/cleveland-hierarchy.png){width="100%"}
 
-::: {.col}
+::: {.col .center}
 ## [More Accurate]{.left}
 :::
 
-::: {.col}
+::: {.col .center}
 ## [Less Accurate]{.right}
 :::
 
@@ -427,7 +432,7 @@ Cleveland, W. S., & McGill, R. (1985). Graphical perception and graphical method
 
 # Example: Life expectancy in countries in Asia
 
-::: {.col .font80}
+::: {.col .center .font80}
 ```{r}
 #| echo: false
 
@@ -444,7 +449,7 @@ gapminder %>%
 ```
 :::
 
-::: {.col}
+::: {.col .center}
 :::
 
 ---
@@ -793,7 +798,7 @@ Align to 0 scale:
 :::
 
 ::: {.col width="55%"}
-<br><br><br>
+`r sp(3.8)`
 
 #### The grouping of graphical elements
 :::
@@ -830,11 +835,11 @@ Align to 0 scale:
 {{< center >}}
 {{< bg-color "#ffffff" >}}
 
-::: {.col width="30%"}
+::: {.col .center width="30%"}
 # Emergence
 :::
 
-::: {.col width="70%"}
+::: {.col .center width="70%"}
 ![](images/gestalt-dog.jpg){width="75%"}
 :::
 
@@ -861,15 +866,15 @@ Our minds fill in the missing information
 
 ### We strongly prefer to interpret stimuli as regular, simple, and orderly
 
-::: {.col .fragment}
+::: {.col .center .fragment}
 ![](images/unsatisfying-pie.gif){width="100%"}
 :::
 
-::: {.col .fragment}
+::: {.col .center .fragment}
 ![](images/unsatisfying-paper.gif){width="100%"}
 :::
 
-::: {.col .fragment}
+::: {.col .center .fragment}
 ![](images/unsatisfying-lines.gif){width="100%"}
 :::
 
@@ -1055,11 +1060,11 @@ It's the graphical equivalent of this:
 
 ![](images/cleveland-hierarchy.png){width="100%"}
 
-::: {.col}
+::: {.col .center}
 ## [More Accurate]{.left}
 :::
 
-::: {.col}
+::: {.col .center}
 ## [Less Accurate]{.right}
 :::
 
@@ -1088,9 +1093,9 @@ It's the graphical equivalent of this:
 :::
 
 ::: {.col width="55%"}
-<br><br><br><br><br>
+`r sp(6.5)`
 
-#### Recognizing that a geometric object encodes a physical value
+#### Recognizing that a geometric<br>object encodes a physical value
 :::
 
 ---
@@ -1278,14 +1283,14 @@ bp(1)
 {{< center >}}
 {{< middle >}}
 
-::: {.col}
+::: {.col .center}
 ![](images/check-bad.png){width="106"}
 ![](images/monsterBars.png){width="100%"}
 
 Figure 1.6: `Monstrous Costs’ by Nigel Holmes, in Healy, 2018
 :::
 
-::: {.col .fragment}
+::: {.col .center .fragment}
 ![](images/check-good.png){width="132"}
 ![](figs/monsterBars.png){width="100%"}
 :::
@@ -1297,19 +1302,21 @@ Figure 1.6: `Monstrous Costs’ by Nigel Holmes, in Healy, 2018
 
 ![](images/less-is-more-darkhorse-analytics.gif){width="75%"}
 
-[Figure 24.1: From Data Looks Better Naked by Darkhorse Analytics]{.left}
+::: {.left}
+Figure 24.1: From Data Looks Better Naked by Darkhorse Analytics
+:::
 
 ---
 
 {{< center >}}
 {{< middle >}}
 
-::: {.col}
+::: {.col .center}
 ![](images/check-bad.png){width="106"}
 ![](images/less-is-more-darkhorse-analytics-before.png){width="100%"}
 :::
 
-::: {.col .fragment}
+::: {.col .center .fragment}
 ![](images/check-good.png){width="132"}
 ![](images/less-is-more-darkhorse-analytics-after.png){width="100%"}
 :::
@@ -1328,7 +1335,7 @@ bp(2)
 {{< center >}}
 {{< middle >}}
 
-::: {.col}
+::: {.col .center}
 ## Humans aren't good at distinguishing 3D space
 
 ![](images/penrose-stairs.png){width="100%"}
@@ -1336,7 +1343,7 @@ bp(2)
 [Penrose Stairs](https://en.wikipedia.org/wiki/Penrose_stairs), made famous by<br>M.C. Escher (1898-1972)
 :::
 
-::: {.col .fragment}
+::: {.col .center .fragment}
 ## Ink proportions !=<br>true proportions
 
 ![](images/3dpies.png){width="100%"}
@@ -1356,11 +1363,11 @@ bp(2)
 {{< center >}}
 {{< middle >}}
 
-::: {.col width="60%"}
+::: {.col .center width="60%"}
 ![](images/3dbad.jpeg){width="100%"}
 :::
 
-::: {.col width="40%"}
+::: {.col .center width="40%"}
 # Multiple interpretations
 :::
 
@@ -1369,12 +1376,12 @@ bp(2)
 {{< center >}}
 {{< middle >}}
 
-::: {.col width="40%"}
+::: {.col .center width="40%"}
 ![](images/check-bad.png){width="106"}
 ![](images/3d-occlusion.png){width="100%"}
 :::
 
-::: {.col width="60%" .fragment}
+::: {.col .center width="60%" .fragment}
 ![](images/check-good.png){width="132"}
 
 ::: {.border}
@@ -1398,12 +1405,12 @@ bp(2)
 {{< center >}}
 {{< middle >}}
 
-::: {.col width="60%"}
+::: {.col .center width="60%"}
 ![](images/check-bad.png){width="106"}
 ![](images/3d-chart-junk.png){width="100%"}
 :::
 
-::: {.col width="40%" .fragment}
+::: {.col .center width="40%" .fragment}
 ![](images/check-good.png){width="132"}
 
 ::: {.border}
@@ -1425,13 +1432,15 @@ bp(3)
 {{< center >}}
 {{< middle >}}
 
-::: {.col width="60%" .border}
+::: {.col .center width="60%" .border}
 ![](images/tufte-fuel-economy-bad.png){width="100%"}
 
-[Edward Tufte (2001) "The Visual Display of Quantitative Information", 2nd Edition, pg. 57-58.]{.left .font80}
+::: {.left .font80}
+Edward Tufte (2001) "The Visual Display of Quantitative Information", 2nd Edition, pg. 57-58.
+:::
 :::
 
-::: {.col width="40%" .border .fragment}
+::: {.col .center width="40%" .border .fragment}
 ![](images/tufte-fuel-economy-good.png){width="100%"}
 :::
  
@@ -1450,14 +1459,16 @@ bp(3)
 
 # Bar charts should always start at 0
 
-::: {.col width="60%"}
+::: {.col .center width="60%"}
 ![](images/check-bad.png){width="106"}
 ![](images/fox-news-bars.png){width="100%"}
 
-[Image from <http://livingqlikview.com/the-9-worst-data-visualizations-ever-created/>]{.left .font70}
+::: {.left .font70}
+Image from <http://livingqlikview.com/the-9-worst-data-visualizations-ever-created/>
+:::
 :::
 
-::: {.col width="40%" .fragment}
+::: {.col .center width="40%" .fragment}
 ![](images/check-good.png){width="132"}
 
 ::: {.border}
@@ -1480,14 +1491,16 @@ bp(3)
 
 ## Don't cherry-pick your data
 
-::: {.col width="60%"}
+::: {.col .center width="60%"}
 ![](images/check-bad.png){width="106"}
 ![](images/fox-news-immigration-bars-bad.jpg){width="100%"}
 
-[Image from <https://www.mediamatters.org/fox-news/fox-news-newest-dishonest-chart-immigration-enforcement>]{.left .font70}
+::: {.left .font70}
+Image from <https://www.mediamatters.org/fox-news/fox-news-newest-dishonest-chart-immigration-enforcement>
+:::
 :::
 
-::: {.col width="40%" .fragment}
+::: {.col .center width="40%" .fragment}
 ![](images/check-good.png){width="132"}
 
 ::: {.border}
@@ -1505,7 +1518,9 @@ bp(3)
 
 ![](images/fox-news-piechart.png){width="60%"}
 
-[Image from <http://livingqlikview.com/the-9-worst-data-visualizations-ever-created/>]{.left .font70}
+::: {.left .font70}
+Image from <http://livingqlikview.com/the-9-worst-data-visualizations-ever-created/>
+:::
 
 ---
 
@@ -1522,12 +1537,12 @@ bp(4)
 {{< center >}}
 {{< bg-color "#ffffff" >}}
 
-::: {.col width="45%"}
+::: {.col .center width="45%"}
 ![](images/check-bad.png){width="106"}
 ![](figs/statesPie.png){width="100%"}
 :::
 
-::: {.col width="55%" .fragment}
+::: {.col .center width="55%" .fragment}
 ![](images/check-good.png){width="132"}
 ![](figs/statesBar.png){width="100%"}
 :::
@@ -1587,11 +1602,11 @@ bp(5)
 
 ## "Parallel coordinates" plot usually works better
 
-::: {.col .border}
+::: {.col .center .border}
 ![](figs/jr_diamonds_line_cut.png){width="100%"}
 :::
 
-::: {.col .border}
+::: {.col .center .border}
 ![](figs/jr_diamonds_line_total.png){width="100%"}
 :::
 
@@ -1602,11 +1617,11 @@ bp(5)
 
 ## Exception:<br>When you care about the _total_ more than the categories
 
-::: {.col width="60%" .border}
+::: {.col .center width="60%" .border}
 ![](figs/jr_phones_area.png){width="100%"}
 :::
 
-::: {.col width="40%" .border .fragment}
+::: {.col .center width="40%" .border .fragment}
 ![](figs/backgroundChecks.png){width="100%"}
 :::
 
@@ -1626,7 +1641,7 @@ bp(6)
 
 ## Rotate axes if you can't read them
 
-::: {.col width="45%"}
+::: {.col .center width="45%"}
 ![](images/check-bad.png){width="106"}
 
 ::: {.border}
@@ -1634,7 +1649,7 @@ bp(6)
 :::
 :::
 
-::: {.col width="55%" .fragment}
+::: {.col .center width="55%" .fragment}
 ![](images/check-good.png){width="132"}
 
 ::: {.border}
@@ -1649,7 +1664,7 @@ bp(6)
 
 ## Default order is almost always wrong
 
-::: {.col}
+::: {.col .center}
 ![](images/check-bad.png){width="106"}
 
 Ordered by alphabet (default)
@@ -1659,7 +1674,7 @@ Ordered by alphabet (default)
 :::
 :::
 
-::: {.col .fragment}
+::: {.col .center .fragment}
 ![](images/check-good.png){width="132"}
 
 Ordered by count
@@ -1695,7 +1710,7 @@ bp(7)
 
 ## Directly label geoms
 
-::: {.col}
+::: {.col .center}
 ![](images/check-bad.png){width="99"}
 
 ::: {.border}
@@ -1703,7 +1718,7 @@ bp(7)
 :::
 :::
 
-::: {.col .fragment}
+::: {.col .center .fragment}
 ![](images/check-good.png){width="132"}
 
 ::: {.border}
@@ -1743,7 +1758,7 @@ bp(8)
 {{< middle >}}
 {{< center >}}
 
-::: {.col}
+::: {.col .center}
 ![](images/check-bad.png){width="99"}
 
 ::: {.border}
@@ -1751,7 +1766,7 @@ bp(8)
 :::
 :::
 
-::: {.col .fragment}
+::: {.col .center .fragment}
 ![](images/check-good.png){width="132"}
 
 ::: {.border}
@@ -1774,11 +1789,11 @@ bp(9)
 
 # 10% of males and 1% of females are color blind
 
-::: {.col .fragment .border}
+::: {.col .center .fragment .border}
 ![](figs/colorBlindBad1.png){width="100%"}
 :::
 
-::: {.col .fragment .border}
+::: {.col .center .fragment .border}
 ![](figs/colorBlindBad2.png){width="100%"}
 :::
 
@@ -1789,7 +1804,7 @@ bp(9)
 
 ## Facets can be used to avoid color altogether
 
-::: {.col}
+::: {.col .center}
 ![](images/check-bad.png){width="99"}
 
 ::: {.border}
@@ -1797,7 +1812,7 @@ bp(9)
 :::
 :::
 
-::: {.col .fragment}
+::: {.col .center .fragment}
 ![](images/check-good.png){width="132"}
 
 ::: {.border}
@@ -1961,13 +1976,13 @@ agenda(4)
 
 ## Making a (good) ggplot
 
-::: {.col width="40%"}
+::: {.col .center width="40%"}
 Before:
 
 ![](figs/birds_before.png){width="100%"}
 :::
 
-::: {.col width="60%"}
+::: {.col .center width="60%"}
 After:
 
 ![](figs/birds_after.png){width="100%"}
@@ -2313,11 +2328,11 @@ wildlife_impacts %>%
 
 countdown(
   minutes = 15,
-  warn_when = 30,
+  warn_when = 15,
   update_every = 1,
   top = 0,
   right = 0,
-  font_size = "2em"
+  font_size = "1.5em"
 )
 ```
 
@@ -2340,6 +2355,7 @@ Use the `gapminder.csv` data to create the following plot, following these steps
 #| echo: false
 #| fig-width: 8
 #| fig-height: 7
+#| out-width: 90%
 
 gapminder %>%
   filter(year == 2007, continent == "Americas") %>%
