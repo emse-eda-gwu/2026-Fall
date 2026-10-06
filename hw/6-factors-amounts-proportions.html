@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -43,7 +43,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-c98d6a4b75c4bba22a3e5913c6844ae1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -345,9 +345,116 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Coming soon!</p>
+<blockquote class="blockquote">
+<p><strong>Due</strong>: Oct 12 by 11:59pm</p>
+<p><strong>Weight</strong>: This assignment is worth 1% of your final grade.</p>
+<p><strong>Purpose</strong>: The purpose of this assignment is to turn the data visualization best practices from class into a custom agent skill that you design, then use that skill to make a “good” chart of <strong>amounts</strong> or <strong>proportions</strong>. Along the way, you will learn enough about factors and facets to check whether your agent got the details right.</p>
+<p><strong>Assessment</strong>: This assignment is graded using a check system:</p>
+<ul>
+<li>✔+ (110%): Responses shows phenomenal thought and engagement with the course content. I will not assign these often.</li>
+<li>✔ (100%): Responses are thoughtful, well-written, and show engagement with the course content. This is the expected level of performance.</li>
+<li>✔− (50%): Responses are hastily composed, too short, and/or only cursorily engages with the course content. This grade signals that you need to improve next time. I will <em>hopefully</em> not assign these often.</li>
+</ul>
+<p>Notice that this is essentially a pass/fail system. I’m not grading your writing ability and I’m not counting the number of words you write - I’m looking for thoughtful engagement. One or two sentences is <strong>not enough</strong>. Write at least a paragraph and show me that you did the readings assigned.</p>
+</blockquote>
+<section id="get-organized" class="level1">
+<h1>1. Get Organized</h1>
+<p>Open your course repo (<code>eda-f26/eda-netID</code>) in Positron using <strong>File › Open Folder</strong> - open the folder itself, not a file inside it. If you haven’t cloned your course repo yet, follow the steps in <a href="1-agentic-workflows-and-github.html#clone-your-course-repo">HW1</a> first.</p>
+<p>Everything for this assignment lives in the <code>hw6</code> folder. Open the <code>hw6.qmd</code> file inside it - that’s the only file you need to edit. Take notes and write example code under the “Begin notes here” heading as you go through the readings and exercises below, then write your reflection under the “Reflection” heading at the end.</p>
+</section>
+<section id="read-practice" class="level1">
+<h1>2. Read &amp; Practice</h1>
+<p>The readings listed below are broken into two groups:</p>
+<ol type="1">
+<li>Design principles</li>
+<li>Coding techniques to implement those principles</li>
+</ol>
+<section id="design-principles" class="level3">
+<h3 class="anchored" data-anchor-id="design-principles">Design principles</h3>
+<p>The design principles discussed in the following readings repeat many of the concepts we saw last week, except focused on the particular subset of charts for this week:</p>
+<ul>
+<li>Wilke: <a href="https://clauswilke.com/dataviz/visualizing-amounts.html">6 - Visualizing amounts</a></li>
+<li>Wilke: <a href="https://clauswilke.com/dataviz/visualizing-proportions.html">10 - Visualizing proportions</a></li>
+<li><a href="https://eagereyes.org/blog/2016/a-reanalysis-of-a-study-about-square-pie-charts-from-2009">Square pie chart beats out the rest in perception study</a></li>
+<li><a href="https://www.perceptualedge.com/blog/?p=2239">When Are 100% Stacked Bar Graphs Useful?</a></li>
+</ul>
+</section>
+<section id="coding-techniques" class="level3">
+<h3 class="anchored" data-anchor-id="coding-techniques">Coding techniques</h3>
+<p>The readings below cover two things that show up constantly in charts of amounts and proportions: <strong>factors &amp; facets</strong>. Factors are how R stores categorical variables, and they control the order in which categories appear in a chart. An agent will happily hand you bars sorted alphabetically, which is almost never what you want, so you need to know enough about factors (and the <a href="https://forcats.tidyverse.org/">forcats</a> package) to spot when the order is wrong and to ask for the right fix. Facets are the ggplot version of the “small multiples” we saw in class: one chart split into panels, which is often a better option than stacking bars or adding more colors.</p>
+<ul>
+<li>R4DS: <a href="https://r4ds.hadley.nz/factors.html">16 - Factors</a></li>
+<li>R4DS: <a href="https://r4ds.hadley.nz/layers.html#facets">9.4 - Facets</a></li>
+</ul>
+</section>
+</section>
+<section id="build-a-skill-then-make-a-chart" class="level1">
+<h1>3. Build a skill, then make a chart</h1>
+<p>In week 2 you tried out the <code>my-chart-style</code> skill that I wrote. This week you will design <strong>your own</strong> skill around good data visualization practices, then use it to make a chart.</p>
+<section id="build-your-skill" class="level3">
+<h3 class="anchored" data-anchor-id="build-your-skill">Build your skill</h3>
+<p>The end of the <a href="https://eda.seas.gwu.edu/2026-Fall/class/7-visualizing-information/">Visualizing Information slides</a> contains two things that make great raw material for a skill:</p>
+<ul>
+<li>The <strong>10 data viz best practices</strong> (remove chart junk, don’t stack bars, rotate and sort categorical axes, directly label geoms, etc.).</li>
+<li>The <strong>“Making a (good) ggplot”</strong> example, which walks step by step from a default bar chart to a finished one.</li>
+</ul>
+<ol type="1">
+<li>Open Claude Code in your course repo and point it to the slides URL above. Ask it to help you create a skill that encodes those best practices and the steps for making a good chart. Save the skill in <code>.claude/skills/</code> in your course repo (e.g., <code>.claude/skills/my-dataviz/SKILL.md</code>).</li>
+<li><strong>Read what it wrote.</strong> Does the skill actually capture the best practices from class? Did it leave anything out, or add rules that weren’t in the slides?</li>
+<li><strong>Make it yours.</strong> Edit the skill (directly, or by asking Claude to) to customize it. For example, pick a color palette and theme you like, set your own rules for titles and captions, or add guidance for when a pie chart or stacked bar is acceptable.</li>
+</ol>
+</section>
+<section id="use-your-skill-to-make-a-chart" class="level3">
+<h3 class="anchored" data-anchor-id="use-your-skill-to-make-a-chart">Use your skill to make a chart</h3>
+<p>Find a dataset with at least one categorical variable. You can use one from the <a href="../finding-data.html#packages">Packages</a> section of the “Finding Data” page, or data from your project. Then ask Claude to make a chart of <strong>amounts</strong> or <strong>proportions</strong> using your skill (invoke it with <code>/your-skill-name</code>).</p>
+<p>Check the result against the best practices. In particular, look closely at the factors: are the categories in a meaningful order, or just alphabetical? Are any categories missing, mislabeled, or lumped together in a way that hides something important? If something is wrong, fix it, and consider whether your skill should be updated so that it gets it right next time.</p>
+<p>In your <code>hw6.qmd</code> file, include:</p>
+<ul>
+<li>The name and location of your skill (the skill file itself will be in your repo when you submit).</li>
+<li>A few sentences on what you changed after Claude drafted the skill, and why.</li>
+<li>The chart you made with your skill, with one or two sentences under it describing what it shows.</li>
+<li>A few sentences on how it went: Did the chart follow your skill on the first try? What did you have to check, correct, or change in the skill?</li>
+</ul>
+</section>
+</section>
+<section id="reflect" class="level1">
+<h1>4. Reflect</h1>
+<blockquote class="blockquote">
+<p><strong>This week, consider writing about a chart you’ve seen that shows amounts or proportions (like a bar chart, or a parts-of-a-whole figure).</strong></p>
+</blockquote>
+<p>Reflect on what you’ve learned while going through these readings and exercises. Is there anything that jumped out at you? Anything you found particularly interesting or confusing?</p>
+<p>Write at least a paragraph in your <code>hw6.qmd</code> file, and include at least one question. The teaching team will review the questions we get and will try to answer them either in Slack or in class.</p>
+<p>Some thoughts you may want to try in your reflection:</p>
+<ul>
+<li>“I used to think ______, now I think ______ 🤔”</li>
+<li>Discuss some of the key insights or things you found interesting in the readings or recent class periods.</li>
+<li>Connect the course content to your own work or project you’re working on.</li>
+</ul>
+</section>
+<section id="submit" class="level1">
+<h1>5. Submit</h1>
+<p>To submit your assignment, follow these instructions:</p>
+<ol type="1">
+<li>Render your .qmd file by either clicking the “Preview” button in Positron or running <code>quarto render</code> in the terminal.</li>
+<li>Open the rendered html file and make sure it looks good! Is all the formatting as you expected?</li>
+<li>Commit and push your work using GitHub Desktop: look at the diff, write a short commit message, click <strong>Commit</strong>, then <strong>Push</strong>.</li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled" title="Remember">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Remember
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Your work isn’t submitted until you’ve <strong>pushed</strong> it. Committing only saves the change on your own computer – go look at your repo on GitHub.com and confirm your work is actually there before you call this done.</p>
+</div>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
