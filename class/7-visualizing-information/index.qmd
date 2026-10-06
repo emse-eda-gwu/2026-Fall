@@ -7,6 +7,7 @@ week: 7
 displaydate: October 07, 2026
 format: 
   lexis-revealjs:
+    code-block-height: "800px"
     link-external-newwindow: true
     css: css/images.css
 # Navigate slides with the mouse wheel / trackpad (reveal's native mouseWheel).
@@ -49,14 +50,16 @@ bp <- function(highlight = NULL) {
     "{{< inverse >}}",
     "# [10 Data Viz Best Practices]{.center}"
   )
-  for (i in seq_along(bp_items)) {
-    item <- bp_items[i]
-    if (!is.null(highlight) && i == highlight) {
-      item <- sprintf("[%s]{.orange}", item)
-    }
-    lines <- c(lines, sprintf("%d. %s", i, item))
+  items <- bp_items
+  if (!is.null(highlight)) {
+    items[highlight] <- sprintf("[%s]{.orange}", items[highlight])
   }
-  lines <- c(lines, "[*most of the time]{.right}")
+  # One tight list: items joined by single newlines, not blank lines
+  lines <- c(
+    lines,
+    paste(sprintf("%d. %s", seq_along(items), items), collapse = "\n"),
+    "::: {.right}\n\\*most of the time\n:::"
+  )
   cat(lines, sep = "\n\n")
 }
 
@@ -322,12 +325,12 @@ agenda(1)
 {{< middle >}}
 
 ::: {.col .center}
-![](images/check-bad.png){width="25%"}<br>
+![](images/check-bad.png){width="132"}<br>
 ![](figs/preattentive-bad.png){width="100%"}
 :::
 
 ::: {.col .center .fragment}
-![](images/check-good.png){width="25%"}
+![](images/check-good.png){width="132"}
 ![](figs/preattentive-good.png){width="100%"}
 :::
 
@@ -1118,7 +1121,7 @@ It's the graphical equivalent of this:
 ::: {.col .center}
 # Norman door
 
-![](images/check-bad.png){width="20%"}
+![](images/check-bad.png){width="106"}
 
 ![](images/norman_door.jpg){width="45%"}
 
@@ -1127,7 +1130,7 @@ It's the graphical equivalent of this:
 ::: {.col .center .fragment}
 # Non-Norman door
 
-![](images/check-good.png){width="25%"}
+![](images/check-good.png){width="132"}
 ![](images/non-norman-door.jpg){width="90%"}
 :::
 
@@ -1276,14 +1279,14 @@ bp(1)
 {{< middle >}}
 
 ::: {.col}
-![](images/check-bad.png){width="20%"}
+![](images/check-bad.png){width="106"}
 ![](images/monsterBars.png){width="100%"}
 
 Figure 1.6: `Monstrous Costs’ by Nigel Holmes, in Healy, 2018
 :::
 
 ::: {.col .fragment}
-![](images/check-good.png){width="25%"}
+![](images/check-good.png){width="132"}
 ![](figs/monsterBars.png){width="100%"}
 :::
 
@@ -1302,12 +1305,12 @@ Figure 1.6: `Monstrous Costs’ by Nigel Holmes, in Healy, 2018
 {{< middle >}}
 
 ::: {.col}
-![](images/check-bad.png){width="20%"}
+![](images/check-bad.png){width="106"}
 ![](images/less-is-more-darkhorse-analytics-before.png){width="100%"}
 :::
 
 ::: {.col .fragment}
-![](images/check-good.png){width="25%"}
+![](images/check-good.png){width="132"}
 ![](images/less-is-more-darkhorse-analytics-after.png){width="100%"}
 :::
 
@@ -1367,12 +1370,12 @@ bp(2)
 {{< middle >}}
 
 ::: {.col width="40%"}
-![](images/check-bad.png){width="25%"}
+![](images/check-bad.png){width="106"}
 ![](images/3d-occlusion.png){width="100%"}
 :::
 
 ::: {.col width="60%" .fragment}
-![](images/check-good.png){width="20%"}
+![](images/check-good.png){width="132"}
 
 ::: {.border}
 ![](figs/facetedBars.png){width="100%"}
@@ -1396,12 +1399,12 @@ bp(2)
 {{< middle >}}
 
 ::: {.col width="60%"}
-![](images/check-bad.png){width="15%"}
+![](images/check-bad.png){width="106"}
 ![](images/3d-chart-junk.png){width="100%"}
 :::
 
 ::: {.col width="40%" .fragment}
-![](images/check-good.png){width="30%"}
+![](images/check-good.png){width="132"}
 
 ::: {.border}
 ![](figs/simpleBars.png){width="100%"}
@@ -1448,14 +1451,14 @@ bp(3)
 # Bar charts should always start at 0
 
 ::: {.col width="60%"}
-![](images/check-bad.png){width="15%"}
+![](images/check-bad.png){width="106"}
 ![](images/fox-news-bars.png){width="100%"}
 
 [Image from <http://livingqlikview.com/the-9-worst-data-visualizations-ever-created/>]{.left .font70}
 :::
 
 ::: {.col width="40%" .fragment}
-![](images/check-good.png){width="30%"}
+![](images/check-good.png){width="132"}
 
 ::: {.border}
 ![](figs/barchart_zero.png){width="75%"}
@@ -1478,14 +1481,14 @@ bp(3)
 ## Don't cherry-pick your data
 
 ::: {.col width="60%"}
-![](images/check-bad.png){width="15%"}
+![](images/check-bad.png){width="106"}
 ![](images/fox-news-immigration-bars-bad.jpg){width="100%"}
 
 [Image from <https://www.mediamatters.org/fox-news/fox-news-newest-dishonest-chart-immigration-enforcement>]{.left .font70}
 :::
 
 ::: {.col width="40%" .fragment}
-![](images/check-good.png){width="30%"}
+![](images/check-good.png){width="132"}
 
 ::: {.border}
 ![](images/fox-news-immigration-bars-good.jpg){width="100%"}
@@ -1520,12 +1523,12 @@ bp(4)
 {{< bg-color "#ffffff" >}}
 
 ::: {.col width="45%"}
-![](images/check-bad.png){width="25%"}
+![](images/check-bad.png){width="106"}
 ![](figs/statesPie.png){width="100%"}
 :::
 
 ::: {.col width="55%" .fragment}
-![](images/check-good.png){width="25%"}
+![](images/check-good.png){width="132"}
 ![](figs/statesBar.png){width="100%"}
 :::
 
@@ -1574,7 +1577,7 @@ bp(5)
 # Stacked bars are rarely a good idea
 
 ::: {.border}
-![](figs/jr_diamonds_bars_stacked.png){width="90%"}
+![](figs/jr_diamonds_bars_stacked.png){width="65%"}
 :::
 
 ---
@@ -1624,15 +1627,15 @@ bp(6)
 ## Rotate axes if you can't read them
 
 ::: {.col width="45%"}
-![](images/check-bad.png){width="25%"}
+![](images/check-bad.png){width="106"}
 
 ::: {.border}
-![](figs/mpg_bars_bad.png){width="100%"}
+![](figs/mpg_bars_bad.png){width="90%"}
 :::
 :::
 
 ::: {.col width="55%" .fragment}
-![](images/check-good.png){width="25%"}
+![](images/check-good.png){width="132"}
 
 ::: {.border}
 ![](figs/mpg_bars_flipped.png){width="100%"}
@@ -1647,7 +1650,7 @@ bp(6)
 ## Default order is almost always wrong
 
 ::: {.col}
-![](images/check-bad.png){width="20%"}
+![](images/check-bad.png){width="106"}
 
 Ordered by alphabet (default)
 
@@ -1657,7 +1660,7 @@ Ordered by alphabet (default)
 :::
 
 ::: {.col .fragment}
-![](images/check-good.png){width="25%"}
+![](images/check-good.png){width="132"}
 
 Ordered by count
 
@@ -1673,7 +1676,7 @@ Ordered by count
 ## Exception: Ordinal variables
 
 ::: {.border}
-![](images/wildlife-months-bar-1.png){width="100%"}
+![](images/wildlife-months-bar-1.png){width="85%"}
 :::
 
 ---
@@ -1693,7 +1696,7 @@ bp(7)
 ## Directly label geoms
 
 ::: {.col}
-![](images/check-bad.png){width="20%"}
+![](images/check-bad.png){width="99"}
 
 ::: {.border}
 ![](figs/milk_region.png){width="100%"}
@@ -1701,7 +1704,7 @@ bp(7)
 :::
 
 ::: {.col .fragment}
-![](images/check-good.png){width="25%"}
+![](images/check-good.png){width="132"}
 
 ::: {.border}
 ![](figs/milk_region_label.png){width="100%"}
@@ -1715,7 +1718,7 @@ bp(7)
 ## Exception: When you have repeated categories
 
 ::: {.border}
-![](images/pattern_fills2.png){width="75%"}
+![](images/pattern_fills2.png){width="55%"}
 :::
 
 ---
@@ -1733,7 +1736,7 @@ bp(8)
 {{< center >}}
 {{< bg-color "#f8f8f8" >}}
 
-![](images/pattern_fills3.png){width="75%"}
+![](images/pattern_fills3.png){width="55%"}
 
 ---
 
@@ -1741,7 +1744,7 @@ bp(8)
 {{< center >}}
 
 ::: {.col}
-![](images/check-bad.png){width="20%"}
+![](images/check-bad.png){width="99"}
 
 ::: {.border}
 ![](images/pattern_fills1.png){width="100%"}
@@ -1749,7 +1752,7 @@ bp(8)
 :::
 
 ::: {.col .fragment}
-![](images/check-good.png){width="25%"}
+![](images/check-good.png){width="132"}
 
 ::: {.border}
 ![](images/pattern_fills2.png){width="100%"}
@@ -1787,7 +1790,7 @@ bp(9)
 ## Facets can be used to avoid color altogether
 
 ::: {.col}
-![](images/check-bad.png){width="20%"}
+![](images/check-bad.png){width="99"}
 
 ::: {.border}
 ![](figs/colorBlindBad1.png){width="100%"}
@@ -1795,7 +1798,7 @@ bp(9)
 :::
 
 ::: {.col .fragment}
-![](images/check-good.png){width="25%"}
+![](images/check-good.png){width="132"}
 
 ::: {.border}
 ![](figs/colorBlindBad3.png){width="100%"}
@@ -1817,7 +1820,7 @@ bp(10)
 {{< bg-color "#ffffff" >}}
 {{< center >}}
 
-![](images/pole-pie1.png){width="100%"}
+![](images/pole-pie1.png){width="83%"}
 
 ---
 
@@ -1825,7 +1828,7 @@ bp(10)
 {{< bg-color "#ffffff" >}}
 {{< center >}}
 
-![](images/pole-pie2.png){width="100%"}
+![](images/pole-pie2.png){width="83%"}
 
 ---
 
@@ -1864,7 +1867,7 @@ For your "bad" visualization:
 
 1) Identify where the graphic falls on Cleveland's pattern recognition hierarchy
 
-![](images/cleveland-hierarchy.png){width="100%"}
+![](images/cleveland-hierarchy.png){width="93%"}
 
 2) Any design rules that are broken
 
@@ -1888,7 +1891,7 @@ countdown(
 {{< middle >}}
 {{< center >}}
 
-![](images/bad-viz/army_budget.jpg){width="100%"}
+![](images/bad-viz/army_budget.jpg){width="83%"}
 
 ---
 
@@ -1911,8 +1914,8 @@ countdown(
 :::
 
 ::: {.col width="60%" .fragment}
-![](images/bad-viz/junk-life-expectancy-good1.png){width="85%"}
-![](images/bad-viz/junk-life-expectancy-good2.png){width="85%"}
+![](images/bad-viz/junk-life-expectancy-good1.png){width="64%"}
+![](images/bad-viz/junk-life-expectancy-good2.png){width="64%"}
 :::
 
 ---
@@ -1931,7 +1934,7 @@ countdown(
 
 {{< middle >}}
 
-::: {.col}
+::: {.col gap="0.5em"}
 ![](images/bad-viz/clinton-tweet-venn-1.png){width="100%"}
 :::
 
@@ -1991,7 +1994,6 @@ After:
 # 1) Format data frame
 
 ```{r}
-#| code-line-numbers: "3"
 
 # Format the data frame
 wildlife_impacts %>%
@@ -2005,7 +2007,6 @@ wildlife_impacts %>%
 ::: {.col}
 ```{r}
 #| eval: false
-#| code-line-numbers: "8"
 
 # Format the data frame
 wildlife_impacts %>%
@@ -2033,7 +2034,6 @@ wildlife_impacts %>%
 ::: {.font70}
 ```{r}
 #| eval: false
-#| code-line-numbers: "12"
 
 # Format the data frame
 wildlife_impacts %>%
@@ -2065,7 +2065,6 @@ wildlife_impacts %>%
 ::: {.font70}
 ```{r}
 #| eval: false
-#| code-line-numbers: "8"
 
 # Format the data frame
 wildlife_impacts %>%
@@ -2094,7 +2093,6 @@ wildlife_impacts %>%
 ::: {.font70}
 ```{r}
 #| eval: false
-#| code-line-numbers: "8"
 
 # Format the data frame
 wildlife_impacts %>%
@@ -2123,7 +2121,6 @@ wildlife_impacts %>%
 ::: {.font70}
 ```{r}
 #| eval: false
-#| code-line-numbers: "12,13"
 
 # Format the data frame
 wildlife_impacts %>%
@@ -2157,7 +2154,6 @@ wildlife_impacts %>%
 ::: {.font70}
 ```{r}
 #| eval: false
-#| code-line-numbers: "14,15"
 
 # Format the data frame
 wildlife_impacts %>%
@@ -2191,7 +2187,7 @@ wildlife_impacts %>%
 
 ### Four `cowplot` themes you should know
 
-![](figs/cowplot_themes.png){width="100%"}
+![](figs/cowplot_themes.png){.nostretch width="100%"}
 
 ---
 
@@ -2203,7 +2199,6 @@ For horizontal bars, add only vertical grid
 ::: {.font70}
 ```{r}
 #| eval: false
-#| code-line-numbers: "16"
 
 # Format the data frame
 wildlife_impacts %>%
@@ -2240,7 +2235,6 @@ wildlife_impacts %>%
 ::: {.font70}
 ```{r}
 #| eval: false
-#| code-line-numbers: "4,20,21,22"
 
 # Format the data frame
 wildlife_impacts %>%
