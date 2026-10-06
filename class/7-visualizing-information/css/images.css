@@ -1,0 +1,4 @@
+/* Center standalone images on every slide, and within their column. */
+.reveal .slides section p:has(> img) {
+  text-align: center;
+}
