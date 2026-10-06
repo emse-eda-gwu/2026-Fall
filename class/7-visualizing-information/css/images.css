@@ -1,4 +1,23 @@
 /* Center standalone images on every slide, and within their column. */
 .reveal .slides section p:has(> img) {
   text-align: center;
+  margin: 0.25em 0;
+}
+
+/* Drop reveal's default image margins so images sit close to their
+   neighbors (check icons, captions), as they did in xaringan. */
+.reveal .slides section p:has(> img) img {
+  margin: 0;
+}
+
+/* {{< center >}} should center column contents too, not just the slide. */
+.reveal .slides section.center .cols-row > .col {
+  text-align: center;
+}
+
+/* A table's auto vertical margins swallow the free space on {{< middle >}}
+   slides, pinning the title to the top. Keep only horizontal centering. */
+.reveal .slides section.middle > table {
+  margin-top: 0;
+  margin-bottom: 0;
 }
