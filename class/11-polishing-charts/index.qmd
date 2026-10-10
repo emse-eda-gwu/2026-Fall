@@ -7,10 +7,12 @@ week: 11
 displaydate: November 04, 2026
 format: 
   lexis-revealjs:
+    code-block-height: "800px"
     link-external-newwindow: true
 # Navigate slides with the mouse wheel / trackpad (reveal's native mouseWheel).
 mouse-wheel: true
 progress: false
+from: markdown+autolink_bare_uris
 execute:
   echo: true
   warning: false
@@ -142,8 +144,8 @@ us_gdp_plot <- ggplot(us_gdp %>% filter(year >= 2007, year <= 2010)) +
 
 ```{r}
 #| echo: false
-#| fig-height: 3.3
-#| fig-width: 5
+#| fig-height: 2.9
+#| fig-width: 4.4
 #| fig-align: center
 
 us_gdp_plot
@@ -151,8 +153,8 @@ us_gdp_plot
 
 ```{r}
 #| echo: false
-#| fig-height: 3.3
-#| fig-width: 5
+#| fig-height: 2.9
+#| fig-width: 4.4
 #| fig-align: center
 
 us_gdp_plot +
@@ -190,8 +192,8 @@ mpg_plot <- ggplot(mtcars) +
 
 ```{r}
 #| echo: false
-#| fig-height: 3.3
-#| fig-width: 5
+#| fig-height: 2.9
+#| fig-width: 4.4
 #| fig-align: center
 
 mpg_plot +
@@ -201,8 +203,8 @@ mpg_plot +
 
 ```{r}
 #| echo: false
-#| fig-height: 3.3
-#| fig-width: 5
+#| fig-height: 2.9
+#| fig-width: 4.4
 #| fig-align: center
 
 mpg_plot
@@ -220,7 +222,7 @@ mpg_plot
 :::
 
 ::: {.col .fragment}
-![](images/linkedin_stocks.png)
+![](images/linkedin_stocks.png){width="710" .nostretch}
 :::
 
 ---
@@ -372,7 +374,7 @@ plot
 ### [Consider setting dimensions to "Golden Ratio" (1 : 1.618)]{.center}
 
 ::: {.col}
-![](images/golden_ratio.jpg)
+![](images/golden_ratio.jpg){width="710" .nostretch}
 :::
 
 ::: {.col .center .fragment}
@@ -756,7 +758,7 @@ plot +
 
 # What's wrong with this chart?
 
-![](images/utility_bill_1.png){width="700"}
+![](images/utility_bill_1.png){width="930"}
 
 ---
 
@@ -764,7 +766,7 @@ plot +
 
 # What's wrong with this chart?
 
-![](images/utility_bill_3.png){width="700"}
+![](images/utility_bill_3.png){width="930"}
 
 ---
 
@@ -772,7 +774,7 @@ plot +
 
 # What's wrong with this chart?
 
-![](images/utility_bill_4.png){width="700"}
+![](images/utility_bill_4.png){width="930"}
 
 ---
 
@@ -780,7 +782,7 @@ plot +
 
 # What's wrong with this chart?
 
-![](images/utility_bill_5.png){width="700"}
+![](images/utility_bill_5.png){width="930"}
 
 ---
 
@@ -1166,7 +1168,7 @@ https://designing-ggplots.netlify.com/#1
 
 {{< middle >}}
 
-![](images/eye_tracking.gif){width="900"}
+![](images/eye_tracking.gif){width="1190"}
 
 ::: {.font80}
 Michelle Borkin, et al. (2015) [Beyond Memorability: Visualization Recognition and Recall](https://ieeexplore.ieee.org/document/7192646)
@@ -1930,7 +1932,7 @@ https://resources.rstudio.com/rstudio-conf-2020/the-glamour-of-graphics-william-
 :::
 
 ::: {.col width="45%"}
-![](images/color_wheel.png)
+![](images/color_wheel.png){width="420" .nostretch}
 
 [Image from [this color wheel tool](https://www.sessions.edu/color-calculator/)]{.center}
 :::
@@ -1946,7 +1948,7 @@ https://resources.rstudio.com/rstudio-conf-2020/the-glamour-of-graphics-william-
 :::
 
 ::: {.col width="45%"}
-![](images/color_wheel_complementary.png)
+![](images/color_wheel_complementary.png){width="440" .nostretch}
 
 [Image from [this color wheel tool](https://www.sessions.edu/color-calculator/)]{.center}
 :::
@@ -1963,7 +1965,7 @@ https://resources.rstudio.com/rstudio-conf-2020/the-glamour-of-graphics-william-
 :::
 
 ::: {.col width="45%"}
-![](images/color_wheel_analogous.png)
+![](images/color_wheel_analogous.png){width="430" .nostretch}
 
 [Image from [this color wheel tool](https://www.sessions.edu/color-calculator/)]{.center}
 :::
@@ -1981,7 +1983,7 @@ https://resources.rstudio.com/rstudio-conf-2020/the-glamour-of-graphics-william-
 :::
 
 ::: {.col width="45%"}
-![](images/color_wheel_triadic.png)
+![](images/color_wheel_triadic.png){width="430" .nostretch}
 
 [Image from [this color wheel tool](https://www.sessions.edu/color-calculator/)]{.center}
 :::
@@ -2000,7 +2002,7 @@ https://resources.rstudio.com/rstudio-conf-2020/the-glamour-of-graphics-william-
 # Steal colors with the [eye dropper tool](https://chrome.google.com/webstore/detail/eye-dropper/hmdcmlfkchdmnmnmheododdhjedfccka?hl=en)
 
 ::: {.noborder}
-![](images/eye_dropper.png){width="242"}
+![](images/eye_dropper.png){width="320"}
 :::
 
 ---
@@ -2145,7 +2147,7 @@ cvd_grid(mpg_plot_mycolors)
 ::: {.col}
 ### [ColorBrewer](https://www.datanovia.com/en/blog/the-a-z-of-rcolorbrewer-palette/)
 
-![](images/colorbrewer.png){width="370"}
+![](images/colorbrewer.png){width="490"}
 :::
 
 ---
@@ -2172,8 +2174,8 @@ cvd_grid(mpg_plot_mycolors)
 :::
 
 ::: {.col width="65%"}
-![](images/palette_sequential.png){width="450"}
-![](images/palette_sequential_example.png){width="450"}
+![](images/palette_sequential.png){width="600"}
+![](images/palette_sequential_example.png){width="600"}
 
 Image from [betterfigures.org](https://betterfigures.org/2015/06/23/picking-a-colour-scale-for-scientific-graphics/)
 :::
@@ -2189,8 +2191,8 @@ Image from [betterfigures.org](https://betterfigures.org/2015/06/23/picking-a-co
 :::
 
 ::: {.col width="65%"}
-![](images/palette_diverging.png){width="450"}
-![](images/palette_diverging_example.png){width="450"}
+![](images/palette_diverging.png){width="600"}
+![](images/palette_diverging_example.png){width="600"}
 
 Image from [betterfigures.org](https://betterfigures.org/2015/06/23/picking-a-colour-scale-for-scientific-graphics/)
 :::
@@ -2206,8 +2208,8 @@ Image from [betterfigures.org](https://betterfigures.org/2015/06/23/picking-a-co
 :::
 
 ::: {.col width="65%"}
-![](images/palette_categorical.png){width="500"}
-![](images/palette_categorical_example.png){width="500"}
+![](images/palette_categorical.png){width="660"}
+![](images/palette_categorical_example.png){width="660"}
 
 Image from [betterfigures.org](https://betterfigures.org/2015/06/23/picking-a-colour-scale-for-scientific-graphics/)
 :::
@@ -2404,14 +2406,14 @@ Fun custom palettes
 ::: {.col}
 [Inauguration palette](https://github.com/ciannabp/inauguration)
 
-![](images/inauguration.png){width="500"}
-![](images/inauguration_palette.png){width="500"}
+![](images/inauguration.png){width="660"}
+![](images/inauguration_palette.png){width="660"}
 :::
 
 ::: {.col .fragment}
 [PNWColors](https://github.com/jakelawlor/PNWColors)
 
-![](images/PNWColors.jpg){width="500"}
+![](images/PNWColors.jpg){width="660"}
 :::
 
 ---
@@ -2648,13 +2650,13 @@ https://resources.rstudio.com/rstudio-conf-2020/the-glamour-of-graphics-william-
 # Fonts matter
 
 ::: {.col}
-![](images/fonts_matter_fast_taco.jpg){width="500"}
+![](images/fonts_matter_fast_taco.jpg){width="660"}
 
 "Fast Taco"
 :::
 
 ::: {.col}
-![](images/fonts_matter_megaflicks.jpg){width="500"}
+![](images/fonts_matter_megaflicks.jpg){width="660"}
 
 "Mega Flicks"
 :::
@@ -2665,7 +2667,7 @@ https://resources.rstudio.com/rstudio-conf-2020/the-glamour-of-graphics-william-
 {{< center >}}
 {{< middle >}}
 
-![](images/fonts_matter.jpg){width="500"}
+![](images/fonts_matter.jpg){width="660"}
 
 ---
 
@@ -2820,7 +2822,7 @@ This is some text that goes into detail and explains a lot more about the topic 
 :::
 
 ::: {.col width="65%"}
-![](images/font_oldstyle1.jpg){width="500"}
+![](images/font_oldstyle1.jpg){width="660"}
 :::
 
 ---
@@ -2836,7 +2838,7 @@ This is some text that goes into detail and explains a lot more about the topic 
 :::
 
 ::: {.col width="60%"}
-![](images/font_oldstyle2.jpg){width="500"}
+![](images/font_oldstyle2.jpg){width="660"}
 :::
 
 ---
@@ -3323,5 +3325,5 @@ theme_set(theme_minimal_grid())
 {{< center >}}
 {{< middle >}}
 
-# Reminder: [Mini 3](https://eda.seas.gwu.edu/2026-Fall/mini/3-redesign.html) due 11/10
+# Reminder: [Mini 3](https://eda.seas.gwu.edu/2026-Fall/mini/3-redesign.html) due 11/22
 

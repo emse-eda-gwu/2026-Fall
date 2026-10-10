@@ -7,10 +7,12 @@ week: 10
 displaydate: October 28, 2026
 format: 
   lexis-revealjs:
+    code-block-height: "800px"
     link-external-newwindow: true
 # Navigate slides with the mouse wheel / trackpad (reveal's native mouseWheel).
 mouse-wheel: true
 progress: false
+from: markdown+autolink_bare_uris
 execute:
   echo: true
   warning: false
@@ -85,7 +87,7 @@ countdown(
 ::: {.col}
 <br>
 
-![](https://github.com/emse-eda-gwu/2026-Fall/raw/main/images/quiz_doge.png){width="400"}
+![](https://github.com/emse-eda-gwu/2026-Fall/raw/main/images/quiz_doge.png){width="530"}
 :::
 
 ---
@@ -578,7 +580,7 @@ milk_region_line_label
 
 # Animated chart
 
-![](images/milk_region_animation.gif){width="800"}
+![](images/milk_region_animation.gif){width="1060"}
 
 ---
 
@@ -586,7 +588,7 @@ milk_region_line_label
 
 ### Animation is particularly helpful for the **time dimension**
 
-![](images/gapminder_animation.gif){width="600"}
+![](images/gapminder_animation.gif){width="790"}
 
 ["Gapminder" visualization by Hans Rosling]{.left}
 
@@ -596,7 +598,7 @@ milk_region_line_label
 
 ### Animation is particularly helpful for the **time dimension**
 
-![](images/spiral_temps.gif){width="450"}
+![](images/spiral_temps.gif){width="600"}
 
 [Source: https://www.climate-lab-book.ac.uk/spirals/]{.left}
 
@@ -606,7 +608,7 @@ milk_region_line_label
 
 ### Animation is particularly helpful for the **time dimension**
 
-![](images/ft-flu.gif){width="800"}
+![](images/ft-flu.gif){width="1060"}
 
 [Financial Times comparison of Flu seasons to COVID-19]{.left}
 
@@ -616,7 +618,7 @@ milk_region_line_label
 
 ### Animation is particularly helpful for the **time dimension**
 
-![](images/milk_race_anim.gif){width="550"}
+![](images/milk_race_anim.gif){width="730"}
 
 ["Bar chart race" of top 10 milk producing states]{.left}
 
@@ -776,7 +778,7 @@ animate(gapminder_anim, end_pause = 10,
 :::
 
 ::: {.col}
-![](images/gapminder_animation.gif){width="600"}
+![](images/gapminder_animation.gif){width="790"}
 :::
 
 ---
@@ -854,7 +856,7 @@ animate(milk_race_anim, duration = 17, end_pause = 15,
 :::
 
 ::: {.center}
-![](images/milk_race_anim.gif){width="500"}
+![](images/milk_race_anim.gif){width="660"}
 :::
 :::
 
@@ -897,7 +899,7 @@ Consider using:
 :::
 
 ::: {.col}
-![](images/global_temps_points_anim.gif){width="500"}
+![](images/global_temps_points_anim.gif){width="660"}
 :::
 
 ---
@@ -1193,7 +1195,7 @@ measles_heat_map
 
 ### My activity on Github:
 
-![](images/jhelvy_github.png){width="800"}
+![](images/jhelvy_github.png){width="1060" .nostretch}
 
 <br>
 
@@ -1760,7 +1762,7 @@ head(us_covid)
 
 # Seasonal chart
 
-![](images/seasonal_chart.png){width="700"}
+![](images/seasonal_chart.png){width="930"}
 
 [Source: http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html#Seasonal%20Plot]{.left}
 
@@ -1770,7 +1772,7 @@ head(us_covid)
 
 ## Sankey chart
 
-![](images/energy_sankey.png){width="800"}
+![](images/energy_sankey.png){width="1060"}
 
 Source: https://flowcharts.llnl.gov/
 
@@ -1780,7 +1782,7 @@ Source: https://flowcharts.llnl.gov/
 
 [Would you consider purchasing an electric car?]{.center}
 
-![](images/bevSankey.png){width="700"}
+![](images/bevSankey.png){width="930"}
 
 ::: {.col width="70%" .font70}
 Roberson, Laura A.  & Helveston, J.P. (2020) "[Electric vehicle adoption: can short experiences lead to big change?](https://iopscience.iop.org/article/10.1088/1748-9326/aba715/meta)," Environmental Research Letters. 15(0940c3).<br>Made using the [ggforce](https://www.data-imaginist.com/2019/the-ggforce-awakens-again/) package
