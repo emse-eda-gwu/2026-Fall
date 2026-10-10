@@ -7,10 +7,12 @@ week: 16
 displaydate: December 09, 2026
 format: 
   lexis-revealjs:
+    code-block-height: "800px"
     link-external-newwindow: true
 # Navigate slides with the mouse wheel / trackpad (reveal's native mouseWheel).
 mouse-wheel: true
 progress: false
+from: markdown+autolink_bare_uris
 execute:
   echo: true
   warning: false
@@ -159,7 +161,7 @@ htmltools::tags$iframe(
 
 # **Shiny Nominee**: Degrees of Inequality:<br>The Story of Education in America
 
-![](images/education.png){width="800"}
+![](images/education.png){width="1060"}
 
 ---
 
@@ -247,4 +249,4 @@ htmltools::tags$iframe(
 
 ### (please be specific!)
 
-![](https://media.tenor.com/images/76f5c6f0db05171eef3ee586eba77410/tenor.gif){width="600"}
+![](https://media.tenor.com/images/76f5c6f0db05171eef3ee586eba77410/tenor.gif){width="790"}

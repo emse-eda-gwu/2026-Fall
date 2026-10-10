@@ -7,10 +7,15 @@ week: 9
 displaydate: October 21, 2026
 format: 
   lexis-revealjs:
+    code-block-height: "800px"
     link-external-newwindow: true
 # Navigate slides with the mouse wheel / trackpad (reveal's native mouseWheel).
+include-in-header:
+  - text: |
+      <style>.reveal pre code { max-height: none; }</style>
 mouse-wheel: true
 progress: false
+from: markdown+autolink_bare_uris
 execute:
   echo: true
   warning: false
@@ -676,10 +681,13 @@ diamonds_facet_ncol
 ---
 
 {{< bg-image "images/ft-coronavirus.jpg" size="contain" >}}
+{{< bg-color "#fff1e6" >}}
 
 `r paste0(rep("<br>", 17), collapse = "")`
 
-[From [Financial Times](https://www.ft.com/coronavirus-latest)]{.right}
+::: {.right}
+From [Financial Times](https://www.ft.com/coronavirus-latest)
+:::
 
 ---
 
@@ -819,7 +827,7 @@ milk_compare_dodged
 ## Avoid putting >2 categories in legend (if possible)
 
 ::: {.col}
-![](images/check-bad.png){width="75"}
+![](images/check-bad.png){width="100"}
 
 ```{r}
 #| echo: false
@@ -847,7 +855,7 @@ milk_compare_dodged_bad
 :::
 
 ::: {.col}
-![](images/check-good.png){width="100"}
+![](images/check-good.png){width="130"}
 
 ```{r}
 #| echo: false
@@ -865,7 +873,7 @@ milk_compare_dodged
 
 ::: {.col}
 ::: {.center}
-![](images/check-bad.png){width="75"}
+![](images/check-bad.png){width="100"}
 :::
 
 ```{r}
@@ -880,7 +888,7 @@ milk_compare_dodged_bad
 
 ::: {.col}
 ::: {.center}
-![](images/check-good.png){width="100"}
+![](images/check-good.png){width="130"}
 :::
 
 ```{r}
@@ -1626,7 +1634,7 @@ ggplot(milk_summary_slope,
 ## Overlapping labels?
 
 ::: {.col width="30%" .border}
-![](images/overlapping_labels.png)
+![](images/overlapping_labels.png){width="360" .nostretch}
 :::
 
 ::: {.col width="70%"}
@@ -1640,11 +1648,11 @@ ggplot(milk_summary_slope,
 ## Overlapping labels?<br>**ggrepel** library to the rescue!
 
 ::: {.col width="30%" .border}
-![](images/overlapping_labels.png)
+![](images/overlapping_labels.png){width="360" .nostretch}
 :::
 
 ::: {.col width="70%"}
-![](images/horst_monsters_ggrepel.jpg){width="600"}
+![](images/horst_monsters_ggrepel.jpg){width="790"}
 :::
 
 [Artwork by [@allison_horst](https://twitter.com/allison_horst)]{.left}
@@ -2495,4 +2503,4 @@ gapminder_2007 %>%
 {{< middle >}}
 {{< center >}}
 
-# Reminder:<br>Your [Progress Report](https://eda.seas.gwu.edu/2026-Fall/project/2-progress-report.html) is due in 11 days!
+# Reminder:<br>Your [Initial Report](https://eda.seas.gwu.edu/2026-Fall/project/2-initial-report.html) is due in 11 days!

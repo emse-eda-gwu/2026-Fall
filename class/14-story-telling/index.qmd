@@ -7,6 +7,7 @@ week: 15
 displaydate: December 02, 2026
 format: 
   lexis-revealjs:
+    code-block-height: "800px"
     link-external-newwindow: true
 # Navigate slides with the mouse wheel / trackpad (reveal's native mouseWheel).
 mouse-wheel: true
@@ -78,7 +79,7 @@ agenda(1)
 
 </br>
 
-![](images/kv-01.png){width="800"}
+![](images/kv-01.png){width="1060"}
 
 [source](https://sivers.org/drama)
 
@@ -90,7 +91,7 @@ agenda(1)
 
 </br>
 
-![](images/kv-02.png){width="750"}
+![](images/kv-02.png){width="990"}
 
 [source](https://sivers.org/drama)
 
@@ -102,7 +103,7 @@ agenda(1)
 
 </br>
 
-![](images/kv-03.png){width="800"}
+![](images/kv-03.png){width="1060"}
 
 [source](https://sivers.org/drama)
 
@@ -115,7 +116,7 @@ agenda(1)
 
 ## [Freytag's Pyramid](https://en.wikipedia.org/wiki/Gustav_Freytag)
 
-![](images/freytag_pyramid.png){width="800"}
+![](images/freytag_pyramid.png){width="1060"}
 
 ---
 
@@ -124,7 +125,7 @@ agenda(1)
 
 ## Freytag's Pyramid: **[King Kong](https://en.wikipedia.org/wiki/King_Kong)**
 
-![](images/freytag_pyramid_king_kong.jpg){width="900"}
+![](images/freytag_pyramid_king_kong.jpg){width="1190"}
 
 [source](http://writinghorrorfiction.blogspot.com/2011/03/putting-freytags-pyramid-to-use-in.html)
 
@@ -135,7 +136,7 @@ agenda(1)
 
 ## Freytag's Pyramid: **Research Project**
 
-![](images/freytag_pyramid_research.png){width="1000"}
+![](images/freytag_pyramid_research.png){width="1320"}
 
 ---
 
@@ -144,7 +145,7 @@ agenda(1)
 
 ## Freytag's Pyramid: **Research Project**
 
-![](images/freytag_pyramid_research_labeled.png){width="1000"}
+![](images/freytag_pyramid_research_labeled.png){width="1320"}
 
 ---
 
@@ -159,7 +160,7 @@ agenda(1)
 
 ## Freytag's Pyramid: **Research Project**
 
-![](images/freytag_pyramid_research_charts.png){width="1000"}
+![](images/freytag_pyramid_research_charts.png){width="1320"}
 
 ---
 
@@ -169,7 +170,7 @@ agenda(1)
 
 . . .
 
-![](images/pevSales1.png){width="900"}
+![](images/pevSales1.png){width="1190"}
 
 ---
 
@@ -177,7 +178,7 @@ agenda(1)
 
 ## Use **layers** to build tension / provide context
 
-![](images/pevSales2.png){width="900"}
+![](images/pevSales2.png){width="1190"}
 
 ---
 
@@ -185,7 +186,7 @@ agenda(1)
 
 ## Use **layers** to build tension / provide context
 
-![](images/pevSales3.png){width="900"}
+![](images/pevSales3.png){width="1190"}
 
 ---
 
@@ -193,7 +194,7 @@ agenda(1)
 
 ## Use **animation** to build tension / provide context
 
-![](images/unemployment_chart_vox.jpg){width="900"}
+![](images/unemployment_chart_vox.jpg){width="1190"}
 
 [source](https://www.vox.com/2020/4/2/21203850/unemployment-initial-claims-march-28)
 
@@ -203,7 +204,7 @@ agenda(1)
 
 ## Use **animation** to build tension / provide context
 
-![](images/unemployment_chart.gif)
+![](images/unemployment_chart.gif){width="630" .nostretch}
 
 [source](https://twitter.com/maoam_guy/status/1245887052027232256)
 
@@ -216,7 +217,7 @@ agenda(1)
 
 . . .
 
-![](images/wilke-generals-1.png){width="700"}
+![](images/wilke-generals-1.png){width="930"}
 
 [source](https://serialmentor.com/dataviz/telling-a-story.html#make-a-figure-for-the-generals)
 
@@ -247,7 +248,7 @@ agenda(1)
 
 . . .
 
-![](images/wilke-complex-1.png){width="400"}
+![](images/wilke-complex-1.png){width="530"}
 
 [source](https://serialmentor.com/dataviz/telling-a-story.html#build-up-towards-complex-figures)
 
@@ -257,7 +258,7 @@ agenda(1)
 
 # Build up towards complex figures
 
-![](images/wilke-complex-2.png){width="1100"}
+![](images/wilke-complex-2.png){width="1440"}
 
 [source](https://serialmentor.com/dataviz/telling-a-story.html#build-up-towards-complex-figures)
 
@@ -268,13 +269,13 @@ agenda(1)
 ## Be consistent, but don't be repetitive
 
 ::: {.col .fragment}
-![](images/wilke-repetitive-1.png){width="500"}
+![](images/wilke-repetitive-1.png){width="660"}
 
 [source](https://serialmentor.com/dataviz/telling-a-story.html#be-consistent-but-dont-be-repetitive)
 :::
 
 ::: {.col .fragment}
-![](images/wilke-repetitive-2.png){width="500"}
+![](images/wilke-repetitive-2.png){width="660"}
 
 [source](https://serialmentor.com/dataviz/telling-a-story.html#be-consistent-but-dont-be-repetitive)
 :::
@@ -296,7 +297,7 @@ agenda(2)
 
 # Hitchcock's rule
 
-![](images/Visual-Storytelling-Rules-The-Hitchcock-Rule-1.png){width="900"}
+![](images/Visual-Storytelling-Rules-The-Hitchcock-Rule-1.png){width="1190"}
 
 ---
 
@@ -343,7 +344,7 @@ agenda(2)
 
 # Except for Tesla, EV adoption in the U.S. is **flat**
 
-![](images/pevSales3.png){width="900"}
+![](images/pevSales3.png){width="1190"}
 
 ---
 
@@ -351,14 +352,14 @@ agenda(2)
 
 # Tesla's Model 3 is a Game Changer for EVs
 
-![](images/pevSales3.png){width="900"}
+![](images/pevSales3.png){width="1190"}
 
 ---
 
 {{< center >}}
 
-<p style="font-size:40pt;">> 40pt font for titles</p>
-<p style="font-size:24pt;">> 24pt font for all other text</p>
+<p style="font-size:40pt;">&gt; 40pt font for titles</p>
+<p style="font-size:24pt;">&gt; 24pt font for all other text</p>
 
 (Exception: footer text can be small)
 
@@ -440,11 +441,11 @@ Blue text on a black background is horrible
 # Use high contrast between font and background color
 
 ::: {.col}
-![](images/fives-1.png){width="500"}
+![](images/fives-1.png){width="660"}
 :::
 
 ::: {.col}
-![](images/fives-2.png){width="500"}
+![](images/fives-2.png){width="660"}
 :::
 
 ---
@@ -649,7 +650,7 @@ spelling::spell_check_files("report.qmd")
 
 </br>
 
-- ### We'll watch these during class period on Dec 11
+- ### We'll watch these during class period on Dec 9
 - ### 10 mins each
 - ### At the end, we'll announce awards:
 

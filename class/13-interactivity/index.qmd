@@ -7,10 +7,15 @@ week: 13
 displaydate: November 18, 2026
 format: 
   lexis-revealjs:
+    code-block-height: "800px"
     link-external-newwindow: true
 # Navigate slides with the mouse wheel / trackpad (reveal's native mouseWheel).
+include-in-header:
+  - text: |
+      <style>.reveal pre code { max-height: none; }</style>
 mouse-wheel: true
 progress: false
+from: markdown+autolink_bare_uris
 execute:
   echo: true
   warning: false
@@ -863,13 +868,7 @@ install.packages('rsconnect')
 
 A Shiny app is a web page (UI) connected to a computer running a live R session (Server)
 
-```{r}
-#| echo: false
-#| fig-align: center
-#| out-width: '60%'
-
-knitr::include_graphics("images/cheat1.png")
-```
+![](images/cheat1.png){width="860" .nostretch}
 
 ---
 
@@ -911,13 +910,7 @@ shinyApp(ui, server)
 
 # Building a shiny app
 
-```{r}
-#| echo: false
-#| fig-align: center
-#| out-width: '50%'
-
-knitr::include_graphics("images/cheat1.png")
-```
+![](images/cheat1.png){width="800" .nostretch}
 
 ::: {.col}
 **`ui`**
@@ -945,13 +938,7 @@ knitr::include_graphics("images/cheat1.png")
 
 - **Option 1**: Click the "Run App" button in the toolbar:
 
-```{r}
-#| echo: false
-#| fig-align: center
-#| out-width: '25%'
-
-knitr::include_graphics("images/run_app.png")
-```
+![](images/run_app.png){width="360" .nostretch}
 
 - **Option 2**: Use a keyboard shortcut: Cmd/Ctrl + Shift + Enter.
 
@@ -1311,13 +1298,7 @@ Output function  | Description
 
 # Building a shiny app
 
-```{r}
-#| echo: false
-#| fig-align: center
-#| out-width: '50%'
-
-knitr::include_graphics("images/cheat1.png")
-```
+![](images/cheat1.png){width="800" .nostretch}
 
 ::: {.col}
 **`ui`**
@@ -1516,7 +1497,7 @@ countdown(
 :::
 
 ::: {.col}
-![](images/caseConverter.png){width="500"}
+![](images/caseConverter.png){width="660"}
 :::
 
 ---

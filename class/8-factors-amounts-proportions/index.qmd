@@ -7,6 +7,7 @@ week: 8
 displaydate: October 14, 2026
 format: 
   lexis-revealjs:
+    code-block-height: "800px"
     link-external-newwindow: true
 # Navigate slides with the mouse wheel / trackpad (reveal's native mouseWheel).
 mouse-wheel: true
@@ -77,7 +78,7 @@ countdown(
 ::: {.col}
 <br>
 
-![](https://github.com/emse-eda-gwu/2026-Fall/raw/main/images/quiz_doge.png){width="400"}
+![](https://github.com/emse-eda-gwu/2026-Fall/raw/main/images/quiz_doge.png){width="530"}
 :::
 
 ---
@@ -87,8 +88,8 @@ countdown(
 
 # Next projects due:
 
-## - [Mini project 2](https://eda.seas.gwu.edu/2026-Fall/mini/2-exploring-data.html): Exploring Data (Due 10/13)
-## - [Project Progress Report](https://eda.seas.gwu.edu/2026-Fall/project/2-progress-report.html) (Due 10/25)
+## - [Mini project 2](https://eda.seas.gwu.edu/2026-Fall/mini/2-exploring-data.html): Exploring Data (Due 10/25)
+## - [Initial Report](https://eda.seas.gwu.edu/2026-Fall/project/2-initial-report.html) (Due 11/01)
 
 ---
 
@@ -141,12 +142,12 @@ agenda(1)
 # Sorting in ggplot is done by reordering factors
 
 ::: {.col}
-![](images/check-bad.png){width="75"}
+![](images/check-bad.png){width="100"}
 ![](figs/federal_spending_bars_unsorted.png)
 :::
 
 ::: {.col}
-![](images/check-good.png){width="100"}
+![](images/check-good.png){width="130"}
 ![](figs/federal_spending_bars.png)
 :::
 
@@ -238,7 +239,7 @@ Loaded with `library(tidyverse)`
 :::
 
 ::: {.col width="40%"}
-![](images/forcats.png){width="400"}
+![](images/forcats.png){width="530"}
 :::
 
 ---
@@ -556,7 +557,7 @@ federal_spending %>%
 :::
 
 ::: {.col width="40%"}
-![](figs/federal_spending_bars_top5.png){width="500"}
+![](figs/federal_spending_bars_top5.png){width="560"}
 :::
 
 ---
@@ -588,7 +589,7 @@ avengers %>%
 :::
 
 ::: {.col}
-![](figs/avengers_bars.png){width="500"}
+![](figs/avengers_bars.png){width="660"}
 :::
 
 ---
@@ -624,7 +625,7 @@ avengers %>%
 :::
 
 ::: {.col}
-![](figs/avengers_bars_top10.png){width="450"}
+![](figs/avengers_bars_top10.png){width="600"}
 :::
 
 ---
@@ -665,7 +666,7 @@ avengers %>%
 :::
 
 ::: {.col}
-![](figs/avengers_bars_top10_gender.png){width="450"}
+![](figs/avengers_bars_top10_gender.png){width="600"}
 :::
 
 ---
@@ -676,7 +677,7 @@ avengers %>%
 
 Use the `wildlife_impacts` data to create the following plot
 
-![](figs/wildlife_phase_of_flight_bars.png){width="800"}
+![](figs/wildlife_phase_of_flight_bars.png){width="1060"}
 
 ```{r}
 #| echo: false
@@ -715,7 +716,7 @@ agenda(2)
 :::
 
 ::: {.col}
-![](images/dots.png){width="280"}
+![](images/dots.png){width="370"}
 :::
 
 ::: {.col}
@@ -736,7 +737,7 @@ agenda(2)
 :::
 
 ::: {.col}
-![](images/dots.png){width="160"}
+![](images/dots.png){width="210"}
 
 ## Dot chart
 
@@ -744,7 +745,7 @@ agenda(2)
 :::
 
 ::: {.col}
-![](images/lollipop_rotated.png){width="330"}
+![](images/lollipop_rotated.png){width="440"}
 
 ## Lollipop chart
 
@@ -757,7 +758,7 @@ agenda(2)
 
 ## Bars are good for highlighting specific categories
 
-![](figs/federal_spending_bars_highlight_title.png){width="700"}
+![](figs/federal_spending_bars_highlight_title.png){width="950"}
 
 ---
 
@@ -768,11 +769,11 @@ agenda(2)
 <!-- Idea from https://www.data-to-viz.com/graph/lollipop.html -->
 
 ::: {.col}
-![](figs/life_expectancy_bars.png){width="400"}
+![](figs/life_expectancy_bars.png){width="540"}
 :::
 
 ::: {.col}
-![](figs/life_expectancy_lollipop.png){width="400"}
+![](figs/life_expectancy_lollipop.png){width="540"}
 :::
 
 ---
@@ -782,11 +783,11 @@ agenda(2)
 ## Or use dots and don't set axis to 0
 
 ::: {.col}
-![](figs/life_expectancy_lollipop.png){width="500"}
+![](figs/life_expectancy_lollipop.png){width="660"}
 :::
 
 ::: {.col}
-![](figs/life_expectancy_dots.png){width="500"}
+![](figs/life_expectancy_dots.png){width="660"}
 :::
 
 ---
@@ -1002,7 +1003,7 @@ Create the following charts:
 ::: {.col}
 Data: `bears`
 
-![](figs/bear_bars.png){width="500"}
+![](figs/bear_bars.png){width="660"}
 :::
 
 ::: {.col}
@@ -1060,7 +1061,7 @@ agenda(3)
 :::
 
 ::: {.col}
-![](images/pie.png){width="300"}
+![](images/pie.png){width="400"}
 :::
 
 ::: {.col}
@@ -1081,11 +1082,11 @@ agenda(3)
 :::
 
 ::: {.col}
-![](images/pie.png){width="160"}
+![](images/pie.png){width="210"}
 
 ## Pie charts
 
-![](figs/milk_2017_pie-1.png){width="300"}
+![](figs/milk_2017_pie-1.png){width="400"}
 :::
 
 ::: {.col}
@@ -1093,7 +1094,7 @@ agenda(3)
 
 ## Waffle charts
 
-![](figs/milk_waffle_2017.png){width="300"}
+![](figs/milk_waffle_2017.png){width="400"}
 :::
 
 ---
@@ -1131,7 +1132,7 @@ milk_production %>%
 :::
 
 ::: {.col width="40%"}
-![](figs/milk_2017_bars_stacked.png){width="320"}
+![](figs/milk_2017_bars_stacked.png){width="420"}
 :::
 
 ---
@@ -1208,7 +1209,7 @@ milk_production %>%
 :::
 
 ::: {.col width="40%"}
-![](figs/milk_2017_bars_stacked_toomany.png){width="320"}
+![](figs/milk_2017_bars_stacked_toomany.png){width="420"}
 :::
 
 ---
@@ -1307,7 +1308,7 @@ Better for comparing **parts**:
 ## [Where stacking is useful]{.center}
 
 ::: {.col width="60%"}
-![](images/bechdel-stacked.png){width="550"}
+![](images/bechdel-stacked.png){width="720"}
 
 [https://fivethirtyeight.com/features/the-dollar-and-cents-case-against-hollywoods-exclusion-of-women/]{.font70}
 :::
@@ -1322,7 +1323,7 @@ Better for comparing **parts**:
 ## [Where stacking is useful]{.center}
 
 ::: {.col width="60%"}
-![](images/Coles-Graph.png){width="600"}
+![](images/Coles-Graph.png){width="780"}
 
 [https://www.perceptualedge.com/blog/?p=2239]{.font80}
 :::
@@ -1534,7 +1535,7 @@ milk_production %>%
 ## Pies are still useful if the sum of components matters
 
 ::: {.col}
-![](images/bundestag-bars-stacked.png){width="250"}
+![](images/bundestag-bars-stacked.png){width="330"}
 :::
 
 ::: {.col}
@@ -1556,7 +1557,7 @@ milk_production %>%
 
 ## The best pies are **square pies**
 
-![](images/square-pies-rule.png){width="700"}
+![](images/square-pies-rule.png){width="930"}
 
 [https://eagereyes.org/blog/2016/a-reanalysis-of-a-study-about-square-pie-charts-from-2009]{.font80}
 
