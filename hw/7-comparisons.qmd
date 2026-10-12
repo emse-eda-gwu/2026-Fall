@@ -5,4 +5,38 @@ params:
   purpose: 'The purpose of this assignment is to learn some of the technical details of how to create charts for **comparing values** to one another and / or to a benchmark.'
 ---
 
-Coming soon!
+```{r child = here::here("fragments", "hw.qmd")}
+```
+
+{{< include ../fragments/hw-get-organized.qmd >}}
+
+# 2. Readings
+
+> "At the heart of quantitative reasoning is a single question: Compared to what?"
+>
+> -- Edward Tufte
+
+Most of the readings this week have code in them that illustrate how to create each chart type, and I encourage you to try and reproduce a few of the examples provided in R yourself. You may also want to take a look at the [top 50 ggplots](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html), which contains examples with ggplot code to create 50 common visualizations.
+
+- [Slope charts](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html#Slope%20Chart)
+- [Bullet charts](https://themockup.blog/posts/2020-11-29-bullet-chart-variants-in-r/)
+- [Dumbell charts](http://uc-r.github.io/cleveland-dot-plots)
+- Wilke: [7 - Visualizing distributions](https://clauswilke.com/dataviz/histograms-density-plots.html)
+- Wilke: [9 - Visualizing many distributions at once](https://clauswilke.com/dataviz/boxplots-violins.html)
+- [Dual-Scaled Axes in Graphs - Are They Ever the Best Solution?](http://www.perceptualedge.com/articles/visual_business_intelligence/dual-scaled_axes.pdf)
+
+# 3. Make a Chart...or 3
+
+Once you've read through everything, add a code chunk in your ``r hw_file`` file that creates one of the charts you saw in one of the readings. **Cite the source** of the chart. The goal is to try and reproduce the chart as closely as possible to how it looks in the reading. While it is okay to copy-paste code directly into your reflection, try to write the code yourself. Practicing the coding yourself is key to mastering these skills. You may need to modify the figure dimensions in the chunk settings.
+
+Then make more charts. Like other assignments, you'll get as much out of this as you put in. There's no hard requirement I'm looking for, but I do think you should practice making more than one chart. Think through carefully and be thoughtful about the design choices you're making. Are you far enough along in your project to include a chart that you are thinking about for your project? Maybe try making that!
+
+# 4. Reflect
+
+> **This week, consider writing about a chart you've seen that makes a comparison across groups or categories.**
+
+{{< include ../fragments/hw-reflect.qmd >}}
+
+# 5. Submit
+
+{{< include ../fragments/hw-submit.qmd >}}
