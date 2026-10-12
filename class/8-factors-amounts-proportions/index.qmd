@@ -31,17 +31,16 @@ agenda_items <- c(
 )
 
 # Read in data sets for class
-avengers         <- read_csv(file.path('data', 'avengers.csv'))
-bears            <- read_csv(file.path('data', 'north_america_bear_killings.csv'))
+avengers <- read_csv(file.path('data', 'avengers.csv'))
+bears <- read_csv(file.path('data', 'north_america_bear_killings.csv'))
 federal_spending <- read_csv(file.path('data', 'fed_spending_long.csv'))
-gapminder        <- read_csv(file.path('data', 'gapminder.csv'))
-lotr_words       <- read_csv(file.path('data', 'lotr_words.csv'))
-milk_production  <- read_csv(file.path('data', 'milk_production.csv'))
+gapminder <- read_csv(file.path('data', 'gapminder.csv'))
+lotr_words <- read_csv(file.path('data', 'lotr_words.csv'))
+milk_production <- read_csv(file.path('data', 'milk_production.csv'))
 wildlife_impacts <- read_csv(file.path('data', 'wildlife_impacts.csv'))
 milk_summary_2017 <- milk_production %>%
   filter(year == 2017) %>%
-  mutate(state = fct_other(state,
-    keep = c('California', 'Wisconsin'))) %>%
+  mutate(state = fct_other(state, keep = c('California', 'Wisconsin'))) %>%
   group_by(state) %>%
   summarise(milk_produced = sum(milk_produced)) %>%
   mutate(milk_produced = milk_produced / 10^9)
@@ -57,11 +56,11 @@ milk_summary_2017 <- milk_production %>%
 #| echo: false
 
 countdown(
-  minutes = 12,
+  minutes = 10,
   warn_when = 30,
   update_every = 1,
-  top = 0,
-  right = 0,
+  top = '0.5em',
+  right = '0.5em',
   font_size = "3em"
 )
 ```
@@ -98,14 +97,16 @@ countdown(
 ```{r}
 #| eval: false
 
-avengers         <- read_csv(file.path('data', 'avengers.csv'))
-bears            <- read_csv(file.path('data', 'north_america_bear_killings.csv'))
+avengers <- read_csv(file.path('data', 'avengers.csv'))
+bears <- read_csv(file.path('data', 'north_america_bear_killings.csv'))
 federal_spending <- read_csv(file.path('data', 'fed_spend_long.csv'))
-gapminder        <- read_csv(file.path('data', 'gapminder.csv'))
-lotr_words       <- read_csv(file.path('data', 'lotr_words.csv'))
-milk_production  <- read_csv(file.path('data', 'milk_production.csv'))
+gapminder <- read_csv(file.path('data', 'gapminder.csv'))
+lotr_words <- read_csv(file.path('data', 'lotr_words.csv'))
+milk_production <- read_csv(file.path('data', 'milk_production.csv'))
 wildlife_impacts <- read_csv(file.path('data', 'wildlife_impacts.csv'))
 ```
+
+<br>
 
 ## New packages
 
@@ -161,26 +162,29 @@ agenda(1)
 ::: {.font70}
 ```{r}
 #| eval: false
-#| code-line-numbers: "12"
+#| code-line-numbers: "13"
 
 # Format the data frame
 federal_spending %>%
   group_by(department) %>%
   summarise(
-    rd_budget_bil = sum(rd_budget_mil) / 10^3) %>%
+    rd_budget_bil = sum(rd_budget_mil) / 10^3
+  ) %>%
 
-# Make the chart
+  # Make the chart
   ggplot() +
   geom_col(
     aes(
       x = rd_budget_bil,
       y = reorder(department, rd_budget_bil)
     ),
-    width = 0.7, alpha = 0.8,
+    width = 0.7,
+    alpha = 0.8,
     fill = "steelblue"
   ) +
   scale_x_continuous(
-    expand = expansion(mult = c(0, 0.05))) +
+    expand = expansion(mult = c(0, 0.05))
+  ) +
   theme_minimal_vgrid()
 ```
 :::
@@ -200,25 +204,28 @@ federal_spending %>%
 ::: {.font70}
 ```{r}
 #| eval: false
-#| code-line-numbers: "7"
+#| code-line-numbers: "8"
 
 # Format the data frame
 federal_spending %>%
   group_by(department) %>%
   summarise(
-    rd_budget_bil = sum(rd_budget_mil) / 10^3) %>%
+    rd_budget_bil = sum(rd_budget_mil) / 10^3
+  ) %>%
   mutate(
     department = fct_reorder(department, rd_budget_bil)
   ) %>%
-# Make the chart
+  # Make the chart
   ggplot() +
   geom_col(
     aes(x = rd_budget_bil, y = department),
-    width = 0.7, alpha = 0.8,
+    width = 0.7,
+    alpha = 0.8,
     fill = "steelblue"
   ) +
   scale_x_continuous(
-    expand = expansion(mult = c(0, 0.05))) +
+    expand = expansion(mult = c(0, 0.05))
+  ) +
   theme_minimal_vgrid()
 ```
 :::
@@ -264,24 +271,28 @@ Use `fct_reorder()`
 ::: {.font70}
 ```{r}
 #| eval: false
+#| code-line-numbers: "8"
 
 # Format the data frame
 federal_spending %>%
   group_by(department) %>%
   summarise(
-    rd_budget_bil = sum(rd_budget_mil) / 10^3) %>%
+    rd_budget_bil = sum(rd_budget_mil) / 10^3
+  ) %>%
   mutate(
     department = fct_reorder(department, rd_budget_bil)
   ) %>%
-# Make the chart
+  # Make the chart
   ggplot() +
   geom_col(
     aes(x = rd_budget_bil, y = department),
-    width = 0.7, alpha = 0.8,
+    width = 0.7,
+    alpha = 0.8,
     fill = "steelblue"
   ) +
   scale_x_continuous(
-    expand = expansion(mult = c(0, 0.05))) +
+    expand = expansion(mult = c(0, 0.05))
+  ) +
   theme_minimal_vgrid()
 ```
 :::
@@ -305,18 +316,21 @@ federal_spending %>%
 # Format the data frame
 lotr_words %>%
   pivot_longer(
-      names_to = 'gender',
-      values_to = 'wordCount',
-      cols = Female:Male) %>%
+    names_to = 'gender',
+    values_to = 'wordCount',
+    cols = Female:Male
+  ) %>%
 
-# Make the chart
+  # Make the chart
   ggplot() +
   geom_col(
     aes(x = wordCount, y = Film),
-    width = 0.7, alpha = 0.8
+    width = 0.7,
+    alpha = 0.8
   ) +
   scale_x_continuous(
-    expand = expansion(mult = c(0, 0.05))) +
+    expand = expansion(mult = c(0, 0.05))
+  ) +
   theme_minimal_vgrid()
 ```
 :::
@@ -331,31 +345,39 @@ lotr_words %>%
 ### 2. Reorder factors **manually** with `fct_relevel()`
 
 ::: {.col}
-::: {.font70}
+::: {.font60}
 ```{r}
 #| eval: false
-#| code-line-numbers: "7,8,9,10,11"
+#| code-line-numbers: "9-16"
 
 # Format the data frame
 lotr_words %>%
   pivot_longer(
-      names_to = 'gender',
-      values_to = 'wordCount',
-      cols = Female:Male) %>%
+    names_to = 'gender',
+    values_to = 'wordCount',
+    cols = Female:Male
+  ) %>%
   mutate(
-    Film = fct_relevel(Film, levels = c(
-      'The Fellowship Of The Ring',
-      'The Two Towers',
-      'The Return Of The King'))) %>%
+    Film = fct_relevel(
+      Film,
+      levels = c(
+        'The Fellowship Of The Ring',
+        'The Two Towers',
+        'The Return Of The King'
+      )
+    )
+  ) %>%
 
-# Make the chart
+  # Make the chart
   ggplot() +
   geom_col(
     aes(x = wordCount, y = Film),
-    width = 0.7, alpha = 0.8
+    width = 0.7,
+    alpha = 0.8
   ) +
   scale_x_continuous(
-    expand = expansion(mult = c(0, 0.05))) +
+    expand = expansion(mult = c(0, 0.05))
+  ) +
   theme_minimal_vgrid()
 ```
 :::
@@ -379,18 +401,21 @@ lotr_words %>%
 # Format the data frame
 lotr_words %>%
   pivot_longer(
-      names_to = 'gender',
-      values_to = 'wordCount',
-      cols = Female:Male) %>%
+    names_to = 'gender',
+    values_to = 'wordCount',
+    cols = Female:Male
+  ) %>%
 
-# Make the chart
+  # Make the chart
   ggplot() +
   geom_col(
     aes(x = wordCount, y = Film),
-    width = 0.7, alpha = 0.8
+    width = 0.7,
+    alpha = 0.8
   ) +
   scale_x_continuous(
-    expand = expansion(mult = c(0, 0.05))) +
+    expand = expansion(mult = c(0, 0.05))
+  ) +
   theme_minimal_vgrid()
 ```
 :::
@@ -409,30 +434,36 @@ lotr_words %>%
 `"new label" = "old label"`
 
 ::: {.col width="60%"}
-::: {.font70}
+::: {.font60}
 ```{r}
 #| eval: false
-#| code-line-numbers: "7,8,9,10"
+#| code-line-numbers: "9-12"
 
 # Format the data frame
 lotr_words %>%
   pivot_longer(
-      names_to = 'gender',
-      values_to = 'wordCount',
-      cols = Female:Male) %>%
+    names_to = 'gender',
+    values_to = 'wordCount',
+    cols = Female:Male
+  ) %>%
   mutate(
-    Film = fct_recode(Film,
+    Film = fct_recode(
+      Film,
       'The Fellowship\nof the Ring' = 'The Fellowship Of The Ring',
-      'The Return\nof the King' = 'The Return Of The King')) %>%
+      'The Return\nof the King' = 'The Return Of The King'
+    )
+  ) %>%
 
-# Make the chart
+  # Make the chart
   ggplot() +
   geom_col(
     aes(x = wordCount, y = Film),
-    width = 0.7, alpha = 0.8
+    width = 0.7,
+    alpha = 0.8
   ) +
   scale_x_continuous(
-    expand = expansion(mult = c(0, 0.05))) +
+    expand = expansion(mult = c(0, 0.05))
+  ) +
   theme_minimal_vgrid()
 ```
 :::
@@ -447,34 +478,42 @@ lotr_words %>%
 ### 2 & 3. Modify and reorder factors manually
 
 ::: {.col width="60%"}
-::: {.font70}
+::: {.font60}
 ```{r}
 #| eval: false
-#| code-line-numbers: "7,8,9,10,11,12,13,14"
+#| code-line-numbers: "9-21"
 
 # Format the data frame
 lotr_words %>%
   pivot_longer(
-      names_to = 'gender',
-      values_to = 'wordCount',
-      cols = Female:Male) %>%
+    names_to = 'gender',
+    values_to = 'wordCount',
+    cols = Female:Male
+  ) %>%
   mutate(
-    Film = fct_relevel(Film, levels = c(
-      'The Fellowship Of The Ring',
-      'The Two Towers',
-      'The Return Of The King')),
-    Film = fct_recode(Film,
+    Film = fct_relevel(
+      Film,
+      levels = c(
+        'The Fellowship Of The Ring',
+        'The Two Towers',
+        'The Return Of The King'
+      )
+    ),
+    Film = fct_recode(
+      Film,
       'The Fellowship\nof the Ring' = 'The Fellowship Of The Ring',
-      'The Return\nof the King' = 'The Return Of The King')) %>%
+      'The Return\nof the King' = 'The Return Of The King'
+    )
+  ) %>%
 
-# Make the chart
+  # Make the chart
   ggplot() +
   geom_col(
-      aes(x = wordCount, y = Film),
-      width = 0.7, alpha = 0.8
+    aes(x = wordCount, y = Film),
+    width = 0.7,
+    alpha = 0.8
   ) +
-  scale_x_continuous(
-    expand = expansion(mult = c(0, 0.05))) +
+  scale_x_continuous(expand = expansion(mult = c(0, 0.05))) +
   theme_minimal_vgrid()
 ```
 :::
@@ -497,19 +536,22 @@ lotr_words %>%
 federal_spending %>%
   group_by(department) %>%
   summarise(
-    rd_budget_bil = sum(rd_budget_mil) / 10^3) %>%
+    rd_budget_bil = sum(rd_budget_mil) / 10^3
+  ) %>%
   mutate(
     department = fct_reorder(department, rd_budget_bil)
   ) %>%
-# Make the chart
+  # Make the chart
   ggplot() +
   geom_col(
     aes(x = rd_budget_bil, y = department),
-    width = 0.7, alpha = 0.8,
+    width = 0.7,
+    alpha = 0.8,
     fill = "steelblue"
   ) +
   scale_x_continuous(
-    expand = expansion(mult = c(0, 0.05))) +
+    expand = expansion(mult = c(0, 0.05))
+  ) +
   theme_minimal_vgrid()
 ```
 :::
@@ -526,31 +568,38 @@ federal_spending %>%
 **Strategy**: Merge smaller factors into "Other" with `fct_other()`
 
 ::: {.col width="60%"}
-::: {.font70}
+::: {.font60}
 ```{r}
 #| eval: false
-#| code-line-numbers: "3,4,5"
+#| code-line-numbers: "4-7"
 
 # Format the data frame
 federal_spending %>%
   mutate(
-    department = fct_other(department,
-      keep = c('DOD', 'HHS', 'NIH', 'NASA', 'DOE'))) %>%
+    department = fct_other(
+      department,
+      keep = c('DOD', 'HHS', 'NIH', 'NASA', 'DOE')
+    )
+  ) %>%
   group_by(department) %>%
   summarise(
-    rd_budget_bil = sum(rd_budget_mil) / 10^3) %>%
+    rd_budget_bil = sum(rd_budget_mil) / 10^3
+  ) %>%
   mutate(
-    department = fct_reorder(department, rd_budget_bil)) %>%
+    department = fct_reorder(department, rd_budget_bil)
+  ) %>%
 
-# Make the chart
+  # Make the chart
   ggplot() +
   geom_col(
     aes(x = rd_budget_bil, y = department),
-    width = 0.7, alpha = 0.8,
+    width = 0.7,
+    alpha = 0.8,
     fill = "steelblue"
   ) +
   scale_x_continuous(
-    expand = expansion(mult = c(0, 0.05))) +
+    expand = expansion(mult = c(0, 0.05))
+  ) +
   theme_minimal_vgrid()
 ```
 :::
@@ -573,16 +622,19 @@ federal_spending %>%
 # Format the data frame
 avengers %>%
   mutate(
-    name_alias = fct_reorder(name_alias, appearances)) %>%
+    name_alias = fct_reorder(name_alias, appearances)
+  ) %>%
 
-# Make the chart
+  # Make the chart
   ggplot() +
   geom_col(
-    aes(x = appearances,y = name_alias),
-    width = 0.7, alpha = 0.8
+    aes(x = appearances, y = name_alias),
+    width = 0.7,
+    alpha = 0.8
   ) +
   scale_x_continuous(
-    expand = expansion(mult = c(0, 0.05))) +
+    expand = expansion(mult = c(0, 0.05))
+  ) +
   theme_minimal_vgrid()
 ```
 :::
@@ -602,23 +654,26 @@ avengers %>%
 ::: {.font70}
 ```{r}
 #| eval: false
-#| code-line-numbers: "5,6"
+#| code-line-numbers: "6,7"
 
 # Format the data frame
 avengers %>%
   mutate(
-    name_alias = fct_reorder(name_alias, appearances)) %>%
+    name_alias = fct_reorder(name_alias, appearances)
+  ) %>%
   arrange(desc(appearances)) %>%
   slice(1:10) %>%
 
-# Make the chart
+  # Make the chart
   ggplot() +
   geom_col(
     aes(x = appearances, y = name_alias),
-    width = 0.7, alpha = 0.8
+    width = 0.7,
+    alpha = 0.8
   ) +
   scale_x_continuous(
-    expand = expansion(mult = c(0, 0.05))) +
+    expand = expansion(mult = c(0, 0.05))
+  ) +
   theme_minimal_vgrid()
 ```
 :::
@@ -638,17 +693,18 @@ avengers %>%
 ::: {.font70}
 ```{r}
 #| eval: false
-#| code-line-numbers: "5,6,7"
+#| code-line-numbers: "6,7,8"
 
 # Format the data frame
 avengers %>%
   mutate(
-    name_alias = fct_reorder(name_alias, appearances)) %>%
+    name_alias = fct_reorder(name_alias, appearances)
+  ) %>%
   arrange(desc(appearances)) %>%
   group_by(gender) %>%
   slice(1:10) %>%
 
-# Make the chart
+  # Make the chart
   ggplot() +
   geom_col(
     aes(
@@ -656,10 +712,12 @@ avengers %>%
       y = name_alias,
       fill = gender
     ),
-    width = 0.7, alpha = 0.8
+    width = 0.7,
+    alpha = 0.8
   ) +
   scale_x_continuous(
-    expand = expansion(mult = c(0, 0.05))) +
+    expand = expansion(mult = c(0, 0.05))
+  ) +
   theme_minimal_vgrid()
 ```
 :::
@@ -686,8 +744,8 @@ countdown(
   minutes = 15,
   warn_when = 30,
   update_every = 1,
-  top = 0,
-  right = 0,
+  top = '0.5em',
+  right = '0.5em',
   font_size = "2em"
 )
 ```
@@ -806,14 +864,17 @@ federal_spending %>%
   summarise(rd_budget_bil = sum(rd_budget_mil) / 10^3) %>%
   mutate(department = fct_reorder(department, rd_budget_bil)) %>%
 
-# Make chart
+  # Make chart
   ggplot() +
   geom_col(
     aes(x = rd_budget_bil, y = department),
-    width = 0.7, alpha = 0.8,
-    fill = 'steelblue') +
+    width = 0.7,
+    alpha = 0.8,
+    fill = 'steelblue'
+  ) +
   scale_x_continuous(
-    expand = expansion(mult = c(0, 0.05))) +
+    expand = expansion(mult = c(0, 0.05))
+  ) +
   theme_minimal_vgrid()
 ```
 :::
@@ -831,7 +892,7 @@ federal_spending %>%
 ::: {.font70}
 ```{r}
 #| eval: false
-#| code-line-numbers: "7,8,14"
+#| code-line-numbers: "6,13"
 
 # Summarize the data
 federal_spending %>%
@@ -839,17 +900,19 @@ federal_spending %>%
   summarise(rd_budget_bil = sum(rd_budget_mil) / 10^3) %>%
   mutate(
     department = fct_reorder(department, rd_budget_bil),
-    is_dod = if_else(
-      department == 'DOD', TRUE, FALSE)) %>%
+    is_dod = if_else(department == 'DOD', TRUE, FALSE)
+  ) %>%
 
-# Make the chart
+  # Make the chart
   ggplot() +
   geom_col(
-    aes(x = rd_budget_bil, y = department,
-        fill = is_dod),
-    width = 0.7, alpha = 0.8) +
+    aes(x = rd_budget_bil, y = department, fill = is_dod),
+    width = 0.7,
+    alpha = 0.8
+  ) +
   scale_x_continuous(
-    expand = expansion(mult = c(0, 0.05))) +
+    expand = expansion(mult = c(0, 0.05))
+  ) +
   theme_minimal_vgrid() +
   theme(legend.position = 'none')
 ```
@@ -870,7 +933,7 @@ The DOD's R&D budget is nearly the same as all other departments combined
 ::: {.font70}
 ```{r}
 #| eval: false
-#| code-line-numbers: "18"
+#| code-line-numbers: "17"
 
 # Summarize the data
 federal_spending %>%
@@ -879,16 +942,20 @@ federal_spending %>%
   mutate(
     department = fct_reorder(department, rd_budget_bil),
     is_dod = if_else(
-      department == 'DOD', TRUE, FALSE)) %>%
+      department == 'DOD',
+      TRUE,
+      FALSE
+    )
+  ) %>%
 
-# Make the chart
+  # Make the chart
   ggplot() +
   geom_col(
-    aes(x = rd_budget_bil, y = department,
-        fill = is_dod),
-    width = 0.7, alpha = 0.8) +
-  scale_x_continuous(
-    expand = expansion(mult = c(0, 0.05))) +
+    aes(x = rd_budget_bil, y = department, fill = is_dod),
+    width = 0.7,
+    alpha = 0.8
+  ) +
+  scale_x_continuous(expand = expansion(mult = c(0, 0.05))) +
   scale_fill_manual(values = c('grey', 'steelblue')) +
   theme_minimal_vgrid() +
   theme(legend.position = 'none')
@@ -912,21 +979,25 @@ Summarize data frame:
 ::: {.font70}
 ```{r}
 #| eval: false
-#| code-line-numbers: "11,12"
+#| code-line-numbers: "12,13"
 
 # Summarize the data
 federal_spending %>%
   group_by(department) %>%
   summarise(
-    rd_budget_bil = sum(rd_budget_mil) / 10^3) %>%
+    rd_budget_bil = sum(rd_budget_mil) / 10^3
+  ) %>%
   mutate(
-    department = fct_reorder(department, rd_budget_bil)) %>%
+    department = fct_reorder(department, rd_budget_bil)
+  ) %>%
 
-# Make the chart
+  # Make the chart
   ggplot() +
   geom_point(
     aes(x = rd_budget_bil, y = department),
-    size = 2.5, color = 'steelblue') +
+    size = 2.5,
+    color = 'steelblue'
+  ) +
   theme_minimal_vgrid()
 ```
 :::
@@ -948,25 +1019,29 @@ Summarize data frame:
 ::: {.font70}
 ```{r}
 #| eval: false
-#| code-line-numbers: "11,12,13,15,16"
+#| code-line-numbers: "13-14,16-17"
 
 # Summarize the data
 federal_spending %>%
   group_by(department) %>%
   summarise(
-    rd_budget_bil = sum(rd_budget_mil) / 10^3) %>%
+    rd_budget_bil = sum(rd_budget_mil) / 10^3
+  ) %>%
   mutate(
-    department = fct_reorder(department, rd_budget_bil)) %>%
+    department = fct_reorder(department, rd_budget_bil)
+  ) %>%
 
-# Make the chart
+  # Make the chart
   ggplot() +
   geom_segment(
-    aes(x = 0, xend = rd_budget_bil,
-        y = department, yend = department),
-    color = 'grey') +
+    aes(x = 0, xend = rd_budget_bil, y = department, yend = department),
+    color = 'grey'
+  ) +
   geom_point(
     aes(x = rd_budget_bil, y = department),
-    size = 2.5, color = 'steelblue') +
+    size = 2.5,
+    color = 'steelblue'
+  ) +
   theme_minimal_vgrid()
 ```
 :::
@@ -990,8 +1065,8 @@ countdown(
   minutes = 20,
   warn_when = 30,
   update_every = 1,
-  top = 0,
-  right = 0,
+  top = '0.5em',
+  right = '0.5em',
   font_size = "2em"
 )
 ```
@@ -1105,28 +1180,32 @@ agenda(3)
 ::: {.font70}
 ```{r}
 #| eval: false
-#| code-line-numbers: "11,12"
+#| code-line-numbers: "10,11"
 
 # Format the data
 milk_production %>%
   filter(year == 2017) %>%
-  mutate(state = fct_other(state,
-    keep = c('California', 'Wisconsin'))) %>%
+  mutate(state = fct_other(state, keep = c('California', 'Wisconsin'))) %>%
   group_by(state) %>%
   summarise(milk_produced = sum(milk_produced)) %>%
 
-# Make the chart
+  # Make the chart
   ggplot() +
   geom_col(
     aes(x = "", y = milk_produced, fill = state),
-    width = 0.7, alpha = 0.8) +
+    width = 0.7,
+    alpha = 0.8
+  ) +
   scale_y_continuous(
-    expand = expansion(mult = c(0, 0.05))) +
+    expand = expansion(mult = c(0, 0.05))
+  ) +
   theme_minimal_hgrid() +
-  labs(x = NULL,
-       y = 'Milk produced (lbs)',
-       fill = 'State',
-       title = '2017 Milk Production\nby State')
+  labs(
+    x = NULL,
+    y = 'Milk produced (lbs)',
+    fill = 'State',
+    title = '2017 Milk Production\nby State'
+  )
 ```
 :::
 :::
@@ -1143,28 +1222,32 @@ milk_production %>%
 ::: {.font70}
 ```{r}
 #| eval: false
-#| code-line-numbers: "11,12"
+#| code-line-numbers: "10,11"
 
 # Format the data
 milk_production %>%
   filter(year == 2017) %>%
-  mutate(state = fct_other(state,
-    keep = c('California', 'Wisconsin'))) %>%
+  mutate(state = fct_other(state, keep = c('California', 'Wisconsin'))) %>%
   group_by(state) %>%
   summarise(milk_produced = sum(milk_produced)) %>%
 
-# Make the chart
+  # Make the chart
   ggplot() +
   geom_col(
     aes(x = milk_produced, y = "", fill = state),
-    width = 0.7, alpha = 0.8) +
+    width = 0.7,
+    alpha = 0.8
+  ) +
   scale_x_continuous(
-    expand = expansion(mult = c(0, 0.05))) +
+    expand = expansion(mult = c(0, 0.05))
+  ) +
   theme_minimal_hgrid() +
-  labs(y = NULL,
-       x = 'Milk produced (lbs)',
-       fill = 'State',
-       title = '2017 Milk Production by State')
+  labs(
+    y = NULL,
+    x = 'Milk produced (lbs)',
+    fill = 'State',
+    title = '2017 Milk Production by State'
+  )
 ```
 :::
 :::
@@ -1178,32 +1261,39 @@ milk_production %>%
 ## Stacked bars - not great for more than a few categories
 
 ::: {.col width="60%"}
-::: {.font70}
+::: {.font60}
 ```{r}
 #| eval: false
-#| code-line-numbers: "5,6"
 
 # Format the data
 milk_production %>%
   filter(year == 2017) %>%
-  mutate(state = fct_other(state,
-    keep = c('California', 'Wisconsin',
-             'New York', 'Idaho'))) %>%
+  mutate(
+    state = fct_other(
+      state,
+      keep = c('California', 'Wisconsin', 'New York', 'Idaho')
+    )
+  ) %>%
   group_by(state) %>%
   summarise(milk_produced = sum(milk_produced))
 
 # Make the chart
-  ggplot() +
+ggplot() +
   geom_col(
     aes(x = "", y = milk_produced, fill = state),
-    width = 0.7, alpha = 0.8) +
+    width = 0.7,
+    alpha = 0.8
+  ) +
   scale_y_continuous(
-    expand = expansion(mult = c(0, 0.05))) +
+    expand = expansion(mult = c(0, 0.05))
+  ) +
   theme_minimal_vgrid() +
-  labs(x = NULL,
-       y = 'Milk produced (lbs)',
-       fill = 'State',
-       title = '2017 Milk Production\nby State')
+  labs(
+    x = NULL,
+    y = 'Milk produced (lbs)',
+    fill = 'State',
+    title = '2017 Milk Production\nby State'
+  )
 ```
 :::
 :::
@@ -1226,23 +1316,27 @@ Better for **part-to-whole comparison**
 # Format the data
 milk_production %>%
   filter(year == 2017) %>%
-  mutate(state = fct_other(state,
-    keep = c('California', 'Wisconsin'))) %>%
+  mutate(state = fct_other(state, keep = c('California', 'Wisconsin'))) %>%
   group_by(state) %>%
   summarise(milk_produced = sum(milk_produced)) %>%
   mutate(state = fct_reorder(state, milk_produced)) %>%
 
-# Make the chart
+  # Make the chart
   ggplot() +
   geom_col(
     aes(x = milk_produced, y = state),
-    width = 0.7, alpha = 0.8) +
+    width = 0.7,
+    alpha = 0.8
+  ) +
   scale_x_continuous(
-    expand = expansion(mult = c(0, 0.05))) +
+    expand = expansion(mult = c(0, 0.05))
+  ) +
   theme_minimal_vgrid() +
-  labs(x = 'Milk produced (lbs)',
-       y = 'State',
-       title = '2017 Milk Production by State')
+  labs(
+    x = 'Milk produced (lbs)',
+    y = 'State',
+    title = '2017 Milk Production by State'
+  )
 ```
 :::
 :::
@@ -1265,30 +1359,32 @@ Better:
 ::: {.font70}
 ```{r}
 #| eval: false
-#| code-line-numbers: "14"
+#| code-line-numbers: "11"
 
 milk_production %>%
   filter(year %in% c(1970, 2017)) %>%
-  mutate(state = fct_other(state,
-    keep = c('California', 'Wisconsin'))) %>%
+  mutate(state = fct_other(state, keep = c('California', 'Wisconsin'))) %>%
   group_by(year, state) %>%
   summarise(milk_produced = sum(milk_produced)) %>%
 
-# Make the chart
+  # Make the chart
   ggplot() +
   geom_col(
-    aes(x = milk_produced,
-        y = as.factor(year),
-        fill = state),
+    aes(x = milk_produced, y = as.factor(year), fill = state),
     position = 'dodge',
-    width = 0.7, alpha = 0.8) +
+    width = 0.7,
+    alpha = 0.8
+  ) +
   scale_x_continuous(
-    expand = expansion(mult = c(0, 0.05))) +
+    expand = expansion(mult = c(0, 0.05))
+  ) +
   theme_minimal_vgrid() +
-  labs(x = 'Milk produced (lbs)',
-       y = 'Year',
-       fill = 'State',
-       title = '1970 & 2017 Milk Production by State')
+  labs(
+    x = 'Milk produced (lbs)',
+    y = 'Year',
+    fill = 'State',
+    title = '1970 & 2017 Milk Production by State'
+  )
 ```
 :::
 :::
@@ -1310,7 +1406,7 @@ Better for comparing **parts**:
 ::: {.col width="60%"}
 ![](images/bechdel-stacked.png){width="720"}
 
-[https://fivethirtyeight.com/features/the-dollar-and-cents-case-against-hollywoods-exclusion-of-women/]{.font70}
+[<https://fivethirtyeight.com/features/the-dollar-and-cents-case-against-hollywoods-exclusion-of-women/>]{.font70}
 :::
 
 ::: {.col width="40%"}
@@ -1325,7 +1421,7 @@ Better for comparing **parts**:
 ::: {.col width="60%"}
 ![](images/Coles-Graph.png){width="780"}
 
-[https://www.perceptualedge.com/blog/?p=2239]{.font80}
+[<https://www.perceptualedge.com/blog/?p=2239>]{.font80}
 :::
 
 ::: {.col width="40%"}
@@ -1343,26 +1439,29 @@ Start with a bar chart
 ::: {.font70}
 ```{r}
 #| fig-show: hide
-#| code-line-numbers: "11,12"
+#| code-line-numbers: "10,11"
 
 # Format the data
 milk_production %>%
   filter(year == 2017) %>%
-  mutate(state = fct_other(state,
-    keep = c('California', 'Wisconsin'))) %>%
+  mutate(state = fct_other(state, keep = c('California', 'Wisconsin'))) %>%
   group_by(state) %>%
   summarise(milk_produced = sum(milk_produced)) %>%
 
-# Make the chart
+  # Make the chart
   ggplot() +
   geom_col(
     aes(x = "", y = milk_produced, fill = state),
-    width = 0.7, alpha = 0.8) +
+    width = 0.7,
+    alpha = 0.8
+  ) +
   theme_minimal_hgrid() +
-  labs(x = NULL,
-       y = 'Milk produced (lbs)',
-       fill = 'State',
-       title = '2017 Milk Production\nby State')
+  labs(
+    x = NULL,
+    y = 'Milk produced (lbs)',
+    fill = 'State',
+    title = '2017 Milk Production\nby State'
+  )
 ```
 :::
 :::
@@ -1376,19 +1475,22 @@ milk_production %>%
 
 milk_production %>%
   filter(year == 2017) %>%
-  mutate(state = fct_other(state,
-    keep = c('California', 'Wisconsin'))) %>%
+  mutate(state = fct_other(state, keep = c('California', 'Wisconsin'))) %>%
   group_by(state) %>%
   summarise(milk_produced = sum(milk_produced)) %>%
   ggplot() +
   geom_col(
     aes(x = "", y = milk_produced, fill = state),
-    width = 0.7, alpha = 0.8) +
+    width = 0.7,
+    alpha = 0.8
+  ) +
   theme_minimal_hgrid() +
-  labs(x = NULL,
-       y = 'Milk produced (lbs)',
-       fill = 'State',
-       title = '2017 Milk Production\nby State')
+  labs(
+    x = NULL,
+    y = 'Milk produced (lbs)',
+    fill = 'State',
+    title = '2017 Milk Production\nby State'
+  )
 ```
 :::
 
@@ -1402,27 +1504,30 @@ Convert bar to pie with `coord_polar()`
 ::: {.font70}
 ```{r}
 #| fig-show: hide
-#| code-line-numbers: "14"
+#| code-line-numbers: "15"
 
 # Format the data
 milk_production %>%
   filter(year == 2017) %>%
-  mutate(state = fct_other(state,
-    keep = c('California', 'Wisconsin'))) %>%
+  mutate(state = fct_other(state, keep = c('California', 'Wisconsin'))) %>%
   group_by(state) %>%
   summarise(milk_produced = sum(milk_produced)) %>%
 
-# Make the chart
+  # Make the chart
   ggplot() +
   geom_col(
     aes(x = "", y = milk_produced, fill = state),
-    width = 0.7, alpha = 0.8) +
+    width = 0.7,
+    alpha = 0.8
+  ) +
   coord_polar(theta = "y") +
   theme_minimal_hgrid() +
-  labs(x = NULL,
-       y = 'Milk produced (lbs)',
-       fill = 'State',
-       title = '2017 Milk Production by State')
+  labs(
+    x = NULL,
+    y = 'Milk produced (lbs)',
+    fill = 'State',
+    title = '2017 Milk Production by State'
+  )
 ```
 :::
 :::
@@ -1436,57 +1541,66 @@ milk_production %>%
 
 milk_production %>%
   filter(year == 2017) %>%
-  mutate(state = fct_other(state,
-    keep = c('California', 'Wisconsin'))) %>%
+  mutate(state = fct_other(state, keep = c('California', 'Wisconsin'))) %>%
   group_by(state) %>%
   summarise(milk_produced = sum(milk_produced)) %>%
   ggplot() +
   geom_col(
     aes(x = "", y = milk_produced, fill = state),
-    width = 0.7, alpha = 0.8) +
+    width = 0.7,
+    alpha = 0.8
+  ) +
   coord_polar(theta = "y") +
   theme_minimal_hgrid() +
-  labs(x = NULL,
-       y = 'Milk produced (lbs)',
-       fill = 'State',
-       title = '2017 Milk Production by State')
+  labs(
+    x = NULL,
+    y = 'Milk produced (lbs)',
+    fill = 'State',
+    title = '2017 Milk Production by State'
+  )
 ```
 :::
 
 ---
 
 ::: {.col width="55%"}
-::: {.font70}
+::: {.font60}
 ```{r}
 #| fig-show: hide
-#| code-line-numbers: "8,9,10,17,18,19,20,22"
 
 # Format the data
 milk_production %>%
   filter(year == 2017) %>%
-  mutate(state = fct_other(state,
-    keep = c('California', 'Wisconsin'))) %>%
+  mutate(state = fct_other(state, keep = c('California', 'Wisconsin'))) %>%
   group_by(state) %>%
   summarise(milk_produced = sum(milk_produced)) %>%
   arrange(desc(state)) %>%
-  mutate(p = 100*(milk_produced / sum(milk_produced)),
-         label = str_c(round(p), '%')) %>%
+  mutate(
+    p = 100 * (milk_produced / sum(milk_produced)),
+    label = str_c(round(p), '%')
+  ) %>%
 
-# Make the chart
+  # Make the chart
   ggplot() +
   geom_col(
     aes(x = "", y = milk_produced, fill = state),
-    width = 0.7, alpha = 0.8) +
+    width = 0.7,
+    alpha = 0.8
+  ) +
   geom_text(
     aes(x = "", y = milk_produced, label = label),
-    color = "white", size = 6,
-    position = position_stack(vjust = 0.5)) +
+    color = "white",
+    size = 6,
+    position = position_stack(vjust = 0.5)
+  ) +
   coord_polar(theta = "y") +
   theme_map() +
-  labs(x = NULL,
-       y = NULL,
-       fill = 'State',
-       title = '2017 Milk Production by State')
+  labs(
+    x = NULL,
+    y = NULL,
+    fill = 'State',
+    title = '2017 Milk Production by State'
+  )
 ```
 :::
 :::
@@ -1504,27 +1618,34 @@ Final chart with labels & `theme_map()`
 
 milk_production %>%
   filter(year == 2017) %>%
-  mutate(state = fct_other(state,
-    keep = c('California', 'Wisconsin'))) %>%
+  mutate(state = fct_other(state, keep = c('California', 'Wisconsin'))) %>%
   group_by(state) %>%
   summarise(milk_produced = sum(milk_produced)) %>%
   arrange(desc(state)) %>%
-  mutate(p = 100*(milk_produced / sum(milk_produced)),
-         label = str_c(round(p), '%')) %>%
+  mutate(
+    p = 100 * (milk_produced / sum(milk_produced)),
+    label = str_c(round(p), '%')
+  ) %>%
   ggplot() +
   geom_col(
     aes(x = "", y = milk_produced, fill = state),
-    width = 0.7, alpha = 0.8) +
+    width = 0.7,
+    alpha = 0.8
+  ) +
   geom_text(
     aes(x = "", y = milk_produced, label = label),
-    color = "white", size = 6,
-    position = position_stack(vjust = 0.5)) +
+    color = "white",
+    size = 6,
+    position = position_stack(vjust = 0.5)
+  ) +
   coord_polar(theta = "y") +
   theme_map() +
-  labs(x = NULL,
-       y = NULL,
-       fill = 'State',
-       title = '2017 Milk Production by State')
+  labs(
+    x = NULL,
+    y = NULL,
+    fill = 'State',
+    title = '2017 Milk Production by State'
+  )
 ```
 :::
 
@@ -1559,41 +1680,46 @@ milk_production %>%
 
 ![](images/square-pies-rule.png){width="930"}
 
-[https://eagereyes.org/blog/2016/a-reanalysis-of-a-study-about-square-pie-charts-from-2009]{.font80}
+[<https://eagereyes.org/blog/2016/a-reanalysis-of-a-study-about-square-pie-charts-from-2009>]{.font80}
 
 ---
 
 ::: {.col width="55%"}
 ### Waffle plots
 
-::: {.font70}
+::: {.font60}
 ```{r}
 #| fig-show: hide
-#| code-line-numbers: "1,10,14,15,16"
+#| code-line-numbers: "1,13-18"
 
 library(waffle)
 
 # Format the data
 milk_production %>%
   filter(year == 2017) %>%
-  mutate(state = fct_other(state,
-    keep = c('California', 'Wisconsin'))) %>%
+  mutate(state = fct_other(state, keep = c('California', 'Wisconsin'))) %>%
   group_by(state) %>%
   summarise(milk_produced = sum(milk_produced)) %>%
   mutate(milk_produced = milk_produced / 10^9) %>%
 
-# Make the chart
+  # Make the chart
   ggplot() +
   geom_waffle(
     aes(fill = state, values = milk_produced),
-    color = "white", size = 1, n_rows = 10) +
+    color = "white",
+    size = 1,
+    n_rows = 10
+  ) +
   scale_x_discrete(expand = c(0, 0)) +
   scale_y_discrete(expand = c(0, 0)) +
   theme_minimal() +
-  labs(fill = 'State',
-       x = NULL, y = NULL,
-       title = '2017 Milk Production by State',
-       subtitle = '(1 square = 1 billion lbs)')
+  labs(
+    fill = 'State',
+    x = NULL,
+    y = NULL,
+    title = '2017 Milk Production by State',
+    subtitle = '(1 square = 1 billion lbs)'
+  )
 ```
 :::
 :::
@@ -1619,14 +1745,20 @@ milk_summary_2017 %>%
   ggplot() +
   geom_waffle(
     aes(fill = state, values = milk_produced),
-    color = "white", size = 1, n_rows = 10) +
+    color = "white",
+    size = 1,
+    n_rows = 10
+  ) +
   scale_x_discrete(expand = c(0, 0)) +
   scale_y_discrete(expand = c(0, 0)) +
   theme_minimal() +
-  labs(fill = 'State',
-       x = NULL, y = NULL,
-       title = '2017 Milk Production by State',
-       subtitle = '(1 square = 1 billion lbs)')
+  labs(
+    fill = 'State',
+    x = NULL,
+    y = NULL,
+    title = '2017 Milk Production by State',
+    subtitle = '(1 square = 1 billion lbs)'
+  )
 ```
 :::
 
@@ -1635,35 +1767,40 @@ milk_summary_2017 %>%
 ::: {.col width="55%"}
 ### Waffle plots
 
-::: {.font70}
+::: {.font60}
 ```{r}
 #| fig-show: hide
-#| code-line-numbers: "1,17"
+#| code-line-numbers: "1,18"
 
 library(waffle)
 
 # Format the data
 milk_production %>%
   filter(year == 2017) %>%
-  mutate(state = fct_other(state,
-    keep = c('California', 'Wisconsin'))) %>%
+  mutate(state = fct_other(state, keep = c('California', 'Wisconsin'))) %>%
   group_by(state) %>%
   summarise(milk_produced = sum(milk_produced)) %>%
   mutate(milk_produced = milk_produced / 10^9) %>%
 
-# Make the chart
+  # Make the chart
   ggplot() +
   geom_waffle(
     aes(fill = state, values = milk_produced),
-    color = "white", size = 1, n_cols = 10,
-    flip = TRUE) +
+    color = "white",
+    size = 1,
+    n_cols = 10,
+    flip = TRUE
+  ) +
   scale_x_discrete(expand = c(0, 0)) +
   scale_y_discrete(expand = c(0, 0)) +
   theme_minimal() +
-  labs(fill = 'State',
-       x = NULL, y = NULL,
-       title = '2017 Milk Production by State',
-       subtitle = '(1 square = 1 billion lbs)')
+  labs(
+    fill = 'State',
+    x = NULL,
+    y = NULL,
+    title = '2017 Milk Production by State',
+    subtitle = '(1 square = 1 billion lbs)'
+  )
 ```
 :::
 :::
@@ -1687,52 +1824,63 @@ milk_summary_2017 %>%
   ggplot() +
   geom_waffle(
     aes(fill = state, values = milk_produced),
-    color = "white", size = 1, n_cols = 10,
-    flip = TRUE) +
+    color = "white",
+    size = 1,
+    n_cols = 10,
+    flip = TRUE
+  ) +
   scale_x_discrete(expand = c(0, 0)) +
   scale_y_discrete(expand = c(0, 0)) +
   theme_minimal() +
-  labs(fill = 'State',
-       x = NULL, y = NULL,
-       title = '2017 Milk Production by State',
-       subtitle = '(1 square = 1 billion lbs)')
+  labs(
+    fill = 'State',
+    x = NULL,
+    y = NULL,
+    title = '2017 Milk Production by State',
+    subtitle = '(1 square = 1 billion lbs)'
+  )
 ```
 :::
 
 ---
 
 ::: {.col width="55%"}
-::: {.font70}
+::: {.font60}
 ```{r}
 #| label: waffle-compare
 #| fig-show: hide
-#| code-line-numbers: "5,8,18"
+#| code-line-numbers: "5,7,20"
 
 library(waffle)
 
 # Format the data
 milk_production %>%
   filter(year %in% c(1970, 2017)) %>%
-  mutate(state = fct_other(state,
-    keep = c('California', 'Wisconsin'))) %>%
+  mutate(state = fct_other(state, keep = c('California', 'Wisconsin'))) %>%
   group_by(year, state) %>%
   summarise(milk_produced = sum(milk_produced)) %>%
   mutate(milk_produced = milk_produced / 10^9) %>%
 
-# Make the chart
+  # Make the chart
   ggplot() +
   geom_waffle(
     aes(fill = state, values = milk_produced),
-    color = "white", size = 1, n_rows = 10,
-    flip = TRUE) +
+    color = "white",
+    size = 1,
+    n_rows = 10,
+    flip = TRUE
+  ) +
   facet_wrap(vars(year), strip.position = 'bottom') +
   scale_x_discrete(expand = c(0, 0)) +
   scale_y_discrete(expand = c(0, 0)) +
   theme_minimal() +
-  labs(fill = 'State',
-       x = NULL, y = NULL,
-       title = '1970 & 2017 Milk Production by State',
-       subtitle = '(1 square = 1 billion lbs)')
+  labs(
+    fill = 'State',
+    x = NULL,
+    y = NULL,
+    title = '1970 & 2017 Milk Production by State',
+    subtitle = '(1 square = 1 billion lbs)'
+  )
 ```
 :::
 :::
@@ -1754,24 +1902,29 @@ milk_summary_2017
 
 milk_production %>%
   filter(year %in% c(1970, 2017)) %>%
-  mutate(state = fct_other(state,
-    keep = c('California', 'Wisconsin'))) %>%
+  mutate(state = fct_other(state, keep = c('California', 'Wisconsin'))) %>%
   group_by(year, state) %>%
   summarise(milk_produced = sum(milk_produced)) %>%
   mutate(milk_produced = milk_produced / 10^9) %>%
   ggplot() +
   geom_waffle(
     aes(fill = state, values = milk_produced),
-    color = "white", size = 1, n_rows = 10,
-    flip = TRUE) +
+    color = "white",
+    size = 1,
+    n_rows = 10,
+    flip = TRUE
+  ) +
   facet_wrap(vars(year), strip.position = 'bottom') +
   scale_x_discrete(expand = c(0, 0)) +
   scale_y_discrete(expand = c(0, 0)) +
   theme_minimal() +
-  labs(fill = 'State',
-       x = NULL, y = NULL,
-       title = '1970 & 2017 Milk Production by State',
-       subtitle = '(1 square = 1 billion lbs)')
+  labs(
+    fill = 'State',
+    x = NULL,
+    y = NULL,
+    title = '1970 & 2017 Milk Production by State',
+    subtitle = '(1 square = 1 billion lbs)'
+  )
 ```
 :::
 
@@ -1800,28 +1953,32 @@ Pie chart
 
 milk_production %>%
   filter(year %in% c(1970, 2017)) %>%
-  mutate(state = fct_other(state,
-    keep = c('California', 'Wisconsin'))) %>%
+  mutate(state = fct_other(state, keep = c('California', 'Wisconsin'))) %>%
   group_by(year, state) %>%
   summarise(milk_produced = sum(milk_produced)) %>%
   mutate(p = 100 * milk_produced / sum(milk_produced)) %>%
   arrange(desc(state), year) %>%
   mutate(
     ppos = p,
-    label = str_c(round(p), '%')) %>%
+    label = str_c(round(p), '%')
+  ) %>%
   ggplot() +
-  geom_col(aes(x = "", y = p, fill = state),
-           width = 0.7, alpha = 0.8) +
+  geom_col(aes(x = "", y = p, fill = state), width = 0.7, alpha = 0.8) +
   facet_wrap(~year, strip.position = 'bottom') +
   coord_polar(theta = "y") +
-  geom_text(aes(x = 1.1, y = ppos, label = label),
-            color = "white", size = 5,
-            position = position_stack(vjust = 0.5)) +
+  geom_text(
+    aes(x = 1.1, y = ppos, label = label),
+    color = "white",
+    size = 5,
+    position = position_stack(vjust = 0.5)
+  ) +
   theme_map() +
-  labs(x = NULL,
-       y = NULL,
-       fill = 'State',
-       title = '1970 & 2017 Milk Production by State')
+  labs(
+    x = NULL,
+    y = NULL,
+    fill = 'State',
+    title = '1970 & 2017 Milk Production by State'
+  )
 ```
 
 Waffle chart
@@ -1834,24 +1991,29 @@ Waffle chart
 
 milk_production %>%
   filter(year %in% c(1970, 2017)) %>%
-  mutate(state = fct_other(state,
-    keep = c('California', 'Wisconsin'))) %>%
+  mutate(state = fct_other(state, keep = c('California', 'Wisconsin'))) %>%
   group_by(year, state) %>%
   summarise(milk_produced = sum(milk_produced)) %>%
   mutate(milk_produced = milk_produced / 10^9) %>%
   ggplot() +
   geom_waffle(
     aes(fill = state, values = milk_produced),
-    color = "white", size = 1, n_rows = 10,
-    flip = TRUE) +
+    color = "white",
+    size = 1,
+    n_rows = 10,
+    flip = TRUE
+  ) +
   facet_wrap(vars(year), strip.position = 'bottom') +
   scale_x_discrete(expand = c(0, 0)) +
   scale_y_discrete(expand = c(0, 0)) +
   theme_minimal() +
-  labs(fill = 'State',
-       x = NULL, y = NULL,
-       title = '1970 & 2017 Milk Production by State',
-       subtitle = '(1 square = 1 billion lbs)')
+  labs(
+    fill = 'State',
+    x = NULL,
+    y = NULL,
+    title = '1970 & 2017 Milk Production by State',
+    subtitle = '(1 square = 1 billion lbs)'
+  )
 ```
 :::
 
@@ -1866,8 +2028,8 @@ countdown(
   minutes = 20,
   warn_when = 30,
   update_every = 1,
-  top = 0,
-  right = 0,
+  top = '0.5em',
+  right = '0.5em',
   font_size = "2em"
 )
 ```
