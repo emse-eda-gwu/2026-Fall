@@ -26,6 +26,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -46,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-5b720fbb79e9c4b2b9988ebad4aaf2d5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-c98d6a4b75c4bba22a3e5913c6844ae1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -348,7 +383,7 @@ ul.task-list li input[type="checkbox"] {
 <blockquote class="blockquote">
 <p><strong>Due</strong>: Oct 26 by 11:59pm</p>
 <p><strong>Weight</strong>: This assignment is worth 1% of your final grade.</p>
-<p><strong>Purpose</strong>: The purpose of this assignment is to learn some of the technical details of how to create charts that highlight <strong>trends</strong>, which inherently involve changes in values over time.</p>
+<p><strong>Purpose</strong>: The purpose of this assignment is to extend the data visualization skill you built in week 6 so that it knows how to handle <strong>trends</strong> and <strong>time series</strong>, then use it to make (and animate) a chart of change over time. Along the way, you will learn enough about dates and animation to check whether your agent got the details right.</p>
 <p><strong>Assessment</strong>: This assignment is graded using a check system:</p>
 <ul>
 <li>✔+ (110%): Responses shows phenomenal thought and engagement with the course content. I will not assign these often.</li>
@@ -362,35 +397,95 @@ ul.task-list li input[type="checkbox"] {
 <p>Open your course repo (<code>eda-f26/eda-netID</code>) in Positron using <strong>File › Open Folder</strong> - open the folder itself, not a file inside it. If you haven’t cloned your course repo yet, follow the steps in <a href="1-agentic-workflows-and-github.html#clone-your-course-repo">HW1</a> first.</p>
 <p>Everything for this assignment lives in the <code>hw8</code> folder. Open the <code>hw8.qmd</code> file inside it - that’s the only file you need to edit. Take notes and write example code under the “Begin notes here” heading as you go through the readings and exercises below, then write your reflection under the “Reflection” heading at the end.</p>
 </section>
-<section id="readings" class="level1">
-<h1>2. Readings</h1>
-<p>Most of the readings this week have code in them that illustrate how to create each chart type, and I encourage you to try and reproduce the examples provided in R yourself.</p>
+<section id="read-practice" class="level1">
+<h1>2. Read &amp; Practice</h1>
+<p>The readings listed below are broken into two groups:</p>
+<ol type="1">
+<li>Design principles</li>
+<li>Coding techniques to implement those principles</li>
+</ol>
+<section id="design-principles" class="level3">
+<h3 class="anchored" data-anchor-id="design-principles">Design principles</h3>
+<p>Trends are all about change over time, which means time is almost always on the x-axis and the chart’s job is to make the shape of that change easy to see. These two chapters cover the main options (points, lines, smoothed lines, and what to do when you have many series at once):</p>
 <ul>
 <li>Wilke: <a href="https://clauswilke.com/dataviz/time-series.html">13 - Visualizing time series</a></li>
 <li>Wilke: <a href="https://clauswilke.com/dataviz/visualizing-trends.html">14 - Visualizing trends</a></li>
 </ul>
 <p>Some examples of visualizations we’ll explore in class:</p>
 <ul>
-<li>The “bar chart race”: <a href="https://flowingdata.com/2019/03/15/shifts-in-how-couples-meet-online-takes-the-top-spot/">Changes in how couples meet over time</a></li>
+<li>The animated line chart: <a href="https://flowingdata.com/2019/03/15/shifts-in-how-couples-meet-online-takes-the-top-spot/">Changes in how couples meet over time</a></li>
 <li>The heatmap: <a href="https://www.vizwiz.com/2012/05/how-common-is-your-birthday-find-out.html">How common is your birthday?</a></li>
-<li><a href="https://towardsdatascience.com/time-series-calendar-heatmaps-9f576578fcfe">Time-Series Heatmaps</a></li>
+<li>The calendar heatmap: <a href="https://www.r-bloggers.com/2012/04/ggplot2-time-series-heatmaps/">ggplot2 time series heatmaps</a></li>
 </ul>
 <p>Optional:</p>
 <ul>
 <li><a href="https://www.data-to-viz.com/graph/sankey.html">The Sankey diagrams (a.k.a. flow chart)</a></li>
 <li>Video: <a href="http://www.fallen.io/ww2/">The fallen of WWII</a></li>
 </ul>
-</section>
-<section id="video" class="level1">
-<h1>3. Video</h1>
 <p>This video by Hans Rosling is a great summary of his larger <a href="https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen">TED talk</a> on the “gapminder” project he started showing life expectancy and GDP over time. This is an excellent example of using an <em>animated</em> chart to tell a much richer story than a static chart.</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/jbkSRLYSojo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
 </iframe>
 </section>
+<section id="coding-techniques" class="level3">
+<h3 class="anchored" data-anchor-id="coding-techniques">Coding techniques</h3>
+<p>The readings below cover two things that show up in charts of trends: <strong>dates &amp; animation</strong>. Time series data often arrives with dates stored as text, which means an agent can end up sorting “Apr” before “Jan” or drawing a line straight across a gap in the data without telling you. You need to know enough about how R stores dates (and the <a href="https://lubridate.tidyverse.org/">lubridate</a> package) to spot when the time axis is wrong. Animation is the other new tool this week: the <a href="https://gganimate.com/">gganimate</a> package takes a regular ggplot and adds a <code>transition_*()</code> function to make it move, which is how charts like the Rosling video above are made.</p>
+<ul>
+<li>R4DS: <a href="https://r4ds.hadley.nz/datetimes.html">17 - Dates and times</a></li>
+<li>gganimate: <a href="https://gganimate.com/articles/gganimate.html">Getting started</a></li>
+<li>R Graph Gallery: <a href="https://r-graph-gallery.com/animation.html">Animation</a> (browse a few examples to see what’s possible)</li>
+</ul>
+<p>To render animations, you’ll need two new packages:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">'gganimate'</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">'magick'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="extend-your-skill-then-make-a-chart" class="level1">
+<h1>3. Extend your skill, then make a chart</h1>
+<p>In week 6 you built your own data visualization skill (e.g., <code>.claude/skills/my-dataviz/SKILL.md</code>). So far it covers charts like amounts and proportions. This week you will teach it how to handle trends.</p>
+<section id="extend-your-skill" class="level3">
+<h3 class="anchored" data-anchor-id="extend-your-skill">Extend your skill</h3>
+<ol type="1">
+<li>Open Claude Code in your course repo and ask it to help you add a section on <strong>trends and time series</strong> to your existing skill, using the readings above as source material (you can give it the URLs). Ask it to extend the skill you already have, not write a new one.</li>
+<li><strong>Read what it wrote.</strong> Does the new section capture the guidance from the readings? Some things worth checking for:
+<ul>
+<li>Is time on the x-axis, and is it stored as a date (or number) rather than text?</li>
+<li>When should the chart show points, lines, or a smoothed line, and if it smooths, does it say what the smoothing is doing?</li>
+<li>Does the y-axis need to start at zero, or is it okay to zoom in on the change?</li>
+<li>What should happen with many series at once: directly labeled lines, highlighting one series, or a heatmap instead?</li>
+<li>What should happen when data are missing for some periods?</li>
+</ul></li>
+<li><strong>Make it yours.</strong> Edit the new section (directly, or by asking Claude to) so it reflects your own choices, such as how you like to label lines or when you think an animation is worth it.</li>
+</ol>
+</section>
+<section id="use-your-skill-to-make-a-chart" class="level3">
+<h3 class="anchored" data-anchor-id="use-your-skill-to-make-a-chart">Use your skill to make a chart</h3>
+<p>Find a dataset that has a time variable. Some options:</p>
+<ul>
+<li>The <code>gapminder</code> data frame from the <a href="https://cran.r-project.org/package=gapminder">gapminder</a> package (the same data as the Rosling video).</li>
+<li>The <code>economics</code> data frame that comes with ggplot2.</li>
+<li>Data from the <a href="../finding-data.html#packages">Packages</a> section of the “Finding Data” page, or from your project.</li>
+</ul>
+<p>Then ask Claude to make a chart of a <strong>trend</strong> using your skill (invoke it with <code>/your-skill-name</code>).</p>
+<p>Check the result against your skill and the readings. In particular, look closely at the time axis: is it stored as a date or a number, and are the periods in order? If there are gaps in the data, does the line jump across them? If the line looks jagged, is that because there’s more than one row per time point (meaning the data should be summarized first)? If something is wrong, fix it, and consider whether your skill should be updated so that it gets it right next time.</p>
+</section>
+<section id="animate-it" class="level3">
+<h3 class="anchored" data-anchor-id="animate-it">Animate it</h3>
+<p>Now ask Claude to animate your chart with gganimate (for a line chart, <code>transition_reveal()</code> is a good place to start). Watch the result and decide whether the animation actually adds something, or whether the static chart tells the story just as well.</p>
+<p>In your <code>hw8.qmd</code> file, include:</p>
+<ul>
+<li>A few sentences on what you added to your skill, and what you changed after Claude drafted it.</li>
+<li>The trend chart you made with your skill, with one or two sentences under it describing what it shows.</li>
+<li>Your animated chart.</li>
+<li>A few sentences on how it went: What did you have to check or correct on the time axis? Did the animation help, and why or why not?</li>
+</ul>
+</section>
+</section>
 <section id="reflect" class="level1">
 <h1>4. Reflect</h1>
 <blockquote class="blockquote">
-<p><strong>This week, consider writing about an interesting data visualization about trends you’ve seen.</strong></p>
+<p><strong>This week, consider writing about a chart you’ve seen that shows a trend, especially one that made a change look bigger or smaller than it really was.</strong></p>
 </blockquote>
 <p>Reflect on what you’ve learned while going through these readings and exercises. Is there anything that jumped out at you? Anything you found particularly interesting or confusing?</p>
 <p>Write at least a paragraph in your <code>hw8.qmd</code> file, and include at least one question. The teaching team will review the questions we get and will try to answer them either in Slack or in class.</p>

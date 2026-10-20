@@ -46,7 +46,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-5b720fbb79e9c4b2b9988ebad4aaf2d5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-c98d6a4b75c4bba22a3e5913c6844ae1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -348,7 +348,7 @@ ul.task-list li input[type="checkbox"] {
 <blockquote class="blockquote">
 <p><strong>Due</strong>: Oct 19 by 11:59pm</p>
 <p><strong>Weight</strong>: This assignment is worth 1% of your final grade.</p>
-<p><strong>Purpose</strong>: The purpose of this assignment is to learn some of the technical details of how to create charts for <strong>comparing values</strong> to one another and / or to a benchmark.</p>
+<p><strong>Purpose</strong>: The purpose of this assignment is to extend the data visualization skill you built in week 6 so that it knows how to make charts that <strong>compare values</strong> to one another and / or to a benchmark, then use it to make a comparison chart and check whether your agent got the details right.</p>
 <p><strong>Assessment</strong>: This assignment is graded using a check system:</p>
 <ul>
 <li>✔+ (110%): Responses shows phenomenal thought and engagement with the course content. I will not assign these often.</li>
@@ -362,26 +362,65 @@ ul.task-list li input[type="checkbox"] {
 <p>Open your course repo (<code>eda-f26/eda-netID</code>) in Positron using <strong>File › Open Folder</strong> - open the folder itself, not a file inside it. If you haven’t cloned your course repo yet, follow the steps in <a href="1-agentic-workflows-and-github.html#clone-your-course-repo">HW1</a> first.</p>
 <p>Everything for this assignment lives in the <code>hw7</code> folder. Open the <code>hw7.qmd</code> file inside it - that’s the only file you need to edit. Take notes and write example code under the “Begin notes here” heading as you go through the readings and exercises below, then write your reflection under the “Reflection” heading at the end.</p>
 </section>
-<section id="readings" class="level1">
-<h1>2. Readings</h1>
+<section id="read-practice" class="level1">
+<h1>2. Read &amp; Practice</h1>
 <blockquote class="blockquote">
 <p>“At the heart of quantitative reasoning is a single question: Compared to what?”</p>
 <p>– Edward Tufte</p>
 </blockquote>
-<p>Most of the readings this week have code in them that illustrate how to create each chart type, and I encourage you to try and reproduce a few of the examples provided in R yourself. You may also want to take a look at the <a href="http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html">top 50 ggplots</a>, which contains examples with ggplot code to create 50 common visualizations.</p>
+<p>The readings listed below are broken into two groups:</p>
+<ol type="1">
+<li>Design principles</li>
+<li>Coding techniques to implement those principles</li>
+</ol>
+<section id="design-principles" class="level3">
+<h3 class="anchored" data-anchor-id="design-principles">Design principles</h3>
+<p>Comparisons come in a few flavors: comparing groups to each other, comparing a value to a benchmark, and comparing whole distributions. These readings cover when each kind of chart works (and one common chart design that almost never does):</p>
 <ul>
-<li><a href="http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html#Slope%20Chart">Slope charts</a></li>
-<li><a href="https://themockup.blog/posts/2020-11-29-bullet-chart-variants-in-r/">Bullet charts</a></li>
-<li><a href="http://uc-r.github.io/cleveland-dot-plots">Dumbell charts</a></li>
 <li>Wilke: <a href="https://clauswilke.com/dataviz/histograms-density-plots.html">7 - Visualizing distributions</a></li>
 <li>Wilke: <a href="https://clauswilke.com/dataviz/boxplots-violins.html">9 - Visualizing many distributions at once</a></li>
 <li><a href="http://www.perceptualedge.com/articles/visual_business_intelligence/dual-scaled_axes.pdf">Dual-Scaled Axes in Graphs - Are They Ever the Best Solution?</a></li>
 </ul>
 </section>
-<section id="make-a-chartor-3" class="level1">
-<h1>3. Make a Chart…or 3</h1>
-<p>Once you’ve read through everything, add a code chunk in your <code>hw7.qmd</code> file that creates one of the charts you saw in one of the readings. <strong>Cite the source</strong> of the chart. The goal is to try and reproduce the chart as closely as possible to how it looks in the reading. While it is okay to copy-paste code directly into your reflection, try to write the code yourself. Practicing the coding yourself is key to mastering these skills. You may need to modify the figure dimensions in the chunk settings.</p>
-<p>Then make more charts. Like other assignments, you’ll get as much out of this as you put in. There’s no hard requirement I’m looking for, but I do think you should practice making more than one chart. Think through carefully and be thoughtful about the design choices you’re making. Are you far enough along in your project to include a chart that you are thinking about for your project? Maybe try making that!</p>
+<section id="coding-techniques" class="level3">
+<h3 class="anchored" data-anchor-id="coding-techniques">Coding techniques</h3>
+<p>The readings below each walk through how to build a specific comparison chart in ggplot. You don’t need to write this code yourself, but you should read it closely enough to recognize the pieces: a dumbbell chart is just points connected by segments, a slope chart is lines between two time points, and a bullet chart is bars layered on top of a benchmark. When an agent builds one of these for you, knowing the pieces is how you spot what it got wrong.</p>
+<ul>
+<li><a href="http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html#Slope%20Chart">Slope charts</a></li>
+<li><a href="https://themockup.blog/posts/2020-11-29-bullet-chart-variants-in-r/">Bullet charts</a></li>
+<li><a href="http://uc-r.github.io/cleveland-dot-plots">Dumbbell charts</a></li>
+</ul>
+<p>You may also want to take a look at the <a href="http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html">top 50 ggplots</a>, which contains examples with ggplot code to create 50 common visualizations.</p>
+</section>
+</section>
+<section id="extend-your-skill-then-make-a-chart" class="level1">
+<h1>3. Extend your skill, then make a chart</h1>
+<p>Last week you built your own data visualization skill (e.g., <code>.claude/skills/my-dataviz/SKILL.md</code>). That skill was focused on amounts and proportions. This week you will teach it how to handle comparisons.</p>
+<section id="extend-your-skill" class="level3">
+<h3 class="anchored" data-anchor-id="extend-your-skill">Extend your skill</h3>
+<ol type="1">
+<li>Open Claude Code in your course repo and ask it to help you add a section on <strong>comparisons</strong> to your existing skill, using the readings above as source material (you can give it the URLs). Ask it to extend the skill you already have, not write a new one.</li>
+<li><strong>Read what it wrote.</strong> Does the new section capture the guidance from the readings? Some things worth checking for:
+<ul>
+<li>When comparing only 2 things, does it suggest dodged bars, bullet charts, or a dumbbell? What about 3 or more?</li>
+<li>Does it say when to add a reference line (like an average or a target) for context?</li>
+<li>Does it say to use facets instead of piling many categories into a legend?</li>
+<li>Does it rule out dual y-axes?</li>
+</ul></li>
+<li><strong>Make it yours.</strong> Edit the new section (directly, or by asking Claude to) so it reflects your own choices.</li>
+</ol>
+</section>
+<section id="use-your-skill-to-make-a-chart" class="level3">
+<h3 class="anchored" data-anchor-id="use-your-skill-to-make-a-chart">Use your skill to make a chart</h3>
+<p>Find a dataset with at least one categorical variable and something worth comparing across it (two time points, two groups, or a value and a benchmark). You can use one from the <a href="../finding-data.html#packages">Packages</a> section of the “Finding Data” page, or data from your project. Then ask Claude to make a <strong>comparison</strong> chart using your skill (invoke it with <code>/your-skill-name</code>).</p>
+<p>Check the result against your skill and the readings. Is the comparison the reader should make the easiest one to see? If there is a reference line, is it at the right value, and is it labeled? In a dumbbell or slope chart, are the points connected to the right partners, and are the categories sorted in a meaningful order? If something is wrong, fix it, and consider whether your skill should be updated so that it gets it right next time.</p>
+<p>In your <code>hw7.qmd</code> file, include:</p>
+<ul>
+<li>A few sentences on what you added to your skill, and what you changed after Claude drafted it.</li>
+<li>The chart you made with your skill, with one or two sentences under it describing what it shows.</li>
+<li>A few sentences on how it went: Did the chart follow your skill on the first try? What did you have to check, correct, or change in the skill?</li>
+</ul>
+</section>
 </section>
 <section id="reflect" class="level1">
 <h1>4. Reflect</h1>
