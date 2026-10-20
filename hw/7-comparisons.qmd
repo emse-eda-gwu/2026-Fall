@@ -2,7 +2,7 @@
 title: "Comparisons"
 params:
   number: 7
-  purpose: 'The purpose of this assignment is to learn some of the technical details of how to create charts for **comparing values** to one another and / or to a benchmark.'
+  purpose: 'The purpose of this assignment is to extend the data visualization skill you built in week 6 so that it knows how to make charts that **compare values** to one another and / or to a benchmark, then use it to make a comparison chart and check whether your agent got the details right.'
 ---
 
 ```{r child = here::here("fragments", "hw.qmd")}
@@ -10,26 +10,60 @@ params:
 
 {{< include ../fragments/hw-get-organized.qmd >}}
 
-# 2. Readings
+# 2. Read & Practice
 
 > "At the heart of quantitative reasoning is a single question: Compared to what?"
 >
 > -- Edward Tufte
 
-Most of the readings this week have code in them that illustrate how to create each chart type, and I encourage you to try and reproduce a few of the examples provided in R yourself. You may also want to take a look at the [top 50 ggplots](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html), which contains examples with ggplot code to create 50 common visualizations.
+The readings listed below are broken into two groups:
 
-- [Slope charts](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html#Slope%20Chart)
-- [Bullet charts](https://themockup.blog/posts/2020-11-29-bullet-chart-variants-in-r/)
-- [Dumbell charts](http://uc-r.github.io/cleveland-dot-plots)
+1. Design principles
+2. Coding techniques to implement those principles
+
+### Design principles
+
+Comparisons come in a few flavors: comparing groups to each other, comparing a value to a benchmark, and comparing whole distributions. These readings cover when each kind of chart works (and one common chart design that almost never does):
+
 - Wilke: [7 - Visualizing distributions](https://clauswilke.com/dataviz/histograms-density-plots.html)
 - Wilke: [9 - Visualizing many distributions at once](https://clauswilke.com/dataviz/boxplots-violins.html)
 - [Dual-Scaled Axes in Graphs - Are They Ever the Best Solution?](http://www.perceptualedge.com/articles/visual_business_intelligence/dual-scaled_axes.pdf)
 
-# 3. Make a Chart...or 3
+### Coding techniques
 
-Once you've read through everything, add a code chunk in your ``r hw_file`` file that creates one of the charts you saw in one of the readings. **Cite the source** of the chart. The goal is to try and reproduce the chart as closely as possible to how it looks in the reading. While it is okay to copy-paste code directly into your reflection, try to write the code yourself. Practicing the coding yourself is key to mastering these skills. You may need to modify the figure dimensions in the chunk settings.
+The readings below each walk through how to build a specific comparison chart in ggplot. You don't need to write this code yourself, but you should read it closely enough to recognize the pieces: a dumbbell chart is just points connected by segments, a slope chart is lines between two time points, and a bullet chart is bars layered on top of a benchmark. When an agent builds one of these for you, knowing the pieces is how you spot what it got wrong.
 
-Then make more charts. Like other assignments, you'll get as much out of this as you put in. There's no hard requirement I'm looking for, but I do think you should practice making more than one chart. Think through carefully and be thoughtful about the design choices you're making. Are you far enough along in your project to include a chart that you are thinking about for your project? Maybe try making that!
+- [Slope charts](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html#Slope%20Chart)
+- [Bullet charts](https://themockup.blog/posts/2020-11-29-bullet-chart-variants-in-r/)
+- [Dumbbell charts](http://uc-r.github.io/cleveland-dot-plots)
+
+You may also want to take a look at the [top 50 ggplots](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html), which contains examples with ggplot code to create 50 common visualizations.
+
+# 3. Extend your skill, then make a chart
+
+Last week you built your own data visualization skill (e.g., `.claude/skills/my-dataviz/SKILL.md`). That skill was focused on amounts and proportions. This week you will teach it how to handle comparisons.
+
+### Extend your skill
+
+1. Open Claude Code in your course repo and ask it to help you add a section on **comparisons** to your existing skill, using the readings above as source material (you can give it the URLs). Ask it to extend the skill you already have, not write a new one.
+2. **Read what it wrote.** Does the new section capture the guidance from the readings? Some things worth checking for:
+   - When comparing only 2 things, does it suggest dodged bars, bullet charts, or a dumbbell? What about 3 or more?
+   - Does it say when to add a reference line (like an average or a target) for context?
+   - Does it say to use facets instead of piling many categories into a legend?
+   - Does it rule out dual y-axes?
+3. **Make it yours.** Edit the new section (directly, or by asking Claude to) so it reflects your own choices.
+
+### Use your skill to make a chart
+
+Find a dataset with at least one categorical variable and something worth comparing across it (two time points, two groups, or a value and a benchmark). You can use one from the [Packages](../finding-data.html#packages) section of the "Finding Data" page, or data from your project. Then ask Claude to make a **comparison** chart using your skill (invoke it with `/your-skill-name`).
+
+Check the result against your skill and the readings. Is the comparison the reader should make the easiest one to see? If there is a reference line, is it at the right value, and is it labeled? In a dumbbell or slope chart, are the points connected to the right partners, and are the categories sorted in a meaningful order? If something is wrong, fix it, and consider whether your skill should be updated so that it gets it right next time.
+
+In your ``r hw_file`` file, include:
+
+- A few sentences on what you added to your skill, and what you changed after Claude drafted it.
+- The chart you made with your skill, with one or two sentences under it describing what it shows.
+- A few sentences on how it went: Did the chart follow your skill on the first try? What did you have to check, correct, or change in the skill?
 
 # 4. Reflect
 

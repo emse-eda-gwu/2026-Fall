@@ -2,7 +2,7 @@
 title: "Trends"
 params:
   number: 8
-  purpose: 'The purpose of this assignment is to learn some of the technical details of how to create charts that highlight **trends**, which inherently involve changes in values over time.'
+  purpose: 'The purpose of this assignment is to extend the data visualization skill you built in week 6 so that it knows how to handle **trends** and **time series**, then use it to make (and animate) a chart of change over time. Along the way, you will learn enough about dates and animation to check whether your agent got the details right.'
 ---
 
 ```{r child = here::here("fragments", "hw.qmd")}
@@ -10,33 +10,93 @@ params:
 
 {{< include ../fragments/hw-get-organized.qmd >}}
 
-# 2. Readings
+# 2. Read & Practice
 
-Most of the readings this week have code in them that illustrate how to create each chart type, and I encourage you to try and reproduce the examples provided in R yourself.
+The readings listed below are broken into two groups:
+
+1. Design principles
+2. Coding techniques to implement those principles
+
+### Design principles
+
+Trends are all about change over time, which means time is almost always on the x-axis and the chart's job is to make the shape of that change easy to see. These two chapters cover the main options (points, lines, smoothed lines, and what to do when you have many series at once):
 
 - Wilke: [13 - Visualizing time series](https://clauswilke.com/dataviz/time-series.html)
 - Wilke: [14 - Visualizing trends](https://clauswilke.com/dataviz/visualizing-trends.html)
 
 Some examples of visualizations we'll explore in class:
 
-- The "bar chart race": [Changes in how couples meet over time](https://flowingdata.com/2019/03/15/shifts-in-how-couples-meet-online-takes-the-top-spot/)
+- The animated line chart: [Changes in how couples meet over time](https://flowingdata.com/2019/03/15/shifts-in-how-couples-meet-online-takes-the-top-spot/)
 - The heatmap: [How common is your birthday?](https://www.vizwiz.com/2012/05/how-common-is-your-birthday-find-out.html)
-- [Time-Series Heatmaps](https://towardsdatascience.com/time-series-calendar-heatmaps-9f576578fcfe)
+- The calendar heatmap: [ggplot2 time series heatmaps](https://www.r-bloggers.com/2012/04/ggplot2-time-series-heatmaps/)
 
 Optional:
 
 - [The Sankey diagrams (a.k.a. flow chart)](https://www.data-to-viz.com/graph/sankey.html)
 - Video: [The fallen of WWII](http://www.fallen.io/ww2/)
 
-# 3. Video
-
 This video by Hans Rosling is a great summary of his larger [TED talk](https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen) on the "gapminder" project he started showing life expectancy and GDP over time. This is an excellent example of using an _animated_ chart to tell a much richer story than a static chart.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/jbkSRLYSojo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+### Coding techniques
+
+The readings below cover two things that show up in charts of trends: **dates & animation**. Time series data often arrives with dates stored as text, which means an agent can end up sorting "Apr" before "Jan" or drawing a line straight across a gap in the data without telling you. You need to know enough about how R stores dates (and the [lubridate](https://lubridate.tidyverse.org/) package) to spot when the time axis is wrong. Animation is the other new tool this week: the [gganimate](https://gganimate.com/) package takes a regular ggplot and adds a `transition_*()` function to make it move, which is how charts like the Rosling video above are made.
+
+- R4DS: [17 - Dates and times](https://r4ds.hadley.nz/datetimes.html)
+- gganimate: [Getting started](https://gganimate.com/articles/gganimate.html)
+- R Graph Gallery: [Animation](https://r-graph-gallery.com/animation.html) (browse a few examples to see what's possible)
+
+To render animations, you'll need two new packages:
+
+```{r}
+#| eval: false
+
+install.packages('gganimate')
+install.packages('magick')
+```
+
+# 3. Extend your skill, then make a chart
+
+In week 6 you built your own data visualization skill (e.g., `.claude/skills/my-dataviz/SKILL.md`). So far it covers charts like amounts and proportions. This week you will teach it how to handle trends.
+
+### Extend your skill
+
+1. Open Claude Code in your course repo and ask it to help you add a section on **trends and time series** to your existing skill, using the readings above as source material (you can give it the URLs). Ask it to extend the skill you already have, not write a new one.
+2. **Read what it wrote.** Does the new section capture the guidance from the readings? Some things worth checking for:
+   - Is time on the x-axis, and is it stored as a date (or number) rather than text?
+   - When should the chart show points, lines, or a smoothed line, and if it smooths, does it say what the smoothing is doing?
+   - Does the y-axis need to start at zero, or is it okay to zoom in on the change?
+   - What should happen with many series at once: directly labeled lines, highlighting one series, or a heatmap instead?
+   - What should happen when data are missing for some periods?
+3. **Make it yours.** Edit the new section (directly, or by asking Claude to) so it reflects your own choices, such as how you like to label lines or when you think an animation is worth it.
+
+### Use your skill to make a chart
+
+Find a dataset that has a time variable. Some options:
+
+- The `gapminder` data frame from the [gapminder](https://cran.r-project.org/package=gapminder) package (the same data as the Rosling video).
+- The `economics` data frame that comes with ggplot2.
+- Data from the [Packages](../finding-data.html#packages) section of the "Finding Data" page, or from your project.
+
+Then ask Claude to make a chart of a **trend** using your skill (invoke it with `/your-skill-name`).
+
+Check the result against your skill and the readings. In particular, look closely at the time axis: is it stored as a date or a number, and are the periods in order? If there are gaps in the data, does the line jump across them? If the line looks jagged, is that because there's more than one row per time point (meaning the data should be summarized first)? If something is wrong, fix it, and consider whether your skill should be updated so that it gets it right next time.
+
+### Animate it
+
+Now ask Claude to animate your chart with gganimate (for a line chart, `transition_reveal()` is a good place to start). Watch the result and decide whether the animation actually adds something, or whether the static chart tells the story just as well.
+
+In your ``r hw_file`` file, include:
+
+- A few sentences on what you added to your skill, and what you changed after Claude drafted it.
+- The trend chart you made with your skill, with one or two sentences under it describing what it shows.
+- Your animated chart.
+- A few sentences on how it went: What did you have to check or correct on the time axis? Did the animation help, and why or why not?
+
 # 4. Reflect
 
-> **This week, consider writing about an interesting data visualization about trends you've seen.**
+> **This week, consider writing about a chart you've seen that shows a trend, especially one that made a change look bigger or smaller than it really was.**
 
 {{< include ../fragments/hw-reflect.qmd >}}
 
