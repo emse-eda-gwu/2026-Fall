@@ -43,7 +43,7 @@ This video by Hans Rosling is a great summary of his larger [TED talk](https://w
 
 The readings below cover two things that show up in charts of trends: **dates & animation**. Time series data often arrives with dates stored as text, which means an agent can end up sorting "Apr" before "Jan" or drawing a line straight across a gap in the data without telling you. You need to know enough about how R stores dates (and the [lubridate](https://lubridate.tidyverse.org/) package) to spot when the time axis is wrong. Animation is the other new tool this week: the [gganimate](https://gganimate.com/) package takes a regular ggplot and adds a `transition_*()` function to make it move, which is how charts like the Rosling video above are made.
 
-- R4DS: [17 - Dates and times](https://r4ds.hadley.nz/datetimes.html)
+- R4DS: [17 - Dates and times](https://r4ds.hadley.nz/datetimes.html) - just browse over this, it's lengthy, but a good reference for dealing with time on the x-axis.
 - gganimate: [Getting started](https://gganimate.com/articles/gganimate.html)
 - R Graph Gallery: [Animation](https://r-graph-gallery.com/animation.html) (browse a few examples to see what's possible)
 
