@@ -34,26 +34,40 @@ agenda_items <- c(
 source('setup.R')
 
 # Pre-computed plots reused on multiple slides
-milk_region_line_label <- ggplot(milk_region,
-    aes(x = year, y = milk_produced,
-        color = region)) +
-    geom_line(size = 1) +
-    geom_text_repel(
-      data = milk_region %>%
-        filter(year == max(year)),
-      aes(label = region),
-         hjust = 0, nudge_x = 1, direction = "y",
-         size = 6, segment.color = NA) +
-    scale_x_continuous(
-      breaks = seq(1970, 2010, 10),
-      expand = expansion(add = c(1, 13))) +
-    scale_color_manual(values = c(
-        'sienna', 'forestgreen', 'dodgerblue', 'orange')) +
-    theme_half_open(font_size = 18) +
-    theme(legend.position = 'none') +
-    labs(x = 'Year',
-         y = 'Milk produced (billion lbs)',
-         title = 'Milk production in four US regions')
+milk_region_line_label <- ggplot(
+  milk_region,
+  aes(x = year, y = milk_produced, color = region)
+) +
+  geom_line(size = 1) +
+  geom_text_repel(
+    data = milk_region %>%
+      filter(year == max(year)),
+    aes(label = region),
+    hjust = 0,
+    nudge_x = 1,
+    direction = "y",
+    size = 6,
+    segment.color = NA
+  ) +
+  scale_x_continuous(
+    breaks = seq(1970, 2010, 10),
+    expand = expansion(add = c(1, 13))
+  ) +
+  scale_color_manual(
+    values = c(
+      'sienna',
+      'forestgreen',
+      'dodgerblue',
+      'orange'
+    )
+  ) +
+  theme_half_open(font_size = 18) +
+  theme(legend.position = 'none') +
+  labs(
+    x = 'Year',
+    y = 'Milk produced (billion lbs)',
+    title = 'Milk production in four US regions'
+  )
 ```
 
 ---
@@ -69,8 +83,8 @@ countdown(
   minutes = 12,
   warn_when = 30,
   update_every = 1,
-  top = 0,
-  right = 0,
+  top = '0.5em',
+  right = '0.5em',
   font_size = "3em"
 )
 ```
@@ -99,11 +113,11 @@ Seen before:
 ```{r}
 #| eval: false
 
-gapminder        <- read_csv(file.path('data', 'gapminder.csv'))
-milk_production  <- read_csv(file.path('data', 'milk_production.csv'))
-global_temps     <- read_csv(file.path('data', 'nasa_global_temps.csv'))
-internet_region  <- read_csv(file.path('data', 'internet_users_region.csv'))
-hotdogs          <- read_csv(file.path('data', 'hot_dog_winners.csv'))
+gapminder <- read_csv(file.path('data', 'gapminder.csv'))
+milk_production <- read_csv(file.path('data', 'milk_production.csv'))
+global_temps <- read_csv(file.path('data', 'nasa_global_temps.csv'))
+internet_region <- read_csv(file.path('data', 'internet_users_region.csv'))
+hotdogs <- read_csv(file.path('data', 'hot_dog_winners.csv'))
 internet_country <- read_csv(file.path('data', 'internet_users_country.csv'))
 ```
 
@@ -112,8 +126,8 @@ New datasets:
 ```{r}
 #| eval: false
 
-us_covid         <- read_csv(file.path('data', 'us_covid.csv'))
-us_diseases      <- read_csv(file.path('data', 'us_contagious_diseases.csv'))
+us_covid <- read_csv(file.path('data', 'us_covid.csv'))
+us_diseases <- read_csv(file.path('data', 'us_contagious_diseases.csv'))
 ```
 
 ---
@@ -159,13 +173,14 @@ Plotting the data points is a good starting point for viewing trends
 #| fig-width: 6
 #| fig-align: center
 
-ggplot(milk_ca,
-    aes(x = year, y = milk_produced)) +
+ggplot(milk_ca, aes(x = year, y = milk_produced)) +
     geom_point(color = 'steelblue', size = 2) +
     theme_half_open(font_size = 18) +
-    labs(x = 'Year',
-         y = 'Milk produced (billion lbs)',
-         title = 'Milk production in California')
+    labs(
+        x = 'Year',
+        y = 'Milk produced (billion lbs)',
+        title = 'Milk production in California'
+    )
 ```
 :::
 
@@ -180,14 +195,15 @@ Adding lines between the points helps<br>see the overall trend
 #| fig-width: 6
 #| fig-align: center
 
-milk_ca_point_line <- ggplot(milk_ca,
-    aes(x = year, y = milk_produced)) +
+milk_ca_point_line <- ggplot(milk_ca, aes(x = year, y = milk_produced)) +
     geom_line(color = 'steelblue', size = 0.5) +
     geom_point(color = 'steelblue', size = 2) +
     theme_half_open(font_size = 18) +
-    labs(x = 'Year',
-         y = 'Milk produced (billion lbs)',
-         title = 'Milk production in California')
+    labs(
+        x = 'Year',
+        y = 'Milk produced (billion lbs)',
+        title = 'Milk production in California'
+    )
 
 milk_ca_point_line
 ```
@@ -206,13 +222,14 @@ Omitting the points emphasizes the overall trend<br><br><br>
 #| fig-width: 6
 #| fig-align: center
 
-ggplot(milk_ca,
-    aes(x = year, y = milk_produced)) +
+ggplot(milk_ca, aes(x = year, y = milk_produced)) +
     geom_line(color = 'steelblue', size = 1) +
     theme_half_open(font_size = 18) +
-    labs(x = 'Year',
-         y = 'Milk produced (billion lbs)',
-         title = 'Milk production in California')
+    labs(
+        x = 'Year',
+        y = 'Milk produced (billion lbs)',
+        title = 'Milk production in California'
+    )
 ```
 :::
 
@@ -229,16 +246,18 @@ Filling area below line emphasizes cumulative over time
 #| fig-width: 6
 #| fig-align: center
 
-milk_ca_line_area <- ggplot(milk_ca,
-    aes(x = year, y = milk_produced)) +
-    geom_area(fill = 'steelblue', alpha = 0.5) +
-    geom_line(color = 'steelblue', size = 1) +
-    scale_y_continuous(
-      expand = expansion(mult = c(0, 0.05))) +
-    theme_half_open(font_size = 18) +
-    labs(x = 'Year',
-         y = 'Milk produced (billion lbs)',
-         title = 'Milk production in California')
+milk_ca_line_area <- ggplot(milk_ca, aes(x = year, y = milk_produced)) +
+  geom_area(fill = 'steelblue', alpha = 0.5) +
+  geom_line(color = 'steelblue', size = 1) +
+  scale_y_continuous(
+    expand = expansion(mult = c(0, 0.05))
+  ) +
+  theme_half_open(font_size = 18) +
+  labs(
+    x = 'Year',
+    y = 'Milk produced (billion lbs)',
+    title = 'Milk production in California'
+  )
 
 milk_ca_line_area
 ```
@@ -258,16 +277,17 @@ milk_ca_line_area
 #| fig-width: 6
 #| fig-align: center
 
-ggplot(milk_ca_sparse,
-       aes(x = year, y = milk_produced)) +
-    geom_line(color = 'steelblue', size = 0.5) +
-    geom_point(aes(color = yearColor), size = 2) +
-    scale_color_manual(values = c('red', 'steelblue')) +
-    theme_half_open(font_size = 18) +
-    theme(legend.position = 'none') +
-    labs(x = 'Year',
-         y = 'Milk produced (billion lbs)',
-         title = 'Milk production in California')
+ggplot(milk_ca_sparse, aes(x = year, y = milk_produced)) +
+   geom_line(color = 'steelblue', size = 0.5) +
+   geom_point(aes(color = yearColor), size = 2) +
+   scale_color_manual(values = c('red', 'steelblue')) +
+   theme_half_open(font_size = 18) +
+   theme(legend.position = 'none') +
+   labs(
+      x = 'Year',
+      y = 'Milk produced (billion lbs)',
+      title = 'Milk production in California'
+   )
 ```
 :::
 
@@ -284,9 +304,11 @@ milk_ca_sparse %>%
     geom_line(color = 'steelblue', size = 0.5) +
     geom_point(color = 'red', size = 2) +
     theme_half_open(font_size = 18) +
-    labs(x = 'Year',
-         y = 'Milk produced (billion lbs)',
-         title = 'Milk production in California')
+    labs(
+        x = 'Year',
+        y = 'Milk produced (billion lbs)',
+        title = 'Milk production in California'
+    )
 ```
 :::
 
@@ -303,13 +325,14 @@ Adding a "smoothed" line shows a modeled representation of the overall trend
 #| fig-width: 6
 #| fig-align: center
 
-ggplot(milk_ca,
-    aes(x = year, y = milk_produced)) +
+ggplot(milk_ca, aes(x = year, y = milk_produced)) +
     geom_smooth(color = 'steelblue', size = 1, se = FALSE) +
     theme_half_open(font_size = 18) +
-    labs(x = 'Year',
-         y = 'Milk produced (billion lbs)',
-         title = 'Milk production in California')
+    labs(
+        x = 'Year',
+        y = 'Milk produced (billion lbs)',
+        title = 'Milk production in California'
+    )
 ```
 :::
 
@@ -324,14 +347,15 @@ Putting the smoothed line over the data points helps show whether **outliers** a
 #| fig-width: 6
 #| fig-align: center
 
-milk_ca_smooth_points <- ggplot(milk_ca,
-    aes(x = year, y = milk_produced)) +
+milk_ca_smooth_points <- ggplot(milk_ca, aes(x = year, y = milk_produced)) +
     geom_point(color = 'grey', size = 2, alpha = 0.9) +
     geom_smooth(color = 'steelblue', size = 1, se = FALSE) +
     theme_half_open(font_size = 18) +
-    labs(x = 'Year',
-         y = 'Milk produced (billion lbs)',
-         title = 'Milk production in California')
+    labs(
+        x = 'Year',
+        y = 'Milk produced (billion lbs)',
+        title = 'Milk production in California'
+    )
 
 milk_ca_smooth_points
 ```
@@ -352,18 +376,23 @@ milk_ca_smooth_points
 #| fig-align: center
 
 ggplot(hotdogs_mens) +
-    geom_col(
-      aes(x = Year, y = dogs, fill = record),
-      width = 0.8, alpha = 0.9) +
-    scale_fill_manual(values = c("grey", "sienna")) +
-    scale_y_continuous(
-      expand = expansion(mult = c(0, 0.05))) +
-    theme_minimal_hgrid() +
-    theme(legend.position = c(0.1, 0.65)) +
-    labs(x = 'Year',
-         y = 'Number of hot dogs & buns\nin 10 minutes',
-         fill = 'Record\nbroken?',
-         title = "Record-breaking wins in Nathan's hot dog\neating competition, men's division")
+  geom_col(
+    aes(x = Year, y = dogs, fill = record),
+    width = 0.8,
+    alpha = 0.9
+  ) +
+  scale_fill_manual(values = c("grey", "sienna")) +
+  scale_y_continuous(
+    expand = expansion(mult = c(0, 0.05))
+  ) +
+  theme_minimal_hgrid() +
+  theme(legend.position = c(0.1, 0.65)) +
+  labs(
+    x = 'Year',
+    y = 'Number of hot dogs & buns\nin 10 minutes',
+    fill = 'Record\nbroken?',
+    title = "Record-breaking wins in Nathan's hot dog\neating competition, men's division"
+  )
 ```
 :::
 
@@ -375,17 +404,22 @@ ggplot(hotdogs_mens) +
 #| fig-align: center
 
 ggplot(hotdogs_mens) +
-    geom_col(
-      aes(x = Year, y = dogs, fill = Winner),
-      width = 0.8, alpha = 0.9) +
-    scale_y_continuous(
-      expand = expansion(mult = c(0, 0.05))) +
-    theme_minimal_hgrid() +
-    theme(legend.position = c(0.1, 0.65)) +
-    labs(x = 'Year',
-         y = 'Number of hot dogs & buns\nin 10 minutes',
-         fill = 'Winner',
-         title = "Winner of Nathan's hot dog eating competition,\nmen's division")
+  geom_col(
+    aes(x = Year, y = dogs, fill = Winner),
+    width = 0.8,
+    alpha = 0.9
+  ) +
+  scale_y_continuous(
+    expand = expansion(mult = c(0, 0.05))
+  ) +
+  theme_minimal_hgrid() +
+  theme(legend.position = c(0.1, 0.65)) +
+  labs(
+    x = 'Year',
+    y = 'Number of hot dogs & buns\nin 10 minutes',
+    fill = 'Winner',
+    title = "Winner of Nathan's hot dog eating competition,\nmen's division"
+  )
 ```
 :::
 
@@ -401,14 +435,15 @@ Be sure to draw the line first,<br>then overlay the points
 #| eval: false
 #| code-line-numbers: "2,3,4"
 
-ggplot(milk_ca,
-    aes(x = year, y = milk_produced)) +
+ggplot(milk_ca, aes(x = year, y = milk_produced)) +
     geom_line(color = 'steelblue', size = 0.5) +
     geom_point(color = 'steelblue', size = 2) +
     theme_half_open(font_size = 18) +
-    labs(x = 'Year',
-         y = 'Milk produced (billion lbs)',
-         title = 'Milk production in California')
+    labs(
+        x = 'Year',
+        y = 'Milk produced (billion lbs)',
+        title = 'Milk production in California'
+    )
 ```
 :::
 :::
@@ -436,16 +471,18 @@ Likewise, draw the area first then overlay the line
 #| eval: false
 #| code-line-numbers: "3,4"
 
-ggplot(milk_ca,
-    aes(x = year, y = milk_produced)) +
+ggplot(milk_ca, aes(x = year, y = milk_produced)) +
     geom_area(fill = 'steelblue', alpha = 0.5) +
     geom_line(color = 'steelblue', size = 1) +
     scale_y_continuous(
-        expand = expansion(mult = c(0, 0.05))) +
+        expand = expansion(mult = c(0, 0.05))
+    ) +
     theme_half_open(font_size = 18) +
-    labs(x = 'Year',
-         y = 'Milk produced (billion lbs)',
-         title = 'Milk production in California')
+    labs(
+        x = 'Year',
+        y = 'Milk produced (billion lbs)',
+        title = 'Milk production in California'
+    )
 ```
 :::
 :::
@@ -473,17 +510,15 @@ Use `alpha` to make points slightly transparent
 #| eval: false
 #| code-line-numbers: "3,4,5,6"
 
-ggplot(milk_ca,
-    aes(x = year, y = milk_produced)) +
-    geom_point(color = 'grey',
-      size = 2, alpha = 0.9) +
-    geom_smooth(color = 'steelblue',
-      size = 1, se = FALSE) +
-    theme_half_open(font_size = 18) +
-    labs(
-      x = 'Year',
-      y = 'Milk produced (billion lbs)',
-      title = 'Milk production in California')
+ggplot(milk_ca, aes(x = year, y = milk_produced)) +
+  geom_point(color = 'grey', size = 2, alpha = 0.9) +
+  geom_smooth(color = 'steelblue', size = 1, se = FALSE) +
+  theme_half_open(font_size = 18) +
+  labs(
+    x = 'Year',
+    y = 'Milk produced (billion lbs)',
+    title = 'Milk production in California'
+  )
 ```
 :::
 :::
@@ -510,8 +545,8 @@ countdown(
   minutes = 15,
   warn_when = 30,
   update_every = 1,
-  top = 0,
-  right = 0,
+  top = '0.5em',
+  right = '0.5em',
   font_size = "2em"
 )
 ```
@@ -529,10 +564,12 @@ Consider using:
 - smoothed lines
 :::
 
-::: {.col}
+::: {.col .font87}
 ```{r}
 global_temps <- read_csv(file.path(
-  'data', 'nasa_global_temps.csv'))
+  'data',
+  'nasa_global_temps.csv'
+))
 
 head(global_temps)
 ```
@@ -636,24 +673,37 @@ Make a static plot w/labels for each year
 
 milk_region_anim_plot <- milk_region %>%
   ggplot(
-    aes(x = year, y = milk_produced,
-        color = region)) +
+    aes(x = year, y = milk_produced, color = region)
+  ) +
   geom_line(size = 1) +
   geom_point(size = 2) +
   geom_text_repel(
     aes(label = region),
-    hjust = 0, nudge_x = 1, direction = "y",
-    size = 6, segment.color = NA) +
+    hjust = 0,
+    nudge_x = 1,
+    direction = "y",
+    size = 6,
+    segment.color = NA
+  ) +
   scale_x_continuous(
     breaks = seq(1970, 2010, 10),
-    expand = expansion(add = c(1, 13))) +
-  scale_color_manual(values = c(
-      'sienna', 'forestgreen', 'dodgerblue', 'orange')) +
+    expand = expansion(add = c(1, 13))
+  ) +
+  scale_color_manual(
+    values = c(
+      'sienna',
+      'forestgreen',
+      'dodgerblue',
+      'orange'
+    )
+  ) +
   theme_half_open(font_size = 18) +
   theme(legend.position = 'none') +
-  labs(x = 'Year',
-       y = 'Milk produced (billion lbs)',
-       title = 'Milk production in four US regions')
+  labs(
+    x = 'Year',
+    y = 'Milk produced (billion lbs)',
+    title = 'Milk production in four US regions'
+  )
 
 milk_region_anim_plot
 ```
@@ -691,15 +741,21 @@ milk_region_anim <- milk_region_anim_plot +
     transition_reveal(year)
 
 # Render the animation
-animate(milk_region_anim,
-        end_pause = 15,
-        duration = 10,
-        width = 1100, height = 650, res = 150,
-        renderer = magick_renderer())
+animate(
+    milk_region_anim,
+    end_pause = 15,
+    duration = 10,
+    width = 1100,
+    height = 650,
+    res = 150,
+    renderer = magick_renderer()
+)
 
 # Save last animation
 anim_save(file.path(
-  'figs', 'milk_region_animation.gif'))
+    'figs',
+    'milk_region_animation.gif'
+))
 ```
 :::
 :::
@@ -720,19 +776,20 @@ First make a static plot
 #| fig-show: hide
 #| code-line-numbers: "2,3,5,6"
 
-gapminder_anim_plot <- ggplot(gapminder,
-  aes(x = gdpPercap, y = lifeExp,
-      size = pop, color = continent)) +
+gapminder_anim_plot <- ggplot(
+  gapminder,
+  aes(x = gdpPercap, y = lifeExp, size = pop, color = continent)
+) +
   geom_point(alpha = 0.7) +
   scale_size_area(
-    guide = FALSE, max_size = 15) +
+    guide = FALSE,
+    max_size = 15
+  ) +
   scale_color_brewer(palette = 'Set2') +
   scale_x_log10() +
   theme_bw(base_size = 18) +
   theme(legend.position = c(0.85, 0.3)) +
-  labs(x = 'GDP per capita',
-       y = 'Life expectancy',
-       color = 'Continent')
+  labs(x = 'GDP per capita', y = 'Life expectancy', color = 'Continent')
 
 gapminder_anim_plot
 ```
@@ -769,10 +826,14 @@ gapminder_anim <- gapminder_anim_plot +
   labs(title = "Year: {frame_time}")
 
 # Render the animation
-animate(gapminder_anim, end_pause = 10,
-        width = 800, height = 600,
-        res = 150,
-        renderer = magick_renderer())
+animate(
+  gapminder_anim,
+  end_pause = 10,
+  width = 800,
+  height = 600,
+  res = 150,
+  renderer = magick_renderer()
+)
 ```
 :::
 :::
@@ -790,54 +851,68 @@ animate(gapminder_anim, end_pause = 10,
 #| code-line-numbers: "13,14,15,44,45"
 
 milk_race_anim <- milk_production %>%
-    group_by(year) %>%
-    mutate(
-        rank = rank(-milk_produced),
-        Value_rel = milk_produced / milk_produced[rank==1],
-        Value_lbl = paste0(' ', round(milk_produced))) %>%
-    group_by(state) %>%
-    filter(rank <= 10) %>%
-    ungroup() %>%
-    mutate(year = as.integer(year)) %>%
-    ggplot(aes(x = rank, group = state,
-               fill = region, color = region)) +
-    geom_tile(aes(y = milk_produced / 2,
-                  height = milk_produced),
-              width = 0.9, alpha = 0.8, color = NA) +
-    geom_text(aes(y = 0, label = paste(state, " ")),
-              vjust = 0.2, hjust = 1) +
-    geom_text(aes(y = milk_produced, label = Value_lbl),
-              hjust = 0) +
-    coord_flip(clip = 'off', expand = FALSE) +
-    scale_y_continuous(labels = scales::comma) +
-    scale_fill_viridis(discrete = TRUE) +
-    scale_color_viridis(discrete = TRUE) +
-    scale_x_reverse() +
-    guides(color = FALSE) +
-    theme_minimal_vgrid() +
-    theme(
-        axis.line = element_blank(),
-        axis.text = element_blank(),
-        axis.ticks = element_blank(),
-        axis.title = element_blank(),
-        legend.position = c(0.7, 0.3),
-        legend.background = element_rect(fill = 'white'),
-        plot.title = element_text(
-          size = 22, hjust = 0.5, face = 'bold',
-          colour = 'grey', vjust = -1),
-        plot.subtitle = element_text(
-          size = 18, hjust = 0.5,
-          face = 'italic', color = 'grey'),
-        plot.caption = element_text(
-          size = 8, hjust = 0.5,
-          face = 'italic', color = 'grey'),
-          plot.margin = margin(0.5, 2, 0.5, 3, 'cm')) +
-    transition_time(year) +
-    view_follow(fixed_x = TRUE) +
-    labs(title    = 'Year : {frame_time}',
-         subtitle = 'Top 10 states by milk produced',
-         fill     = 'Region',
-         caption  = 'Milk produced (billions lbs)')
+  group_by(year) %>%
+  mutate(
+    rank = rank(-milk_produced),
+    Value_rel = milk_produced / milk_produced[rank == 1],
+    Value_lbl = paste0(' ', round(milk_produced))
+  ) %>%
+  group_by(state) %>%
+  filter(rank <= 10) %>%
+  ungroup() %>%
+  mutate(year = as.integer(year)) %>%
+  ggplot(aes(x = rank, group = state, fill = region, color = region)) +
+  geom_tile(
+    aes(y = milk_produced / 2, height = milk_produced),
+    width = 0.9,
+    alpha = 0.8,
+    color = NA
+  ) +
+  geom_text(aes(y = 0, label = paste(state, " ")), vjust = 0.2, hjust = 1) +
+  geom_text(aes(y = milk_produced, label = Value_lbl), hjust = 0) +
+  coord_flip(clip = 'off', expand = FALSE) +
+  scale_y_continuous(labels = scales::comma) +
+  scale_fill_viridis(discrete = TRUE) +
+  scale_color_viridis(discrete = TRUE) +
+  scale_x_reverse() +
+  guides(color = FALSE) +
+  theme_minimal_vgrid() +
+  theme(
+    axis.line = element_blank(),
+    axis.text = element_blank(),
+    axis.ticks = element_blank(),
+    axis.title = element_blank(),
+    legend.position = c(0.7, 0.3),
+    legend.background = element_rect(fill = 'white'),
+    plot.title = element_text(
+      size = 22,
+      hjust = 0.5,
+      face = 'bold',
+      colour = 'grey',
+      vjust = -1
+    ),
+    plot.subtitle = element_text(
+      size = 18,
+      hjust = 0.5,
+      face = 'italic',
+      color = 'grey'
+    ),
+    plot.caption = element_text(
+      size = 8,
+      hjust = 0.5,
+      face = 'italic',
+      color = 'grey'
+    ),
+    plot.margin = margin(0.5, 2, 0.5, 3, 'cm')
+  ) +
+  transition_time(year) +
+  view_follow(fixed_x = TRUE) +
+  labs(
+    title = 'Year : {frame_time}',
+    subtitle = 'Top 10 states by milk produced',
+    fill = 'Region',
+    caption = 'Milk produced (billions lbs)'
+  )
 ```
 :::
 :::
@@ -849,9 +924,15 @@ milk_race_anim <- milk_production %>%
 ```{r}
 #| eval: false
 
-animate(milk_race_anim, duration = 17, end_pause = 15,
-        width = 800, height = 700, res = 150,
-        renderer = magick_renderer())
+animate(
+        milk_race_anim,
+        duration = 17,
+        end_pause = 15,
+        width = 800,
+        height = 700,
+        res = 150,
+        renderer = magick_renderer()
+)
 ```
 :::
 
@@ -880,8 +961,8 @@ countdown(
   minutes = 15,
   warn_when = 30,
   update_every = 1,
-  top = 0,
-  right = 0,
+  top = '0.5em',
+  right = '0.5em',
   font_size = "2em"
 )
 ```
@@ -950,17 +1031,23 @@ agenda(3)
 #| fig-width: 7.5
 #| fig-align: center
 
-ggplot(milk_region,
-    aes(x = year, y = milk_produced,
-        color = region)) +
+ggplot(milk_region, aes(x = year, y = milk_produced, color = region)) +
     geom_point() +
-    scale_color_manual(values = c(
-        'sienna', 'forestgreen', 'dodgerblue', 'orange')) +
+    scale_color_manual(
+        values = c(
+            'sienna',
+            'forestgreen',
+            'dodgerblue',
+            'orange'
+        )
+    ) +
     theme_half_open(font_size = 18) +
-    labs(x = 'Year',
-         y = 'Milk produced (billion lbs)',
-         color = 'Region',
-         title = 'Milk production in four US regions')
+    labs(
+        x = 'Year',
+        y = 'Milk produced (billion lbs)',
+        color = 'Region',
+        title = 'Milk production in four US regions'
+    )
 ```
 :::
 
@@ -971,18 +1058,24 @@ ggplot(milk_region,
 #| fig-width: 7.5
 #| fig-align: center
 
-ggplot(milk_region,
-    aes(x = year, y = milk_produced,
-        color = region)) +
+ggplot(milk_region, aes(x = year, y = milk_produced, color = region)) +
     geom_point() +
     geom_line() +
-    scale_color_manual(values = c(
-        'sienna', 'forestgreen', 'dodgerblue', 'orange')) +
+    scale_color_manual(
+        values = c(
+            'sienna',
+            'forestgreen',
+            'dodgerblue',
+            'orange'
+        )
+    ) +
     theme_half_open(font_size = 18) +
-    labs(x = 'Year',
-         y = 'Milk produced (billion lbs)',
-         color = 'Region',
-         title = 'Milk production in four US regions')
+    labs(
+        x = 'Year',
+        y = 'Milk produced (billion lbs)',
+        color = 'Region',
+        title = 'Milk production in four US regions'
+    )
 ```
 :::
 
@@ -1000,17 +1093,26 @@ ggplot(milk_region,
 #| fig-width: 7.5
 #| fig-align: center
 
-milk_region_line <- ggplot(milk_region,
-    aes(x = year, y = milk_produced,
-        color = region)) +
+milk_region_line <- ggplot(
+    milk_region,
+    aes(x = year, y = milk_produced, color = region)
+) +
     geom_line(size = 1) +
-    scale_color_manual(values = c(
-        'sienna', 'forestgreen', 'dodgerblue', 'orange')) +
+    scale_color_manual(
+        values = c(
+            'sienna',
+            'forestgreen',
+            'dodgerblue',
+            'orange'
+        )
+    ) +
     theme_half_open(font_size = 18) +
-    labs(x = 'Year',
-         y = 'Milk produced (billion lbs)',
-         color = 'Region',
-         title = 'Milk production in four US regions')
+    labs(
+        x = 'Year',
+        y = 'Milk produced (billion lbs)',
+        color = 'Region',
+        title = 'Milk production in four US regions'
+    )
 
 milk_region_line
 ```
@@ -1045,23 +1147,24 @@ milk_region_line_label
 #| fig-width: 7.5
 #| fig-align: center
 
-ggplot(internet_region_summary,
-    aes(x = year, y = numUsers,
-        color = region)) +
-    geom_line(size = 1) +
-    geom_text_repel(
-      data = internet_region_summary %>%
-        filter(year == max(year)),
-      aes(label = region),
-         hjust = "outward", direction = "y",
-         nudge_x = 0.3, size = 4.5) +
-    scale_x_continuous(
-      breaks = seq(1990, 2015, 5),
-      expand = expansion(add = c(1, 14))) +
-    theme_half_open(font_size = 18) +
-    theme(legend.position = 'none') +
-    labs(x = 'Year', y = NULL,
-         title = 'Number of internet users (billions)')
+ggplot(internet_region_summary, aes(x = year, y = numUsers, color = region)) +
+  geom_line(size = 1) +
+  geom_text_repel(
+    data = internet_region_summary %>%
+      filter(year == max(year)),
+    aes(label = region),
+    hjust = "outward",
+    direction = "y",
+    nudge_x = 0.3,
+    size = 4.5
+  ) +
+  scale_x_continuous(
+    breaks = seq(1990, 2015, 5),
+    expand = expansion(add = c(1, 14))
+  ) +
+  theme_half_open(font_size = 18) +
+  theme(legend.position = 'none') +
+  labs(x = 'Year', y = NULL, title = 'Number of internet users (billions)')
 ```
 :::
 
@@ -1077,17 +1180,24 @@ ggplot(internet_region_summary,
 internet_region_area <- internet_region %>%
   mutate(numUsers = numUsers / 10^9) %>%
   ggplot() +
-  geom_area(aes(x = year, y = numUsers,
-        fill = region)) +
+  geom_area(aes(x = year, y = numUsers, fill = region)) +
   # Nice colors from "viridis" library:
   scale_fill_viridis(discrete = TRUE) +
   # Sort the legend into 3 rows
-  guides(fill = guide_legend(
-    nrow = 3, byrow = FALSE)) +
+  guides(
+    fill = guide_legend(
+      nrow = 3,
+      byrow = FALSE
+    )
+  ) +
   theme_minimal_grid(font_size = 15) +
   theme(legend.position = 'bottom') +
-  labs(x = 'Year', y = NULL, fill = 'Region',
-       title = 'Number of internet users (billions)')
+  labs(
+    x = 'Year',
+    y = NULL,
+    fill = 'Region',
+    title = 'Number of internet users (billions)'
+  )
 
 internet_region_area
 ```
@@ -1109,12 +1219,18 @@ internet_region_area
 ggplot(measles_ca) +
     geom_line(aes(x = year, y = rate)) +
     geom_vline(
-        xintercept = 1963, col = 'blue',
-        linetype = 'dashed') +
+        xintercept = 1963,
+        col = 'blue',
+        linetype = 'dashed'
+    ) +
     annotate(
-        'text', x = 1964, y = 70, hjust = 0,
+        'text',
+        x = 1964,
+        y = 70,
+        hjust = 0,
         label = 'Vaccine introduced in 1964',
-        color = 'blue') +
+        color = 'blue'
+    ) +
     labs(y = 'Cases per 10,000 people') +
     theme_bw()
 ```
@@ -1132,21 +1248,34 @@ ggplot(measles_ca) +
 measles_line_us_plot <- ggplot(measles) +
     geom_line(
         aes(x = year, y = rate, group = state),
-        color = 'grey', alpha = 0.3) +
+        color = 'grey',
+        alpha = 0.3
+    ) +
     geom_line(
         data = measles_us,
         aes(x = year, y = rate),
-        size = 0.8) +
+        size = 0.8
+    ) +
     geom_vline(
-        xintercept = 1963, col = 'blue',
-        linetype = 'dashed') +
+        xintercept = 1963,
+        col = 'blue',
+        linetype = 'dashed'
+    ) +
     annotate(
-        'text', x = 1945, y = 55, hjust = 0,
-        label = 'US Mean') +
+        'text',
+        x = 1945,
+        y = 55,
+        hjust = 0,
+        label = 'US Mean'
+    ) +
     annotate(
-        'text', x = 1964, y = 150, hjust = 0,
+        'text',
+        x = 1964,
+        y = 150,
+        hjust = 0,
         label = 'Vaccine introduced in 1964',
-        color = 'blue') +
+        color = 'blue'
+    ) +
     labs(y = 'Cases per 10,000 people') +
     theme_bw()
 
@@ -1166,25 +1295,32 @@ measles_line_us_plot
 #| fig-align: center
 
 measles_heat_map <- ggplot(measles) +
-    geom_tile(aes(x = year, y = state, fill = rate),
-              color = 'grey80') +
-    geom_vline(xintercept = 1963, col = 'blue') +
-    annotate('text', x = 1964, y = 51, hjust = 0,
-             label = 'Vaccine introduced in 1964',
-             color = 'blue') +
-    scale_x_continuous(expand = c(0, 0)) +
-    scale_fill_viridis(option = 'inferno', direction = -1,
-                       trans = 'sqrt') +
-    guides(fill = guide_colorbar(title.position = 'top',
-                                 reverse = TRUE)) +
-    coord_cartesian(clip = 'off') +
-    theme_minimal() +
-    theme(panel.grid = element_blank(),
-          legend.position = 'bottom',
-          text = element_text(size = 10)) +
-    labs(x = '', y = '',
-         fill = 'Cases per 10,000 people',
-         title = 'Measles in the U.S.')
+      geom_tile(aes(x = year, y = state, fill = rate), color = 'grey80') +
+      geom_vline(xintercept = 1963, col = 'blue') +
+      annotate(
+            'text',
+            x = 1964,
+            y = 51,
+            hjust = 0,
+            label = 'Vaccine introduced in 1964',
+            color = 'blue'
+      ) +
+      scale_x_continuous(expand = c(0, 0)) +
+      scale_fill_viridis(option = 'inferno', direction = -1, trans = 'sqrt') +
+      guides(fill = guide_colorbar(title.position = 'top', reverse = TRUE)) +
+      coord_cartesian(clip = 'off') +
+      theme_minimal() +
+      theme(
+            panel.grid = element_blank(),
+            legend.position = 'bottom',
+            text = element_text(size = 10)
+      ) +
+      labs(
+            x = '',
+            y = '',
+            fill = 'Cases per 10,000 people',
+            title = 'Measles in the U.S.'
+      )
 
 measles_heat_map
 ```
@@ -1215,25 +1351,37 @@ Make the basic line chart first
 
 # Format the data
 milk_region <- milk_production %>%
-  filter(region %in% c(
-    'Pacific', 'Northeast', 'Lake States', 'Mountain')) %>%
+  filter(
+    region %in%
+      c(
+        'Pacific',
+        'Northeast',
+        'Lake States',
+        'Mountain'
+      )
+  ) %>%
   group_by(year, region) %>%
   summarise(milk_produced = sum(milk_produced)) %>%
   ungroup()
 
 # Make the line chart
-ggplot(milk_region,
-  aes(x = year, y = milk_produced,
-      color = region)) +
+ggplot(milk_region, aes(x = year, y = milk_produced, color = region)) +
   geom_line(size = 1) +
-  scale_color_manual(values = c(
-    'sienna', 'forestgreen', 'dodgerblue', 'orange')) +
+  scale_color_manual(
+    values = c(
+      'sienna',
+      'forestgreen',
+      'dodgerblue',
+      'orange'
+    )
+  ) +
   theme_half_open(font_size = 18) +
   labs(
-    x     = 'Year',
-    y     = 'Milk produced (billion lbs)',
+    x = 'Year',
+    y = 'Milk produced (billion lbs)',
     color = 'Region',
-    title = 'Milk production in four US regions')
+    title = 'Milk production in four US regions'
+  )
 ```
 :::
 :::
@@ -1263,36 +1411,54 @@ milk_region_line
 
 # Format the data
 milk_region <- milk_production %>%
-  filter(region %in% c(
-    'Pacific', 'Northeast', 'Lake States', 'Mountain')) %>%
+  filter(
+    region %in%
+      c(
+        'Pacific',
+        'Northeast',
+        'Lake States',
+        'Mountain'
+      )
+  ) %>%
   group_by(year, region) %>%
   summarise(milk_produced = sum(milk_produced)) %>%
   ungroup()
 
 # Make the line plot
-ggplot(milk_region,
-  aes(x = year, y = milk_produced,
-      color = region)) +
+ggplot(milk_region, aes(x = year, y = milk_produced, color = region)) +
   geom_line(size = 1) +
   # Add labels
   geom_text_repel(
     data = milk_region %>%
       filter(year == max(year)),
     aes(label = region),
-      hjust = 0, nudge_x = 1, direction = "y",
-      size = 6, segment.color = NA) +
+    hjust = 0,
+    nudge_x = 1,
+    direction = "y",
+    size = 6,
+    segment.color = NA
+  ) +
   # Create space for labels on right side
   scale_x_continuous(
     breaks = seq(1970, 2010, 10),
-    expand = expansion(add = c(1, 13))) +
-  scale_color_manual(values = c(
-    'sienna', 'forestgreen', 'dodgerblue', 'orange')) +
+    expand = expansion(add = c(1, 13))
+  ) +
+  scale_color_manual(
+    values = c(
+      'sienna',
+      'forestgreen',
+      'dodgerblue',
+      'orange'
+    )
+  ) +
   theme_half_open(font_size = 18) +
   # Remove legend
   theme(legend.position = 'none') +
-  labs(x = 'Year',
-       y = 'Milk produced (billion lbs)',
-       title = 'Milk production in four US regions')
+  labs(
+    x = 'Year',
+    y = 'Milk produced (billion lbs)',
+    title = 'Milk production in four US regions'
+  )
 ```
 :::
 :::
@@ -1324,28 +1490,48 @@ library(geomtextpath)
 
 # Format the data
 milk_production %>%
-  filter(region %in% c(
-    'Pacific', 'Northeast', 'Lake States', 'Mountain')) %>%
+  filter(
+    region %in%
+      c(
+        'Pacific',
+        'Northeast',
+        'Lake States',
+        'Mountain'
+      )
+  ) %>%
   group_by(year, region) %>%
   summarise(milk_produced = sum(milk_produced)) %>%
   ungroup() %>%
 
-# Make the line plot
+  # Make the line plot
   ggplot() +
   geom_textline(
     aes(
-      x = year, y = milk_produced,
-      color = region, label = region, group = region),
-    size = 5, hjust = 0.15
+      x = year,
+      y = milk_produced,
+      color = region,
+      label = region,
+      group = region
+    ),
+    size = 5,
+    hjust = 0.15
   ) +
-  scale_color_manual(values = c(
-    'sienna', 'forestgreen', 'dodgerblue', 'orange')) +
+  scale_color_manual(
+    values = c(
+      'sienna',
+      'forestgreen',
+      'dodgerblue',
+      'orange'
+    )
+  ) +
   theme_half_open(font_size = 18) +
   # Remove legend
   theme(legend.position = 'none') +
-  labs(x = 'Year',
-       y = 'Milk produced (billion lbs)',
-       title = 'Milk production in four US regions')
+  labs(
+    x = 'Year',
+    y = 'Milk produced (billion lbs)',
+    title = 'Milk production in four US regions'
+  )
 ```
 :::
 :::
@@ -1364,25 +1550,45 @@ Use `{geomtextpath}` package
 #| fig-align: center
 
 milk_production %>%
-  filter(region %in% c(
-    'Pacific', 'Northeast', 'Lake States', 'Mountain')) %>%
+  filter(
+    region %in%
+      c(
+        'Pacific',
+        'Northeast',
+        'Lake States',
+        'Mountain'
+      )
+  ) %>%
   group_by(year, region) %>%
   summarise(milk_produced = sum(milk_produced)) %>%
   ungroup() %>%
   ggplot() +
   geom_textline(
     aes(
-      x = year, y = milk_produced,
-      color = region, label = region, group = region),
-    size = 5, hjust = 0.15
+      x = year,
+      y = milk_produced,
+      color = region,
+      label = region,
+      group = region
+    ),
+    size = 5,
+    hjust = 0.15
   ) +
-  scale_color_manual(values = c(
-    'sienna', 'forestgreen', 'dodgerblue', 'orange')) +
+  scale_color_manual(
+    values = c(
+      'sienna',
+      'forestgreen',
+      'dodgerblue',
+      'orange'
+    )
+  ) +
   theme_half_open(font_size = 18) +
   theme(legend.position = 'none') +
-  labs(x = 'Year',
-       y = 'Milk produced (billion lbs)',
-       title = 'Milk production in four US regions')
+  labs(
+    x = 'Year',
+    y = 'Milk produced (billion lbs)',
+    title = 'Milk production in four US regions'
+  )
 ```
 :::
 
@@ -1399,20 +1605,24 @@ milk_production %>%
 internet_region %>%
   mutate(numUsers = numUsers / 10^9) %>%
   ggplot() +
-  geom_area(aes(x = year, y = numUsers,
-        fill = region)) +
+  geom_area(aes(x = year, y = numUsers, fill = region)) +
   # Nice colors from "viridis" library:
   scale_fill_viridis(discrete = TRUE) +
   # Sort the legend into 3 rows
-  guides(fill = guide_legend(
-    nrow = 3, byrow = FALSE)) +
+  guides(
+    fill = guide_legend(
+      nrow = 3,
+      byrow = FALSE
+    )
+  ) +
   theme_minimal_grid(font_size = 15) +
   theme(legend.position = 'bottom') +
   labs(
     x = 'Year',
     y = NULL,
     fill = 'Region',
-    title = 'Number of internet users (billions)')
+    title = 'Number of internet users (billions)'
+  )
 ```
 :::
 :::
@@ -1441,14 +1651,17 @@ Format the data
 measles <- us_diseases %>%
   filter(
     disease == 'Measles',
-    !state %in% c("Hawaii", "Alaska")) %>%
+    !state %in% c("Hawaii", "Alaska")
+  ) %>%
   mutate(
     rate = (count / population) * 10000,
-    state = fct_reorder(state, rate)) %>%
+    state = fct_reorder(state, rate)
+  ) %>%
   # Compute annual mean rate across all states
   group_by(year) %>%
   mutate(
-    mean_rate = sum(count) / sum(population) * 10000)
+    mean_rate = sum(count) / sum(population) * 10000
+  )
 ```
 
 Make all the state lines in light grey color
@@ -1458,14 +1671,21 @@ Make all the state lines in light grey color
 #| code-line-numbers: "2,3"
 
 ggplot(measles) +
-    geom_line(aes(x = year, y = rate, group = state),
-              color = 'grey', alpha = 0.3) +
+    geom_line(
+        aes(x = year, y = rate, group = state),
+        color = 'grey',
+        alpha = 0.3
+    ) +
     # Add reference line & label:
-    geom_vline(xintercept = 1963, col = 'blue',
-               linetype = 'dashed') +
-    annotate('text', x = 1964, y = 150, hjust = 0,
-             label = 'Vaccine introduced in 1964',
-             color = 'blue') +
+    geom_vline(xintercept = 1963, col = 'blue', linetype = 'dashed') +
+    annotate(
+        'text',
+        x = 1964,
+        y = 150,
+        hjust = 0,
+        label = 'Vaccine introduced in 1964',
+        color = 'blue'
+    ) +
     theme_minimal_grid(font_size = 18) +
     labs(y = 'Cases per 10,000 people')
 ```
@@ -1482,13 +1702,20 @@ ggplot(measles) +
 #| fig-align: center
 
 ggplot(measles) +
-    geom_line(aes(x = year, y = rate, group = state),
-              color = 'grey', alpha = 0.3) +
-    geom_vline(xintercept = 1963, col = 'blue',
-               linetype = 'dashed') +
-    annotate('text', x = 1964, y = 150, hjust = 0,
-             label = 'Vaccine introduced in 1964',
-             color = 'blue') +
+    geom_line(
+        aes(x = year, y = rate, group = state),
+        color = 'grey',
+        alpha = 0.3
+    ) +
+    geom_vline(xintercept = 1963, col = 'blue', linetype = 'dashed') +
+    annotate(
+        'text',
+        x = 1964,
+        y = 150,
+        hjust = 0,
+        label = 'Vaccine introduced in 1964',
+        color = 'blue'
+    ) +
     theme_minimal_grid(font_size = 18) +
     labs(y = 'Cases per 10,000 people')
 ```
@@ -1507,19 +1734,31 @@ Now overlay the annual mean line
 ggplot(measles) +
   geom_line(
     aes(x = year, y = rate, group = state),
-    color = 'grey', alpha = 0.3) +
+    color = 'grey',
+    alpha = 0.3
+  ) +
   geom_line(
-    aes(x = year, y = mean_rate), size = 0.8) +
+    aes(x = year, y = mean_rate),
+    size = 0.8
+  ) +
   # Add US mean label
   annotate(
-    'text', x = 1945, y = 55, hjust = 0,
-    label = 'US Mean') +
+    'text',
+    x = 1945,
+    y = 55,
+    hjust = 0,
+    label = 'US Mean'
+  ) +
   # Add reference line & label
-  geom_vline(xintercept = 1963, col = 'blue',
-             linetype = 'dashed') +
-  annotate('text', x = 1964, y = 150, hjust = 0,
-           label = 'Vaccine introduced in 1964',
-           color = 'blue') +
+  geom_vline(xintercept = 1963, col = 'blue', linetype = 'dashed') +
+  annotate(
+    'text',
+    x = 1964,
+    y = 150,
+    hjust = 0,
+    label = 'Vaccine introduced in 1964',
+    color = 'blue'
+  ) +
   theme_minimal_grid(font_size = 18) +
   labs(y = 'Cases per 10,000 people')
 ```
@@ -1552,14 +1791,21 @@ Create main grid with `geom_tile()`
 ggplot(measles) +
   geom_tile(
     aes(x = year, y = state, fill = rate),
-    color = 'grey80') +
+    color = 'grey80'
+  ) +
   # Add reference line & label
   geom_vline(
-    xintercept = 1963, col = 'blue') +
+    xintercept = 1963,
+    col = 'blue'
+  ) +
   annotate(
-    'text', x = 1964, y = 50.5, hjust = 0,
+    'text',
+    x = 1964,
+    y = 50.5,
+    hjust = 0,
     label = 'Vaccine introduced in 1964',
-    color = 'blue')
+    color = 'blue'
+  )
 ```
 :::
 :::
@@ -1576,13 +1822,20 @@ ggplot(measles) +
 ggplot(measles) +
   geom_tile(
     aes(x = year, y = state, fill = rate),
-    color = 'grey80') +
+    color = 'grey80'
+  ) +
   geom_vline(
-    xintercept = 1963, col = 'blue') +
+    xintercept = 1963,
+    col = 'blue'
+  ) +
   annotate(
-    'text', x = 1964, y = 50.5, hjust = 0,
+    'text',
+    x = 1964,
+    y = 50.5,
+    hjust = 0,
     label = 'Vaccine introduced in 1964',
-    color = 'blue')
+    color = 'blue'
+  )
 ```
 :::
 
@@ -1597,29 +1850,37 @@ Adjust scales and adjust theme
 #| code-line-numbers: "11,12,13,15,16,17,18,19,20"
 
 ggplot(measles) +
-  geom_tile(aes(x = year, y = state, fill = rate),
-    color = 'grey80') +
+  geom_tile(aes(x = year, y = state, fill = rate), color = 'grey80') +
   # Add reference line & label
   geom_vline(xintercept = 1963, col = 'blue') +
   annotate(
-    'text', x = 1964, y = 50.5, hjust = 0,
+    'text',
+    x = 1964,
+    y = 50.5,
+    hjust = 0,
     label = 'Vaccine introduced in 1964',
-    color = 'blue') +
+    color = 'blue'
+  ) +
   # Adjust scales
   scale_x_continuous(expand = c(0, 0)) +
   scale_fill_viridis(
-    option = 'inferno', direction = -1) +
+    option = 'inferno',
+    direction = -1
+  ) +
   # Adjust theme
   theme_minimal() +
   theme(
     panel.grid = element_blank(),
     legend.position = 'bottom',
-    text = element_text(size = 10)) +
+    text = element_text(size = 10)
+  ) +
   coord_cartesian(clip = 'off') +
   labs(
-    x = NULL, y = NULL,
+    x = NULL,
+    y = NULL,
     fill = 'Cases per 10,000 people',
-    title = 'Measles')
+    title = 'Measles'
+  )
 ```
 :::
 :::
@@ -1634,26 +1895,34 @@ ggplot(measles) +
 #| fig-align: center
 
 ggplot(measles) +
-  geom_tile(aes(x = year, y = state, fill = rate),
-    color = 'grey80') +
+  geom_tile(aes(x = year, y = state, fill = rate), color = 'grey80') +
   geom_vline(xintercept = 1963, col = 'blue') +
   annotate(
-    'text', x = 1964, y = 50.5, hjust = 0,
+    'text',
+    x = 1964,
+    y = 50.5,
+    hjust = 0,
     label = 'Vaccine introduced in 1964',
-    color = 'blue') +
+    color = 'blue'
+  ) +
   scale_x_continuous(expand = c(0, 0)) +
   scale_fill_viridis(
-    option = 'inferno', direction = -1) +
+    option = 'inferno',
+    direction = -1
+  ) +
   theme_minimal() +
   theme(
     panel.grid = element_blank(),
     legend.position = 'bottom',
-    text = element_text(size = 10)) +
+    text = element_text(size = 10)
+  ) +
   coord_cartesian(clip = 'off') +
   labs(
-    x = NULL, y = NULL,
+    x = NULL,
+    y = NULL,
     fill = 'Cases per 10,000 people',
-    title = 'Measles')
+    title = 'Measles'
+  )
 ```
 :::
 
@@ -1668,33 +1937,45 @@ Adjust scales and adjust theme
 #| code-line-numbers: "14,16,17"
 
 ggplot(measles) +
-  geom_tile(aes(x = year, y = state, fill = rate),
-    color = 'grey80') +
+  geom_tile(aes(x = year, y = state, fill = rate), color = 'grey80') +
   # Add reference line & label
   geom_vline(xintercept = 1963, col = 'blue') +
   annotate(
-    'text', x = 1964, y = 50.5, hjust = 0,
+    'text',
+    x = 1964,
+    y = 50.5,
+    hjust = 0,
     label = 'Vaccine introduced in 1964',
-    color = 'blue') +
+    color = 'blue'
+  ) +
   # Adjust scales
   scale_x_continuous(expand = c(0, 0)) +
   scale_fill_viridis(
-    option = 'inferno', direction = -1,
-    trans = 'sqrt') +
+    option = 'inferno',
+    direction = -1,
+    trans = 'sqrt'
+  ) +
   # Modify legend color bar
-  guides(fill = guide_colorbar(
-      title.position = 'top', reverse = TRUE)) +
+  guides(
+    fill = guide_colorbar(
+      title.position = 'top',
+      reverse = TRUE
+    )
+  ) +
   # Adjust theme
   theme_minimal() +
   theme(
     panel.grid = element_blank(),
     legend.position = 'bottom',
-    text = element_text(size = 10)) +
+    text = element_text(size = 10)
+  ) +
   coord_cartesian(clip = 'off') +
   labs(
-    x = NULL, y = NULL,
+    x = NULL,
+    y = NULL,
     fill = 'Cases per 10,000 people',
-    title = 'Measles')
+    title = 'Measles'
+  )
 ```
 :::
 :::
@@ -1723,8 +2004,8 @@ countdown(
   minutes = 20,
   warn_when = 30,
   update_every = 1,
-  top = 0,
-  right = 0,
+  top = '0.5em',
+  right = '0.5em',
   font_size = "2em"
 )
 ```
@@ -1739,10 +2020,12 @@ Use the `us_covid` data frame to explore ways to visualize the number of daily c
 3. A heat map
 :::
 
-::: {.col}
+::: {.col .font70}
 ```{r}
 us_covid <- read_csv(file.path(
-  'data', 'us_covid.csv'))
+  'data',
+  'us_covid.csv'
+))
 
 head(us_covid)
 ```
