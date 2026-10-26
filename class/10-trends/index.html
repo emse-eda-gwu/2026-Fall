@@ -7,6 +7,7 @@
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="index_files/libs/quarto-contrib/iconify-3.0.0/iconify-icon.min.js"></script>
 <link href="index_files/libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="index_files/libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.9.38">
@@ -100,7 +101,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-d91063f734c5651f8531c17988f933d2.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-b347fff2a7c45c2678ee5df48c274abd.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -700,6 +701,46 @@
     whenReady(init);
   })();
   </script>
+  <script>
+  // ---- Offline Quarto mark ---------------------------------------------------
+  // `` comes from the mcanouil/iconify extension, which renders an
+  // <iconify-icon> web component. That component has NO icon data of its own: it
+  // fetches `simple-icons:quarto` from api.iconify.design at runtime. On a phone
+  // with no signal, on a plane, on a locked-down conference network, or from a
+  // `file://` copy of the deck, the request fails and the icon-extension's
+  // fallback swaps in a text glyph — which is why the Quarto logo goes missing
+  // while the Font Awesome icons (a local webfont, no network) keep working.
+  //
+  // Fix the one icon lexis decks actually lean on by handing iconify its data
+  // locally, so nothing has to be fetched. `addIcon` lives on the custom element
+  // class (iconify-icon copies its module exports onto it), and
+  // `customElements.whenDefined` means this does not care whether the iconify
+  // script tag lands before or after this one in <head>. If the iconify extension
+  // is not installed at all the element is never defined, the promise never
+  // settles, and this is a no-op — lexis does not depend on that extension.
+  //
+  // Icon body is simple-icons' `quarto` (24x24, CC0), inlined verbatim. Registered
+  // under both the prefixed and bare names because iconify resolves the two
+  // separately.
+  (function () {
+    if (!window.customElements || !customElements.whenDefined) return;
+
+    var QUARTO = {
+      body: '<path fill="currentColor" d="M12.65 12.854V24c6.042-.325 10.923-5.105 11.33-11.125H12.65Zm-1.504 0H.02c.427 5.94 5.166 10.699 11.105 11.105V12.854Zm1.505-1.505H24C23.675 5.247 18.753.325 12.65 0Zm-1.505 0V0C5.106.427.326 5.308 0 11.35Z"/>',
+      width: 24,
+      height: 24
+    };
+
+    customElements.whenDefined('iconify-icon').then(function () {
+      var el = customElements.get('iconify-icon');
+      if (!el || typeof el.addIcon !== 'function') return;
+      try {
+        el.addIcon('simple-icons:quarto', QUARTO);
+        el.addIcon('quarto', QUARTO);
+      } catch (e) { /* a future iconify may rename this; the CDN still works */ }
+    });
+  })();
+  </script>
   <link href="index_files/libs/countdown/countdown.css" rel="stylesheet">
   <script src="index_files/libs/countdown/countdown.js"></script>
 </head>
@@ -745,11 +786,11 @@ built-in one.
 </section>
 <section class="slide level0">
 
-<section id="quiz-3" class="inverse">
-<h1>Quiz 3</h1>
+<section id="quiz-4" class="inverse">
+<h1>Quiz 4</h1>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_105e835e" minutes="12" seconds="0" warn-when="30" update-every="1" tabindex="0" style="top:0;right:0;--countdown-font-size:3em;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_e348f239" minutes="12" seconds="0" warn-when="30" update-every="1" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:3em;"></countdown-timer>
 </div>
 </div>
 <div class="cols-row">
@@ -767,7 +808,7 @@ Rules:
 </div>
 <div class="col">
 <p><br></p>
-<p><img data-src="https://github.com/emse-p4a-gwu/2022-Spring/raw/main/images/quiz_doge.png" width="400"></p>
+<p><img data-src="https://github.com/emse-eda-gwu/2026-Fall/raw/main/images/quiz_doge.png" width="530"></p>
 </div>
 </div>
 </section>
@@ -777,17 +818,17 @@ Rules:
 <h2>Today’s data</h2>
 <p>Seen before:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>gapminder        <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">file.path</span>(<span class="st">'data'</span>, <span class="st">'gapminder.csv'</span>))</span>
-<span id="cb1-2"><a href=""></a>milk_production  <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">file.path</span>(<span class="st">'data'</span>, <span class="st">'milk_production.csv'</span>))</span>
-<span id="cb1-3"><a href=""></a>global_temps     <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">file.path</span>(<span class="st">'data'</span>, <span class="st">'nasa_global_temps.csv'</span>))</span>
-<span id="cb1-4"><a href=""></a>internet_region  <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">file.path</span>(<span class="st">'data'</span>, <span class="st">'internet_users_region.csv'</span>))</span>
-<span id="cb1-5"><a href=""></a>hotdogs          <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">file.path</span>(<span class="st">'data'</span>, <span class="st">'hot_dog_winners.csv'</span>))</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>gapminder <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">file.path</span>(<span class="st">'data'</span>, <span class="st">'gapminder.csv'</span>))</span>
+<span id="cb1-2"><a href=""></a>milk_production <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">file.path</span>(<span class="st">'data'</span>, <span class="st">'milk_production.csv'</span>))</span>
+<span id="cb1-3"><a href=""></a>global_temps <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">file.path</span>(<span class="st">'data'</span>, <span class="st">'nasa_global_temps.csv'</span>))</span>
+<span id="cb1-4"><a href=""></a>internet_region <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">file.path</span>(<span class="st">'data'</span>, <span class="st">'internet_users_region.csv'</span>))</span>
+<span id="cb1-5"><a href=""></a>hotdogs <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">file.path</span>(<span class="st">'data'</span>, <span class="st">'hot_dog_winners.csv'</span>))</span>
 <span id="cb1-6"><a href=""></a>internet_country <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">file.path</span>(<span class="st">'data'</span>, <span class="st">'internet_users_country.csv'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>New datasets:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a>us_covid         <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">file.path</span>(<span class="st">'data'</span>, <span class="st">'us_covid.csv'</span>))</span>
-<span id="cb2-2"><a href=""></a>us_diseases      <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">file.path</span>(<span class="st">'data'</span>, <span class="st">'us_contagious_diseases.csv'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a>us_covid <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">file.path</span>(<span class="st">'data'</span>, <span class="st">'us_covid.csv'</span>))</span>
+<span id="cb2-2"><a href=""></a>us_diseases <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">file.path</span>(<span class="st">'data'</span>, <span class="st">'us_contagious_diseases.csv'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level0">
@@ -997,14 +1038,15 @@ Smoothed line + points
 <p>Be sure to draw the line first,<br>then overlay the points</p>
 <div class="font70">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" data-code-line-numbers="2,3,4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="fu">ggplot</span>(milk_ca,</span>
-<span id="cb4-2"><a href=""></a>    <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> milk_produced)) <span class="sc">+</span></span>
-<span id="cb4-3"><a href=""></a>    <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">'steelblue'</span>, <span class="at">size =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb4-4"><a href=""></a>    <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">'steelblue'</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb4-5"><a href=""></a>    <span class="fu">theme_half_open</span>(<span class="at">font_size =</span> <span class="dv">18</span>) <span class="sc">+</span></span>
-<span id="cb4-6"><a href=""></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">'Year'</span>,</span>
-<span id="cb4-7"><a href=""></a>         <span class="at">y =</span> <span class="st">'Milk produced (billion lbs)'</span>,</span>
-<span id="cb4-8"><a href=""></a>         <span class="at">title =</span> <span class="st">'Milk production in California'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" data-code-line-numbers="2,3,4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="fu">ggplot</span>(milk_ca, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> milk_produced)) <span class="sc">+</span></span>
+<span id="cb4-2"><a href=""></a>    <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">'steelblue'</span>, <span class="at">size =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb4-3"><a href=""></a>    <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">'steelblue'</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb4-4"><a href=""></a>    <span class="fu">theme_half_open</span>(<span class="at">font_size =</span> <span class="dv">18</span>) <span class="sc">+</span></span>
+<span id="cb4-5"><a href=""></a>    <span class="fu">labs</span>(</span>
+<span id="cb4-6"><a href=""></a>        <span class="at">x =</span> <span class="st">'Year'</span>,</span>
+<span id="cb4-7"><a href=""></a>        <span class="at">y =</span> <span class="st">'Milk produced (billion lbs)'</span>,</span>
+<span id="cb4-8"><a href=""></a>        <span class="at">title =</span> <span class="st">'Milk production in California'</span></span>
+<span id="cb4-9"><a href=""></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1029,16 +1071,18 @@ Smoothed line + points
 <p>Likewise, draw the area first then overlay the line</p>
 <div class="font70">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" data-code-line-numbers="3,4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="fu">ggplot</span>(milk_ca,</span>
-<span id="cb5-2"><a href=""></a>    <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> milk_produced)) <span class="sc">+</span></span>
-<span id="cb5-3"><a href=""></a>    <span class="fu">geom_area</span>(<span class="at">fill =</span> <span class="st">'steelblue'</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb5-4"><a href=""></a>    <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">'steelblue'</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb5-5"><a href=""></a>    <span class="fu">scale_y_continuous</span>(</span>
-<span id="cb5-6"><a href=""></a>        <span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">mult =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.05</span>))) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" data-code-line-numbers="3,4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="fu">ggplot</span>(milk_ca, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> milk_produced)) <span class="sc">+</span></span>
+<span id="cb5-2"><a href=""></a>    <span class="fu">geom_area</span>(<span class="at">fill =</span> <span class="st">'steelblue'</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb5-3"><a href=""></a>    <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">'steelblue'</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb5-4"><a href=""></a>    <span class="fu">scale_y_continuous</span>(</span>
+<span id="cb5-5"><a href=""></a>        <span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">mult =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.05</span>))</span>
+<span id="cb5-6"><a href=""></a>    ) <span class="sc">+</span></span>
 <span id="cb5-7"><a href=""></a>    <span class="fu">theme_half_open</span>(<span class="at">font_size =</span> <span class="dv">18</span>) <span class="sc">+</span></span>
-<span id="cb5-8"><a href=""></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">'Year'</span>,</span>
-<span id="cb5-9"><a href=""></a>         <span class="at">y =</span> <span class="st">'Milk produced (billion lbs)'</span>,</span>
-<span id="cb5-10"><a href=""></a>         <span class="at">title =</span> <span class="st">'Milk production in California'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-8"><a href=""></a>    <span class="fu">labs</span>(</span>
+<span id="cb5-9"><a href=""></a>        <span class="at">x =</span> <span class="st">'Year'</span>,</span>
+<span id="cb5-10"><a href=""></a>        <span class="at">y =</span> <span class="st">'Milk produced (billion lbs)'</span>,</span>
+<span id="cb5-11"><a href=""></a>        <span class="at">title =</span> <span class="st">'Milk production in California'</span></span>
+<span id="cb5-12"><a href=""></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1063,17 +1107,15 @@ Smoothed line + points
 <p>Use <code>alpha</code> to make points slightly transparent</p>
 <div class="font70">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" data-code-line-numbers="3,4,5,6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="fu">ggplot</span>(milk_ca,</span>
-<span id="cb6-2"><a href=""></a>    <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> milk_produced)) <span class="sc">+</span></span>
-<span id="cb6-3"><a href=""></a>    <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">'grey'</span>,</span>
-<span id="cb6-4"><a href=""></a>      <span class="at">size =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.9</span>) <span class="sc">+</span></span>
-<span id="cb6-5"><a href=""></a>    <span class="fu">geom_smooth</span>(<span class="at">color =</span> <span class="st">'steelblue'</span>,</span>
-<span id="cb6-6"><a href=""></a>      <span class="at">size =</span> <span class="dv">1</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb6-7"><a href=""></a>    <span class="fu">theme_half_open</span>(<span class="at">font_size =</span> <span class="dv">18</span>) <span class="sc">+</span></span>
-<span id="cb6-8"><a href=""></a>    <span class="fu">labs</span>(</span>
-<span id="cb6-9"><a href=""></a>      <span class="at">x =</span> <span class="st">'Year'</span>,</span>
-<span id="cb6-10"><a href=""></a>      <span class="at">y =</span> <span class="st">'Milk produced (billion lbs)'</span>,</span>
-<span id="cb6-11"><a href=""></a>      <span class="at">title =</span> <span class="st">'Milk production in California'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" data-code-line-numbers="3,4,5,6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="fu">ggplot</span>(milk_ca, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> milk_produced)) <span class="sc">+</span></span>
+<span id="cb6-2"><a href=""></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">'grey'</span>, <span class="at">size =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.9</span>) <span class="sc">+</span></span>
+<span id="cb6-3"><a href=""></a>  <span class="fu">geom_smooth</span>(<span class="at">color =</span> <span class="st">'steelblue'</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb6-4"><a href=""></a>  <span class="fu">theme_half_open</span>(<span class="at">font_size =</span> <span class="dv">18</span>) <span class="sc">+</span></span>
+<span id="cb6-5"><a href=""></a>  <span class="fu">labs</span>(</span>
+<span id="cb6-6"><a href=""></a>    <span class="at">x =</span> <span class="st">'Year'</span>,</span>
+<span id="cb6-7"><a href=""></a>    <span class="at">y =</span> <span class="st">'Milk produced (billion lbs)'</span>,</span>
+<span id="cb6-8"><a href=""></a>    <span class="at">title =</span> <span class="st">'Milk production in California'</span></span>
+<span id="cb6-9"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1092,13 +1134,14 @@ Smoothed line + points
 </section>
 <section class="slide level0">
 
-<section id="your-turn" class="inverse">
-<h2>Your turn</h2>
+<section class="lexis-slide-title inverse">
+<h1 class="lexis-slide-title"></h1>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_a6950741" minutes="15" seconds="0" warn-when="30" update-every="1" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_2c3db5f1" minutes="15" seconds="0" warn-when="30" update-every="1" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:2em;"></countdown-timer>
 </div>
 </div>
+<h2 id="your-turn">Your turn</h2>
 <div class="cols-row">
 <div class="col">
 <p>Use the <code>global_temps</code> data frame to explore ways to visualize the change in average global temperatures.</p>
@@ -1110,12 +1153,14 @@ Smoothed line + points
 <li>smoothed lines</li>
 </ul>
 </div>
-<div class="col">
+<div class="col font87">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>global_temps <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">file.path</span>(</span>
-<span id="cb7-2"><a href=""></a>  <span class="st">'data'</span>, <span class="st">'nasa_global_temps.csv'</span>))</span>
-<span id="cb7-3"><a href=""></a></span>
-<span id="cb7-4"><a href=""></a><span class="fu">head</span>(global_temps)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-2"><a href=""></a>  <span class="st">'data'</span>,</span>
+<span id="cb7-3"><a href=""></a>  <span class="st">'nasa_global_temps.csv'</span></span>
+<span id="cb7-4"><a href=""></a>))</span>
+<span id="cb7-5"><a href=""></a></span>
+<span id="cb7-6"><a href=""></a><span class="fu">head</span>(global_temps)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; # A tibble: 6 × 3
 #&gt;    year meanTemp smoothTemp
@@ -1172,14 +1217,14 @@ Smoothed line + points
 
 <section id="animated-chart" class="center">
 <h1>Animated chart</h1>
-<p><img data-src="images/milk_region_animation.gif" width="800"></p>
+<p><img data-src="images/milk_region_animation.gif" width="1060"></p>
 </section>
 </section>
 <section class="slide level0">
 
 <section id="animation-is-particularly-helpful-for-the-time-dimension" class="center">
 <h3>Animation is particularly helpful for the <strong>time dimension</strong></h3>
-<p><img data-src="images/gapminder_animation.gif" width="600"></p>
+<p><img data-src="images/gapminder_animation.gif" width="790"></p>
 <p><span class="left">“Gapminder” visualization by Hans Rosling</span></p>
 </section>
 </section>
@@ -1187,15 +1232,15 @@ Smoothed line + points
 
 <section id="animation-is-particularly-helpful-for-the-time-dimension-1" class="center">
 <h3>Animation is particularly helpful for the <strong>time dimension</strong></h3>
-<p><img data-src="images/spiral_temps.gif" width="450"></p>
-<p><span class="left">Source: https://www.climate-lab-book.ac.uk/spirals/</span></p>
+<p><img data-src="images/spiral_temps.gif" width="600"></p>
+<p><span class="left">Source: <a href="https://www.climate-lab-book.ac.uk/spirals/" class="uri">https://www.climate-lab-book.ac.uk/spirals/</a></span></p>
 </section>
 </section>
 <section class="slide level0">
 
 <section id="animation-is-particularly-helpful-for-the-time-dimension-2" class="center">
 <h3>Animation is particularly helpful for the <strong>time dimension</strong></h3>
-<p><img data-src="images/ft-flu.gif" width="800"></p>
+<p><img data-src="images/ft-flu.gif" width="1060"></p>
 <p><span class="left">Financial Times comparison of Flu seasons to COVID-19</span></p>
 </section>
 </section>
@@ -1203,7 +1248,7 @@ Smoothed line + points
 
 <section id="animation-is-particularly-helpful-for-the-time-dimension-3" class="center">
 <h3>Animation is particularly helpful for the <strong>time dimension</strong></h3>
-<p><img data-src="images/milk_race_anim.gif" width="550"></p>
+<p><img data-src="images/milk_race_anim.gif" width="730"></p>
 <p><span class="left">“Bar chart race” of top 10 milk producing states</span></p>
 </section>
 </section>
@@ -1217,26 +1262,39 @@ Smoothed line + points
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" data-code-line-numbers="5,6,7,8,9,10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>milk_region_anim_plot <span class="ot">&lt;-</span> milk_region <span class="sc">%&gt;%</span></span>
 <span id="cb9-2"><a href=""></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb9-3"><a href=""></a>    <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> milk_produced,</span>
-<span id="cb9-4"><a href=""></a>        <span class="at">color =</span> region)) <span class="sc">+</span></span>
+<span id="cb9-3"><a href=""></a>    <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> milk_produced, <span class="at">color =</span> region)</span>
+<span id="cb9-4"><a href=""></a>  ) <span class="sc">+</span></span>
 <span id="cb9-5"><a href=""></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
 <span id="cb9-6"><a href=""></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
 <span id="cb9-7"><a href=""></a>  <span class="fu">geom_text_repel</span>(</span>
 <span id="cb9-8"><a href=""></a>    <span class="fu">aes</span>(<span class="at">label =</span> region),</span>
-<span id="cb9-9"><a href=""></a>    <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">nudge_x =</span> <span class="dv">1</span>, <span class="at">direction =</span> <span class="st">"y"</span>,</span>
-<span id="cb9-10"><a href=""></a>    <span class="at">size =</span> <span class="dv">6</span>, <span class="at">segment.color =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
-<span id="cb9-11"><a href=""></a>  <span class="fu">scale_x_continuous</span>(</span>
-<span id="cb9-12"><a href=""></a>    <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1970</span>, <span class="dv">2010</span>, <span class="dv">10</span>),</span>
-<span id="cb9-13"><a href=""></a>    <span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">add =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">13</span>))) <span class="sc">+</span></span>
-<span id="cb9-14"><a href=""></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(</span>
-<span id="cb9-15"><a href=""></a>      <span class="st">'sienna'</span>, <span class="st">'forestgreen'</span>, <span class="st">'dodgerblue'</span>, <span class="st">'orange'</span>)) <span class="sc">+</span></span>
-<span id="cb9-16"><a href=""></a>  <span class="fu">theme_half_open</span>(<span class="at">font_size =</span> <span class="dv">18</span>) <span class="sc">+</span></span>
-<span id="cb9-17"><a href=""></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">'none'</span>) <span class="sc">+</span></span>
-<span id="cb9-18"><a href=""></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">'Year'</span>,</span>
-<span id="cb9-19"><a href=""></a>       <span class="at">y =</span> <span class="st">'Milk produced (billion lbs)'</span>,</span>
-<span id="cb9-20"><a href=""></a>       <span class="at">title =</span> <span class="st">'Milk production in four US regions'</span>)</span>
-<span id="cb9-21"><a href=""></a></span>
-<span id="cb9-22"><a href=""></a>milk_region_anim_plot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb9-9"><a href=""></a>    <span class="at">hjust =</span> <span class="dv">0</span>,</span>
+<span id="cb9-10"><a href=""></a>    <span class="at">nudge_x =</span> <span class="dv">1</span>,</span>
+<span id="cb9-11"><a href=""></a>    <span class="at">direction =</span> <span class="st">"y"</span>,</span>
+<span id="cb9-12"><a href=""></a>    <span class="at">size =</span> <span class="dv">6</span>,</span>
+<span id="cb9-13"><a href=""></a>    <span class="at">segment.color =</span> <span class="cn">NA</span></span>
+<span id="cb9-14"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb9-15"><a href=""></a>  <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb9-16"><a href=""></a>    <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1970</span>, <span class="dv">2010</span>, <span class="dv">10</span>),</span>
+<span id="cb9-17"><a href=""></a>    <span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">add =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">13</span>))</span>
+<span id="cb9-18"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb9-19"><a href=""></a>  <span class="fu">scale_color_manual</span>(</span>
+<span id="cb9-20"><a href=""></a>    <span class="at">values =</span> <span class="fu">c</span>(</span>
+<span id="cb9-21"><a href=""></a>      <span class="st">'sienna'</span>,</span>
+<span id="cb9-22"><a href=""></a>      <span class="st">'forestgreen'</span>,</span>
+<span id="cb9-23"><a href=""></a>      <span class="st">'dodgerblue'</span>,</span>
+<span id="cb9-24"><a href=""></a>      <span class="st">'orange'</span></span>
+<span id="cb9-25"><a href=""></a>    )</span>
+<span id="cb9-26"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb9-27"><a href=""></a>  <span class="fu">theme_half_open</span>(<span class="at">font_size =</span> <span class="dv">18</span>) <span class="sc">+</span></span>
+<span id="cb9-28"><a href=""></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">'none'</span>) <span class="sc">+</span></span>
+<span id="cb9-29"><a href=""></a>  <span class="fu">labs</span>(</span>
+<span id="cb9-30"><a href=""></a>    <span class="at">x =</span> <span class="st">'Year'</span>,</span>
+<span id="cb9-31"><a href=""></a>    <span class="at">y =</span> <span class="st">'Milk produced (billion lbs)'</span>,</span>
+<span id="cb9-32"><a href=""></a>    <span class="at">title =</span> <span class="st">'Milk production in four US regions'</span></span>
+<span id="cb9-33"><a href=""></a>  )</span>
+<span id="cb9-34"><a href=""></a></span>
+<span id="cb9-35"><a href=""></a>milk_region_anim_plot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1268,15 +1326,21 @@ Smoothed line + points
 <span id="cb10-4"><a href=""></a>    <span class="fu">transition_reveal</span>(year)</span>
 <span id="cb10-5"><a href=""></a></span>
 <span id="cb10-6"><a href=""></a><span class="co"># Render the animation</span></span>
-<span id="cb10-7"><a href=""></a><span class="fu">animate</span>(milk_region_anim,</span>
-<span id="cb10-8"><a href=""></a>        <span class="at">end_pause =</span> <span class="dv">15</span>,</span>
-<span id="cb10-9"><a href=""></a>        <span class="at">duration =</span> <span class="dv">10</span>,</span>
-<span id="cb10-10"><a href=""></a>        <span class="at">width =</span> <span class="dv">1100</span>, <span class="at">height =</span> <span class="dv">650</span>, <span class="at">res =</span> <span class="dv">150</span>,</span>
-<span id="cb10-11"><a href=""></a>        <span class="at">renderer =</span> <span class="fu">magick_renderer</span>())</span>
-<span id="cb10-12"><a href=""></a></span>
-<span id="cb10-13"><a href=""></a><span class="co"># Save last animation</span></span>
-<span id="cb10-14"><a href=""></a><span class="fu">anim_save</span>(<span class="fu">file.path</span>(</span>
-<span id="cb10-15"><a href=""></a>  <span class="st">'figs'</span>, <span class="st">'milk_region_animation.gif'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb10-7"><a href=""></a><span class="fu">animate</span>(</span>
+<span id="cb10-8"><a href=""></a>    milk_region_anim,</span>
+<span id="cb10-9"><a href=""></a>    <span class="at">end_pause =</span> <span class="dv">15</span>,</span>
+<span id="cb10-10"><a href=""></a>    <span class="at">duration =</span> <span class="dv">10</span>,</span>
+<span id="cb10-11"><a href=""></a>    <span class="at">width =</span> <span class="dv">1100</span>,</span>
+<span id="cb10-12"><a href=""></a>    <span class="at">height =</span> <span class="dv">650</span>,</span>
+<span id="cb10-13"><a href=""></a>    <span class="at">res =</span> <span class="dv">150</span>,</span>
+<span id="cb10-14"><a href=""></a>    <span class="at">renderer =</span> <span class="fu">magick_renderer</span>()</span>
+<span id="cb10-15"><a href=""></a>)</span>
+<span id="cb10-16"><a href=""></a></span>
+<span id="cb10-17"><a href=""></a><span class="co"># Save last animation</span></span>
+<span id="cb10-18"><a href=""></a><span class="fu">anim_save</span>(<span class="fu">file.path</span>(</span>
+<span id="cb10-19"><a href=""></a>    <span class="st">'figs'</span>,</span>
+<span id="cb10-20"><a href=""></a>    <span class="st">'milk_region_animation.gif'</span></span>
+<span id="cb10-21"><a href=""></a>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1293,21 +1357,22 @@ Smoothed line + points
 <p>First make a static plot</p>
 <div class="font80">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" data-code-line-numbers="2,3,5,6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a>gapminder_anim_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(gapminder,</span>
-<span id="cb11-2"><a href=""></a>  <span class="fu">aes</span>(<span class="at">x =</span> gdpPercap, <span class="at">y =</span> lifeExp,</span>
-<span id="cb11-3"><a href=""></a>      <span class="at">size =</span> pop, <span class="at">color =</span> continent)) <span class="sc">+</span></span>
-<span id="cb11-4"><a href=""></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
-<span id="cb11-5"><a href=""></a>  <span class="fu">scale_size_area</span>(</span>
-<span id="cb11-6"><a href=""></a>    <span class="at">guide =</span> <span class="cn">FALSE</span>, <span class="at">max_size =</span> <span class="dv">15</span>) <span class="sc">+</span></span>
-<span id="cb11-7"><a href=""></a>  <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">'Set2'</span>) <span class="sc">+</span></span>
-<span id="cb11-8"><a href=""></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
-<span id="cb11-9"><a href=""></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">18</span>) <span class="sc">+</span></span>
-<span id="cb11-10"><a href=""></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.85</span>, <span class="fl">0.3</span>)) <span class="sc">+</span></span>
-<span id="cb11-11"><a href=""></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">'GDP per capita'</span>,</span>
-<span id="cb11-12"><a href=""></a>       <span class="at">y =</span> <span class="st">'Life expectancy'</span>,</span>
-<span id="cb11-13"><a href=""></a>       <span class="at">color =</span> <span class="st">'Continent'</span>)</span>
-<span id="cb11-14"><a href=""></a></span>
-<span id="cb11-15"><a href=""></a>gapminder_anim_plot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" data-code-line-numbers="2,3,5,6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a>gapminder_anim_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
+<span id="cb11-2"><a href=""></a>  gapminder,</span>
+<span id="cb11-3"><a href=""></a>  <span class="fu">aes</span>(<span class="at">x =</span> gdpPercap, <span class="at">y =</span> lifeExp, <span class="at">size =</span> pop, <span class="at">color =</span> continent)</span>
+<span id="cb11-4"><a href=""></a>) <span class="sc">+</span></span>
+<span id="cb11-5"><a href=""></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb11-6"><a href=""></a>  <span class="fu">scale_size_area</span>(</span>
+<span id="cb11-7"><a href=""></a>    <span class="at">guide =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb11-8"><a href=""></a>    <span class="at">max_size =</span> <span class="dv">15</span></span>
+<span id="cb11-9"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb11-10"><a href=""></a>  <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">'Set2'</span>) <span class="sc">+</span></span>
+<span id="cb11-11"><a href=""></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
+<span id="cb11-12"><a href=""></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">18</span>) <span class="sc">+</span></span>
+<span id="cb11-13"><a href=""></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.85</span>, <span class="fl">0.3</span>)) <span class="sc">+</span></span>
+<span id="cb11-14"><a href=""></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">'GDP per capita'</span>, <span class="at">y =</span> <span class="st">'Life expectancy'</span>, <span class="at">color =</span> <span class="st">'Continent'</span>)</span>
+<span id="cb11-15"><a href=""></a></span>
+<span id="cb11-16"><a href=""></a>gapminder_anim_plot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1338,15 +1403,19 @@ Smoothed line + points
 <span id="cb12-3"><a href=""></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Year: {frame_time}"</span>)</span>
 <span id="cb12-4"><a href=""></a></span>
 <span id="cb12-5"><a href=""></a><span class="co"># Render the animation</span></span>
-<span id="cb12-6"><a href=""></a><span class="fu">animate</span>(gapminder_anim, <span class="at">end_pause =</span> <span class="dv">10</span>,</span>
-<span id="cb12-7"><a href=""></a>        <span class="at">width =</span> <span class="dv">800</span>, <span class="at">height =</span> <span class="dv">600</span>,</span>
-<span id="cb12-8"><a href=""></a>        <span class="at">res =</span> <span class="dv">150</span>,</span>
-<span id="cb12-9"><a href=""></a>        <span class="at">renderer =</span> <span class="fu">magick_renderer</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb12-6"><a href=""></a><span class="fu">animate</span>(</span>
+<span id="cb12-7"><a href=""></a>  gapminder_anim,</span>
+<span id="cb12-8"><a href=""></a>  <span class="at">end_pause =</span> <span class="dv">10</span>,</span>
+<span id="cb12-9"><a href=""></a>  <span class="at">width =</span> <span class="dv">800</span>,</span>
+<span id="cb12-10"><a href=""></a>  <span class="at">height =</span> <span class="dv">600</span>,</span>
+<span id="cb12-11"><a href=""></a>  <span class="at">res =</span> <span class="dv">150</span>,</span>
+<span id="cb12-12"><a href=""></a>  <span class="at">renderer =</span> <span class="fu">magick_renderer</span>()</span>
+<span id="cb12-13"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 <div class="col">
-<p><img data-src="images/gapminder_animation.gif" width="600"></p>
+<p><img data-src="images/gapminder_animation.gif" width="790"></p>
 </div>
 </div>
 </section>
@@ -1357,54 +1426,68 @@ Smoothed line + points
 <div class="font40">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" data-code-line-numbers="13,14,15,44,45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a>milk_race_anim <span class="ot">&lt;-</span> milk_production <span class="sc">%&gt;%</span></span>
-<span id="cb13-2"><a href=""></a>    <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
-<span id="cb13-3"><a href=""></a>    <span class="fu">mutate</span>(</span>
-<span id="cb13-4"><a href=""></a>        <span class="at">rank =</span> <span class="fu">rank</span>(<span class="sc">-</span>milk_produced),</span>
-<span id="cb13-5"><a href=""></a>        <span class="at">Value_rel =</span> milk_produced <span class="sc">/</span> milk_produced[rank<span class="sc">==</span><span class="dv">1</span>],</span>
-<span id="cb13-6"><a href=""></a>        <span class="at">Value_lbl =</span> <span class="fu">paste0</span>(<span class="st">' '</span>, <span class="fu">round</span>(milk_produced))) <span class="sc">%&gt;%</span></span>
-<span id="cb13-7"><a href=""></a>    <span class="fu">group_by</span>(state) <span class="sc">%&gt;%</span></span>
-<span id="cb13-8"><a href=""></a>    <span class="fu">filter</span>(rank <span class="sc">&lt;=</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb13-9"><a href=""></a>    <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb13-10"><a href=""></a>    <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">as.integer</span>(year)) <span class="sc">%&gt;%</span></span>
-<span id="cb13-11"><a href=""></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> rank, <span class="at">group =</span> state,</span>
-<span id="cb13-12"><a href=""></a>               <span class="at">fill =</span> region, <span class="at">color =</span> region)) <span class="sc">+</span></span>
-<span id="cb13-13"><a href=""></a>    <span class="fu">geom_tile</span>(<span class="fu">aes</span>(<span class="at">y =</span> milk_produced <span class="sc">/</span> <span class="dv">2</span>,</span>
-<span id="cb13-14"><a href=""></a>                  <span class="at">height =</span> milk_produced),</span>
-<span id="cb13-15"><a href=""></a>              <span class="at">width =</span> <span class="fl">0.9</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">color =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
-<span id="cb13-16"><a href=""></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="dv">0</span>, <span class="at">label =</span> <span class="fu">paste</span>(state, <span class="st">" "</span>)),</span>
-<span id="cb13-17"><a href=""></a>              <span class="at">vjust =</span> <span class="fl">0.2</span>, <span class="at">hjust =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb13-18"><a href=""></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">y =</span> milk_produced, <span class="at">label =</span> Value_lbl),</span>
-<span id="cb13-19"><a href=""></a>              <span class="at">hjust =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
-<span id="cb13-20"><a href=""></a>    <span class="fu">coord_flip</span>(<span class="at">clip =</span> <span class="st">'off'</span>, <span class="at">expand =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb13-21"><a href=""></a>    <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma) <span class="sc">+</span></span>
-<span id="cb13-22"><a href=""></a>    <span class="fu">scale_fill_viridis</span>(<span class="at">discrete =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
-<span id="cb13-23"><a href=""></a>    <span class="fu">scale_color_viridis</span>(<span class="at">discrete =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
-<span id="cb13-24"><a href=""></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span></span>
-<span id="cb13-25"><a href=""></a>    <span class="fu">guides</span>(<span class="at">color =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb13-26"><a href=""></a>    <span class="fu">theme_minimal_vgrid</span>() <span class="sc">+</span></span>
-<span id="cb13-27"><a href=""></a>    <span class="fu">theme</span>(</span>
-<span id="cb13-28"><a href=""></a>        <span class="at">axis.line =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb13-29"><a href=""></a>        <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb13-30"><a href=""></a>        <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb13-31"><a href=""></a>        <span class="at">axis.title =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb13-32"><a href=""></a>        <span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.7</span>, <span class="fl">0.3</span>),</span>
-<span id="cb13-33"><a href=""></a>        <span class="at">legend.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">'white'</span>),</span>
-<span id="cb13-34"><a href=""></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(</span>
-<span id="cb13-35"><a href=""></a>          <span class="at">size =</span> <span class="dv">22</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">face =</span> <span class="st">'bold'</span>,</span>
-<span id="cb13-36"><a href=""></a>          <span class="at">colour =</span> <span class="st">'grey'</span>, <span class="at">vjust =</span> <span class="sc">-</span><span class="dv">1</span>),</span>
-<span id="cb13-37"><a href=""></a>        <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(</span>
-<span id="cb13-38"><a href=""></a>          <span class="at">size =</span> <span class="dv">18</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>,</span>
-<span id="cb13-39"><a href=""></a>          <span class="at">face =</span> <span class="st">'italic'</span>, <span class="at">color =</span> <span class="st">'grey'</span>),</span>
-<span id="cb13-40"><a href=""></a>        <span class="at">plot.caption =</span> <span class="fu">element_text</span>(</span>
-<span id="cb13-41"><a href=""></a>          <span class="at">size =</span> <span class="dv">8</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>,</span>
-<span id="cb13-42"><a href=""></a>          <span class="at">face =</span> <span class="st">'italic'</span>, <span class="at">color =</span> <span class="st">'grey'</span>),</span>
-<span id="cb13-43"><a href=""></a>          <span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="fl">0.5</span>, <span class="dv">2</span>, <span class="fl">0.5</span>, <span class="dv">3</span>, <span class="st">'cm'</span>)) <span class="sc">+</span></span>
-<span id="cb13-44"><a href=""></a>    <span class="fu">transition_time</span>(year) <span class="sc">+</span></span>
-<span id="cb13-45"><a href=""></a>    <span class="fu">view_follow</span>(<span class="at">fixed_x =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
-<span id="cb13-46"><a href=""></a>    <span class="fu">labs</span>(<span class="at">title    =</span> <span class="st">'Year : {frame_time}'</span>,</span>
-<span id="cb13-47"><a href=""></a>         <span class="at">subtitle =</span> <span class="st">'Top 10 states by milk produced'</span>,</span>
-<span id="cb13-48"><a href=""></a>         <span class="at">fill     =</span> <span class="st">'Region'</span>,</span>
-<span id="cb13-49"><a href=""></a>         <span class="at">caption  =</span> <span class="st">'Milk produced (billions lbs)'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb13-2"><a href=""></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href=""></a>  <span class="fu">mutate</span>(</span>
+<span id="cb13-4"><a href=""></a>    <span class="at">rank =</span> <span class="fu">rank</span>(<span class="sc">-</span>milk_produced),</span>
+<span id="cb13-5"><a href=""></a>    <span class="at">Value_rel =</span> milk_produced <span class="sc">/</span> milk_produced[rank <span class="sc">==</span> <span class="dv">1</span>],</span>
+<span id="cb13-6"><a href=""></a>    <span class="at">Value_lbl =</span> <span class="fu">paste0</span>(<span class="st">' '</span>, <span class="fu">round</span>(milk_produced))</span>
+<span id="cb13-7"><a href=""></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb13-8"><a href=""></a>  <span class="fu">group_by</span>(state) <span class="sc">%&gt;%</span></span>
+<span id="cb13-9"><a href=""></a>  <span class="fu">filter</span>(rank <span class="sc">&lt;=</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb13-10"><a href=""></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb13-11"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">as.integer</span>(year)) <span class="sc">%&gt;%</span></span>
+<span id="cb13-12"><a href=""></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> rank, <span class="at">group =</span> state, <span class="at">fill =</span> region, <span class="at">color =</span> region)) <span class="sc">+</span></span>
+<span id="cb13-13"><a href=""></a>  <span class="fu">geom_tile</span>(</span>
+<span id="cb13-14"><a href=""></a>    <span class="fu">aes</span>(<span class="at">y =</span> milk_produced <span class="sc">/</span> <span class="dv">2</span>, <span class="at">height =</span> milk_produced),</span>
+<span id="cb13-15"><a href=""></a>    <span class="at">width =</span> <span class="fl">0.9</span>,</span>
+<span id="cb13-16"><a href=""></a>    <span class="at">alpha =</span> <span class="fl">0.8</span>,</span>
+<span id="cb13-17"><a href=""></a>    <span class="at">color =</span> <span class="cn">NA</span></span>
+<span id="cb13-18"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb13-19"><a href=""></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="dv">0</span>, <span class="at">label =</span> <span class="fu">paste</span>(state, <span class="st">" "</span>)), <span class="at">vjust =</span> <span class="fl">0.2</span>, <span class="at">hjust =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb13-20"><a href=""></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">y =</span> milk_produced, <span class="at">label =</span> Value_lbl), <span class="at">hjust =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb13-21"><a href=""></a>  <span class="fu">coord_flip</span>(<span class="at">clip =</span> <span class="st">'off'</span>, <span class="at">expand =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb13-22"><a href=""></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma) <span class="sc">+</span></span>
+<span id="cb13-23"><a href=""></a>  <span class="fu">scale_fill_viridis</span>(<span class="at">discrete =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb13-24"><a href=""></a>  <span class="fu">scale_color_viridis</span>(<span class="at">discrete =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb13-25"><a href=""></a>  <span class="fu">scale_x_reverse</span>() <span class="sc">+</span></span>
+<span id="cb13-26"><a href=""></a>  <span class="fu">guides</span>(<span class="at">color =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb13-27"><a href=""></a>  <span class="fu">theme_minimal_vgrid</span>() <span class="sc">+</span></span>
+<span id="cb13-28"><a href=""></a>  <span class="fu">theme</span>(</span>
+<span id="cb13-29"><a href=""></a>    <span class="at">axis.line =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb13-30"><a href=""></a>    <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb13-31"><a href=""></a>    <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb13-32"><a href=""></a>    <span class="at">axis.title =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb13-33"><a href=""></a>    <span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.7</span>, <span class="fl">0.3</span>),</span>
+<span id="cb13-34"><a href=""></a>    <span class="at">legend.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">'white'</span>),</span>
+<span id="cb13-35"><a href=""></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(</span>
+<span id="cb13-36"><a href=""></a>      <span class="at">size =</span> <span class="dv">22</span>,</span>
+<span id="cb13-37"><a href=""></a>      <span class="at">hjust =</span> <span class="fl">0.5</span>,</span>
+<span id="cb13-38"><a href=""></a>      <span class="at">face =</span> <span class="st">'bold'</span>,</span>
+<span id="cb13-39"><a href=""></a>      <span class="at">colour =</span> <span class="st">'grey'</span>,</span>
+<span id="cb13-40"><a href=""></a>      <span class="at">vjust =</span> <span class="sc">-</span><span class="dv">1</span></span>
+<span id="cb13-41"><a href=""></a>    ),</span>
+<span id="cb13-42"><a href=""></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(</span>
+<span id="cb13-43"><a href=""></a>      <span class="at">size =</span> <span class="dv">18</span>,</span>
+<span id="cb13-44"><a href=""></a>      <span class="at">hjust =</span> <span class="fl">0.5</span>,</span>
+<span id="cb13-45"><a href=""></a>      <span class="at">face =</span> <span class="st">'italic'</span>,</span>
+<span id="cb13-46"><a href=""></a>      <span class="at">color =</span> <span class="st">'grey'</span></span>
+<span id="cb13-47"><a href=""></a>    ),</span>
+<span id="cb13-48"><a href=""></a>    <span class="at">plot.caption =</span> <span class="fu">element_text</span>(</span>
+<span id="cb13-49"><a href=""></a>      <span class="at">size =</span> <span class="dv">8</span>,</span>
+<span id="cb13-50"><a href=""></a>      <span class="at">hjust =</span> <span class="fl">0.5</span>,</span>
+<span id="cb13-51"><a href=""></a>      <span class="at">face =</span> <span class="st">'italic'</span>,</span>
+<span id="cb13-52"><a href=""></a>      <span class="at">color =</span> <span class="st">'grey'</span></span>
+<span id="cb13-53"><a href=""></a>    ),</span>
+<span id="cb13-54"><a href=""></a>    <span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="fl">0.5</span>, <span class="dv">2</span>, <span class="fl">0.5</span>, <span class="dv">3</span>, <span class="st">'cm'</span>)</span>
+<span id="cb13-55"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb13-56"><a href=""></a>  <span class="fu">transition_time</span>(year) <span class="sc">+</span></span>
+<span id="cb13-57"><a href=""></a>  <span class="fu">view_follow</span>(<span class="at">fixed_x =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb13-58"><a href=""></a>  <span class="fu">labs</span>(</span>
+<span id="cb13-59"><a href=""></a>    <span class="at">title =</span> <span class="st">'Year : {frame_time}'</span>,</span>
+<span id="cb13-60"><a href=""></a>    <span class="at">subtitle =</span> <span class="st">'Top 10 states by milk produced'</span>,</span>
+<span id="cb13-61"><a href=""></a>    <span class="at">fill =</span> <span class="st">'Region'</span>,</span>
+<span id="cb13-62"><a href=""></a>    <span class="at">caption =</span> <span class="st">'Milk produced (billions lbs)'</span></span>
+<span id="cb13-63"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1414,13 +1497,19 @@ Smoothed line + points
 </div>
 <div class="font60">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a><span class="fu">animate</span>(milk_race_anim, <span class="at">duration =</span> <span class="dv">17</span>, <span class="at">end_pause =</span> <span class="dv">15</span>,</span>
-<span id="cb14-2"><a href=""></a>        <span class="at">width =</span> <span class="dv">800</span>, <span class="at">height =</span> <span class="dv">700</span>, <span class="at">res =</span> <span class="dv">150</span>,</span>
-<span id="cb14-3"><a href=""></a>        <span class="at">renderer =</span> <span class="fu">magick_renderer</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a><span class="fu">animate</span>(</span>
+<span id="cb14-2"><a href=""></a>        milk_race_anim,</span>
+<span id="cb14-3"><a href=""></a>        <span class="at">duration =</span> <span class="dv">17</span>,</span>
+<span id="cb14-4"><a href=""></a>        <span class="at">end_pause =</span> <span class="dv">15</span>,</span>
+<span id="cb14-5"><a href=""></a>        <span class="at">width =</span> <span class="dv">800</span>,</span>
+<span id="cb14-6"><a href=""></a>        <span class="at">height =</span> <span class="dv">700</span>,</span>
+<span id="cb14-7"><a href=""></a>        <span class="at">res =</span> <span class="dv">150</span>,</span>
+<span id="cb14-8"><a href=""></a>        <span class="at">renderer =</span> <span class="fu">magick_renderer</span>()</span>
+<span id="cb14-9"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="center">
-<p><img data-src="images/milk_race_anim.gif" width="500"></p>
+<p><img data-src="images/milk_race_anim.gif" width="660"></p>
 </div>
 </div>
 </div>
@@ -1436,13 +1525,14 @@ Smoothed line + points
 </section>
 <section class="slide level0">
 
-<section id="your-turn-1" class="inverse">
-<h2>Your turn</h2>
+<section class="lexis-slide-title inverse">
+<h1 class="lexis-slide-title"></h1>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_a12bd3d3" minutes="15" seconds="0" warn-when="30" update-every="1" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_dd79ce60" minutes="15" seconds="0" warn-when="30" update-every="1" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:2em;"></countdown-timer>
 </div>
 </div>
+<h2 id="your-turn-1">Your turn</h2>
 <div class="cols-row">
 <div class="col">
 <p>Use the <code>global_temps</code> data frame to explore ways to <em>animate</em> the change in average global temperatures.</p>
@@ -1454,21 +1544,26 @@ Smoothed line + points
 </ul>
 </div>
 <div class="col">
-<p><img data-src="images/global_temps_points_anim.gif" width="500"></p>
+<p><img data-src="images/global_temps_points_anim.gif" width="660"></p>
 </div>
 </div>
 </section>
 </section>
 <section class="slide level0">
 
-<section id="break" class="inverse center">
-<h1>Break!</h1>
+<section class="lexis-slide-title inverse center">
+<h1 class="lexis-slide-title"></h1>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_85039bc5" minutes="5" seconds="0" warn-when="30" update-every="1" tabindex="0" style="top:1;right:0;bottom:0;left:0;--countdown-margin:5%;--countdown-font-size:8em;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_0e1a8573" minutes="5" seconds="0" warn-when="30" update-every="1" tabindex="0" style="top:1;right:0;bottom:0;left:0;--countdown-margin:5%;--countdown-font-size:8em;"></countdown-timer>
 </div>
 </div>
-<h2 id="stand-up-move-around-stretch">Stand up, Move around, Stretch!</h2>
+<div id="break" class="h1">
+Break!
+</div>
+<div id="stand-up-move-around-stretch" class="h2">
+Stand up, Move around, Stretch!
+</div>
 </section>
 </section>
 <section class="slide level0">
@@ -1624,8 +1719,8 @@ Highlights <strong>overall / total</strong> trend
 
 <h2>Heatmaps are great for multiple divisions of time</h2>
 <h3 id="my-activity-on-github">My activity on Github:</h3>
-
-<img data-src="images/jhelvy_github.png" width="800" class="r-stretch"><p><br></p>
+<p><img data-src="images/jhelvy_github.png" class="" width="1060"></p>
+<p><br></p>
 <div class="fragment">
 <h3 id="check-out-this-heat-map-on-traffic-fatalities">Check out this heat map on <a href="https://flowingdata.com/2017/04/27/traffic-fatalities-when-and-where/">Traffic fatalities</a></h3>
 </div>
@@ -1639,25 +1734,37 @@ Highlights <strong>overall / total</strong> trend
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15" data-code-line-numbers="11,12,13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a><span class="co"># Format the data</span></span>
 <span id="cb15-2"><a href=""></a>milk_region <span class="ot">&lt;-</span> milk_production <span class="sc">%&gt;%</span></span>
-<span id="cb15-3"><a href=""></a>  <span class="fu">filter</span>(region <span class="sc">%in%</span> <span class="fu">c</span>(</span>
-<span id="cb15-4"><a href=""></a>    <span class="st">'Pacific'</span>, <span class="st">'Northeast'</span>, <span class="st">'Lake States'</span>, <span class="st">'Mountain'</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb15-5"><a href=""></a>  <span class="fu">group_by</span>(year, region) <span class="sc">%&gt;%</span></span>
-<span id="cb15-6"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">milk_produced =</span> <span class="fu">sum</span>(milk_produced)) <span class="sc">%&gt;%</span></span>
-<span id="cb15-7"><a href=""></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb15-8"><a href=""></a></span>
-<span id="cb15-9"><a href=""></a><span class="co"># Make the line chart</span></span>
-<span id="cb15-10"><a href=""></a><span class="fu">ggplot</span>(milk_region,</span>
-<span id="cb15-11"><a href=""></a>  <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> milk_produced,</span>
-<span id="cb15-12"><a href=""></a>      <span class="at">color =</span> region)) <span class="sc">+</span></span>
-<span id="cb15-13"><a href=""></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb15-14"><a href=""></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(</span>
-<span id="cb15-15"><a href=""></a>    <span class="st">'sienna'</span>, <span class="st">'forestgreen'</span>, <span class="st">'dodgerblue'</span>, <span class="st">'orange'</span>)) <span class="sc">+</span></span>
-<span id="cb15-16"><a href=""></a>  <span class="fu">theme_half_open</span>(<span class="at">font_size =</span> <span class="dv">18</span>) <span class="sc">+</span></span>
-<span id="cb15-17"><a href=""></a>  <span class="fu">labs</span>(</span>
-<span id="cb15-18"><a href=""></a>    <span class="at">x     =</span> <span class="st">'Year'</span>,</span>
-<span id="cb15-19"><a href=""></a>    <span class="at">y     =</span> <span class="st">'Milk produced (billion lbs)'</span>,</span>
-<span id="cb15-20"><a href=""></a>    <span class="at">color =</span> <span class="st">'Region'</span>,</span>
-<span id="cb15-21"><a href=""></a>    <span class="at">title =</span> <span class="st">'Milk production in four US regions'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb15-3"><a href=""></a>  <span class="fu">filter</span>(</span>
+<span id="cb15-4"><a href=""></a>    region <span class="sc">%in%</span></span>
+<span id="cb15-5"><a href=""></a>      <span class="fu">c</span>(</span>
+<span id="cb15-6"><a href=""></a>        <span class="st">'Pacific'</span>,</span>
+<span id="cb15-7"><a href=""></a>        <span class="st">'Northeast'</span>,</span>
+<span id="cb15-8"><a href=""></a>        <span class="st">'Lake States'</span>,</span>
+<span id="cb15-9"><a href=""></a>        <span class="st">'Mountain'</span></span>
+<span id="cb15-10"><a href=""></a>      )</span>
+<span id="cb15-11"><a href=""></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb15-12"><a href=""></a>  <span class="fu">group_by</span>(year, region) <span class="sc">%&gt;%</span></span>
+<span id="cb15-13"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">milk_produced =</span> <span class="fu">sum</span>(milk_produced)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-14"><a href=""></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb15-15"><a href=""></a></span>
+<span id="cb15-16"><a href=""></a><span class="co"># Make the line chart</span></span>
+<span id="cb15-17"><a href=""></a><span class="fu">ggplot</span>(milk_region, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> milk_produced, <span class="at">color =</span> region)) <span class="sc">+</span></span>
+<span id="cb15-18"><a href=""></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb15-19"><a href=""></a>  <span class="fu">scale_color_manual</span>(</span>
+<span id="cb15-20"><a href=""></a>    <span class="at">values =</span> <span class="fu">c</span>(</span>
+<span id="cb15-21"><a href=""></a>      <span class="st">'sienna'</span>,</span>
+<span id="cb15-22"><a href=""></a>      <span class="st">'forestgreen'</span>,</span>
+<span id="cb15-23"><a href=""></a>      <span class="st">'dodgerblue'</span>,</span>
+<span id="cb15-24"><a href=""></a>      <span class="st">'orange'</span></span>
+<span id="cb15-25"><a href=""></a>    )</span>
+<span id="cb15-26"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb15-27"><a href=""></a>  <span class="fu">theme_half_open</span>(<span class="at">font_size =</span> <span class="dv">18</span>) <span class="sc">+</span></span>
+<span id="cb15-28"><a href=""></a>  <span class="fu">labs</span>(</span>
+<span id="cb15-29"><a href=""></a>    <span class="at">x =</span> <span class="st">'Year'</span>,</span>
+<span id="cb15-30"><a href=""></a>    <span class="at">y =</span> <span class="st">'Milk produced (billion lbs)'</span>,</span>
+<span id="cb15-31"><a href=""></a>    <span class="at">color =</span> <span class="st">'Region'</span>,</span>
+<span id="cb15-32"><a href=""></a>    <span class="at">title =</span> <span class="st">'Milk production in four US regions'</span></span>
+<span id="cb15-33"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1686,36 +1793,54 @@ Highlights <strong>overall / total</strong> trend
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16" data-code-line-numbers="15-20,22-24,29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href=""></a><span class="co"># Format the data</span></span>
 <span id="cb16-2"><a href=""></a>milk_region <span class="ot">&lt;-</span> milk_production <span class="sc">%&gt;%</span></span>
-<span id="cb16-3"><a href=""></a>  <span class="fu">filter</span>(region <span class="sc">%in%</span> <span class="fu">c</span>(</span>
-<span id="cb16-4"><a href=""></a>    <span class="st">'Pacific'</span>, <span class="st">'Northeast'</span>, <span class="st">'Lake States'</span>, <span class="st">'Mountain'</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb16-5"><a href=""></a>  <span class="fu">group_by</span>(year, region) <span class="sc">%&gt;%</span></span>
-<span id="cb16-6"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">milk_produced =</span> <span class="fu">sum</span>(milk_produced)) <span class="sc">%&gt;%</span></span>
-<span id="cb16-7"><a href=""></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb16-8"><a href=""></a></span>
-<span id="cb16-9"><a href=""></a><span class="co"># Make the line plot</span></span>
-<span id="cb16-10"><a href=""></a><span class="fu">ggplot</span>(milk_region,</span>
-<span id="cb16-11"><a href=""></a>  <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> milk_produced,</span>
-<span id="cb16-12"><a href=""></a>      <span class="at">color =</span> region)) <span class="sc">+</span></span>
-<span id="cb16-13"><a href=""></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb16-14"><a href=""></a>  <span class="co"># Add labels</span></span>
-<span id="cb16-15"><a href=""></a>  <span class="fu">geom_text_repel</span>(</span>
-<span id="cb16-16"><a href=""></a>    <span class="at">data =</span> milk_region <span class="sc">%&gt;%</span></span>
-<span id="cb16-17"><a href=""></a>      <span class="fu">filter</span>(year <span class="sc">==</span> <span class="fu">max</span>(year)),</span>
-<span id="cb16-18"><a href=""></a>    <span class="fu">aes</span>(<span class="at">label =</span> region),</span>
-<span id="cb16-19"><a href=""></a>      <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">nudge_x =</span> <span class="dv">1</span>, <span class="at">direction =</span> <span class="st">"y"</span>,</span>
-<span id="cb16-20"><a href=""></a>      <span class="at">size =</span> <span class="dv">6</span>, <span class="at">segment.color =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
-<span id="cb16-21"><a href=""></a>  <span class="co"># Create space for labels on right side</span></span>
-<span id="cb16-22"><a href=""></a>  <span class="fu">scale_x_continuous</span>(</span>
-<span id="cb16-23"><a href=""></a>    <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1970</span>, <span class="dv">2010</span>, <span class="dv">10</span>),</span>
-<span id="cb16-24"><a href=""></a>    <span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">add =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">13</span>))) <span class="sc">+</span></span>
-<span id="cb16-25"><a href=""></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(</span>
-<span id="cb16-26"><a href=""></a>    <span class="st">'sienna'</span>, <span class="st">'forestgreen'</span>, <span class="st">'dodgerblue'</span>, <span class="st">'orange'</span>)) <span class="sc">+</span></span>
-<span id="cb16-27"><a href=""></a>  <span class="fu">theme_half_open</span>(<span class="at">font_size =</span> <span class="dv">18</span>) <span class="sc">+</span></span>
-<span id="cb16-28"><a href=""></a>  <span class="co"># Remove legend</span></span>
-<span id="cb16-29"><a href=""></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">'none'</span>) <span class="sc">+</span></span>
-<span id="cb16-30"><a href=""></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">'Year'</span>,</span>
-<span id="cb16-31"><a href=""></a>       <span class="at">y =</span> <span class="st">'Milk produced (billion lbs)'</span>,</span>
-<span id="cb16-32"><a href=""></a>       <span class="at">title =</span> <span class="st">'Milk production in four US regions'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb16-3"><a href=""></a>  <span class="fu">filter</span>(</span>
+<span id="cb16-4"><a href=""></a>    region <span class="sc">%in%</span></span>
+<span id="cb16-5"><a href=""></a>      <span class="fu">c</span>(</span>
+<span id="cb16-6"><a href=""></a>        <span class="st">'Pacific'</span>,</span>
+<span id="cb16-7"><a href=""></a>        <span class="st">'Northeast'</span>,</span>
+<span id="cb16-8"><a href=""></a>        <span class="st">'Lake States'</span>,</span>
+<span id="cb16-9"><a href=""></a>        <span class="st">'Mountain'</span></span>
+<span id="cb16-10"><a href=""></a>      )</span>
+<span id="cb16-11"><a href=""></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb16-12"><a href=""></a>  <span class="fu">group_by</span>(year, region) <span class="sc">%&gt;%</span></span>
+<span id="cb16-13"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">milk_produced =</span> <span class="fu">sum</span>(milk_produced)) <span class="sc">%&gt;%</span></span>
+<span id="cb16-14"><a href=""></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb16-15"><a href=""></a></span>
+<span id="cb16-16"><a href=""></a><span class="co"># Make the line plot</span></span>
+<span id="cb16-17"><a href=""></a><span class="fu">ggplot</span>(milk_region, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> milk_produced, <span class="at">color =</span> region)) <span class="sc">+</span></span>
+<span id="cb16-18"><a href=""></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb16-19"><a href=""></a>  <span class="co"># Add labels</span></span>
+<span id="cb16-20"><a href=""></a>  <span class="fu">geom_text_repel</span>(</span>
+<span id="cb16-21"><a href=""></a>    <span class="at">data =</span> milk_region <span class="sc">%&gt;%</span></span>
+<span id="cb16-22"><a href=""></a>      <span class="fu">filter</span>(year <span class="sc">==</span> <span class="fu">max</span>(year)),</span>
+<span id="cb16-23"><a href=""></a>    <span class="fu">aes</span>(<span class="at">label =</span> region),</span>
+<span id="cb16-24"><a href=""></a>    <span class="at">hjust =</span> <span class="dv">0</span>,</span>
+<span id="cb16-25"><a href=""></a>    <span class="at">nudge_x =</span> <span class="dv">1</span>,</span>
+<span id="cb16-26"><a href=""></a>    <span class="at">direction =</span> <span class="st">"y"</span>,</span>
+<span id="cb16-27"><a href=""></a>    <span class="at">size =</span> <span class="dv">6</span>,</span>
+<span id="cb16-28"><a href=""></a>    <span class="at">segment.color =</span> <span class="cn">NA</span></span>
+<span id="cb16-29"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb16-30"><a href=""></a>  <span class="co"># Create space for labels on right side</span></span>
+<span id="cb16-31"><a href=""></a>  <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb16-32"><a href=""></a>    <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1970</span>, <span class="dv">2010</span>, <span class="dv">10</span>),</span>
+<span id="cb16-33"><a href=""></a>    <span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">add =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">13</span>))</span>
+<span id="cb16-34"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb16-35"><a href=""></a>  <span class="fu">scale_color_manual</span>(</span>
+<span id="cb16-36"><a href=""></a>    <span class="at">values =</span> <span class="fu">c</span>(</span>
+<span id="cb16-37"><a href=""></a>      <span class="st">'sienna'</span>,</span>
+<span id="cb16-38"><a href=""></a>      <span class="st">'forestgreen'</span>,</span>
+<span id="cb16-39"><a href=""></a>      <span class="st">'dodgerblue'</span>,</span>
+<span id="cb16-40"><a href=""></a>      <span class="st">'orange'</span></span>
+<span id="cb16-41"><a href=""></a>    )</span>
+<span id="cb16-42"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb16-43"><a href=""></a>  <span class="fu">theme_half_open</span>(<span class="at">font_size =</span> <span class="dv">18</span>) <span class="sc">+</span></span>
+<span id="cb16-44"><a href=""></a>  <span class="co"># Remove legend</span></span>
+<span id="cb16-45"><a href=""></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">'none'</span>) <span class="sc">+</span></span>
+<span id="cb16-46"><a href=""></a>  <span class="fu">labs</span>(</span>
+<span id="cb16-47"><a href=""></a>    <span class="at">x =</span> <span class="st">'Year'</span>,</span>
+<span id="cb16-48"><a href=""></a>    <span class="at">y =</span> <span class="st">'Milk produced (billion lbs)'</span>,</span>
+<span id="cb16-49"><a href=""></a>    <span class="at">title =</span> <span class="st">'Milk production in four US regions'</span></span>
+<span id="cb16-50"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1746,28 +1871,48 @@ Highlights <strong>overall / total</strong> trend
 <span id="cb17-2"><a href=""></a></span>
 <span id="cb17-3"><a href=""></a><span class="co"># Format the data</span></span>
 <span id="cb17-4"><a href=""></a>milk_production <span class="sc">%&gt;%</span></span>
-<span id="cb17-5"><a href=""></a>  <span class="fu">filter</span>(region <span class="sc">%in%</span> <span class="fu">c</span>(</span>
-<span id="cb17-6"><a href=""></a>    <span class="st">'Pacific'</span>, <span class="st">'Northeast'</span>, <span class="st">'Lake States'</span>, <span class="st">'Mountain'</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb17-7"><a href=""></a>  <span class="fu">group_by</span>(year, region) <span class="sc">%&gt;%</span></span>
-<span id="cb17-8"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">milk_produced =</span> <span class="fu">sum</span>(milk_produced)) <span class="sc">%&gt;%</span></span>
-<span id="cb17-9"><a href=""></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb17-10"><a href=""></a></span>
-<span id="cb17-11"><a href=""></a><span class="co"># Make the line plot</span></span>
-<span id="cb17-12"><a href=""></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb17-13"><a href=""></a>  <span class="fu">geom_textline</span>(</span>
-<span id="cb17-14"><a href=""></a>    <span class="fu">aes</span>(</span>
-<span id="cb17-15"><a href=""></a>      <span class="at">x =</span> year, <span class="at">y =</span> milk_produced,</span>
-<span id="cb17-16"><a href=""></a>      <span class="at">color =</span> region, <span class="at">label =</span> region, <span class="at">group =</span> region),</span>
-<span id="cb17-17"><a href=""></a>    <span class="at">size =</span> <span class="dv">5</span>, <span class="at">hjust =</span> <span class="fl">0.15</span></span>
-<span id="cb17-18"><a href=""></a>  ) <span class="sc">+</span></span>
-<span id="cb17-19"><a href=""></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(</span>
-<span id="cb17-20"><a href=""></a>    <span class="st">'sienna'</span>, <span class="st">'forestgreen'</span>, <span class="st">'dodgerblue'</span>, <span class="st">'orange'</span>)) <span class="sc">+</span></span>
-<span id="cb17-21"><a href=""></a>  <span class="fu">theme_half_open</span>(<span class="at">font_size =</span> <span class="dv">18</span>) <span class="sc">+</span></span>
-<span id="cb17-22"><a href=""></a>  <span class="co"># Remove legend</span></span>
-<span id="cb17-23"><a href=""></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">'none'</span>) <span class="sc">+</span></span>
-<span id="cb17-24"><a href=""></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">'Year'</span>,</span>
-<span id="cb17-25"><a href=""></a>       <span class="at">y =</span> <span class="st">'Milk produced (billion lbs)'</span>,</span>
-<span id="cb17-26"><a href=""></a>       <span class="at">title =</span> <span class="st">'Milk production in four US regions'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb17-5"><a href=""></a>  <span class="fu">filter</span>(</span>
+<span id="cb17-6"><a href=""></a>    region <span class="sc">%in%</span></span>
+<span id="cb17-7"><a href=""></a>      <span class="fu">c</span>(</span>
+<span id="cb17-8"><a href=""></a>        <span class="st">'Pacific'</span>,</span>
+<span id="cb17-9"><a href=""></a>        <span class="st">'Northeast'</span>,</span>
+<span id="cb17-10"><a href=""></a>        <span class="st">'Lake States'</span>,</span>
+<span id="cb17-11"><a href=""></a>        <span class="st">'Mountain'</span></span>
+<span id="cb17-12"><a href=""></a>      )</span>
+<span id="cb17-13"><a href=""></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb17-14"><a href=""></a>  <span class="fu">group_by</span>(year, region) <span class="sc">%&gt;%</span></span>
+<span id="cb17-15"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">milk_produced =</span> <span class="fu">sum</span>(milk_produced)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-16"><a href=""></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb17-17"><a href=""></a></span>
+<span id="cb17-18"><a href=""></a>  <span class="co"># Make the line plot</span></span>
+<span id="cb17-19"><a href=""></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb17-20"><a href=""></a>  <span class="fu">geom_textline</span>(</span>
+<span id="cb17-21"><a href=""></a>    <span class="fu">aes</span>(</span>
+<span id="cb17-22"><a href=""></a>      <span class="at">x =</span> year,</span>
+<span id="cb17-23"><a href=""></a>      <span class="at">y =</span> milk_produced,</span>
+<span id="cb17-24"><a href=""></a>      <span class="at">color =</span> region,</span>
+<span id="cb17-25"><a href=""></a>      <span class="at">label =</span> region,</span>
+<span id="cb17-26"><a href=""></a>      <span class="at">group =</span> region</span>
+<span id="cb17-27"><a href=""></a>    ),</span>
+<span id="cb17-28"><a href=""></a>    <span class="at">size =</span> <span class="dv">5</span>,</span>
+<span id="cb17-29"><a href=""></a>    <span class="at">hjust =</span> <span class="fl">0.15</span></span>
+<span id="cb17-30"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb17-31"><a href=""></a>  <span class="fu">scale_color_manual</span>(</span>
+<span id="cb17-32"><a href=""></a>    <span class="at">values =</span> <span class="fu">c</span>(</span>
+<span id="cb17-33"><a href=""></a>      <span class="st">'sienna'</span>,</span>
+<span id="cb17-34"><a href=""></a>      <span class="st">'forestgreen'</span>,</span>
+<span id="cb17-35"><a href=""></a>      <span class="st">'dodgerblue'</span>,</span>
+<span id="cb17-36"><a href=""></a>      <span class="st">'orange'</span></span>
+<span id="cb17-37"><a href=""></a>    )</span>
+<span id="cb17-38"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb17-39"><a href=""></a>  <span class="fu">theme_half_open</span>(<span class="at">font_size =</span> <span class="dv">18</span>) <span class="sc">+</span></span>
+<span id="cb17-40"><a href=""></a>  <span class="co"># Remove legend</span></span>
+<span id="cb17-41"><a href=""></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">'none'</span>) <span class="sc">+</span></span>
+<span id="cb17-42"><a href=""></a>  <span class="fu">labs</span>(</span>
+<span id="cb17-43"><a href=""></a>    <span class="at">x =</span> <span class="st">'Year'</span>,</span>
+<span id="cb17-44"><a href=""></a>    <span class="at">y =</span> <span class="st">'Milk produced (billion lbs)'</span>,</span>
+<span id="cb17-45"><a href=""></a>    <span class="at">title =</span> <span class="st">'Milk production in four US regions'</span></span>
+<span id="cb17-46"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1799,20 +1944,24 @@ Highlights <strong>overall / total</strong> trend
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18" data-code-line-numbers="4,5,7,9,10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a>internet_region <span class="sc">%&gt;%</span></span>
 <span id="cb18-2"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">numUsers =</span> numUsers <span class="sc">/</span> <span class="dv">10</span><span class="sc">^</span><span class="dv">9</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb18-3"><a href=""></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb18-4"><a href=""></a>  <span class="fu">geom_area</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> numUsers,</span>
-<span id="cb18-5"><a href=""></a>        <span class="at">fill =</span> region)) <span class="sc">+</span></span>
-<span id="cb18-6"><a href=""></a>  <span class="co"># Nice colors from "viridis" library:</span></span>
-<span id="cb18-7"><a href=""></a>  <span class="fu">scale_fill_viridis</span>(<span class="at">discrete =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
-<span id="cb18-8"><a href=""></a>  <span class="co"># Sort the legend into 3 rows</span></span>
-<span id="cb18-9"><a href=""></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>(</span>
-<span id="cb18-10"><a href=""></a>    <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">FALSE</span>)) <span class="sc">+</span></span>
-<span id="cb18-11"><a href=""></a>  <span class="fu">theme_minimal_grid</span>(<span class="at">font_size =</span> <span class="dv">15</span>) <span class="sc">+</span></span>
-<span id="cb18-12"><a href=""></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">'bottom'</span>) <span class="sc">+</span></span>
-<span id="cb18-13"><a href=""></a>  <span class="fu">labs</span>(</span>
-<span id="cb18-14"><a href=""></a>    <span class="at">x =</span> <span class="st">'Year'</span>,</span>
-<span id="cb18-15"><a href=""></a>    <span class="at">y =</span> <span class="cn">NULL</span>,</span>
-<span id="cb18-16"><a href=""></a>    <span class="at">fill =</span> <span class="st">'Region'</span>,</span>
-<span id="cb18-17"><a href=""></a>    <span class="at">title =</span> <span class="st">'Number of internet users (billions)'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb18-4"><a href=""></a>  <span class="fu">geom_area</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> numUsers, <span class="at">fill =</span> region)) <span class="sc">+</span></span>
+<span id="cb18-5"><a href=""></a>  <span class="co"># Nice colors from "viridis" library:</span></span>
+<span id="cb18-6"><a href=""></a>  <span class="fu">scale_fill_viridis</span>(<span class="at">discrete =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb18-7"><a href=""></a>  <span class="co"># Sort the legend into 3 rows</span></span>
+<span id="cb18-8"><a href=""></a>  <span class="fu">guides</span>(</span>
+<span id="cb18-9"><a href=""></a>    <span class="at">fill =</span> <span class="fu">guide_legend</span>(</span>
+<span id="cb18-10"><a href=""></a>      <span class="at">nrow =</span> <span class="dv">3</span>,</span>
+<span id="cb18-11"><a href=""></a>      <span class="at">byrow =</span> <span class="cn">FALSE</span></span>
+<span id="cb18-12"><a href=""></a>    )</span>
+<span id="cb18-13"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb18-14"><a href=""></a>  <span class="fu">theme_minimal_grid</span>(<span class="at">font_size =</span> <span class="dv">15</span>) <span class="sc">+</span></span>
+<span id="cb18-15"><a href=""></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">'bottom'</span>) <span class="sc">+</span></span>
+<span id="cb18-16"><a href=""></a>  <span class="fu">labs</span>(</span>
+<span id="cb18-17"><a href=""></a>    <span class="at">x =</span> <span class="st">'Year'</span>,</span>
+<span id="cb18-18"><a href=""></a>    <span class="at">y =</span> <span class="cn">NULL</span>,</span>
+<span id="cb18-19"><a href=""></a>    <span class="at">fill =</span> <span class="st">'Region'</span>,</span>
+<span id="cb18-20"><a href=""></a>    <span class="at">title =</span> <span class="st">'Number of internet users (billions)'</span></span>
+<span id="cb18-21"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1840,28 +1989,38 @@ Highlights <strong>overall / total</strong> trend
 <span id="cb19-2"><a href=""></a>measles <span class="ot">&lt;-</span> us_diseases <span class="sc">%&gt;%</span></span>
 <span id="cb19-3"><a href=""></a>  <span class="fu">filter</span>(</span>
 <span id="cb19-4"><a href=""></a>    disease <span class="sc">==</span> <span class="st">'Measles'</span>,</span>
-<span id="cb19-5"><a href=""></a>    <span class="sc">!</span>state <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Hawaii"</span>, <span class="st">"Alaska"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb19-6"><a href=""></a>  <span class="fu">mutate</span>(</span>
-<span id="cb19-7"><a href=""></a>    <span class="at">rate =</span> (count <span class="sc">/</span> population) <span class="sc">*</span> <span class="dv">10000</span>,</span>
-<span id="cb19-8"><a href=""></a>    <span class="at">state =</span> <span class="fu">fct_reorder</span>(state, rate)) <span class="sc">%&gt;%</span></span>
-<span id="cb19-9"><a href=""></a>  <span class="co"># Compute annual mean rate across all states</span></span>
-<span id="cb19-10"><a href=""></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
-<span id="cb19-11"><a href=""></a>  <span class="fu">mutate</span>(</span>
-<span id="cb19-12"><a href=""></a>    <span class="at">mean_rate =</span> <span class="fu">sum</span>(count) <span class="sc">/</span> <span class="fu">sum</span>(population) <span class="sc">*</span> <span class="dv">10000</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb19-5"><a href=""></a>    <span class="sc">!</span>state <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Hawaii"</span>, <span class="st">"Alaska"</span>)</span>
+<span id="cb19-6"><a href=""></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb19-7"><a href=""></a>  <span class="fu">mutate</span>(</span>
+<span id="cb19-8"><a href=""></a>    <span class="at">rate =</span> (count <span class="sc">/</span> population) <span class="sc">*</span> <span class="dv">10000</span>,</span>
+<span id="cb19-9"><a href=""></a>    <span class="at">state =</span> <span class="fu">fct_reorder</span>(state, rate)</span>
+<span id="cb19-10"><a href=""></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb19-11"><a href=""></a>  <span class="co"># Compute annual mean rate across all states</span></span>
+<span id="cb19-12"><a href=""></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb19-13"><a href=""></a>  <span class="fu">mutate</span>(</span>
+<span id="cb19-14"><a href=""></a>    <span class="at">mean_rate =</span> <span class="fu">sum</span>(count) <span class="sc">/</span> <span class="fu">sum</span>(population) <span class="sc">*</span> <span class="dv">10000</span></span>
+<span id="cb19-15"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Make all the state lines in light grey color</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20" data-code-line-numbers="2,3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a><span class="fu">ggplot</span>(measles) <span class="sc">+</span></span>
-<span id="cb20-2"><a href=""></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> rate, <span class="at">group =</span> state),</span>
-<span id="cb20-3"><a href=""></a>              <span class="at">color =</span> <span class="st">'grey'</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
-<span id="cb20-4"><a href=""></a>    <span class="co"># Add reference line &amp; label:</span></span>
-<span id="cb20-5"><a href=""></a>    <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">1963</span>, <span class="at">col =</span> <span class="st">'blue'</span>,</span>
-<span id="cb20-6"><a href=""></a>               <span class="at">linetype =</span> <span class="st">'dashed'</span>) <span class="sc">+</span></span>
-<span id="cb20-7"><a href=""></a>    <span class="fu">annotate</span>(<span class="st">'text'</span>, <span class="at">x =</span> <span class="dv">1964</span>, <span class="at">y =</span> <span class="dv">150</span>, <span class="at">hjust =</span> <span class="dv">0</span>,</span>
-<span id="cb20-8"><a href=""></a>             <span class="at">label =</span> <span class="st">'Vaccine introduced in 1964'</span>,</span>
-<span id="cb20-9"><a href=""></a>             <span class="at">color =</span> <span class="st">'blue'</span>) <span class="sc">+</span></span>
-<span id="cb20-10"><a href=""></a>    <span class="fu">theme_minimal_grid</span>(<span class="at">font_size =</span> <span class="dv">18</span>) <span class="sc">+</span></span>
-<span id="cb20-11"><a href=""></a>    <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">'Cases per 10,000 people'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb20-2"><a href=""></a>    <span class="fu">geom_line</span>(</span>
+<span id="cb20-3"><a href=""></a>        <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> rate, <span class="at">group =</span> state),</span>
+<span id="cb20-4"><a href=""></a>        <span class="at">color =</span> <span class="st">'grey'</span>,</span>
+<span id="cb20-5"><a href=""></a>        <span class="at">alpha =</span> <span class="fl">0.3</span></span>
+<span id="cb20-6"><a href=""></a>    ) <span class="sc">+</span></span>
+<span id="cb20-7"><a href=""></a>    <span class="co"># Add reference line &amp; label:</span></span>
+<span id="cb20-8"><a href=""></a>    <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">1963</span>, <span class="at">col =</span> <span class="st">'blue'</span>, <span class="at">linetype =</span> <span class="st">'dashed'</span>) <span class="sc">+</span></span>
+<span id="cb20-9"><a href=""></a>    <span class="fu">annotate</span>(</span>
+<span id="cb20-10"><a href=""></a>        <span class="st">'text'</span>,</span>
+<span id="cb20-11"><a href=""></a>        <span class="at">x =</span> <span class="dv">1964</span>,</span>
+<span id="cb20-12"><a href=""></a>        <span class="at">y =</span> <span class="dv">150</span>,</span>
+<span id="cb20-13"><a href=""></a>        <span class="at">hjust =</span> <span class="dv">0</span>,</span>
+<span id="cb20-14"><a href=""></a>        <span class="at">label =</span> <span class="st">'Vaccine introduced in 1964'</span>,</span>
+<span id="cb20-15"><a href=""></a>        <span class="at">color =</span> <span class="st">'blue'</span></span>
+<span id="cb20-16"><a href=""></a>    ) <span class="sc">+</span></span>
+<span id="cb20-17"><a href=""></a>    <span class="fu">theme_minimal_grid</span>(<span class="at">font_size =</span> <span class="dv">18</span>) <span class="sc">+</span></span>
+<span id="cb20-18"><a href=""></a>    <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">'Cases per 10,000 people'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1891,21 +2050,33 @@ How to:<br><strong>Average line overlay</strong>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21" data-code-line-numbers="5,6,8,9,10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a><span class="fu">ggplot</span>(measles) <span class="sc">+</span></span>
 <span id="cb21-2"><a href=""></a>  <span class="fu">geom_line</span>(</span>
 <span id="cb21-3"><a href=""></a>    <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> rate, <span class="at">group =</span> state),</span>
-<span id="cb21-4"><a href=""></a>    <span class="at">color =</span> <span class="st">'grey'</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
-<span id="cb21-5"><a href=""></a>  <span class="fu">geom_line</span>(</span>
-<span id="cb21-6"><a href=""></a>    <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> mean_rate), <span class="at">size =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
-<span id="cb21-7"><a href=""></a>  <span class="co"># Add US mean label</span></span>
-<span id="cb21-8"><a href=""></a>  <span class="fu">annotate</span>(</span>
-<span id="cb21-9"><a href=""></a>    <span class="st">'text'</span>, <span class="at">x =</span> <span class="dv">1945</span>, <span class="at">y =</span> <span class="dv">55</span>, <span class="at">hjust =</span> <span class="dv">0</span>,</span>
-<span id="cb21-10"><a href=""></a>    <span class="at">label =</span> <span class="st">'US Mean'</span>) <span class="sc">+</span></span>
-<span id="cb21-11"><a href=""></a>  <span class="co"># Add reference line &amp; label</span></span>
-<span id="cb21-12"><a href=""></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">1963</span>, <span class="at">col =</span> <span class="st">'blue'</span>,</span>
-<span id="cb21-13"><a href=""></a>             <span class="at">linetype =</span> <span class="st">'dashed'</span>) <span class="sc">+</span></span>
-<span id="cb21-14"><a href=""></a>  <span class="fu">annotate</span>(<span class="st">'text'</span>, <span class="at">x =</span> <span class="dv">1964</span>, <span class="at">y =</span> <span class="dv">150</span>, <span class="at">hjust =</span> <span class="dv">0</span>,</span>
-<span id="cb21-15"><a href=""></a>           <span class="at">label =</span> <span class="st">'Vaccine introduced in 1964'</span>,</span>
-<span id="cb21-16"><a href=""></a>           <span class="at">color =</span> <span class="st">'blue'</span>) <span class="sc">+</span></span>
-<span id="cb21-17"><a href=""></a>  <span class="fu">theme_minimal_grid</span>(<span class="at">font_size =</span> <span class="dv">18</span>) <span class="sc">+</span></span>
-<span id="cb21-18"><a href=""></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">'Cases per 10,000 people'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb21-4"><a href=""></a>    <span class="at">color =</span> <span class="st">'grey'</span>,</span>
+<span id="cb21-5"><a href=""></a>    <span class="at">alpha =</span> <span class="fl">0.3</span></span>
+<span id="cb21-6"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb21-7"><a href=""></a>  <span class="fu">geom_line</span>(</span>
+<span id="cb21-8"><a href=""></a>    <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> mean_rate),</span>
+<span id="cb21-9"><a href=""></a>    <span class="at">size =</span> <span class="fl">0.8</span></span>
+<span id="cb21-10"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb21-11"><a href=""></a>  <span class="co"># Add US mean label</span></span>
+<span id="cb21-12"><a href=""></a>  <span class="fu">annotate</span>(</span>
+<span id="cb21-13"><a href=""></a>    <span class="st">'text'</span>,</span>
+<span id="cb21-14"><a href=""></a>    <span class="at">x =</span> <span class="dv">1945</span>,</span>
+<span id="cb21-15"><a href=""></a>    <span class="at">y =</span> <span class="dv">55</span>,</span>
+<span id="cb21-16"><a href=""></a>    <span class="at">hjust =</span> <span class="dv">0</span>,</span>
+<span id="cb21-17"><a href=""></a>    <span class="at">label =</span> <span class="st">'US Mean'</span></span>
+<span id="cb21-18"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb21-19"><a href=""></a>  <span class="co"># Add reference line &amp; label</span></span>
+<span id="cb21-20"><a href=""></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">1963</span>, <span class="at">col =</span> <span class="st">'blue'</span>, <span class="at">linetype =</span> <span class="st">'dashed'</span>) <span class="sc">+</span></span>
+<span id="cb21-21"><a href=""></a>  <span class="fu">annotate</span>(</span>
+<span id="cb21-22"><a href=""></a>    <span class="st">'text'</span>,</span>
+<span id="cb21-23"><a href=""></a>    <span class="at">x =</span> <span class="dv">1964</span>,</span>
+<span id="cb21-24"><a href=""></a>    <span class="at">y =</span> <span class="dv">150</span>,</span>
+<span id="cb21-25"><a href=""></a>    <span class="at">hjust =</span> <span class="dv">0</span>,</span>
+<span id="cb21-26"><a href=""></a>    <span class="at">label =</span> <span class="st">'Vaccine introduced in 1964'</span>,</span>
+<span id="cb21-27"><a href=""></a>    <span class="at">color =</span> <span class="st">'blue'</span></span>
+<span id="cb21-28"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb21-29"><a href=""></a>  <span class="fu">theme_minimal_grid</span>(<span class="at">font_size =</span> <span class="dv">18</span>) <span class="sc">+</span></span>
+<span id="cb21-30"><a href=""></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">'Cases per 10,000 people'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1935,14 +2106,21 @@ How to:<br><strong>Average line overlay</strong>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22" data-code-line-numbers="2,3,4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href=""></a><span class="fu">ggplot</span>(measles) <span class="sc">+</span></span>
 <span id="cb22-2"><a href=""></a>  <span class="fu">geom_tile</span>(</span>
 <span id="cb22-3"><a href=""></a>    <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> state, <span class="at">fill =</span> rate),</span>
-<span id="cb22-4"><a href=""></a>    <span class="at">color =</span> <span class="st">'grey80'</span>) <span class="sc">+</span></span>
-<span id="cb22-5"><a href=""></a>  <span class="co"># Add reference line &amp; label</span></span>
-<span id="cb22-6"><a href=""></a>  <span class="fu">geom_vline</span>(</span>
-<span id="cb22-7"><a href=""></a>    <span class="at">xintercept =</span> <span class="dv">1963</span>, <span class="at">col =</span> <span class="st">'blue'</span>) <span class="sc">+</span></span>
-<span id="cb22-8"><a href=""></a>  <span class="fu">annotate</span>(</span>
-<span id="cb22-9"><a href=""></a>    <span class="st">'text'</span>, <span class="at">x =</span> <span class="dv">1964</span>, <span class="at">y =</span> <span class="fl">50.5</span>, <span class="at">hjust =</span> <span class="dv">0</span>,</span>
-<span id="cb22-10"><a href=""></a>    <span class="at">label =</span> <span class="st">'Vaccine introduced in 1964'</span>,</span>
-<span id="cb22-11"><a href=""></a>    <span class="at">color =</span> <span class="st">'blue'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb22-4"><a href=""></a>    <span class="at">color =</span> <span class="st">'grey80'</span></span>
+<span id="cb22-5"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb22-6"><a href=""></a>  <span class="co"># Add reference line &amp; label</span></span>
+<span id="cb22-7"><a href=""></a>  <span class="fu">geom_vline</span>(</span>
+<span id="cb22-8"><a href=""></a>    <span class="at">xintercept =</span> <span class="dv">1963</span>,</span>
+<span id="cb22-9"><a href=""></a>    <span class="at">col =</span> <span class="st">'blue'</span></span>
+<span id="cb22-10"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb22-11"><a href=""></a>  <span class="fu">annotate</span>(</span>
+<span id="cb22-12"><a href=""></a>    <span class="st">'text'</span>,</span>
+<span id="cb22-13"><a href=""></a>    <span class="at">x =</span> <span class="dv">1964</span>,</span>
+<span id="cb22-14"><a href=""></a>    <span class="at">y =</span> <span class="fl">50.5</span>,</span>
+<span id="cb22-15"><a href=""></a>    <span class="at">hjust =</span> <span class="dv">0</span>,</span>
+<span id="cb22-16"><a href=""></a>    <span class="at">label =</span> <span class="st">'Vaccine introduced in 1964'</span>,</span>
+<span id="cb22-17"><a href=""></a>    <span class="at">color =</span> <span class="st">'blue'</span></span>
+<span id="cb22-18"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1970,29 +2148,37 @@ How to: <strong>Heat map</strong>
 <div class="font60">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23" data-code-line-numbers="11,12,13,15,16,17,18,19,20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href=""></a><span class="fu">ggplot</span>(measles) <span class="sc">+</span></span>
-<span id="cb23-2"><a href=""></a>  <span class="fu">geom_tile</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> state, <span class="at">fill =</span> rate),</span>
-<span id="cb23-3"><a href=""></a>    <span class="at">color =</span> <span class="st">'grey80'</span>) <span class="sc">+</span></span>
-<span id="cb23-4"><a href=""></a>  <span class="co"># Add reference line &amp; label</span></span>
-<span id="cb23-5"><a href=""></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">1963</span>, <span class="at">col =</span> <span class="st">'blue'</span>) <span class="sc">+</span></span>
-<span id="cb23-6"><a href=""></a>  <span class="fu">annotate</span>(</span>
-<span id="cb23-7"><a href=""></a>    <span class="st">'text'</span>, <span class="at">x =</span> <span class="dv">1964</span>, <span class="at">y =</span> <span class="fl">50.5</span>, <span class="at">hjust =</span> <span class="dv">0</span>,</span>
-<span id="cb23-8"><a href=""></a>    <span class="at">label =</span> <span class="st">'Vaccine introduced in 1964'</span>,</span>
-<span id="cb23-9"><a href=""></a>    <span class="at">color =</span> <span class="st">'blue'</span>) <span class="sc">+</span></span>
-<span id="cb23-10"><a href=""></a>  <span class="co"># Adjust scales</span></span>
-<span id="cb23-11"><a href=""></a>  <span class="fu">scale_x_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="sc">+</span></span>
-<span id="cb23-12"><a href=""></a>  <span class="fu">scale_fill_viridis</span>(</span>
-<span id="cb23-13"><a href=""></a>    <span class="at">option =</span> <span class="st">'inferno'</span>, <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb23-14"><a href=""></a>  <span class="co"># Adjust theme</span></span>
-<span id="cb23-15"><a href=""></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb23-16"><a href=""></a>  <span class="fu">theme</span>(</span>
-<span id="cb23-17"><a href=""></a>    <span class="at">panel.grid =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb23-18"><a href=""></a>    <span class="at">legend.position =</span> <span class="st">'bottom'</span>,</span>
-<span id="cb23-19"><a href=""></a>    <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>)) <span class="sc">+</span></span>
-<span id="cb23-20"><a href=""></a>  <span class="fu">coord_cartesian</span>(<span class="at">clip =</span> <span class="st">'off'</span>) <span class="sc">+</span></span>
-<span id="cb23-21"><a href=""></a>  <span class="fu">labs</span>(</span>
-<span id="cb23-22"><a href=""></a>    <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>,</span>
-<span id="cb23-23"><a href=""></a>    <span class="at">fill =</span> <span class="st">'Cases per 10,000 people'</span>,</span>
-<span id="cb23-24"><a href=""></a>    <span class="at">title =</span> <span class="st">'Measles'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb23-2"><a href=""></a>  <span class="fu">geom_tile</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> state, <span class="at">fill =</span> rate), <span class="at">color =</span> <span class="st">'grey80'</span>) <span class="sc">+</span></span>
+<span id="cb23-3"><a href=""></a>  <span class="co"># Add reference line &amp; label</span></span>
+<span id="cb23-4"><a href=""></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">1963</span>, <span class="at">col =</span> <span class="st">'blue'</span>) <span class="sc">+</span></span>
+<span id="cb23-5"><a href=""></a>  <span class="fu">annotate</span>(</span>
+<span id="cb23-6"><a href=""></a>    <span class="st">'text'</span>,</span>
+<span id="cb23-7"><a href=""></a>    <span class="at">x =</span> <span class="dv">1964</span>,</span>
+<span id="cb23-8"><a href=""></a>    <span class="at">y =</span> <span class="fl">50.5</span>,</span>
+<span id="cb23-9"><a href=""></a>    <span class="at">hjust =</span> <span class="dv">0</span>,</span>
+<span id="cb23-10"><a href=""></a>    <span class="at">label =</span> <span class="st">'Vaccine introduced in 1964'</span>,</span>
+<span id="cb23-11"><a href=""></a>    <span class="at">color =</span> <span class="st">'blue'</span></span>
+<span id="cb23-12"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb23-13"><a href=""></a>  <span class="co"># Adjust scales</span></span>
+<span id="cb23-14"><a href=""></a>  <span class="fu">scale_x_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb23-15"><a href=""></a>  <span class="fu">scale_fill_viridis</span>(</span>
+<span id="cb23-16"><a href=""></a>    <span class="at">option =</span> <span class="st">'inferno'</span>,</span>
+<span id="cb23-17"><a href=""></a>    <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span></span>
+<span id="cb23-18"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb23-19"><a href=""></a>  <span class="co"># Adjust theme</span></span>
+<span id="cb23-20"><a href=""></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb23-21"><a href=""></a>  <span class="fu">theme</span>(</span>
+<span id="cb23-22"><a href=""></a>    <span class="at">panel.grid =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb23-23"><a href=""></a>    <span class="at">legend.position =</span> <span class="st">'bottom'</span>,</span>
+<span id="cb23-24"><a href=""></a>    <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>)</span>
+<span id="cb23-25"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb23-26"><a href=""></a>  <span class="fu">coord_cartesian</span>(<span class="at">clip =</span> <span class="st">'off'</span>) <span class="sc">+</span></span>
+<span id="cb23-27"><a href=""></a>  <span class="fu">labs</span>(</span>
+<span id="cb23-28"><a href=""></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb23-29"><a href=""></a>    <span class="at">y =</span> <span class="cn">NULL</span>,</span>
+<span id="cb23-30"><a href=""></a>    <span class="at">fill =</span> <span class="st">'Cases per 10,000 people'</span>,</span>
+<span id="cb23-31"><a href=""></a>    <span class="at">title =</span> <span class="st">'Measles'</span></span>
+<span id="cb23-32"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -2020,33 +2206,45 @@ How to: <strong>Heat map</strong>
 <div class="font60">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24" data-code-line-numbers="14,16,17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href=""></a><span class="fu">ggplot</span>(measles) <span class="sc">+</span></span>
-<span id="cb24-2"><a href=""></a>  <span class="fu">geom_tile</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> state, <span class="at">fill =</span> rate),</span>
-<span id="cb24-3"><a href=""></a>    <span class="at">color =</span> <span class="st">'grey80'</span>) <span class="sc">+</span></span>
-<span id="cb24-4"><a href=""></a>  <span class="co"># Add reference line &amp; label</span></span>
-<span id="cb24-5"><a href=""></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">1963</span>, <span class="at">col =</span> <span class="st">'blue'</span>) <span class="sc">+</span></span>
-<span id="cb24-6"><a href=""></a>  <span class="fu">annotate</span>(</span>
-<span id="cb24-7"><a href=""></a>    <span class="st">'text'</span>, <span class="at">x =</span> <span class="dv">1964</span>, <span class="at">y =</span> <span class="fl">50.5</span>, <span class="at">hjust =</span> <span class="dv">0</span>,</span>
-<span id="cb24-8"><a href=""></a>    <span class="at">label =</span> <span class="st">'Vaccine introduced in 1964'</span>,</span>
-<span id="cb24-9"><a href=""></a>    <span class="at">color =</span> <span class="st">'blue'</span>) <span class="sc">+</span></span>
-<span id="cb24-10"><a href=""></a>  <span class="co"># Adjust scales</span></span>
-<span id="cb24-11"><a href=""></a>  <span class="fu">scale_x_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="sc">+</span></span>
-<span id="cb24-12"><a href=""></a>  <span class="fu">scale_fill_viridis</span>(</span>
-<span id="cb24-13"><a href=""></a>    <span class="at">option =</span> <span class="st">'inferno'</span>, <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>,</span>
-<span id="cb24-14"><a href=""></a>    <span class="at">trans =</span> <span class="st">'sqrt'</span>) <span class="sc">+</span></span>
-<span id="cb24-15"><a href=""></a>  <span class="co"># Modify legend color bar</span></span>
-<span id="cb24-16"><a href=""></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_colorbar</span>(</span>
-<span id="cb24-17"><a href=""></a>      <span class="at">title.position =</span> <span class="st">'top'</span>, <span class="at">reverse =</span> <span class="cn">TRUE</span>)) <span class="sc">+</span></span>
-<span id="cb24-18"><a href=""></a>  <span class="co"># Adjust theme</span></span>
-<span id="cb24-19"><a href=""></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb24-20"><a href=""></a>  <span class="fu">theme</span>(</span>
-<span id="cb24-21"><a href=""></a>    <span class="at">panel.grid =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb24-22"><a href=""></a>    <span class="at">legend.position =</span> <span class="st">'bottom'</span>,</span>
-<span id="cb24-23"><a href=""></a>    <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>)) <span class="sc">+</span></span>
-<span id="cb24-24"><a href=""></a>  <span class="fu">coord_cartesian</span>(<span class="at">clip =</span> <span class="st">'off'</span>) <span class="sc">+</span></span>
-<span id="cb24-25"><a href=""></a>  <span class="fu">labs</span>(</span>
-<span id="cb24-26"><a href=""></a>    <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>,</span>
-<span id="cb24-27"><a href=""></a>    <span class="at">fill =</span> <span class="st">'Cases per 10,000 people'</span>,</span>
-<span id="cb24-28"><a href=""></a>    <span class="at">title =</span> <span class="st">'Measles'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb24-2"><a href=""></a>  <span class="fu">geom_tile</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> state, <span class="at">fill =</span> rate), <span class="at">color =</span> <span class="st">'grey80'</span>) <span class="sc">+</span></span>
+<span id="cb24-3"><a href=""></a>  <span class="co"># Add reference line &amp; label</span></span>
+<span id="cb24-4"><a href=""></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">1963</span>, <span class="at">col =</span> <span class="st">'blue'</span>) <span class="sc">+</span></span>
+<span id="cb24-5"><a href=""></a>  <span class="fu">annotate</span>(</span>
+<span id="cb24-6"><a href=""></a>    <span class="st">'text'</span>,</span>
+<span id="cb24-7"><a href=""></a>    <span class="at">x =</span> <span class="dv">1964</span>,</span>
+<span id="cb24-8"><a href=""></a>    <span class="at">y =</span> <span class="fl">50.5</span>,</span>
+<span id="cb24-9"><a href=""></a>    <span class="at">hjust =</span> <span class="dv">0</span>,</span>
+<span id="cb24-10"><a href=""></a>    <span class="at">label =</span> <span class="st">'Vaccine introduced in 1964'</span>,</span>
+<span id="cb24-11"><a href=""></a>    <span class="at">color =</span> <span class="st">'blue'</span></span>
+<span id="cb24-12"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb24-13"><a href=""></a>  <span class="co"># Adjust scales</span></span>
+<span id="cb24-14"><a href=""></a>  <span class="fu">scale_x_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb24-15"><a href=""></a>  <span class="fu">scale_fill_viridis</span>(</span>
+<span id="cb24-16"><a href=""></a>    <span class="at">option =</span> <span class="st">'inferno'</span>,</span>
+<span id="cb24-17"><a href=""></a>    <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>,</span>
+<span id="cb24-18"><a href=""></a>    <span class="at">trans =</span> <span class="st">'sqrt'</span></span>
+<span id="cb24-19"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb24-20"><a href=""></a>  <span class="co"># Modify legend color bar</span></span>
+<span id="cb24-21"><a href=""></a>  <span class="fu">guides</span>(</span>
+<span id="cb24-22"><a href=""></a>    <span class="at">fill =</span> <span class="fu">guide_colorbar</span>(</span>
+<span id="cb24-23"><a href=""></a>      <span class="at">title.position =</span> <span class="st">'top'</span>,</span>
+<span id="cb24-24"><a href=""></a>      <span class="at">reverse =</span> <span class="cn">TRUE</span></span>
+<span id="cb24-25"><a href=""></a>    )</span>
+<span id="cb24-26"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb24-27"><a href=""></a>  <span class="co"># Adjust theme</span></span>
+<span id="cb24-28"><a href=""></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb24-29"><a href=""></a>  <span class="fu">theme</span>(</span>
+<span id="cb24-30"><a href=""></a>    <span class="at">panel.grid =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb24-31"><a href=""></a>    <span class="at">legend.position =</span> <span class="st">'bottom'</span>,</span>
+<span id="cb24-32"><a href=""></a>    <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>)</span>
+<span id="cb24-33"><a href=""></a>  ) <span class="sc">+</span></span>
+<span id="cb24-34"><a href=""></a>  <span class="fu">coord_cartesian</span>(<span class="at">clip =</span> <span class="st">'off'</span>) <span class="sc">+</span></span>
+<span id="cb24-35"><a href=""></a>  <span class="fu">labs</span>(</span>
+<span id="cb24-36"><a href=""></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb24-37"><a href=""></a>    <span class="at">y =</span> <span class="cn">NULL</span>,</span>
+<span id="cb24-38"><a href=""></a>    <span class="at">fill =</span> <span class="st">'Cases per 10,000 people'</span>,</span>
+<span id="cb24-39"><a href=""></a>    <span class="at">title =</span> <span class="st">'Measles'</span></span>
+<span id="cb24-40"><a href=""></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -2068,13 +2266,14 @@ How to: <strong>Heat map</strong>
 </section>
 <section class="slide level0">
 
-<section id="your-turn-2" class="inverse">
-<h2>Your turn</h2>
+<section class="lexis-slide-title inverse">
+<h1 class="lexis-slide-title"></h1>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_9743ca5f" minutes="20" seconds="0" warn-when="30" update-every="1" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_38dec464" minutes="20" seconds="0" warn-when="30" update-every="1" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:2em;"></countdown-timer>
 </div>
 </div>
+<h2 id="your-turn-2">Your turn</h2>
 <div class="cols-row">
 <div class="col">
 <p>Use the <code>us_covid</code> data frame to explore ways to visualize the number of daily cases using:</p>
@@ -2084,12 +2283,14 @@ How to: <strong>Heat map</strong>
 <li>A heat map</li>
 </ol>
 </div>
-<div class="col">
+<div class="col font70">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href=""></a>us_covid <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">file.path</span>(</span>
-<span id="cb25-2"><a href=""></a>  <span class="st">'data'</span>, <span class="st">'us_covid.csv'</span>))</span>
-<span id="cb25-3"><a href=""></a></span>
-<span id="cb25-4"><a href=""></a><span class="fu">head</span>(us_covid)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb25-2"><a href=""></a>  <span class="st">'data'</span>,</span>
+<span id="cb25-3"><a href=""></a>  <span class="st">'us_covid.csv'</span></span>
+<span id="cb25-4"><a href=""></a>))</span>
+<span id="cb25-5"><a href=""></a></span>
+<span id="cb25-6"><a href=""></a><span class="fu">head</span>(us_covid)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; # A tibble: 6 × 7
 #&gt;   date         day state   cases_daily deaths_daily cases_total deaths_total
@@ -2116,16 +2317,16 @@ How to: <strong>Heat map</strong>
 
 <section id="seasonal-chart" class="center">
 <h1>Seasonal chart</h1>
-<p><img data-src="images/seasonal_chart.png" width="700"></p>
-<p><span class="left">Source: http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html#Seasonal%20Plot</span></p>
+<p><img data-src="images/seasonal_chart.png" width="930"></p>
+<p><span class="left">Source: <a href="http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html#Seasonal%20Plot" class="uri">http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html#Seasonal%20Plot</a></span></p>
 </section>
 </section>
 <section class="slide level0">
 
 <section id="sankey-chart" class="center">
 <h2>Sankey chart</h2>
-<p><img data-src="images/energy_sankey.png" width="800"></p>
-<p>Source: https://flowcharts.llnl.gov/</p>
+<p><img data-src="images/energy_sankey.png" width="1060"></p>
+<p>Source: <a href="https://flowcharts.llnl.gov/" class="uri">https://flowcharts.llnl.gov/</a></p>
 </section>
 </section>
 <section class="slide level0">
@@ -2133,7 +2334,7 @@ How to: <strong>Heat map</strong>
 <section class="lexis-slide-title middle">
 <h1 class="lexis-slide-title"></h1>
 <p><span class="center">Would you consider purchasing an electric car?</span></p>
-<p><img data-src="images/bevSankey.png" width="700"></p>
+<p><img data-src="images/bevSankey.png" width="930"></p>
 <div class="cols-row">
 <div class="col font70" style="flex:0 1 70%;width:70%">
 <p>Roberson, Laura A. &amp; Helveston, J.P. (2020) “<a href="https://iopscience.iop.org/article/10.1088/1748-9326/aba715/meta">Electric vehicle adoption: can short experiences lead to big change?</a>,” Environmental Research Letters. 15(0940c3).<br>Made using the <a href="https://www.data-imaginist.com/2019/the-ggforce-awakens-again/">ggforce</a> package</p>
@@ -2171,7 +2372,7 @@ How to: <strong>Heat map</strong>
       // Full list of configuration options available at:
       // https://revealjs.com/config/
       Reveal.initialize({
-'controlsAuto': true,
+'controlsAuto': false,
 'previewLinksAuto': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
@@ -2183,7 +2384,7 @@ How to: <strong>Heat map</strong>
 'smaller': false,
  
         // Display controls in the bottom right corner
-        controls: false,
+        controls: true,
 
         // Help the user learn the controls by providing hints, for example by
         // bouncing the down arrow when they first encounter a vertical slide
@@ -2358,6 +2559,475 @@ How to: <strong>Heat map</strong>
           RevealZoom
         ]
       });
+    </script>
+    <script>
+    // ---- Handheld portrait support (touch devices only) ------------------------
+    // lexis.scss rotates <body> 90deg clockwise on a portrait viewport whose primary
+    // pointer is a finger, so the landscape stage uses the screen's long side (see
+    // "Handheld portrait" there). Desktops stay upright at any window size, so
+    // nothing in this file does anything there.
+    //
+    // The CSS handles what the deck LOOKS like. This file handles the two things CSS
+    // cannot: keeping reveal's scale correct across a flip, and making swipes follow
+    // the rotated picture instead of the raw screen axes.
+    (function () {
+      // Must state the SAME condition as the SCSS media query, `pointer: coarse`
+      // included. Testing orientation alone would report "rotated" on a desktop
+      // window dragged narrow, where the CSS deliberately leaves the deck upright,
+      // and the swipe remap below would then fight input that was never rotated.
+      var mq = window.matchMedia('(orientation: portrait) and (pointer: coarse)');
+      var rotated = function () { return mq.matches; };
+
+      // ---- 1. Relayout after a flip ----
+      // Reveal reads its scale from `.reveal`'s pre-transform box, so the rotation
+      // alone is usually enough. What is not reliable is the TIMING on a real
+      // device: turning a phone fires resize while the media query, the visual
+      // viewport and the URL bar are all still settling, so reveal can measure a
+      // stale box and leave the deck mis-scaled until the next interaction — and
+      // since lexis derives its letterbox from `--slide-scale`, a stale scale also
+      // means a stale gray band. Re-run layout after the flip, once on the following
+      // frame, and once more after the toolbar animation.
+      var relayout = function () {
+        if (!window.Reveal || !Reveal.layout) return;
+        Reveal.layout();
+        requestAnimationFrame(function () { Reveal.layout(); });
+        setTimeout(function () { Reveal.layout(); }, 300);
+      };
+      if (mq.addEventListener) mq.addEventListener('change', relayout);
+      else if (mq.addListener) mq.addListener(relayout); // Safari < 14
+      window.addEventListener('orientationchange', relayout);
+
+      // ---- 2. Swipe remap ----
+      // Pointer/touch events report SCREEN coordinates; a CSS transform does not
+      // rotate them. Reveal navigates on screen deltaX, so once the page is rotated
+      // the viewer has to swipe along the axis they SEE as vertical.
+      //
+      // The page is rotated 90deg clockwise: page +x is drawn along screen +y, and
+      // page +y along screen -x. Reading the slide means turning the device 90deg
+      // counter-clockwise, after which, from the viewer's point of view:
+      //
+      //   swipe left   -> screen dy < 0   -> Reveal.right()  (advance)
+      //   swipe right  -> screen dy > 0   -> Reveal.left()
+      //   swipe up     -> screen dx > 0   -> Reveal.down()
+      //   swipe down   -> screen dx < 0   -> Reveal.up()
+      //
+      // Directions mirror reveal's own convention, where swiping left advances.
+      //
+      // Reveal binds its touch controller ONCE at init, so
+      // `Reveal.configure({touch: false})` afterwards does nothing. Its events are
+      // instead caught on window in the CAPTURE phase and stopped there, so they
+      // never reach the `.reveal` element's listener. Suppression only happens while
+      // rotated, leaving reveal's normal handling untouched in landscape.
+      //
+      // Bind the SAME event family reveal picked, using reveal's own test
+      // (`'onpointerdown' in window`). Reveal prefers Pointer Events wherever they
+      // exist, which includes iOS Safari, and only falls back to touch events on old
+      // browsers. Listening to touch alone would suppress nothing on a modern phone
+      // and would leave both handlers firing at once.
+      var POINTER = 'onpointerdown' in window;
+      var EVENTS = POINTER
+        ? { down: 'pointerdown', move: 'pointermove', up: 'pointerup', cancel: 'pointercancel' }
+        : { down: 'touchstart', move: 'touchmove', up: 'touchend', cancel: 'touchcancel' };
+
+      var THRESHOLD = 40; // px, same as reveal's swipe threshold
+      var startX = 0, startY = 0, tracking = false;
+
+      // Ignore anything that is not a finger: a mouse drag must not page the deck.
+      var isFinger = function (e) {
+        return POINTER ? (e.pointerType === 'touch' || e.pointerType === 'pen') : e.touches.length === 1;
+      };
+      var point = function (e) {
+        var p = POINTER ? e : (e.touches[0] || e.changedTouches[0]);
+        return { x: p.clientX, y: p.clientY };
+      };
+
+      // Never swallow gestures meant for a control, a link, the menu, or an
+      // interactive htmlwidget (a plotly tap must reach the widget), and stay out of
+      // the way in overview, where a swipe scrolls the tile grid.
+      var passThrough = function (target) {
+        if (window.Reveal && Reveal.isOverview && Reveal.isOverview()) return true;
+        return !!(target && target.closest && target.closest(
+          'a, button, input, select, textarea, .controls, .slide-menu-button, ' +
+          '.slide-menu, .slide-menu-overlay, .panel-tabset, .html-widget, iframe, ' +
+          '[data-prevent-swipe]'
+        ));
+      };
+
+      window.addEventListener(EVENTS.down, function (e) {
+        tracking = false;
+        if (!rotated() || !isFinger(e) || passThrough(e.target)) return;
+        e.stopPropagation();
+        tracking = true;
+        var p = point(e);
+        startX = p.x;
+        startY = p.y;
+      }, { capture: true, passive: true });
+
+      window.addEventListener(EVENTS.move, function (e) {
+        if (tracking) e.stopPropagation();
+      }, { capture: true, passive: true });
+
+      window.addEventListener(EVENTS.up, function (e) {
+        if (!tracking) return;
+        tracking = false;
+        e.stopPropagation();
+        if (!window.Reveal) return;
+        var p = point(e);
+        var dx = p.x - startX;
+        var dy = p.y - startY;
+        if (Math.abs(dx) < THRESHOLD && Math.abs(dy) < THRESHOLD) return; // a tap
+        if (Math.abs(dy) >= Math.abs(dx)) {
+          if (dy < 0) Reveal.right(); else Reveal.left();
+        } else {
+          if (dx > 0) Reveal.down(); else Reveal.up();
+        }
+      }, { capture: true, passive: true });
+
+      window.addEventListener(EVENTS.cancel, function () { tracking = false; }, { capture: true, passive: true });
+    })();
+    </script>
+    <!--
+    lexis corner controls — the bottom-left button group.
+
+    Builds one fixed `.lexis-controls` wrapper in the card's bottom-left corner
+    holding, bottom to top:
+
+      * the reveal.js-menu hamburger, ADOPTED out of the plugin's own corner spot
+        so it sits in the group and is always visible;
+      * an up-arrow handle;
+      * a collapsible tray above the arrow carrying, top to bottom, Home,
+        Slide overview (`o`), and Full screen (`f`).
+
+    Collapsed, only the hamburger and the arrow show. Hovering the arrow or the
+    tray expands it, leaving closes it, and clicking the arrow toggles it either
+    way; `:focus-within` in the CSS covers keyboard users. Hovering the HAMBURGER
+    expands nothing — it lives in the wrapper (for the shared tile look and the
+    shared hiding) but outside the flyout that triggers expansion.
+
+    The look is `.lexis-controls` / `.lexis-ctrl` in lexis.scss; the only state
+    this script owns is `.is-open` on the flyout and `.is-hidden` on the wrapper
+    (set while overview mode is active, since the tile grid is its own full-window
+    UI and the group would float on top of it).
+
+    Full screen is skipped entirely on devices with no Fullscreen API — iPhone
+    Safari has none, prefixed or not — rather than shipping a dead button. iPads
+    and Android browsers do have it and keep it.
+
+    Nothing here touches overview behaviour itself: loading every slide, painting
+    background tiles, the wheel and the keyboard grid all belong to
+    lexis-overview.html, which runs independently.
+    -->
+    <script>
+    (function () {
+      "use strict";
+
+      // Inline Lucide-style SVG paths, so nothing depends on an icon font or a
+      // library having finished booting.
+      var ICONS = {
+        house:
+          '<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>' +
+          '<polyline points="9 22 9 12 15 12 15 22"/>',
+        grid:
+          '<rect width="7" height="7" x="3" y="3" rx="1"/>' +
+          '<rect width="7" height="7" x="14" y="3" rx="1"/>' +
+          '<rect width="7" height="7" x="14" y="14" rx="1"/>' +
+          '<rect width="7" height="7" x="3" y="14" rx="1"/>',
+        maximize:
+          '<path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/>' +
+          '<path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/>',
+        minimize:
+          '<path d="M8 3v3a2 2 0 0 1-2 2H3"/><path d="M21 8h-3a2 2 0 0 1-2-2V3"/>' +
+          '<path d="M3 16h3a2 2 0 0 1 2 2v3"/><path d="M16 21v-3a2 2 0 0 1 2-2h3"/>',
+        chevronUp: '<path d="m18 15-6-6-6 6"/>',
+        redo:
+          '<path d="m15 14 5-5-5-5"/>' +
+          '<path d="M20 9H9.5A5.5 5.5 0 0 0 4 14.5v0A5.5 5.5 0 0 0 9.5 20H13"/>'
+      };
+      function svg(icon) {
+        return '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"' +
+          ' viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"' +
+          ' stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+          ICONS[icon] + '</svg>';
+      }
+      function mkBtn(icon, label, onClick) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "lexis-ctrl";
+        b.setAttribute("aria-label", label);
+        b.title = label;
+        b.innerHTML = svg(icon);
+        b.addEventListener("click", function () {
+          onClick();
+          b.blur(); // drop the focus ring after a mouse click
+        });
+        return b;
+      }
+
+      var wrap = document.createElement("div");
+      wrap.className = "lexis-controls";
+      var tray = document.createElement("div");
+      tray.className = "lexis-controls-tray";
+      var stack = document.createElement("div");
+      stack.className = "lexis-controls-stack";
+      tray.appendChild(stack);
+
+      // ---- Home / resume toggle ------------------------------------------------
+      // Jumping home from anywhere else remembers the slide you left and flips the
+      // button into a resume button; clicking again jumps back and flips it home.
+      // Clicking home while already home stores nothing. The state lives in
+      // sessionStorage keyed on the deck's path, so it survives a reload and dies
+      // with the tab — a fresh window never opens with a resume pending. Moving
+      // off the home slide by hand discards it (you've moved on, and it keeps the
+      // stored slide from going stale).
+      var RESUME_KEY = "lexisresume:" + location.pathname;
+      function loadResume() {
+        try { return JSON.parse(sessionStorage.getItem(RESUME_KEY) || "null"); }
+        catch (e) { return null; }
+      }
+      function saveResume(indices) {
+        try { sessionStorage.setItem(RESUME_KEY, JSON.stringify(indices)); }
+        catch (e) { /* storage blocked (private mode): resume just won't persist */ }
+      }
+      function clearResume() {
+        try { sessionStorage.removeItem(RESUME_KEY); }
+        catch (e) { /* ignore */ }
+      }
+
+      var suppressResumeClear = false;
+      var homeBtn = mkBtn("house", "First slide", function () {
+        if (!(window.Reveal && Reveal.slide)) return;
+        var pending = loadResume();
+        if (pending && typeof pending.h === "number") {
+          // The jump below fires slidechanged onto a non-home slide; without the
+          // flag the manual-navigation listener would read that as "moved on".
+          suppressResumeClear = true;
+          Reveal.slide(pending.h, pending.v || 0, pending.f);
+          clearResume();
+          setHomeState(false);
+        } else {
+          var idx = Reveal.getIndices ? Reveal.getIndices() : { h: 0, v: 0 };
+          if (idx.h !== 0 || (idx.v || 0) !== 0) {
+            saveResume(idx);
+            setHomeState(true);
+          }
+          Reveal.slide(0, 0, 0);
+        }
+      });
+      function setHomeState(resume) {
+        var label = resume ? "Resume where you left off" : "First slide";
+        homeBtn.innerHTML = svg(resume ? "redo" : "house");
+        homeBtn.title = label;
+        homeBtn.setAttribute("aria-label", label);
+      }
+      setHomeState(!!loadResume()); // restore a pending resume across reloads
+      stack.appendChild(homeBtn);
+
+      stack.appendChild(mkBtn("grid", "Slide overview (O)", function () {
+        if (window.Reveal && Reveal.toggleOverview) Reveal.toggleOverview();
+      }));
+
+      // ---- Full screen / exit toggle -------------------------------------------
+      // Pure UI state: the click is always the same one toggle, and the icon and
+      // label follow the browser's fullscreenchange event, so entering or leaving
+      // via the `f` key or Esc keeps the button honest too.
+      var fsSupported = !!(document.documentElement.requestFullscreen ||
+        document.documentElement.webkitRequestFullscreen);
+      if (fsSupported) {
+        var isFullscreen = function () {
+          return !!(document.fullscreenElement || document.webkitFullscreenElement);
+        };
+        var fsBtn = mkBtn("maximize", "Full screen (F)", function () {
+          var d = document, el = d.documentElement;
+          if (isFullscreen()) {
+            (d.exitFullscreen || d.webkitExitFullscreen).call(d);
+          } else {
+            (el.requestFullscreen || el.webkitRequestFullscreen).call(el);
+          }
+        });
+        var setFsState = function (active) {
+          var label = active ? "Exit full screen (F)" : "Full screen (F)";
+          fsBtn.innerHTML = svg(active ? "minimize" : "maximize");
+          fsBtn.title = label;
+          fsBtn.setAttribute("aria-label", label);
+        };
+        var syncFs = function () { setFsState(isFullscreen()); };
+        document.addEventListener("fullscreenchange", syncFs);
+        document.addEventListener("webkitfullscreenchange", syncFs);
+        stack.appendChild(fsBtn);
+      }
+
+      // ---- The flyout ----------------------------------------------------------
+      // The arrow is a hover handle; the click toggle is for touch and keyboard,
+      // where hover never fires. Collapse follows the cursor leaving the FLYOUT
+      // (arrow plus tray, not any single button), so moving from the arrow onto
+      // the tray keeps it open.
+      var arrow = document.createElement("button");
+      arrow.type = "button";
+      arrow.className = "lexis-ctrl lexis-controls-arrow";
+      arrow.setAttribute("aria-label", "Deck controls");
+      arrow.title = "Deck controls";
+      arrow.innerHTML = svg("chevronUp");
+      var flyout = document.createElement("div");
+      flyout.className = "lexis-controls-flyout";
+      // One shared open state: hover opens, leaving closes, and a click on the
+      // arrow toggles it either way — including closing while still hovered, which
+      // is why hover is wired here and not as a CSS `:hover` rule (CSS would force
+      // the tray back open under the cursor and eat the click-to-close).
+      //
+      // Hover goes through POINTER events filtered to real mice: a touch tap
+      // emulates mouseenter right before click, so with plain mouseenter a tap
+      // opened the tray (fake hover) and the click instantly toggled it shut —
+      // mobile needed two taps. Filtering on pointerType makes one tap one toggle.
+      arrow.addEventListener("click", function () {
+        flyout.classList.toggle("is-open");
+        arrow.blur();
+      });
+      flyout.addEventListener("pointerenter", function (e) {
+        if (e.pointerType === "mouse") flyout.classList.add("is-open");
+      });
+      flyout.addEventListener("pointerleave", function (e) {
+        if (e.pointerType === "mouse") flyout.classList.remove("is-open");
+      });
+      // Touch never runs the leave path above, so mirror mouse leave-to-close: a
+      // tap landing anywhere outside the flyout closes the tray.
+      document.addEventListener("pointerdown", function (e) {
+        if (e.pointerType !== "mouse" && !flyout.contains(e.target)) {
+          flyout.classList.remove("is-open");
+        }
+      });
+
+      flyout.appendChild(tray);
+      flyout.appendChild(arrow);
+      wrap.appendChild(flyout);
+      // Appended to <body>, which is reveal's viewport element in a Quarto deck —
+      // so the wrapper inherits `--lexis-lb-x` / `--lexis-lb-y` (the letterbox band
+      // it insets itself by) and sits as a SIBLING of `.reveal`, which is what the
+      // `.reveal.has-dark-background ~ .lexis-controls` flip in lexis.scss keys on.
+      document.body.appendChild(wrap);
+
+      // The reveal.js-menu plugin creates its button asynchronously inside
+      // `.reveal`; adopt it into the group once it exists, below the flyout so it
+      // keeps the corner spot. Moving the node preserves the plugin's own click
+      // listener; `.lexis-ctrl` gives it the shared tile look, and the plugin's
+      // positioning rules (all scoped under `.reveal`) stop matching once it is
+      // out of there.
+      function adoptMenuButton() {
+        var mb = document.querySelector(".reveal .slide-menu-button");
+        if (!mb) return false;
+        mb.classList.add("lexis-ctrl");
+        wrap.appendChild(mb);
+        return true;
+      }
+
+      // ---- Jump-to-slide input (`g`) hardening ---------------------------------
+      // Reveal builds that box lazily, on the first `g` press, as a bare text
+      // input — so the browser happily offers form-history and contact autofill
+      // over a field that only ever takes a slide number, and a name-and-address
+      // dropdown lands on the slide mid-talk. `type="number"` is the decisive
+      // stroke: Safari-family autofill IGNORES `autocomplete="off"` but never
+      // attaches to a numeric field. The rest closes the remaining doors —
+      // `inputmode` also brings up a numeric keypad on touch, and the two data-
+      // attributes tell 1Password and LastPass to stay away. (The spinner arrows
+      // `type="number"` drags in are hidden in lexis.scss.)
+      function armJumpInput() {
+        var apply = function (input) {
+          input.type = "number";
+          input.min = "1";
+          input.setAttribute("autocomplete", "off");
+          input.setAttribute("autocorrect", "off");
+          input.setAttribute("autocapitalize", "off");
+          input.setAttribute("spellcheck", "false");
+          input.setAttribute("inputmode", "numeric");
+          input.setAttribute("data-lpignore", "true");
+          input.setAttribute("data-1p-ignore", "");
+        };
+        var existing = document.querySelector(".jump-to-slide-input");
+        if (existing) { apply(existing); return; }
+        // Not built yet: catch it the moment reveal inserts it.
+        var observer = new MutationObserver(function () {
+          var found = document.querySelector(".jump-to-slide-input");
+          if (found) { apply(found); observer.disconnect(); }
+        });
+        observer.observe(document.querySelector(".reveal") || document.body,
+          { childList: true, subtree: true });
+      }
+
+      function wire() {
+        if (!(window.Reveal && Reveal.isReady && Reveal.isReady())) return false;
+        armJumpInput();
+        // Manually navigating off the home slide discards a pending resume. The
+        // resume click itself raises suppressResumeClear before jumping, and the
+        // jump home lands ON the home slide, so neither trips this.
+        Reveal.on("slidechanged", function (e) {
+          if (suppressResumeClear) { suppressResumeClear = false; return; }
+          if (((e.indexh || 0) !== 0 || (e.indexv || 0) !== 0) && loadResume()) {
+            clearResume();
+            setHomeState(false);
+          }
+        });
+        var sync = function () {
+          var over = Reveal.isOverview();
+          wrap.classList.toggle("is-hidden", over);
+          // `display: none` swallows the pointerleave that would clear a
+          // tap-opened tray, so drop that state by hand while hidden.
+          if (over) flyout.classList.remove("is-open");
+        };
+        Reveal.on("overviewshown", sync);
+        Reveal.on("overviewhidden", sync);
+        sync(); // in case overview is somehow already active
+        return true;
+      }
+
+      // Reveal and the menu plugin each initialize on their own schedule, so each
+      // gets its own poll rather than one waiting on the other.
+      function pollMenu(budget) {
+        if (adoptMenuButton() || budget <= 0) return;
+        setTimeout(function () { pollMenu(budget - 1); }, 100);
+      }
+      function poll(budget) {
+        if (wire() || budget <= 0) return;
+        setTimeout(function () { poll(budget - 1); }, 100);
+      }
+      pollMenu(120); // ~12s
+      poll(120);     // ~12s
+    })();
+    </script>
+    <!--
+    lexis print footer — the deck's footer text, once per exported page.
+
+    The live footer is a single `position: fixed` bar. The PDF export is a block
+    flow of `.pdf-page` boxes, so that one bar belongs to no page and lands on at
+    most one of them. lexis.scss stamps every page with its own copy instead, as a
+    `::after` on the page box (see "The footer, once per page" in the print
+    section) — but CSS cannot read another element's text, so the `content:` has
+    to be injected. That is this file's whole job.
+
+    It reads whatever `footer:` in the deck's YAML rendered, flattens it to plain
+    text (a footer with links prints as their text, since a link on paper is just
+    text anyway), and writes one rule. `JSON.stringify` does the quoting, so an
+    apostrophe or a quote in the footer cannot break out of the CSS string.
+
+    Deliberately NOT event- or timing-based: the footer markup precedes this
+    script in the document, so the read is synchronous at parse time, and the
+    injected rule applies declaratively whenever reveal later builds the
+    `.pdf-page` boxes. There is nothing to wait for and nothing to race.
+
+    The `lexis-print-footer` class on <html> is what tells the stylesheet a bar
+    will actually be there, so it can lift the printed slide number clear of it —
+    set only when there was text, so a footerless deck is untouched.
+    -->
+    <script>
+    (function () {
+      var footer = document.querySelector(".reveal > .footer");
+      var text = footer ? footer.textContent.replace(/\s+/g, " ").trim() : "";
+      if (!text) return;
+      document.documentElement.classList.add("lexis-print-footer");
+      var style = document.createElement("style");
+      style.textContent =
+        "html.print-pdf .reveal .slides .pdf-page::after{content:" +
+        JSON.stringify(text) + ";}";
+      document.head.appendChild(style);
+    })();
     </script>
     
     <script>
