@@ -348,7 +348,7 @@ ul.task-list li input[type="checkbox"] {
 <blockquote class="blockquote">
 <p><strong>Due</strong>: Nov 02 by 11:59pm</p>
 <p><strong>Weight</strong>: This assignment is worth 1% of your final grade.</p>
-<p><strong>Purpose</strong>: The purpose of this assignment is to learn some techniques for adding “polish” to your charts. We will start choosing colors and fonts more carefully, and we will also annotate our charts with informative text.</p>
+<p><strong>Purpose</strong>: The purpose of this assignment is to finish the data visualization skill you have been building since week 6 by adding your own <strong>house style</strong> (colors, fonts, scales, and annotations), then use it to polish a chart and check that the polish didn’t introduce anything wrong.</p>
 <p><strong>Assessment</strong>: This assignment is graded using a check system:</p>
 <ul>
 <li>✔+ (110%): Responses shows phenomenal thought and engagement with the course content. I will not assign these often.</li>
@@ -362,33 +362,77 @@ ul.task-list li input[type="checkbox"] {
 <p>Open your course repo (<code>eda-f26/eda-netID</code>) in Positron using <strong>File › Open Folder</strong> - open the folder itself, not a file inside it. If you haven’t cloned your course repo yet, follow the steps in <a href="1-agentic-workflows-and-github.html#clone-your-course-repo">HW1</a> first.</p>
 <p>Everything for this assignment lives in the <code>hw9</code> folder. Open the <code>hw9.qmd</code> file inside it - that’s the only file you need to edit. Take notes and write example code under the “Begin notes here” heading as you go through the readings and exercises below, then write your reflection under the “Reflection” heading at the end.</p>
 </section>
-<section id="readings" class="level1">
-<h1>2. Readings</h1>
+<section id="read-practice" class="level1">
+<h1>2. Read &amp; Practice</h1>
 <p>This week we’ll get into the weeds with techniques for polishing up your charts. This is a critically important step for making your charts easy for others to understand and effective as a central tool for communicating important results. It’s also where you can be highly creative!</p>
+<p>The readings listed below are broken into two groups:</p>
+<ol type="1">
+<li>Design principles</li>
+<li>Coding techniques to implement those principles</li>
+</ol>
+<section id="design-principles" class="level3">
+<h3 class="anchored" data-anchor-id="design-principles">Design principles</h3>
+<p>Color is the part of polishing that’s easiest to get wrong, so most of the design readings focus on it: which kind of color scale fits which kind of data, and the common ways color goes wrong (too many colors, colors that mean nothing, and colors that people with color vision deficiencies can’t tell apart).</p>
 <ul>
-<li>How to polish ggplot charts: <a href="https://r4ds.had.co.nz/graphics-for-communication.html">R4DS Chapter 28 - Graphics for communication</a></li>
 <li>Wilke: <a href="https://clauswilke.com/dataviz/color-basics.html">4 - Color scales</a></li>
+<li>Wilke: <a href="https://clauswilke.com/dataviz/color-pitfalls.html">19 - Common pitfalls of color use</a></li>
 <li>Rost: <a href="https://blog.datawrapper.de/which-color-scale-to-use-in-data-vis/">Which color scale to use when visualizing data</a></li>
 </ul>
 </section>
-<section id="optional" class="level1">
-<h1>Optional</h1>
+<section id="coding-techniques" class="level3">
+<h3 class="anchored" data-anchor-id="coding-techniques">Coding techniques</h3>
+<p>The R4DS chapter below covers most of the ggplot tools for polishing: labels and titles, annotations, scales, legends, and themes. An agent can write all of this code for you, but polish is also where an agent is most likely to slip something past you. It will happily write a title or annotation that makes a claim the data doesn’t support, or format numbers in the wrong units, and the chart will look great while saying something false. You need to know these tools well enough to read the code and check what it’s doing.</p>
+<ul>
+<li>R4DS: <a href="https://r4ds.hadley.nz/communication.html">11 - Communication</a></li>
+<li>The <a href="https://scales.r-lib.org/">scales</a> package, which formats axis labels (e.g., <code>label_percent()</code>, <code>label_dollar()</code>, <code>label_comma()</code>)</li>
+</ul>
+<p>Optional:</p>
 <ul>
 <li>Wilke: <a href="https://clauswilke.com/dataviz/multi-panel-figures.html">21 - Multi-panel figures</a></li>
 <li>Check out the <a href="https://patchwork.data-imaginist.com/articles/patchwork.html">patchwork package</a> for merging multiple charts together</li>
 <li>How to make a multi-panel <a href="https://wilkelab.org/cowplot/articles/shared_legends.html">figure with a shared legend</a>.</li>
-<li>Check out this <a href="https://github.com/clauswilke/colorblindr">tool</a> for simulating color blindness.</li>
-<li>Check out these tools for customizing your Rmd file: <a href="https://holtzy.github.io/Pimp-my-rmd/">PIMP my Rmd</a></li>
 </ul>
 </section>
-<section id="practice-polishing" class="level1">
-<h1>3. Practice polishing</h1>
-<p>Go back to a previous figure you’ve made somewhere - in class, in a previous homework, etc. Using some of the principles in the readings you just read, try to make a more polished version of your figure. Can you customize the fonts? colors? Annotate it? Try to make a chart that is publication-ready.</p>
+</section>
+<section id="finish-your-skill-then-polish-a-chart" class="level1">
+<h1>3. Finish your skill, then polish a chart</h1>
+<p>Over the past few weeks you have built up your own data visualization skill (e.g., <code>.claude/skills/my-dataviz/SKILL.md</code>) with guidance for different kinds of charts. This week you will add the finishing layer: your <strong>house style</strong>. When you’re done, you’ll have one skill you can use to make polished charts for Mini Project 3 and your final project.</p>
+<section id="add-your-house-style" class="level3">
+<h3 class="anchored" data-anchor-id="add-your-house-style">Add your house style</h3>
+<ol type="1">
+<li>Open Claude Code in your course repo and ask it to help you add a section on <strong>polishing</strong> to your existing skill, using the readings above as source material (you can give it the URLs). Ask it to extend the skill you already have, not write a new one.</li>
+<li><strong>Read what it wrote.</strong> Does the new section capture the guidance from the readings? Some things worth checking for:
+<ul>
+<li>Does it set a color palette, and is that palette color blind friendly?</li>
+<li>Does it say what makes a good title (e.g., stating the main takeaway rather than just naming the variables)?</li>
+<li>Does it say how to format numbers on axes using the scales package (percentages, dollars, commas)?</li>
+<li>Does it say when to directly label or annotate instead of using a legend?</li>
+<li>Does it say when it’s okay (and not okay) to truncate an axis or use a log scale?</li>
+</ul></li>
+<li><strong>Make it yours.</strong> This is your house style, so make choices you like. Pick your fonts, your theme, your palette, and your rules for titles and captions. If you set a palette or theme in week 6, decide if you still like it.</li>
+</ol>
+</section>
+<section id="polish-a-chart" class="level3">
+<h3 class="anchored" data-anchor-id="polish-a-chart">Polish a chart</h3>
+<p>Go back to a chart you made earlier in the semester (in class, in a previous homework, or for your project). Ask Claude to polish it using your skill (invoke it with <code>/your-skill-name</code>), then check the result:</p>
+<ul>
+<li><strong>Check every claim.</strong> Read the title, subtitle, and every annotation, and verify each one against the data. If the title says something “doubled” or was “the highest ever,” confirm it in the data yourself. This is the most important check.</li>
+<li><strong>Check the colors.</strong> Save the chart as an image with <code>ggsave()</code>, then run <code>colorspace::cvd_emulator("your-chart.png")</code> from the <a href="https://colorspace.r-forge.r-project.org/articles/color_vision_deficiency.html">colorspace</a> package to see what it looks like to someone with a color vision deficiency. Can you still tell the groups apart?</li>
+<li><strong>Check the scales.</strong> Are the numbers formatted in the right units? If an axis doesn’t start at zero, or uses a log scale, is there a good reason?</li>
+</ul>
+<p>If something is wrong, fix it, and consider whether your skill should be updated so that it gets it right next time.</p>
+<p>In your <code>hw9.qmd</code> file, include:</p>
+<ul>
+<li>A few sentences on what you put in your house style, and what you changed after Claude drafted it.</li>
+<li>The <strong>before</strong> and <strong>after</strong> versions of your chart, side by side or one after the other.</li>
+<li>A few sentences on what you had to check or correct. Did any title or annotation make a claim that wasn’t quite right? How did the colors hold up in the color vision deficiency check?</li>
+</ul>
+</section>
 </section>
 <section id="reflect" class="level1">
 <h1>4. Reflect</h1>
 <blockquote class="blockquote">
-<p><strong>This week, include in your reflection an image or link to a chart you’ve seen that you felt was really well-polished</strong></p>
+<p><strong>This week, include in your reflection an image or link to a chart you’ve seen that you felt was really well-polished, and say specifically what makes it look polished.</strong></p>
 </blockquote>
 <p>Reflect on what you’ve learned while going through these readings and exercises. Is there anything that jumped out at you? Anything you found particularly interesting or confusing?</p>
 <p>Write at least a paragraph in your <code>hw9.qmd</code> file, and include at least one question. The teaching team will review the questions we get and will try to answer them either in Slack or in class.</p>
