@@ -2,7 +2,7 @@
 title: "Polishing Charts"
 params:
   number: 9
-  purpose: 'The purpose of this assignment is to learn some techniques for adding "polish" to your charts. We will start choosing colors and fonts more carefully, and we will also annotate our charts with informative text.'
+  purpose: 'The purpose of this assignment is to finish the data visualization skill you have been building since week 6 by adding your own **house style** (colors, fonts, scales, and annotations), then use it to polish a chart and check that the polish didn''t introduce anything wrong.'
 ---
 
 ```{r child = here::here("fragments", "hw.qmd")}
@@ -10,29 +10,70 @@ params:
 
 {{< include ../fragments/hw-get-organized.qmd >}}
 
-# 2. Readings
+# 2. Read & Practice
 
 This week we'll get into the weeds with techniques for polishing up your charts. This is a critically important step for making your charts easy for others to understand and effective as a central tool for communicating important results. It's also where you can be highly creative!
 
-- How to polish ggplot charts: [R4DS Chapter 28 - Graphics for communication](https://r4ds.had.co.nz/graphics-for-communication.html)
+The readings listed below are broken into two groups:
+
+1. Design principles
+2. Coding techniques to implement those principles
+
+### Design principles
+
+Color is the part of polishing that's easiest to get wrong, so most of the design readings focus on it: which kind of color scale fits which kind of data, and the common ways color goes wrong (too many colors, colors that mean nothing, and colors that people with color vision deficiencies can't tell apart).
+
 - Wilke: [4 - Color scales](https://clauswilke.com/dataviz/color-basics.html)
+- Wilke: [19 - Common pitfalls of color use](https://clauswilke.com/dataviz/color-pitfalls.html)
 - Rost: [Which color scale to use when visualizing data](https://blog.datawrapper.de/which-color-scale-to-use-in-data-vis/)
 
-# Optional
+### Coding techniques
+
+The R4DS chapter below covers most of the ggplot tools for polishing: labels and titles, annotations, scales, legends, and themes. An agent can write all of this code for you, but polish is also where an agent is most likely to slip something past you. It will happily write a title or annotation that makes a claim the data doesn't support, or format numbers in the wrong units, and the chart will look great while saying something false. You need to know these tools well enough to read the code and check what it's doing.
+
+- R4DS: [11 - Communication](https://r4ds.hadley.nz/communication.html)
+- The [scales](https://scales.r-lib.org/) package, which formats axis labels (e.g., `label_percent()`, `label_dollar()`, `label_comma()`)
+
+Optional:
 
 - Wilke: [21 - Multi-panel figures](https://clauswilke.com/dataviz/multi-panel-figures.html)
 - Check out the [patchwork package](https://patchwork.data-imaginist.com/articles/patchwork.html) for merging multiple charts together
 - How to make a multi-panel [figure with a shared legend](https://wilkelab.org/cowplot/articles/shared_legends.html).
-- Check out this [tool](https://github.com/clauswilke/colorblindr) for simulating color blindness.
-- Check out these tools for customizing your Rmd file: [PIMP my Rmd](https://holtzy.github.io/Pimp-my-rmd/)
 
-# 3. Practice polishing
+# 3. Finish your skill, then polish a chart
 
-Go back to a previous figure you've made somewhere - in class, in a previous homework, etc. Using some of the principles in the readings you just read, try to make a more polished version of your figure. Can you customize the fonts? colors? Annotate it? Try to make a chart that is publication-ready.
+Over the past few weeks you have built up your own data visualization skill (e.g., `.claude/skills/my-dataviz/SKILL.md`) with guidance for different kinds of charts. This week you will add the finishing layer: your **house style**. When you're done, you'll have one skill you can use to make polished charts for Mini Project 3 and your final project.
+
+### Add your house style
+
+1. Open Claude Code in your course repo and ask it to help you add a section on **polishing** to your existing skill, using the readings above as source material (you can give it the URLs). Ask it to extend the skill you already have, not write a new one.
+2. **Read what it wrote.** Does the new section capture the guidance from the readings? Some things worth checking for:
+   - Does it set a color palette, and is that palette color blind friendly?
+   - Does it say what makes a good title (e.g., stating the main takeaway rather than just naming the variables)?
+   - Does it say how to format numbers on axes using the scales package (percentages, dollars, commas)?
+   - Does it say when to directly label or annotate instead of using a legend?
+   - Does it say when it's okay (and not okay) to truncate an axis or use a log scale?
+3. **Make it yours.** This is your house style, so make choices you like. Pick your fonts, your theme, your palette, and your rules for titles and captions. If you set a palette or theme in week 6, decide if you still like it.
+
+### Polish a chart
+
+Go back to a chart you made earlier in the semester (in class, in a previous homework, or for your project). Ask Claude to polish it using your skill (invoke it with `/your-skill-name`), then check the result:
+
+- **Check every claim.** Read the title, subtitle, and every annotation, and verify each one against the data. If the title says something "doubled" or was "the highest ever," confirm it in the data yourself. This is the most important check.
+- **Check the colors.** Save the chart as an image with `ggsave()`, then run `colorspace::cvd_emulator("your-chart.png")` from the [colorspace](https://colorspace.r-forge.r-project.org/articles/color_vision_deficiency.html) package to see what it looks like to someone with a color vision deficiency. Can you still tell the groups apart?
+- **Check the scales.** Are the numbers formatted in the right units? If an axis doesn't start at zero, or uses a log scale, is there a good reason?
+
+If something is wrong, fix it, and consider whether your skill should be updated so that it gets it right next time.
+
+In your ``r hw_file`` file, include:
+
+- A few sentences on what you put in your house style, and what you changed after Claude drafted it.
+- The **before** and **after** versions of your chart, side by side or one after the other.
+- A few sentences on what you had to check or correct. Did any title or annotation make a claim that wasn't quite right? How did the colors hold up in the color vision deficiency check?
 
 # 4. Reflect
 
-> **This week, include in your reflection an image or link to a chart you've seen that you felt was really well-polished**
+> **This week, include in your reflection an image or link to a chart you've seen that you felt was really well-polished, and say specifically what makes it look polished.**
 
 {{< include ../fragments/hw-reflect.qmd >}}
 
