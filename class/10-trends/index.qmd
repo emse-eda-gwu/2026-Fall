@@ -591,9 +591,9 @@ agenda(2)
 
 ### Animation adds emphasis to the **change over time**
 
-. . .
-
-### ...plus it's fun!
+::: {.h3 .fragment}
+...plus it's fun!
+:::
 
 ---
 
@@ -625,7 +625,7 @@ milk_region_line_label
 
 ### Animation is particularly helpful for the **time dimension**
 
-![](images/gapminder_animation.gif){width="790"}
+![](images/gapminder_animation.gif){width="720"}
 
 ["Gapminder" visualization by Hans Rosling]{.left}
 
@@ -2037,7 +2037,7 @@ head(us_covid)
 {{< center >}}
 {{< middle >}}
 
-# Two other examples for showing<br>change across mutliple categories
+# Two other examples for showing<br>change across multiple categories
 
 ---
 
@@ -2063,9 +2063,11 @@ Source: https://flowcharts.llnl.gov/
 
 {{< middle >}}
 
-[Would you consider purchasing an electric car?]{.center}
+::: {.center}
+Would you consider purchasing an electric car?
 
 ![](images/bevSankey.png){width="930"}
+:::
 
 ::: {.col width="70%" .font70}
 Roberson, Laura A.  & Helveston, J.P. (2020) "[Electric vehicle adoption: can short experiences lead to big change?](https://iopscience.iop.org/article/10.1088/1748-9326/aba715/meta)," Environmental Research Letters. 15(0940c3).<br>Made using the [ggforce](https://www.data-imaginist.com/2019/the-ggforce-awakens-again/) package
