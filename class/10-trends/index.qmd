@@ -83,7 +83,7 @@ countdown(
   minutes = 12,
   warn_when = 30,
   update_every = 1,
-  top = '0.5em',
+  top = '0em',
   right = '0.5em',
   font_size = "3em"
 )
@@ -433,7 +433,7 @@ Be sure to draw the line first,<br>then overlay the points
 ::: {.font70}
 ```{r}
 #| eval: false
-#| code-line-numbers: "2,3,4"
+#| code-line-numbers: "2,3"
 
 ggplot(milk_ca, aes(x = year, y = milk_produced)) +
     geom_line(color = 'steelblue', size = 0.5) +
@@ -469,7 +469,7 @@ Likewise, draw the area first then overlay the line
 ::: {.font70}
 ```{r}
 #| eval: false
-#| code-line-numbers: "3,4"
+#| code-line-numbers: "2,3"
 
 ggplot(milk_ca, aes(x = year, y = milk_produced)) +
     geom_area(fill = 'steelblue', alpha = 0.5) +
@@ -508,7 +508,7 @@ Use `alpha` to make points slightly transparent
 ::: {.font70}
 ```{r}
 #| eval: false
-#| code-line-numbers: "3,4,5,6"
+#| code-line-numbers: "2,3"
 
 ggplot(milk_ca, aes(x = year, y = milk_produced)) +
   geom_point(color = 'grey', size = 2, alpha = 0.9) +
@@ -545,7 +545,7 @@ countdown(
   minutes = 15,
   warn_when = 30,
   update_every = 1,
-  top = '0.5em',
+  top = '0',
   right = '0.5em',
   font_size = "2em"
 )
@@ -564,7 +564,7 @@ Consider using:
 - smoothed lines
 :::
 
-::: {.col .font87}
+::: {.col .font80}
 ```{r}
 global_temps <- read_csv(file.path(
   'data',
@@ -669,12 +669,10 @@ Make a static plot w/labels for each year
 ::: {.font60}
 ```{r}
 #| fig-show: hide
-#| code-line-numbers: "5,6,7,8,9,10"
+#| code-line-numbers: "5-12"
 
 milk_region_anim_plot <- milk_region %>%
-  ggplot(
-    aes(x = year, y = milk_produced, color = region)
-  ) +
+  ggplot(aes(x = year, y = milk_produced, color = region)) +
   geom_line(size = 1) +
   geom_point(size = 2) +
   geom_text_repel(
@@ -690,12 +688,7 @@ milk_region_anim_plot <- milk_region %>%
     expand = expansion(add = c(1, 13))
   ) +
   scale_color_manual(
-    values = c(
-      'sienna',
-      'forestgreen',
-      'dodgerblue',
-      'orange'
-    )
+    values = c('sienna', 'forestgreen', 'dodgerblue', 'orange')
   ) +
   theme_half_open(font_size = 18) +
   theme(legend.position = 'none') +
@@ -710,7 +703,13 @@ milk_region_anim_plot
 :::
 :::
 
-::: {.col}
+::: {.col .font80}
+
+```{r}
+#| eval: false
+milk_region_anim_plot
+```
+
 ```{r}
 #| echo: false
 #| fig-height: 4
@@ -733,7 +732,7 @@ Now animate it
 ::: {.font60}
 ```{r}
 #| eval: false
-#| code-line-numbers: "1,4,7,8,9,10,11"
+#| code-line-numbers: "1,4,7"
 
 library(gganimate)
 
@@ -774,17 +773,14 @@ First make a static plot
 ::: {.font80}
 ```{r}
 #| fig-show: hide
-#| code-line-numbers: "2,3,5,6"
+#| code-line-numbers: "2,3,6"
 
 gapminder_anim_plot <- ggplot(
   gapminder,
   aes(x = gdpPercap, y = lifeExp, size = pop, color = continent)
 ) +
   geom_point(alpha = 0.7) +
-  scale_size_area(
-    guide = FALSE,
-    max_size = 15
-  ) +
+  scale_size_area(guide = FALSE, max_size = 15) +
   scale_color_brewer(palette = 'Set2') +
   scale_x_log10() +
   theme_bw(base_size = 18) +
@@ -848,7 +844,7 @@ animate(
 ::: {.font40}
 ```{r}
 #| eval: false
-#| code-line-numbers: "13,14,15,44,45"
+#| code-line-numbers: "13,14,15,16,17,18,28,29"
 
 milk_race_anim <- milk_production %>%
   group_by(year) %>%
@@ -877,6 +873,8 @@ milk_race_anim <- milk_production %>%
   scale_x_reverse() +
   guides(color = FALSE) +
   theme_minimal_vgrid() +
+  transition_time(year) +
+  view_follow(fixed_x = TRUE) +
   theme(
     axis.line = element_blank(),
     axis.text = element_blank(),
@@ -905,8 +903,6 @@ milk_race_anim <- milk_production %>%
     ),
     plot.margin = margin(0.5, 2, 0.5, 3, 'cm')
   ) +
-  transition_time(year) +
-  view_follow(fixed_x = TRUE) +
   labs(
     title = 'Year : {frame_time}',
     subtitle = 'Top 10 states by milk produced',
@@ -961,7 +957,7 @@ countdown(
   minutes = 15,
   warn_when = 30,
   update_every = 1,
-  top = '0.5em',
+  top = '0em',
   right = '0.5em',
   font_size = "2em"
 )
@@ -1347,33 +1343,26 @@ Make the basic line chart first
 ::: {.font60}
 ```{r}
 #| eval: false
-#| code-line-numbers: "11,12,13"
+#| code-line-numbers: "14-16"
 
 # Format the data
 milk_region <- milk_production %>%
   filter(
     region %in%
-      c(
-        'Pacific',
-        'Northeast',
-        'Lake States',
-        'Mountain'
-      )
+      c('Pacific', 'Northeast', 'Lake States', 'Mountain')
   ) %>%
   group_by(year, region) %>%
   summarise(milk_produced = sum(milk_produced)) %>%
   ungroup()
 
 # Make the line chart
-ggplot(milk_region, aes(x = year, y = milk_produced, color = region)) +
+ggplot(
+  milk_region,
+  aes(x = year, y = milk_produced, color = region)
+) +
   geom_line(size = 1) +
   scale_color_manual(
-    values = c(
-      'sienna',
-      'forestgreen',
-      'dodgerblue',
-      'orange'
-    )
+    values = c('sienna', 'forestgreen', 'dodgerblue', 'orange')
   ) +
   theme_half_open(font_size = 18) +
   labs(
@@ -1407,18 +1396,13 @@ milk_region_line
 ::: {.font60}
 ```{r}
 #| eval: false
-#| code-line-numbers: "15-20,22-24,29"
+#| code-line-numbers: "15-23,25-28"
 
 # Format the data
 milk_region <- milk_production %>%
   filter(
     region %in%
-      c(
-        'Pacific',
-        'Northeast',
-        'Lake States',
-        'Mountain'
-      )
+      c('Pacific', 'Northeast', 'Lake States', 'Mountain')
   ) %>%
   group_by(year, region) %>%
   summarise(milk_produced = sum(milk_produced)) %>%
@@ -1429,8 +1413,7 @@ ggplot(milk_region, aes(x = year, y = milk_produced, color = region)) +
   geom_line(size = 1) +
   # Add labels
   geom_text_repel(
-    data = milk_region %>%
-      filter(year == max(year)),
+    data = milk_region %>% filter(year == max(year)),
     aes(label = region),
     hjust = 0,
     nudge_x = 1,
@@ -1444,12 +1427,7 @@ ggplot(milk_region, aes(x = year, y = milk_produced, color = region)) +
     expand = expansion(add = c(1, 13))
   ) +
   scale_color_manual(
-    values = c(
-      'sienna',
-      'forestgreen',
-      'dodgerblue',
-      'orange'
-    )
+    values = c('sienna', 'forestgreen', 'dodgerblue', 'orange')
   ) +
   theme_half_open(font_size = 18) +
   # Remove legend
@@ -1484,7 +1462,7 @@ milk_region_line_label
 ::: {.font60}
 ```{r}
 #| fig-show: hide
-#| code-line-numbers: "1,13-18,23"
+#| code-line-numbers: "1,15-22,31"
 
 library(geomtextpath)
 
@@ -1492,12 +1470,7 @@ library(geomtextpath)
 milk_production %>%
   filter(
     region %in%
-      c(
-        'Pacific',
-        'Northeast',
-        'Lake States',
-        'Mountain'
-      )
+      c('Pacific', 'Northeast', 'Lake States', 'Mountain')
   ) %>%
   group_by(year, region) %>%
   summarise(milk_produced = sum(milk_produced)) %>%
@@ -1517,12 +1490,7 @@ milk_production %>%
     hjust = 0.15
   ) +
   scale_color_manual(
-    values = c(
-      'sienna',
-      'forestgreen',
-      'dodgerblue',
-      'orange'
-    )
+    values = c('sienna', 'forestgreen', 'dodgerblue', 'orange')
   ) +
   theme_half_open(font_size = 18) +
   # Remove legend
@@ -1600,7 +1568,7 @@ milk_production %>%
 ::: {.font70}
 ```{r}
 #| eval: false
-#| code-line-numbers: "4,5,7,9,10"
+#| code-line-numbers: "4,6,8-13"
 
 internet_region %>%
   mutate(numUsers = numUsers / 10^9) %>%
@@ -1645,7 +1613,7 @@ Format the data
 
 ::: {.font60}
 ```{r}
-#| code-line-numbers: "10,11,12"
+#| code-line-numbers: "12-15"
 
 # Format the data
 measles <- us_diseases %>%
@@ -1729,7 +1697,7 @@ Now overlay the annual mean line
 ::: {.font70}
 ```{r}
 #| eval: false
-#| code-line-numbers: "5,6,8,9,10"
+#| code-line-numbers: "7-10,12-18"
 
 ggplot(measles) +
   geom_line(
@@ -1847,7 +1815,7 @@ Adjust scales and adjust theme
 ::: {.font60}
 ```{r}
 #| fig-show: hide
-#| code-line-numbers: "11,12,13,15,16,17,18,19,20"
+#| code-line-numbers: "15-26"
 
 ggplot(measles) +
   geom_tile(aes(x = year, y = state, fill = rate), color = 'grey80') +
@@ -1934,7 +1902,7 @@ Adjust scales and adjust theme
 ::: {.font60}
 ```{r}
 #| eval: false
-#| code-line-numbers: "14,16,17"
+#| code-line-numbers: "18,21-26"
 
 ggplot(measles) +
   geom_tile(aes(x = year, y = state, fill = rate), color = 'grey80') +
@@ -2004,7 +1972,7 @@ countdown(
   minutes = 20,
   warn_when = 30,
   update_every = 1,
-  top = '0.5em',
+  top = '0em',
   right = '0.5em',
   font_size = "2em"
 )
