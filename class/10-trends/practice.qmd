@@ -33,7 +33,7 @@ library(magick)
 
 # Load all the data sets:
 global_temps <- read_csv(file.path('data', 'nasa_global_temps.csv'))
-us_covid     <- read_csv(file.path('data', 'us_covid.csv'))
+us_covid <- read_csv(file.path('data', 'us_covid.csv'))
 ```
 
 # 1. Visualizing single variables over time
@@ -113,17 +113,6 @@ Use the `global_temps` data frame to animate one of the charts we did in the fir
 # Write code here
 ```
 
-## Area
-
-```{r}
-#| label: global-temps-area-anim
-#| fig.height: 5
-#| fig.width: 6
-
-# Write code here
-```
-
-
 
 # 3. Visualizing multiple variables over time
 
@@ -165,11 +154,22 @@ I already made the summary data frame to do this.
 
 us_covid %>%
   mutate(
-    state = fct_other(state, keep = c(
-      "California", "New York")),
-    state = fct_relevel(state, c(
-      "Other", "California", "New York"
-    ))) %>%
+    state = fct_other(
+      state,
+      keep = c(
+        "California",
+        "New York"
+      )
+    ),
+    state = fct_relevel(
+      state,
+      c(
+        "Other",
+        "California",
+        "New York"
+      )
+    )
+  ) %>%
   group_by(day, state) %>%
   summarise(deaths_daily = sum(deaths_daily))
 
