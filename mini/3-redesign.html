@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.20">
+<meta name="generator" content="quarto-1.11.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -39,14 +39,15 @@ ul.task-list li input[type="checkbox"] {
 <link href="../images/favicon.ico" rel="icon">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-17888a1159294d3eb470f19f6f52f5a5.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-47e2d8a9878c7f7b3eec4a88b297f2b1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-4a1e6308fdca57f758cf9689fa56a474.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -77,33 +78,37 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
+<script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="../styles.css">
 <meta property="og:title" content="Mini Project 3: Data Viz Re-Design – EMSE 4572 / 6572">
 <meta property="og:description" content="Course website for Fall 2026 semester of the EMSE course “Exploratory Data Analysis” at GWU">
-<meta property="og:image" content="https://eda.seas.gwu.edu/2026-Fall/mini/images/logo.png">
-<meta property="og:site_name" content="EMSE 4572 / 6572">
+<meta property="og:image" content="https://eda.seas.gwu.edu/2026-Fall/mini/images/us-wind-power.jpg">
+<meta property="og:site_name" content="https://eda.seas.gwu.edu/">
 <meta property="og:locale" content="es_ES">
+<meta property="og:image:height" content="823">
+<meta property="og:image:width" content="1600">
 <meta name="twitter:title" content="Mini Project 3: Data Viz Re-Design – EMSE 4572 / 6572">
 <meta name="twitter:description" content="Course website for Fall 2026 semester of the EMSE course “Exploratory Data Analysis” at GWU">
-<meta name="twitter:image" content="https://eda.seas.gwu.edu/2026-Fall/mini/images/logo-square.png">
+<meta name="twitter:image" content="https://eda.seas.gwu.edu/2026-Fall/images/logo-square.png">
 <meta name="twitter:creator" content="@johnhelveston">
 <meta name="twitter:site" content="@johnhelveston">
 <meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-sidebar docked quarto-light">
+<body class="nav-sidebar docked quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
+  <nav class="quarto-secondary-nav" aria-label="Toolbar">
     <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../mini/1-data-cleaning.html">Mini Projects</a></li><li class="breadcrumb-item"><a href="../mini/3-redesign.html">MP3: Re-design</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../mini/1-data-cleaning.html">Mini Projects</a></li><li class="breadcrumb-item"><a href="../mini/3-redesign.html">MP3: Re-design</a></li></ol></nav>
+        <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -114,7 +119,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto" aria-label="Site">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../">EMSE 4572 / 6572</a> 
@@ -150,14 +155,11 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true"><i class="bi bi-pencil-square" role="img">
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="true"><i class="bi bi-pencil-square" role="img">
 </i> 
- <span class="menu-text">Mini Projects</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+ <span class="menu-text" id="quarto-sidebar-section-1-label">Mini Projects</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../mini/1-data-cleaning.html" class="sidebar-item-text sidebar-link">
@@ -180,14 +182,11 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false"><i class="bi bi-pencil-square" role="img">
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-controls="quarto-sidebar-section-2" aria-expanded="false"><i class="bi bi-pencil-square" role="img">
 </i> 
- <span class="menu-text">Final Project</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+ <span class="menu-text" id="quarto-sidebar-section-2-label">Final Project</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-2" aria-labelledby="quarto-sidebar-section-2-label" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../project/0-overview.html" class="sidebar-item-text sidebar-link">
@@ -277,14 +276,11 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false"><i class="bi bi-question-circle-fill" role="img">
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-controls="quarto-sidebar-section-3" aria-expanded="false"><i class="bi bi-question-circle-fill" role="img">
 </i> 
- <span class="menu-text">Other</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
+ <span class="menu-text" id="quarto-sidebar-section-3-label">Other</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-3" aria-labelledby="quarto-sidebar-section-3-label" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../about.html" class="sidebar-item-text sidebar-link"><i class="bi bi-question-circle-fill" role="img">
@@ -320,13 +316,32 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background">Background</a></li>
+  <li><a href="#get-organized" id="toc-get-organized" class="nav-link" data-scroll-target="#get-organized">1. Get organized</a></li>
+  <li><a href="#load-the-data" id="toc-load-the-data" class="nav-link" data-scroll-target="#load-the-data">2. Load the data</a></li>
+  <li><a href="#preview-the-data" id="toc-preview-the-data" class="nav-link" data-scroll-target="#preview-the-data">3. Preview the data</a></li>
+  <li><a href="#clean-the-data" id="toc-clean-the-data" class="nav-link" data-scroll-target="#clean-the-data">4. Clean the data</a></li>
+  <li><a href="#plan-your-approach" id="toc-plan-your-approach" class="nav-link" data-scroll-target="#plan-your-approach">5. Plan Your Approach</a></li>
+  <li><a href="#direct-the-agent-to-visualize" id="toc-direct-the-agent-to-visualize" class="nav-link" data-scroll-target="#direct-the-agent-to-visualize">6. Direct the Agent to Visualize</a></li>
+  <li><a href="#critique-your-redesign" id="toc-critique-your-redesign" class="nav-link" data-scroll-target="#critique-your-redesign">7. Critique Your Redesign</a></li>
+  <li><a href="#summarize-your-analysis" id="toc-summarize-your-analysis" class="nav-link" data-scroll-target="#summarize-your-analysis">8. Summarize Your Analysis</a></li>
+  <li><a href="#render-and-submit" id="toc-render-and-submit" class="nav-link" data-scroll-target="#render-and-submit">9. Render and submit</a></li>
+  <li><a href="#grading-rubric" id="toc-grading-rubric" class="nav-link" data-scroll-target="#grading-rubric">Grading Rubric</a>
+  <ul class="collapse">
+  <li><a href="#total-points" id="toc-total-points" class="nav-link" data-scroll-target="#total-points">40 Total Points</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/emse-eda-gwu/2026-Fall/edit/main/mini/3-redesign.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/emse-eda-gwu/2026-Fall/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content" tabindex="-1">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../mini/1-data-cleaning.html">Mini Projects</a></li><li class="breadcrumb-item"><a href="../mini/3-redesign.html">MP3: Re-design</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../mini/1-data-cleaning.html">Mini Projects</a></li><li class="breadcrumb-item"><a href="../mini/3-redesign.html">MP3: Re-design</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Mini Project 3: Data Viz Re-Design</h1>
 </div>
@@ -345,9 +360,248 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Coming soon!</p>
+<blockquote class="blockquote">
+<p><strong>Due</strong>: Nov 22 by 11:59pm</p>
+<p><strong>Weight</strong>: This assignment is worth 9% of your final grade.</p>
+<p><strong>Purpose</strong>: At some point in your career, you will likely be involved in creating or revising a summary chart of some data. When that happens, you will also likely be the most knowledgeable person in the room about what to do to design the chart(s) to effectively communicate the information in the data. Claude Code can write the ggplot code once you know what you want – but deciding what “leadership” means in this data, choosing the right chart type for each message, and honestly critiquing whether your redesign actually improved things are judgment calls no agent can make for you. This assignment is a practice run for that day.</p>
+<p><strong>Assessment</strong>: Your submission will be assessed using the <a href="#grading-rubric">rubric</a> at the bottom of this page.</p>
+</blockquote>
+<section id="background" class="level1">
+<h1>Background</h1>
+<p>The American Wind Energy Association (<a href="https://www.awea.org/">AWEA</a>) is a national trade association that advocates for the wind power industry. They also publish data on wind power statistics in the U.S. The authors of <a href="https://howmuch.net/articles/wind-power-in-the-united-states-2018">this article</a> at howmuch.net got a hold of some of this data and published this unfortunate chart:</p>
+<center>
+<br> <img src="images/us-wind-power.jpg" width="700">
+</center>
+<p><br></p>
+<p>For this assignment, you will use code to redesign the above chart. In this redesign, we are interested in exploring this question:</p>
+<blockquote class="blockquote">
+<p><strong>Which states are leaders in wind energy?</strong></p>
+</blockquote>
+<p>The answer depends on what you consider a “leader” to be. For example, the authors of the above chart clearly viewed the installed capacity as the most important metric to highlight. But this chart also contains lots of other data, such as the amount of money each state invested and the number of homes powered by wind in each state. Some states may be leading in other ways, such as the capacity built per dollar of investment.</p>
+<p>With that in mind, here’s what you need to do for this analysis:</p>
+</section>
+<section id="get-organized" class="level1">
+<h1>1. Get organized</h1>
+<p>Open your course repo (<code>eda-f26/eda-netID</code>) in Positron using <strong>File › Open Folder</strong> and open it to the <code>mini3</code> folder.</p>
+<p>Everything for this assignment lives in the <code>mini3</code> folder. Inside it you’ll find <code>report.qmd</code> and a <code>data</code> folder. Click on <code>report.qmd</code>. That is the primary file you will edit to conduct your analysis.</p>
+<p>Update the YAML with your name, a title, the date, etc.</p>
+<p>Be sure to delete any of the existing text / code in <code>report.qmd</code> before submitting - it is just there as a helpful guide.</p>
+<blockquote class="blockquote">
+<p><strong>Points will be taken off for failing to follow these basic organizing steps.</strong></p>
+</blockquote>
+<p>Paths inside <code>report.qmd</code> are relative to the <code>mini3</code> folder, so refer to the data as <code>file.path('data', 'US_State_Wind_Energy_Facts_2018.xlsx')</code>.</p>
+</section>
+<section id="load-the-data" class="level1">
+<h1>2. Load the data</h1>
+<p>The <code>US_State_Wind_Energy_Facts_2018.xlsx</code> file is already in your <code>data</code> folder. Have Claude Code read it in. Here is some information on the data:</p>
+<p><strong>Description</strong>: Data on which US states produce the most wind energy.</p>
+<p><strong>Source of downloaded file</strong>: The formatted Excel spreadsheet was downloaded from data.world: https://data.world/makeovermonday/2019w8</p>
+<p><strong>Original source</strong>: The primary source is the American Wind Energy Association (https://www.awea.org/), but the source for this particular data was found on <a href="https://github.com/emse-eda-gwu/2023-Fall/blob/main/mini/This%20Chart%20Shows%20Which%20States%20Produce%20the%20Most%20Wind%20Energy%2008.24.30.pdf?raw=TRUE">this article</a>, which cites the AWEA.</p>
+<p><strong>Data dictionary</strong>:</p>
+<div style="width:600px">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Ranking</code></td>
+<td>Rank order of state by installed capacity</td>
+</tr>
+<tr class="even">
+<td><code>State</code></td>
+<td>U.S. state</td>
+</tr>
+<tr class="odd">
+<td><code>Installed Capacity (MW)</code></td>
+<td>Installed capacity in MW</td>
+</tr>
+<tr class="even">
+<td><code>Equivalent Homes Powered</code></td>
+<td>Number of homes powered by wind power</td>
+</tr>
+<tr class="odd">
+<td><code>Total Investment ($ Millions)</code></td>
+<td>Total Investment in $ millions</td>
+</tr>
+<tr class="even">
+<td><code>Wind Projects Online</code></td>
+<td>Number of projects currently online</td>
+</tr>
+<tr class="odd">
+<td><code># of Wind Turbines</code></td>
+<td>Number of wind turbines in state</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="preview-the-data" class="level1">
+<h1>3. Preview the data</h1>
+<p>Preview the data yourself (e.g.&nbsp;using <code>head()</code>, <code>glimpse()</code>, <code>View()</code>, and / or make some quick plots – <strong>Hint</strong>: look at the top and bottom!). Take note of what variables are available, their types, what they measure, and if there are any missing values. (<strong>Hint</strong>: Read the data dictionary!) Are all the variables encoded the way you would expect (e.g.&nbsp;are numbers encoded as numbers)? Noticing this yourself matters – it’s what you’ll tell the agent to fix in the next step.</p>
+</section>
+<section id="clean-the-data" class="level1">
+<h1>4. Clean the data</h1>
+<p>Have Claude Code modify variable types and names to get the data frame cleaned up for analysis. As it does, column names with spaces in them (e.g.&nbsp;<code>Installed Capacity (MW)</code>) should get renamed to make later code easier to write (<strong>Hint</strong>: the <code>clean_names()</code> function from the <code>janitor</code> package is a life saver!). Write a few sentences describing what modifications were made and why.</p>
+</section>
+<section id="plan-your-approach" class="level1">
+<h1>5. Plan Your Approach</h1>
+<p>Before you prompt the agent to make any charts, decide what “leadership” means for each of the two visualizations you’ll build.</p>
+<ol type="1">
+<li>Examine measures of centrality and variability in the variables relevant to leadership in wind energy. Installed capacity is an obvious choice, but also look at other values, such as the amount of money invested, and <strong>at least two</strong> other computed measures, such as capacity per dollar invested (<strong>Note</strong>: you’ll need to create new variables to do this!).</li>
+<li>For each of your two planned charts (see Step 6), write down: which metric it will highlight, why that metric represents a meaningful kind of “leadership,” and what chart type you plan to use and why it fits that metric and message. Do this <strong>before</strong> prompting the agent to generate the chart – it’s much easier to tell if a chart the agent produced is a good match for your goal if you already know what you were going for.</li>
+</ol>
+<p><strong>Deliverable:</strong> Your summary measures with a short explanation of what you learned from them, plus your plan for both charts (metric + chart type + rationale) written <em>before</em> the charts themselves.</p>
+</section>
+<section id="direct-the-agent-to-visualize" class="level1">
+<h1>6. Direct the Agent to Visualize</h1>
+<p>Now prompt Claude Code to build your two charts, reviewing what it produces and iterating rather than accepting the first attempt automatically.</p>
+<ol type="1">
+<li>An appropriate visualization that highlights leadership in <em>installed capacity</em>. This chart should be a substantial improvement over the original visualization, and it should follow the design principles we have covered in class.</li>
+<li>A second visualization that highlights “leadership” in another metric of your choice, following your plan from Step 5. <strong>This chart should be a different style from your first chart</strong> – don’t just copy-paste the same chart type over a new variable.</li>
+</ol>
+<p><strong>Your charts should be polished</strong>. Points will be taken off for poor design principles, illegibility, etc.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Note</strong>: Claude Code should directly edit your <code>report.qmd</code> file.</p>
+</div>
+</div>
+</section>
+<section id="critique-your-redesign" class="level1">
+<h1>7. Critique Your Redesign</h1>
+<p>Producing a chart that looks better than the original is not the same as verifying it actually is better. Before you write your summary, critically re-examine your own two charts – this is the step most heavily graded in this assignment.</p>
+<ul>
+<li><strong>Check for new distortions.</strong> Does either chart truncate an axis, use a misleading sort order, or use color in a way that exaggerates or obscures the pattern? Redesigns can introduce new problems even while fixing old ones.</li>
+<li><strong>Check under an alternative cut.</strong> Pick one chart and recompute it with a different normalization or metric (e.g.&nbsp;per capita, per project, or a different time slice if applicable). Does the “leadership” story hold up, or does it depend heavily on which metric you picked?</li>
+<li><strong>Name a real limitation.</strong> A genuine critique finds at least one honest weakness in your own redesign – not just a list of what you improved.</li>
+</ul>
+<p><strong>Deliverable:</strong> A short critique section documenting what you checked and what you found, including anything you changed as a result.</p>
+</section>
+<section id="summarize-your-analysis" class="level1">
+<h1>8. Summarize Your Analysis</h1>
+<p>Write a summary of your analysis process. I’m specifically looking for a discussion of the following:</p>
+<ul>
+<li>What was wrong with the original chart? Discuss specific design principles we have covered in class.</li>
+<li>Discuss the improvements your first revised chart makes compared to the original chart.</li>
+<li>Discuss what message your second chart conveys and what design choices you made to highlight that message.</li>
+<li>Reference what you found in Step 7 – what, if anything, would you still change or caveat about your redesign?</li>
+</ul>
+</section>
+<section id="render-and-submit" class="level1">
+<h1>9. Render and submit</h1>
+<div class="cell" data-layout-align="center">
+<p>To submit your assignment, follow these instructions:</p>
+<ol type="1">
+<li>Render your <code>report.qmd</code> file by either clicking the “Preview” button in Positron or running <code>quarto render</code> in the terminal.</li>
+<li>Open the rendered <code>report.html</code> file and proofread it – make sure there are no errors and all the formatting looks as you expected.</li>
+<li>Run <code>/export</code> in Claude Code and save the result as <code>transcript.md</code> in your <code>mini3</code> folder. This is a required part of your submission – it’s how your verification is checked.</li>
+<li>Check that your <code>mini3</code> folder contains exactly three files – <code>report.qmd</code>, <code>report.html</code>, and <code>transcript.md</code> – plus the <code>data</code> folder.</li>
+<li>Commit and push your work using GitHub Desktop: look at the diff, write a short commit message, click <strong>Commit</strong>, then <strong>Push</strong>.</li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Remember
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Your work isn’t submitted until you’ve <strong>pushed</strong> it. Committing only saves the change on your own computer – go look at your repo on GitHub.com and confirm your work is actually there before you call this done.</p>
+</div>
+</div>
+</section>
+<section id="grading-rubric" class="level1">
+<h1>Grading Rubric</h1>
+<section id="total-points" class="level3">
+<h3 class="anchored" data-anchor-id="total-points">40 Total Points</h3>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table class="table table-striped caption-top table-sm small">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Category</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Excellent</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Good</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Needs work</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left; width: 16%;">Organization &amp; Formatting</td>
+<td style="text-align: left; width: 28%;"><strong>5</strong><br>
+Data placed in correct folder, read in, and variables have been renamed for ease of use in analysis.</td>
+<td style="text-align: left; width: 28%;"><strong>4</strong><br>
+Data not placed in correct folder OR variables were not renamed.</td>
+<td style="text-align: left; width: 28%;"><strong>3</strong><br>
+Data not placed in correct folder AND variables were not renamed, or not properly read into R.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; width: 16%;">Data Summary</td>
+<td style="text-align: left; width: 28%;"><strong>5</strong><br>
+Measures of centrality and variability in appropriate variables are computed; at least two new useful "leadership" measures are computed, each with a brief written rationale for why it matters.</td>
+<td style="text-align: left; width: 28%;"><strong>4</strong><br>
+Measures of centrality and variability are computed, but only one new useful measure is computed, or the rationale for the chosen measures is thin or missing.</td>
+<td style="text-align: left; width: 28%;"><strong>3</strong><br>
+Measures of centrality and variability missing; failed to compute new measures.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; width: 16%;">Data Visualization 1</td>
+<td style="text-align: left; width: 28%;"><strong>7 - 8</strong><br>
+Chart expertly demonstrates best practices of visual design and highlights leadership in installed capacity.</td>
+<td style="text-align: left; width: 28%;"><strong>5 - 6</strong><br>
+Chart generally demonstrates best practices of visual design and highlights leadership in installed capacity; some elements might be confusing.</td>
+<td style="text-align: left; width: 28%;"><strong>0 - 4</strong><br>
+Chart generally lacks best practices of visual design; elements are confusing, does not highlight leadership in capacity.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; width: 16%;">Data Visualization 2</td>
+<td style="text-align: left; width: 28%;"><strong>7 - 8</strong><br>
+Chart expertly demonstrates best practices of visual design, uses a genuinely different chart style from Visualization 1, and conveys a clear message.</td>
+<td style="text-align: left; width: 28%;"><strong>5 - 6</strong><br>
+Chart generally demonstrates best practices of visual design and conveys a reasonably clear message; some elements might be confusing or too similar in style to Visualization 1.</td>
+<td style="text-align: left; width: 28%;"><strong>0 - 4</strong><br>
+Chart generally lacks best practices of visual design; elements are confusing, does not highlight a clear message, or is just a copy of Visualization 1 applied to a new variable.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; width: 16%;">Critique &amp; Verify</td>
+<td style="text-align: left; width: 28%;"><strong>8 - 9</strong><br>
+Clearly explains specific design flaws in the original chart (naming principles from class) and why each redesign choice was made; then critically re-examines the redesign itself -- checking whether it introduces any new distortions (e.g. truncated axes, misleading sorting or color choices) and whether the "leadership" claim still holds under at least one alternative cut of the data. The self-critique finds and names at least one real limitation, rather than only praising the new chart.</td>
+<td style="text-align: left; width: 28%;"><strong>5 - 7</strong><br>
+Describes flaws in the original chart and redesign choices adequately, but the self-critique of the redesign is thin, generic, or only checks the chart superficially (e.g. "it looks better") without checking for new distortions or an alternative cut of the data.</td>
+<td style="text-align: left; width: 28%;"><strong>0 - 4</strong><br>
+Poor or missing description of design flaws and improvements; no genuine self-critique of the redesign is attempted.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; width: 16%;">Technical &amp; Process</td>
+<td style="text-align: left; width: 28%;"><strong>5</strong><br>
+All code runs without errors; the mini3 folder pushed to GitHub contains exactly report.qmd, report.html, and transcript.md.</td>
+<td style="text-align: left; width: 28%;"><strong>4</strong><br>
+Code has only one or two errors, otherwise runs; the pushed mini3 folder is missing one of the three required files or includes extra clutter.</td>
+<td style="text-align: left; width: 28%;"><strong>3</strong><br>
+Code has multiple errors; html file cannot be rendered without significant changes; work was never pushed to GitHub; or the pushed mini3 folder is missing report.qmd, report.html, or transcript.md.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -424,11 +678,30 @@ ul.task-list li input[type="checkbox"] {
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
         var filterRegex = new RegExp("https:\/\/eda\.seas\.gwu\.edu\/2026-Fall\/");
+      const newWindowLabel = "(opens in a new tab)";
+      const newWindowNoteId = "quarto-ext-newwindow-label";
+      // Links reference one hidden label through aria-describedby, so the
+      // announcement never changes their accessible name.
+      var describeNewWindow = (link) => {
+        if (!window.document.getElementById(newWindowNoteId)) {
+          var newWindowNote = window.document.createElement("span");
+          newWindowNote.id = newWindowNoteId;
+          newWindowNote.hidden = true;
+          newWindowNote.textContent = newWindowLabel;
+          window.document.body.appendChild(newWindowNote);
+        }
+        var describedBy = (link.getAttribute("aria-describedby") || "").split(/\s+/).filter(Boolean);
+        if (!describedBy.includes(newWindowNoteId)) {
+          describedBy.push(newWindowNoteId);
+          link.setAttribute("aria-describedby", describedBy.join(" "));
+        }
+      }
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
       // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
       for (var i=0; i<links.length; i++) {
         const link = links[i];
         if (!isInternal(link.href)) {
@@ -442,8 +715,70 @@ ul.task-list li input[type="checkbox"] {
             if (link.getAttribute("rel") === null) {
               link.setAttribute("rel", "noopener");
             }
+            describeNewWindow(link);
+          if (!link.classList.contains('no-external-icon')) {
+          }
         }
       }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
       const config = {
         allowHTML: true,
@@ -457,6 +792,7 @@ ul.task-list li input[type="checkbox"] {
         interactiveBorder: 10,
         theme: 'quarto',
         placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
       };
       if (contentFn) {
         config.content = contentFn;
@@ -619,44 +955,54 @@ ul.task-list li input[type="checkbox"] {
           const lineIds = lines.map((line) => {
             return targetCell + "-" + line;
           })
-          let top = null;
-          let height = null;
-          let parent = null;
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
           if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
             }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
             }
+            placeBand(gutterDiv, el, lastEl);
             selectedAnnoteEl = annoteEl;
           }
         };
@@ -755,6 +1101,9 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -767,7 +1116,7 @@ ul.task-list li input[type="checkbox"] {
  © 2026 John Paul Helveston  <a href="LICENSE.html"><i class="fab fa-creative-commons"></i><i class="fab fa-creative-commons-by"></i><i class="fab fa-creative-commons-sa"></i></a><br><i class="far fa-calendar-alt"></i> Wednesdays | <i class="far fa-clock"></i> 12:45PM - 3:15PM EST | <a href="https://it.gwu.edu/classroom-search/tompkins-hall-402"><i class="fa fa-map-marker-alt"></i> Tompkins 402</a><br><a href="https://www.jhelvy.com"><i class="fas fa-user"></i> Dr. John Paul Helveston</a> | <a href="mailto:jph@gwu.edu"><i class="fas fa-envelope"></i> jph@gwu.edu</a> | <a href="https://github.com/emse-eda-gwu/2026-Fall"><i class="fab fa-github"></i></a>
   </li>  
 </ul>
-    <div class="toc-actions"><ul><li><a href="https://github.com/emse-eda-gwu/2026-Fall/edit/main/mini/3-redesign.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/emse-eda-gwu/2026-Fall/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/emse-eda-gwu/2026-Fall/edit/main/mini/3-redesign.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/emse-eda-gwu/2026-Fall/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
