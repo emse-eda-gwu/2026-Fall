@@ -1862,7 +1862,7 @@ ggannotate(plot)
 #| echo: false
 
 countdown(
-    minutes = 20,
+    minutes = 15,
     warn_when = 30,
     update_every = 1,
     top = 0,
@@ -2717,7 +2717,7 @@ dod_spending_plot +
 #| echo: false
 
 countdown(
-    minutes = 20,
+    minutes = 15,
     warn_when = 30,
     update_every = 1,
     top = 0,
