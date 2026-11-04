@@ -1231,7 +1231,7 @@ Use mapped variables in `aes()` in `labs()`
 ::: {.col .font70 width="60%"}
 ```{r}
 #| eval: false
-#| code-line-numbers: "12,21"
+#| code-line-numbers: "11,21"
 
 milk_production %>%
   filter(year %in% c(1970, 2017)) %>%
@@ -1456,22 +1456,10 @@ dod_spending
 
 dod_spending <- ggplot(federal_spending_summary) +
     geom_area(aes(x = year, y = rd_budget, fill = department)) +
-    annotate(
-        geom = 'text',
-        x = 1995,
-        y = 85,
-        label = 'Other',
-        size = 6,
-        color = 'black'
-    ) +
-    annotate(
-        geom = 'text',
-        x = 1995,
-        y = 25,
-        label = 'DOD',
-        size = 6,
-        color = 'white'
-    ) +
+    annotate(geom = 'text', x = 1995, y = 85,
+             label = 'Other', size = 6, color = 'black') +
+    annotate(geom = 'text', x = 1995, y = 25,
+             label = 'DOD', size = 6, color = 'white') +
     scale_y_continuous(
         expand = expand_scale(mult = c(0, 0.05))
     ) +
@@ -1516,15 +1504,11 @@ dod_spending <- ggplot(federal_spending_summary) +
   geom_text(
     data = data.frame(x = 1995, y = 85, label = 'Other'),
     aes(x = x, y = y, label = label),
-    size = 6,
-    color = 'black'
-  ) +
+    size = 6, color = 'black' ) +
   geom_text(
     data = data.frame(x = 1995, y = 25, label = 'DOD'),
     aes(x = x, y = y, label = label),
-    size = 6,
-    color = 'white'
-  ) +
+    size = 6, color = 'white') +
   scale_y_continuous(
     expand = expand_scale(mult = c(0, 0.05))
   ) +
@@ -1556,15 +1540,11 @@ dod_spending <- ggplot(federal_spending_summary) +
   geom_text(
     data = data.frame(x = 1995, y = 85, label = 'Other'),
     aes(x = x, y = y, label = label),
-    size = 6,
-    color = 'black'
-  ) +
+    size = 6, color = 'black') +
   geom_text(
     data = data.frame(x = 1995, y = 25, label = 'DOD'),
     aes(x = x, y = y, label = label),
-    size = 6,
-    color = 'white'
-  ) +
+    size = 6, color = 'white') +
   scale_y_continuous(
     expand = expand_scale(mult = c(0, 0.05))
   ) +
@@ -1596,15 +1576,11 @@ dod_spending <- ggplot(federal_spending_summary) +
   geom_label(
     data = data.frame(x = 1995, y = 85, label = 'Other'),
     aes(x = x, y = y, label = label),
-    size = 6
-  ) +
+    size = 6) +
   geom_label(
     data = data.frame(x = 1995, y = 25, label = 'DOD'),
     aes(x = x, y = y, label = label),
-    size = 6,
-    fill = "black",
-    color = "white"
-  ) +
+    size = 6, fill = "black", color = "white") +
   scale_y_continuous(
     expand = expand_scale(mult = c(0, 0.05))
   ) +
@@ -1636,15 +1612,11 @@ dod_spending <- ggplot(federal_spending_summary) +
   geom_label(
     data = data.frame(x = 1995, y = 85, label = 'Other'),
     aes(x = x, y = y, label = label),
-    size = 6
-  ) +
+    size = 6) +
   geom_label(
     data = data.frame(x = 1995, y = 25, label = 'DOD'),
     aes(x = x, y = y, label = label),
-    size = 6,
-    fill = "black",
-    color = "white"
-  ) +
+    size = 6, fill = "black", color = "white") +
   scale_y_continuous(
     expand = expand_scale(mult = c(0, 0.05))
   ) +
@@ -1678,17 +1650,11 @@ federal R&D spending"
 dod_spending +
   geom_curve(
     data = data.frame(
-      x = 1981,
-      xend = 1987,
-      y = 160,
-      yend = 25
-    ),
+      x = 1981, xend = 1987, y = 160, yend = 25),
     mapping = aes(x = x, xend = xend, y = y, yend = yend),
-    color = 'grey75',
-    size = 0.5,
-    curvature = 0.1,
-    arrow = arrow(length = unit(0.01, "npc"), type = "closed")
-  ) +
+    color = 'grey75', size = 0.5, curvature = 0.1,
+    arrow = arrow(length = unit(0.01, "npc"), 
+                  type = "closed")) +
   geom_label(
     data = data.frame(x = 1977, y = 160, label = label),
     mapping = aes(x = x, y = y, label = label),
@@ -1746,28 +1712,17 @@ Use `geom = "rect"` for box, `geom = "text"` for label
 ggplot(mpg, aes(x = displ, y = hwy)) +
   geom_point(
     aes(fill = as.factor(cyl)),
-    color = 'white',
-    alpha = 0.8,
-    size = 3.5,
-    shape = 21
-  ) +
+    color = 'white', alpha = 0.8,
+    size = 3.5, shape = 21) +
   annotate(
     geom = "rect",
-    xmin = 5,
-    xmax = 7.5,
-    ymin = 21,
-    ymax = 28,
-    fill = "grey55",
-    alpha = 0.2
-  ) +
+    xmin = 5, xmax = 7.5,
+    ymin = 21, ymax = 28,
+    fill = "grey55", alpha = 0.2) +
   annotate(
     geom = "text",
-    x = 5,
-    y = 29,
-    label = "Hybrid vehicles",
-    hjust = 0,
-    size = 5
-  ) +
+    x = 5, y = 29, label = "Hybrid vehicles",
+    hjust = 0, size = 5) +
   theme_half_open(font_size = 15) +
   labs(
     x = "Engine displacement",
