@@ -2,7 +2,7 @@
 title: "Maps"
 params:
   number: 10
-  purpose: 'The purpose of this assignment is to learn some techniques for creating a special type of chart: maps. We will look at different types of maps and how to work with different types of geospatial data.'
+  purpose: 'The purpose of this assignment is to learn how maps work as charts - what they are good at, how projections distort them, and the ways they go wrong - and then make your first map. Maps are the chart type where it is easiest to produce something that looks authoritative and is quietly meaningless, so this week is as much about interrogating a map as drawing one.'
 ---
 
 ```{r child = here::here("fragments", "hw.qmd")}
@@ -10,32 +10,87 @@ params:
 
 {{< include ../fragments/hw-get-organized.qmd >}}
 
-# 2. Video
+# 2. Read & Practice
 
-Watch [this video](https://www.youtube.com/watch?v=kIID5FDi2JQ) on map projections:
+The readings listed below are broken into two groups:
+
+1. Design principles
+2. Coding techniques to implement those principles
+
+### Design principles
+
+A map is a chart that happens to use geography as its coordinate system, and that brings two problems no other chart has. First, the earth is round and your screen is flat, so every map distorts something - areas, shapes, distances, or directions - and you have to decide what you're willing to distort. Second, geographic area has nothing to do with the thing you're mapping, so a big empty state gets a lot of visual weight and a dense city gets almost none.
+
+Start with this video on projections:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/kIID5FDi2JQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-# 3. Readings
-
-This week we'll learn about maps and geospatial data. Maps are a unique type of data viz, and often times they are inappropriately or inaccurately used. These readings will help you learn best practices when visualizing geospatial data:
-
 - Wilke: [15 - Visualizing geospatial data](https://clauswilke.com/dataviz/geospatial-data.html)
 - [XKCD: Map projections](https://xkcd.com/977/)
+
+### Coding techniques
+
+Making a map in ggplot is mostly two steps: 1) get a **shape file** (a data frame where each row is a place and one column holds that place's geometry), then 2) join your data onto it and fill the shapes by a variable. The join is where maps break. If your place names or codes don't match the shape file's, those rows silently disappear and you get a map with holes in it that still renders perfectly happily.
+
 - Healy: [7 - Draw maps](http://socviz.co/maps.html#maps)
 - Drawing beautiful maps: Parts [one](https://www.r-spatial.org/r/2018/10/25/ggplot2-sf.html), [two](https://www.r-spatial.org/r/2018/10/25/ggplot2-sf-2.html), & [three](https://www.r-spatial.org/r/2018/10/25/ggplot2-sf-3.html)
 
-# 4. A map worth talking about
+**Install these packages before class** - two of them come from GitHub rather than CRAN and can take a few minutes, so don't leave this until Wednesday morning:
 
-Find a map you've seen recently, or one you just think is interesting, and put it in your `hw10.qmd` file under the "A map worth talking about" heading. Add a link to where you found it, then write a few notes answering these questions:
+```{r}
+#| eval: false
+
+install.packages('sf')
+install.packages('maps')
+install.packages('rnaturalearth')
+install.packages('remotes')
+remotes::install_github("ropensci/rnaturalearthdata")
+remotes::install_github("ropensci/rnaturalearthhires")
+```
+
+If any of these fail, paste the error into Claude Code and work through it - `sf` depends on some system libraries and the fix differs between Mac and Windows. If you're still stuck, post in Slack so we can sort it out before class.
+
+# 3. A map worth talking about
+
+Find a map you've seen recently, or one you just think is interesting, and put it in your ``r hw_file`` file under the "A map worth talking about" heading. Add a link to where you found it, then write a few notes answering these questions:
 
 - What is actually being mapped - a count, a rate, a category, something else? If it's colored by a raw count, is it really just a population map?
 - What projection does it look like it's using, and does that distort the areas the map is making a claim about?
 - Would this be clearer as a map, or would a plain bar chart or table have told the story better?
 
-The "Tip of the week" at the top of your `hw10.qmd` file covers how to insert an image in Quarto - captions, sizing, alt text, and how to put two maps side by side for comparison.
+The "Tip of the week" at the top of your ``r hw_file`` file covers how to insert an image in Quarto - captions, sizing, alt text, and how to put two maps side by side for comparison.
+
+# 4. Make a map
+
+Now make one yourself, and ask it the same three questions you just asked of someone else's map.
+
+### Pick some data with a place in it
+
+You need a data set where one column names a place - a state, a county, a country. Some options:
+
+- `state.x77`, which comes with R. It has one row per state, with `Population` (a count, in thousands) and `Murder` (a rate, per 100,000) - which makes it a good data set for seeing the count-vs-rate problem directly. Note that it's a matrix with the state names stored as row names, so you'll need `as.data.frame()` and then `rownames_to_column()` to get them into a usable data frame.
+- Country-level data joined to the `world` shape file from the [rnaturalearth](https://docs.ropensci.org/rnaturalearth/) package, such as the `gapminder` data.
+- **Your project data**, if it has a geographic variable. If it does, do this one.
+
+### Make a choropleth and then check it
+
+Ask Claude Code to make a **choropleth** (a map with regions filled by a variable) from your data. Don't worry about projections here - whatever default you get is fine, and we'll cover projections in class. Then check it, because this is a chart type where "it rendered" tells you almost nothing:
+
+- **Check the join.** How many rows went in, and how many places came out filled? Count them - don't eyeball the map. Any place that's grey or missing is a row whose name or code didn't match the shape file, and an agent will rarely tell you this happened. Common culprits: "Washington, D.C." vs "District of Columbia", `USA` vs `United States`, and leading zeros stripped off FIPS codes.
+- **Check count vs. rate.** If you filled by a raw count, re-make the map filled by that count divided by population, and compare the two. Does the map tell a different story?
+- **Check that a map is the right call.** Make the bar chart version of the same data. If the bar chart is clearer, say so - that's a legitimate finding, not a failed assignment.
+
+In your ``r hw_file`` file, include:
+
+- Your choropleth map, with one or two sentences under it describing what it shows.
+- The count-vs-rate pair, so we can see the comparison.
+- A few sentences on what you had to check or correct. Did any places drop out in the join, and how did you find them? Did the map beat the bar chart?
+
+You don't need to add any of this to your data visualization skill, though you're welcome to if there's a map rule you know you'll want again.
 
 # 5. Reflect
+
+> **This week, consider writing about whether the map you found in part 3 would have survived the checks you ran on your own map in part 4.**
 
 {{< include ../fragments/hw-reflect.qmd >}}
 
