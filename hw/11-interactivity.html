@@ -377,7 +377,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <blockquote class="blockquote">
 <p><strong>Due</strong>: Nov 16 by 11:59pm</p>
 <p><strong>Weight</strong>: This assignment is worth 1% of your final grade.</p>
-<p><strong>Purpose</strong>: The purpose of this assignment is to introduce you to the concept of allowing the reader to directly interact with your data. Interactive charts are an entirely different class of data visualizations made possible by advances in computing and other languages like html and javascript.</p>
+<p><strong>Purpose</strong>: The purpose of this assignment is to see what interactivity adds to a chart (and what it costs), then try two ways of getting there: converting a ggplot with plotly, and having Claude build a chart from scratch in D3, the JavaScript library behind most of the interactive charts you see online. Along the way, you will practice checking whether an interactive chart still says what the static one did.</p>
 <p><strong>Assessment</strong>: This assignment is graded using a check system:</p>
 <ul>
 <li>✔+ (110%): Responses shows phenomenal thought and engagement with the course content. I will not assign these often.</li>
@@ -391,29 +391,95 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Open your course repo (<code>eda-f26/eda-netID</code>) in Positron using <strong>File › Open Folder</strong> - open the folder itself, not a file inside it. If you haven’t cloned your course repo yet, follow the steps in <a href="1-agentic-workflows-and-github.html#clone-your-course-repo">HW1</a> first.</p>
 <p>Everything for this assignment lives in the <code>hw11</code> folder. Open the <code>hw11.qmd</code> file inside it - that’s the only file you need to edit. Take notes and write example code under the “Begin notes here” heading as you go through the readings and exercises below, then write your reflection under the “Reflection” heading at the end.</p>
 </section>
-<section id="readings" class="level1">
-<h1>2. Readings</h1>
-<p>This week, I want you to experience some <strong>good</strong> interactive charts so you can get a sense for how different the user experience is between static and interactive charts.</p>
-<p>To get started, find an article online that has some interactive charts. I recommend going to <a href="https://pudding.cool/">The Pudding</a> - almost all of their articles blend text, data, and interactive charts (e.g.&nbsp;check out the article <a href="https://pudding.cool/2017/05/song-repetition/">Are Pop Lyrics Getting More Repetitive?</a>). Choose an article you find interesting, and feel free to use an article on a different site if you wish.</p>
-<p>Once you’ve found an article, read through it carefully. As you scroll though it, take note in your reflection this week of some of the key points you remember from the article. Answer these questions:</p>
-<ul>
-<li>What was one main conclusion or point the author made?</li>
-<li>Were any of the visualizations particularly effective in grabbing your attention and supporting that point?</li>
-<li>Was there anything you could critique about the article or charts you saw?</li>
-</ul>
+<section id="read-practice" class="level1">
+<h1>2. Read &amp; Practice</h1>
+<p>The readings listed below are broken into two groups:</p>
+<ol type="1">
+<li>Design principles</li>
+<li>Coding techniques to implement those principles</li>
+</ol>
+<section id="design-principles" class="level3">
+<h3 class="anchored" data-anchor-id="design-principles">Design principles</h3>
+<p>An interactive chart lets the reader do something a static chart can’t: hover for exact values, filter to the part they care about, zoom, or scroll through a story one step at a time. That can make a chart much richer, but it can also be decoration, or hide the main point behind a mouse movement. This week, read with one question in mind: <strong>what does the interaction let me do that a static chart wouldn’t?</strong></p>
+<p>To get started, find an article online that has some interactive charts. I recommend <a href="https://pudding.cool/">The Pudding</a> - almost all of their articles blend text, data, and interactive charts (e.g.&nbsp;check out <a href="https://pudding.cool/2017/05/song-repetition/">Are Pop Lyrics Getting More Repetitive?</a>). Choose an article you find interesting, and feel free to use one from a different site.</p>
 </section>
-<section id="turn-any-ggplot-into-an-interactive-chart-with-ggplotly" class="level1">
-<h1>3. Turn any ggplot into an interactive chart with <code>ggplotly()</code></h1>
-<p>Now that you’ve seen some interactive charts, make a simple, static chart in the chunk provided in your reflection. It can be any ggplot chart - feel free to copy-paste something we’ve made in class (don’t forget to also copy-paste any data files you may need to create the chart).</p>
-<p>Once you’ve made your static chart, <strong>make it interactive</strong> using the <code>ggplotly()</code> function from the <code>plotly</code> package. Simply write code to create your <code>plot</code>, then use <code>ggplotly(plot)</code> to make it interactive. Try it out!</p>
+<section id="coding-techniques" class="level3">
+<h3 class="anchored" data-anchor-id="coding-techniques">Coding techniques</h3>
+<p>There are two routes to an interactive chart in this assignment. The first is the quick one: the <a href="https://plotly.com/r/">plotly</a> package converts a ggplot into an interactive chart with a single function, <code>ggplotly()</code>. The second is how most professional interactive charts are made: <a href="https://d3js.org/what-is-d3">D3</a> is a JavaScript library that draws charts directly in the browser, and it can do things ggplot can’t. We won’t learn D3 in this course, but you will direct Claude to build a chart with it and see what that looks like.</p>
+<ul>
+<li>Plotly for R: <a href="https://plotly-r.com/">Interactive web-based data visualization with R, plotly, and shiny</a> - skim the chapter on <code>ggplotly()</code></li>
+<li>D3: <a href="https://d3js.org/what-is-d3">What is D3?</a> - just the opening page</li>
+<li>D3 Graph Gallery: <a href="https://d3-graph-gallery.com/">Browse the gallery</a> to see what’s possible</li>
+</ul>
+<p><strong>Install this package before you start:</strong></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplotly</span>(plot)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">'plotly'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
+</section>
+<section id="study-a-good-interactive" class="level1">
+<h1>3. Study a good interactive</h1>
+<p>Read through your article carefully, then put notes in your <code>hw11.qmd</code> file under the “Study a good interactive” heading. Add a link to the article, then answer these questions:</p>
+<ul>
+<li>What was one main conclusion or point the author made?</li>
+<li>Pick one interactive chart from the article. What can the reader do with it, and could the same point have been made with a static chart? What would be lost?</li>
+<li>Was there anything you could critique about the article or its charts (e.g., a hover that hid something important, or interaction that was just for show)?</li>
+</ul>
+</section>
+<section id="make-a-chart-interactive-with-plotly" class="level1">
+<h1>4. Make a chart interactive with plotly</h1>
+<p>Start from a static ggplot chart. It can be any chart you’ve made so far this semester (in class, in a previous homework, or for your project). If you copy it from somewhere else, don’t forget to copy any data files it needs.</p>
+<p>Ask Claude Code to make an interactive version of it using <code>ggplotly()</code>. The core of the code is just this:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplotly</span>(plot)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Then check it, because <code>ggplotly()</code> is a <em>translation</em> of your chart, and translations lose things:</p>
+<ul>
+<li><strong>Check the tooltips.</strong> Hover over several points. Do they show the right variables, in sensible units and formats? By default, plotly often shows raw aesthetic names (<code>x</code>, <code>y</code>, <code>colour</code>) or unrounded numbers. Fix them so a reader could understand them without seeing your code.</li>
+<li><strong>Check what got lost.</strong> Compare it to the static version. Do the title, subtitle, caption, annotations, and fonts all survive? Anything that vanished or moved?</li>
+<li><strong>Check that interactivity earns its place.</strong> Is the interactive version actually better than the static one? If not, say so - that’s a legitimate finding, not a failed assignment.</li>
+</ul>
+<p>In your <code>hw11.qmd</code> file, include:</p>
+<ul>
+<li>Your interactive chart, with one or two sentences under it describing what it shows.</li>
+<li>A few sentences on what you had to check or correct, and whether the interactivity helped.</li>
+</ul>
+</section>
+<section id="experiment-have-claude-build-a-chart-in-d3" class="level1">
+<h1>5. Experiment: have Claude build a chart in D3</h1>
+<p>Now try the other route. Ask Claude Code to build a chart <strong>entirely in D3</strong> and embed it in your <code>hw11.qmd</code> file. You don’t need to understand the D3 code. The goal is to experience what it looks like, how much more control it gives you, and how well Claude can handle it.</p>
+<section id="build-it" class="level3">
+<h3 class="anchored" data-anchor-id="build-it">Build it</h3>
+<p>Use the same data as your plotly chart, or a different data set if you want to try something new. Here is a prompt to get you started (edit it to fit your data and chart):</p>
+<blockquote class="blockquote">
+<p>Build a [line chart / scatterplot / bar chart] of [describe your data] using D3. Put it in a single self-contained file called <code>d3-chart.html</code> in my <code>hw11</code> folder, loading D3 from a CDN. Embed the data directly in the file (don’t load it from a separate file). Add a tooltip on hover, a title that states the main takeaway, labeled axes, and one interaction beyond hover (for example, a dropdown to filter, or a transition when something changes).</p>
+</blockquote>
+<p>Open <code>d3-chart.html</code> in your browser to check it, and keep going back and forth with Claude until you like it. Then embed it in your <code>hw11.qmd</code> file with an iframe:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">iframe</span><span class="ot"> src</span><span class="op">=</span><span class="st">"d3-chart.html"</span><span class="ot"> width</span><span class="op">=</span><span class="st">"100%"</span><span class="ot"> height</span><span class="op">=</span><span class="st">"500"</span><span class="ot"> style</span><span class="op">=</span><span class="st">"border:none;"</span><span class="dt">&gt;&lt;/</span><span class="kw">iframe</span><span class="dt">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Make sure <code>d3-chart.html</code> is in the same folder as your <code>hw11.qmd</code> file, and that you commit it along with your .qmd when you push. Otherwise the chart won’t show up in your submission.</p>
+</section>
+<section id="check-it" class="level3">
+<h3 class="anchored" data-anchor-id="check-it">Check it</h3>
+<p>A D3 chart is code that Claude wrote from scratch, with none of ggplot’s built-in checks, so verify it just like you would any other output:</p>
+<ul>
+<li><strong>Check the numbers.</strong> Hover over a few points and compare the values against your data. Do they match? A chart can look beautiful and be plotting the wrong thing.</li>
+<li><strong>Check the axes.</strong> Are they labeled with units? Do they start where they should? Does the chart look right if you resize your browser window?</li>
+<li><strong>Check the claim.</strong> Read the title and any annotations. Does the data support exactly what they say?</li>
+</ul>
+<p>In your <code>hw11.qmd</code> file, include:</p>
+<ul>
+<li>Your embedded D3 chart.</li>
+<li>A few sentences on how it went: How many back-and-forth rounds did it take? What did Claude get wrong, and how did you notice? What could this chart do that your plotly chart couldn’t, and what was easier in plotly?</li>
+</ul>
+</section>
+</section>
 <section id="reflect" class="level1">
-<h1>4. Reflect</h1>
+<h1>6. Reflect</h1>
+<blockquote class="blockquote">
+<p><strong>This week, consider writing about when you would reach for ggplot, plotly, or D3 for a project of your own, and what you would need to check before trusting each one.</strong></p>
+</blockquote>
 <p>Reflect on what you’ve learned while going through these readings and exercises. Is there anything that jumped out at you? Anything you found particularly interesting or confusing?</p>
 <p>Write at least a paragraph in your <code>hw11.qmd</code> file, and include at least one question. The teaching team will review the questions we get and will try to answer them either in Slack or in class.</p>
 <p>Some thoughts you may want to try in your reflection:</p>
@@ -424,7 +490,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 <section id="submit" class="level1">
-<h1>5. Submit</h1>
+<h1>7. Submit</h1>
 <p>To submit your assignment, follow these instructions:</p>
 <ol type="1">
 <li>Render your .qmd file by either clicking the “Preview” button in Positron or running <code>quarto render</code> in the terminal.</li>
