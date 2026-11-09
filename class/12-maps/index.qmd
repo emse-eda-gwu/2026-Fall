@@ -50,8 +50,8 @@ countdown(
   minutes = 12,
   warn_when = 30,
   update_every = 1,
-  top = 0,
-  right = 0,
+  top = "0.5em",
+  right = "0.5em",
   font_size = "3em"
 )
 ```
@@ -81,6 +81,8 @@ countdown(
 milk_production <- read_csv(file.path('data', 'milk_production.csv'))
 us_coffee_shops <- read_csv(file.path('data', 'us_coffee_shops.csv'))
 ```
+
+<br>
 
 ## New packages:
 
@@ -122,19 +124,21 @@ https://www.r-graph-gallery.com/map.html
 
 # How to make a map
 
-#### Step 1: Load a shape file
+### Step 1: Load a shape file
 
-a. Use a library
+#### a. Use a library
 
-b. Read in a shape file
+#### b. Read in a shape file
+
+<br>
 
 . . .
 
-#### Step 2: Plot the shape file
+### Step 2: Plot the shape file
 
-a. Polygon data: `geom_polygon()`
+#### a. Polygon data: `geom_polygon()`
 
-b. Simple Features data: `geom_sf()`
+#### b. Simple Features data: `geom_sf()`
 
 ---
 
@@ -580,7 +584,8 @@ countdown(
   minutes = 10,
   warn_when = 30,
   update_every = 15,
-  top = 0,
+  top = "0.5em",
+  right = "0.5em",
   font_size = '2em'
 )
 ```
@@ -640,6 +645,8 @@ Hexmaps:
 :::
 
 ::: {.col width="30%"}
+<br>
+
 # Not all maps are useful...
 :::
 
@@ -858,7 +865,7 @@ us_states <- ne_states(
 ```
 :::
 
-::: {.col .fragment width="40%"}
+::: {.col .fragment width="40%" .font80}
 ```{r}
 us_states %>%
     select(name, milk_produced) %>%
@@ -972,13 +979,13 @@ Non-linear scale:
 
 {{< center >}}
 
-::: {.col}
+::: {.col .center}
 ## Radius
 
 ![](images/plots/uk_pop_radius.png){width="660"}
 :::
 
-::: {.col}
+::: {.col .center}
 ## Area
 
 ![](images/plots/uk_pop_area.png){width="660"}
@@ -1023,7 +1030,7 @@ us_coffee_shops <- us_coffee_shops %>%
 ```
 :::
 
-::: {.col .fragment}
+::: {.col .fragment .font80}
 ```{r}
 head(us_coffee_shops)
 ```
@@ -1078,7 +1085,8 @@ countdown(
   minutes = 15,
   warn_when = 30,
   update_every = 15,
-  top = 0,
+  top = "0.5em",
+  right = "0.5em",
   font_size = '2em'
 )
 ```
@@ -1112,8 +1120,8 @@ countdown(
   minutes = 5,
   warn_when = 30,
   update_every = 1,
-  top = 0,
-  right = 0,
+  top = "0.5em",
+  right = "0.5em",
   font_size = '2em'
 )
 ```
@@ -1145,7 +1153,7 @@ https://www.r-spatial.org/r/2018/10/25/ggplot2-sf-2.html
 
 ## What's a map projection?
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/kIID5FDi2JQ?si=VydsCWYDsk_33O1D" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="1000" height="562.5" src="https://www.youtube.com/embed/kIID5FDi2JQ?si=VydsCWYDsk_33O1D" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ---
 
@@ -1494,7 +1502,7 @@ us_coffee_shops_sf <- st_as_sf(us_coffee_shops,
 ```
 :::
 
-::: {.col width="40%"}
+::: {.col width="40%" .font80}
 ```{r}
 head(us_coffee_shops_sf)
 ```
@@ -1626,14 +1634,16 @@ countdown(
   minutes = 20,
   warn_when = 30,
   update_every = 15,
-  top = 0,
-  left = 0,
+  top = '0.5em',
+  left = '0.5em',
   font_size = '2em'
 )
 ```
 
 ::: {.col .font80 width="60%"}
 ## [Your turn]{.center}
+
+<br>
 
 Use the `internet_users_country.csv` data and the `world` data frame from the **rnaturalearth** library to create these two versions of internet access by country in 2015.
 
@@ -1667,8 +1677,6 @@ Mercator Projection
 
 # Remember: Mini Project 3 Due 11/22
 
-## (That's <1 week!)
-
 ### https://eda.seas.gwu.edu/2026-Fall/mini/3-redesign.html
 
 ---
@@ -1692,7 +1700,8 @@ countdown(
   minutes = 15,
   warn_when = 30,
   update_every = 15,
-  top = 0,
+  top = "0.5em",
+  right = "0.5em",
   font_size = '2em'
 )
 ```

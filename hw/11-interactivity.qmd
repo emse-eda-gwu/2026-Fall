@@ -5,4 +5,42 @@ params:
   purpose: 'The purpose of this assignment is to introduce you to the concept of allowing the reader to directly interact with your data. Interactive charts are an entirely different class of data visualizations made possible by advances in computing and other languages like html and javascript.'
 ---
 
-Coming soon!
+```{r child = here::here("fragments", "hw.qmd")}
+```
+
+{{< include ../fragments/hw-get-organized.qmd >}}
+
+# 2. Readings
+
+This week, I want you to experience some **good** interactive charts so you can get a sense for how different the user experience is between static and interactive charts.
+
+To get started, find an article online that has some interactive charts. I recommend going to [The Pudding](https://pudding.cool/) - almost all of their articles blend text, data, and interactive charts (e.g. check out the article [Are Pop Lyrics Getting More Repetitive?](https://pudding.cool/2017/05/song-repetition/)). Choose an article you find interesting, and feel free to use an article on a different site if you wish.
+
+Once you've found an article, read through it carefully. As you scroll though it, take note in your reflection this week of some of the key points you remember from the article. Answer these questions:
+
+- What was one main conclusion or point the author made?
+- Were any of the visualizations particularly effective in grabbing your attention and supporting that point?
+- Was there anything you could critique about the article or charts you saw?
+
+# 3. Turn any ggplot into an interactive chart with `ggplotly()`
+
+Now that you've seen some interactive charts, make a simple, static chart in the chunk provided in your reflection. It can be any ggplot chart - feel free to copy-paste something we've made in class (don't forget to also copy-paste any data files you may need to create the chart).
+
+Once you've made your static chart, **make it interactive** using the `ggplotly()` function from the `plotly` package. Simply write code to create your `plot`, then use `ggplotly(plot)` to make it interactive. Try it out!
+
+
+```{r}
+#| eval: false
+
+library(plotly)
+
+ggplotly(plot)
+```
+
+# 4. Reflect
+
+{{< include ../fragments/hw-reflect.qmd >}}
+
+# 5. Submit
+
+{{< include ../fragments/hw-submit.qmd >}}
