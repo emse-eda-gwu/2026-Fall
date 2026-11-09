@@ -1,0 +1,187 @@
+---
+engine: markdown
+format:
+  typst:
+    papersize: us-letter
+    margin:
+      x: 1.4cm
+      y: 1.2cm
+    fontsize: 8.6pt
+    mainfont: "Source Sans Pro"
+    keep-typ: false
+---
+
+{{< include ../_summary-styles.qmd >}}
+
+```{=typst}
+#summary-header(12, "Maps", "November 11, 2026")
+#show: rest => columns(2, rest)
+```
+
+# Why maps are risky
+
+A map is a chart that uses geography as its coordinate system. That brings two
+problems no other chart has. The earth is round and your screen is flat, so
+every map **distorts** something. And geographic area has nothing to do with the
+thing you're mapping, so a huge empty state gets lots of ink and a dense city
+gets almost none.
+
+Maps are also the easiest chart to make look authoritative while saying nothing.
+A map that renders is not a map that is right.
+
+## First, ask: do you need a map?
+
+If the location isn't the point, a bar chart of the same data is often clearer.
+Make both, and say so when the bar chart wins.
+
+```{=typst}
+#keypoint[
+  *Land doesn't vote, people do.* A map filled by a raw count mostly shows where
+  the people live. Divide by population before you trust the pattern, and check
+  how many places actually got filled.
+]
+```
+
+# Step 1: Get a shape file
+
+A shape file is a data frame where each row is a place and one column holds that
+place's geometry. Two flavors, two geoms.
+
+| Format | Get it from | Plot with |
+|--------|-------------|-----------|
+| Polygon data | `map_data()` | `geom_polygon()` |
+| Simple Features (sf) | `rnaturalearth`, `tigris`, `maps`, `st_read()` | `geom_sf()` |
+
+## Polygon maps
+
+```r
+world <- map_data("world")
+
+ggplot(world) +
+  geom_polygon(
+    aes(x = long, y = lat, group = group),
+    fill = "grey90", color = "grey60"
+  )
+```
+
+Forget `group = group` and the polygons connect into spaghetti.
+
+## Simple Features maps
+
+```r
+library(rnaturalearth)
+
+world <- ne_countries(
+  scale = "medium", returnclass = "sf")
+
+ggplot(world) +
+  geom_sf(fill = "grey90", color = "grey60")
+```
+
+| Need | Use |
+|------|-----|
+| Countries | `ne_countries()` |
+| States or provinces | `ne_states(country = ...)` |
+| US with AK and HI moved | `tigris::states()` then `shift_geometry()` |
+| US counties | `st_as_sf(map("county", plot = FALSE, fill = TRUE))` |
+| A shape file on disk | `st_read(file.path('data', 'x.shp'))` |
+
+# Step 2: Add data
+
+## Choropleth: fill regions by a variable
+
+Join your data onto the shape file, then map the variable to `fill`.
+
+```r
+us_states <- ne_states(
+  country = 'united states of america',
+  returnclass = 'sf') %>%
+  left_join(milk_2017, by = 'name')
+
+ggplot(us_states) +
+  geom_sf(aes(fill = milk_produced)) +
+  scale_fill_viridis()
+```
+
+**The join is where maps break.** Names that don't match drop out silently and
+leave grey holes on a map that still renders happily.
+
+| Culprit | Example |
+|---------|---------|
+| Different spellings | "Washington, D.C." vs "District of Columbia" |
+| Different codes | `USA` vs `United States` |
+| Stripped leading zeros | FIPS code `01001` becomes `1001` |
+
+Check by counting: rows in, filled places out. Don't eyeball it.
+
+Fill scale breaks can change the story, so try several. If big empty areas
+dominate, consider a hex or tile map.
+
+## Points: locations and sizes
+
+Add a point layer on top of the shape file. Points can mark locations or encode
+a variable.
+
+```r
+ggplot() +
+  geom_sf(data = us_states_cont) +
+  geom_point(
+    data = us_coffee_shops,
+    aes(x = long, y = lat, color = name),
+    size = 0.3
+  ) +
+  theme_void()
+```
+
+Point data in lat/long still needs `x = long, y = lat`. Filter to the region
+first, or stray points stretch the map.
+
+When size encodes a value, map it to **area**, not radius. Area is
+$\pi r^2$, so doubling the radius makes the point four times as big.
+
+# Projections
+
+A projection is how the round earth gets flattened. Every one distorts area,
+shape, distance, or direction, and none is "best". It depends on the claim your
+map is making.
+
+Set it with one layer:
+
+```r
+ggplot(world) +
+  geom_sf() +
+  coord_sf(crs = "ESRI:54030")
+```
+
+| World | Code |
+|-------|------|
+| Robinson (good default) | `"ESRI:54030"` |
+| Mercator (inflates the poles) | `"ESRI:54004"` |
+| Mollweide (equal area) | `"ESRI:54009"` |
+
+| United States | Code |
+|---------------|------|
+| Albers (good default) | `"ESRI:102003"` |
+| Lambert Conformal Conic | `"ESRI:102004"` |
+
+# Checking an agent's map
+
+| Check | Ask |
+|-------|-----|
+| Join | How many places were filled, and which didn't match? |
+| Measure | Is this a count or a rate? |
+| Projection | Does it distort the areas the claim is about? |
+| Format | Would a bar chart have been clearer? |
+
+# Before next class
+
+- **[HW11: Interactivity](https://eda.seas.gwu.edu/2026-Fall/hw/11-interactivity.html)**, due **Nov 16**.
+- **[Mini Project 3: Re-design](https://eda.seas.gwu.edu/2026-Fall/mini/3-redesign.html)**, due **Nov 22** (9% of grade).
+
+You should be able to:
+
+- Load a shape file as polygon data or as sf, and pick the matching geom.
+- Join data to a shape file and count the places that failed to match.
+- Make a choropleth and a point map with a sensible color or size scale.
+- Explain why a raw-count choropleth is often just a population map.
+- Change a map's projection with `coord_sf()` and say what it distorts.
