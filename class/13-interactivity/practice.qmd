@@ -20,83 +20,130 @@ knitr::opts_chunk$set(
 
 # Use these commands to install them if you have not already
 # install.packages('plotly')
-# install.packages('htmlwidgets')
-# install.packages('htmltools')
-# install.packages('leaflet')
-# install.packages('DT')
 # install.packages('reactable')
-# install.packages('reactablefmtr')
-# install.packages('sparkline')
 # install.packages('shiny')
 # install.packages('shinyWidgets')
 # install.packages('rsconnect')
 
-# Should be installed from previous classes:
-library(knitr)
 library(tidyverse)
-library(fontawesome)
-library(countdown)
-library(metathis)
-library(viridis)
-library(cowplot)
-library(rnaturalearth)
-library(rnaturalearthhires)
-library(rnaturalearthdata)
-
-# New
-library(leaflet)
 library(plotly)
-library(DT)
 library(reactable)
-library(reactablefmtr)
-library(sparkline)
 
-# Read in data sets
 gapminder <- read_csv(file.path("data", "gapminder.csv"))
-internet_users <- read_csv(file.path('data', 'internet_users_country.csv'))
-internet_regions <- read_csv(file.path('data', 'internet_users_region.csv'))
 ```
 
-# 1. Interactive Charts
+# 1. JavaScript Graphics (A): Packages
 
-1. Open your reflection from this past week (or a previous week)
-2. With a classmate, take turns sharing your interactive chart, or go back to a chart we made in a previous class and make it interactive using either `ggplotly()` or `plot_ly()`
-3. If you have an example you want to share, post your code in Slack
+Pick **one**:
 
+- Take a chart from a past class or homework and make it interactive with `ggplotly()`
+- Make an interactive table of the `gapminder` data with `reactable()`
 
+Then check it:
 
-# 2. Interactive Tables
-
-Use `reactable()` to make the following interactive table
-
-Read [this example](https://kcuilla.github.io/reactablefmtr/articles/embed_img.html) and use the `gapminder_flags` data frame
+- Do the tooltips show the right variables, in sensible units?
+- Did anything from the static version get lost (title, caption, annotations)?
+- Is the interactive version actually better?
 
 ```{r}
-# Webscrape to get the urls to images of each flag by country name
-# Source: https://www.countryflags.com/
-
-country_flags <- data.frame(
-  flag = read_html('https://www.countryflags.com/') %>%     
-    html_nodes('img') %>% 
-    html_attr('src') 
-) %>% 
-  mutate(
-    country = str_replace(flag, 'https://cdn.countryflags.com/thumbs/', ''),
-    country = str_replace(country, '/flag-square-250.png', '')
-  )
-
-# Join on flag urls to gapminder data
-gapminder_flags <- gapminder %>%
-  filter(year == 2007) %>% 
-  mutate(country = str_to_lower(country)) %>% 
-  left_join(country_flags, by = 'country') %>% 
-  select(flag, country, everything())
+# Write your code here
 ```
+
+# 2. JavaScript Graphics (B): D3 + Claude
+
+You won't write D3 by hand. You will **prompt Claude and iterate**, then **verify the result against a static chart and the data**.
+
+### Make a static chart first
+
+Make a static chart (any data set) and check it carefully. Know what the data should look like, so you can tell when the interactive version is wrong.
 
 ```{r}
-#| label: gapminder_reactable_flags
-#| echo: false
-
-gapminder_flags %>%
-  # Fill in the rest here
+# Write your static chart code here
 ```
+
+### Sketch the interactive version
+
+On paper, decide:
+
+- What moves, and what does each control (slider, dropdown, button) change?
+- What does hover show?
+- What one sentence should the title say?
+
+If you're not sure where to start, try the example from class: a bubble chart of the `gapminder` data (life expectancy vs. GDP per capita, sized by population, colored by continent) with a **year slider** and a **play button** that animates between years.
+
+### Direct Claude
+
+Give Claude your static chart code and your data, then use a prompt like this (edit it to fit your chart):
+
+> Here is my static chart (code below) and my data. Build an animated, interactive version in D3: [describe your interaction]. Add a tooltip, labeled axes, and a title that states the main takeaway. Put it in a single self-contained file called `d3-chart.html` in this folder, loading D3 from a CDN. **Embed the data directly in the file** (don't load it from a separate file).
+
+Open `d3-chart.html` in your browser, and keep going back and forth with Claude until you like it.
+
+### Verify it
+
+- **Compare to the static chart.** Does the interactive chart match it?
+- **The numbers.** Hover over several points and compare the values to your data
+- **The axes.** Are they labeled, with units? Resize your browser window: does the chart still work?
+- **The claim.** Does the data support exactly what the title says?
+- **The interaction.** Click everything. What happens at the first and last year?
+- Open your browser's console (right-click → Inspect → Console). Any red errors?
+
+### Embed it
+
+Make sure `d3-chart.html` is in the same folder as this file, then embed it:
+
+```html
+<iframe src="d3-chart.html" width="100%" height="500" style="border:none;"></iframe>
+```
+
+Write a few sentences below the chart: What did Claude get wrong, and how did you notice?
+
+If you're curious what D3 looks like, `d3/scatter.html` is a small example you can open in Positron.
+
+# 3. Shiny
+
+### hello_shiny
+
+Create a new file called `app.R` in Positron, then copy in the code from the `hello_shiny` slide and run it.
+
+### Quick practice
+
+Open the `widgets.R` file and run the app. Then look at the [Shiny Widgets Gallery](https://shiny.rstudio.com/gallery/widget-gallery.html) to see other input widgets.
+
+### Your Turn: caseConverter
+
+1. Open the `caseConverter.R` file
+2. In the `server`: write code in the provided `renderText()` to convert the input text to lower case
+3. Run the app and test that it's working
+4. In the `ui` main panel: add two more `textOutput()` functions for displaying the input text in "upper" case and "title" case
+5. In the `server`: define two more outputs to convert the input text to "upper" case and "title" case
+
+### Extras
+
+- Open `mpg.R` and `shinyWidgets.R`, and run the apps
+- Add a theme with the [shinythemes](https://rstudio.github.io/shinythemes/) package
+
+### Your Turn: internetUsers
+
+1. Open the `internetUsers.R` file
+2. Modify the server code so that the inputs control the plot
+3. Optional: deploy your app to [Posit Connect Cloud](https://connect.posit.cloud). Put the app (renamed `app.R`) and its `data` folder in a public GitHub repo, run `rsconnect::writeManifest()` in that folder, push, then publish from Connect Cloud
+
+# 4. Bonus: Publish with GitHub Pages
+
+Put your D3 chart on the web:
+
+1. In GitHub Desktop, create a new repo (**File → New Repository**), and **publish** it with "Keep this code private" **unchecked**
+2. Copy the files from the `pages-demo` folder (`index.qmd`, `_quarto.yml`, and the hidden file `.nojekyll`) into your new repo folder, along with your `d3-chart.html`
+3. Render the site (**Preview** in Positron, or `quarto render`), and confirm a `docs/` folder appears
+4. Commit and push in GitHub Desktop
+5. On GitHub.com, go to **Settings → Pages**, and set Source to "Deploy from a branch", Branch to `main`, and folder to `/docs`
+6. Wait a minute or two, then visit `https://<username>.github.io/<repo>/`
+
+Paste your live URL here, and post it in Slack:
+
+If it doesn't work, check:
+
+- Is Pages turned on?
+- Did you render **before** pushing? Is `docs/` on GitHub.com?
+- Is the repo public?

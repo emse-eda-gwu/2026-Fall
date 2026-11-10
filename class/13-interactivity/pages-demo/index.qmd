@@ -1,0 +1,7 @@
+---
+title: "My interactive chart"
+---
+
+Write a sentence or two here about what your chart shows and what you learned building it.
+
+<iframe src="d3-chart.html" width="100%" height="600" style="border:none;"></iframe>
