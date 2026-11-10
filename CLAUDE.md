@@ -20,9 +20,11 @@ website (Fall 2026), built with [Quarto](https://quarto.org/).
   CLI) + setting up Claude Code in Positron**; W3 = cleaning/reshaping/joining
   driven through agents. Proposals brew on the side; W4 = proposal reflection
   (no class, 1-on-1s).
-- **Interactivity week (W12)** reshaped toward interactive *products* — plotly,
-  D3-in-React, a brief Shiny mention — and **deploying a Quarto site to GitHub
-  Pages**. The final report becomes a repo that renders on Pages.
+- **Interactivity week (W12)** reshaped toward interactive *products* — a
+  plotly/reactable warm-up, custom charts built in plain D3 (single-file HTML
+  embedded in Quarto; no React), **deploying a Quarto site to GitHub Pages**
+  (`output-dir: docs`), and a short Shiny intro (deployed via Posit Connect
+  Cloud) at the end. The final report becomes a repo that renders on Pages.
 - **Assignments:** weekly **Reading Reflections** (read forward + light practice
   + reflect) + **3 Mini Projects** (the higher-stakes individual work, reframed
   around *judgment and verification* — the things an agent can't do for you).

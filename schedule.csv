@@ -11,7 +11,7 @@ week,date,quiz,quiz_content,theme,n_class,stub_class,name_class,description_clas
 10,2026/10/28,4,Weeks 8 - 9,Visualizing,10,trends,Trends,Line charts; heat maps; animation,9,,polishing-charts,2026/11/02,,,,,,,,
 11,2026/11/04,,,Visualizing,11,polishing-charts,Polishing Charts,Colors; annotations; scales; themes; multi-panel figures,10,,maps,2026/11/09,3,redesign,MP3: Re-design,2026/11/22,,,,
 12,2026/11/11,5,Weeks 10 - 11,Visualizing,12,maps,Maps,Maps in ggplot; mapping data to maps; projections,11,,interactivity,2026/11/16,,,,,,,,
-13,2026/11/18,,,Interactivity,13,interactivity,Interactivity,Iteractive charts & tables; Intro to Shiny; D3 inside React; building & deploying interactive products,12,,story-telling,2026/11/30,,,,,3,final-report,Final Report,2026/12/06
+13,2026/11/18,,,Interactivity,13,interactivity,Interactivity,Interactive charts & tables; custom charts with D3; deploying to GitHub Pages; intro to Shiny,12,,story-telling,2026/11/30,,,,,3,final-report,Final Report,2026/12/06
 14,2026/11/25,,,,,,Thanksgiving - no class,,,,,,,,,,,,,
 15,2026/12/02,,,Communicating,14,story-telling,Story Telling & Publishing,Telling stories; slide design; giving a talk; publishing your report as a Quarto site on GitHub Pages,,,,,,,,,4,presentation,Presentation,2026/12/08
 16,2026/12/09,,,Communicating,15,final-presentations,Final Presentations,In-class presentation showcase w/Q&A,,,,,,,,,,,,
