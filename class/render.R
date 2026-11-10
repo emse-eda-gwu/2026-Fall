@@ -26,6 +26,8 @@ practice_extras <- list(
   '1-getting-started' = 'quarto_demo.qmd',
   '2-agentic-workflows' = 'my-chart-style',
   '13-interactivity' = c(
+    'd3',
+    'pages-demo',
     'caseConverter.R',
     'caseConverter_solution.R',
     'internetUsers.R',

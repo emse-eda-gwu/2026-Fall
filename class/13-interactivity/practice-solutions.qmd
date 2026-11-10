@@ -1,5 +1,5 @@
 ---
-title: "Interactivity"
+title: "Interactivity (solutions)"
 subtitle: "EMSE 4572 / 6572: Exploratory Data Analysis"
 format: html
 ---
@@ -18,136 +18,91 @@ knitr::opts_chunk$set(
     fig.retina = 3
 )
 
-# Use these commands to install them if you have not already
-# install.packages('plotly')
-# install.packages('htmlwidgets')
-# install.packages('htmltools')
-# install.packages('leaflet')
-# install.packages('DT')
-# install.packages('reactable')
-# install.packages('reactablefmtr')
-# install.packages('sparkline')
-# install.packages('shiny')
-# install.packages('shinyWidgets')
-# install.packages('rsconnect')
-
-# Should be installed from previous classes:
-library(knitr)
 library(tidyverse)
-library(fontawesome)
-library(countdown)
-library(metathis)
-library(viridis)
-library(cowplot)
-library(rnaturalearth)
-library(rnaturalearthhires)
-library(rnaturalearthdata)
-library(rvest)
-
-# New
-library(leaflet)
 library(plotly)
-library(DT)
 library(reactable)
-library(reactablefmtr)
-library(sparkline)
 
-# Read in data sets
 gapminder <- read_csv(file.path("data", "gapminder.csv"))
-internet_users <- read_csv(file.path('data', 'internet_users_country.csv'))
-internet_regions <- read_csv(file.path('data', 'internet_users_region.csv'))
 ```
 
-# 1. Interactive Charts
+# 1. JavaScript Graphics (A): Packages
 
-Here are two examples of interactive charts using `ggplotly()`
-
-Make the static internet usage dumbbell chart:
+### `ggplotly()`
 
 ```{r}
-#| label: internet-usage-dumbbell
-#| fig.height: 4
-#| fig.width: 6
-#| fig.align: 'center'
-
-internet_regions_compare <- internet_regions %>%
-  filter(year %in% c(2000, 2015)) %>%
-  mutate(
-    numUsers = numUsers / 10^6,
-    year = as.factor(year))
-
-dumbbell_chart <- internet_regions_compare %>%
-  mutate(region = fct_reorder2(region, year, -numUsers)) %>%
-  ggplot(aes(x = numUsers, y = region)) +
-  geom_line(
-    aes(group = region),
-    color = 'lightblue', linewidth = 1) +
-    geom_point(aes(color = year), size = 2.5) +
-    scale_color_manual(values = c('lightblue', 'steelblue')) +
-    scale_x_continuous(limits = c(0, 1200)) +
-    theme_minimal_vgrid() +
-    # Remove y axis line
-    theme(axis.line.y = element_blank()) +
-    labs(x = 'Millions of internet users',
-         y = 'Region',
-         color = 'Year',
-         title = 'Number of internet users by world region',
-         subtitle = "(2000 - 2015)")
-
-dumbbell_chart
-```
-
-Make the interactive version
-
-```{r}
-ggplotly(dumbbell_chart)
-```
-
-
-
-
-
-# 2. Interactive Tables
-
-Use `reactable()` to make the following interactive table
-
-Read [this example](https://kcuilla.github.io/reactablefmtr/articles/embed_img.html) and use the `gapminder_flags` data frame
-
-```{r}
-# Webscrape to get the urls to images of each flag by country name
-# Source: https://www.countryflags.com/
-
-country_flags <- data.frame(
-  flag = read_html('https://www.countryflags.com/') %>%     
-    html_nodes('img') %>% 
-    html_attr('src') 
-) %>% 
-  mutate(
-    country = str_replace(flag, 'https://cdn.countryflags.com/thumbs/', ''),
-    country = str_replace(country, '/flag-square-250.png', '')
+plot <- gapminder %>%
+  filter(year == 2007) %>%
+  ggplot(
+    aes(
+      x = gdpPercap,
+      y = lifeExp,
+      size = pop,
+      color = continent,
+      label = country
+    )
+  ) +
+  geom_point(alpha = 0.7) +
+  scale_x_log10(labels = scales::label_dollar()) +
+  scale_size_area(guide = "none", max_size = 15) +
+  theme_bw(base_size = 14) +
+  labs(
+    x = "GDP per capita (log scale)",
+    y = "Life expectancy (years)",
+    color = "Continent"
   )
 
-# Join on flag urls to gapminder data
-gapminder_flags <- gapminder %>%
-  filter(year == 2007) %>% 
-  mutate(country = str_to_lower(country)) %>% 
-  left_join(country_flags, by = 'country') %>% 
-  select(flag, country, everything())
+# Show only the variables that matter in the tooltip
+ggplotly(plot, tooltip = c("label", "x", "y"))
 ```
 
-```{r}
-#| label: gapminder_reactable_flags
-#| echo: false
+### `reactable()`
 
-gapminder_flags %>%
+```{r}
+gapminder %>%
+  filter(year == 2007) %>%
   reactable(
     searchable = TRUE,
     highlight = TRUE,
     filterable = TRUE,
     defaultPageSize = 5,
     showPageSizeOptions = TRUE,
-    pageSizeOptions = c(5, 10, 15),
-    columns = list(flag = colDef(cell = embed_img(
-      width = "30", height = "20")))
+    pageSizeOptions = c(5, 10, 15)
   )
+```
+
+# 2. JavaScript Graphics (B): D3 + Claude
+
+One possible result: the static chart above, brought to life as an animated D3 chart with a year slider, a play button, and continent filters. The code (including the data) is in `d3/gapminder-slider.html`.
+
+<iframe src="d3/gapminder-slider.html" width="100%" height="650" style="border:none;"></iframe>
+
+To verify it against the data, set the slider to 2007 and compare a bubble to the data:
+
+```{r}
+gapminder %>%
+  filter(country == "China", year == 2007)
+
+gapminder %>%
+  filter(year == 2007) %>%
+  nrow()
+```
+
+# 3. Shiny
+
+Solutions for the Shiny exercises are in `caseConverter_solution.R` and `internetUsers_solution.R`.
+
+# 4. Bonus: Publish with GitHub Pages
+
+Your demo repo should look like this before you push:
+
+```
+d3-demo/
+├── .nojekyll
+├── _quarto.yml
+├── d3-chart.html
+├── index.qmd
+└── docs/            <- created when you render
+    ├── d3-chart.html
+    ├── index.html
+    └── ...
 ```

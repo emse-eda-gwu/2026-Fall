@@ -29,45 +29,15 @@ execute:
 #| include: false
 
 agenda_items <- c(
-  "Warm-up: plotly & tables",
-  "Custom charts with D3",
-  "Publish with GitHub Pages",
-  "Shiny apps"
+  "JavaScript graphics: packages",
+  "JavaScript graphics: D3 + Claude",
+  "Shiny apps",
+  "Shiny extras",
+  "Bonus: GitHub Pages"
 )
 
 source('setup.R')
 ```
-
-<!--
-OUTLINE DRAFT (Nov 2026). Slides are skeletons: titles are real, comments say
-what goes in each. The previous hand-coding-era deck is preserved in
-index-old.qmd; "reuse" notes give the old line ranges to lift from. Nothing here
-is rendered yet.
-
-Run of show (proportions; adjust to the real class length):
-  1. Warm-up: plotly & reactable ........ ~15%
-  2. D3 mini-lecture + exercise ......... ~30%
-  3. GitHub Pages walkthrough + exercise  ~25%
-  4. Shiny intro + Connect Cloud deploy . ~25%
-  (+ intermission, wrap-up ~5%)
--->
-
----
-
-{{< inverse >}}
-{{< center >}}
-{{< middle >}}
-{{< no-slide-number >}}
-
-# {{< meta title >}}
-
-## [{{< meta subtitle >}}]{.fancy}
-
-<br>
-
-[{{< meta author >}}]{.large}
-
-{{< meta displaydate >}}
 
 ---
 
@@ -87,71 +57,333 @@ agenda(0)
 agenda(1)
 ```
 
-<!-- =====================================================================
-     1. WARM-UP: PLOTLY & TABLES  (~15%)
-     Goal: point at what exists, don't teach it. They did ggplotly() in hw 11.
-     ===================================================================== -->
+---
+
+# What can an interactive chart do that a static one can't?
+
+::: {.col}
+### The reader can...
+
+- **Hover** for exact values
+- **Filter** to the part they care about
+- **Zoom** into a crowded region
+- **Play** through time
+- **Scroll** through a story, one step at a time
+:::
+
+::: {.col}
+### The cost
+
+- More to build, and more to _check_
+- Hides information behind a mouse movement
+- Doesn't work on paper or in a PDF
+- Can be decoration instead of insight
+:::
+
+. . .
+
+### The test: [what does the interaction let me do that a static chart wouldn't?]{.orange}
 
 ---
 
-# Interactive charts: what do they let the reader do?
+# Two ways to make JavaScript-based graphics
 
-<!-- Frame from hw 11: hover for exact values, filter, zoom, scroll a story.
-     "What does the interaction let me do that a static chart wouldn't?"
-     Call back to 1-2 Pudding examples students found in the hw. -->
+::: {.col}
+### [A.]{.orange} Packages that wrap JavaScript
 
----
+`plotly`, `reactable`
 
-## [Plotly](https://plotly.com/graphing-libraries/) turns a ggplot into an interactive chart
+- Hide the JavaScript behind R code
+- Short, readable code you could write yourself
+- Limited to what the package supports
+:::
 
-<!-- reuse index-old.qmd ~L61-147: ggplotly() slide + rendered example (iframe) -->
+::: {.col}
+### [B.]{.orange} Custom graphics with D3
 
----
+`D3` + Claude
 
-### Control what the tooltip shows
+- Build **anything** you can describe
+- You don't write it by hand: you [prompt and iterate]{.orange}
+- You verify the result against a static chart and the data
+:::
 
-<!-- reuse index-old.qmd ~L150-178: `tooltip` argument. Ties to the hw 11
-     tooltip check (raw aesthetic names, unrounded numbers). -->
+. . .
 
----
-
-### Translations lose things
-
-<!-- NEW. One slide: what ggplotly() drops (subtitle/caption/annotations/fonts)
-     and how to find out. Reinforces the hw "check what got lost" step. -->
-
----
-
-### Save it as html and embed with an iframe
-
-<!-- reuse index-old.qmd ~L306-333 (save as html + iframe). This is the
-     bridge to D3: same iframe mechanism, used again in section 2 and 3. -->
+### Then: [Shiny]{.orange} for dashboards, where R runs live behind the page
 
 ---
 
-## Tables: `reactable()`
+## [Plotly](https://plotly.com/graphing-libraries/) uses JavaScript to create interactive charts
 
-<!-- reuse index-old.qmd ~L584-612: one basic reactable slide.
-     Only reactable (not DT / reactablefmtr / sparkline). -->
+. . .
+
+### But you don't have to know JavaScript to use it! 🎉
 
 ---
 
-### `reactable()` has nice options
+### Turn any ggplot into an interactive chart with `ggplotly()`
 
-<!-- reuse index-old.qmd ~L615-650: sorting, searching, pagination, formatting.
-     Close with "it exists; ask Claude for what you need." -->
+::: {.col .font65}
+```{r}
+#| eval: false
+
+plot <- gapminder %>%
+  filter(year == 2007) %>%
+  ggplot(aes(x = gdpPercap, y = lifeExp,
+             size = pop, color = continent,
+             label = country)) +
+  geom_point(alpha = 0.7) +
+  scale_color_brewer(palette = 'Set2') +
+  scale_size_area(
+    guide = FALSE, max_size = 25) +
+  scale_x_log10() +
+  theme_bw(base_size = 16) +
+  labs(x = 'GDP per capita',
+       y = 'Life expectancy',
+       color = 'Continent')
+
+plot
+```
+:::
+
+::: {.col}
+```{r}
+#| echo: false
+#| fig-width: 7
+#| fig-height: 5
+
+plot <- gapminder %>%
+  filter(year == 2007) %>%
+  ggplot(aes(x = gdpPercap, y = lifeExp,
+             size = pop, color = continent,
+             label = country)) +
+  geom_point(alpha = 0.7) +
+  scale_color_brewer(palette = 'Set2') +
+  scale_size_area(
+    guide = FALSE, max_size = 25) +
+  scale_x_log10() +
+  theme_bw(base_size = 16) +
+  labs(x = 'GDP per capita',
+       y = 'Life expectancy',
+       color = 'Continent')
+
+plot
+```
+:::
+
+---
+
+### Turn any ggplot into an interactive chart with `ggplotly()`
+
+::: {.col}
+```{r}
+#| eval: false
+
+ggplotly(plot)
+```
+:::
+
+::: {.col}
+```{r}
+#| echo: false
+
+# Embedding as a iframe since direct rendering produces poor results, see
+# https://github.com/rstudio/htmltools/issues/90
+htmltools::tags$iframe(
+  src         = file.path('figs', 'gapminder.html'),
+  width       = "100%",
+  height      = "400",
+  scrolling   = "no",
+  seamless    = "seamless",
+  frameBorder = "0"
+)
+```
+:::
+
+---
+
+### Control what the tooltip shows with the `tooltip` argument
+
+::: {.col}
+```{r}
+#| eval: false
+#| code-line-numbers: "3"
+
+ggplotly(
+  plot,
+  tooltip = c("country", "pop")
+)
+```
+:::
+
+::: {.col}
+```{r}
+#| echo: false
+
+htmltools::tags$iframe(
+  src         = file.path('figs', 'gapminder_tooltip.html'),
+  width       = "100%",
+  height      = "400",
+  scrolling   = "no",
+  seamless    = "seamless",
+  frameBorder = "0"
+)
+```
+:::
+
+---
+
+# `ggplotly()` is a _translation_
+
+# Translations lose things
+
+. . .
+
+- **Tooltips** often show raw aesthetic names (`x`, `y`, `colour`) and unrounded numbers
+- **Subtitles, captions, and annotations** can move or vanish
+- **Fonts and themes** don't always survive
+- **Legends** can be duplicated or oddly placed
+
+. . .
+
+### Always compare the interactive version to the static one
+
+---
+
+### Save as html page
+
+```{r}
+#| eval: false
+
+htmlwidgets::saveWidget(
+  ggplotly(plot),
+  file = file.path('figs', 'gapminder.html')
+)
+```
+
+. . .
+
+### Insert using iframe
+
+```{r}
+#| eval: false
+
+htmltools::tags$iframe(
+  src         = file.path('figs', 'gapminder.html'),
+  width       = "100%",
+  height      = "400",
+  scrolling   = "no",
+  seamless    = "seamless",
+  frameBorder = "0"
+)
+```
+
+. . .
+
+### Remember this: we'll use iframes again for D3!
+
+---
+
+## Interactive _tables_: `reactable::reactable()`
+
+::: {.col width="40%"}
+```{r}
+#| eval: false
+#| code-line-numbers: "4"
+
+library(reactable)
+
+gapminder %>%
+  reactable()
+```
+:::
+
+::: {.col width="60%"}
+```{r}
+#| echo: false
+
+htmltools::tags$iframe(
+  src         = file.path('figs', 'gapminder_reactable.html'),
+  width       = "100%",
+  height      = "500",
+  scrolling   = "yes",
+  seamless    = "seamless",
+  frameBorder = "0"
+)
+```
+:::
+
+---
+
+## `reactable()` has some nice [options](https://glin.github.io/reactable/articles/examples.html)!
+
+::: {.col .font60 width="40%"}
+```{r}
+#| eval: false
+#| code-line-numbers: "5,6,7,8,9,10"
+
+library(reactable)
+
+gapminder %>%
+  reactable(
+    searchable = TRUE,
+    highlight = TRUE,
+    filterable = TRUE,
+    defaultPageSize = 5,
+    showPageSizeOptions = TRUE,
+    pageSizeOptions = c(5, 10, 15)
+  )
+```
+:::
+
+::: {.col width="60%"}
+```{r}
+#| echo: false
+
+htmltools::tags$iframe(
+  src         = file.path('figs', 'gapminder_reactable_options.html'),
+  width       = "100%",
+  height      = "500",
+  scrolling   = "yes",
+  seamless    = "seamless",
+  frameBorder = "0"
+)
+```
+:::
+
+---
+
+# You don't need to memorize any of this
+
+### Ask Claude for what you need, then check the result:
+
+- Do the numbers in the tooltips match the data?
+- Did anything from the static version get lost?
+- Is the interactive version actually better?
 
 ---
 
 {{< inverse >}}
-{{< center >}}
-{{< middle >}}
 
-# Your Turn: make a chart or table interactive
+```{r}
+#| echo: false
 
-<!-- 5-8 min, single exercise (replaces old plotly + flags exercises).
-     Pair up: take a chart from a past class/hw and either ggplotly() it or
-     show a gapminder reactable. Share one in Slack. No flags/webscraping. -->
+countdown(
+  minutes = 8,
+  warn_when = 30,
+  update_every = 15,
+  top = 0,
+  font_size = '2em'
+)
+```
+
+## Your Turn: Interactive Charts & Tables
+
+1. Open `practice.qmd`
+2. Take a chart from a past class or homework and make it interactive with `ggplotly()`, **or** make a `reactable()` table of the gapminder data
+3. Check the tooltips, and compare against the static version
+4. Post your favorite in Slack
 
 ---
 
@@ -162,103 +394,214 @@ agenda(1)
 agenda(2)
 ```
 
-<!-- =====================================================================
-     2. CUSTOM CHARTS WITH D3  (~30%)  -- the centerpiece
-     Taught as "read and direct," not "write." No React: single-file HTML.
-     ===================================================================== -->
-
 ---
 
 {{< inverse >}}
 {{< center >}}
 {{< middle >}}
 
-# When ggplot and plotly aren't enough
-
-<!-- Show 2-3 D3 charts they couldn't make with ggplotly (d3-graph-gallery.com,
-     a Pudding piece, a NYT graphic). Point: full control of every mark and
-     every interaction. -->
+# B. When packages aren't enough
 
 ---
 
-# What is D3?
+# What packages can't do easily
 
-<!-- A JavaScript library that binds data to elements on the page (SVG) in the
-     browser. Not a chart function: you build the chart from parts.
-     Contrast: ggplot = grammar + defaults; D3 = parts + total control. -->
+::: {.col}
+- A **custom scale** or axis
+- A **custom animation** (not just "play through the frames")
+- A bespoke interaction: linked views, brushing, step-by-step stories
+- A layout nobody wrote a function for
+:::
 
----
+::: {.col}
+### [D3](https://d3js.org/)
 
-# Reading a D3 file: four parts
-
-<!-- The mini-lecture's core. Annotate one small real D3 chart (a scatterplot):
-       1. the data (where it lives in the file)
-       2. the scales (same idea as ggplot scales: data -> pixels)
-       3. the axes
-       4. the marks (circles/rects/lines) + the event handlers (hover)
-     Use code-line-numbers to step through. Goal: they can SUPERVISE Claude,
-     not write D3. -->
-
----
-
-# Directing Claude to build one
-
-<!-- Prompt pattern, shown as a quoted prompt on the slide:
-       data + chart type + the takeaway title + constraints
-       ("single self-contained d3-chart.html, load D3 from a CDN, embed the
-        data in the file") + one interaction beyond hover.
-     Same prompt scaffold as hw 11 section 5, now aimed at something custom. -->
+- The JavaScript library underneath most custom interactive graphics (The Pudding, NYT, The Guardian)
+- It can build **anything**, so it's much more complex than `ggplotly()`
+- Browse the [D3 Graph Gallery](https://d3-graph-gallery.com/) to see what's possible
+:::
 
 ---
 
-# Sketch first, then direct
+# You don't write D3. You prompt, and iterate.
 
-<!-- The human-judgment step: before prompting, sketch on paper what the chart
-     should look like and what each interaction does. Claude builds what you
-     describe; the design is on you. -->
+::: {.col}
+### [You]{.orange}
+- Decide what the chart should show
+- Describe it precisely
+- Check that it's right
+:::
+
+::: {.col}
+### [Claude]{.orange}
+- Writes the JavaScript
+- Revises until it looks right
+:::
+
+. . .
+
+### How do you verify it without reading the code?
+
+---
+
+# Verify against the data, not the code
+
+1. Build a **static chart** first and check it carefully (your ggplot, or a plotly version)
+2. Prompt Claude to bring that same chart to life as an interactive, animated version
+3. **Compare** the interactive chart to the static one, and to the data
+
+. . .
+
+### The static chart is your reference. If the two disagree, one of them is wrong, and you can find out which.
+
+---
+
+# The workflow
+
+1. [Make a static chart]{.orange} and verify it
+2. [Sketch]{.orange} what the interactive version should do
+3. [Prompt]{.orange} Claude with your code, your data, and your sketch
+4. [Iterate]{.orange} until it looks right
+5. [Verify]{.orange} against the static chart and the data
+
+---
+
+### Example, step 1: a static chart we've already verified
+
+::: {.col}
+```{r}
+#| echo: false
+#| fig-width: 7
+#| fig-height: 5
+
+plot
+```
+:::
+
+::: {.col}
+**What we know from the data:**
+
+- 142 countries in 2007
+- China and India are the biggest bubbles
+- Life expectancy ranges from about 40 to 83 years
+:::
+
+---
+
+### Example, steps 2-3: the prompt
+
+::: {.font85}
+> Here is my static chart (code below) and the data (`gapminder.csv`). Build an **animated, interactive version in D3**:
+>
+> - One bubble per country, same axes and colors as the static chart
+> - A **year slider** (1952-2007) and a **play button** that animates between years
+> - **Continent filter** buttons, and a **tooltip** on hover
+> - A title that states the main takeaway
+>
+> Put it in a single self-contained file called `d3-chart.html`, loading D3 from a CDN. **Embed the data directly in the file.**
+:::
+
+---
+
+### Example, step 4: the result
+
+<iframe src="d3/gapminder-slider.html" width="100%" height="650" style="border:none;"></iframe>
+
+---
+
+### Example, step 5: verify against the static chart and the data
+
+::: {.col}
+1. Set the slider to **2007**: does it match the static chart?
+2. **Hover** over a bubble: do the values match the data?
+3. **Count** the bubbles: 142?
+4. Check the **axes**: ranges, units, labels
+5. Click **everything**: first and last year, each filter
+:::
+
+::: {.col .font60}
+```{r}
+gapminder %>%
+  filter(country == "China", year == 2007)
+```
+
+```{r}
+gapminder %>%
+  filter(year == 2007) %>%
+  nrow()
+```
+:::
+
+---
+
+# Checks for any chart you didn't write by hand
+
+1. **The numbers.** Hover over several points and compare to your data
+2. **The axes.** Units? Start points? Resize the window: does it still work?
+3. **The claim.** Does the data support exactly what the title says?
+4. **The interaction.** Does every control do what it says?
+
+. . .
+
+### If something looks off, tell Claude exactly what's wrong and give it the right value from your data
 
 ---
 
 # Gotchas
 
-<!-- Short list:
-       - Embed data in the file (opening a local .html can't fetch a local CSV)
-       - Load D3 from a CDN, pin the version
-       - Open in the browser and check the console for errors
-       - It must live next to the .qmd to embed with an iframe -->
+1. **Embed the data in the file.** A local `.html` can't load a local CSV (browsers block it), and the chart will be blank
+2. **Open it in the browser** and check the console (right-click → Inspect → Console) for red errors
+3. To embed in a `.qmd`, the `.html` must be **in the same folder** and **committed**:
+
+::: {.font80}
+```html
+<iframe src="d3-chart.html" width="100%" height="500" style="border:none;"></iframe>
+```
+:::
 
 ---
 
-# How to check a D3 chart
+{{< inverse >}}
 
-<!-- Same three checks as hw 11: numbers (hover vs. data), axes (units, start
-     points, resize the window), claim (does the title say more than the data
-     supports?). Add: console errors. -->
+```{r}
+#| echo: false
+
+countdown(
+  minutes = 25,
+  warn_when = 60,
+  update_every = 15,
+  top = 0,
+  font_size = '2em'
+)
+```
+
+## Your Turn: A Custom Chart in D3
+
+1. Make a **static chart** (any data set) and check it
+2. **Sketch** the interactive version: what moves, what hovers, what filters?
+3. **Prompt** Claude to build it in `d3-chart.html`
+4. **Verify** it against your static chart and the data
+5. **Embed** it in `practice.qmd` with an iframe
+
+Fast finishers: add a second interaction
 
 ---
 
 {{< inverse >}}
 {{< center >}}
-{{< middle >}}
 
-# Your Turn: build something custom in D3
+```{r}
+#| echo: false
 
-<!-- ~25-30 min. Start from the D3 chart from hw 11 (or a fresh one) and push it
-     into something ggplot can't do easily. Pick one:
-       - gapminder bubble chart with a year slider + animated transitions
-         (callback to the Rosling video from W8; data/gapminder.csv is in the
-         practice folder)
-       - scatterplot + bar chart linked by brushing
-       - a chart with annotations that appear as you scroll
-     Steps: sketch (3 min) -> prompt Claude -> open in browser -> run the three
-     checks -> embed with iframe in practice.qmd. Fast finishers: add a second
-     interaction. This file becomes the page published in section 3. -->
-
----
-
-{{< inverse >}}
-
-<!-- Intermission slide: reuse index-old.qmd ~L814-829 (countdown + break). -->
+countdown(
+  minutes = 5,
+  warn_when = 30,
+  update_every = 1,
+  left = 0, right = 0, top = 1, bottom = 0,
+  margin = "5%",
+  font_size = "8em"
+)
+```
 
 # Intermission
 
@@ -271,92 +614,683 @@ agenda(2)
 agenda(3)
 ```
 
-<!-- =====================================================================
-     3. PUBLISH WITH GITHUB PAGES  (~25%)
-     Closes the D3 block: publish the chart they just built. Also the setup
-     for the final report (a repo that renders on Pages).
-     ===================================================================== -->
+---
+
+{{< center >}}
+{{< middle >}}
+
+# License
+
+## These slides were modified from [Florencia D'Andrea](https://florencia.netlify.app/)'s [RLadies Shiny Meetup Slides](https://github.com/flor14/rladies_shiny_meetup_2020)
+
+This work is licensed under a</br>[Creative Commons Attribution-ShareAlike 4.0](http://creativecommons.org/licenses/by-sa/4.0/) International License
 
 ---
 
-# Your work can live on the web
+# New libraries to install
 
-<!-- Why: the final report is a repo that renders on Pages. Today: a tiny demo
-     repo, the same steps you'll use for the report.
-     Pages serves static files from a repo: our job is to get rendered html
-     into the repo. -->
+```{r}
+#| eval: false
 
----
-
-# The steps
-
-<!-- Numbered list on one slide:
-       1. Create a new PUBLIC repo (GitHub Desktop)
-       2. Add index.qmd, _quarto.yml, d3-chart.html
-       3. Render the site (quarto render) so docs/ exists
-       4. Commit + push
-       5. GitHub.com: Settings > Pages > Deploy from a branch > main /docs
-       6. Wait 1-2 min, open https://<username>.github.io/<repo>/
-     Then the "three things everyone forgets" slide below. -->
+install.packages('shiny')
+install.packages('shinyWidgets')
+install.packages('rsconnect')
+```
 
 ---
 
-# Step 1: create the demo repo
+{{< center >}}
+{{< middle >}}
 
-<!-- GitHub Desktop: File > New Repository. Publish with "Keep this code
-     private" UNCHECKED. (Pages on a free account needs a public repo; this is
-     a throwaway demo, not the course repo.) Screenshot. -->
+::: {.col width="40%"}
+![](https://github.com/rstudio/shiny/raw/main/man/figures/logo.png){width="300"}
+:::
 
----
+::: {.col width="60%"}
+</br>
 
-# Step 2: tell Quarto to render into `docs/`
+# Interactive Webapps in R
 
-<!-- Show _quarto.yml:
-
-       project:
-         type: website
-         output-dir: docs
-
-     Default is _site/; Pages can only serve from the repo root or /docs, so we
-     change it. Also add an empty .nojekyll file in the repo root (Quarto docs
-     recommend it for the docs/ approach). TEST ONCE END TO END before class. -->
+## Check out the [Shiny Gallery](https://shiny.rstudio.com/gallery/)
+:::
 
 ---
 
-# Step 3: render, then push
+# Anatomy of a Shiny App
 
-<!-- `quarto render` (or Render in Positron) creates docs/. Commit and push
-     with GitHub Desktop. Check docs/ is in the diff. -->
+A Shiny app is a web page (UI) connected to a computer running a live R session (Server)
 
----
-
-# Step 4: turn on Pages
-
-<!-- Screenshot of Settings > Pages: Source = Deploy from a branch,
-     Branch = main, Folder = /docs. Save. -->
+![](images/cheat1.png){width="860" .nostretch}
 
 ---
 
-# Three things everyone forgets
+# `app.R`
 
-<!-- 1. Turn Pages on (it's off by default)
-     2. Render BEFORE you push (Pages serves what's committed; stale or missing
-        docs/ = stale or missing site)
-     3. The repo must be public
-     + Re-render before every push, or nothing changes on the site. -->
+::: {.col width="45%"}
+You can insert all the code at once with the shinyapp snippet!
+
+Just start typing `shiny`...
+
+```{r}
+#| echo: false
+#| fig-align: center
+#| out-width: '80%'
+
+knitr::include_graphics("images/snippet_2.png")
+```
+:::
+
+::: {.col width="55%"}
+```{r}
+#| eval: false
+
+library(shiny)
+
+ui <- fluidPage(
+
+)
+
+server <- function(input, output, session) {
+
+}
+
+shinyApp(ui, server)
+```
+:::
+
+---
+
+# Building a shiny app
+
+![](images/cheat1.png){width="800" .nostretch}
+
+::: {.col}
+**`ui`**
+
+1. Pick a layout function
+
+2. Add inputs widgets
+
+3. Add `*Output()` functions
+:::
+
+::: {.col}
+**`server`**
+
+1. Use `render*()` functions to make outputs
+
+2. Link outputs with `output$<id>`
+
+3. Link inputs with `input$<id>`
+:::
+
+---
+
+# Run the app 🎬
+
+- **Option 1**: Click the "Run App" button in the toolbar:
+
+![](images/run_app.png){width="360" .nostretch}
+
+- **Option 2**: Use a keyboard shortcut: Cmd/Ctrl + Shift + Enter.
+
+- **Option 3**: `shiny::runApp()` with the path to the **app.R** file.
 
 ---
 
 {{< inverse >}}
+
+::: {.col width="40%"}
+## Your Turn
+
+### `hello_shiny.app`
+
+Create a new file called `app.R` in Positron, then copy in this code
+:::
+
+::: {.col .font50 width="60%"}
+```{r}
+#| eval: false
+#| code-line-numbers: "1,4,27,40"
+
+library(shiny)
+
+# Define UI for application that draws a histogram
+ui <- fluidPage(
+
+    # Application title
+    titlePanel("Old Faithful Geyser Data"),
+
+    # Sidebar with a slider input for number of bins
+    sidebarLayout(
+        sidebarPanel(
+            sliderInput("bins",
+                        "Number of bins:",
+                        min = 1,
+                        max = 50,
+                        value = 30)
+        ),
+
+        # Show a plot of the generated distribution
+        mainPanel(
+           plotOutput("distPlot")
+        )
+    )
+)
+
+# Define server logic required to draw a histogram
+server <- function(input, output) {
+
+    output$distPlot <- renderPlot({
+        # generate bins based on input$bins from ui.R
+        x    <- faithful[, 2]
+        bins <- seq(min(x), max(x), length.out = input$bins + 1)
+
+        # draw the histogram with the specified number of bins
+        hist(x, breaks = bins, col = 'darkgray', border = 'white')
+    })
+}
+
+# Run the application
+shinyApp(ui = ui, server = server)
+```
+:::
+
+---
+
 {{< center >}}
+{{< bg-color "#fff" >}}
+
+## User Interface (UI)
+
+```{r}
+#| echo: false
+#| fig-align: center
+#| out-width: '70%'
+
+knitr::include_graphics("images/mamu_4.jpg")
+```
+
+[Matryoshka Dolls](https://en.wikipedia.org/wiki/Matryoshka_doll)
+
+---
+
+{{< bg-color "#fff" >}}
+
+### Organize panels and elements into a layout with a **layout function**
+
+### Top level is usually `fluidPage()`
+
+```{r}
+#| echo: false
+#| fig-align: center
+#| out-width: '80%'
+
+knitr::include_graphics("images/layout.png")
+```
+
+---
+
+{{< bg-color "#fff" >}}
+
+```{r}
+#| echo: false
+#| fig-align: center
+#| out-width: '100%'
+
+knitr::include_graphics("images/slide_mamu1.png")
+```
+
+---
+
+### `sidebarLayout()`
+
+::: {.col width="40%"}
+```{r}
+#| eval: false
+#| code-line-numbers: "5,7,14"
+
+ui <- fluidPage(
+
+  titlePanel("Hello Shiny!"),
+
+  sidebarLayout(
+
+    sidebarPanel(
+      sliderInput(
+        "bins", label = "Number of bins:",
+        min = 1, value = 30, max = 50
+      )
+    ),
+
+    mainPanel(
+      plotOutput("distPlot")
+    )
+  )
+)
+```
+:::
+
+::: {.col width="60%"}
+```{r}
+#| echo: false
+#| fig-align: center
+#| out-width: '100%'
+
+knitr::include_graphics("images/sidebarLayout.png")
+```
+:::
+
+---
+
+### `navbarPage()`: An alternative to `fluidPage()`
+
+Think of each `tabPanel()` as it's own `fluidPage()`
+
+::: {.col width="40%"}
+```{r}
+#| eval: false
+#| code-line-numbers: "1"
+
+ui <- navbarPage("My Application",
+  tabPanel("Component 1"),
+  tabPanel("Component 2"),
+  tabPanel("Component 3")
+)
+```
+:::
+
+::: {.col width="60%"}
+```{r}
+#| echo: false
+#| fig-align: center
+#| out-width: '100%'
+
+knitr::include_graphics("images/navbarPage.png")
+```
+:::
+
+---
+
+### `navbarPage()`: An alternative to `fluidPage()`
+
+Use `navbarMenu()` to create a nested menu item
+
+::: {.col width="40%"}
+```{r}
+#| eval: false
+#| code-line-numbers: "4,5,6"
+
+ui <- navbarPage("My Application",
+  tabPanel("Component 1"),
+  tabPanel("Component 2"),
+  navbarMenu("More",
+    tabPanel("Sub-Component A"),
+    tabPanel("Sub-Component B"))
+)
+```
+:::
+
+::: {.col width="60%"}
+```{r}
+#| echo: false
+#| fig-align: center
+#| out-width: '100%'
+
+knitr::include_graphics("images/navbarMenu.png")
+```
+:::
+
+---
+
+{{< inverse >}}
 {{< middle >}}
 
-# Your Turn: publish your D3 chart
+# The UI defines the "what" and "where" for:
 
-<!-- ~20 min. Each student builds the demo repo, drops in their D3 chart from
-     the previous exercise, deploys, and posts the live URL in Slack.
-     Troubleshooting: check Pages build under the repo's Actions tab; hard-
-     refresh; confirm docs/ is on GitHub.com. -->
+## 1. **[Inputs]{.orange}**: collect values from the user
+## 2. **Output**: display something to the user
+
+---
+
+{{< bg-color "#fff" >}}
+
+# **Inputs**: collect values from the user
+
+```{r}
+#| echo: false
+#| fig-align: center
+#| out-width: '100%'
+
+knitr::include_graphics("images/inputs.png")
+```
+
+---
+
+## Example Input: Radio buttons in the sidebar
+
+::: {.col width="30%"}
+```{r}
+#| eval: false
+#| code-line-numbers: "4"
+
+ui <- fluidPage(
+  sidebarLayout(
+    sidebarPanel(
+      radioButtons(…)
+    ),
+    mainPanel(…)
+  )
+)
+```
+:::
+
+::: {.col width="70%"}
+```{r}
+#| echo: false
+#| fig-align: center
+#| out-width: '100%'
+
+knitr::include_graphics("images/slide_mamu2.png")
+```
+:::
+
+---
+
+{{< center >}}
+{{< middle >}}
+{{< bg-color "#fff" >}}
+
+```{r}
+#| echo: false
+#| fig-align: center
+#| out-width: '70%'
+
+knitr::include_graphics("images/parentesis.png")
+```
+
+---
+
+{{< center >}}
+{{< middle >}}
+{{< bg-color "#fff" >}}
+
+```{r}
+#| echo: false
+#| fig-align: center
+#| out-width: '90%'
+
+knitr::include_graphics("images/closing_par.png")
+```
+
+---
+
+{{< inverse >}}
+
+## Quick practice
+
+1. Open the `widgets.R` file.
+2. Run the app (Click "run app" button).
+3. Go to the [Shiny Widgets Gallery](https://shiny.rstudio.com/gallery/widget-gallery.html) to see other input widgets.
+
+---
+
+{{< inverse >}}
+{{< middle >}}
+
+# The UI defines the "what" and "where" for:
+
+## 1. **Inputs**: collect values from the user
+## 2. **[Output]{.orange}**: display something to the user
+
+---
+
+## Example Output: Put a plot in the main panel
+
+::: {.col width="30%"}
+```{r}
+#| eval: false
+#| code-line-numbers: "7"
+
+ui <- fluidPage(
+  sidebarLayout(
+    sidebarPanel(
+      radioButtons(…)
+    ),
+    mainPanel(
+      plotOutput(…)
+    )
+  )
+)
+```
+:::
+
+::: {.col width="70%"}
+```{r}
+#| echo: false
+#| fig-align: center
+#| out-width: '100%'
+
+knitr::include_graphics("images/slide_mamu3.png")
+```
+:::
+
+---
+
+# **Output**: display something to the user
+
+Output function  | Description
+-----------------| ---------------
+`plotOutput()`   | Display a reactive _plot_
+`dataTableOutput()` | Display a `DT::datatable()`
+`textOutput()`   | Display reactive _text_
+`imageOutput()`  | Display an image
+
+---
+
+# Building a shiny app
+
+![](images/cheat1.png){width="800" .nostretch}
+
+::: {.col}
+**`ui`**
+
+1. Pick a layout function, e.g. `sidebarLayout()`
+
+2. Add inputs widgets
+
+3. Add `*Output()` functions
+:::
+
+::: {.col}
+**`server`**
+
+1. Use `render*()` functions to make outputs
+
+2. Link outputs with `output$<id>`
+
+3. Link inputs with `input$<id>`
+:::
+
+---
+
+{{< bg-color "#fff" >}}
+
+```{r}
+#| echo: false
+#| fig-align: center
+#| out-width: '90%'
+
+knitr::include_graphics("images/outputs.png")
+```
+
+---
+
+# Using `renderPlot()`: make a plot
+
+::: {.col}
+```{r}
+#| eval: false
+
+library(ggplot2)
+
+ggplot(mpg) +
+  geom_point(
+    aes(x = displ, y = hwy, color = class))
+```
+:::
+
+::: {.col}
+```{r}
+#| echo: false
+#| fig-width: 7
+#| fig-height: 5
+#| fig-align: center
+
+library(ggplot2)
+
+ggplot(mpg) +
+  geom_point(
+    aes(x = displ, y = hwy, color = class))
+```
+:::
+
+---
+
+## Link plot to output with `output$<id>`
+
+::: {.col width="45%"}
+`ui`
+
+```{r}
+#| eval: false
+#| code-line-numbers: "7,8,9"
+
+ui <- fluidPage(
+  sidebarLayout(
+    sidebarPanel(
+      radioButtons(…)
+    ),
+    mainPanel(
+      plotOutput(
+        outputId = "mpg_plot"
+      )
+    )
+  )
+)
+```
+:::
+
+::: {.col width="55%"}
+`server`
+
+```{r}
+#| eval: false
+#| code-line-numbers: "2"
+
+server <- function(input, output, session) {
+  output$mpg_plot <- renderPlot({
+    ggplot(mpg) +
+      geom_point(
+        aes(x = displ, y = hwy, color = class))
+  })
+}
+```
+:::
+
+---
+
+## Link user inputs to plot with `input$<id>`
+
+::: {.col .font60}
+`ui`
+
+```{r}
+#| eval: false
+#| code-line-numbers: "5,9,10,11"
+
+ui <- fluidPage(
+  sidebarLayout(
+    sidebarPanel(
+      radioButtons(
+        inputId = "xvar",
+        label = "Select the x-axis variable:",
+        selected = "displ",
+        choices = c(
+          "Highway miles per gallon" = "hwy",
+          "City miles per gallon" = "cty",
+          "Engine displacement, in litres" = "displ")
+      ),
+    ),
+    mainPanel(
+      plotOutput(
+        outputId = "mpg_plot"
+      )
+    )
+  )
+)
+```
+:::
+
+::: {.col .font60}
+`server`
+
+```{r}
+#| eval: false
+#| code-line-numbers: "5,6"
+
+server <- function(input, output, session) {
+  output$mpg_plot <- renderPlot({
+    ggplot(mpg) +
+      geom_point(
+        aes_string(
+          x = input$xvar,
+          y = "hwy",
+          color = "class"))
+  })
+}
+```
+
+**Note**: I switched the ggplot code from</br>`aes()` to `aes_string()`
+:::
+
+---
+
+{{< inverse >}}
+
+## Quick practice
+
+Open the `mpg.R` app and click the "Run App" button
+
+---
+
+{{< inverse >}}
+
+```{r}
+#| echo: false
+
+countdown(
+  minutes = 10,
+  warn_when = 30,
+  update_every = 15,
+  top = 0,
+  font_size = '2em'
+)
+```
+
+## Your Turn
+
+::: {.col}
+1. Open the `caseConverter.R` file.
+2. In the `server`: Write code in the provided `renderText()` to convert the input text to lower case.
+3. Run the app and test that it's working.
+4. In the `ui` main panel: Add two more `textOutput()` functions for also displaying the input text in "upper" case and "title" case.
+3. In the `server`: Define two more outputs to convert the input text to "upper" case and "title" case.
+:::
+
+::: {.col}
+![](images/caseConverter.png){width="660"}
+:::
 
 ---
 
@@ -367,84 +1301,209 @@ agenda(3)
 agenda(4)
 ```
 
-<!-- =====================================================================
-     4. SHINY APPS  (~25%)
-     Frame: dashboards are a bigger category we won't dive into; D3 gets you
-     most of the way for projects. Shiny is for when you need real compute.
-     Simplified from the old deck: concepts + one small app + deploy.
-     ===================================================================== -->
+---
+
+{{< center >}}
+{{< bg-color "#fff" >}}
+
+## Add a theme with ["shinythemes"](https://rstudio.github.io/shinythemes/) package
+
+```{r}
+#| echo: false
+#| fig-align: center
+#| out-width: '60%'
+
+knitr::include_graphics("images/shinythemes.png")
+```
 
 ---
 
-# When a static page isn't enough
+### [Insert theme at top of main `ui` layout function]{.center}
 
-<!-- GitHub Pages / D3 = everything runs in the reader's browser; the data is
-     fixed at render time. Shiny = a live R session behind the page, so the
-     reader can change inputs and R recomputes. Use it when you need real
-     compute (models, big data, user-entered input). -->
+::: {.col width="40%"}
+```{r}
+#| eval: false
+#| code-line-numbers: "4"
+
+library(shinythemes)
+
+ui <- fluidPage(
+  theme = shinytheme("sandstone"),
+  sidebarLayout(
+    sidebarPanel(
+      <insert widgets>
+    ),
+    mainPanel(
+      <insert outputs>
+    )
+  )
+)
+```
+:::
+
+::: {.col width="60%"}
+```{r}
+#| echo: false
+#| fig-align: center
+#| out-width: '100%'
+
+knitr::include_graphics("https://rstudio.github.io/shinythemes/images/sandstone.png")
+```
+:::
 
 ---
 
-## Check out the [Shiny Gallery](https://shiny.posit.co/r/gallery/)
+{{< center >}}
+{{< middle >}}
 
-<!-- reuse index-old.qmd ~L860-866 (check the gallery link still resolves). -->
+## Fancier widgets with ["shinyWidgets"](http://shinyapps.dreamrs.fr/shinyWidgets/) package
 
----
-
-# Anatomy of a Shiny app
-
-<!-- reuse index-old.qmd ~L867-874: "a web page (UI) connected to a computer
-     running a live R session (Server)" + cheat1.png image. -->
+### Open the `shinyWidgets.R` app and click the "Run App" button
 
 ---
 
-# UI = inputs + outputs; server = the code that connects them
+# If you really want to get good at this:
 
-<!-- Condensed from old L1157-1300 (inputs / outputs), one or two slides:
-       input$<id> in -> server code -> output$<id> out.
-     Show the smallest possible app (app.R), side by side with what it renders. -->
+## 1. Print out this [Cheatsheet](https://shiny.posit.co/r/articles/start/cheatsheet/)
+
+## 2. Watch this [2.5 Hour Comprehensive RStudio Tutorial](https://shiny.rstudio.com/tutorial)
+
+## 3. Use this reference manual: [Mastering Shiny](https://mastering-shiny.org/)
 
 ---
 
-# The smallest app
+# You can deploy an app for free on [Posit Connect Cloud](https://connect.posit.cloud)
 
-<!-- ~20 lines: a sliderInput, a renderPlot, a plotOutput. Use code-line-
-     numbers to step through ui / server / shinyApp(). Based on the
-     hello_shiny / internetUsers apps. -->
+(shinyapps.io is being retired in favor of Connect Cloud)
+
+1. Sign in at [connect.posit.cloud](https://connect.posit.cloud) with GitHub
+2. Put your app in a **public GitHub repo**: `app.R` + any data files
+3. In R, in the app folder, list the packages the app needs:
+
+```{r}
+#| eval: false
+
+rsconnect::writeManifest()
+```
+
+4. Commit and push `manifest.json` with the app
+5. On Connect Cloud: **Publish → Shiny → your repo → `app.R` → Publish**
+
+---
+
+# Deploy: things that bite
+
+- No `manifest.json`, or a **stale** one → missing package error. Re-run `writeManifest()`, push, republish
+- Data files must be **committed** next to `app.R`, and read with relative paths
+- Don't call `install.packages()` inside the app
+- "Automatically publish on push" redeploys every time you push
 
 ---
 
 {{< inverse >}}
-{{< center >}}
-{{< middle >}}
 
-# Your Turn: run and modify an app
+```{r}
+#| echo: false
 
-<!-- ~15 min. Open internetUsers.R (or a simplified starter), run it, connect
-     one input to the plot. This replaces the old caseConverter + internetUsers
-     + shinyWidgets exercises. Fast finishers: a theme (shinythemes /
-     bslib). -->
+countdown(
+  minutes = 15,
+  warn_when = 30,
+  update_every = 15,
+  top = 0,
+  font_size = '2em'
+)
+```
+
+## Your Turn
+
+::: {.col width="80%"}
+1. Open the `internetUsers.R` file.
+2. Modify the server code so that the inputs control the plot.
+3. (Optional) Deploy your app to Posit Connect Cloud
+:::
+
+::: {.col width="20%"}
+:::
+
 
 ---
 
-# Deploy with Posit Connect Cloud
+```{r}
+#| echo: false
+#| results: asis
 
-<!-- Replaces shinyapps.io (being retired). Steps TBD once tested:
-       1. Sign in at connect.posit.cloud (GitHub login) -- do this BEFORE class
-       2. Put the app in a GitHub repo
-       3. Publish from the repo
-     VERIFY BEFORE CLASS: current R-for-Shiny support and whether it needs a
-     manifest (rsconnect::writeManifest()). Possibly demo-only if time is
-     short. -->
+agenda(5)
+```
+
+<!-- BONUS: only if there is time. Otherwise demo it, or skip and point to the
+     steps in practice.qmd. -->
 
 ---
 
-# Where to go from here
+# Bonus: publish your JavaScript graphic on the web
 
-<!-- Short list of what exists beyond today: Mastering Shiny, the cheatsheet,
-     bslib dashboards, Observable / D3 for more custom work. Tie back to the
-     final report + project: ggplot for static, plotly/D3 for interactive,
-     Pages to publish, Shiny when you need compute. -->
+You can take your Quarto file with the D3 (or plotly) graphic and put it on a real URL with **GitHub Pages**
+
+. . .
+
+1. Create a new **public** repo (GitHub Desktop)
+2. Add your `.qmd` and graphic files, plus a `_quarto.yml` that renders into `docs/`
+3. **Render**, then commit and **push**
+4. On GitHub.com: Settings → Pages → deploy from `main` / `docs`
+5. Open `https://<username>.github.io/<repo>/`
+
+---
+
+# The key setting: render into `docs/`
+
+::: {.font80}
+```yaml
+# _quarto.yml
+project:
+  type: website
+  output-dir: docs        # default is _site
+  resources:
+    - d3-chart.html       # copy your D3 file into docs/
+```
+:::
+
+. . .
+
+The `pages-demo` folder in your practice files has a starter: `index.qmd`, `_quarto.yml`, and a hidden `.nojekyll` file (in Finder: Cmd+Shift+.)
+
+---
+
+# Three things everyone forgets
+
+1. [**Turn Pages on.**]{.orange} It's off by default
+2. [**Render before you push.**]{.orange} Pages serves what's committed, so a stale or missing `docs/` means a stale or missing site
+3. [**Make the repo public.**]{.orange}
+
+. . .
+
+### And every time you change something: re-render, commit, push
+
+---
+
+{{< inverse >}}
+
+```{r}
+#| echo: false
+
+countdown(
+  minutes = 15,
+  warn_when = 60,
+  update_every = 15,
+  top = 0,
+  font_size = '2em'
+)
+```
+
+## Optional: Publish Your D3 Chart
+
+1. Create a public repo, and copy in the `pages-demo` files and your `d3-chart.html`
+2. Render, commit, push
+3. Turn on Pages, then **post your live URL in Slack**
 
 ---
 
@@ -453,14 +1512,3 @@ agenda(4)
 {{< middle >}}
 
 # Next week: Story-telling
-
----
-
-{{< inverse >}}
-
-# License
-
-## These slides were modified from [Florencia D'Andrea](https://florencia.netlify.app/)'s [RLadies Shiny Meetup Slides](https://github.com/flor14/rladies_shiny_meetup_2020)
-
-<!-- Keep attribution while any of her slides remain (old L830-834). Drop if the
-     reused slides are all rewritten. -->
