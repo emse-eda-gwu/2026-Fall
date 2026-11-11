@@ -815,9 +815,9 @@ built-in one.
 </section>
 <section class="slide level0">
 
-<h1>What can an interactive chart do that a static one can’t?</h1>
+<h1><span class="center">Why build an interactive chart?</span></h1>
 <div class="cols-row">
-<div class="col">
+<div class="col fragment">
 <div id="the-reader-can" class="h3">
 The reader can…
 </div>
@@ -829,51 +829,45 @@ The reader can…
 <li><strong>Scroll</strong> through a story, one step at a time</li>
 </ul>
 </div>
-<div class="col">
+<div class="col fragment">
 <div id="the-cost" class="h3">
 The cost
 </div>
 <ul>
+<li>Doesn’t work on paper or in a PDF</li>
+<li>Not easily sharable (e.g., social media)</li>
 <li>More to build, and more to <em>check</em></li>
 <li>Hides information behind a mouse movement</li>
-<li>Doesn’t work on paper or in a PDF</li>
-<li>Can be decoration instead of insight</li>
 </ul>
 </div>
-</div>
-<div class="fragment">
-<h3 id="the-test-what-does-the-interaction-let-me-do-that-a-static-chart-wouldnt">The test: <span class="orange">what does the interaction let me do that a static chart wouldn’t?</span></h3>
 </div>
 </section>
 <section class="slide level0">
 
-<h1>Two ways to make JavaScript-based graphics</h1>
+<h1><span class="center">Two ways to make JavaScript-based graphics</span></h1>
 <div class="cols-row">
-<div class="col">
+<div class="col fragment">
 <div id="a.-packages-that-wrap-javascript" class="h3">
 <span class="orange">A.</span> Packages that wrap JavaScript
 </div>
-<p><code>plotly</code>, <code>reactable</code></p>
+<p><span class="center"><code>plotly</code>, <code>reactable</code></span></p>
 <ul>
 <li>Hide the JavaScript behind R code</li>
 <li>Short, readable code you could write yourself</li>
 <li>Limited to what the package supports</li>
 </ul>
 </div>
-<div class="col">
+<div class="col fragment">
 <div id="b.-custom-graphics-with-d3" class="h3">
 <span class="orange">B.</span> Custom graphics with D3
 </div>
-<p><code>D3</code> + Claude</p>
+<p><span class="center"><code>D3</code> + Claude</span></p>
 <ul>
 <li>Build <strong>anything</strong> you can describe</li>
 <li>You don’t write it by hand: you <span class="orange">prompt and iterate</span></li>
 <li>You verify the result against a static chart and the data</li>
 </ul>
 </div>
-</div>
-<div class="fragment">
-<h3 id="then-shiny-for-dashboards-where-r-runs-live-behind-the-page">Then: <span class="orange">Shiny</span> for dashboards, where R runs live behind the page</h3>
 </div>
 </section>
 <section class="slide level0">
@@ -972,6 +966,7 @@ The cost
 </ul>
 </div>
 <div class="fragment">
+<p><br></p>
 <h3 id="always-compare-the-interactive-version-to-the-static-one">Always compare the interactive version to the static one</h3>
 </div>
 </section>
@@ -985,7 +980,8 @@ The cost
 <span id="cb4-4"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment">
-<h3 id="insert-using-iframe">Insert using iframe</h3>
+<p><br></p>
+<h3 id="insert-using-iframe-same-thing-well-do-with-d3">Insert using iframe (same thing we’ll do with D3!)</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>htmltools<span class="sc">::</span>tags<span class="sc">$</span><span class="fu">iframe</span>(</span>
 <span id="cb5-2"><a href=""></a>  <span class="at">src         =</span> <span class="fu">file.path</span>(<span class="st">'figs'</span>, <span class="st">'gapminder.html'</span>),</span>
@@ -996,9 +992,6 @@ The cost
 <span id="cb5-7"><a href=""></a>  <span class="at">frameBorder =</span> <span class="st">"0"</span></span>
 <span id="cb5-8"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</div>
-<div class="fragment">
-<h3 id="remember-this-well-use-iframes-again-for-d3">Remember this: we’ll use iframes again for D3!</h3>
 </div>
 </section>
 <section class="slide level0">
@@ -1053,7 +1046,7 @@ The cost
 <section class="slide level0">
 
 <h1>You don’t need to memorize any of this</h1>
-<h3 id="ask-claude-for-what-you-need-then-check-the-result">Ask Claude for what you need, then check the result:</h3>
+<h3 id="ask-your-ai-agent-for-what-you-need-then-check-the-result-e.g.">Ask your AI agent for what you need, then check the result, e.g.:</h3>
 <ul>
 <li>Do the numbers in the tooltips match the data?</li>
 <li>Did anything from the static version get lost?</li>
@@ -1066,7 +1059,7 @@ The cost
 <h1 class="lexis-slide-title"></h1>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_59309558" minutes="8" seconds="0" warn-when="30" update-every="15" blink-colon="true" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_fb91f4f7" minutes="8" seconds="0" warn-when="30" update-every="15" blink-colon="true" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:2em;"></countdown-timer>
 </div>
 </div>
 <h2 id="your-turn-interactive-charts-tables">Your Turn: Interactive Charts &amp; Tables</h2>
@@ -1128,17 +1121,17 @@ The cost
 <div class="cols-row">
 <div class="col">
 <div id="you" class="h3">
-<span class="orange">You</span>
+<span class="orange center">You</span>
 </div>
 <ul>
 <li>Decide what the chart should show</li>
-<li>Describe it precisely</li>
+<li>Describe it <strong>precisely</strong></li>
 <li>Check that it’s right</li>
 </ul>
 </div>
 <div class="col">
 <div id="claude" class="h3">
-<span class="orange">Claude</span>
+<span class="orange center">Claude</span>
 </div>
 <ul>
 <li>Writes the JavaScript</li>
@@ -1147,6 +1140,7 @@ The cost
 </div>
 </div>
 <div class="fragment">
+<p><br></p>
 <h3 id="how-do-you-verify-it-without-reading-the-code">How do you verify it without reading the code?</h3>
 </div>
 </section>
@@ -1159,7 +1153,8 @@ The cost
 <li><strong>Compare</strong> the interactive chart to the static one, and to the data</li>
 </ol>
 <div class="fragment">
-<h3 id="the-static-chart-is-your-reference.-if-the-two-disagree-one-of-them-is-wrong-and-you-can-find-out-which.">The static chart is your reference. If the two disagree, one of them is wrong, and you can find out which.</h3>
+<p><br></p>
+<h3 id="the-static-chart-is-your-reference">The static chart is your reference</h3>
 </div>
 </section>
 <section class="slide level0">
@@ -1265,6 +1260,7 @@ The cost
 <li><strong>The interaction.</strong> Does every control do what it says?</li>
 </ol>
 <div class="fragment">
+<p><br></p>
 <h3 id="if-something-looks-off-tell-claude-exactly-whats-wrong-and-give-it-the-right-value-from-your-data">If something looks off, tell Claude exactly what’s wrong and give it the right value from your data</h3>
 </div>
 </section>
@@ -1286,7 +1282,7 @@ The cost
 <h1 class="lexis-slide-title"></h1>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_68652418" minutes="25" seconds="0" warn-when="60" update-every="15" blink-colon="true" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_df820fc6" minutes="20" seconds="0" warn-when="60" update-every="15" blink-colon="true" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:2em;"></countdown-timer>
 </div>
 </div>
 <h2 id="your-turn-a-custom-chart-in-d3">Your Turn: A Custom Chart in D3</h2>
@@ -1306,7 +1302,7 @@ The cost
 <h1 class="lexis-slide-title"></h1>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_dad198fa" minutes="5" seconds="0" warn-when="30" update-every="1" tabindex="0" style="top:1;right:0;bottom:0;left:0;--countdown-margin:5%;--countdown-font-size:8em;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_e0e5e242" minutes="5" seconds="0" warn-when="30" update-every="1" tabindex="0" style="top:1;right:0;bottom:0;left:0;--countdown-margin:5%;--countdown-font-size:8em;"></countdown-timer>
 </div>
 </div>
 <div id="intermission" class="h1">
@@ -1965,7 +1961,7 @@ Your Turn
 <h1 class="lexis-slide-title"></h1>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_04a22528" minutes="10" seconds="0" warn-when="30" update-every="15" blink-colon="true" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_987a954c" minutes="10" seconds="0" warn-when="30" update-every="15" blink-colon="true" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:2em;"></countdown-timer>
 </div>
 </div>
 <h2 id="your-turn-1">Your Turn</h2>
@@ -2095,7 +2091,7 @@ Your Turn
 <h1 class="lexis-slide-title"></h1>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_44672b35" minutes="15" seconds="0" warn-when="30" update-every="15" blink-colon="true" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_9c047668" minutes="15" seconds="0" warn-when="30" update-every="15" blink-colon="true" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:2em;"></countdown-timer>
 </div>
 </div>
 <h2 id="your-turn-2">Your Turn</h2>
@@ -2176,7 +2172,7 @@ Your Turn
 <h1 class="lexis-slide-title"></h1>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_e10aedc2" minutes="15" seconds="0" warn-when="60" update-every="15" blink-colon="true" tabindex="0" style="top:0;right:0;--countdown-font-size:2em;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_72809bbb" minutes="15" seconds="0" warn-when="60" update-every="15" blink-colon="true" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:2em;"></countdown-timer>
 </div>
 </div>
 <h2 id="optional-publish-your-d3-chart">Optional: Publish Your D3 Chart</h2>
