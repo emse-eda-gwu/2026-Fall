@@ -59,9 +59,9 @@ agenda(1)
 
 ---
 
-# What can an interactive chart do that a static one can't?
+# [Why build an interactive chart?]{.center}
 
-::: {.col}
+::: {.col .fragment}
 ### The reader can...
 
 - **Hover** for exact values
@@ -71,46 +71,40 @@ agenda(1)
 - **Scroll** through a story, one step at a time
 :::
 
-::: {.col}
+::: {.col .fragment}
 ### The cost
 
+- Doesn't work on paper or in a PDF
+- Not easily sharable (e.g., social media)
 - More to build, and more to _check_
 - Hides information behind a mouse movement
-- Doesn't work on paper or in a PDF
-- Can be decoration instead of insight
 :::
-
-. . .
-
-### The test: [what does the interaction let me do that a static chart wouldn't?]{.orange}
 
 ---
 
-# Two ways to make JavaScript-based graphics
+# [Two ways to make JavaScript-based graphics]{.center}
 
-::: {.col}
+::: {.col .fragment}
+
 ### [A.]{.orange} Packages that wrap JavaScript
 
-`plotly`, `reactable`
+[`plotly`, `reactable`]{.center}
 
 - Hide the JavaScript behind R code
 - Short, readable code you could write yourself
 - Limited to what the package supports
 :::
 
-::: {.col}
+::: {.col .fragment}
+
 ### [B.]{.orange} Custom graphics with D3
 
-`D3` + Claude
+[`D3` + Claude]{.center}
 
 - Build **anything** you can describe
 - You don't write it by hand: you [prompt and iterate]{.orange}
 - You verify the result against a static chart and the data
 :::
-
-. . .
-
-### Then: [Shiny]{.orange} for dashboards, where R runs live behind the page
 
 ---
 
@@ -247,6 +241,8 @@ htmltools::tags$iframe(
 
 . . .
 
+<br>
+
 ### Always compare the interactive version to the static one
 
 ---
@@ -264,7 +260,9 @@ htmlwidgets::saveWidget(
 
 . . .
 
-### Insert using iframe
+<br>
+
+### Insert using iframe (same thing we'll do with D3!)
 
 ```{r}
 #| eval: false
@@ -278,10 +276,6 @@ htmltools::tags$iframe(
   frameBorder = "0"
 )
 ```
-
-. . .
-
-### Remember this: we'll use iframes again for D3!
 
 ---
 
@@ -356,7 +350,7 @@ htmltools::tags$iframe(
 
 # You don't need to memorize any of this
 
-### Ask Claude for what you need, then check the result:
+### Ask your AI agent for what you need, then check the result, e.g.:
 
 - Do the numbers in the tooltips match the data?
 - Did anything from the static version get lost?
@@ -373,7 +367,8 @@ countdown(
   minutes = 8,
   warn_when = 30,
   update_every = 15,
-  top = 0,
+  top = '0.5em',
+  right = '0.5em',
   font_size = '2em'
 )
 ```
@@ -426,19 +421,21 @@ agenda(2)
 # You don't write D3. You prompt, and iterate.
 
 ::: {.col}
-### [You]{.orange}
+### [You]{.orange .center}
 - Decide what the chart should show
-- Describe it precisely
+- Describe it **precisely**
 - Check that it's right
 :::
 
 ::: {.col}
-### [Claude]{.orange}
+### [Claude]{.orange .center}
 - Writes the JavaScript
 - Revises until it looks right
 :::
 
 . . .
+
+<br>
 
 ### How do you verify it without reading the code?
 
@@ -452,7 +449,9 @@ agenda(2)
 
 . . .
 
-### The static chart is your reference. If the two disagree, one of them is wrong, and you can find out which.
+<br>
+
+### The static chart is your reference
 
 ---
 
@@ -543,6 +542,8 @@ gapminder %>%
 
 . . .
 
+<br>
+
 ### If something looks off, tell Claude exactly what's wrong and give it the right value from your data
 
 ---
@@ -567,10 +568,11 @@ gapminder %>%
 #| echo: false
 
 countdown(
-  minutes = 25,
+  minutes = 20,
   warn_when = 60,
   update_every = 15,
-  top = 0,
+  top = '0.5em',
+  right = '0.5em',
   font_size = '2em'
 )
 ```
@@ -1273,7 +1275,8 @@ countdown(
   minutes = 10,
   warn_when = 30,
   update_every = 15,
-  top = 0,
+  top = '0.5em',
+  right = '0.5em',
   font_size = '2em'
 )
 ```
@@ -1409,7 +1412,8 @@ countdown(
   minutes = 15,
   warn_when = 30,
   update_every = 15,
-  top = 0,
+  top = '0.5em',
+  right = '0.5em',
   font_size = '2em'
 )
 ```
@@ -1494,7 +1498,8 @@ countdown(
   minutes = 15,
   warn_when = 60,
   update_every = 15,
-  top = 0,
+  top = '0.5em',
+  right = '0.5em',
   font_size = '2em'
 )
 ```
