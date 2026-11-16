@@ -85,7 +85,7 @@ agenda(1)
 
 ::: {.col .fragment}
 
-### [A.]{.orange} Packages that wrap JavaScript
+### [Packages that wrap JavaScript]{.orange} 
 
 [`plotly`, `reactable`]{.center}
 
@@ -96,16 +96,18 @@ agenda(1)
 
 ::: {.col .fragment}
 
-### [B.]{.orange} Custom graphics with D3
+### [Custom graphics with D3]{.orange}
 
-[`D3` + Claude]{.center}
+[`D3` + agents]{.center}
 
 - Build **anything** you can describe
-- You don't write it by hand: you [prompt and iterate]{.orange}
-- You verify the result against a static chart and the data
+- Don't write it by hand - prompt and iterate
+- Verify the result against a static chart and the data
 :::
 
 ---
+
+{{< center >}}
 
 ## [Plotly](https://plotly.com/graphing-libraries/) uses JavaScript to create interactive charts
 
@@ -242,7 +244,7 @@ htmltools::tags$iframe(
 
 <br>
 
-### Always compare the interactive version to the static one
+### Alternative: just use [plotly directly](https://plotly.com/r/)
 
 ---
 
@@ -347,23 +349,13 @@ htmltools::tags$iframe(
 
 ---
 
-# You don't need to memorize any of this
-
-### Ask your AI agent for what you need, then check the result, e.g.:
-
-- Do the numbers in the tooltips match the data?
-- Did anything from the static version get lost?
-- Is the interactive version actually better?
-
----
-
 {{< inverse >}}
 
 ```{r}
 #| echo: false
 
 countdown(
-  minutes = 8,
+  minutes = 10,
   warn_when = 30,
   update_every = 15,
   top = '0.5em',
@@ -375,9 +367,10 @@ countdown(
 ## Your Turn: Interactive Charts & Tables
 
 1. Open `practice.qmd`
-2. Take a chart from a past class or homework and make it interactive with `ggplotly()`, **or** make a `reactable()` table of the gapminder data
-3. Check the tooltips, and compare against the static version
-4. Post your favorite in Slack
+2. Take a chart from a past class or homework and make it interactive with `ggplotly()`, or build it directly using the `plotly` package.
+3. Make a `reactable()` table of the gapminder data
+4. Check the tooltips, and compare against the static version
+5. Post your favorite in Slack `#class` channel
 
 ---
 
@@ -390,29 +383,52 @@ agenda(2)
 
 ---
 
-{{< inverse >}}
-{{< center >}}
-{{< middle >}}
-
-# B. When packages aren't enough
-
----
-
 # What packages can't do easily
 
-::: {.col}
 - A **custom scale** or axis
 - A **custom animation** (not just "play through the frames")
 - A bespoke interaction: linked views, brushing, step-by-step stories
 - A layout nobody wrote a function for
-:::
 
-::: {.col}
-### [D3](https://d3js.org/)
+---
+
+# Enter [D3.js](https://d3js.org/)
 
 - The JavaScript library underneath most custom interactive graphics (The Pudding, NYT, The Guardian)
 - It can build **anything**, so it's much more complex than `ggplotly()`
 - Browse the [D3 Graph Gallery](https://d3-graph-gallery.com/) to see what's possible
+
+---
+
+## D3 code for roughly what `geom_point()` does
+
+Part of a basic scatterplot ([full file](d3/scatter.html))
+
+::: {.font60}
+```js
+// Scales: map data values to pixel positions
+const x = d3.scaleLog()
+  .domain([200, 60000])
+  .range([margin.left, width - margin.right]);
+
+const y = d3.scaleLinear()
+  .domain([40, 85])
+  .range([height - margin.bottom, margin.top]);
+
+// Axes
+svg.append("g")
+  .attr("transform", `translate(0,${height - margin.bottom})`)
+  .call(d3.axisBottom(x));
+
+// Marks: one circle per row of data
+svg.selectAll("circle")
+  .data(data)
+  .join("circle")
+    .attr("cx", d => x(d.gdpPercap))
+    .attr("cy", d => y(d.lifeExp))
+    .attr("r", d => r(d.pop))
+    .attr("fill", d => color(d.continent));
+```
 :::
 
 ---
@@ -599,8 +615,9 @@ gapminder %>%
 # Gotchas
 
 1. **Embed the data in the file.** A local `.html` can't load a local CSV (browsers block it), and the chart will be blank
-2. **Open it in the browser** and check the console (right-click → Inspect → Console) for red errors
-3. To embed in a `.qmd`, the `.html` must be **in the same folder** and **committed**:
+2. **Load D3 from a CDN.** A public server hosts the library and the file links to it (like `library(d3)`), so viewing the chart needs an internet connection
+3. **Open it in the browser** and check the console (right-click → Inspect → Console) for red errors
+4. To embed in a `.qmd`, the `.html` must be **in the same folder** and **committed**:
 
 ::: {.font80}
 ```html
@@ -633,7 +650,7 @@ countdown(
 4. **Verify** it against your static chart and the data
 5. **Embed** it in `practice.qmd` with an iframe
 
-Fast finishers: add a second interaction
+Fast finishers: add a second interaction, or a whole second chart
 
 ---
 
