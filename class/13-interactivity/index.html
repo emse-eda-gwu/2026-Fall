@@ -845,8 +845,8 @@ The cost
 <h1><span class="center">Two ways to make JavaScript-based graphics</span></h1>
 <div class="cols-row">
 <div class="col fragment">
-<div id="a.-packages-that-wrap-javascript" class="h3">
-<span class="orange">A.</span> Packages that wrap JavaScript
+<div id="packages-that-wrap-javascript" class="h3">
+<span class="orange">Packages that wrap JavaScript</span>
 </div>
 <p><span class="center"><code>plotly</code>, <code>reactable</code></span></p>
 <ul>
@@ -856,24 +856,26 @@ The cost
 </ul>
 </div>
 <div class="col fragment">
-<div id="b.-custom-graphics-with-d3" class="h3">
-<span class="orange">B.</span> Custom graphics with D3
+<div id="custom-graphics-with-d3" class="h3">
+<span class="orange">Custom graphics with D3</span>
 </div>
-<p><span class="center"><code>D3</code> + Claude</span></p>
+<p><span class="center"><code>D3</code> + agents</span></p>
 <ul>
 <li>Build <strong>anything</strong> you can describe</li>
-<li>You don’t write it by hand: you <span class="orange">prompt and iterate</span></li>
-<li>You verify the result against a static chart and the data</li>
+<li>Don’t write it by hand - prompt and iterate</li>
+<li>Verify the result against a static chart and the data</li>
 </ul>
 </div>
 </div>
 </section>
 <section class="slide level0">
 
+<section id="plotly-uses-javascript-to-create-interactive-charts" class="center">
 <h2><a href="https://plotly.com/graphing-libraries/">Plotly</a> uses JavaScript to create interactive charts</h2>
 <div class="fragment">
 <h3 id="but-you-dont-have-to-know-javascript-to-use-it">But you don’t have to know JavaScript to use it! 🎉</h3>
 </div>
+</section>
 </section>
 <section class="slide level0">
 
@@ -965,7 +967,7 @@ The cost
 </div>
 <div class="fragment">
 <p><br></p>
-<h3 id="always-compare-the-interactive-version-to-the-static-one">Always compare the interactive version to the static one</h3>
+<h3 id="alternative-just-use-plotly-directly">Alternative: just use <a href="https://plotly.com/r/">plotly directly</a></h3>
 </div>
 </section>
 <section class="slide level0">
@@ -1043,29 +1045,20 @@ The cost
 </section>
 <section class="slide level0">
 
-<h1>You don’t need to memorize any of this</h1>
-<h3 id="ask-your-ai-agent-for-what-you-need-then-check-the-result-e.g.">Ask your AI agent for what you need, then check the result, e.g.:</h3>
-<ul>
-<li>Do the numbers in the tooltips match the data?</li>
-<li>Did anything from the static version get lost?</li>
-<li>Is the interactive version actually better?</li>
-</ul>
-</section>
-<section class="slide level0">
-
 <section class="lexis-slide-title inverse">
 <h1 class="lexis-slide-title"></h1>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_1498072d" minutes="8" seconds="0" warn-when="30" update-every="15" blink-colon="true" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:2em;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_1cbc3251" minutes="10" seconds="0" warn-when="30" update-every="15" blink-colon="true" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:2em;"></countdown-timer>
 </div>
 </div>
 <h2 id="your-turn-interactive-charts-tables">Your Turn: Interactive Charts &amp; Tables</h2>
 <ol type="1">
 <li>Open <code>practice.qmd</code></li>
-<li>Take a chart from a past class or homework and make it interactive with <code>ggplotly()</code>, <strong>or</strong> make a <code>reactable()</code> table of the gapminder data</li>
+<li>Take a chart from a past class or homework and make it interactive with <code>ggplotly()</code>, or build it directly using the <code>plotly</code> package.</li>
+<li>Make a <code>reactable()</code> table of the gapminder data</li>
 <li>Check the tooltips, and compare against the static version</li>
-<li>Post your favorite in Slack</li>
+<li>Post your favorite in Slack <code>#class</code> channel</li>
 </ol>
 </section>
 </section>
@@ -1084,32 +1077,50 @@ The cost
 </section>
 <section class="slide level0">
 
-<section id="b.-when-packages-arent-enough" class="inverse center middle">
-<h1>B. When packages aren’t enough</h1>
-</section>
-</section>
-<section class="slide level0">
-
 <h1>What packages can’t do easily</h1>
-<div class="cols-row">
-<div class="col">
 <ul>
 <li>A <strong>custom scale</strong> or axis</li>
 <li>A <strong>custom animation</strong> (not just “play through the frames”)</li>
 <li>A bespoke interaction: linked views, brushing, step-by-step stories</li>
 <li>A layout nobody wrote a function for</li>
 </ul>
-</div>
-<div class="col">
-<div id="d3" class="h3">
-<a href="https://d3js.org/">D3</a>
-</div>
+</section>
+<section class="slide level0">
+
+<h1>Enter <a href="https://d3js.org/">D3.js</a></h1>
 <ul>
 <li>The JavaScript library underneath most custom interactive graphics (The Pudding, NYT, The Guardian)</li>
 <li>It can build <strong>anything</strong>, so it’s much more complex than <code>ggplotly()</code></li>
 <li>Browse the <a href="https://d3-graph-gallery.com/">D3 Graph Gallery</a> to see what’s possible</li>
 </ul>
-</div>
+</section>
+<section class="slide level0">
+
+<h2>D3 code for roughly what <code>geom_point()</code> does</h2>
+<p>Part of a basic scatterplot (<a href="d3/scatter.html">full file</a>)</p>
+<div class="font60">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb8-1"><a href=""></a><span class="co">// Scales: map data values to pixel positions</span></span>
+<span id="cb8-2"><a href=""></a><span class="kw">const</span> x <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLog</span>()</span>
+<span id="cb8-3"><a href=""></a>  <span class="op">.</span><span class="fu">domain</span>([<span class="dv">200</span><span class="op">,</span> <span class="dv">60000</span>])</span>
+<span id="cb8-4"><a href=""></a>  <span class="op">.</span><span class="fu">range</span>([margin<span class="op">.</span><span class="at">left</span><span class="op">,</span> width <span class="op">-</span> margin<span class="op">.</span><span class="at">right</span>])<span class="op">;</span></span>
+<span id="cb8-5"><a href=""></a></span>
+<span id="cb8-6"><a href=""></a><span class="kw">const</span> y <span class="op">=</span> d3<span class="op">.</span><span class="fu">scaleLinear</span>()</span>
+<span id="cb8-7"><a href=""></a>  <span class="op">.</span><span class="fu">domain</span>([<span class="dv">40</span><span class="op">,</span> <span class="dv">85</span>])</span>
+<span id="cb8-8"><a href=""></a>  <span class="op">.</span><span class="fu">range</span>([height <span class="op">-</span> margin<span class="op">.</span><span class="at">bottom</span><span class="op">,</span> margin<span class="op">.</span><span class="at">top</span>])<span class="op">;</span></span>
+<span id="cb8-9"><a href=""></a></span>
+<span id="cb8-10"><a href=""></a><span class="co">// Axes</span></span>
+<span id="cb8-11"><a href=""></a>svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
+<span id="cb8-12"><a href=""></a>  <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="vs">`translate(0,</span><span class="sc">${</span>height <span class="op">-</span> margin<span class="op">.</span><span class="at">bottom</span><span class="sc">}</span><span class="vs">)`</span>)</span>
+<span id="cb8-13"><a href=""></a>  <span class="op">.</span><span class="fu">call</span>(d3<span class="op">.</span><span class="fu">axisBottom</span>(x))<span class="op">;</span></span>
+<span id="cb8-14"><a href=""></a></span>
+<span id="cb8-15"><a href=""></a><span class="co">// Marks: one circle per row of data</span></span>
+<span id="cb8-16"><a href=""></a>svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">"circle"</span>)</span>
+<span id="cb8-17"><a href=""></a>  <span class="op">.</span><span class="fu">data</span>(data)</span>
+<span id="cb8-18"><a href=""></a>  <span class="op">.</span><span class="fu">join</span>(<span class="st">"circle"</span>)</span>
+<span id="cb8-19"><a href=""></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"cx"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="fu">x</span>(d<span class="op">.</span><span class="at">gdpPercap</span>))</span>
+<span id="cb8-20"><a href=""></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"cy"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="fu">y</span>(d<span class="op">.</span><span class="at">lifeExp</span>))</span>
+<span id="cb8-21"><a href=""></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"r"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="fu">r</span>(d<span class="op">.</span><span class="at">pop</span>))</span>
+<span id="cb8-22"><a href=""></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> d <span class="kw">=&gt;</span> <span class="fu">color</span>(d<span class="op">.</span><span class="at">continent</span>))<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level0">
@@ -1273,8 +1284,8 @@ The cost
 </div>
 <div class="col font60">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb8-2"><a href=""></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"China"</span>, year <span class="sc">==</span> <span class="dv">2007</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href=""></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"China"</span>, year <span class="sc">==</span> <span class="dv">2007</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; # A tibble: 1 × 6
 #&gt;   country continent  year lifeExp        pop gdpPercap
@@ -1283,9 +1294,9 @@ The cost
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb10-2"><a href=""></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb10-3"><a href=""></a>  <span class="fu">nrow</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href=""></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-3"><a href=""></a>  <span class="fu">nrow</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] 142</code></pre>
 </div>
@@ -1312,11 +1323,12 @@ The cost
 <h1>Gotchas</h1>
 <ol type="1">
 <li><strong>Embed the data in the file.</strong> A local <code>.html</code> can’t load a local CSV (browsers block it), and the chart will be blank</li>
+<li><strong>Load D3 from a CDN.</strong> A public server hosts the library and the file links to it (like <code>library(d3)</code>), so viewing the chart needs an internet connection</li>
 <li><strong>Open it in the browser</strong> and check the console (right-click → Inspect → Console) for red errors</li>
 <li>To embed in a <code>.qmd</code>, the <code>.html</code> must be <strong>in the same folder</strong> and <strong>committed</strong>:</li>
 </ol>
 <div class="font80">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource html number-lines code-with-copy"><code class="sourceCode html"><span id="cb12-1"><a href=""></a><span class="dt">&lt;</span><span class="kw">iframe</span><span class="ot"> src</span><span class="op">=</span><span class="st">"d3-chart.html"</span><span class="ot"> width</span><span class="op">=</span><span class="st">"100%"</span><span class="ot"> height</span><span class="op">=</span><span class="st">"500"</span><span class="ot"> style</span><span class="op">=</span><span class="st">"border:none;"</span><span class="dt">&gt;&lt;/</span><span class="kw">iframe</span><span class="dt">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource html number-lines code-with-copy"><code class="sourceCode html"><span id="cb13-1"><a href=""></a><span class="dt">&lt;</span><span class="kw">iframe</span><span class="ot"> src</span><span class="op">=</span><span class="st">"d3-chart.html"</span><span class="ot"> width</span><span class="op">=</span><span class="st">"100%"</span><span class="ot"> height</span><span class="op">=</span><span class="st">"500"</span><span class="ot"> style</span><span class="op">=</span><span class="st">"border:none;"</span><span class="dt">&gt;&lt;/</span><span class="kw">iframe</span><span class="dt">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level0">
@@ -1325,7 +1337,7 @@ The cost
 <h1 class="lexis-slide-title"></h1>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_e8c6635b" minutes="20" seconds="0" warn-when="60" update-every="15" blink-colon="true" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:2em;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_5dbca362" minutes="20" seconds="0" warn-when="60" update-every="15" blink-colon="true" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:2em;"></countdown-timer>
 </div>
 </div>
 <h2 id="your-turn-a-custom-chart-in-d3">Your Turn: A Custom Chart in D3</h2>
@@ -1336,7 +1348,7 @@ The cost
 <li><strong>Verify</strong> it against your static chart and the data</li>
 <li><strong>Embed</strong> it in <code>practice.qmd</code> with an iframe</li>
 </ol>
-<p>Fast finishers: add a second interaction</p>
+<p>Fast finishers: add a second interaction, or a whole second chart</p>
 </section>
 </section>
 <section class="slide level0">
@@ -1345,7 +1357,7 @@ The cost
 <h1 class="lexis-slide-title"></h1>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_fb838539" minutes="5" seconds="0" warn-when="30" update-every="1" tabindex="0" style="top:1;right:0;bottom:0;left:0;--countdown-margin:5%;--countdown-font-size:8em;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_87618588" minutes="5" seconds="0" warn-when="30" update-every="1" tabindex="0" style="top:1;right:0;bottom:0;left:0;--countdown-margin:5%;--countdown-font-size:8em;"></countdown-timer>
 </div>
 </div>
 <div id="intermission" class="h1">
@@ -1378,9 +1390,9 @@ Intermission
 
 <h1>New libraries to install</h1>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a><span class="fu">install.packages</span>(<span class="st">'shiny'</span>)</span>
-<span id="cb13-2"><a href=""></a><span class="fu">install.packages</span>(<span class="st">'shinyWidgets'</span>)</span>
-<span id="cb13-3"><a href=""></a><span class="fu">install.packages</span>(<span class="st">'rsconnect'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a><span class="fu">install.packages</span>(<span class="st">'shiny'</span>)</span>
+<span id="cb14-2"><a href=""></a><span class="fu">install.packages</span>(<span class="st">'shinyWidgets'</span>)</span>
+<span id="cb14-3"><a href=""></a><span class="fu">install.packages</span>(<span class="st">'rsconnect'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level0">
@@ -1428,17 +1440,17 @@ Check out the <a href="https://shiny.rstudio.com/gallery/">Shiny Gallery</a>
 </div>
 <div class="col" style="flex:0 1 55%;width:55%">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a><span class="fu">library</span>(shiny)</span>
-<span id="cb14-2"><a href=""></a></span>
-<span id="cb14-3"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb14-4"><a href=""></a></span>
-<span id="cb14-5"><a href=""></a>)</span>
-<span id="cb14-6"><a href=""></a></span>
-<span id="cb14-7"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
-<span id="cb14-8"><a href=""></a></span>
-<span id="cb14-9"><a href=""></a>}</span>
-<span id="cb14-10"><a href=""></a></span>
-<span id="cb14-11"><a href=""></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a><span class="fu">library</span>(shiny)</span>
+<span id="cb15-2"><a href=""></a></span>
+<span id="cb15-3"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb15-4"><a href=""></a></span>
+<span id="cb15-5"><a href=""></a>)</span>
+<span id="cb15-6"><a href=""></a></span>
+<span id="cb15-7"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb15-8"><a href=""></a></span>
+<span id="cb15-9"><a href=""></a>}</span>
+<span id="cb15-10"><a href=""></a></span>
+<span id="cb15-11"><a href=""></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1494,46 +1506,46 @@ Your Turn
 </div>
 <div class="col font50" style="flex:0 1 60%;width:60%">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15" data-code-line-numbers="1,4,27,40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a><span class="fu">library</span>(shiny)</span>
-<span id="cb15-2"><a href=""></a></span>
-<span id="cb15-3"><a href=""></a><span class="co"># Define UI for application that draws a histogram</span></span>
-<span id="cb15-4"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb15-5"><a href=""></a></span>
-<span id="cb15-6"><a href=""></a>    <span class="co"># Application title</span></span>
-<span id="cb15-7"><a href=""></a>    <span class="fu">titlePanel</span>(<span class="st">"Old Faithful Geyser Data"</span>),</span>
-<span id="cb15-8"><a href=""></a></span>
-<span id="cb15-9"><a href=""></a>    <span class="co"># Sidebar with a slider input for number of bins</span></span>
-<span id="cb15-10"><a href=""></a>    <span class="fu">sidebarLayout</span>(</span>
-<span id="cb15-11"><a href=""></a>        <span class="fu">sidebarPanel</span>(</span>
-<span id="cb15-12"><a href=""></a>            <span class="fu">sliderInput</span>(<span class="st">"bins"</span>,</span>
-<span id="cb15-13"><a href=""></a>                        <span class="st">"Number of bins:"</span>,</span>
-<span id="cb15-14"><a href=""></a>                        <span class="at">min =</span> <span class="dv">1</span>,</span>
-<span id="cb15-15"><a href=""></a>                        <span class="at">max =</span> <span class="dv">50</span>,</span>
-<span id="cb15-16"><a href=""></a>                        <span class="at">value =</span> <span class="dv">30</span>)</span>
-<span id="cb15-17"><a href=""></a>        ),</span>
-<span id="cb15-18"><a href=""></a></span>
-<span id="cb15-19"><a href=""></a>        <span class="co"># Show a plot of the generated distribution</span></span>
-<span id="cb15-20"><a href=""></a>        <span class="fu">mainPanel</span>(</span>
-<span id="cb15-21"><a href=""></a>           <span class="fu">plotOutput</span>(<span class="st">"distPlot"</span>)</span>
-<span id="cb15-22"><a href=""></a>        )</span>
-<span id="cb15-23"><a href=""></a>    )</span>
-<span id="cb15-24"><a href=""></a>)</span>
-<span id="cb15-25"><a href=""></a></span>
-<span id="cb15-26"><a href=""></a><span class="co"># Define server logic required to draw a histogram</span></span>
-<span id="cb15-27"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
-<span id="cb15-28"><a href=""></a></span>
-<span id="cb15-29"><a href=""></a>    output<span class="sc">$</span>distPlot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
-<span id="cb15-30"><a href=""></a>        <span class="co"># generate bins based on input$bins from ui.R</span></span>
-<span id="cb15-31"><a href=""></a>        x    <span class="ot">&lt;-</span> faithful[, <span class="dv">2</span>]</span>
-<span id="cb15-32"><a href=""></a>        bins <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(x), <span class="fu">max</span>(x), <span class="at">length.out =</span> input<span class="sc">$</span>bins <span class="sc">+</span> <span class="dv">1</span>)</span>
-<span id="cb15-33"><a href=""></a></span>
-<span id="cb15-34"><a href=""></a>        <span class="co"># draw the histogram with the specified number of bins</span></span>
-<span id="cb15-35"><a href=""></a>        <span class="fu">hist</span>(x, <span class="at">breaks =</span> bins, <span class="at">col =</span> <span class="st">'darkgray'</span>, <span class="at">border =</span> <span class="st">'white'</span>)</span>
-<span id="cb15-36"><a href=""></a>    })</span>
-<span id="cb15-37"><a href=""></a>}</span>
-<span id="cb15-38"><a href=""></a></span>
-<span id="cb15-39"><a href=""></a><span class="co"># Run the application</span></span>
-<span id="cb15-40"><a href=""></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16" data-code-line-numbers="1,4,27,40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href=""></a><span class="fu">library</span>(shiny)</span>
+<span id="cb16-2"><a href=""></a></span>
+<span id="cb16-3"><a href=""></a><span class="co"># Define UI for application that draws a histogram</span></span>
+<span id="cb16-4"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb16-5"><a href=""></a></span>
+<span id="cb16-6"><a href=""></a>    <span class="co"># Application title</span></span>
+<span id="cb16-7"><a href=""></a>    <span class="fu">titlePanel</span>(<span class="st">"Old Faithful Geyser Data"</span>),</span>
+<span id="cb16-8"><a href=""></a></span>
+<span id="cb16-9"><a href=""></a>    <span class="co"># Sidebar with a slider input for number of bins</span></span>
+<span id="cb16-10"><a href=""></a>    <span class="fu">sidebarLayout</span>(</span>
+<span id="cb16-11"><a href=""></a>        <span class="fu">sidebarPanel</span>(</span>
+<span id="cb16-12"><a href=""></a>            <span class="fu">sliderInput</span>(<span class="st">"bins"</span>,</span>
+<span id="cb16-13"><a href=""></a>                        <span class="st">"Number of bins:"</span>,</span>
+<span id="cb16-14"><a href=""></a>                        <span class="at">min =</span> <span class="dv">1</span>,</span>
+<span id="cb16-15"><a href=""></a>                        <span class="at">max =</span> <span class="dv">50</span>,</span>
+<span id="cb16-16"><a href=""></a>                        <span class="at">value =</span> <span class="dv">30</span>)</span>
+<span id="cb16-17"><a href=""></a>        ),</span>
+<span id="cb16-18"><a href=""></a></span>
+<span id="cb16-19"><a href=""></a>        <span class="co"># Show a plot of the generated distribution</span></span>
+<span id="cb16-20"><a href=""></a>        <span class="fu">mainPanel</span>(</span>
+<span id="cb16-21"><a href=""></a>           <span class="fu">plotOutput</span>(<span class="st">"distPlot"</span>)</span>
+<span id="cb16-22"><a href=""></a>        )</span>
+<span id="cb16-23"><a href=""></a>    )</span>
+<span id="cb16-24"><a href=""></a>)</span>
+<span id="cb16-25"><a href=""></a></span>
+<span id="cb16-26"><a href=""></a><span class="co"># Define server logic required to draw a histogram</span></span>
+<span id="cb16-27"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb16-28"><a href=""></a></span>
+<span id="cb16-29"><a href=""></a>    output<span class="sc">$</span>distPlot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb16-30"><a href=""></a>        <span class="co"># generate bins based on input$bins from ui.R</span></span>
+<span id="cb16-31"><a href=""></a>        x    <span class="ot">&lt;-</span> faithful[, <span class="dv">2</span>]</span>
+<span id="cb16-32"><a href=""></a>        bins <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(x), <span class="fu">max</span>(x), <span class="at">length.out =</span> input<span class="sc">$</span>bins <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb16-33"><a href=""></a></span>
+<span id="cb16-34"><a href=""></a>        <span class="co"># draw the histogram with the specified number of bins</span></span>
+<span id="cb16-35"><a href=""></a>        <span class="fu">hist</span>(x, <span class="at">breaks =</span> bins, <span class="at">col =</span> <span class="st">'darkgray'</span>, <span class="at">border =</span> <span class="st">'white'</span>)</span>
+<span id="cb16-36"><a href=""></a>    })</span>
+<span id="cb16-37"><a href=""></a>}</span>
+<span id="cb16-38"><a href=""></a></span>
+<span id="cb16-39"><a href=""></a><span class="co"># Run the application</span></span>
+<span id="cb16-40"><a href=""></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1593,24 +1605,24 @@ Your Turn
 <div class="cols-row">
 <div class="col" style="flex:0 1 40%;width:40%">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16" data-code-line-numbers="5,7,14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb16-2"><a href=""></a></span>
-<span id="cb16-3"><a href=""></a>  <span class="fu">titlePanel</span>(<span class="st">"Hello Shiny!"</span>),</span>
-<span id="cb16-4"><a href=""></a></span>
-<span id="cb16-5"><a href=""></a>  <span class="fu">sidebarLayout</span>(</span>
-<span id="cb16-6"><a href=""></a></span>
-<span id="cb16-7"><a href=""></a>    <span class="fu">sidebarPanel</span>(</span>
-<span id="cb16-8"><a href=""></a>      <span class="fu">sliderInput</span>(</span>
-<span id="cb16-9"><a href=""></a>        <span class="st">"bins"</span>, <span class="at">label =</span> <span class="st">"Number of bins:"</span>,</span>
-<span id="cb16-10"><a href=""></a>        <span class="at">min =</span> <span class="dv">1</span>, <span class="at">value =</span> <span class="dv">30</span>, <span class="at">max =</span> <span class="dv">50</span></span>
-<span id="cb16-11"><a href=""></a>      )</span>
-<span id="cb16-12"><a href=""></a>    ),</span>
-<span id="cb16-13"><a href=""></a></span>
-<span id="cb16-14"><a href=""></a>    <span class="fu">mainPanel</span>(</span>
-<span id="cb16-15"><a href=""></a>      <span class="fu">plotOutput</span>(<span class="st">"distPlot"</span>)</span>
-<span id="cb16-16"><a href=""></a>    )</span>
-<span id="cb16-17"><a href=""></a>  )</span>
-<span id="cb16-18"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17" data-code-line-numbers="5,7,14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb17-2"><a href=""></a></span>
+<span id="cb17-3"><a href=""></a>  <span class="fu">titlePanel</span>(<span class="st">"Hello Shiny!"</span>),</span>
+<span id="cb17-4"><a href=""></a></span>
+<span id="cb17-5"><a href=""></a>  <span class="fu">sidebarLayout</span>(</span>
+<span id="cb17-6"><a href=""></a></span>
+<span id="cb17-7"><a href=""></a>    <span class="fu">sidebarPanel</span>(</span>
+<span id="cb17-8"><a href=""></a>      <span class="fu">sliderInput</span>(</span>
+<span id="cb17-9"><a href=""></a>        <span class="st">"bins"</span>, <span class="at">label =</span> <span class="st">"Number of bins:"</span>,</span>
+<span id="cb17-10"><a href=""></a>        <span class="at">min =</span> <span class="dv">1</span>, <span class="at">value =</span> <span class="dv">30</span>, <span class="at">max =</span> <span class="dv">50</span></span>
+<span id="cb17-11"><a href=""></a>      )</span>
+<span id="cb17-12"><a href=""></a>    ),</span>
+<span id="cb17-13"><a href=""></a></span>
+<span id="cb17-14"><a href=""></a>    <span class="fu">mainPanel</span>(</span>
+<span id="cb17-15"><a href=""></a>      <span class="fu">plotOutput</span>(<span class="st">"distPlot"</span>)</span>
+<span id="cb17-16"><a href=""></a>    )</span>
+<span id="cb17-17"><a href=""></a>  )</span>
+<span id="cb17-18"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="col" style="flex:0 1 60%;width:60%">
@@ -1633,11 +1645,11 @@ Your Turn
 <div class="cols-row">
 <div class="col" style="flex:0 1 40%;width:40%">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17" data-code-line-numbers="1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">navbarPage</span>(<span class="st">"My Application"</span>,</span>
-<span id="cb17-2"><a href=""></a>  <span class="fu">tabPanel</span>(<span class="st">"Component 1"</span>),</span>
-<span id="cb17-3"><a href=""></a>  <span class="fu">tabPanel</span>(<span class="st">"Component 2"</span>),</span>
-<span id="cb17-4"><a href=""></a>  <span class="fu">tabPanel</span>(<span class="st">"Component 3"</span>)</span>
-<span id="cb17-5"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18" data-code-line-numbers="1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">navbarPage</span>(<span class="st">"My Application"</span>,</span>
+<span id="cb18-2"><a href=""></a>  <span class="fu">tabPanel</span>(<span class="st">"Component 1"</span>),</span>
+<span id="cb18-3"><a href=""></a>  <span class="fu">tabPanel</span>(<span class="st">"Component 2"</span>),</span>
+<span id="cb18-4"><a href=""></a>  <span class="fu">tabPanel</span>(<span class="st">"Component 3"</span>)</span>
+<span id="cb18-5"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="col" style="flex:0 1 60%;width:60%">
@@ -1660,13 +1672,13 @@ Your Turn
 <div class="cols-row">
 <div class="col" style="flex:0 1 40%;width:40%">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18" data-code-line-numbers="4,5,6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">navbarPage</span>(<span class="st">"My Application"</span>,</span>
-<span id="cb18-2"><a href=""></a>  <span class="fu">tabPanel</span>(<span class="st">"Component 1"</span>),</span>
-<span id="cb18-3"><a href=""></a>  <span class="fu">tabPanel</span>(<span class="st">"Component 2"</span>),</span>
-<span id="cb18-4"><a href=""></a>  <span class="fu">navbarMenu</span>(<span class="st">"More"</span>,</span>
-<span id="cb18-5"><a href=""></a>    <span class="fu">tabPanel</span>(<span class="st">"Sub-Component A"</span>),</span>
-<span id="cb18-6"><a href=""></a>    <span class="fu">tabPanel</span>(<span class="st">"Sub-Component B"</span>))</span>
-<span id="cb18-7"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19" data-code-line-numbers="4,5,6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">navbarPage</span>(<span class="st">"My Application"</span>,</span>
+<span id="cb19-2"><a href=""></a>  <span class="fu">tabPanel</span>(<span class="st">"Component 1"</span>),</span>
+<span id="cb19-3"><a href=""></a>  <span class="fu">tabPanel</span>(<span class="st">"Component 2"</span>),</span>
+<span id="cb19-4"><a href=""></a>  <span class="fu">navbarMenu</span>(<span class="st">"More"</span>,</span>
+<span id="cb19-5"><a href=""></a>    <span class="fu">tabPanel</span>(<span class="st">"Sub-Component A"</span>),</span>
+<span id="cb19-6"><a href=""></a>    <span class="fu">tabPanel</span>(<span class="st">"Sub-Component B"</span>))</span>
+<span id="cb19-7"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="col" style="flex:0 1 60%;width:60%">
@@ -1711,14 +1723,14 @@ Your Turn
 <div class="cols-row">
 <div class="col" style="flex:0 1 30%;width:30%">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb19-2"><a href=""></a>  <span class="fu">sidebarLayout</span>(</span>
-<span id="cb19-3"><a href=""></a>    <span class="fu">sidebarPanel</span>(</span>
-<span id="cb19-4"><a href=""></a>      <span class="fu">radioButtons</span>(…)</span>
-<span id="cb19-5"><a href=""></a>    ),</span>
-<span id="cb19-6"><a href=""></a>    <span class="fu">mainPanel</span>(…)</span>
-<span id="cb19-7"><a href=""></a>  )</span>
-<span id="cb19-8"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb20-2"><a href=""></a>  <span class="fu">sidebarLayout</span>(</span>
+<span id="cb20-3"><a href=""></a>    <span class="fu">sidebarPanel</span>(</span>
+<span id="cb20-4"><a href=""></a>      <span class="fu">radioButtons</span>(…)</span>
+<span id="cb20-5"><a href=""></a>    ),</span>
+<span id="cb20-6"><a href=""></a>    <span class="fu">mainPanel</span>(…)</span>
+<span id="cb20-7"><a href=""></a>  )</span>
+<span id="cb20-8"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="col" style="flex:0 1 70%;width:70%">
@@ -1789,16 +1801,16 @@ Your Turn
 <div class="cols-row">
 <div class="col" style="flex:0 1 30%;width:30%">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20" data-code-line-numbers="7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb20-2"><a href=""></a>  <span class="fu">sidebarLayout</span>(</span>
-<span id="cb20-3"><a href=""></a>    <span class="fu">sidebarPanel</span>(</span>
-<span id="cb20-4"><a href=""></a>      <span class="fu">radioButtons</span>(…)</span>
-<span id="cb20-5"><a href=""></a>    ),</span>
-<span id="cb20-6"><a href=""></a>    <span class="fu">mainPanel</span>(</span>
-<span id="cb20-7"><a href=""></a>      <span class="fu">plotOutput</span>(…)</span>
-<span id="cb20-8"><a href=""></a>    )</span>
-<span id="cb20-9"><a href=""></a>  )</span>
-<span id="cb20-10"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21" data-code-line-numbers="7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb21-2"><a href=""></a>  <span class="fu">sidebarLayout</span>(</span>
+<span id="cb21-3"><a href=""></a>    <span class="fu">sidebarPanel</span>(</span>
+<span id="cb21-4"><a href=""></a>      <span class="fu">radioButtons</span>(…)</span>
+<span id="cb21-5"><a href=""></a>    ),</span>
+<span id="cb21-6"><a href=""></a>    <span class="fu">mainPanel</span>(</span>
+<span id="cb21-7"><a href=""></a>      <span class="fu">plotOutput</span>(…)</span>
+<span id="cb21-8"><a href=""></a>    )</span>
+<span id="cb21-9"><a href=""></a>  )</span>
+<span id="cb21-10"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="col" style="flex:0 1 70%;width:70%">
@@ -1888,11 +1900,11 @@ Your Turn
 <div class="cols-row">
 <div class="col">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb21-2"><a href=""></a></span>
-<span id="cb21-3"><a href=""></a><span class="fu">ggplot</span>(mpg) <span class="sc">+</span></span>
-<span id="cb21-4"><a href=""></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb21-5"><a href=""></a>    <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> class))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb22-2"><a href=""></a></span>
+<span id="cb22-3"><a href=""></a><span class="fu">ggplot</span>(mpg) <span class="sc">+</span></span>
+<span id="cb22-4"><a href=""></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb22-5"><a href=""></a>    <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> class))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="col">
@@ -1915,30 +1927,30 @@ Your Turn
 <div class="col" style="flex:0 1 45%;width:45%">
 <p><code>ui</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22" data-code-line-numbers="7,8,9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb22-2"><a href=""></a>  <span class="fu">sidebarLayout</span>(</span>
-<span id="cb22-3"><a href=""></a>    <span class="fu">sidebarPanel</span>(</span>
-<span id="cb22-4"><a href=""></a>      <span class="fu">radioButtons</span>(…)</span>
-<span id="cb22-5"><a href=""></a>    ),</span>
-<span id="cb22-6"><a href=""></a>    <span class="fu">mainPanel</span>(</span>
-<span id="cb22-7"><a href=""></a>      <span class="fu">plotOutput</span>(</span>
-<span id="cb22-8"><a href=""></a>        <span class="at">outputId =</span> <span class="st">"mpg_plot"</span></span>
-<span id="cb22-9"><a href=""></a>      )</span>
-<span id="cb22-10"><a href=""></a>    )</span>
-<span id="cb22-11"><a href=""></a>  )</span>
-<span id="cb22-12"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23" data-code-line-numbers="7,8,9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb23-2"><a href=""></a>  <span class="fu">sidebarLayout</span>(</span>
+<span id="cb23-3"><a href=""></a>    <span class="fu">sidebarPanel</span>(</span>
+<span id="cb23-4"><a href=""></a>      <span class="fu">radioButtons</span>(…)</span>
+<span id="cb23-5"><a href=""></a>    ),</span>
+<span id="cb23-6"><a href=""></a>    <span class="fu">mainPanel</span>(</span>
+<span id="cb23-7"><a href=""></a>      <span class="fu">plotOutput</span>(</span>
+<span id="cb23-8"><a href=""></a>        <span class="at">outputId =</span> <span class="st">"mpg_plot"</span></span>
+<span id="cb23-9"><a href=""></a>      )</span>
+<span id="cb23-10"><a href=""></a>    )</span>
+<span id="cb23-11"><a href=""></a>  )</span>
+<span id="cb23-12"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="col" style="flex:0 1 55%;width:55%">
 <p><code>server</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
-<span id="cb23-2"><a href=""></a>  output<span class="sc">$</span>mpg_plot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
-<span id="cb23-3"><a href=""></a>    <span class="fu">ggplot</span>(mpg) <span class="sc">+</span></span>
-<span id="cb23-4"><a href=""></a>      <span class="fu">geom_point</span>(</span>
-<span id="cb23-5"><a href=""></a>        <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> class))</span>
-<span id="cb23-6"><a href=""></a>  })</span>
-<span id="cb23-7"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb24-2"><a href=""></a>  output<span class="sc">$</span>mpg_plot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb24-3"><a href=""></a>    <span class="fu">ggplot</span>(mpg) <span class="sc">+</span></span>
+<span id="cb24-4"><a href=""></a>      <span class="fu">geom_point</span>(</span>
+<span id="cb24-5"><a href=""></a>        <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> class))</span>
+<span id="cb24-6"><a href=""></a>  })</span>
+<span id="cb24-7"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1950,41 +1962,41 @@ Your Turn
 <div class="col font60">
 <p><code>ui</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24" data-code-line-numbers="5,9,10,11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb24-2"><a href=""></a>  <span class="fu">sidebarLayout</span>(</span>
-<span id="cb24-3"><a href=""></a>    <span class="fu">sidebarPanel</span>(</span>
-<span id="cb24-4"><a href=""></a>      <span class="fu">radioButtons</span>(</span>
-<span id="cb24-5"><a href=""></a>        <span class="at">inputId =</span> <span class="st">"xvar"</span>,</span>
-<span id="cb24-6"><a href=""></a>        <span class="at">label =</span> <span class="st">"Select the x-axis variable:"</span>,</span>
-<span id="cb24-7"><a href=""></a>        <span class="at">selected =</span> <span class="st">"displ"</span>,</span>
-<span id="cb24-8"><a href=""></a>        <span class="at">choices =</span> <span class="fu">c</span>(</span>
-<span id="cb24-9"><a href=""></a>          <span class="st">"Highway miles per gallon"</span> <span class="ot">=</span> <span class="st">"hwy"</span>,</span>
-<span id="cb24-10"><a href=""></a>          <span class="st">"City miles per gallon"</span> <span class="ot">=</span> <span class="st">"cty"</span>,</span>
-<span id="cb24-11"><a href=""></a>          <span class="st">"Engine displacement, in litres"</span> <span class="ot">=</span> <span class="st">"displ"</span>)</span>
-<span id="cb24-12"><a href=""></a>      ),</span>
-<span id="cb24-13"><a href=""></a>    ),</span>
-<span id="cb24-14"><a href=""></a>    <span class="fu">mainPanel</span>(</span>
-<span id="cb24-15"><a href=""></a>      <span class="fu">plotOutput</span>(</span>
-<span id="cb24-16"><a href=""></a>        <span class="at">outputId =</span> <span class="st">"mpg_plot"</span></span>
-<span id="cb24-17"><a href=""></a>      )</span>
-<span id="cb24-18"><a href=""></a>    )</span>
-<span id="cb24-19"><a href=""></a>  )</span>
-<span id="cb24-20"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25" data-code-line-numbers="5,9,10,11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb25-2"><a href=""></a>  <span class="fu">sidebarLayout</span>(</span>
+<span id="cb25-3"><a href=""></a>    <span class="fu">sidebarPanel</span>(</span>
+<span id="cb25-4"><a href=""></a>      <span class="fu">radioButtons</span>(</span>
+<span id="cb25-5"><a href=""></a>        <span class="at">inputId =</span> <span class="st">"xvar"</span>,</span>
+<span id="cb25-6"><a href=""></a>        <span class="at">label =</span> <span class="st">"Select the x-axis variable:"</span>,</span>
+<span id="cb25-7"><a href=""></a>        <span class="at">selected =</span> <span class="st">"displ"</span>,</span>
+<span id="cb25-8"><a href=""></a>        <span class="at">choices =</span> <span class="fu">c</span>(</span>
+<span id="cb25-9"><a href=""></a>          <span class="st">"Highway miles per gallon"</span> <span class="ot">=</span> <span class="st">"hwy"</span>,</span>
+<span id="cb25-10"><a href=""></a>          <span class="st">"City miles per gallon"</span> <span class="ot">=</span> <span class="st">"cty"</span>,</span>
+<span id="cb25-11"><a href=""></a>          <span class="st">"Engine displacement, in litres"</span> <span class="ot">=</span> <span class="st">"displ"</span>)</span>
+<span id="cb25-12"><a href=""></a>      ),</span>
+<span id="cb25-13"><a href=""></a>    ),</span>
+<span id="cb25-14"><a href=""></a>    <span class="fu">mainPanel</span>(</span>
+<span id="cb25-15"><a href=""></a>      <span class="fu">plotOutput</span>(</span>
+<span id="cb25-16"><a href=""></a>        <span class="at">outputId =</span> <span class="st">"mpg_plot"</span></span>
+<span id="cb25-17"><a href=""></a>      )</span>
+<span id="cb25-18"><a href=""></a>    )</span>
+<span id="cb25-19"><a href=""></a>  )</span>
+<span id="cb25-20"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="col font60">
 <p><code>server</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25" data-code-line-numbers="5,6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
-<span id="cb25-2"><a href=""></a>  output<span class="sc">$</span>mpg_plot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
-<span id="cb25-3"><a href=""></a>    <span class="fu">ggplot</span>(mpg) <span class="sc">+</span></span>
-<span id="cb25-4"><a href=""></a>      <span class="fu">geom_point</span>(</span>
-<span id="cb25-5"><a href=""></a>        <span class="fu">aes_string</span>(</span>
-<span id="cb25-6"><a href=""></a>          <span class="at">x =</span> input<span class="sc">$</span>xvar,</span>
-<span id="cb25-7"><a href=""></a>          <span class="at">y =</span> <span class="st">"hwy"</span>,</span>
-<span id="cb25-8"><a href=""></a>          <span class="at">color =</span> <span class="st">"class"</span>))</span>
-<span id="cb25-9"><a href=""></a>  })</span>
-<span id="cb25-10"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26" data-code-line-numbers="5,6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
+<span id="cb26-2"><a href=""></a>  output<span class="sc">$</span>mpg_plot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb26-3"><a href=""></a>    <span class="fu">ggplot</span>(mpg) <span class="sc">+</span></span>
+<span id="cb26-4"><a href=""></a>      <span class="fu">geom_point</span>(</span>
+<span id="cb26-5"><a href=""></a>        <span class="fu">aes_string</span>(</span>
+<span id="cb26-6"><a href=""></a>          <span class="at">x =</span> input<span class="sc">$</span>xvar,</span>
+<span id="cb26-7"><a href=""></a>          <span class="at">y =</span> <span class="st">"hwy"</span>,</span>
+<span id="cb26-8"><a href=""></a>          <span class="at">color =</span> <span class="st">"class"</span>))</span>
+<span id="cb26-9"><a href=""></a>  })</span>
+<span id="cb26-10"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Note</strong>: I switched the ggplot code from<br><code>aes()</code> to <code>aes_string()</code></p>
 </div>
@@ -2003,7 +2015,7 @@ Your Turn
 <h1 class="lexis-slide-title"></h1>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_a6ab4e12" minutes="10" seconds="0" warn-when="30" update-every="15" blink-colon="true" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:2em;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_35b96123" minutes="10" seconds="0" warn-when="30" update-every="15" blink-colon="true" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:2em;"></countdown-timer>
 </div>
 </div>
 <h2 id="your-turn-1">Your Turn</h2>
@@ -2057,19 +2069,19 @@ Your Turn
 <div class="cols-row">
 <div class="col" style="flex:0 1 40%;width:40%">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href=""></a><span class="fu">library</span>(shinythemes)</span>
-<span id="cb26-2"><a href=""></a></span>
-<span id="cb26-3"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb26-4"><a href=""></a>  <span class="at">theme =</span> <span class="fu">shinytheme</span>(<span class="st">"sandstone"</span>),</span>
-<span id="cb26-5"><a href=""></a>  <span class="fu">sidebarLayout</span>(</span>
-<span id="cb26-6"><a href=""></a>    <span class="fu">sidebarPanel</span>(</span>
-<span id="cb26-7"><a href=""></a>      <span class="sc">&lt;</span>insert widgets<span class="sc">&gt;</span></span>
-<span id="cb26-8"><a href=""></a>    ),</span>
-<span id="cb26-9"><a href=""></a>    <span class="fu">mainPanel</span>(</span>
-<span id="cb26-10"><a href=""></a>      <span class="sc">&lt;</span>insert outputs<span class="sc">&gt;</span></span>
-<span id="cb26-11"><a href=""></a>    )</span>
-<span id="cb26-12"><a href=""></a>  )</span>
-<span id="cb26-13"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href=""></a><span class="fu">library</span>(shinythemes)</span>
+<span id="cb27-2"><a href=""></a></span>
+<span id="cb27-3"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb27-4"><a href=""></a>  <span class="at">theme =</span> <span class="fu">shinytheme</span>(<span class="st">"sandstone"</span>),</span>
+<span id="cb27-5"><a href=""></a>  <span class="fu">sidebarLayout</span>(</span>
+<span id="cb27-6"><a href=""></a>    <span class="fu">sidebarPanel</span>(</span>
+<span id="cb27-7"><a href=""></a>      <span class="sc">&lt;</span>insert widgets<span class="sc">&gt;</span></span>
+<span id="cb27-8"><a href=""></a>    ),</span>
+<span id="cb27-9"><a href=""></a>    <span class="fu">mainPanel</span>(</span>
+<span id="cb27-10"><a href=""></a>      <span class="sc">&lt;</span>insert outputs<span class="sc">&gt;</span></span>
+<span id="cb27-11"><a href=""></a>    )</span>
+<span id="cb27-12"><a href=""></a>  )</span>
+<span id="cb27-13"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="col" style="flex:0 1 60%;width:60%">
@@ -2109,7 +2121,7 @@ Your Turn
 <li>In R, in the app folder, list the packages the app needs:</li>
 </ol>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href=""></a>rsconnect<span class="sc">::</span><span class="fu">writeManifest</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href=""></a>rsconnect<span class="sc">::</span><span class="fu">writeManifest</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ol start="4" type="1">
 <li>Commit and push <code>manifest.json</code> with the app</li>
@@ -2132,7 +2144,7 @@ Your Turn
 <h1 class="lexis-slide-title"></h1>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_44131888" minutes="15" seconds="0" warn-when="30" update-every="15" blink-colon="true" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:2em;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_6fe984dd" minutes="15" seconds="0" warn-when="30" update-every="15" blink-colon="true" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:2em;"></countdown-timer>
 </div>
 </div>
 <h2 id="your-turn-2">Your Turn</h2>

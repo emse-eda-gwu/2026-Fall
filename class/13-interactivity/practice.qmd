@@ -96,8 +96,6 @@ Make sure `d3-chart.html` is in the same folder as this file, then embed it:
 <iframe src="d3-chart.html" width="100%" height="500" style="border:none;"></iframe>
 ```
 
-Write a few sentences below the chart: What did Claude get wrong, and how did you notice?
-
 If you're curious what D3 looks like, `d3/scatter.html` is a small example you can open in Positron.
 
 # 3. Shiny
