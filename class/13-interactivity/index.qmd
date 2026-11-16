@@ -696,6 +696,7 @@ This work is licensed under a</br>[Creative Commons Attribution-ShareAlike 4.0](
 
 # New libraries to install
 
+::: {.font80}
 ```{r}
 #| eval: false
 
@@ -703,6 +704,7 @@ install.packages('shiny')
 install.packages('shinyWidgets')
 install.packages('rsconnect')
 ```
+:::
 
 ---
 
@@ -910,7 +912,7 @@ knitr::include_graphics("images/slide_mamu1.png")
 
 ### `sidebarLayout()`
 
-::: {.col width="40%"}
+::: {.col width="40%" .font80}
 ```{r}
 #| eval: false
 #| code-line-numbers: "5,7,14"
@@ -952,7 +954,7 @@ knitr::include_graphics("images/sidebarLayout.png")
 
 Think of each `tabPanel()` as it's own `fluidPage()`
 
-::: {.col width="40%"}
+::: {.col width="40%" .font80}
 ```{r}
 #| eval: false
 #| code-line-numbers: "1"
@@ -981,7 +983,7 @@ knitr::include_graphics("images/navbarPage.png")
 
 Use `navbarMenu()` to create a nested menu item
 
-::: {.col width="40%"}
+::: {.col width="40%" .font80}
 ```{r}
 #| eval: false
 #| code-line-numbers: "4,5,6"
@@ -1034,7 +1036,7 @@ knitr::include_graphics("images/inputs.png")
 
 ## Example Input: Radio buttons in the sidebar
 
-::: {.col width="30%"}
+::: {.col width="30%" .font80}
 ```{r}
 #| eval: false
 #| code-line-numbers: "4"
@@ -1112,7 +1114,7 @@ knitr::include_graphics("images/closing_par.png")
 
 ## Example Output: Put a plot in the main panel
 
-::: {.col width="30%"}
+::: {.col width="30%" .font80}
 ```{r}
 #| eval: false
 #| code-line-numbers: "7"
@@ -1193,7 +1195,7 @@ knitr::include_graphics("images/outputs.png")
 
 # Using `renderPlot()`: make a plot
 
-::: {.col}
+::: {.col .font80}
 ```{r}
 #| eval: false
 
@@ -1227,6 +1229,7 @@ ggplot(mpg) +
 ::: {.col width="45%"}
 `ui`
 
+::: {.font80}
 ```{r}
 #| eval: false
 #| code-line-numbers: "7,8,9"
@@ -1245,10 +1248,12 @@ ui <- fluidPage(
 )
 ```
 :::
+:::
 
 ::: {.col width="55%"}
 `server`
 
+::: {.font80}
 ```{r}
 #| eval: false
 #| code-line-numbers: "2"
@@ -1261,6 +1266,7 @@ server <- function(input, output, session) {
   })
 }
 ```
+:::
 :::
 
 ---
@@ -1386,7 +1392,7 @@ knitr::include_graphics("images/shinythemes.png")
 
 ### [Insert theme at top of main `ui` layout function]{.center}
 
-::: {.col width="40%"}
+::: {.col width="40%" .font80}
 ```{r}
 #| eval: false
 #| code-line-numbers: "4"
@@ -1422,7 +1428,7 @@ knitr::include_graphics("https://rstudio.github.io/shinythemes/images/sandstone.
 {{< center >}}
 {{< middle >}}
 
-## Fancier widgets with ["shinyWidgets"](http://shinyapps.dreamrs.fr/shinyWidgets/) package
+## Fancier widgets with ["shinyWidgets"](https://dreamrs.github.io/shinyWidgets/) package
 
 ### Open the `shinyWidgets.R` app and click the "Run App" button
 
@@ -1446,11 +1452,13 @@ knitr::include_graphics("https://rstudio.github.io/shinythemes/images/sandstone.
 2. Put your app in a **public GitHub repo**: `app.R` + any data files
 3. In R, in the app folder, list the packages the app needs:
 
+::: {.font80}
 ```{r}
 #| eval: false
 
 rsconnect::writeManifest()
 ```
+:::
 
 4. Commit and push `manifest.json` with the app
 5. On Connect Cloud: **Publish → Shiny → your repo → `app.R` → Publish**
