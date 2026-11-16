@@ -90,19 +90,3 @@ gapminder %>%
 # 3. Shiny
 
 Solutions for the Shiny exercises are in `caseConverter_solution.R` and `internetUsers_solution.R`.
-
-# 4. Bonus: Publish with GitHub Pages
-
-Your demo repo should look like this before you push:
-
-```
-d3-demo/
-├── .nojekyll
-├── _quarto.yml
-├── d3-chart.html
-├── index.qmd
-└── docs/            <- created when you render
-    ├── d3-chart.html
-    ├── index.html
-    └── ...
-```

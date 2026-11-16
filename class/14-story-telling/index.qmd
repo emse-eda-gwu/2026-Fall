@@ -28,6 +28,7 @@ agenda_items <- c(
   "Telling a story",
   "Designing slides",
   "Giving a talk",
+  "Publishing your report",
   '"Final" thoughts'
 )
 ```
@@ -616,6 +617,86 @@ Afterwards, we will go around the room and one person from each team will practi
 #| results: asis
 
 agenda(4)
+```
+
+---
+
+# Publish your report on the web
+
+You can put a rendered Quarto document on a real URL with **GitHub Pages**
+
+. . .
+
+1. Create a new **public** repo (GitHub Desktop)
+2. Add your `.qmd` file(s), plus a `_quarto.yml` that renders into `docs/`
+3. **Render**, then commit and **push**
+4. On GitHub.com: Settings → Pages → deploy from `main` / `docs`
+5. Open `https://<username>.github.io/<repo>/`
+
+---
+
+# The key setting: render into `docs/`
+
+::: {.font80}
+```yaml
+# _quarto.yml
+project:
+  type: website
+  output-dir: docs        # default is _site
+```
+:::
+
+. . .
+
+The `pages-demo` folder in your practice files has a starter: `index.qmd`, `_quarto.yml`, and a hidden `.nojekyll` file (in Finder: Cmd+Shift+.)
+
+. . .
+
+Using a file that isn't a `.qmd` (like a D3 chart's `.html`)? List it under `resources:` in `_quarto.yml` so Quarto copies it into `docs/`
+
+---
+
+# Three things everyone forgets
+
+1. [**Turn Pages on.**]{.orange} It's off by default
+2. [**Render before you push.**]{.orange} Pages serves what's committed, so a stale or missing `docs/` means a stale or missing site
+3. [**Make the repo public.**]{.orange}
+
+. . .
+
+### And every time you change something: re-render, commit, push
+
+---
+
+{{< inverse >}}
+
+```{r}
+#| echo: false
+
+countdown(
+  minutes = 15,
+  warn_when = 60,
+  update_every = 15,
+  top = 0,
+  font_size = '2em'
+)
+```
+
+## Your turn: publish a demo site
+
+1. Create a public repo, and copy in the `pages-demo` files
+2. Render, commit, push
+3. Turn on Pages, then **post your live URL in Slack**
+
+Optional: add your D3 chart from last class (`d3-chart.html`, plus a `resources:` entry)
+
+---
+
+```{r}
+#| echo: false
+#| results: asis
+
+agenda(5)
 ```
 
 ---

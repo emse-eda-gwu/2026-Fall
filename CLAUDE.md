@@ -22,9 +22,11 @@ website (Fall 2026), built with [Quarto](https://quarto.org/).
   (no class, 1-on-1s).
 - **Interactivity week (W13)** reshaped toward interactive *products* — a
   plotly/reactable warm-up, custom charts built in plain D3 (single-file HTML
-  embedded in Quarto; no React), **deploying a Quarto site to GitHub Pages**
-  (`output-dir: docs`), and a short Shiny intro (deployed via Posit Connect
-  Cloud) at the end. The final report becomes a repo that renders on Pages.
+  embedded in Quarto; no React; students prompt Claude and verify against a
+  static chart/the data), then the original Shiny content (deployed via Posit
+  Connect Cloud). **Publishing a Quarto site on GitHub Pages**
+  (`output-dir: docs`) lives in the W15 story-telling deck
+  (`class/14-story-telling/`, with a `pages-demo/` starter), not W13.
 - **Assignments:** weekly **Reading Reflections** (read forward + light practice
   + reflect) + **3 Mini Projects** (the higher-stakes individual work, reframed
   around *judgment and verification* — the things an agent can't do for you).

@@ -1,0 +1,19 @@
+---
+title: "Story Telling & Publishing (solutions)"
+subtitle: "EMSE 4572 / 6572: Exploratory Data Analysis"
+format: html
+---
+
+# Publish a demo site with GitHub Pages
+
+Your demo repo should look like this before you push:
+
+```
+demo-site/
+├── .nojekyll
+├── _quarto.yml
+├── index.qmd
+└── docs/            <- created when you render
+        ├── index.html
+    └── ...
+```

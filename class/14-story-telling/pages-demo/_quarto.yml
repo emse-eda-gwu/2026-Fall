@@ -1,0 +1,6 @@
+project:
+  type: website
+  output-dir: docs
+  # To publish a standalone file like a D3 chart, copy it into docs/:
+  # resources:
+  #   - d3-chart.html

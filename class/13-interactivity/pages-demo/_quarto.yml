@@ -1,5 +1,0 @@
-project:
-  type: website
-  output-dir: docs
-  resources:
-    - d3-chart.html

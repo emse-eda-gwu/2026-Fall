@@ -1,0 +1,9 @@
+---
+title: "My published site"
+---
+
+Write a sentence or two here about your project.
+
+<!-- To embed a D3 chart (and list it under `resources:` in _quarto.yml):
+<iframe src="d3-chart.html" width="100%" height="600" style="border:none;"></iframe>
+-->
