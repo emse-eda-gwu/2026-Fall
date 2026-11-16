@@ -2,7 +2,7 @@
 title: "Story Telling"
 params:
   number: 12
-  purpose: 'The purpose of this assignment is to learn some tips for effectively communicating the results of your analyses to others. We will look at strategies for giving effective presentations / speeches as well as best practices for designing slides.'
+  purpose: 'The purpose of this assignment is to learn some tips for effectively communicating the results of your analyses to others. We will look at how to tell a story with data and how to start a speech.'
 ---
 
 ```{r child = here::here("fragments", "hw.qmd")}
@@ -18,7 +18,7 @@ Watch this video on how to start a speech:
 
 # 3. Readings
 
-We'll be discussing good techniques for telling a story this week. These readings will be a good primer:
+We'll be discussing good techniques for telling a story next class. These readings will be a good primer:
 
 - [Wilke Chapter 29 - Telling a story and making a point](https://clauswilke.com/dataviz/telling-a-story.html).
 - Stephanie Evergreen's blog post ["So What?"](https://stephanieevergreen.com/so-what/)
@@ -26,6 +26,8 @@ We'll be discussing good techniques for telling a story this week. These reading
 # 4. Reflect
 
 For your final reflection, in addition to any thoughts that emerged when going through the above content, write about a talk or presentation you saw that you found particularly impactful. Was there anything memorable about it that made the presenter's message stick? Do you remember how the speaker began or ended their talk?
+
+Write at least a paragraph in your ``r hw_file`` file.
 
 # 5. Submit
 
