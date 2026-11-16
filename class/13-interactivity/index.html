@@ -796,7 +796,6 @@ built-in one.
 <h3 id="javascript-graphics-d3-claude">2. JavaScript graphics: D3 + Claude</h3>
 <h3 id="shiny-apps">3. Shiny apps</h3>
 <h3 id="shiny-extras">4. Shiny extras</h3>
-<h3 id="bonus-github-pages">5. Bonus: GitHub Pages</h3>
 </section>
 </section>
 <section class="slide level0">
@@ -810,7 +809,6 @@ built-in one.
 <h3 id="javascript-graphics-d3-claude-1">2. JavaScript graphics: D3 + Claude</h3>
 <h3 id="shiny-apps-1">3. Shiny apps</h3>
 <h3 id="shiny-extras-1">4. Shiny extras</h3>
-<h3 id="bonus-github-pages-1">5. Bonus: GitHub Pages</h3>
 </section>
 </section>
 <section class="slide level0">
@@ -1059,7 +1057,7 @@ The cost
 <h1 class="lexis-slide-title"></h1>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_fb91f4f7" minutes="8" seconds="0" warn-when="30" update-every="15" blink-colon="true" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:2em;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_1498072d" minutes="8" seconds="0" warn-when="30" update-every="15" blink-colon="true" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:2em;"></countdown-timer>
 </div>
 </div>
 <h2 id="your-turn-interactive-charts-tables">Your Turn: Interactive Charts &amp; Tables</h2>
@@ -1082,7 +1080,6 @@ The cost
 <h3 id="javascript-graphics-d3-claude-2">2. <span class="orange">JavaScript graphics: D3 + Claude</span></h3>
 <h3 id="shiny-apps-2">3. Shiny apps</h3>
 <h3 id="shiny-extras-2">4. Shiny extras</h3>
-<h3 id="bonus-github-pages-2">5. Bonus: GitHub Pages</h3>
 </section>
 </section>
 <section class="slide level0">
@@ -1156,6 +1153,52 @@ The cost
 <p><br></p>
 <h3 id="the-static-chart-is-your-reference">The static chart is your reference</h3>
 </div>
+</section>
+<section class="slide level0">
+
+<section id="a-real-example-global-oil-flows-through-the-2026-hormuz-closure" class="inverse center">
+<h3>A real example: <a href="https://jhelvy.github.io/2026-global-oil-flows/">global oil flows through the 2026 Hormuz closure</a></h3>
+<p><img data-src="images/oil-final.png" class="" width="1200"></p>
+</section>
+</section>
+<section class="slide level0">
+
+<h1>How I got there</h1>
+<ol type="1">
+<li><span class="orange">Find the data</span>, working with Claude (prices, tanker traffic, trade flows)</li>
+<li><span class="orange">Make simple static figures</span> to prove the data is right and I know what the final chart should look like</li>
+<li><span class="orange">Build up to the full figure</span>, entirely in D3, by prompting Claude and iterating</li>
+</ol>
+</section>
+<section class="slide level0">
+
+<section id="static-figure-1-do-the-prices-look-right" class="center">
+<h3>Static figure 1: do the prices look right?</h3>
+<p><img data-src="images/oil-brent.png" class="" width="1000"></p>
+</section>
+</section>
+<section class="slide level0">
+
+<section id="static-figure-2-do-the-flows-look-right-early-january" class="center">
+<h3>Static figure 2: do the flows look right? (early January)</h3>
+<p><img data-src="images/oil-sankey-before.png" class="" width="880"></p>
+</section>
+</section>
+<section class="slide level0">
+
+<section id="static-figure-3-and-after-the-closure-mid-march" class="center">
+<h3>Static figure 3: and after the closure? (mid-March)</h3>
+<p><img data-src="images/oil-sankey-after.png" class="" width="880"></p>
+</section>
+</section>
+<section class="slide level0">
+
+<h1>Now I know what the final figure must show</h1>
+<ul>
+<li>Brent jumps from about <strong>$63 to $103</strong> by mid-March</li>
+<li>The Hormuz band shrinks from <strong>15.2 to 0.8</strong> million barrels/day</li>
+<li>Every other number in the static figures has to appear in the final one</li>
+</ul>
 </section>
 <section class="slide level0">
 
@@ -1282,7 +1325,7 @@ The cost
 <h1 class="lexis-slide-title"></h1>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_df820fc6" minutes="20" seconds="0" warn-when="60" update-every="15" blink-colon="true" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:2em;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_e8c6635b" minutes="20" seconds="0" warn-when="60" update-every="15" blink-colon="true" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:2em;"></countdown-timer>
 </div>
 </div>
 <h2 id="your-turn-a-custom-chart-in-d3">Your Turn: A Custom Chart in D3</h2>
@@ -1302,7 +1345,7 @@ The cost
 <h1 class="lexis-slide-title"></h1>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_e0e5e242" minutes="5" seconds="0" warn-when="30" update-every="1" tabindex="0" style="top:1;right:0;bottom:0;left:0;--countdown-margin:5%;--countdown-font-size:8em;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_fb838539" minutes="5" seconds="0" warn-when="30" update-every="1" tabindex="0" style="top:1;right:0;bottom:0;left:0;--countdown-margin:5%;--countdown-font-size:8em;"></countdown-timer>
 </div>
 </div>
 <div id="intermission" class="h1">
@@ -1321,7 +1364,6 @@ Intermission
 <h3 id="javascript-graphics-d3-claude-3">2. JavaScript graphics: D3 + Claude</h3>
 <h3 id="shiny-apps-3">3. <span class="orange">Shiny apps</span></h3>
 <h3 id="shiny-extras-3">4. Shiny extras</h3>
-<h3 id="bonus-github-pages-3">5. Bonus: GitHub Pages</h3>
 </section>
 </section>
 <section class="slide level0">
@@ -1961,7 +2003,7 @@ Your Turn
 <h1 class="lexis-slide-title"></h1>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_987a954c" minutes="10" seconds="0" warn-when="30" update-every="15" blink-colon="true" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:2em;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_a6ab4e12" minutes="10" seconds="0" warn-when="30" update-every="15" blink-colon="true" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:2em;"></countdown-timer>
 </div>
 </div>
 <h2 id="your-turn-1">Your Turn</h2>
@@ -1992,7 +2034,6 @@ Your Turn
 <h3 id="javascript-graphics-d3-claude-4">2. JavaScript graphics: D3 + Claude</h3>
 <h3 id="shiny-apps-4">3. Shiny apps</h3>
 <h3 id="shiny-extras-4">4. <span class="orange">Shiny extras</span></h3>
-<h3 id="bonus-github-pages-4">5. Bonus: GitHub Pages</h3>
 </section>
 </section>
 <section class="slide level0">
@@ -2091,7 +2132,7 @@ Your Turn
 <h1 class="lexis-slide-title"></h1>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_9c047668" minutes="15" seconds="0" warn-when="30" update-every="15" blink-colon="true" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:2em;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_44131888" minutes="15" seconds="0" warn-when="30" update-every="15" blink-colon="true" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:2em;"></countdown-timer>
 </div>
 </div>
 <h2 id="your-turn-2">Your Turn</h2>
@@ -2111,82 +2152,8 @@ Your Turn
 </section>
 <section class="slide level0">
 
-<section id="week-13-interactivity-5" class="inverse middle">
-<h1>Week 13: <span class="fancy">Interactivity</span></h1>
-<div style="height: 1.5em;">
-
-</div>
-<h3 id="javascript-graphics-packages-5">1. JavaScript graphics: packages</h3>
-<h3 id="javascript-graphics-d3-claude-5">2. JavaScript graphics: D3 + Claude</h3>
-<h3 id="shiny-apps-5">3. Shiny apps</h3>
-<h3 id="shiny-extras-5">4. Shiny extras</h3>
-<h3 id="bonus-github-pages-5">5. <span class="orange">Bonus: GitHub Pages</span></h3>
-<!-- BONUS: only if there is time. Otherwise demo it, or skip and point to the
-     steps in practice.qmd. -->
-</section>
-</section>
-<section class="slide level0">
-
-<h1>Bonus: publish your JavaScript graphic on the web</h1>
-<p>You can take your Quarto file with the D3 (or plotly) graphic and put it on a real URL with <strong>GitHub Pages</strong></p>
-<div class="fragment">
-<ol type="1">
-<li>Create a new <strong>public</strong> repo (GitHub Desktop)</li>
-<li>Add your <code>.qmd</code> and graphic files, plus a <code>_quarto.yml</code> that renders into <code>docs/</code></li>
-<li><strong>Render</strong>, then commit and <strong>push</strong></li>
-<li>On GitHub.com: Settings → Pages → deploy from <code>main</code> / <code>docs</code></li>
-<li>Open <code>https://&lt;username&gt;.github.io/&lt;repo&gt;/</code></li>
-</ol>
-</div>
-</section>
-<section class="slide level0">
-
-<h1>The key setting: render into <code>docs/</code></h1>
-<div class="font80">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb28-1"><a href=""></a><span class="co"># _quarto.yml</span></span>
-<span id="cb28-2"><a href=""></a><span class="fu">project</span><span class="kw">:</span></span>
-<span id="cb28-3"><a href=""></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> website</span></span>
-<span id="cb28-4"><a href=""></a><span class="at">  </span><span class="fu">output-dir</span><span class="kw">:</span><span class="at"> docs</span><span class="co">        # default is _site</span></span>
-<span id="cb28-5"><a href=""></a><span class="at">  </span><span class="fu">resources</span><span class="kw">:</span></span>
-<span id="cb28-6"><a href=""></a><span class="at">    </span><span class="kw">-</span><span class="at"> d3-chart.html</span><span class="co">       # copy your D3 file into docs/</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="fragment">
-<p>The <code>pages-demo</code> folder in your practice files has a starter: <code>index.qmd</code>, <code>_quarto.yml</code>, and a hidden <code>.nojekyll</code> file (in Finder: Cmd+Shift+.)</p>
-</div>
-</section>
-<section class="slide level0">
-
-<h1>Three things everyone forgets</h1>
-<ol type="1">
-<li><span class="orange"><strong>Turn Pages on.</strong></span> It’s off by default</li>
-<li><span class="orange"><strong>Render before you push.</strong></span> Pages serves what’s committed, so a stale or missing <code>docs/</code> means a stale or missing site</li>
-<li><span class="orange"><strong>Make the repo public.</strong></span></li>
-</ol>
-<div class="fragment">
-<h3 id="and-every-time-you-change-something-re-render-commit-push">And every time you change something: re-render, commit, push</h3>
-</div>
-</section>
-<section class="slide level0">
-
-<section class="lexis-slide-title inverse">
-<h1 class="lexis-slide-title"></h1>
-<div class="cell">
-<div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_72809bbb" minutes="15" seconds="0" warn-when="60" update-every="15" blink-colon="true" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:2em;"></countdown-timer>
-</div>
-</div>
-<h2 id="optional-publish-your-d3-chart">Optional: Publish Your D3 Chart</h2>
-<ol type="1">
-<li>Create a public repo, and copy in the <code>pages-demo</code> files and your <code>d3-chart.html</code></li>
-<li>Render, commit, push</li>
-<li>Turn on Pages, then <strong>post your live URL in Slack</strong></li>
-</ol>
-</section>
-</section>
-<section class="slide level0">
-
-<section id="next-week-story-telling" class="inverse center middle">
-<h1>Next week: Story-telling</h1>
+<section id="next-and-final-class-story-telling" class="inverse center middle">
+<h1>Next (and final!) class: Story-telling</h1>
 </section>
 
 </section>

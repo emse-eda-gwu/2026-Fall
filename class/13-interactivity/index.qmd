@@ -32,8 +32,7 @@ agenda_items <- c(
   "JavaScript graphics: packages",
   "JavaScript graphics: D3 + Claude",
   "Shiny apps",
-  "Shiny extras",
-  "Bonus: GitHub Pages"
+  "Shiny extras"
 )
 
 source('setup.R')
@@ -452,6 +451,55 @@ agenda(2)
 <br>
 
 ### The static chart is your reference
+
+---
+
+{{< inverse >}}
+{{< center >}}
+
+### A real example: [global oil flows through the 2026 Hormuz closure](https://jhelvy.github.io/2026-global-oil-flows/)
+
+![](images/oil-final.png){width="1200" .nostretch}
+
+---
+
+# How I got there
+
+1. [Find the data]{.orange}, working with Claude (prices, tanker traffic, trade flows)
+2. [Make simple static figures]{.orange} to prove the data is right and I know what the final chart should look like
+3. [Build up to the full figure]{.orange}, entirely in D3, by prompting Claude and iterating
+
+---
+
+{{< center >}}
+
+### Static figure 1: do the prices look right?
+
+![](images/oil-brent.png){width="1000" .nostretch}
+
+---
+
+{{< center >}}
+
+### Static figure 2: do the flows look right? (early January)
+
+![](images/oil-sankey-before.png){width="880" .nostretch}
+
+---
+
+{{< center >}}
+
+### Static figure 3: and after the closure? (mid-March)
+
+![](images/oil-sankey-after.png){width="880" .nostretch}
+
+---
+
+# Now I know what the final figure must show
+
+- Brent jumps from about **$63 to $103** by mid-March
+- The Hormuz band shrinks from **15.2 to 0.8** million barrels/day
+- Every other number in the static figures has to appear in the final one
 
 ---
 
@@ -1432,88 +1480,8 @@ countdown(
 
 ---
 
-```{r}
-#| echo: false
-#| results: asis
-
-agenda(5)
-```
-
-<!-- BONUS: only if there is time. Otherwise demo it, or skip and point to the
-     steps in practice.qmd. -->
-
----
-
-# Bonus: publish your JavaScript graphic on the web
-
-You can take your Quarto file with the D3 (or plotly) graphic and put it on a real URL with **GitHub Pages**
-
-. . .
-
-1. Create a new **public** repo (GitHub Desktop)
-2. Add your `.qmd` and graphic files, plus a `_quarto.yml` that renders into `docs/`
-3. **Render**, then commit and **push**
-4. On GitHub.com: Settings → Pages → deploy from `main` / `docs`
-5. Open `https://<username>.github.io/<repo>/`
-
----
-
-# The key setting: render into `docs/`
-
-::: {.font80}
-```yaml
-# _quarto.yml
-project:
-  type: website
-  output-dir: docs        # default is _site
-  resources:
-    - d3-chart.html       # copy your D3 file into docs/
-```
-:::
-
-. . .
-
-The `pages-demo` folder in your practice files has a starter: `index.qmd`, `_quarto.yml`, and a hidden `.nojekyll` file (in Finder: Cmd+Shift+.)
-
----
-
-# Three things everyone forgets
-
-1. [**Turn Pages on.**]{.orange} It's off by default
-2. [**Render before you push.**]{.orange} Pages serves what's committed, so a stale or missing `docs/` means a stale or missing site
-3. [**Make the repo public.**]{.orange}
-
-. . .
-
-### And every time you change something: re-render, commit, push
-
----
-
-{{< inverse >}}
-
-```{r}
-#| echo: false
-
-countdown(
-  minutes = 15,
-  warn_when = 60,
-  update_every = 15,
-  top = '0.5em',
-  right = '0.5em',
-  font_size = '2em'
-)
-```
-
-## Optional: Publish Your D3 Chart
-
-1. Create a public repo, and copy in the `pages-demo` files and your `d3-chart.html`
-2. Render, commit, push
-3. Turn on Pages, then **post your live URL in Slack**
-
----
-
 {{< inverse >}}
 {{< center >}}
 {{< middle >}}
 
-# Next week: Story-telling
+# Next (and final!) class: Story-telling

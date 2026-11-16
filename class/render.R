@@ -27,7 +27,6 @@ practice_extras <- list(
   '2-agentic-workflows' = 'my-chart-style',
   '13-interactivity' = c(
     'd3',
-    'pages-demo',
     'caseConverter.R',
     'caseConverter_solution.R',
     'internetUsers.R',
@@ -35,7 +34,8 @@ practice_extras <- list(
     'mpg.R',
     'shinyWidgets.R',
     'widgets.R'
-  )
+  ),
+  '14-story-telling' = 'pages-demo'
 )
 
 extras <- if (lesson %in% names(practice_extras)) {
