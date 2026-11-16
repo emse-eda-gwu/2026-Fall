@@ -1448,29 +1448,11 @@ knitr::include_graphics("https://rstudio.github.io/shinythemes/images/sandstone.
 
 (shinyapps.io is being retired in favor of Connect Cloud)
 
-1. Sign in at [connect.posit.cloud](https://connect.posit.cloud) with GitHub
-2. Put your app in a **public GitHub repo**: `app.R` + any data files
-3. In R, in the app folder, list the packages the app needs:
+Use **Posit Publisher**, which comes built into Positron:
 
-::: {.font80}
-```{r}
-#| eval: false
-
-rsconnect::writeManifest()
-```
-:::
-
-4. Commit and push `manifest.json` with the app
-5. On Connect Cloud: **Publish → Shiny → your repo → `app.R` → Publish**
-
----
-
-# Deploy: things that bite
-
-- No `manifest.json`, or a **stale** one → missing package error. Re-run `writeManifest()`, push, republish
-- Data files must be **committed** next to `app.R`, and read with relative paths
-- Don't call `install.packages()` inside the app
-- "Automatically publish on push" redeploys every time you push
+1. Click the **Posit Publisher** icon in the left sidebar
+2. Under **Credentials**, click **+** → **Posit Connect Cloud** and sign in
+3. Click **+** to add a deployment, pick `app.R`, check the project files, and click **Deploy Your Project**
 
 ---
 

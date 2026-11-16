@@ -1049,7 +1049,7 @@ The cost
 <h1 class="lexis-slide-title"></h1>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_a00e094d" minutes="10" seconds="0" warn-when="30" update-every="15" blink-colon="true" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:2em;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_3c4041aa" minutes="10" seconds="0" warn-when="30" update-every="15" blink-colon="true" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:2em;"></countdown-timer>
 </div>
 </div>
 <h2 id="your-turn-interactive-charts-tables">Your Turn: Interactive Charts &amp; Tables</h2>
@@ -1337,7 +1337,7 @@ The cost
 <h1 class="lexis-slide-title"></h1>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_9a73ecdf" minutes="20" seconds="0" warn-when="60" update-every="15" blink-colon="true" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:2em;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_1b4af2a2" minutes="20" seconds="0" warn-when="60" update-every="15" blink-colon="true" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:2em;"></countdown-timer>
 </div>
 </div>
 <h2 id="your-turn-a-custom-chart-in-d3">Your Turn: A Custom Chart in D3</h2>
@@ -1357,7 +1357,7 @@ The cost
 <h1 class="lexis-slide-title"></h1>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_08ab469c" minutes="5" seconds="0" warn-when="30" update-every="1" tabindex="0" style="top:1;right:0;bottom:0;left:0;--countdown-margin:5%;--countdown-font-size:8em;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_990bf479" minutes="5" seconds="0" warn-when="30" update-every="1" tabindex="0" style="top:1;right:0;bottom:0;left:0;--countdown-margin:5%;--countdown-font-size:8em;"></countdown-timer>
 </div>
 </div>
 <div id="intermission" class="h1">
@@ -2020,7 +2020,7 @@ Your Turn
 <h1 class="lexis-slide-title"></h1>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_93902ce2" minutes="10" seconds="0" warn-when="30" update-every="15" blink-colon="true" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:2em;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_dd2d6f9f" minutes="10" seconds="0" warn-when="30" update-every="15" blink-colon="true" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:2em;"></countdown-timer>
 </div>
 </div>
 <h2 id="your-turn-1">Your Turn</h2>
@@ -2120,30 +2120,12 @@ Your Turn
 
 <h1>You can deploy an app for free on <a href="https://connect.posit.cloud">Posit Connect Cloud</a></h1>
 <p>(shinyapps.io is being retired in favor of Connect Cloud)</p>
+<p>Use <strong>Posit Publisher</strong>, which comes built into Positron:</p>
 <ol type="1">
-<li>Sign in at <a href="https://connect.posit.cloud">connect.posit.cloud</a> with GitHub</li>
-<li>Put your app in a <strong>public GitHub repo</strong>: <code>app.R</code> + any data files</li>
-<li>In R, in the app folder, list the packages the app needs:</li>
+<li>Click the <strong>Posit Publisher</strong> icon in the left sidebar</li>
+<li>Under <strong>Credentials</strong>, click <strong>+</strong> → <strong>Posit Connect Cloud</strong> and sign in</li>
+<li>Click <strong>+</strong> to add a deployment, pick <code>app.R</code>, check the project files, and click <strong>Deploy Your Project</strong></li>
 </ol>
-<div class="font80">
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href=""></a>rsconnect<span class="sc">::</span><span class="fu">writeManifest</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-<ol start="4" type="1">
-<li>Commit and push <code>manifest.json</code> with the app</li>
-<li>On Connect Cloud: <strong>Publish → Shiny → your repo → <code>app.R</code> → Publish</strong></li>
-</ol>
-</section>
-<section class="slide level0">
-
-<h1>Deploy: things that bite</h1>
-<ul>
-<li>No <code>manifest.json</code>, or a <strong>stale</strong> one → missing package error. Re-run <code>writeManifest()</code>, push, republish</li>
-<li>Data files must be <strong>committed</strong> next to <code>app.R</code>, and read with relative paths</li>
-<li>Don’t call <code>install.packages()</code> inside the app</li>
-<li>“Automatically publish on push” redeploys every time you push</li>
-</ul>
 </section>
 <section class="slide level0">
 
@@ -2151,7 +2133,7 @@ Your Turn
 <h1 class="lexis-slide-title"></h1>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_3e19d843" minutes="15" seconds="0" warn-when="30" update-every="15" blink-colon="true" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:2em;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_99e18cef" minutes="15" seconds="0" warn-when="30" update-every="15" blink-colon="true" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:2em;"></countdown-timer>
 </div>
 </div>
 <h2 id="your-turn-2">Your Turn</h2>
