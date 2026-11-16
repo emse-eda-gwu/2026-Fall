@@ -747,7 +747,7 @@ knitr::include_graphics("images/snippet_2.png")
 ```
 :::
 
-::: {.col width="55%"}
+::: {.col width="55%" .font80}
 ```{r}
 #| eval: false
 
@@ -799,9 +799,7 @@ shinyApp(ui, server)
 
 ![](images/run_app.png){width="360" .nostretch}
 
-- **Option 2**: Use a keyboard shortcut: Cmd/Ctrl + Shift + Enter.
-
-- **Option 3**: `shiny::runApp()` with the path to the **app.R** file.
+- **Option 2**: `shiny::runApp()` with the path to the **app.R** file.
 
 ---
 
