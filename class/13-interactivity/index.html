@@ -1049,7 +1049,7 @@ The cost
 <h1 class="lexis-slide-title"></h1>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_de9d4740" minutes="10" seconds="0" warn-when="30" update-every="15" blink-colon="true" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:2em;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_a00e094d" minutes="10" seconds="0" warn-when="30" update-every="15" blink-colon="true" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:2em;"></countdown-timer>
 </div>
 </div>
 <h2 id="your-turn-interactive-charts-tables">Your Turn: Interactive Charts &amp; Tables</h2>
@@ -1337,7 +1337,7 @@ The cost
 <h1 class="lexis-slide-title"></h1>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_caddc744" minutes="20" seconds="0" warn-when="60" update-every="15" blink-colon="true" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:2em;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_9a73ecdf" minutes="20" seconds="0" warn-when="60" update-every="15" blink-colon="true" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:2em;"></countdown-timer>
 </div>
 </div>
 <h2 id="your-turn-a-custom-chart-in-d3">Your Turn: A Custom Chart in D3</h2>
@@ -1357,7 +1357,7 @@ The cost
 <h1 class="lexis-slide-title"></h1>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_9ce4146f" minutes="5" seconds="0" warn-when="30" update-every="1" tabindex="0" style="top:1;right:0;bottom:0;left:0;--countdown-margin:5%;--countdown-font-size:8em;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_08ab469c" minutes="5" seconds="0" warn-when="30" update-every="1" tabindex="0" style="top:1;right:0;bottom:0;left:0;--countdown-margin:5%;--countdown-font-size:8em;"></countdown-timer>
 </div>
 </div>
 <div id="intermission" class="h1">
@@ -1389,10 +1389,12 @@ Intermission
 <section class="slide level0">
 
 <h1>New libraries to install</h1>
+<div class="font80">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a><span class="fu">install.packages</span>(<span class="st">'shiny'</span>)</span>
 <span id="cb14-2"><a href=""></a><span class="fu">install.packages</span>(<span class="st">'shinyWidgets'</span>)</span>
 <span id="cb14-3"><a href=""></a><span class="fu">install.packages</span>(<span class="st">'rsconnect'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </div>
 </section>
 <section class="slide level0">
@@ -1602,7 +1604,7 @@ Your Turn
 
 <h3 id="sidebarlayout"><code>sidebarLayout()</code></h3>
 <div class="cols-row">
-<div class="col" style="flex:0 1 40%;width:40%">
+<div class="col font80" style="flex:0 1 40%;width:40%">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17" data-code-line-numbers="5,7,14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
 <span id="cb17-2"><a href=""></a></span>
@@ -1642,7 +1644,7 @@ Your Turn
 <h3 id="navbarpage-an-alternative-to-fluidpage"><code>navbarPage()</code>: An alternative to <code>fluidPage()</code></h3>
 <p>Think of each <code>tabPanel()</code> as it’s own <code>fluidPage()</code></p>
 <div class="cols-row">
-<div class="col" style="flex:0 1 40%;width:40%">
+<div class="col font80" style="flex:0 1 40%;width:40%">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18" data-code-line-numbers="1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">navbarPage</span>(<span class="st">"My Application"</span>,</span>
 <span id="cb18-2"><a href=""></a>  <span class="fu">tabPanel</span>(<span class="st">"Component 1"</span>),</span>
@@ -1669,7 +1671,7 @@ Your Turn
 <h3 id="navbarpage-an-alternative-to-fluidpage-1"><code>navbarPage()</code>: An alternative to <code>fluidPage()</code></h3>
 <p>Use <code>navbarMenu()</code> to create a nested menu item</p>
 <div class="cols-row">
-<div class="col" style="flex:0 1 40%;width:40%">
+<div class="col font80" style="flex:0 1 40%;width:40%">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19" data-code-line-numbers="4,5,6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">navbarPage</span>(<span class="st">"My Application"</span>,</span>
 <span id="cb19-2"><a href=""></a>  <span class="fu">tabPanel</span>(<span class="st">"Component 1"</span>),</span>
@@ -1720,7 +1722,7 @@ Your Turn
 
 <h2>Example Input: Radio buttons in the sidebar</h2>
 <div class="cols-row">
-<div class="col" style="flex:0 1 30%;width:30%">
+<div class="col font80" style="flex:0 1 30%;width:30%">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
 <span id="cb20-2"><a href=""></a>  <span class="fu">sidebarLayout</span>(</span>
@@ -1798,7 +1800,7 @@ Your Turn
 
 <h2>Example Output: Put a plot in the main panel</h2>
 <div class="cols-row">
-<div class="col" style="flex:0 1 30%;width:30%">
+<div class="col font80" style="flex:0 1 30%;width:30%">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21" data-code-line-numbers="7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
 <span id="cb21-2"><a href=""></a>  <span class="fu">sidebarLayout</span>(</span>
@@ -1897,7 +1899,7 @@ Your Turn
 
 <h1>Using <code>renderPlot()</code>: make a plot</h1>
 <div class="cols-row">
-<div class="col">
+<div class="col font80">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb22-2"><a href=""></a></span>
@@ -1925,6 +1927,7 @@ Your Turn
 <div class="cols-row">
 <div class="col" style="flex:0 1 45%;width:45%">
 <p><code>ui</code></p>
+<div class="font80">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23" data-code-line-numbers="7,8,9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href=""></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
 <span id="cb23-2"><a href=""></a>  <span class="fu">sidebarLayout</span>(</span>
@@ -1940,8 +1943,10 @@ Your Turn
 <span id="cb23-12"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+</div>
 <div class="col" style="flex:0 1 55%;width:55%">
 <p><code>server</code></p>
+<div class="font80">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href=""></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
 <span id="cb24-2"><a href=""></a>  output<span class="sc">$</span>mpg_plot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
@@ -1950,6 +1955,7 @@ Your Turn
 <span id="cb24-5"><a href=""></a>        <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> class))</span>
 <span id="cb24-6"><a href=""></a>  })</span>
 <span id="cb24-7"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </div>
 </div>
 </div>
@@ -2014,7 +2020,7 @@ Your Turn
 <h1 class="lexis-slide-title"></h1>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_4d64bb1f" minutes="10" seconds="0" warn-when="30" update-every="15" blink-colon="true" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:2em;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_93902ce2" minutes="10" seconds="0" warn-when="30" update-every="15" blink-colon="true" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:2em;"></countdown-timer>
 </div>
 </div>
 <h2 id="your-turn-1">Your Turn</h2>
@@ -2066,7 +2072,7 @@ Your Turn
 
 <h3 id="insert-theme-at-top-of-main-ui-layout-function"><span class="center">Insert theme at top of main <code>ui</code> layout function</span></h3>
 <div class="cols-row">
-<div class="col" style="flex:0 1 40%;width:40%">
+<div class="col font80" style="flex:0 1 40%;width:40%">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href=""></a><span class="fu">library</span>(shinythemes)</span>
 <span id="cb27-2"><a href=""></a></span>
@@ -2099,7 +2105,7 @@ Your Turn
 <section class="slide level0">
 
 <section id="fancier-widgets-with-shinywidgets-package" class="center middle">
-<h2>Fancier widgets with <a href="http://shinyapps.dreamrs.fr/shinyWidgets/">“shinyWidgets”</a> package</h2>
+<h2>Fancier widgets with <a href="https://dreamrs.github.io/shinyWidgets/">“shinyWidgets”</a> package</h2>
 <h3 id="open-the-shinywidgets.r-app-and-click-the-run-app-button">Open the <code>shinyWidgets.R</code> app and click the “Run App” button</h3>
 </section>
 </section>
@@ -2119,8 +2125,10 @@ Your Turn
 <li>Put your app in a <strong>public GitHub repo</strong>: <code>app.R</code> + any data files</li>
 <li>In R, in the app folder, list the packages the app needs:</li>
 </ol>
+<div class="font80">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href=""></a>rsconnect<span class="sc">::</span><span class="fu">writeManifest</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </div>
 <ol start="4" type="1">
 <li>Commit and push <code>manifest.json</code> with the app</li>
@@ -2143,7 +2151,7 @@ Your Turn
 <h1 class="lexis-slide-title"></h1>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_4c31884e" minutes="15" seconds="0" warn-when="30" update-every="15" blink-colon="true" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:2em;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_3e19d843" minutes="15" seconds="0" warn-when="30" update-every="15" blink-colon="true" tabindex="0" style="top:0.5em;right:0.5em;--countdown-font-size:2em;"></countdown-timer>
 </div>
 </div>
 <h2 id="your-turn-2">Your Turn</h2>
