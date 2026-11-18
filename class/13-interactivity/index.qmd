@@ -654,6 +654,17 @@ Fast finishers: add a second interaction, or a whole second chart
 
 ---
 
+# One more thing to consider...
+
+### Make a "scrollytelling" page in Quarto: <https://github.com/nrennie/scrollytelling>
+
+Examples:
+
+- [US is addicted to trucks SUVs](https://www.bloomberg.com/graphics/2015-auto-sales/)
+- [The clubs that connect the world cup](https://www.nytimes.com/interactive/2014/06/20/sports/worldcup/how-world-cup-players-are-connected.html)
+
+---
+
 {{< inverse >}}
 {{< center >}}
 
