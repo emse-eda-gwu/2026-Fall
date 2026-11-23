@@ -64,13 +64,13 @@ agenda(1)
 {{< center >}}
 {{< middle >}}
 
-# What is a story?
+# [What is a story?]{.font150}
 
 ---
 
 {{< middle >}}
 
-> ### A story is a set of observations, facts, or events...that are presented in a specific order such that they create an</br>**emotional reaction** in the audience.</br></br>- Clause O. Wilke (2019), Chp. 29
+> ### A story is a set of observations, facts, or events <br>that are presented in a specific order<br>such that they create an **emotional reaction**<br>in the audience.</br></br>- Clause O. Wilke (2019), Chp. 29
 
 ---
 
@@ -322,11 +322,11 @@ agenda(2)
 
 ...and finally you will read this
 
-<br><br>
-<div style='font-size: 70pt; text-align: center;'>You will read this first</div>
+<br><br><br>
+<div style='font-size: 90pt; text-align: center;'>You will read this first</div>
 
 <br><br>
-<div style='font-size: 40pt; text-align: center;'>and then you will read this</div>
+<div style='font-size: 50pt; text-align: center;'>and then you will read this</div>
 
 ---
 
@@ -343,7 +343,7 @@ agenda(2)
 
 {{< center >}}
 
-# Except for Tesla, EV adoption in the U.S. is **flat**
+# [Except for Tesla, EV adoption in the U.S. is **flat**]{.font90}
 
 ![](images/pevSales3.png){width="1190"}
 
@@ -658,11 +658,13 @@ Using a file that isn't a `.qmd` (like a D3 chart's `.html`)? List it under `res
 
 # Three things everyone forgets
 
-1. [**Turn Pages on.**]{.orange} It's off by default
+1. [**Turn Pages on in your repo settings.**]{.orange} It's off by default
 2. [**Render before you push.**]{.orange} Pages serves what's committed, so a stale or missing `docs/` means a stale or missing site
 3. [**Make the repo public.**]{.orange}
 
 . . .
+
+<br>
 
 ### And every time you change something: re-render, commit, push
 
@@ -677,7 +679,8 @@ countdown(
   minutes = 15,
   warn_when = 60,
   update_every = 15,
-  top = 0,
+  top = '0.5em',
+  right = '0.5em',
   font_size = '2em'
 )
 ```
@@ -731,7 +734,8 @@ spelling::spell_check_files("report.qmd")
 
 </br>
 
-- ### We'll watch these during class period on Dec 9
+- ### Final presentations will be held **in-person** on **12/9** 
+- **12pm - 2:30pm** in **SEH B1270 (Lehman Auditorium)**.
 - ### 10 mins each
 - ### At the end, we'll announce awards:
 
