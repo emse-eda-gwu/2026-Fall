@@ -1339,6 +1339,23 @@ body.reveal-viewport {
   a { color: $color-white; text-decoration: none; }
 }
 
+// A `.footer-small` written INSIDE a slide (rather than the deck-level
+// `footer:`) is a descendant of `section`, and reveal gives each slide section
+// `perspective: 600px`. That makes the section the containing block for the
+// `position: fixed` bar above, so it anchored to the bottom of the (content-
+// height, vertically centered) section and floated mid-slide. Drop the
+// section's perspective (only reveal's 3D transitions need it; the default
+// `slide` transition doesn't) so the nearest containing block is `.slides`,
+// the stage. In stage coordinates the bar is simply the slide's bottom edge,
+// and it scales with the slide, so the chrome-px compensation above is undone.
+.reveal .slides section { perspective: none; }
+.reveal.reveal .slides div.footer-small {
+  bottom: 0; left: 0; right: 0;
+  height: 20px; line-height: 20px;
+  font-size: 13.33px; // 10pt on the stage
+  p, span { padding-left: 15px; }
+}
+
 // reveal's slide number is positioned against the full window (right/bottom
 // 8px), so it too lands in the gray letterbox band. Push it back onto the card
 // by the band size + a small margin, so it sits in the slide's bottom-right

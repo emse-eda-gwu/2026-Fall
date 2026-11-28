@@ -52,5 +52,5 @@ done
 ```
 
 <center>
-[Final Interviews](./class/interviews.html) will be held virtually December 09-11 (sign up [here](https://calendar.app.google/JirZBvZbX76T9heY6))
+[Final Interviews](./class/interviews.html) will be held virtually December 07-11 (sign up [here]({{< var interview >}}))
 </center>

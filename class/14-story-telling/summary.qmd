@@ -1,0 +1,166 @@
+---
+engine: markdown
+format:
+  typst:
+    papersize: us-letter
+    margin:
+      x: 1.4cm
+      y: 1.2cm
+    fontsize: 8.6pt
+    mainfont: "Source Sans Pro"
+    keep-typ: false
+---
+
+{{< include ../_summary-styles.qmd >}}
+
+```{=typst}
+#summary-header(15, "Story Telling & Publishing", "December 2, 2026")
+#show: rest => columns(2, rest)
+```
+
+# Why tell a story?
+
+Finding the answer is half the job. The other half is getting an audience to
+*care* about it, understand it, and remember it. A pile of charts doesn't do
+that; a story does.
+
+> A story is a set of observations, facts, or events that are presented in a
+> specific order such that they create an **emotional reaction** in the
+> audience. (Claus Wilke, *Fundamentals of Data Visualization*, ch. 29)
+
+A story has a **shape**. Freytag's pyramid describes it: exposition, rising
+action, climax, falling action, resolution. Your research project has the same
+shape.
+
+| Story beat | In a research project |
+|------------|-----------------------|
+| Exposition | The problem and why it matters |
+| Rising action | The data, and what complicates the answer |
+| Climax | Your key finding |
+| Resolution | What the finding means for the audience |
+
+# Telling a story with charts
+
+A single static chart will rarely tell an entire story. Use a sequence.
+
+| Technique | What it does |
+|-----------|--------------|
+| **Layers** | Add one element per slide to build tension and give context |
+| **Animation** | Reveal change over time, one step at a time |
+| **Charts for the generals** | Keep the first chart simple enough for a busy decision-maker |
+| **Build up to complex** | Start simple, then add variables until the full figure makes sense |
+| **Consistent, not repetitive** | Reuse colors and layout, but don't show the same chart six times |
+
+```{=typst}
+#keypoint[
+  *Size should match importance.* Hitchcock's rule: the size of any object in
+  your frame should be proportional to its importance to the story at that
+  moment. For a slide, that means the main point is big and everything else is
+  smaller.
+]
+```
+
+# Designing slides
+
+## Make the main point impossible to miss
+
+- **Put the main point at the top** as the title, in a big font. Ask "so what?"
+  of every chart, then write the answer as the title.
+- **One slide, one idea.** Break up main points across multiple slides.
+- **Number your slides**, so the audience can ask about slide 12.
+- **Cut slide junk:** logos, borders, and decoration that carry no information.
+
+## Type and color
+
+| Element | Guideline |
+|---------|-----------|
+| Titles | Larger than 40pt |
+| All other text | Larger than 24pt |
+| Footer | The one exception: small text is fine |
+| Body text | Sans-serif |
+| Quotes | Italic serif works |
+| Fonts to avoid | Comic Sans and Papyrus (they look amateurish) |
+
+- Think of fonts as **pre-attentive attributes**: size, weight, and color tell
+  the eye where to look first.
+- Use a **light background** (tan or gray) rather than stark white.
+- Use **high contrast** between text and background. Dark on light and light on
+  dark both work. Yellow on white and blue on black are unreadable.
+
+- Put fine print (data source, your name) in a small **footer**. In person, a
+  one or two page **handout** helps the audience remember your main points.
+
+# Giving a talk
+
+The first words matter most. Three ways to start, strongest first:
+
+1. **A story about people.** "Whenever I talk with people about electric cars,
+   they usually ask about Tesla..."
+2. **A shocking factoid.** "In one hour, the sun delivers more energy to Earth
+   than humanity uses in a year."
+3. **A question that matters to the audience.** "What's the current federal
+   subsidy for buying an electric car in the US?"
+
+# Publishing your report on the web
+
+**GitHub Pages** puts a rendered Quarto document on a real URL.
+
+1. Create a new **public** repo in GitHub Desktop
+2. Add your `.qmd` files and a `_quarto.yml` that renders into `docs/`
+3. **Render**, then commit and **push**
+4. On GitHub.com: Settings, then Pages, then deploy from the `main` branch and
+   the `/docs` folder
+5. Open `https://<username>.github.io/<repo>/`
+
+## The key setting
+
+```yaml
+# _quarto.yml
+project:
+  type: website
+  output-dir: docs        # default is _site
+```
+
+The `pages-demo` folder in your practice files has a working starter:
+`index.qmd`, `_quarto.yml`, and a hidden `.nojekyll` file (in Finder, press
+Cmd+Shift+. to show hidden files).
+
+A file that isn't a `.qmd`, like a D3 chart's `.html`, needs to be listed under
+`resources:` in `_quarto.yml` so Quarto copies it into `docs/`.
+
+## Three things everyone forgets
+
+| Mistake | Fix |
+|---------|-----|
+| Pages is off | Turn it on in the repo settings |
+| Pushed without rendering | Render first: Pages serves what is committed |
+| Repo is private | Make it public |
+
+After any change: **re-render, commit, push.**
+
+# Before next class
+
+Next class is **Dec 9**, the final presentations.
+
+| Deliverable | Due | Weight |
+|-------------|-----|--------|
+| [Final Report](https://eda.seas.gwu.edu/2026-Fall/project/3-final-report.html) | Dec 6 | 17% |
+| [Presentation slides](https://eda.seas.gwu.edu/2026-Fall/project/4-presentation.html) | Dec 8 | 6% |
+| [Final Interview](https://eda.seas.gwu.edu/2026-Fall/class/interviews) | Dec 7 to 11 | 10% |
+
+- **Presentations** are in person on Dec 9, 12 to 2:30pm in SEH B1270 (Lehman
+  Auditorium), 10 minutes each. Awards: the Janitor Award (most intense
+  wrangling of messy data) and the Shiny Award (most impressive visualization).
+- **Final report checklist:** read the prompt carefully, include a copy of your
+  data, use a theme, and run `spelling::spell_check_files("report.qmd")`.
+- **Interview tips:** bring water, pause before answering, answer the question
+  asked, and don't say "I don't know." Give it a try and the interviewer will
+  help.
+
+You should be able to:
+
+- Map your project onto Freytag's pyramid.
+- Pick a technique (layers, animation) for a chart sequence.
+- Apply Hitchcock's rule to a slide.
+- Open a talk with a story, a factoid, or a question.
+- Publish a Quarto site on GitHub Pages and debug it.
